@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module rename-to='gwtol3playground'>
+
+  <inherits name='com.google.gwt.user.User'/>
+  <inherits name='OLGwt3'/>
+
+  <entry-point class='de.desjardins.ol3.demo.client.GwtOL3Playground'/>
+
+  <source path='client'/>
+
+  <!-- allow Super Dev Mode -->
+  <add-linker name="xsiframe"/>
+  <set-configuration-property name="devModeRedirectEnabled" value="true"/>
+  <set-property name="compiler.useSourceMaps" value="true" />
+</module>
