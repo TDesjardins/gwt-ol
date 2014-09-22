@@ -3,8 +3,6 @@ package ol;
 import com.google.gwt.core.client.js.JsProperty;
 import com.google.gwt.core.client.js.JsType;
 
-import java.util.List;
-
 import ol.control.Control;
 import ol.interaction.Interaction;
 import ol.layer.Base;
@@ -20,16 +18,9 @@ public interface Map {
     @JsProperty
     double getPixelRatio();
     
-    @JsProperty
     String getTarget();
     
     int getRevision();
-    
-    /*@JsProperty
-    void setLayers(List<Base> layers);*/
-    
-    @JsProperty
-    void setLayers(List<Base> layers);
     
     Collection<Base> getLayers();
     
