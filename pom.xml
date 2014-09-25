@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.desjardins.ol3</groupId>
+  <artifactId>gwt-ol3</artifactId>
+  <packaging>pom</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>${project.artifactId}</name>
+
+  <repositories>
+    <repository>
+      <id>com.google.gwt</id>
+      <name>GWT Sonatype Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
+    </repository>
+    <repository>
+      <id>org.codehaus.mojo</id>
+      <name>Nexus Snapshots</name>
+      <url>https://nexus.codehaus.org/content/repositories/snapshots/</url>
+    </repository>
+  </repositories>
+  
+  <developers>
+    <developer>
+      <name>Tino Desjardins</name>
+      <id>tdesjardins</id>
+      <roles>
+        <role>Java Developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <properties>
+    <!-- Convenience property to set the GWT version -->
+    <gwt.version>2.7.0-SNAPSHOT</gwt.version>
+    <!-- GWT needs at least java 1.5 -->
+    <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <version>${gwt.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.7</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <modules>
+    <module>gwt-ol3-client</module>
+    <module>gwt-ol3-demo</module>
+  </modules>
+
+</project>
