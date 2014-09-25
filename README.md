@@ -3,7 +3,9 @@ GWT-OL3-Playground
 
 A Playground for the new OpenLayers3-Wrapper for GWT using the new JSInterop-Features of the GWT-SDK-Sources.
 
-You can build the application with Maven. If you want to use it without please consider the following hints: 
+You can build the application with Maven. If you would like to test superdev-mode you can run it on module gwt-ol-demo with the goal gwt:run-codeserver.
+
+If you want to built the application without Maven please consider the following hints: 
 
 You have to build the latest GWT-SDK from the source:
 
