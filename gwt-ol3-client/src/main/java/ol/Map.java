@@ -8,45 +8,45 @@ import ol.interaction.Interaction;
 import ol.layer.Base;
 
 /**
- * 
+ *
  * @author Tino Desjardins
  *
  */
 @JsType
-public interface Map {
-    
+public interface Map extends Object {
+
     @JsProperty
     double getPixelRatio();
-    
+
     String getTarget();
-    
+
     int getRevision();
-    
+
     Collection<Base> getLayers();
-    
+
     void setView(View view);
-    
+
     void addControl(Control control);
-    
+
     void removeControl(Control control);
-    
+
     void addInteraction(Interaction interaction);
-    
+
     void removeInteraction(Interaction interaction);
-    
+
     void addLayer(Base layer);
-    
+
     void removeLayer(Base layer);
-    
+
     /**
      * Requests a render frame; rendering will effectively occur at the next browser animation frame.
      */
     void render();
-    
+
     /**
      * Force a recalculation of the map viewport size. This should be called when third-party code changes the size of the map viewport.
      */
     void updateSize();
-    
+
 }
 
