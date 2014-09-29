@@ -21,6 +21,18 @@
       <url>https://nexus.codehaus.org/content/repositories/snapshots/</url>
     </repository>
   </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>com.google.gwt</id>
+      <name>GWT Sonatype Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>org.codehaus.mojo</id>
+      <name>Nexus Snapshots</name>
+      <url>https://nexus.codehaus.org/content/repositories/snapshots/</url>
+    </pluginRepository>
+  </pluginRepositories>
 
   <developers>
     <developer>
