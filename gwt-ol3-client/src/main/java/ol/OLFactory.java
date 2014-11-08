@@ -14,6 +14,8 @@ import ol.source.MapQuest;
 import ol.source.MapQuestOptions;
 import ol.source.Stamen;
 import ol.source.StamenOptions;
+import ol.source.StaticImage;
+import ol.source.StaticImageOptions;
 
 /**
  * Factory to create GWT-OL3-Object instances from JavaScript based on OL3-Interfaces.
@@ -47,6 +49,10 @@ public class OLFactory {
 
     /** Sources **/
 
+    public static native <T> StaticImage createStaticImageSource(StaticImageOptions staticImageOptions) /*-{
+		return new $wnd.ol.source.StaticImage(staticImageOptions);
+	}-*/;
+    
     public static native <T> MapQuest createMapQuestSource(MapQuestOptions mapQuestOptions) /*-{
 		return new $wnd.ol.source.MapQuest(mapQuestOptions);
     }-*/;
