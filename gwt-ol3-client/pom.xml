@@ -19,7 +19,7 @@
     <repository>
       <id>com.google.gwt</id>
       <name>GWT Sonatype Snapshots</name>
-      <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
+      <url>https://oss.sonatype.org/content/repositories/google-releases/</url>
     </repository>
     <repository>
       <id>org.codehaus.mojo</id>
@@ -30,7 +30,7 @@
 
   <properties>
     <!-- Convenience property to set the GWT version -->
-    <gwt.version>2.7.0-SNAPSHOT</gwt.version>
+    <gwt.version>2.7.0-rc1</gwt.version>
     <!-- GWT needs at least java 1.5 -->
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
