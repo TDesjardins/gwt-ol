@@ -41,6 +41,9 @@ public class GwtOL3Playground implements EntryPoint {
             case TileExample:
                 createMapWithTileConfiguration();
                 break;
+            case ImageExample:
+                createMapWithStaticImageConfiguration();
+                break;
             default:
                 createMapWithTileConfiguration();
         }
@@ -68,7 +71,6 @@ public class GwtOL3Playground implements EntryPoint {
         Image wmsLayer = OLFactory.createImageLayer(layerOptions);
         
         // create a projection
-        
         ProjectionOptions projectionOptions = OLFactory.createOptions();
         projectionOptions.setCode("EPSG:21781");
         projectionOptions.setUnits("m");
@@ -76,17 +78,13 @@ public class GwtOL3Playground implements EntryPoint {
         Projection projection = OLFactory.createProjection(projectionOptions);
         
         // create a view
-        
         ViewOptions viewOptions = OLFactory.createOptions();
         viewOptions.setProjection(projection);
         View view = OLFactory.createView(viewOptions);
 
-        double[] coords = new double[2];
-
-        coords[0] = 660000;
-        coords[1] = 190000;
-
-        view.setCenter(coords);
+        double[] centerCoordinate = OLFactory.createCoordinate(660000, 190000);
+        
+        view.setCenter(centerCoordinate);
         view.setZoom(9);
 
         // create the map
@@ -141,12 +139,9 @@ public class GwtOL3Playground implements EntryPoint {
         // create a view
         View view = OLFactory.createView();
 
-        double[] coords = new double[2];
+        double[] centerCoordinate = OLFactory.createCoordinate(1490463, 6894388);
         
-        coords[0] = 1490463;
-        coords[1] = 6894388;
-        
-        view.setCenter(coords);
+        view.setCenter(centerCoordinate);
         view.setZoom(10);
 
         // create the map
@@ -174,6 +169,13 @@ public class GwtOL3Playground implements EntryPoint {
         
         map.getLayers().push(stamenLayer);
         
+    }
+    
+    /**
+     * Creates a map with a StaticImage layer.
+     */
+    private static void createMapWithStaticImageConfiguration() {
+        throw new UnsupportedOperationException();
     }
  
 }

@@ -9,7 +9,8 @@ package de.desjardins.ol3.demo.client;
 public enum OL3ExampleType {
     
     WmsExample,
-    TileExample
+    TileExample,
+    ImageExample
     
 }
 
