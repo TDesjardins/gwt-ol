@@ -8,6 +8,6 @@ import com.google.gwt.core.client.js.JsType;
  *
  */
 @JsType
-public interface StaticImage extends Source {
+public interface ImageStatic extends Image {
 }
 

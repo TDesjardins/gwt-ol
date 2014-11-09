@@ -9,7 +9,7 @@ import com.google.gwt.core.client.js.JsType;
  *
  */
 @JsType
-public interface StaticImageOptions {
+public interface ImageStaticOptions {
     
 	@JsProperty
 	void setExtent(double[] extent);
