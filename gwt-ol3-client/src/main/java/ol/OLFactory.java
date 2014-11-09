@@ -153,5 +153,14 @@ public class OLFactory {
     public static native <T> T createParams() /*-{
         return {};
     }-*/;
+    
+    /**
+     * Creates a coordinate.
+     *
+     * @return coordParams coordinate params
+     */
+    public static double[] createCoordinate(double... coordParams) {
+        return coordParams;
+    };
 
 }
