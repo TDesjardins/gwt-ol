@@ -1,5 +1,7 @@
 package ol.interaction;
 
+import com.google.gwt.core.client.js.JsType;
+
 import ol.Observable;
 
 /**
@@ -8,6 +10,7 @@ import ol.Observable;
  * @author Tino Desjardins
  *
  */
+@JsType
 public interface Interaction extends Observable {
 
 }
