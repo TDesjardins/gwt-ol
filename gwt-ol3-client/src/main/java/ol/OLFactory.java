@@ -6,6 +6,7 @@ import ol.control.Rotate;
 import ol.control.ScaleLine;
 import ol.control.ZoomSlider;
 import ol.control.ZoomToExtent;
+import ol.interaction.DragAndDrop;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
 import ol.layer.Image;
@@ -126,6 +127,10 @@ public class OLFactory {
 
     /** Interactions **/
 
+    public static native <T> DragAndDrop createDragAndDrop() /*-{
+        return new $wnd.ol.interaction.DragAndDrop();
+    }-*/;
+    
     public static native <T> KeyboardPan createKeyboardPan() /*-{
         return new $wnd.ol.interaction.KeyboardPan();
     }-*/;
