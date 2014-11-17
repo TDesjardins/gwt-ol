@@ -12,6 +12,8 @@ import ol.proj.Projection;
 @JsType(prototype="View")
 public interface View extends Object {
 
+    void rotate(float rotation, double[] coordinate);
+    
     void setCenter(double[] center);
     
     void setZoom(double zoom);
