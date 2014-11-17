@@ -1,12 +1,16 @@
 package de.desjardins.ol3.demo.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.Window;
 
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
 import ol.View;
 import ol.ViewOptions;
+import ol.event.EventListener;
+import ol.interaction.DragAndDrop;
+import ol.interaction.DragAndDropEvent;
 import ol.layer.Image;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
@@ -92,8 +96,8 @@ public class GwtOL3Playground implements EntryPoint {
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 
-        Map map = OLFactory.createMap(mapOptions);
-
+        Map map = Map.createInstance(mapOptions);
+        
         map.addLayer(wmsLayer);
 
         // add some controls
@@ -149,7 +153,7 @@ public class GwtOL3Playground implements EntryPoint {
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 
-        Map map = OLFactory.createMap(mapOptions);
+        Map map = Map.createInstance(mapOptions);
         
         stamenLayer.setOpacity(0.5f);
         map.addLayer(mapQuestLayer);
@@ -164,8 +168,24 @@ public class GwtOL3Playground implements EntryPoint {
         // add some interactions
         map.addInteraction(OLFactory.createKeyboardPan());
         map.addInteraction(OLFactory.createKeyboardZoom());
-        map.addControl(OLFactory.createRotate());
         
+        DragAndDrop dragAndDrop = OLFactory.createDragAndDrop();
+        map.addInteraction(dragAndDrop);
+        
+        EventListener<DragAndDropEvent> eventListener = new EventListener<DragAndDropEvent>() {
+            
+            @Override
+            public void on(DragAndDropEvent event) {
+                Window.alert(String.valueOf(event.getFeatures().length));
+                Window.alert(event.getProjection().getUnits());
+                Window.alert(String.valueOf(event.getProjection().getMetersPerUnit()));
+                
+            }
+        };
+
+        dragAndDrop.on("addfeatures", EventListener.createEventListener(eventListener));
+
+        map.addControl(OLFactory.createRotate());
         
         map.getLayers().push(stamenLayer);
         
