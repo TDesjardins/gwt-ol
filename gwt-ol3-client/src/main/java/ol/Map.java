@@ -8,45 +8,49 @@ import ol.interaction.Interaction;
 import ol.layer.Base;
 
 /**
- *
- * @author Tino Desjardins
- *
- */
+*
+* @author Tino Desjardins
+*
+*/
 @JsType
-public interface Map extends Object {
+public abstract class Map implements Object {
 
+    public static native <T> Map createInstance(MapOptions mapOptions) /*-{
+        return new $wnd.ol.Map(mapOptions);
+    }-*/;
+    
     @JsProperty
-    double getPixelRatio();
+    public abstract double getPixelRatio();
 
-    String getTarget();
+    public abstract String getTarget();
 
-    int getRevision();
+    public abstract int getRevision();
 
-    Collection<Base> getLayers();
+    public abstract Collection<Base> getLayers();
 
-    void setView(View view);
+    public abstract void setView(View view);
 
-    void addControl(Control control);
+    public abstract void addControl(Control control);
 
-    void removeControl(Control control);
+    public abstract void removeControl(Control control);
 
-    void addInteraction(Interaction interaction);
+    public abstract void addInteraction(Interaction interaction);
 
-    void removeInteraction(Interaction interaction);
+    public abstract void removeInteraction(Interaction interaction);
 
-    void addLayer(Base layer);
+    public abstract void addLayer(Base layer);
 
-    void removeLayer(Base layer);
+    public abstract void removeLayer(Base layer);
 
     /**
      * Requests a render frame; rendering will effectively occur at the next browser animation frame.
      */
-    void render();
+    public abstract void render();
 
     /**
      * Force a recalculation of the map viewport size. This should be called when third-party code changes the size of the map viewport.
      */
-    void updateSize();
-
+    public abstract void updateSize();
+    
 }
 
