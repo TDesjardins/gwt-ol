@@ -1,0 +1,5 @@
+<module>
+	<inherits name='OLGwt3'/>
+	<source path="ol"/> 
+	<!--  script src="http://openlayers.org/en/v3.0.0/build/ol.js"/ -->
+</module>
