@@ -30,16 +30,24 @@
 
   <properties>
     <!-- Convenience property to set the GWT version -->
-    <gwt.version>2.7.0-rc1</gwt.version>
+    <gwt.version>2.7.0</gwt.version>
     <!-- GWT needs at least java 1.5 -->
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <gwt.maven.plugin.version>2.7.0</gwt.maven.plugin.version>
   </properties>
   
   <dependencies>
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
+      <version>${gwt.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <!-- Needed for GWT-Unit-Tests -->
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
       <version>${gwt.version}</version>
       <scope>provided</scope>
     </dependency>
@@ -75,9 +83,28 @@
           <include>**/*.js</include>
         </includes>
       </resource>
+      <resource>
+        <filtering>false</filtering>
+        <directory>${basedir}/src/test/java</directory>
+        <includes>
+          <include>**/*.java</include>
+          <include>**/*.xml</include>
+          <include>**/*.js</include>
+        </includes>
+      </resource>
     </resources>
     <plugins>
-
+      <plugin>
+		<artifactId>maven-surefire-plugin</artifactId>
+		<version>2.4.3</version>
+		<configuration>
+        <excludes>
+			<!-- todo rename *Test.java to *GwtTest.java in the project -->
+			<exclude>**/*Test.java</exclude>
+			<exclude>**/*TestCase.java</exclude>
+        </excludes>
+        </configuration>
+	  </plugin>
       <!-- Copy static web files before executing gwt:run -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -88,6 +115,30 @@
           <target>1.5</target>
         </configuration>
       </plugin>
+	<plugin>
+		<groupId>org.codehaus.mojo</groupId>
+		<artifactId>gwt-maven-plugin</artifactId>
+		<version>${gwt.maven.plugin.version}</version>
+		<configuration>
+			<inplace>true</inplace>
+			<gwtVersion>${gwtVersion}</gwtVersion>
+			<sourceLevel>1.6</sourceLevel>
+			<extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
+			<includes>**/*Test.java</includes>
+            <mode>htmlunit</mode>
+            <jsInteropMode>JS</jsInteropMode>
+            <productionMode>false</productionMode>
+            <webMode>true</webMode>
+		</configuration>
+		<executions>
+			<execution>
+				<id>test</id>
+				<goals>
+					<goal>test</goal>
+				</goals>
+			</execution>
+		</executions>
+	</plugin>
     </plugins>
   </build>
 
