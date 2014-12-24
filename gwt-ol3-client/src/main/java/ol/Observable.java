@@ -15,5 +15,9 @@ public interface Observable {
     
     <T extends Event> void on(String type , EventListener<T> eventListener);
     
+    <T extends Event> void once(String type , EventListener<T> eventListener);
+    
+    <T extends Event> void un(String type , EventListener<T> eventListener);
+    
 }
 
