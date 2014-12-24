@@ -11,7 +11,7 @@ public class BaseTestCase extends GWTTestCase {
 
     @Override
     public String getModuleName() {
-        return "OLGwt3Test";
+        return "GwtOL3Test";
     }
 
 }
