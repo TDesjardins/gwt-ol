@@ -8,7 +8,7 @@ import com.google.gwt.core.client.js.JsType;
  *
  */
 @JsType
-public interface Object {
+public interface Object extends Observable {
     
     <T> ObjectAccessor bindTo(String key, T target);
     
