@@ -97,7 +97,7 @@
         </executions>
         <configuration>
           <module>de.desjardins.ol3.demo.GwtOL3Playground</module>
-          <runTarget>OLGwt3Playground.html</runTarget>
+          <runTarget>GwtOL3Playground.html</runTarget>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
           <!-- Use JSInterop -->
           <jsInteropMode>JS</jsInteropMode>
