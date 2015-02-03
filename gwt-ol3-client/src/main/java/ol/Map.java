@@ -8,17 +8,19 @@ import ol.interaction.Interaction;
 import ol.layer.Base;
 
 /**
-*
-* @author Tino Desjardins
-*
-*/
+ * Map with controls, layers and interactions.
+ * 
+ * @author Tino Desjardins
+ */
 @JsType
 public abstract class Map implements Object {
 
     public static native <T> Map createInstance(MapOptions mapOptions) /*-{
         return new $wnd.ol.Map(mapOptions);
     }-*/;
-    
+
+    public abstract Collection<Control> getControls();
+
     @JsProperty
     public abstract double getPixelRatio();
 
@@ -51,6 +53,5 @@ public abstract class Map implements Object {
      * Force a recalculation of the map viewport size. This should be called when third-party code changes the size of the map viewport.
      */
     public abstract void updateSize();
-    
-}
 
+}
