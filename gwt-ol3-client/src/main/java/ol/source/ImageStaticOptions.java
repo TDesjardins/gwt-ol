@@ -3,26 +3,39 @@ package ol.source;
 import com.google.gwt.core.client.js.JsProperty;
 import com.google.gwt.core.client.js.JsType;
 
+import ol.proj.Projection;
+
 /**
- * 
  * @author Tino Desjardins
- *
  */
 @JsType
 public interface ImageStaticOptions {
-    
-	@JsProperty
-	void setExtent(double[] extent);
-	
-	@JsProperty
-	void setImageSize(double[] imageSize);
-	
+
+    @JsProperty
+    void setImageExtent(double[] extent);
+
+    @JsProperty
+    ImageStaticOptions imageExtent(double[] extent);
+
+    @JsProperty
+    void setImageSize(int[] imageSize);
+
+    @JsProperty
+    ImageStaticOptions imageSize(int[] imageSize);
+
+    @JsProperty
+    void setProjection(Projection projection);
+
+    @JsProperty
+    ImageStaticOptions projection(Projection projection);
+
     /**
-     * 
      * @param url URL to image
      */
     @JsProperty
     void setUrl(String url);
-    
-}
 
+    @JsProperty
+    ImageStaticOptions url(String url);
+
+}
