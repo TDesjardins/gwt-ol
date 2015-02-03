@@ -24,7 +24,7 @@ import ol.source.ImageStatic;
 import ol.source.ImageStaticOptions;
 
 /**
- * Factory to create GWT-OL3-Object instances from JavaScript based on OL3-Interfaces.
+ * Factory to create GWT-OL3 instances from JavaScript based on OL3-Interfaces.
  * Can be also done with GIN.
  * When GWT supports Java 8 (hopefully in GWT 3.0) factory methods can directly created in the interfaces.
  *
@@ -159,6 +159,10 @@ public class OLFactory {
         return {};
     }-*/;
     
+    public static native <T> Collection<T> createCollection() /*-{
+        return new $wnd.ol.Collection();
+    }-*/; 
+    
     /**
      * Creates a coordinate.
      *
@@ -167,5 +171,29 @@ public class OLFactory {
     public static double[] createCoordinate(double... coordParams) {
         return coordParams;
     };
+    
+    /**
+     * Creates an extent.
+     * 
+     * @param minX
+     * @param minY
+     * @param maxX
+     * @param maxY
+     * @return
+     */
+    public static native double[] createExtent(double minX, double minY, double maxX, double maxY) /*-{
+        return [minX, minY, maxX, maxY];
+	}-*/;
+    
+    /**
+     * Creates a size
+     * 
+     * @param width
+     * @param height
+     * @return size
+     */
+    public static native int[] createSize(int width, int height) /*-{
+        return [width, height];
+    }-*/;
 
 }
