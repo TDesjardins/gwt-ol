@@ -3,7 +3,7 @@
 <module rename-to='gwtol3playground'>
 
   <inherits name='com.google.gwt.user.User'/>
-  <inherits name='OLGwt3'/>
+  <inherits name='GwtOL3'/>
 
   <entry-point class='de.desjardins.ol3.demo.client.GwtOL3Playground'/>
 
