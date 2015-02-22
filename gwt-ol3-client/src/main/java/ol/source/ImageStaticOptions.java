@@ -12,6 +12,12 @@ import ol.proj.Projection;
 public interface ImageStaticOptions {
 
     @JsProperty
+    void setCrossOrigin(String crossOrigin);
+    
+    @JsProperty
+    ImageStaticOptions crossOrigin(String crossOrigin);
+    
+    @JsProperty
     void setImageExtent(double[] extent);
 
     @JsProperty
