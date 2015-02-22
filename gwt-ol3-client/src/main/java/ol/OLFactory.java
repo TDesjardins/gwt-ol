@@ -35,107 +35,107 @@ public class OLFactory {
 
     /** Map **/
 
-    public static native <T> Map createMap(MapOptions mapOptions) /*-{
+    public static native Map createMap(MapOptions mapOptions) /*-{
 		return new $wnd.ol.Map(mapOptions);
     }-*/;
 
-    public static native <T> MapOptions createMapOptions() /*-{
+    public static native MapOptions createMapOptions() /*-{
         return {};
     }-*/;
 
     /** Layers **/
 
-    public static native <T> Image createImageLayer(LayerOptions layerOptions) /*-{
+    public static native Image createImageLayer(LayerOptions layerOptions) /*-{
         return new $wnd.ol.layer.Image(layerOptions);
     }-*/;
     
-    public static native <T> Tile createTileLayer(LayerOptions layerOptions) /*-{
+    public static native Tile createTileLayer(LayerOptions layerOptions) /*-{
 		return new $wnd.ol.layer.Tile(layerOptions);
     }-*/;
 
-    public static native <T> LayerOptions createLayerOptions() /*-{
+    public static native LayerOptions createLayerOptions() /*-{
         return {};
     }-*/;
 
     /** Sources **/
 
-    public static native <T> ImageStatic createImageStaticSource(ImageStaticOptions imageStaticOptions) /*-{
+    public static native ImageStatic createImageStaticSource(ImageStaticOptions imageStaticOptions) /*-{
 		return new $wnd.ol.source.ImageStatic(imageStaticOptions);
 	}-*/;
     
-    public static native <T> ImageWMS createImageWMSSource(ImageWMSOptions imageWMSOptions) /*-{
+    public static native ImageWMS createImageWMSSource(ImageWMSOptions imageWMSOptions) /*-{
         return new $wnd.ol.source.ImageWMS(imageWMSOptions);
     }-*/;
     
-    public static native <T> MapQuest createMapQuestSource(MapQuestOptions mapQuestOptions) /*-{
+    public static native MapQuest createMapQuestSource(MapQuestOptions mapQuestOptions) /*-{
 		return new $wnd.ol.source.MapQuest(mapQuestOptions);
     }-*/;
 
-    public static native <T> MapQuestOptions createMapQuestOptions() /*-{
+    public static native MapQuestOptions createMapQuestOptions() /*-{
 		return {};
     }-*/;
 
-    public static native <T> Stamen createStamenSource(StamenOptions stamenOptions) /*-{
+    public static native Stamen createStamenSource(StamenOptions stamenOptions) /*-{
         return new $wnd.ol.source.Stamen(stamenOptions);
     }-*/;
 
-    public static native <T> StamenOptions createStamenOptions() /*-{
+    public static native StamenOptions createStamenOptions() /*-{
         return {};
     }-*/;
 
     /** Projection **/
     
-    public static native <T> Projection createProjection(ProjectionOptions projectionOptions) /*-{
+    public static native Projection createProjection(ProjectionOptions projectionOptions) /*-{
         return new $wnd.ol.proj.Projection(projectionOptions);
     }-*/;
     
     /** View **/
 
-    public static native <T> View createView() /*-{
+    public static native View createView() /*-{
 		return new $wnd.ol.View();
     }-*/;
     
-    public static native <T> View createView(ViewOptions viewOptions) /*-{
+    public static native View createView(ViewOptions viewOptions) /*-{
         return new $wnd.ol.View(viewOptions);
     }-*/;
 
     /** Controls **/
 
-    public static native <T> FullScreen createFullScreen() /*-{
+    public static native FullScreen createFullScreen() /*-{
 		return new $wnd.ol.control.FullScreen();
     }-*/;
 
-    public static native <T> MousePosition createMousePosition() /*-{
+    public static native MousePosition createMousePosition() /*-{
 		return new $wnd.ol.control.MousePosition();
     }-*/;
 
-    public static native <T> Rotate createRotate() /*-{
+    public static native Rotate createRotate() /*-{
 		return new $wnd.ol.control.Rotate();
     }-*/;
 
-    public static native <T> ScaleLine createScaleLine() /*-{
+    public static native ScaleLine createScaleLine() /*-{
 		return new $wnd.ol.control.ScaleLine();
     }-*/;
 
-    public static native <T> ZoomToExtent createZoomToExtent() /*-{
+    public static native ZoomToExtent createZoomToExtent() /*-{
         return new $wnd.ol.control.ZoomToExtent();
     }-*/;
 
-    public static native <T> ZoomSlider createZoomSlider() /*-{
+    public static native ZoomSlider createZoomSlider() /*-{
 		return new $wnd.ol.control.ZoomSlider();
     }-*/;
 
     /** Interactions **/
 
-    public static native <T> DragAndDrop createDragAndDrop() /*-{
+    public static native DragAndDrop createDragAndDrop() /*-{
         return new $wnd.ol.interaction.DragAndDrop();
     }-*/;
     
-    public static native <T> KeyboardPan createKeyboardPan() /*-{
+    public static native KeyboardPan createKeyboardPan() /*-{
         return new $wnd.ol.interaction.KeyboardPan();
     }-*/;
 
-    public static native <T> KeyboardZoom createKeyboardZoom() /*-{
+    public static native KeyboardZoom createKeyboardZoom() /*-{
         return new $wnd.ol.interaction.KeyboardZoom();
     }-*/;
 
