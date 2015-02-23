@@ -1,5 +1,11 @@
 package ol;
 
+import ol.View;
+import ol.MapOptions;
+import ol.ViewOptions;
+import ol.proj.Projection;
+import ol.OLFactory;
+import ol.proj.ProjectionOptions;
 import ol.BaseTestCase;
 
 /**
@@ -13,9 +19,9 @@ public class MapTest extends BaseTestCase {
         
         // TODO Add OL3-script.
         
-        /* ProjectionOptions projectionOptions = OLFactory.createOptions();
-        projectionOptions.setCode("EPSG:21781");
-        projectionOptions.setUnits("m");
+        ProjectionOptions projectionOptions = OLFactory.createOptions();
+        projectionOptions.code("EPSG:21781")
+            .units("m");
         
         Projection projection = OLFactory.createProjection(projectionOptions);
         
@@ -28,12 +34,12 @@ public class MapTest extends BaseTestCase {
         view.setCenter(centerCoordinate);
         view.setZoom(9);
         
-        MapOptions mapOptions = OLFactory.createMapOptions();
+        final MapOptions mapOptions = OLFactory.createMapOptions();
         mapOptions.setTarget("map");
         mapOptions.setView(view);
         
-        Map map = Map.createInstance(mapOptions);
-        assertNotNull(map); */
+        /*Map map = Map.newInstance(mapOptions);
+        assertNotNull(map);*/
         
     }
 

@@ -15,7 +15,7 @@ import ol.layer.Base;
 @JsType
 public abstract class Map implements Object {
 
-    public static native <T> Map createInstance(MapOptions mapOptions) /*-{
+    public static native Map newInstance(MapOptions mapOptions) /*-{
         return new $wnd.ol.Map(mapOptions);
     }-*/;
 
