@@ -16,7 +16,7 @@ public class GwtOL3Playground implements EntryPoint {
     public void onModuleLoad() {
 
         // choose your example
-        OL3ExampleType exampleType = OL3ExampleType.GraticuleExample;
+        OL3ExampleType exampleType = OL3ExampleType.TileExample;
         exampleType.getExample().show();
 
     }

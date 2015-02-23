@@ -1,24 +1,25 @@
 package de.desjardins.ol3.demo.client.example;
 
-import ol.AttributionOptions;
-import ol.Attribution;
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
+
+import ol.Attribution;
+import ol.AttributionOptions;
 import ol.Collection;
 import ol.FeatureOverlayOptions;
-import ol.layer.Base;
-import ol.source.ImageStatic;
-import ol.source.ImageStaticOptions;
-import ol.style.Style;
-import ol.style.StyleOptions;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
 import ol.View;
 import ol.ViewOptions;
+import ol.layer.Base;
 import ol.layer.Image;
 import ol.layer.LayerOptions;
 import ol.proj.Projection;
 import ol.proj.ProjectionOptions;
+import ol.source.ImageStatic;
+import ol.source.ImageStaticOptions;
+import ol.style.Style;
+import ol.style.StyleOptions;
 
 /**
  * Example with a StaticImage layer.
@@ -84,6 +85,11 @@ public class StaticImageExample implements Example {
         
         // add some controls
         DemoUtils.addDefaultControls(map.getControls());
+        
+        ol.control.Attribution attributionControl = ol.control.Attribution.newInstance();
+        attributionControl.setCollapsed(false);
+        
+        map.addControl(attributionControl);
         
         Style style = Style.newInstance(StyleOptions.newInstance());
         

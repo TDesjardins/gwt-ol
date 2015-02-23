@@ -1,15 +1,14 @@
 package de.desjardins.ol3.demo.client.example;
 
 import ol.Graticule;
-import ol.layer.Tile;
-import ol.source.MapQuest;
-import ol.source.MapQuestOptions;
-
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
 import ol.View;
 import ol.layer.LayerOptions;
+import ol.layer.Tile;
+import ol.source.MapQuest;
+import ol.source.MapQuestOptions;
 
 /**
  * Example for Graticule.

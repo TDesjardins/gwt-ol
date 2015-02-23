@@ -2,8 +2,9 @@ package de.desjardins.ol3.demo.client.example;
 
 import com.google.gwt.user.client.Window;
 
-import de.desjardins.ol3.demo.client.utils.DemoUtils;
+import ol.control.Attribution;
 
+import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.event.EventListener;
 import ol.interaction.DragAndDrop;
 import ol.interaction.DragAndDropEvent;
@@ -74,6 +75,11 @@ public class TileExample implements Example {
         // add some controls
         map.addControl(OLFactory.createScaleLine());
         DemoUtils.addDefaultControls(map.getControls());
+        
+        Attribution attribution = Attribution.newInstance();
+        attribution.setCollapsed(true);
+        
+        map.addControl(attribution);
         
         // add some interactions
         map.addInteraction(OLFactory.createKeyboardPan());
