@@ -3,6 +3,8 @@ package ol.source;
 import com.google.gwt.core.client.js.JsProperty;
 import com.google.gwt.core.client.js.JsType;
 
+import ol.Attribution;
+
 import ol.proj.Projection;
 
 /**
@@ -11,6 +13,9 @@ import ol.proj.Projection;
 @JsType
 public interface ImageStaticOptions {
 
+    @JsProperty
+    void setAttributions (Attribution[] attributions);
+    
     @JsProperty
     void setCrossOrigin(String crossOrigin);
     
