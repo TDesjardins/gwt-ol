@@ -9,7 +9,7 @@ import ol.BaseTestCase;
  */
 public class AttributionTest extends BaseTestCase {
 
-    public void testFeatureOverlay() {
+    public void testAttribution() {
         
         AttributionOptions attributionOptions = AttributionOptions.newInstance();
         
