@@ -124,10 +124,10 @@
 			<gwtVersion>${gwtVersion}</gwtVersion>
 			<sourceLevel>1.6</sourceLevel>
 			<extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
-			<includes>**/*Test.java</includes>
+			<includes>**/*TestSuite.java</includes>
             <mode>htmlunit</mode>
             <jsInteropMode>JS</jsInteropMode>
-            <productionMode>false</productionMode>
+            <productionMode>true</productionMode>
             <webMode>true</webMode>
 		</configuration>
 		<executions>
