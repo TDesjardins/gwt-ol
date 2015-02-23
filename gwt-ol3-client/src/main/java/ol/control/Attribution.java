@@ -8,11 +8,15 @@ import com.google.gwt.core.client.js.JsType;
  *
  */
 @JsType
-public interface Attribution extends Control {
+public abstract class Attribution implements Control {
     
-    void setCollapsed(boolean collapsed);
+    public static native Attribution newInstance() /*-{
+        return new $wnd.ol.control.Attribution();
+    }-*/;
     
-    void setCollapsible(boolean collapsible);
+    public abstract void setCollapsed(boolean collapsed);
+    
+    public abstract void setCollapsible(boolean collapsible);
     
 }
 
