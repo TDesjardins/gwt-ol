@@ -1,7 +1,7 @@
 GWT-OL3-Playground
 ==================
 
-A Playground for the new [OpenLayers 3](http://openlayers.org/ "OpenLayers 3 website")-Wrapper for GWT using the new JSInterop-Features of the [GWT-SDK 2.7.0](http://www.gwtproject.org/versions.html "Link to GWT-SDK Downloads").
+A Playground for the new [OpenLayers 3](http://openlayers.org/ "OpenLayers 3 website") - Wrapper for GWT using the new JSInterop-Features of the [GWT-SDK 2.7.0](http://www.gwtproject.org/versions.html "Link to GWT-SDK Downloads").
 
 You can build and run the application with Maven. If you would like to test superdev-mode you can run it on module `gwt-ol-demo` with the goal `gwt:run`. To only start the codeserver e.g. for using superdev-mode with your servlet container use goal `gwt:run-codeserver`.
 
