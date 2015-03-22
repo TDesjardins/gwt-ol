@@ -10,5 +10,9 @@ import com.google.gwt.core.client.js.JsType;
 @JsType
 public abstract class KeyboardPan implements Interaction {
 
+    public static native KeyboardPan newInstance() /*-{
+        return new $wnd.ol.interaction.KeyboardPan();
+    }-*/;
+    
 }
 

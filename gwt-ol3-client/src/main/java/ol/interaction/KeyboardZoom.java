@@ -10,5 +10,9 @@ import com.google.gwt.core.client.js.JsType;
 @JsType
 public abstract class KeyboardZoom implements Interaction {
 
+    public static native KeyboardZoom newInstance() /*-{
+        return new $wnd.ol.interaction.KeyboardZoom();
+    }-*/;
+   
 }
 

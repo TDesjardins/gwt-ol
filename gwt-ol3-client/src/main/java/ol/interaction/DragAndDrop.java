@@ -9,6 +9,10 @@ import com.google.gwt.core.client.js.JsType;
  */
 @JsType
 public abstract class DragAndDrop implements Interaction {
-
+    
+    public static native DragAndDrop newInstance() /*-{
+        return new $wnd.ol.interaction.DragAndDrop();
+    }-*/;
+    
 }
 
