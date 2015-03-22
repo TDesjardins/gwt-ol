@@ -8,8 +8,11 @@ import com.google.gwt.core.client.js.JsType;
  *
  */
 @JsType
-public interface FullScreen extends Control {
+public abstract class FullScreen implements Control {
     
+    public static native FullScreen newInstance() /*-{
+        return new $wnd.ol.control.FullScreen();
+    }-*/;
     
 }
 

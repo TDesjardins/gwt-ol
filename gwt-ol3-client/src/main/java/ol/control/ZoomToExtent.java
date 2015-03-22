@@ -8,8 +8,11 @@ import com.google.gwt.core.client.js.JsType;
  *
  */
 @JsType
-public interface ZoomToExtent extends Control {
+public abstract class ZoomToExtent implements Control {
     
+    public static native ZoomToExtent newInstance() /*-{
+        return new $wnd.ol.control.ZoomToExtent();
+    }-*/;
     
 }
 

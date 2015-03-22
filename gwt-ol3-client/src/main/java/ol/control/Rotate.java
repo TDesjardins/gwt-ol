@@ -8,8 +8,11 @@ import com.google.gwt.core.client.js.JsType;
  *
  */
 @JsType
-public interface Rotate extends Control {
+public abstract class Rotate implements Control {
     
+    public static native Rotate newInstance() /*-{
+        return new $wnd.ol.control.Rotate();
+    }-*/;
     
 }
 

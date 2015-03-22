@@ -8,8 +8,11 @@ import com.google.gwt.core.client.js.JsType;
  *
  */
 @JsType
-public interface MousePosition extends Control {
+public abstract class MousePosition implements Control {
     
+    public static native MousePosition newInstance() /*-{
+        return new $wnd.ol.control.MousePosition();
+    }-*/;
     
 }
 
