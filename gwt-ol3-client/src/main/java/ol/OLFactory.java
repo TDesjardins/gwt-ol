@@ -22,6 +22,8 @@ import ol.source.Stamen;
 import ol.source.StamenOptions;
 import ol.source.ImageStatic;
 import ol.source.ImageStaticOptions;
+import ol.source.Xyz;
+import ol.source.XyzOptions;
 
 /**
  * Factory to create GWT-OL3 instances from JavaScript based on OL3-Interfaces.
@@ -82,6 +84,10 @@ public class OLFactory {
     public static native StamenOptions createStamenOptions() /*-{
         return {};
     }-*/;
+    
+    public static native Xyz createXyz(XyzOptions xyzOptions) /*-{
+		return new $wnd.ol.source.XYZ(xyzOptions);
+	}-*/;
 
     /** Projection **/
     
