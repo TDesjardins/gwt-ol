@@ -8,19 +8,27 @@ import com.google.gwt.core.client.js.JsType;
  *
  */
 @JsType
-public interface Projection {
+public abstract class Projection {
     
-    String getCode();
+	public static native Projection newInstance(ProjectionOptions projectionOptions) /*-{
+    	return new $wnd.ol.proj.Projection(projectionOptions);
+	}-*/;
+	
+	public static native double[] transform(double[] coordinate, String source, String destination) /*-{
+		return new $wnd.ol.proj.transform(coordinate, source, destination)
+	}-*/;
+	
+    public abstract String getCode();
     
-    double[] getExtent();
+    public abstract double[] getExtent();
     
-    void setExtent(double[] extent);
+    public abstract void setExtent(double[] extent);
     
-    double getMetersPerUnit();
+    public abstract double getMetersPerUnit();
     
-    String getUnits();
+    public abstract String getUnits();
     
-    boolean isGlobal();
+    public abstract boolean isGlobal();
 
 }
 
