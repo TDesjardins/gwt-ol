@@ -13,7 +13,8 @@ public enum OL3ExampleType {
     WmsExample(new WmsExample()),
     TileExample(new TileExample()),
     ImageExample(new StaticImageExample()),
-    GraticuleExample(new GraticuleExample());
+    GraticuleExample(new GraticuleExample()),
+    XyzExample(new XyzExample());
     
     private Example example;
     
