@@ -22,7 +22,7 @@ public class ViewTest extends BaseTestCase {
         
         assertNotNull(projectionOptions);
         
-        Projection projection = OLFactory.createProjection(projectionOptions);
+        Projection projection = Projection.newInstance(projectionOptions);
         
         assertNotNull(projection);
         
