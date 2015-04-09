@@ -49,7 +49,7 @@ public class WmsExample implements Example {
         projectionOptions.setCode("EPSG:21781");
         projectionOptions.setUnits("m");
         
-        Projection projection = OLFactory.createProjection(projectionOptions);
+        Projection projection = Projection.newInstance(projectionOptions);
         
         // create a view
         ViewOptions viewOptions = OLFactory.createOptions();
