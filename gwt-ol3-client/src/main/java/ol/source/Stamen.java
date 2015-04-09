@@ -9,7 +9,7 @@ import com.google.gwt.core.client.js.JsType;
  *
  */
 @JsType
-public interface Stamen extends XYZ {
+public interface Stamen extends Xyz {
     
     @JsProperty
     void setLayer(String layer);

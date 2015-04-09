@@ -8,7 +8,7 @@ import com.google.gwt.core.client.js.JsType;
  *
  */
 @JsType
-public interface XYZ extends TileImage {
+public interface Xyz extends TileImage {
     
     void setUrl(String url);
     

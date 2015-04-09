@@ -9,7 +9,7 @@ import com.google.gwt.core.client.js.JsType;
  *
  */
 @JsType
-public interface MapQuest extends XYZ {
+public interface MapQuest extends Xyz {
     
     @JsProperty
     void setLayer(String layer);
