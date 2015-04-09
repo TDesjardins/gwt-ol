@@ -27,6 +27,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         TestSuite suite = new TestSuite("Tests for GwtOL3-Wrapper");
         
         suite.addTestSuite(AttributionTest.class);
+        suite.addTestSuite(GraticuleTest.class);
         suite.addTestSuite(MapTest.class);
         suite.addTestSuite(FeatureOverlayTest.class);
         suite.addTestSuite(ViewTest.class);
