@@ -43,7 +43,7 @@ public class StaticImageExample implements Example {
           .extent(imageExtent)
           .units("pixels");
         
-        Projection projection = OLFactory.createProjection(projectionOptions);
+        Projection projection = Projection.newInstance(projectionOptions);
         
         ImageStaticOptions imageStaticOptions = OLFactory.createOptions();
         imageStaticOptions.url("http://imgs.xkcd.com/comics/online_communities.png")
