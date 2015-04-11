@@ -14,8 +14,12 @@ public abstract class Projection {
     	return new $wnd.ol.proj.Projection(projectionOptions);
 	}-*/;
 	
+	public static native Projection get(String projectionCode) /*-{
+		return $wnd.ol.proj.get(projectionCode);
+	}-*/;
+	
 	public static native double[] transform(double[] coordinate, String source, String destination) /*-{
-		return new $wnd.ol.proj.transform(coordinate, source, destination)
+		return $wnd.ol.proj.transform(coordinate, source, destination);
 	}-*/;
 	
     public abstract String getCode();
