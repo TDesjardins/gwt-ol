@@ -14,12 +14,20 @@ public abstract class Projection {
     	return new $wnd.ol.proj.Projection(projectionOptions);
 	}-*/;
 	
+	public static native void addProjection(Projection projection) /*-{
+		$wnd.ol.proj.addProjection(projection);
+	}-*/;
+	
 	public static native Projection get(String projectionCode) /*-{
 		return $wnd.ol.proj.get(projectionCode);
 	}-*/;
 	
 	public static native double[] transform(double[] coordinate, String source, String destination) /*-{
 		return $wnd.ol.proj.transform(coordinate, source, destination);
+	}-*/;
+	
+	public static native double[] transformExtent(double[] extent, String source, String destination) /*-{
+		return $wnd.ol.proj.transformExtent(extent, source, destination);
 	}-*/;
 	
     public abstract String getCode();
