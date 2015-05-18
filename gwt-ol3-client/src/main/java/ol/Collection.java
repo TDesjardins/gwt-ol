@@ -8,25 +8,31 @@ import com.google.gwt.core.client.js.JsType;
  *
  */
 @JsType
-public interface Collection<T> extends Object {
+public abstract class Collection<T> implements Object {
     
-    void clear();
+    public static native <T> Collection<T> newInstance() /*-{
+        return new $wnd.ol.Collection();
+    }-*/;
     
-    int getLength();
+    public abstract void clear();
     
-    void insertAt(int index, T element);
+    public abstract T[] getArray();
     
-    T item(int index);
+    public abstract int getLength();
     
-    void pop();
+    public abstract void insertAt(int index, T element);
     
-    void push(T element);
+    public abstract T item(int index);
     
-    void remove(T element);
+    public abstract void pop();
     
-    void removeAt(int index);
+    public abstract void push(T element);
     
-    void setAt(int index, T element);
+    public abstract void remove(T element);
+    
+    public abstract void removeAt(int index);
+    
+    public abstract void setAt(int index, T element);
     
 }
 
