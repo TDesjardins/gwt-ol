@@ -2,6 +2,8 @@ package ol.source;
 
 import com.google.gwt.core.client.js.JsType;
 
+import ol.tilegrid.TileGrid;
+
 /**
  * 
  * @author Tino Desjardins
@@ -9,5 +11,8 @@ import com.google.gwt.core.client.js.JsType;
  */
 @JsType
 public interface Tile extends Source {
+    
+    TileGrid getTileGrid();
+    
 }
 
