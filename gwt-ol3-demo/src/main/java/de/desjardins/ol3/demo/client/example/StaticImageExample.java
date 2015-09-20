@@ -5,7 +5,6 @@ import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.Attribution;
 import ol.AttributionOptions;
 import ol.Collection;
-import ol.FeatureOverlayOptions;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
@@ -18,8 +17,6 @@ import ol.proj.Projection;
 import ol.proj.ProjectionOptions;
 import ol.source.ImageStatic;
 import ol.source.ImageStaticOptions;
-import ol.style.Style;
-import ol.style.StyleOptions;
 
 /**
  * Example with a StaticImage layer.
@@ -90,12 +87,6 @@ public class StaticImageExample implements Example {
         attributionControl.setCollapsed(false);
         
         map.addControl(attributionControl);
-        
-        Style style = Style.newInstance(StyleOptions.newInstance());
-        
-        FeatureOverlayOptions featureOverlayOptions = FeatureOverlayOptions.newInstance();
-        featureOverlayOptions.setMap(map);
-        featureOverlayOptions.setStyle(style);
         
     }
     
