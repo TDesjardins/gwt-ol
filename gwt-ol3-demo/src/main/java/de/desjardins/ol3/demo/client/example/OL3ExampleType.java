@@ -14,7 +14,8 @@ public enum OL3ExampleType {
     TileExample(new TileExample()),
     ImageExample(new StaticImageExample()),
     GraticuleExample(new GraticuleExample()),
-    XyzExample(new XyzExample());
+    XyzExample(new XyzExample()),
+    OsmExample(new OsmExample());
     
     private Example example;
     
