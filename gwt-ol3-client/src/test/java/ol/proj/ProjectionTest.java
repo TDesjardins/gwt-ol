@@ -1,9 +1,8 @@
 package ol.proj;
 
+import ol.*;
 import ol.proj.Projection;
-import ol.OLFactory;
 import ol.proj.ProjectionOptions;
-import ol.BaseTestCase;
 
 /**
  * 
@@ -72,12 +71,12 @@ public class ProjectionTest extends BaseTestCase {
     	double x = -121.1;
     	double y = 47.5;
     	
-    	double[] centerCoordinate = OLFactory.createCoordinate(x, y);
-        double[] transformedCenterCoordinate = Projection.transform(centerCoordinate, EPSG_CODE_4326, EPSG_CODE_3857); 
+    	Coordinate centerCoordinate = OLFactory.createCoordinate(x, y);
+    	Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, EPSG_CODE_4326, EPSG_CODE_3857); 
         
-        assertTrue(transformedCenterCoordinate.length == 2);
-        assertNotSame(transformedCenterCoordinate[0], x);
-        assertNotSame(transformedCenterCoordinate[1], y);
+        assertTrue(transformedCenterCoordinate.length() == 2);
+        assertNotSame(transformedCenterCoordinate.getX(), x);
+        assertNotSame(transformedCenterCoordinate.getY(), y);
         
     }
     

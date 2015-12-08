@@ -6,6 +6,7 @@ import ol.control.Rotate;
 import ol.control.ScaleLine;
 import ol.control.ZoomSlider;
 import ol.control.ZoomToExtent;
+import ol.geom.Point;
 import ol.interaction.DragAndDrop;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
@@ -174,9 +175,9 @@ public class OLFactory {
      *
      * @return coordParams coordinate params
      */
-    public static double[] createCoordinate(double... coordParams) {
-        return coordParams;
-    };
+    public static Coordinate createCoordinate(double... coordParams) {
+        return Coordinate.create(coordParams);
+    }
     
     /**
      * Creates an extent.
@@ -185,9 +186,9 @@ public class OLFactory {
      * @param minY
      * @param maxX
      * @param maxY
-     * @return
+     * @return {@link Extent}
      */
-    public static native double[] createExtent(double minX, double minY, double maxX, double maxY) /*-{
+    public static native Extent createExtent(double minX, double minY, double maxX, double maxY) /*-{
         return [minX, minY, maxX, maxY];
 	}-*/;
     
@@ -201,5 +202,47 @@ public class OLFactory {
     public static native int[] createSize(int width, int height) /*-{
         return [width, height];
     }-*/;
+
+    /**
+     * Constructs an instance.
+     *
+     * @param x
+     *            X-coordinate (longitude)
+     * @param y
+     *            Y-coordinate (latitude)
+     * @return {@link Coordinate}
+     */
+    protected static native Point create(Coordinate coordinates, String geometryLayout)
+    /*-{
+    	return $wnd.old.geom.Point(coordinates, geometryLayout);
+    }-*/;
+
+    /**
+     * Constructs an instance.
+     *
+     * @param x
+     *            X-coordinate (longitude)
+     * @param y
+     *            Y-coordinate (latitude)
+     * @return {@link Coordinate}
+     */
+    public static Point create(double x, double y) {
+	return create(Coordinate.create(x, y), "XY");
+    }
+
+    /**
+     * Constructs an instance.
+     *
+     * @param x
+     *            X-coordinate (longitude)
+     * @param y
+     *            Y-coordinate (latitude)
+     * @param z
+     *            Z-coordinate
+     * @return {@link Coordinate}
+     */
+    public static Point create(double x, double y, double z) {
+	return create(Coordinate.create(x, y, z), "XYZ");
+    }
 
 }

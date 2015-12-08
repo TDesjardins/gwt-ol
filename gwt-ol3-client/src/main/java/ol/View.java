@@ -10,10 +10,12 @@ import ol.proj.Projection;
  */
 @JsType(prototype = "View")
 public interface View extends Object {
+    
+    Coordinate getCenter();
 
     void rotate(float rotation, double[] coordinate);
 
-    void setCenter(double[] center);
+    void setCenter(Coordinate center);
 
     void setZoom(double zoom);
 
@@ -22,5 +24,10 @@ public interface View extends Object {
     @JsProperty
     void setProjection(Projection projection);
 
+    /**
+     * Get the current zoom level. Return undefined if the current resolution is undefined or not a "constrained resolution".
+     * @return Zoom.
+     */
+    int getZoom();
 }
 

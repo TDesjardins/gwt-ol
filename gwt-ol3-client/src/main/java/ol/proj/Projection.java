@@ -2,6 +2,8 @@ package ol.proj;
 
 import com.google.gwt.core.client.js.JsType;
 
+import ol.Coordinate;
+
 /**
  * 
  * @author Tino Desjardins
@@ -22,6 +24,10 @@ public abstract class Projection {
 		return $wnd.ol.proj.get(projectionCode);
 	}-*/;
 	
+	public static native Coordinate transform(Coordinate coordinate, String source, String destination) /*-{
+	return $wnd.ol.proj.transform(coordinate, source, destination);
+	}-*/;
+
 	public static native double[] transform(double[] coordinate, String source, String destination) /*-{
 		return $wnd.ol.proj.transform(coordinate, source, destination);
 	}-*/;
