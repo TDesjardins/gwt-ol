@@ -2,10 +2,13 @@ package ol.event;
 
 import javax.annotation.Nullable;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.js.*;
 
 /**
- *
+ * A base class for event objects, so that they can support preventDefault and
+ * stopPropagation. Resembles goog.events.Event.
+ * 
  * @author Tino Desjardins
  *
  */
@@ -27,7 +30,7 @@ public interface Event {
      */
     @Nullable
     @JsProperty
-    Object getCurrentTarget();
+    JavaScriptObject getCurrentTarget();
 
     /**
      * Target of the event.
@@ -36,7 +39,7 @@ public interface Event {
      */
     @Nullable
     @JsProperty
-    Object getTarget();
+    JavaScriptObject getTarget();
 
     /**
      * Event type.
