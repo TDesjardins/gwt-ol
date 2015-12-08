@@ -13,6 +13,11 @@ import ol.event.EventListener;
 @JsType
 public interface Observable {
     
+    /**
+     * Increases the revision counter and dispatches a 'change' event.
+     */
+    void changed();
+   
     <T extends Event> void on(String type , EventListener<T> eventListener);
     
     <T extends Event> void once(String type , EventListener<T> eventListener);

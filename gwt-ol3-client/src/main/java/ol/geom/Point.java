@@ -17,6 +17,6 @@ public interface Point extends SimpleGeometry {
      *
      * @return coordinate of the point.
      */
-    abstract Coordinate getCoordinates();
+    Coordinate getCoordinates();
 
 }
