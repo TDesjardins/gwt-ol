@@ -2,7 +2,7 @@ package ol.proj;
 
 import com.google.gwt.core.client.js.JsType;
 
-import ol.Coordinate;
+import ol.*;
 
 /**
  * 
@@ -28,19 +28,15 @@ public abstract class Projection {
 	return $wnd.ol.proj.transform(coordinate, source, destination);
 	}-*/;
 
-	public static native double[] transform(double[] coordinate, String source, String destination) /*-{
-		return $wnd.ol.proj.transform(coordinate, source, destination);
-	}-*/;
-	
-	public static native double[] transformExtent(double[] extent, String source, String destination) /*-{
+	public static native Extent transformExtent(Extent extent, String source, String destination) /*-{
 		return $wnd.ol.proj.transformExtent(extent, source, destination);
 	}-*/;
 	
     public abstract String getCode();
     
-    public abstract double[] getExtent();
+    public abstract Extent getExtent();
     
-    public abstract void setExtent(double[] extent);
+    public abstract void setExtent(Extent extent);
     
     public abstract double getMetersPerUnit();
     
