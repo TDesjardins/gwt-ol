@@ -3,16 +3,11 @@ package ol.style;
 import com.google.gwt.core.client.js.JsType;
 
 /**
+ * Set fill style for vector features.
  * 
  * @author Tino Desjardins
- *
  */
 @JsType
-public abstract class Fill {
-    
-    public static native Fill newInstance(FillOptions fillOptions) /*-{
-        return new $wnd.ol.style.Fill(fillOptions);
-    }-*/;
-    
-}
+public interface Fill {
 
+}

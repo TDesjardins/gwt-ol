@@ -10,26 +10,25 @@ import com.google.gwt.core.client.js.JsType;
  *
  */
 @JsType
-public abstract class StyleOptions {
-    
-    public static native StyleOptions newInstance() /*-{
-        return {};
-    }-*/;
-    
-    @JsProperty
-    public abstract StyleOptions fill(Fill fill);
-    
-    @JsProperty
-    public abstract void setStroke(Stroke stroke);
-    
-    @JsProperty
-    public abstract StyleOptions stroke(Stroke stroke);
-    
-    @JsProperty
-    public abstract void setZIndex(int zIndex);
-    
-    @JsProperty
-    public abstract StyleOptions zIndex(int zIndex);
-    
-}
+public interface StyleOptions {
 
+    /**
+     * @param fill
+     * @return
+     */
+    @JsProperty
+    public StyleOptions fill(Fill fill);
+
+    @JsProperty
+    public void setStroke(Stroke stroke);
+
+    @JsProperty
+    public StyleOptions stroke(Stroke stroke);
+
+    @JsProperty
+    public void setZIndex(int zIndex);
+
+    @JsProperty
+    public StyleOptions zIndex(int zIndex);
+
+}

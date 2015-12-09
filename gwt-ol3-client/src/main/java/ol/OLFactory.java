@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import com.google.gwt.core.client.JsArray;
 
+import ol.color.Color;
 import ol.control.*;
 import ol.geom.*;
 import ol.interaction.*;
@@ -12,6 +13,7 @@ import ol.layer.LayerOptions;
 import ol.layer.Tile;
 import ol.proj.*;
 import ol.source.*;
+import ol.style.*;
 
 /**
  * Factory to create GWT-OL3 instances from JavaScript based on OL3-Interfaces.
@@ -25,6 +27,37 @@ public class OLFactory {
     public static native <T> Collection<T> createCollection()
     /*-{
 		return new $wnd.ol.Collection();
+    }-*/;
+
+    /**
+     * Creates a {@link Color} from the given values.
+     *
+     * @param r
+     *            red (0-255)
+     * @param g
+     *            green (0-255)
+     * @param b
+     *            blue (0-255)
+     * @param alpha
+     *            alpha (0-1)
+     * @return {@link Color}
+     */
+    public static native Color createColor(int r, int g, int b, float alpha)
+    /*-{
+		return [ r, g, b, a ];
+    }-*/;
+
+    /**
+     * Creates a {@link Color} from the given String.
+     *
+     * @param color
+     *            color in rgb(r,g,b) or rgba(r,g,b,a) format, or in hex #rrggbb
+     *            or #rgb format
+     * @return {@link Color}
+     */
+    public static native Color createColor(String color)
+    /*-{
+		return $wnd.ol.color.fromString(color);
     }-*/;
 
     /**
@@ -93,6 +126,39 @@ public class OLFactory {
 		return [ minX, minY, maxX, maxY ];
     }-*/;
 
+    /**
+     * Creates a new {@link Fill} style.
+     *
+     * @param color
+     *            fill color
+     * @return {@link Fill}
+     */
+    public static Fill createFill(Color color) {
+	return createFill(createFillOptions().color(color));
+    }
+
+    /**
+     * Creates a new {@link Fill} style.
+     *
+     * @param fillOptions
+     *            {@link FillOptions}
+     * @return {@link Fill}
+     */
+    public static native Fill createFill(FillOptions fillOptions)
+    /*-{
+		return new $wnd.ol.style.Fill(fillOptions);
+    }-*/;
+
+    /**
+     * Creates new {@link FillOptions}.
+     *
+     * @return {@link FillOptions}
+     */
+    public static native FillOptions createFillOptions()
+    /*-{
+		return {};
+    }-*/;
+
     /** Controls **/
 
     public static native FullScreen createFullScreen()
@@ -158,7 +224,7 @@ public class OLFactory {
 
     /**
      * Creates a new {@link MapEvent}.
-     * 
+     *
      * @param type
      *            type
      * @param map
@@ -224,6 +290,8 @@ public class OLFactory {
 		return [ x, y ];
     }-*/;
 
+    /** Common **/
+
     /**
      * Constructs an instance.
      *
@@ -237,8 +305,6 @@ public class OLFactory {
     /*-{
 		return $wnd.ol.geom.Point(coordinates, geometryLayout);
     }-*/;
-
-    /** Common **/
 
     /**
      * Constructs an instance.
@@ -280,6 +346,11 @@ public class OLFactory {
 		return new $wnd.ol.control.Rotate();
     }-*/;
 
+    /**
+     * Creates a {@link ScaleLine}.
+     *
+     * @return {@link ScaleLine}
+     */
     public static native ScaleLine createScaleLine()
     /*-{
 		return new $wnd.ol.control.ScaleLine();
@@ -305,6 +376,76 @@ public class OLFactory {
     public static native Stamen createStamenSource(StamenOptions stamenOptions)
     /*-{
 		return new $wnd.ol.source.Stamen(stamenOptions);
+    }-*/;
+
+    /**
+     * Creates a new {@link Stroke} style.
+     *
+     * @param color
+     *            stroke color
+     * @param width
+     *            stroke width
+     * @return {@link Stroke}
+     */
+    public static Stroke createStroke(Color color, int width) {
+	return createStroke(createStrokeOptions().color(color).width(width));
+    }
+
+    /**
+     * Creates a new {@link Stroke} style.
+     *
+     * @param strokeOptions
+     *            {@link StrokeOptions}
+     * @return {@link Stroke}
+     */
+    public static native Stroke createStroke(StrokeOptions strokeOptions)
+    /*-{
+		return new $wnd.ol.style.Stroke(strokeOptions);
+    }-*/;
+
+    /**
+     * Creates new {@link StrokeOptions}
+     *
+     * @return {@link StrokeOptions}
+     */
+    public static native StrokeOptions createStrokeOptions()
+    /*-{
+		return {};
+    }-*/;
+
+    /**
+     * Creates a new {@link Style} style.
+     *
+     * @param fill
+     *            {@link Fill}
+     * @param stroke
+     *            {@link Stroke}
+     * @return {@link Style}
+     */
+    public static Style createStyle(Fill fill, Stroke stroke) {
+	return createStyle(createStyleOptions().fill(fill).stroke(stroke));
+    }
+
+    /**
+     * Creates a new {@link Style}.
+     *
+     * @param styleOptions
+     *            {@link StyleOptions}
+     * @return {@link Style}
+     */
+    public static native Style createStyle(StyleOptions styleOptions)
+    /*-{
+		return new $wnd.ol.style.Style(styleOptions);
+    }-*/;
+
+    /**
+     * Creates new {@link StyleOptions}
+     *
+     * @return {@link StyleOptions}
+     */
+    public static native StyleOptions createStyleOptions()
+    /*-{
+		return {};
     }-*/;
 
     public static native Tile createTileLayer(LayerOptions layerOptions)
