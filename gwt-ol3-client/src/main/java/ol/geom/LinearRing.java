@@ -3,11 +3,11 @@ package ol.geom;
 import com.google.gwt.core.client.js.JsType;
 
 /**
- * Linestring geometry.
+ * LinearRing geometry.
  *
  * @author sbaumhekel
  */
 @JsType
-public interface LineString extends SimpleGeometryMultiCoordinates {
+public interface LinearRing extends SimpleGeometryMultiCoordinates {
 
 }

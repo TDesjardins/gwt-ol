@@ -2,11 +2,10 @@ package ol;
 
 import javax.annotation.Nullable;
 
-import com.google.gwt.core.client.JsArray;
-
 import ol.color.Color;
 import ol.control.*;
 import ol.geom.*;
+import ol.geom.Circle;
 import ol.interaction.*;
 import ol.layer.Image;
 import ol.layer.LayerOptions;
@@ -22,7 +21,26 @@ import ol.style.*;
  *
  * @author Tino Desjardins
  */
-public class OLFactory {
+public final class OLFactory {
+
+    // prevent instantiating this class
+    @Deprecated
+    private OLFactory() {
+    }
+
+    /**
+     * Constructs a {@link Circle}.
+     *
+     * @param center
+     *            center
+     * @param radius
+     *            radius
+     * @return {@link Circle}
+     */
+    public static native Circle createCircle(Coordinate center, double radius)
+    /*-{
+		return $wnd.ol.geom.Circle(center, radius);
+    }-*/;
 
     public static native <T> Collection<T> createCollection()
     /*-{
@@ -201,7 +219,46 @@ public class OLFactory {
     }-*/;
 
     /**
-     * Constructs an instance.
+     * Constructs a {@link LinearRing}.
+     *
+     * @param coordinates
+     *            coordinates
+     * @return {@link LinearRing}
+     */
+    public static native LinearRing createLinearRing(Coordinate[] coordinates)
+    /*-{
+		return $wnd.ol.geom.LinearRing(coordinates);
+    }-*/;
+
+    /**
+     * Constructs a {@link LinearRing}.
+     *
+     * @param coordinates
+     *            coordinates
+     * @param geometryLayout
+     *            geometry layout
+     * @return {@link LinearRing}
+     */
+    public static native LinearRing createLinearRing(@Nullable Coordinate[] coordinates,
+	    @Nullable String geometryLayout)
+	    /*-{
+		return $wnd.ol.geom.LinearRing(coordinates, geometryLayout);
+    }-*/;
+
+    /**
+     * Constructs a {@link LineString}.
+     *
+     * @param coordinates
+     *            coordinates
+     * @return {@link LineString}
+     */
+    public static native LineString createLineString(Coordinate[] coordinates)
+    /*-{
+		return $wnd.ol.geom.LineString(coordinates);
+    }-*/;
+
+    /**
+     * Constructs a {@link LineString}.
      *
      * @param coordinates
      *            coordinates
@@ -209,7 +266,7 @@ public class OLFactory {
      *            geometry layout
      * @return {@link LineString}
      */
-    public static native LineString createLineString(@Nullable JsArray<Coordinate> coordinates,
+    public static native LineString createLineString(@Nullable Coordinate[] coordinates,
 	    @Nullable String geometryLayout)
 	    /*-{
 		return $wnd.ol.geom.LineString(coordinates, geometryLayout);
@@ -257,6 +314,87 @@ public class OLFactory {
     }-*/;
 
     /**
+     * Constructs a {@link MultiLineString}.
+     *
+     * @param coordinates
+     *            coordinates
+     * @return {@link MultiLineString}
+     */
+    public static native MultiLineString createMultiLineString(Coordinate[] coordinates)
+    /*-{
+		return $wnd.ol.geom.MultiLineString(coordinates);
+    }-*/;
+
+    /**
+     * Constructs a {@link MultiLineString}.
+     *
+     * @param coordinates
+     *            coordinates
+     * @param geometryLayout
+     *            geometry layout
+     * @return {@link MultiLineString}
+     */
+    public static native MultiLineString createMultiLineString(@Nullable Coordinate[] coordinates,
+	    @Nullable String geometryLayout)
+	    /*-{
+		return $wnd.ol.geom.MultiLineString(coordinates, geometryLayout);
+    }-*/;
+
+    /**
+     * Constructs a {@link MultiPoint}.
+     *
+     * @param coordinates
+     *            coordinates
+     * @return {@link MultiPoint}
+     */
+    public static native MultiPoint createMultiPoint(Coordinate[] coordinates)
+    /*-{
+		return $wnd.ol.geom.MultiPoint(coordinates);
+    }-*/;
+
+    /**
+     * Constructs a {@link MultiPoint}.
+     *
+     * @param coordinates
+     *            coordinates
+     * @param geometryLayout
+     *            geometry layout
+     * @return {@link MultiPoint}
+     */
+    public static native MultiPoint createMultiPoint(@Nullable Coordinate[] coordinates,
+	    @Nullable String geometryLayout)
+	    /*-{
+		return $wnd.ol.geom.MultiPoint(coordinates, geometryLayout);
+    }-*/;
+
+    /**
+     * Constructs a {@link MultiPolygon}.
+     *
+     * @param coordinates
+     *            coordinates
+     * @return {@link MultiPolygon}
+     */
+    public static native MultiPolygon createMultiPolygon(Coordinate[] coordinates)
+    /*-{
+		return $wnd.ol.geom.MultiPolygon(coordinates);
+    }-*/;
+
+    /**
+     * Constructs a {@link MultiPolygon}.
+     *
+     * @param coordinates
+     *            coordinates
+     * @param geometryLayout
+     *            geometry layout
+     * @return {@link MultiPolygon}
+     */
+    public static native MultiPolygon createMultiPolygon(@Nullable Coordinate[] coordinates,
+	    @Nullable String geometryLayout)
+	    /*-{
+		return $wnd.ol.geom.MultiPolygon(coordinates, geometryLayout);
+    }-*/;
+
+    /**
      * Creates a common object for options.
      *
      * @return common options object
@@ -290,8 +428,6 @@ public class OLFactory {
 		return [ x, y ];
     }-*/;
 
-    /** Common **/
-
     /**
      * Constructs an instance.
      *
@@ -305,6 +441,8 @@ public class OLFactory {
     /*-{
 		return $wnd.ol.geom.Point(coordinates, geometryLayout);
     }-*/;
+
+    /** Common **/
 
     /**
      * Constructs an instance.
@@ -333,6 +471,32 @@ public class OLFactory {
     public static Point createPoint(double x, double y, double z) {
 	return createPoint(createCoordinate(x, y, z), OLUtil.getGeometryLayout(3));
     }
+
+    /**
+     * Constructs a {@link Polygon}.
+     *
+     * @param coordinates
+     *            coordinates
+     * @return {@link Polygon}
+     */
+    public static native Polygon createPolygon(Coordinate[] coordinates)
+    /*-{
+		return $wnd.ol.geom.Polygon(coordinates);
+    }-*/;
+
+    /**
+     * Constructs a {@link Polygon}.
+     *
+     * @param coordinates
+     *            coordinates
+     * @param geometryLayout
+     *            geometry layout
+     * @return {@link Polygon}
+     */
+    public static native Polygon createPolygon(@Nullable Coordinate[] coordinates, @Nullable String geometryLayout)
+    /*-{
+		return $wnd.ol.geom.Polygon(coordinates, geometryLayout);
+    }-*/;
 
     /** Projection **/
 
