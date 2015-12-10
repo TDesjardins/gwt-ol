@@ -6,7 +6,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.HandlerRegistration;
 
 import ol.event.*;
-import ol.gwt.CollectionWrapper;
+import ol.gwt.*;
 import ol.layer.*;
 
 /**
@@ -20,6 +20,55 @@ public final class OLUtil {
     // prevent instantiating this class
     @Deprecated
     private OLUtil() {
+    }
+
+    /**
+     * Adds a click listener for the given map.
+     *
+     * @param map
+     *            {@link Map}
+     * @param singleClicksOnly
+     *            wait fortrue single click with no dragging and no double
+     *            click? Note that this event is delayed by 250 ms to ensure
+     *            that it is not a double click.
+     * @param listener
+     *            {@link ClickListener}
+     * @return {@link HandlerRegistration}
+     */
+    public static HandlerRegistration addClickListener(Map map, boolean singleClicksOnly,
+	    final ClickListener listener) {
+	String type;
+	if (singleClicksOnly) {
+	    type = "singleclick";
+	} else {
+	    type = "click";
+	}
+	return observe(map, type, new EventListener<MapBrowserEvent>() {
+
+	    @Override
+	    public void onEvent(MapBrowserEvent event) {
+		listener.onClick(event);
+	    }
+	});
+    }
+
+    /**
+     * Adds a click listener for the given map.
+     *
+     * @param map
+     *            {@link Map}
+     * @param listener
+     *            {@link DoubleClickListener}
+     * @return {@link HandlerRegistration}
+     */
+    public static HandlerRegistration addDoubleClickListener(Map map, final DoubleClickListener listener) {
+	return observe(map, "dblclick", new EventListener<MapBrowserEvent>() {
+
+	    @Override
+	    public void onEvent(MapBrowserEvent event) {
+		listener.onDoubleClick(event);
+	    }
+	});
     }
 
     /**
@@ -56,7 +105,7 @@ public final class OLUtil {
 	    @Override
 	    public void onEvent(ObjectEvent event) {
 		if ("resolution".equals(event.getKey())) {
-		    listener.onMapZoom(OLFactory.createMapEvent("zoom", map));
+		    listener.onMapZoom(new MapEventWrapper(map, "zoom", event));
 		}
 	    }
 	});

@@ -71,7 +71,9 @@ public class CollectionWrapper<T> extends Wrapper<Collection<T>> implements java
 	    if (e == null) {
 		return (o == null);
 	    }
-	    return e.equals(o);
+	    if (e.equals(o)) {
+		return true;
+	    }
 	}
 	return false;
     }
@@ -124,6 +126,16 @@ public class CollectionWrapper<T> extends Wrapper<Collection<T>> implements java
 		    return e;
 		}
 		throw new NoSuchElementException();
+	    }
+
+	    /*
+	     * (non-Javadoc)
+	     * 
+	     * @see java.util.Iterator#remove()
+	     */
+	    @Override
+	    public void remove() {
+		throw new UnsupportedOperationException();
 	    }
 	};
     }
