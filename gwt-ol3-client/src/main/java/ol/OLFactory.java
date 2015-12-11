@@ -13,6 +13,7 @@ import ol.layer.Tile;
 import ol.proj.*;
 import ol.source.*;
 import ol.style.*;
+import ol.tilegrid.*;
 
 /**
  * Factory to create GWT-OL3 instances from JavaScript based on OL3-Interfaces.
@@ -29,6 +30,29 @@ public final class OLFactory {
     }
 
     /**
+     * Constructs an {@link Attribution}.
+     *
+     * @param attributionOptions
+     *            {@link AttributionOptions}
+     * @return {@link Attribution}
+     */
+    public static native Attribution createAttribution(AttributionOptions attributionOptions)
+    /*-{
+		return new $wnd.ol.Attribution(attributionOptions);
+    }-*/;
+
+    /**
+     * Constructs an {@link Attribution}.
+     *
+     * @param html
+     *            HTML markup for this attribution. Required.
+     * @return {@link Attribution}
+     */
+    public static Attribution createAttribution(String html) {
+	return createAttribution(OLFactory.<AttributionOptions> createOptions().setHtml(html));
+    }
+
+    /**
      * Constructs a {@link Circle}.
      *
      * @param center
@@ -42,6 +66,11 @@ public final class OLFactory {
 		return $wnd.ol.geom.Circle(center, radius);
     }-*/;
 
+    /**
+     * Constructs a {@link Collection}.
+     *
+     * @return {@link Collection}
+     */
     public static native <T> Collection<T> createCollection()
     /*-{
 		return new $wnd.ol.Collection();
@@ -131,7 +160,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Creates an extent.
+     * Creates an {@link Extent}.
      *
      * @param minX
      * @param minY
@@ -172,10 +201,9 @@ public final class OLFactory {
      *
      * @return {@link FillOptions}
      */
-    public static native FillOptions createFillOptions()
-    /*-{
-		return {};
-    }-*/;
+    public static FillOptions createFillOptions() {
+	return createOptions();
+    }
 
     /** Controls **/
 
@@ -213,10 +241,14 @@ public final class OLFactory {
 		return new $wnd.ol.interaction.KeyboardZoom();
     }-*/;
 
-    public static native LayerOptions createLayerOptions()
-    /*-{
-		return {};
-    }-*/;
+    /**
+     * Constructs {@link LayerOptions}.
+     *
+     * @return {@link LayerOptions}
+     */
+    public static LayerOptions createLayerOptions() {
+	return createOptions();
+    }
 
     /**
      * Constructs a {@link LinearRing}.
@@ -272,36 +304,25 @@ public final class OLFactory {
 		return $wnd.ol.geom.LineString(coordinates, geometryLayout);
     }-*/;
 
-    /** Map **/
-
+    /**
+     * Constructs a {@link Map}.
+     *
+     * @param mapOptions
+     *            {@link MapOptions}
+     * @return {@link Map}
+     */
     public static native Map createMap(MapOptions mapOptions)
     /*-{
 		return new $wnd.ol.Map(mapOptions);
     }-*/;
 
-    /**
-     * Creates a new {@link MapEvent}.
-     *
-     * @param type
-     *            type
-     * @param map
-     *            {@link Map}
-     * @return {@link MapEvent}
-     */
-    public static native MapEvent createMapEvent(String type, Map map)
-    /*-{
-		return new $wnd.ol.MapEvent(type, map);
-    }-*/;
+    public static MapOptions createMapOptions() {
+	return createOptions();
+    }
 
-    public static native MapOptions createMapOptions()
-    /*-{
-		return {};
-    }-*/;
-
-    public static native MapQuestOptions createMapQuestOptions()
-    /*-{
-		return {};
-    }-*/;
+    public static MapQuestOptions createMapQuestOptions() {
+	return createOptions();
+    }
 
     public static native MapQuest createMapQuestSource(MapQuestOptions mapQuestOptions)
     /*-{
@@ -395,11 +416,11 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Creates a common object for options.
+     * Create generic options.
      *
-     * @return common options object
+     * @return options instance
      */
-    public static native <T> T createOptions()
+    public static native <T extends Options> T createOptions()
     /*-{
 		return {};
     }-*/;
@@ -407,16 +428,6 @@ public final class OLFactory {
     public static native Osm createOsm(XyzOptions osmOptions)
     /*-{
 		return new $wnd.ol.source.OSM(osmOptions);
-    }-*/;
-
-    /**
-     * Creates a common object for params.
-     *
-     * @return common params object
-     */
-    public static native <T> T createParams()
-    /*-{
-		return {};
     }-*/;
 
     /**
@@ -460,8 +471,6 @@ public final class OLFactory {
 	return createPoint(createCoordinate(x, y), OLUtil.getGeometryLayout(2));
     }
 
-    /** Common **/
-
     /**
      * Constructs an instance.
      *
@@ -476,6 +485,8 @@ public final class OLFactory {
     public static Point createPoint(double x, double y, double z) {
 	return createPoint(createCoordinate(x, y, z), OLUtil.getGeometryLayout(3));
     }
+
+    /** Common **/
 
     /**
      * Constructs a {@link Polygon}.
@@ -526,21 +537,22 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Creates a size
+     * Constructs an instance.
      *
      * @param width
+     *            width
      * @param height
-     * @return size
+     *            height
+     * @return {@link Size}
      */
-    public static native int[] createSize(int width, int height)
+    public static native Size createSize(int width, int height)
     /*-{
 		return [ width, height ];
     }-*/;
 
-    public static native StamenOptions createStamenOptions()
-    /*-{
-		return {};
-    }-*/;
+    public static StamenOptions createStamenOptions() {
+	return createOptions();
+    }
 
     public static native Stamen createStamenSource(StamenOptions stamenOptions)
     /*-{
@@ -577,10 +589,9 @@ public final class OLFactory {
      *
      * @return {@link StrokeOptions}
      */
-    public static native StrokeOptions createStrokeOptions()
-    /*-{
-		return {};
-    }-*/;
+    public static StrokeOptions createStrokeOptions() {
+	return createOptions();
+    }
 
     /**
      * Creates a new {@link Style} style.
@@ -612,14 +623,45 @@ public final class OLFactory {
      *
      * @return {@link StyleOptions}
      */
-    public static native StyleOptions createStyleOptions()
-    /*-{
-		return {};
-    }-*/;
+    public static StyleOptions createStyleOptions() {
+	return createOptions();
+    }
 
     public static native TileDebug createTileDebug(TileDebugOptions tileDebugOptions)
     /*-{
 		return new $wnd.ol.source.TileDebug(tileDebugOptions);
+    }-*/;
+
+    /**
+     * Creates a tile grid.
+     * 
+     * @param tileGridOptions
+     *            {@link TileGridOptions}
+     * @return {@link TileGrid}
+     */
+    public static native TileGrid createTileGrid(TileGridOptions tileGridOptions)
+    /*-{
+		return new $wnd.ol.tilegrid.TileGrid(tileGridOptions);
+    }-*/;
+
+    /**
+     * Creates a tile grid with a standard XYZ tiling scheme.
+     *
+     * Tile grid options: extent: Extent for the tile grid. The origin for an
+     * XYZ tile grid is the top-left corner of the extent. The zero level of the
+     * grid is defined by the resolution at which one tile fits in the provided
+     * extent. If not provided, the extent of the EPSG:3857 projection is used.
+     * maxZoom: Maximum zoom. The default is ol.DEFAULT_MAX_ZOOM. This
+     * determines the number of levels in the grid set. For example, a maxZoom
+     * of 21 means there are 22 levels in the grid set.
+     * 
+     * @param tileGridOptions
+     *            {@link TileGridOptions}
+     * @return {@link TileGrid}
+     */
+    public static native TileGrid createTileGridXYZ(TileGridOptions tileGridOptions)
+    /*-{
+		return ol.tilegrid.createXYZ(tileGridOptions);
     }-*/;
 
     public static native Tile createTileLayer(LayerOptions layerOptions)

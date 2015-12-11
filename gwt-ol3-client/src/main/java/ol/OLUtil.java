@@ -6,9 +6,10 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.HandlerRegistration;
 
 import ol.event.*;
-import ol.gwt.*;
+import ol.gwt.CollectionWrapper;
 import ol.layer.*;
 import ol.source.*;
+import ol.tilegrid.TileGrid;
 
 /**
  * Utility functions.
@@ -106,11 +107,60 @@ public final class OLUtil {
 	    @Override
 	    public void onEvent(ObjectEvent event) {
 		if ("resolution".equals(event.getKey())) {
-		    listener.onMapZoom(new MapEventWrapper(map, "zoom", event));
+		    Event e2 = createLinkedEvent(event, "zoom", (JavaScriptObject) map);
+		    MapEvent me = initMapEvent(e2, map);
+		    listener.onMapZoom(me);
 		}
 	    }
 	});
     }
+
+    /**
+     * Links to {@link Event}s by delegating the childs methods to the parents
+     * methods.
+     * 
+     * @param eParent
+     *            parent {@link Event} (is not changed)
+     * @param type
+     *            type of the event
+     * @param currentTarget
+     *            current target of the child event
+     * @return child {@link Event} (gets its methods linked to the parent event)
+     */
+    public static native Event createLinkedEvent(Event eParent, String type, JavaScriptObject currentTarget)
+    /*-{
+		var eChild = {};
+		eChild.preventDefault = function() {
+			eParent.preventDefault();
+			eChild.defaultPrevented = eParent.defaultPrevented;
+		};
+		eChild.stopPropagation = function() {
+			eParent.stopPropagation();
+		};
+		eChild.currentTarget = currentTarget;
+		eChild.defaultPrevented = eParent.defaultPrevented;
+		eChild.target = eParent.target;
+		eChild.type = type;
+		return eChild;
+    }-*/;
+
+    /**
+     * Initializes a {@link MapEvent}, can be used for creating a new
+     * {@link MapEvent} as it does not work with ol.js in release mode using the
+     * OpenLayers API.
+     * 
+     * @param e
+     *            base {@link Event}
+     * @param map
+     *            {@link Map}
+     * @return {@link MapEvent}
+     */
+    public static native MapEvent initMapEvent(Event e, Map map)
+    /*-{
+		e.map = map;
+		e.framestate = null;
+		return e;
+    }-*/;
 
     /**
      * Adds a listener for tile loading errors.
@@ -213,6 +263,115 @@ public final class OLUtil {
     @Nullable
     public static String getName(Base layer) {
 	return layer.get("name");
+    }
+
+    /**
+     * Gets the current zoomlevel of the given {@link Map}.
+     * 
+     * @param map
+     *            {@link Map}
+     * @return zoomlevel on success, else -1
+     */
+    public static int getZoomLevel(Map map) {
+	View v = map.getView();
+	// try to get zoom
+	int z = getZoom(v);
+	if (z >= 0) {
+	    return z;
+	}
+	// zoom is undefined, so check resolution
+	double zoomResolution = v.getResolution();
+	// walk layers to find resolution
+	CollectionWrapper<Base> layers = new CollectionWrapper<Base>(map.getLayers());
+	for (Base l : layers) {
+	    // get source if layer instance has it
+	    Source source = l.get("source");
+	    if (source != null) {
+		// try to get a tilegrid from the source
+		TileGrid tg = getTileGrid((JavaScriptObject) source);
+		if (tg != null) {
+		    // check resolutions
+		    double[] resolutions = tg.getResolutions();
+		    if (resolutions != null) {
+			double dPreviousResolution = 0;
+			for (int i = 0; i < resolutions.length; i++) {
+			    // resolutions are sorted in descending order, so
+			    // compare with actual one
+			    double resolution = resolutions[i];
+			    if (resolution <= zoomResolution) {
+				if (i > 1) {
+				    // check to which zoomlevel resolution is
+				    // nearer and prefer the larger number by
+				    // (75%:25%=3)
+				    if ((zoomResolution - resolution) / (dPreviousResolution - zoomResolution) < 3) {
+					return i;
+				    } else {
+					return i - 1;
+				    }
+				} else {
+				    return 0;
+				}
+			    }
+			    dPreviousResolution = resolution;
+			}
+		    }
+		}
+	    }
+	}
+	return -1;
+    }
+
+    /**
+     * Gets the current zoom level of the given {@link View}.
+     * 
+     * @param v
+     *            {@link View}
+     * @return Zoom on success, else -1
+     */
+    private static native int getZoom(View v)
+    /*-{
+		return v.getZoom() || -1;
+    }-*/;
+
+    /**
+     * Gets a {@link TileGrid} from the given object, if the property is set
+     * 
+     * @param o
+     *            {@link JavaScriptObject}
+     * @return {@link TileGrid} on success, else null
+     */
+    private static native TileGrid getTileGrid(JavaScriptObject o)
+    /*-{
+		return o.tileGrid || null;
+    }-*/;
+
+    /**
+     * Determines the ground resolution (in meters per pixel) at a specified
+     * latitude and level of detail.
+     *
+     * @param latitude
+     *            latitude
+     * @param zoomLevel
+     *            zoomlevel
+     * @return ground resolution
+     */
+    public static double getGroundResolutionInMeters(double latitude, int zoomLevel) {
+	return Math.cos(latitude * Math.PI / 180) * 2 * Math.PI * dEarthRadius / getMapSizeInPixels(zoomLevel);
+    }
+
+    private static final double dEarthRadius = 6378137;
+
+    /**
+     * Determines the map width and height (in pixels) at a specified level of
+     * detail.
+     *
+     * @param zoomLevel
+     *            Level of detail, from 1 (lowest detail) to 23 (highest
+     *            detail).
+     * @return The map width and height in pixels.
+     */
+    public static double getMapSizeInPixels(int zoomLevel) {
+	return ((double) (1 << zoomLevel)) * 256;
     }
 
     /**

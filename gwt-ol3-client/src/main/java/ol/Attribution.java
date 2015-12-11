@@ -3,18 +3,19 @@ package ol;
 import com.google.gwt.core.client.js.JsType;
 
 /**
+ * An attribution for a layer source.
  * 
  * @author Tino Desjardins
  *
  */
 @JsType
-public abstract class Attribution {
-    
-    public static native Attribution newInstance(AttributionOptions attributionOptions) /*-{
-        return new $wnd.ol.Attribution(attributionOptions);
-    }-*/;
-    
-    public abstract String getHTML();
-    
-}
+public interface Attribution {
 
+    /**
+     * Gets the HTML markup for this attribution.
+     * 
+     * @return html
+     */
+    public String getHTML();
+
+}

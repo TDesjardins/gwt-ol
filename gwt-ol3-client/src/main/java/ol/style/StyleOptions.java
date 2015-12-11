@@ -3,6 +3,8 @@ package ol.style;
 import com.google.gwt.core.client.js.JsProperty;
 import com.google.gwt.core.client.js.JsType;
 
+import ol.Options;
+
 /**
  * Options for the {@link Style}.
  * 
@@ -10,7 +12,7 @@ import com.google.gwt.core.client.js.JsType;
  *
  */
 @JsType
-public interface StyleOptions {
+public interface StyleOptions extends Options {
 
     /**
      * @param fill

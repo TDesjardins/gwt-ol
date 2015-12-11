@@ -2,7 +2,7 @@ package ol;
 
 import javax.annotation.Nullable;
 
-import com.google.gwt.core.client.js.*;
+import com.google.gwt.core.client.js.JsType;
 
 import ol.proj.Projection;
 
@@ -57,16 +57,21 @@ import ol.proj.Projection;
  *
  * @author Tino Desjardins
  */
-@JsType(prototype = "View")
+@JsType(prototype = "ol.View")
 public interface View extends Object {
 
     /**
      * Get the view center.
-     * 
+     *
      * @return {ol.Coordinate|undefined} The center of the view.
      */
     Coordinate getCenter();
 
+    /**
+     * Get the view projection.
+     * 
+     * @return {ol.proj.Projection} The projection of the view.
+     */
     Projection getProjection();
 
     /**
@@ -88,7 +93,9 @@ public interface View extends Object {
      * undefined or not a "constrained resolution".
      *
      * @return Zoom.
+     * @deprecated use {@link OLUtil#getZoomLevel(Map) instead}
      */
+    @Deprecated
     int getZoom();
 
     /**
@@ -103,14 +110,11 @@ public interface View extends Object {
 
     /**
      * Set the center of the current view.
-     * 
+     *
      * @param center
      *            The center of the view.
      */
     void setCenter(Coordinate center);
-
-    @JsProperty
-    void setProjection(Projection projection);
 
     /**
      * Set the resolution for this view.

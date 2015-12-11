@@ -3,6 +3,7 @@ package ol.source;
 import com.google.gwt.core.client.js.JsProperty;
 import com.google.gwt.core.client.js.JsType;
 
+import ol.Options;
 import ol.tilegrid.TileGrid;
 
 /**
@@ -11,28 +12,29 @@ import ol.tilegrid.TileGrid;
  *
  */
 @JsType
-public interface TileDebugOptions {
-    
+public interface TileDebugOptions extends Options {
+
     /**
      * 
-     * @param projection projection
+     * @param projection
+     *            projection
      */
     @JsProperty
     void setProjection(String projection);
-    
+
     /**
      * 
-     * @param tileGrid tilegrid
+     * @param tileGrid
+     *            tilegrid
      */
     @JsProperty
     void setTileGrid(TileGrid tileGrid);
-    
+
     /**
      * 
      * @param wrapX
      */
     @JsProperty
     void setWrapX(boolean wrapX);
-    
-}
 
+}
