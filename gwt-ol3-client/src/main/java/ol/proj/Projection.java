@@ -33,17 +33,21 @@ public abstract class Projection {
 
     public static native void addProjection(Projection projection)
     /*-{
-    	$wnd.ol.proj.addProjection(projection);
+		$wnd.ol.proj.addProjection(projection);
     }-*/;
 
+    /**
+     * Fetches a Projection object for the code specified.
+     *
+     * @param projectionCode
+     *            Either a code string which is a combination of authority and
+     *            identifier such as "EPSG:4326", or an existing projection
+     *            object, or undefined.
+     * @return {ol.proj.Projection} Projection object, or null if not in list.
+     */
     public static native Projection get(String projectionCode)
     /*-{
-    	return $wnd.ol.proj.get(projectionCode);
-    }-*/;
-
-    public static native Projection newInstance(ProjectionOptions projectionOptions)
-    /*-{
-    return new $wnd.ol.proj.Projection(projectionOptions);
+		return $wnd.ol.proj.get(projectionCode);
     }-*/;
 
     /**
@@ -64,7 +68,7 @@ public abstract class Projection {
      */
     public static native Coordinate transform(Coordinate coordinate, String source, String destination)
     /*-{
-    return $wnd.ol.proj.transform(coordinate, source, destination);
+		return $wnd.ol.proj.transform(coordinate, source, destination);
     }-*/;
 
     /**
@@ -81,7 +85,7 @@ public abstract class Projection {
      */
     public static native Extent transformExtent(Extent extent, String source, String destination)
     /*-{
-    	return $wnd.ol.proj.transformExtent(extent, source, destination);
+		return $wnd.ol.proj.transformExtent(extent, source, destination);
     }-*/;
 
     public abstract String getCode();

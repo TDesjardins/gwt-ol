@@ -386,6 +386,8 @@ public final class OLUtil {
      *            maximum zoomlevel (0-28)
      */
     public static void limitZoomLevels(XyzOptions options, int minZoomLevel, int maxZoomLevel) {
+	// TODO: set minResolution/maxResolution on ol.layer.Tile to hide/show
+	// layer outside of min/max zoomlevels
 	options.setTileGrid(OLFactory.createTileGridXYZ(
 		OLFactory.<TileGridOptions> createOptions().setMinZoom(minZoomLevel).setMaxZoom(maxZoomLevel)));
     }

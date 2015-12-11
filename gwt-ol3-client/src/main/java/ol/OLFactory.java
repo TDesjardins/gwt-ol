@@ -30,7 +30,7 @@ public final class OLFactory {
     }
 
     /**
-     * Constructs an {@link Attribution}.
+     * Creates an {@link Attribution}.
      *
      * @param attributionOptions
      *            {@link AttributionOptions}
@@ -42,7 +42,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs an {@link Attribution}.
+     * Creates an {@link Attribution}.
      *
      * @param html
      *            HTML markup for this attribution. Required.
@@ -53,7 +53,7 @@ public final class OLFactory {
     }
 
     /**
-     * Constructs a {@link Circle}.
+     * Creates a {@link Circle}.
      *
      * @param center
      *            center
@@ -67,7 +67,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs a {@link Collection}.
+     * Creates a {@link Collection}.
      *
      * @return {@link Collection}
      */
@@ -108,7 +108,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs an instance.
+     * Creates an instance.
      *
      * @param x
      *            X-coordinate (longitude)
@@ -122,7 +122,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs an instance.
+     * Creates an instance.
      *
      * @param x
      *            X-coordinate (longitude)
@@ -138,7 +138,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs an instance.
+     * Creates an instance.
      *
      * @param coords
      *            coordinate array
@@ -151,6 +151,19 @@ public final class OLFactory {
 	    return createCoordinate(coords[0], coords[1]);
 	}
     }
+
+    /**
+     * Create the default map controls: {@link ol.control.Zoom},
+     * {@link ol.control.Rotate}, {@link ol.control.Attribution}
+     *
+     * @param options
+     *            options
+     * @return default map controls
+     */
+    public static native Collection<Control> createDefaultControls(@Nullable Options options)
+    /*-{
+		return new $wnd.ol.control.defaults(options);
+    }-*/;
 
     /** Interactions **/
 
@@ -242,7 +255,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs {@link LayerOptions}.
+     * Creates {@link LayerOptions}.
      *
      * @return {@link LayerOptions}
      */
@@ -251,7 +264,7 @@ public final class OLFactory {
     }
 
     /**
-     * Constructs a {@link LinearRing}.
+     * Creates a {@link LinearRing}.
      *
      * @param coordinates
      *            coordinates
@@ -263,7 +276,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs a {@link LinearRing}.
+     * Creates a {@link LinearRing}.
      *
      * @param coordinates
      *            coordinates
@@ -278,7 +291,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs a {@link LineString}.
+     * Creates a {@link LineString}.
      *
      * @param coordinates
      *            coordinates
@@ -290,7 +303,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs a {@link LineString}.
+     * Creates a {@link LineString}.
      *
      * @param coordinates
      *            coordinates
@@ -305,7 +318,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs a {@link Map}.
+     * Creates a {@link Map}.
      *
      * @param mapOptions
      *            {@link MapOptions}
@@ -335,7 +348,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs a {@link MultiLineString}.
+     * Creates a {@link MultiLineString}.
      *
      * @param coordinates
      *            coordinates
@@ -347,7 +360,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs a {@link MultiLineString}.
+     * Creates a {@link MultiLineString}.
      *
      * @param coordinates
      *            coordinates
@@ -362,7 +375,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs a {@link MultiPoint}.
+     * Creates a {@link MultiPoint}.
      *
      * @param coordinates
      *            coordinates
@@ -374,7 +387,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs a {@link MultiPoint}.
+     * Creates a {@link MultiPoint}.
      *
      * @param coordinates
      *            coordinates
@@ -389,7 +402,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs a {@link MultiPolygon}.
+     * Creates a {@link MultiPolygon}.
      *
      * @param coordinates
      *            coordinates
@@ -401,7 +414,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs a {@link MultiPolygon}.
+     * Creates a {@link MultiPolygon}.
      *
      * @param coordinates
      *            coordinates
@@ -431,7 +444,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs an instance.
+     * Creates an instance.
      *
      * @param x
      *            X-coordinate
@@ -445,7 +458,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs an instance.
+     * Creates an instance.
      *
      * @param coordinates
      *            coordinates
@@ -459,7 +472,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs an instance.
+     * Creates an instance.
      *
      * @param x
      *            X-coordinate (longitude)
@@ -472,7 +485,7 @@ public final class OLFactory {
     }
 
     /**
-     * Constructs an instance.
+     * Creates an instance.
      *
      * @param x
      *            X-coordinate (longitude)
@@ -486,10 +499,8 @@ public final class OLFactory {
 	return createPoint(createCoordinate(x, y, z), OLUtil.getGeometryLayout(3));
     }
 
-    /** Common **/
-
     /**
-     * Constructs a {@link Polygon}.
+     * Creates a {@link Polygon}.
      *
      * @param coordinates
      *            coordinates
@@ -500,8 +511,10 @@ public final class OLFactory {
 		return $wnd.ol.geom.Polygon(coordinates);
     }-*/;
 
+    /** Common **/
+
     /**
-     * Constructs a {@link Polygon}.
+     * Creates a {@link Polygon}.
      *
      * @param coordinates
      *            coordinates
@@ -537,7 +550,7 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Constructs an instance.
+     * Creates a {@link Size}.
      *
      * @param width
      *            width
@@ -684,6 +697,15 @@ public final class OLFactory {
     public static native Xyz createXyz(XyzOptions xyzOptions)
     /*-{
 		return new $wnd.ol.source.XYZ(xyzOptions);
+    }-*/;
+
+    /**
+     * Creates a zoom control.
+     * 
+     * @return {@link Zoom}
+     */
+    public static native Zoom createZoom() /*-{
+		return new $wnd.ol.control.Zoom();
     }-*/;
 
     public static native ZoomSlider createZoomSlider()
