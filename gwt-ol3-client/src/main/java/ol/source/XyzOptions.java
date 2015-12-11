@@ -14,6 +14,14 @@ import ol.tilegrid.TileGrid;
 public interface XyzOptions extends SourceOptions {
 
     /**
+     * Gets the {@link TileGrid}.
+     *
+     * @return tileGrid {@link TileGrid}
+     */
+    @JsProperty
+    TileGrid getTileGrid();
+
+    /**
      * Set the optional max zoom level. Default is 18.
      *
      * @param maxZoom

@@ -634,7 +634,7 @@ public final class OLFactory {
 
     /**
      * Creates a tile grid.
-     * 
+     *
      * @param tileGridOptions
      *            {@link TileGridOptions}
      * @return {@link TileGrid}
@@ -654,14 +654,14 @@ public final class OLFactory {
      * maxZoom: Maximum zoom. The default is ol.DEFAULT_MAX_ZOOM. This
      * determines the number of levels in the grid set. For example, a maxZoom
      * of 21 means there are 22 levels in the grid set.
-     * 
+     *
      * @param tileGridOptions
      *            {@link TileGridOptions}
      * @return {@link TileGrid}
      */
     public static native TileGrid createTileGridXYZ(TileGridOptions tileGridOptions)
     /*-{
-		return ol.tilegrid.createXYZ(tileGridOptions);
+		return $wnd.ol.tilegrid.createXYZ(tileGridOptions);
     }-*/;
 
     public static native Tile createTileLayer(LayerOptions layerOptions)
