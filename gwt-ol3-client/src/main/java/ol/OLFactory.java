@@ -404,6 +404,11 @@ public final class OLFactory {
 		return {};
     }-*/;
 
+    public static native Osm createOsm(XyzOptions osmOptions)
+    /*-{
+		return new $wnd.ol.source.OSM(osmOptions);
+    }-*/;
+
     /**
      * Creates a common object for params.
      *
@@ -442,8 +447,6 @@ public final class OLFactory {
 		return $wnd.ol.geom.Point(coordinates, geometryLayout);
     }-*/;
 
-    /** Common **/
-
     /**
      * Constructs an instance.
      *
@@ -456,6 +459,8 @@ public final class OLFactory {
     public static Point createPoint(double x, double y) {
 	return createPoint(createCoordinate(x, y), OLUtil.getGeometryLayout(2));
     }
+
+    /** Common **/
 
     /**
      * Constructs an instance.
@@ -610,6 +615,11 @@ public final class OLFactory {
     public static native StyleOptions createStyleOptions()
     /*-{
 		return {};
+    }-*/;
+
+    public static native TileDebug createTileDebug(TileDebugOptions tileDebugOptions)
+    /*-{
+		return new $wnd.ol.source.TileDebug(tileDebugOptions);
     }-*/;
 
     public static native Tile createTileLayer(LayerOptions layerOptions)

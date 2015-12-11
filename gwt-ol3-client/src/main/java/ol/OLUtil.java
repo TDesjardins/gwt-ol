@@ -8,6 +8,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import ol.event.*;
 import ol.gwt.*;
 import ol.layer.*;
+import ol.source.*;
 
 /**
  * Utility functions.
@@ -107,6 +108,26 @@ public final class OLUtil {
 		if ("resolution".equals(event.getKey())) {
 		    listener.onMapZoom(new MapEventWrapper(map, "zoom", event));
 		}
+	    }
+	});
+    }
+
+    /**
+     * Adds a listener for tile loading errors.
+     * 
+     * @param source
+     *            source
+     *
+     * @param listener
+     *            {@link TileLoadErrorListener}
+     * @return {@link HandlerRegistration}
+     */
+    public static HandlerRegistration addTileLoadErrorListener(UrlTile source, final TileLoadErrorListener listener) {
+	return observe(source, "tileloaderror", new EventListener<TileEvent>() {
+
+	    @Override
+	    public void onEvent(TileEvent event) {
+		listener.onTileLoadError(event);
 	    }
 	});
     }
