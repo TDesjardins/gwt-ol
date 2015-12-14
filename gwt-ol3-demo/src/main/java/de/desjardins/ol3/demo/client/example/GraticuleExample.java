@@ -1,10 +1,6 @@
 package de.desjardins.ol3.demo.client.example;
 
-import ol.Graticule;
-import ol.Map;
-import ol.MapOptions;
-import ol.OLFactory;
-import ol.View;
+import ol.*;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
 import ol.source.MapQuest;
@@ -37,7 +33,7 @@ public class GraticuleExample implements Example {
         // create a view
         View view = OLFactory.createView();
 
-        double[] centerCoordinate = OLFactory.createCoordinate(1490463, 6894388);
+        Coordinate centerCoordinate = OLFactory.createCoordinate(1490463, 6894388);
         
         view.setCenter(centerCoordinate);
         view.setZoom(10);
@@ -47,7 +43,7 @@ public class GraticuleExample implements Example {
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 
-        Map map = Map.newInstance(mapOptions);
+        Map map = OLFactory.createMap(mapOptions);
         
         map.addLayer(mapQuestLayer);
 

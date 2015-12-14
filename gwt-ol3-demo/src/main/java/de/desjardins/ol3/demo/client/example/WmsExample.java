@@ -1,12 +1,7 @@
 package de.desjardins.ol3.demo.client.example;
 
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
-
-import ol.Map;
-import ol.MapOptions;
-import ol.OLFactory;
-import ol.View;
-import ol.ViewOptions;
+import ol.*;
 import ol.layer.Image;
 import ol.layer.LayerOptions;
 import ol.proj.Projection;
@@ -29,7 +24,7 @@ public class WmsExample implements Example {
     @Override
     public void show() {
         
-        ImageWMSParams imageWMSParams = OLFactory.createParams();
+        ImageWMSParams imageWMSParams = OLFactory.createOptions();
         imageWMSParams.setLayers("ch.swisstopo.geologie-geotechnik-gk500-gesteinsklassierung,ch.bafu.schutzgebiete-paerke_nationaler_bedeutung");
         
         ImageWMSOptions imageWMSOptions = OLFactory.createOptions();
@@ -49,14 +44,14 @@ public class WmsExample implements Example {
         projectionOptions.setCode("EPSG:21781");
         projectionOptions.setUnits("m");
         
-        Projection projection = Projection.newInstance(projectionOptions);
+        Projection projection = OLFactory.createProjection(projectionOptions);
         
         // create a view
         ViewOptions viewOptions = OLFactory.createOptions();
         viewOptions.setProjection(projection);
         View view = OLFactory.createView(viewOptions);
 
-        double[] centerCoordinate = OLFactory.createCoordinate(660000, 190000);
+        Coordinate centerCoordinate = OLFactory.createCoordinate(660000, 190000);
         
         view.setCenter(centerCoordinate);
         view.setZoom(9);
@@ -66,7 +61,7 @@ public class WmsExample implements Example {
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 
-        Map map = Map.newInstance(mapOptions);
+        Map map = OLFactory.createMap(mapOptions);
         
         map.addLayer(wmsLayer);
 

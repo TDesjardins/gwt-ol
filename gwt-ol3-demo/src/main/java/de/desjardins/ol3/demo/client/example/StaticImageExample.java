@@ -1,15 +1,7 @@
 package de.desjardins.ol3.demo.client.example;
 
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
-
-import ol.Attribution;
-import ol.AttributionOptions;
-import ol.Collection;
-import ol.Map;
-import ol.MapOptions;
-import ol.OLFactory;
-import ol.View;
-import ol.ViewOptions;
+import ol.*;
 import ol.layer.Base;
 import ol.layer.Image;
 import ol.layer.LayerOptions;
@@ -34,13 +26,13 @@ public class StaticImageExample implements Example {
         
         ProjectionOptions projectionOptions = OLFactory.createOptions();
         
-        double[] imageExtent = OLFactory.createExtent(0, 0, 1024, 968);
+        Extent imageExtent = OLFactory.createExtent(0, 0, 1024, 968);
         
         projectionOptions.code("pixel")
           .extent(imageExtent)
           .units("pixels");
         
-        Projection projection = Projection.newInstance(projectionOptions);
+        Projection projection = OLFactory.createProjection(projectionOptions);
         
         ImageStaticOptions imageStaticOptions = OLFactory.createOptions();
         imageStaticOptions.url("http://imgs.xkcd.com/comics/online_communities.png")
@@ -48,10 +40,10 @@ public class StaticImageExample implements Example {
             .imageExtent(imageExtent)
             .projection(projection);
         
-        AttributionOptions attributionOptions = AttributionOptions.newInstance()
-                .html("&copy; <a href=\"http://xkcd.com/license.html\">xkcd</a>");
+        AttributionOptions attributionOptions = OLFactory.<AttributionOptions>createOptions()
+                .setHtml("&copy; <a href=\"http://xkcd.com/license.html\">xkcd</a>");
         
-        Attribution attribution = Attribution.newInstance(attributionOptions);
+        Attribution attribution = OLFactory.createAttribution(attributionOptions);
         Attribution[] attributions = new Attribution[1];
         attributions[0] = attribution;
         
@@ -78,7 +70,7 @@ public class StaticImageExample implements Example {
         mapOptions.setView(view);
         mapOptions.setLayers(layers);
         
-        Map map = Map.newInstance(mapOptions);
+        Map map = OLFactory.createMap(mapOptions);
         
         // add some controls
         DemoUtils.addDefaultControls(map.getControls());

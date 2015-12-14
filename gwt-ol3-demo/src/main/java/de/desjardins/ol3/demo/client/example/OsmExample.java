@@ -1,5 +1,6 @@
 package de.desjardins.ol3.demo.client.example;
 
+import ol.*;
 import ol.control.Attribution;
 
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
@@ -9,10 +10,6 @@ import ol.source.Osm;
 import ol.source.TileDebug;
 import ol.source.TileDebugOptions;
 import ol.source.XyzOptions;
-import ol.Map;
-import ol.MapOptions;
-import ol.OLFactory;
-import ol.View;
 import ol.layer.LayerOptions;
 
 /**
@@ -32,7 +29,7 @@ public class OsmExample implements Example {
         // create a OSM-layer
         XyzOptions osmSourceOptions = OLFactory.createOptions();
         
-        Osm osmSource = Osm.newInstance(osmSourceOptions);
+        Osm osmSource = OLFactory.createOsm(osmSourceOptions);
         LayerOptions osmLayerOptions = OLFactory.createLayerOptions();
         osmLayerOptions.setSource(osmSource);
         
@@ -43,7 +40,7 @@ public class OsmExample implements Example {
         tileDebugOptions.setProjection("EPSG:3857");
         tileDebugOptions.setTileGrid(osmSource.getTileGrid());
 
-        TileDebug tileDebugSource = TileDebug.newInstance(tileDebugOptions);
+        TileDebug tileDebugSource = OLFactory.createTileDebug(tileDebugOptions);
         
         LayerOptions tileDebugLayerOptions = OLFactory.createLayerOptions();
         
@@ -55,8 +52,8 @@ public class OsmExample implements Example {
         // create a view
         View view = OLFactory.createView();
 
-        double[] centerCoordinate = OLFactory.createCoordinate(-0.1275, 51.507222);
-        double[] transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857"); 
+        Coordinate centerCoordinate = OLFactory.createCoordinate(-0.1275, 51.507222);
+        Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857"); 
         
         view.setCenter(transformedCenterCoordinate);
         view.setZoom(10);
@@ -66,7 +63,7 @@ public class OsmExample implements Example {
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 
-        Map map = Map.newInstance(mapOptions);
+        Map map = OLFactory.createMap(mapOptions);
         
         map.addLayer(osmLayer);
         map.addLayer(tileDebugLayer);
