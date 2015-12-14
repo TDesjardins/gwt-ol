@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import com.google.gwt.core.client.js.JsType;
 
+import ol.gwt.TypedObject;
 import ol.proj.Projection;
 
 /**
@@ -61,6 +62,19 @@ import ol.proj.Projection;
 public interface View extends Object {
 
     /**
+     * Fit the given geometry or extent based on the given map size and border.
+     * The size is pixel dimensions of the box to fit the extent into. In most
+     * cases you will want to use the map size, that is `map.getSize()`. Takes
+     * care of the map angle.
+     *
+     * @param geometry
+     *            {ol.geom.SimpleGeometry|ol.Extent} Geometry.
+     * @param size
+     *            Box pixel size.
+     */
+    void fit(TypedObject<ol.geom.SimpleGeometry, ol.Extent> geometry, Size size);
+
+    /**
      * Get the view center.
      *
      * @return {ol.Coordinate|undefined} The center of the view.
@@ -69,7 +83,7 @@ public interface View extends Object {
 
     /**
      * Get the view projection.
-     * 
+     *
      * @return {ol.proj.Projection} The projection of the view.
      */
     Projection getProjection();

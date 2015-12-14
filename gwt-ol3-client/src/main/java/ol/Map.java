@@ -5,6 +5,7 @@ import com.google.gwt.dom.client.Element;
 
 import ol.control.Control;
 import ol.event.Event;
+import ol.gwt.TypedObject;
 import ol.interaction.Interaction;
 import ol.layer.Base;
 
@@ -226,7 +227,7 @@ public interface Map extends Object {
      * @param o
      *            id or element
      */
-    public void setTarget(java.lang.Object o);
+    public void setTarget(TypedObject<Element, String> o);
 
     /**
      * Set the view for this map.

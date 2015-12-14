@@ -23,7 +23,7 @@ public class MapTest extends BaseTestCase {
         projectionOptions.code("EPSG:21781")
             .units("m");
         
-        Projection projection = Projection.newInstance(projectionOptions);
+        Projection projection = OLFactory.createProjection(projectionOptions);
         
         ViewOptions viewOptions = OLFactory.createOptions();
         viewOptions.setProjection(projection);

@@ -265,6 +265,46 @@ public final class OLUtil {
     }
 
     /**
+     * Gets the maximum zoomlevel of the given layer.
+     *
+     * @param layer
+     *            layer
+     * @return zoomlevel on success, else -1
+     */
+    public static int getMaxZoomLevel(Base layer) {
+	// get source if layer instance has it
+	Source source = layer.get("source");
+	if (source != null) {
+	    // try to get a tilegrid from the source
+	    TileGrid tg = getTileGrid((JavaScriptObject) source);
+	    if (tg != null) {
+		return tg.getMaxZoom();
+	    }
+	}
+	return -1;
+    }
+
+    /**
+     * Gets the minimum zoomlevel of the given layer.
+     *
+     * @param layer
+     *            layer
+     * @return zoomlevel on success, else -1
+     */
+    public static int getMinZoomLevel(Base layer) {
+	// get source if layer instance has it
+	Source source = layer.get("source");
+	if (source != null) {
+	    // try to get a tilegrid from the source
+	    TileGrid tg = getTileGrid((JavaScriptObject) source);
+	    if (tg != null) {
+		return tg.getMinZoom();
+	    }
+	}
+	return -1;
+    }
+
+    /**
      * Gets the name of the given {@link Layer}.
      *
      * @param layer
@@ -377,7 +417,7 @@ public final class OLUtil {
     /**
      * Limits the zoomlevels of the {@link Xyz} layer source created of the
      * given {@link XyzOptions}.
-     * 
+     *
      * @param options
      *            {@link XyzOptions}
      * @param minZoomLevel

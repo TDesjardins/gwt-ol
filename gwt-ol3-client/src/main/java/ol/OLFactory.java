@@ -6,6 +6,7 @@ import ol.color.Color;
 import ol.control.*;
 import ol.geom.*;
 import ol.geom.Circle;
+import ol.gwt.TypedObject;
 import ol.interaction.*;
 import ol.layer.Image;
 import ol.layer.LayerOptions;
@@ -38,7 +39,7 @@ public final class OLFactory {
      */
     public static native Attribution createAttribution(AttributionOptions attributionOptions)
     /*-{
-		return new $wnd.ol.Attribution(attributionOptions);
+    	return new $wnd.ol.Attribution(attributionOptions);
     }-*/;
 
     /**
@@ -63,7 +64,7 @@ public final class OLFactory {
      */
     public static native Circle createCircle(Coordinate center, double radius)
     /*-{
-		return $wnd.ol.geom.Circle(center, radius);
+    	return $wnd.ol.geom.Circle(center, radius);
     }-*/;
 
     /**
@@ -73,7 +74,7 @@ public final class OLFactory {
      */
     public static native <T> Collection<T> createCollection()
     /*-{
-		return new $wnd.ol.Collection();
+    	return new $wnd.ol.Collection();
     }-*/;
 
     /**
@@ -91,7 +92,7 @@ public final class OLFactory {
      */
     public static native Color createColor(int r, int g, int b, float alpha)
     /*-{
-		return [ r, g, b, a ];
+    	return [ r, g, b, a ];
     }-*/;
 
     /**
@@ -104,7 +105,7 @@ public final class OLFactory {
      */
     public static native Color createColor(String color)
     /*-{
-		return $wnd.ol.color.fromString(color);
+    	return $wnd.ol.color.fromString(color);
     }-*/;
 
     /**
@@ -118,7 +119,7 @@ public final class OLFactory {
      */
     public static native Coordinate createCoordinate(double x, double y)
     /*-{
-		return [ x, y ];
+    	return [ x, y ];
     }-*/;
 
     /**
@@ -134,7 +135,7 @@ public final class OLFactory {
      */
     public static native Coordinate createCoordinate(double x, double y, double z)
     /*-{
-		return [ x, y, z ];
+    	return [ x, y, z ];
     }-*/;
 
     /**
@@ -162,14 +163,14 @@ public final class OLFactory {
      */
     public static native Collection<Control> createDefaultControls(@Nullable Options options)
     /*-{
-		return new $wnd.ol.control.defaults(options);
+    	return new $wnd.ol.control.defaults(options);
     }-*/;
 
     /** Interactions **/
 
     public static native DragAndDrop createDragAndDrop()
     /*-{
-		return new $wnd.ol.interaction.DragAndDrop();
+    	return new $wnd.ol.interaction.DragAndDrop();
     }-*/;
 
     /**
@@ -183,8 +184,47 @@ public final class OLFactory {
      */
     public static native Extent createExtent(double minX, double minY, double maxX, double maxY)
     /*-{
-		return [ minX, minY, maxX, maxY ];
+    	return [ minX, minY, maxX, maxY ];
     }-*/;
+
+    /**
+     * Creates a {@link Feature}.
+     * 
+     * @return {@link Feature}
+     */
+    public static native Feature createFeature()
+    /*-{
+    	return $wnd.ol.Feature();
+    }-*/;
+
+    /**
+     * Creates a {@link Feature}.
+     *
+     * @param options
+     *            {@link FeatureOptions}
+     * @return {@link Feature}
+     */
+    public static native Feature createFeature(FeatureOptions options)
+    /*-{
+    	return $wnd.ol.Feature(options);
+    }-*/;
+
+    /**
+     * Creates a {@link Feature}.
+     * 
+     * @param geom
+     *            {@link Geometry}
+     * @param style
+     *            {@link Style}
+     *
+     * @return {@link Feature}
+     */
+    public static Feature createFeature(Geometry geom, Style style) {
+	FeatureOptions options = createOptions();
+	options.setGeometry(geom);
+	options.setStyle(style);
+	return createFeature(options);
+    }
 
     /**
      * Creates a new {@link Fill} style.
@@ -206,7 +246,7 @@ public final class OLFactory {
      */
     public static native Fill createFill(FillOptions fillOptions)
     /*-{
-		return new $wnd.ol.style.Fill(fillOptions);
+    	return new $wnd.ol.style.Fill(fillOptions);
     }-*/;
 
     /**
@@ -222,36 +262,36 @@ public final class OLFactory {
 
     public static native FullScreen createFullScreen()
     /*-{
-		return new $wnd.ol.control.FullScreen();
+    	return new $wnd.ol.control.FullScreen();
     }-*/;
 
     /** Layers **/
 
     public static native Image createImageLayer(LayerOptions layerOptions)
     /*-{
-		return new $wnd.ol.layer.Image(layerOptions);
+    	return new $wnd.ol.layer.Image(layerOptions);
     }-*/;
 
     /** Sources **/
 
     public static native ImageStatic createImageStaticSource(ImageStaticOptions imageStaticOptions)
     /*-{
-		return new $wnd.ol.source.ImageStatic(imageStaticOptions);
+    	return new $wnd.ol.source.ImageStatic(imageStaticOptions);
     }-*/;
 
     public static native ImageWMS createImageWMSSource(ImageWMSOptions imageWMSOptions)
     /*-{
-		return new $wnd.ol.source.ImageWMS(imageWMSOptions);
+    	return new $wnd.ol.source.ImageWMS(imageWMSOptions);
     }-*/;
 
     public static native KeyboardPan createKeyboardPan()
     /*-{
-		return new $wnd.ol.interaction.KeyboardPan();
+    	return new $wnd.ol.interaction.KeyboardPan();
     }-*/;
 
     public static native KeyboardZoom createKeyboardZoom()
     /*-{
-		return new $wnd.ol.interaction.KeyboardZoom();
+    	return new $wnd.ol.interaction.KeyboardZoom();
     }-*/;
 
     /**
@@ -272,7 +312,7 @@ public final class OLFactory {
      */
     public static native LinearRing createLinearRing(Coordinate[] coordinates)
     /*-{
-		return $wnd.ol.geom.LinearRing(coordinates);
+    	return $wnd.ol.geom.LinearRing(coordinates);
     }-*/;
 
     /**
@@ -287,8 +327,8 @@ public final class OLFactory {
     public static native LinearRing createLinearRing(@Nullable Coordinate[] coordinates,
 	    @Nullable String geometryLayout)
 	    /*-{
-		return $wnd.ol.geom.LinearRing(coordinates, geometryLayout);
-    }-*/;
+	    return $wnd.ol.geom.LinearRing(coordinates, geometryLayout);
+	    }-*/;
 
     /**
      * Creates a {@link LineString}.
@@ -299,7 +339,7 @@ public final class OLFactory {
      */
     public static native LineString createLineString(Coordinate[] coordinates)
     /*-{
-		return $wnd.ol.geom.LineString(coordinates);
+    	return $wnd.ol.geom.LineString(coordinates);
     }-*/;
 
     /**
@@ -314,8 +354,8 @@ public final class OLFactory {
     public static native LineString createLineString(@Nullable Coordinate[] coordinates,
 	    @Nullable String geometryLayout)
 	    /*-{
-		return $wnd.ol.geom.LineString(coordinates, geometryLayout);
-    }-*/;
+	    return $wnd.ol.geom.LineString(coordinates, geometryLayout);
+	    }-*/;
 
     /**
      * Creates a {@link Map}.
@@ -326,7 +366,7 @@ public final class OLFactory {
      */
     public static native Map createMap(MapOptions mapOptions)
     /*-{
-		return new $wnd.ol.Map(mapOptions);
+    	return new $wnd.ol.Map(mapOptions);
     }-*/;
 
     public static MapOptions createMapOptions() {
@@ -339,12 +379,12 @@ public final class OLFactory {
 
     public static native MapQuest createMapQuestSource(MapQuestOptions mapQuestOptions)
     /*-{
-		return new $wnd.ol.source.MapQuest(mapQuestOptions);
+    	return new $wnd.ol.source.MapQuest(mapQuestOptions);
     }-*/;
 
     public static native MousePosition createMousePosition()
     /*-{
-		return new $wnd.ol.control.MousePosition();
+    	return new $wnd.ol.control.MousePosition();
     }-*/;
 
     /**
@@ -356,7 +396,7 @@ public final class OLFactory {
      */
     public static native MultiLineString createMultiLineString(Coordinate[] coordinates)
     /*-{
-		return $wnd.ol.geom.MultiLineString(coordinates);
+    	return $wnd.ol.geom.MultiLineString(coordinates);
     }-*/;
 
     /**
@@ -371,8 +411,8 @@ public final class OLFactory {
     public static native MultiLineString createMultiLineString(@Nullable Coordinate[] coordinates,
 	    @Nullable String geometryLayout)
 	    /*-{
-		return $wnd.ol.geom.MultiLineString(coordinates, geometryLayout);
-    }-*/;
+	    return $wnd.ol.geom.MultiLineString(coordinates, geometryLayout);
+	    }-*/;
 
     /**
      * Creates a {@link MultiPoint}.
@@ -383,7 +423,7 @@ public final class OLFactory {
      */
     public static native MultiPoint createMultiPoint(Coordinate[] coordinates)
     /*-{
-		return $wnd.ol.geom.MultiPoint(coordinates);
+    	return $wnd.ol.geom.MultiPoint(coordinates);
     }-*/;
 
     /**
@@ -398,8 +438,8 @@ public final class OLFactory {
     public static native MultiPoint createMultiPoint(@Nullable Coordinate[] coordinates,
 	    @Nullable String geometryLayout)
 	    /*-{
-		return $wnd.ol.geom.MultiPoint(coordinates, geometryLayout);
-    }-*/;
+	    return $wnd.ol.geom.MultiPoint(coordinates, geometryLayout);
+	    }-*/;
 
     /**
      * Creates a {@link MultiPolygon}.
@@ -410,7 +450,7 @@ public final class OLFactory {
      */
     public static native MultiPolygon createMultiPolygon(Coordinate[] coordinates)
     /*-{
-		return $wnd.ol.geom.MultiPolygon(coordinates);
+    	return $wnd.ol.geom.MultiPolygon(coordinates);
     }-*/;
 
     /**
@@ -425,7 +465,33 @@ public final class OLFactory {
     public static native MultiPolygon createMultiPolygon(@Nullable Coordinate[] coordinates,
 	    @Nullable String geometryLayout)
 	    /*-{
-		return $wnd.ol.geom.MultiPolygon(coordinates, geometryLayout);
+	    return $wnd.ol.geom.MultiPolygon(coordinates, geometryLayout);
+	    }-*/;
+
+    /**
+     * Create a typed object. Returns the same instance as the given object
+     * while checking types to comply to one of the types of the TypedObject.
+     *
+     * @param object
+     *            object
+     * @return {@link TypedObject}
+     */
+    public static native <T, U> TypedObject<T, U> createObject1(T object)
+    /*-{
+    	return object;
+    }-*/;
+
+    /**
+     * Create a typed object. Returns the same instance as the given object
+     * while checking types to comply to one of the types of the TypedObject.
+     *
+     * @param object
+     *            object
+     * @return {@link TypedObject}
+     */
+    public static native <T, U> TypedObject<T, U> createObject2(U object)
+    /*-{
+    	return object;
     }-*/;
 
     /**
@@ -435,12 +501,12 @@ public final class OLFactory {
      */
     public static native <T extends Options> T createOptions()
     /*-{
-		return {};
+    	return {};
     }-*/;
 
     public static native Osm createOsm(XyzOptions osmOptions)
     /*-{
-		return new $wnd.ol.source.OSM(osmOptions);
+    	return new $wnd.ol.source.OSM(osmOptions);
     }-*/;
 
     /**
@@ -454,7 +520,19 @@ public final class OLFactory {
      */
     public static native Pixel createPixel(int x, int y)
     /*-{
-		return [ x, y ];
+    	return [ x, y ];
+    }-*/;
+
+    /**
+     * Creates an instance.
+     *
+     * @param coordinates
+     *            coordinates
+     * @return {@link Point}
+     */
+    public static native Point createPoint(Coordinate coordinates)
+    /*-{
+    	return $wnd.ol.geom.Point(coordinates);
     }-*/;
 
     /**
@@ -468,7 +546,7 @@ public final class OLFactory {
      */
     public static native Point createPoint(@Nullable Coordinate coordinates, @Nullable String geometryLayout)
     /*-{
-		return $wnd.ol.geom.Point(coordinates, geometryLayout);
+    	return $wnd.ol.geom.Point(coordinates, geometryLayout);
     }-*/;
 
     /**
@@ -508,7 +586,7 @@ public final class OLFactory {
      */
     public static native Polygon createPolygon(Coordinate[] coordinates)
     /*-{
-		return $wnd.ol.geom.Polygon(coordinates);
+    	return $wnd.ol.geom.Polygon(coordinates);
     }-*/;
 
     /** Common **/
@@ -524,19 +602,19 @@ public final class OLFactory {
      */
     public static native Polygon createPolygon(@Nullable Coordinate[] coordinates, @Nullable String geometryLayout)
     /*-{
-		return $wnd.ol.geom.Polygon(coordinates, geometryLayout);
+    	return $wnd.ol.geom.Polygon(coordinates, geometryLayout);
     }-*/;
 
     /** Projection **/
 
     public static native Projection createProjection(ProjectionOptions projectionOptions)
     /*-{
-		return new $wnd.ol.proj.Projection(projectionOptions);
+    	return new $wnd.ol.proj.Projection(projectionOptions);
     }-*/;
 
     public static native Rotate createRotate()
     /*-{
-		return new $wnd.ol.control.Rotate();
+    	return new $wnd.ol.control.Rotate();
     }-*/;
 
     /**
@@ -546,7 +624,7 @@ public final class OLFactory {
      */
     public static native ScaleLine createScaleLine()
     /*-{
-		return new $wnd.ol.control.ScaleLine();
+    	return new $wnd.ol.control.ScaleLine();
     }-*/;
 
     /**
@@ -560,7 +638,7 @@ public final class OLFactory {
      */
     public static native Size createSize(int width, int height)
     /*-{
-		return [ width, height ];
+    	return [ width, height ];
     }-*/;
 
     public static StamenOptions createStamenOptions() {
@@ -569,7 +647,7 @@ public final class OLFactory {
 
     public static native Stamen createStamenSource(StamenOptions stamenOptions)
     /*-{
-		return new $wnd.ol.source.Stamen(stamenOptions);
+    	return new $wnd.ol.source.Stamen(stamenOptions);
     }-*/;
 
     /**
@@ -594,7 +672,7 @@ public final class OLFactory {
      */
     public static native Stroke createStroke(StrokeOptions strokeOptions)
     /*-{
-		return new $wnd.ol.style.Stroke(strokeOptions);
+    	return new $wnd.ol.style.Stroke(strokeOptions);
     }-*/;
 
     /**
@@ -628,7 +706,7 @@ public final class OLFactory {
      */
     public static native Style createStyle(StyleOptions styleOptions)
     /*-{
-		return new $wnd.ol.style.Style(styleOptions);
+    	return new $wnd.ol.style.Style(styleOptions);
     }-*/;
 
     /**
@@ -642,7 +720,7 @@ public final class OLFactory {
 
     public static native TileDebug createTileDebug(TileDebugOptions tileDebugOptions)
     /*-{
-		return new $wnd.ol.source.TileDebug(tileDebugOptions);
+    	return new $wnd.ol.source.TileDebug(tileDebugOptions);
     }-*/;
 
     /**
@@ -654,7 +732,7 @@ public final class OLFactory {
      */
     public static native TileGrid createTileGrid(TileGridOptions tileGridOptions)
     /*-{
-		return new $wnd.ol.tilegrid.TileGrid(tileGridOptions);
+    	return new $wnd.ol.tilegrid.TileGrid(tileGridOptions);
     }-*/;
 
     /**
@@ -674,47 +752,71 @@ public final class OLFactory {
      */
     public static native TileGrid createTileGridXYZ(TileGridOptions tileGridOptions)
     /*-{
-		return $wnd.ol.tilegrid.createXYZ(tileGridOptions);
+    	return $wnd.ol.tilegrid.createXYZ(tileGridOptions);
     }-*/;
 
     public static native Tile createTileLayer(LayerOptions layerOptions)
     /*-{
-		return new $wnd.ol.layer.Tile(layerOptions);
+    	return new $wnd.ol.layer.Tile(layerOptions);
+    }-*/;
+
+    /**
+     * Creates a new {@link ol.layer.Vector} source.
+     *
+     * @param options
+     *            {@link LayerOptions}
+     * @return {@link ol.layer.Vector}
+     */
+    public static native ol.layer.Vector createVector(LayerOptions options)
+    /*-{
+    	return new $wnd.ol.layer.Vector(options);
+    }-*/;
+
+    /**
+     * Creates a new {@link ol.source.Vector} source.
+     *
+     * @param options
+     *            {@link VectorOptions}
+     * @return {@link ol.source.Vector}
+     */
+    public static native ol.source.Vector createVectorSource(VectorOptions options)
+    /*-{
+    	return new $wnd.ol.source.Vector(options);
     }-*/;
 
     /** View **/
 
     public static native View createView()
     /*-{
-		return new $wnd.ol.View();
+    	return new $wnd.ol.View();
     }-*/;
 
     public static native View createView(ViewOptions viewOptions)
     /*-{
-		return new $wnd.ol.View(viewOptions);
+    	return new $wnd.ol.View(viewOptions);
     }-*/;
 
     public static native Xyz createXyz(XyzOptions xyzOptions)
     /*-{
-		return new $wnd.ol.source.XYZ(xyzOptions);
+    	return new $wnd.ol.source.XYZ(xyzOptions);
     }-*/;
 
     /**
      * Creates a zoom control.
-     * 
+     *
      * @return {@link Zoom}
      */
     public static native Zoom createZoom() /*-{
-		return new $wnd.ol.control.Zoom();
-    }-*/;
+					   return new $wnd.ol.control.Zoom();
+					   }-*/;
 
     public static native ZoomSlider createZoomSlider()
     /*-{
-		return new $wnd.ol.control.ZoomSlider();
+    	return new $wnd.ol.control.ZoomSlider();
     }-*/;
 
     public static native ZoomToExtent createZoomToExtent()
     /*-{
-		return new $wnd.ol.control.ZoomToExtent();
+    	return new $wnd.ol.control.ZoomToExtent();
     }-*/;
 }
