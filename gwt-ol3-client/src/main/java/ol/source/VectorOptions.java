@@ -45,7 +45,7 @@ public interface VectorOptions extends SourceOptions {
 
     /**
      * Wrap the world horizontally. Default is true. For vector editing across
-     * the -180� and 180� meridians to work properly, this should be set to
+     * the -180° and 180° meridians to work properly, this should be set to
      * false. The resulting geometry coordinates will then exceed the world
      * bounds.
      * 

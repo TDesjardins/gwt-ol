@@ -34,7 +34,7 @@ public class MapTest extends BaseTestCase {
         view.setCenter(centerCoordinate);
         view.setZoom(9);
         
-        final MapOptions mapOptions = OLFactory.createMapOptions();
+        final MapOptions mapOptions = OLFactory.createOptions();
         mapOptions.setTarget("map");
         mapOptions.setView(view);
         

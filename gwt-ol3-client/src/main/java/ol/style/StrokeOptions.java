@@ -2,6 +2,7 @@ package ol.style;
 
 import com.google.gwt.core.client.js.*;
 
+import ol.Options;
 import ol.color.Color;
 
 /**
@@ -11,7 +12,7 @@ import ol.color.Color;
  *
  */
 @JsType
-public interface StrokeOptions {
+public interface StrokeOptions extends Options {
 
     /**
      * Set the stroke color.

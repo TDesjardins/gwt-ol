@@ -189,7 +189,7 @@ public final class OLFactory {
 
     /**
      * Creates a {@link Feature}.
-     * 
+     *
      * @return {@link Feature}
      */
     public static native Feature createFeature()
@@ -211,7 +211,7 @@ public final class OLFactory {
 
     /**
      * Creates a {@link Feature}.
-     * 
+     *
      * @param geom
      *            {@link Geometry}
      * @param style
@@ -234,7 +234,7 @@ public final class OLFactory {
      * @return {@link Fill}
      */
     public static Fill createFill(Color color) {
-	return createFill(createFillOptions().color(color));
+	return createFill(OLFactory.<FillOptions> createOptions().color(color));
     }
 
     /**
@@ -248,15 +248,6 @@ public final class OLFactory {
     /*-{
     	return new $wnd.ol.style.Fill(fillOptions);
     }-*/;
-
-    /**
-     * Creates new {@link FillOptions}.
-     *
-     * @return {@link FillOptions}
-     */
-    public static FillOptions createFillOptions() {
-	return createOptions();
-    }
 
     /** Controls **/
 
@@ -295,12 +286,16 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Creates {@link LayerOptions}.
+     * Creates {@link LayerOptions} using the given {@link Source}.
      *
+     * @param source
+     *            {@link Source}
      * @return {@link LayerOptions}
      */
-    public static LayerOptions createLayerOptions() {
-	return createOptions();
+    public static LayerOptions createLayerOptionsWithSource(Source source) {
+	LayerOptions options = createOptions();
+	options.setSource(source);
+	return options;
     }
 
     /**
@@ -368,14 +363,6 @@ public final class OLFactory {
     /*-{
     	return new $wnd.ol.Map(mapOptions);
     }-*/;
-
-    public static MapOptions createMapOptions() {
-	return createOptions();
-    }
-
-    public static MapQuestOptions createMapQuestOptions() {
-	return createOptions();
-    }
 
     public static native MapQuest createMapQuestSource(MapQuestOptions mapQuestOptions)
     /*-{
@@ -589,8 +576,6 @@ public final class OLFactory {
     	return $wnd.ol.geom.Polygon(coordinates);
     }-*/;
 
-    /** Common **/
-
     /**
      * Creates a {@link Polygon}.
      *
@@ -641,9 +626,7 @@ public final class OLFactory {
     	return [ width, height ];
     }-*/;
 
-    public static StamenOptions createStamenOptions() {
-	return createOptions();
-    }
+    /** Common **/
 
     public static native Stamen createStamenSource(StamenOptions stamenOptions)
     /*-{
@@ -660,7 +643,7 @@ public final class OLFactory {
      * @return {@link Stroke}
      */
     public static Stroke createStroke(Color color, int width) {
-	return createStroke(createStrokeOptions().color(color).width(width));
+	return createStroke(OLFactory.<StrokeOptions> createOptions().color(color).width(width));
     }
 
     /**
@@ -676,15 +659,6 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Creates new {@link StrokeOptions}
-     *
-     * @return {@link StrokeOptions}
-     */
-    public static StrokeOptions createStrokeOptions() {
-	return createOptions();
-    }
-
-    /**
      * Creates a new {@link Style} style.
      *
      * @param fill
@@ -694,7 +668,7 @@ public final class OLFactory {
      * @return {@link Style}
      */
     public static Style createStyle(Fill fill, Stroke stroke) {
-	return createStyle(createStyleOptions().fill(fill).stroke(stroke));
+	return createStyle(OLFactory.<StyleOptions> createOptions().fill(fill).stroke(stroke));
     }
 
     /**
@@ -708,15 +682,6 @@ public final class OLFactory {
     /*-{
     	return new $wnd.ol.style.Style(styleOptions);
     }-*/;
-
-    /**
-     * Creates new {@link StyleOptions}
-     *
-     * @return {@link StyleOptions}
-     */
-    public static StyleOptions createStyleOptions() {
-	return createOptions();
-    }
 
     public static native TileDebug createTileDebug(TileDebugOptions tileDebugOptions)
     /*-{
@@ -770,6 +735,16 @@ public final class OLFactory {
     public static native ol.layer.Vector createVector(LayerOptions options)
     /*-{
     	return new $wnd.ol.layer.Vector(options);
+    }-*/;
+
+    /**
+     * Creates a new {@link ol.source.Vector} source.
+     *
+     * @return {@link ol.source.Vector}
+     */
+    public static native ol.source.Vector createVectorSource()
+    /*-{
+    	return new $wnd.ol.source.Vector();
     }-*/;
 
     /**

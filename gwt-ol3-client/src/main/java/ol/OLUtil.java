@@ -3,7 +3,9 @@ package ol;
 import javax.annotation.*;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.ui.Widget;
 
 import ol.event.*;
 import ol.gwt.CollectionWrapper;
@@ -146,9 +148,9 @@ public final class OLUtil {
      */
     public static native <E extends Event> JavaScriptObject createEventListenerFunction(EventListener<E> listener)
     /*-{
-		return function(evt) {
-			listener.onEvent(evt);
-		};
+    	return function(evt) {
+    		listener.onEvent(evt);
+    	};
     }-*/;
 
     /**
@@ -165,19 +167,19 @@ public final class OLUtil {
      */
     public static native Event createLinkedEvent(Event eParent, String type, JavaScriptObject currentTarget)
     /*-{
-		var eChild = {};
-		eChild.preventDefault = function() {
-			eParent.preventDefault();
-			eChild.defaultPrevented = eParent.defaultPrevented;
-		};
-		eChild.stopPropagation = function() {
-			eParent.stopPropagation();
-		};
-		eChild.currentTarget = currentTarget;
-		eChild.defaultPrevented = eParent.defaultPrevented;
-		eChild.target = eParent.target;
-		eChild.type = type;
-		return eChild;
+    	var eChild = {};
+    	eChild.preventDefault = function() {
+    		eParent.preventDefault();
+    		eChild.defaultPrevented = eParent.defaultPrevented;
+    	};
+    	eChild.stopPropagation = function() {
+    		eParent.stopPropagation();
+    	};
+    	eChild.currentTarget = currentTarget;
+    	eChild.defaultPrevented = eParent.defaultPrevented;
+    	eChild.target = eParent.target;
+    	eChild.type = type;
+    	return eChild;
     }-*/;
 
     /**
@@ -325,7 +327,7 @@ public final class OLUtil {
      */
     private static native TileGrid getTileGrid(JavaScriptObject o)
     /*-{
-		return o.tileGrid || null;
+    	return o.tileGrid || null;
     }-*/;
 
     /**
@@ -337,7 +339,7 @@ public final class OLUtil {
      */
     private static native int getZoom(View v)
     /*-{
-		return v.getZoom() || -1;
+    	return v.getZoom() || -1;
     }-*/;
 
     /**
@@ -409,9 +411,9 @@ public final class OLUtil {
      */
     public static native MapEvent initMapEvent(Event e, Map map)
     /*-{
-		e.map = map;
-		e.framestate = null;
-		return e;
+    	e.map = map;
+    	e.framestate = null;
+    	return e;
     }-*/;
 
     /**
@@ -468,6 +470,18 @@ public final class OLUtil {
 	JavaScriptObject handler = OLUtil.createEventListenerFunction(listener);
 	JavaScriptObject key = o.once(eventType, handler);
 	return new OLHandlerRegistration(o, key);
+    }
+
+    /**
+     * Sets the container for the given {@link Map} to the given {@link Widget}.
+     * 
+     * @param map
+     *            {@link Map}
+     * @param target
+     *            {@link Widget}
+     */
+    public static void setMapTarget(Map map, Widget target) {
+	map.setTarget(OLFactory.<Element, String> createObject1(target.getElement()));
     }
 
     /**
