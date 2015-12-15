@@ -64,7 +64,7 @@ public final class OLFactory {
      */
     public static native Circle createCircle(Coordinate center, double radius)
     /*-{
-    	return $wnd.ol.geom.Circle(center, radius);
+    	return new $wnd.ol.geom.Circle(center, radius);
     }-*/;
 
     /**
@@ -80,19 +80,19 @@ public final class OLFactory {
     /**
      * Creates a {@link Color} from the given values.
      *
-     * @param r
+     * @param red
      *            red (0-255)
-     * @param g
+     * @param green
      *            green (0-255)
-     * @param b
+     * @param blue
      *            blue (0-255)
      * @param alpha
      *            alpha (0-1)
      * @return {@link Color}
      */
-    public static native Color createColor(int r, int g, int b, float alpha)
+    public static native Color createColor(int red, int green, int blue, float alpha)
     /*-{
-    	return [ r, g, b, a ];
+    	return [ red, green, blue, alpha ];
     }-*/;
 
     /**
@@ -194,7 +194,7 @@ public final class OLFactory {
      */
     public static native Feature createFeature()
     /*-{
-    	return $wnd.ol.Feature();
+    	return new $wnd.ol.Feature();
     }-*/;
 
     /**
@@ -206,7 +206,7 @@ public final class OLFactory {
      */
     public static native Feature createFeature(FeatureOptions options)
     /*-{
-    	return $wnd.ol.Feature(options);
+    	return new $wnd.ol.Feature(options);
     }-*/;
 
     /**
@@ -307,7 +307,7 @@ public final class OLFactory {
      */
     public static native LinearRing createLinearRing(Coordinate[] coordinates)
     /*-{
-    	return $wnd.ol.geom.LinearRing(coordinates);
+    	return new $wnd.ol.geom.LinearRing(coordinates);
     }-*/;
 
     /**
@@ -322,7 +322,7 @@ public final class OLFactory {
     public static native LinearRing createLinearRing(@Nullable Coordinate[] coordinates,
 	    @Nullable String geometryLayout)
 	    /*-{
-	    return $wnd.ol.geom.LinearRing(coordinates, geometryLayout);
+	    return new $wnd.ol.geom.LinearRing(coordinates, geometryLayout);
 	    }-*/;
 
     /**
@@ -334,7 +334,7 @@ public final class OLFactory {
      */
     public static native LineString createLineString(Coordinate[] coordinates)
     /*-{
-    	return $wnd.ol.geom.LineString(coordinates);
+    	return new $wnd.ol.geom.LineString(coordinates);
     }-*/;
 
     /**
@@ -349,7 +349,7 @@ public final class OLFactory {
     public static native LineString createLineString(@Nullable Coordinate[] coordinates,
 	    @Nullable String geometryLayout)
 	    /*-{
-	    return $wnd.ol.geom.LineString(coordinates, geometryLayout);
+	    return new $wnd.ol.geom.LineString(coordinates, geometryLayout);
 	    }-*/;
 
     /**
@@ -383,7 +383,7 @@ public final class OLFactory {
      */
     public static native MultiLineString createMultiLineString(Coordinate[] coordinates)
     /*-{
-    	return $wnd.ol.geom.MultiLineString(coordinates);
+    	return new $wnd.ol.geom.MultiLineString(coordinates);
     }-*/;
 
     /**
@@ -398,7 +398,7 @@ public final class OLFactory {
     public static native MultiLineString createMultiLineString(@Nullable Coordinate[] coordinates,
 	    @Nullable String geometryLayout)
 	    /*-{
-	    return $wnd.ol.geom.MultiLineString(coordinates, geometryLayout);
+	    return new $wnd.ol.geom.MultiLineString(coordinates, geometryLayout);
 	    }-*/;
 
     /**
@@ -410,7 +410,7 @@ public final class OLFactory {
      */
     public static native MultiPoint createMultiPoint(Coordinate[] coordinates)
     /*-{
-    	return $wnd.ol.geom.MultiPoint(coordinates);
+    	return new $wnd.ol.geom.MultiPoint(coordinates);
     }-*/;
 
     /**
@@ -425,7 +425,7 @@ public final class OLFactory {
     public static native MultiPoint createMultiPoint(@Nullable Coordinate[] coordinates,
 	    @Nullable String geometryLayout)
 	    /*-{
-	    return $wnd.ol.geom.MultiPoint(coordinates, geometryLayout);
+	    return new $wnd.ol.geom.MultiPoint(coordinates, geometryLayout);
 	    }-*/;
 
     /**
@@ -437,7 +437,7 @@ public final class OLFactory {
      */
     public static native MultiPolygon createMultiPolygon(Coordinate[] coordinates)
     /*-{
-    	return $wnd.ol.geom.MultiPolygon(coordinates);
+    	return new $wnd.ol.geom.MultiPolygon(coordinates);
     }-*/;
 
     /**
@@ -452,7 +452,7 @@ public final class OLFactory {
     public static native MultiPolygon createMultiPolygon(@Nullable Coordinate[] coordinates,
 	    @Nullable String geometryLayout)
 	    /*-{
-	    return $wnd.ol.geom.MultiPolygon(coordinates, geometryLayout);
+	    return new $wnd.ol.geom.MultiPolygon(coordinates, geometryLayout);
 	    }-*/;
 
     /**
@@ -519,7 +519,7 @@ public final class OLFactory {
      */
     public static native Point createPoint(Coordinate coordinates)
     /*-{
-    	return $wnd.ol.geom.Point(coordinates);
+    	return new $wnd.ol.geom.Point(coordinates);
     }-*/;
 
     /**
@@ -533,7 +533,7 @@ public final class OLFactory {
      */
     public static native Point createPoint(@Nullable Coordinate coordinates, @Nullable String geometryLayout)
     /*-{
-    	return $wnd.ol.geom.Point(coordinates, geometryLayout);
+    	return new $wnd.ol.geom.Point(coordinates, geometryLayout);
     }-*/;
 
     /**
@@ -573,7 +573,7 @@ public final class OLFactory {
      */
     public static native Polygon createPolygon(Coordinate[] coordinates)
     /*-{
-    	return $wnd.ol.geom.Polygon(coordinates);
+    	return new $wnd.ol.geom.Polygon(coordinates);
     }-*/;
 
     /**
@@ -587,7 +587,7 @@ public final class OLFactory {
      */
     public static native Polygon createPolygon(@Nullable Coordinate[] coordinates, @Nullable String geometryLayout)
     /*-{
-    	return $wnd.ol.geom.Polygon(coordinates, geometryLayout);
+    	return new $wnd.ol.geom.Polygon(coordinates, geometryLayout);
     }-*/;
 
     /** Projection **/
@@ -781,9 +781,10 @@ public final class OLFactory {
      *
      * @return {@link Zoom}
      */
-    public static native Zoom createZoom() /*-{
-					   return new $wnd.ol.control.Zoom();
-					   }-*/;
+    public static native Zoom createZoom()
+    /*-{
+    return new $wnd.ol.control.Zoom();
+    }-*/;
 
     public static native ZoomSlider createZoomSlider()
     /*-{
