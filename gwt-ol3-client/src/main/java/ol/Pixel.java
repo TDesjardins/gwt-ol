@@ -15,6 +15,16 @@ public class Pixel extends JavaScriptObject {
     }
 
     /**
+     * Clones this object.
+     *
+     * @return {ol.Pixel} clone
+     */
+    public final native Pixel cloneObject()
+    /*-{
+    	return this.slice(0);
+    }-*/;
+
+    /**
      * Gets the X-coordinate.
      *
      * @return X-coordinate

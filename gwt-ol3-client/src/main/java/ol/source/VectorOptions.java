@@ -1,6 +1,6 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsProperty;
+import com.google.gwt.core.client.js.*;
 
 import ol.*;
 import ol.gwt.TypedObject;
@@ -10,6 +10,7 @@ import ol.gwt.TypedObject;
  *
  * @author sbaumhekel
  */
+@JsType
 public interface VectorOptions extends SourceOptions {
 
     /**

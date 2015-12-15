@@ -19,7 +19,7 @@ public class CollectionTest extends BaseTestCase {
         
         assertNotNull(controls.getArray());
         
-        controls.push(ol.control.Attribution.newInstance());
+        controls.push(OLFactory.createAttributionControl());
         
         assertTrue(controls.getLength() == 1);
         

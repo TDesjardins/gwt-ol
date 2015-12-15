@@ -14,13 +14,23 @@ public class Size extends JavaScriptObject {
     }
 
     /**
+     * Clones this object.
+     *
+     * @return {ol.Size} clone
+     */
+    public final native Size cloneObject()
+    /*-{
+    	return this.slice(0);
+    }-*/;
+
+    /**
      * Gets the height.
      *
      * @return height
      */
     public final native int getHeight()
     /*-{
-		return this[1];
+    	return this[1];
     }-*/;
 
     /**
@@ -30,7 +40,7 @@ public class Size extends JavaScriptObject {
      */
     public final native int getWidth()
     /*-{
-		return this[0];
+    	return this[0];
     }-*/;
 
 }

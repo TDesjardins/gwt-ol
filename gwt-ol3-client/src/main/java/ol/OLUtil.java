@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.Widget;
 import ol.event.*;
 import ol.gwt.CollectionWrapper;
 import ol.layer.*;
+import ol.proj.Projection;
 import ol.source.*;
 import ol.tilegrid.*;
 
@@ -120,6 +121,18 @@ public final class OLUtil {
     }
 
     /**
+     * Add a Projection object to the list of supported projections that can be
+     * looked up by their code.
+     *
+     * @param projection
+     *            Projection instance.
+     */
+    public static native void addProjection(Projection projection)
+    /*-{
+		$wnd.ol.proj.addProjection(projection);
+    }-*/;
+
+    /**
      * Adds a listener for tile loading errors.
      *
      * @param source
@@ -148,9 +161,9 @@ public final class OLUtil {
      */
     public static native <E extends Event> JavaScriptObject createEventListenerFunction(EventListener<E> listener)
     /*-{
-    	return function(evt) {
-    		listener.onEvent(evt);
-    	};
+		return function(evt) {
+			listener.onEvent(evt);
+		};
     }-*/;
 
     /**
@@ -167,19 +180,19 @@ public final class OLUtil {
      */
     public static native Event createLinkedEvent(Event eParent, String type, JavaScriptObject currentTarget)
     /*-{
-    	var eChild = {};
-    	eChild.preventDefault = function() {
-    		eParent.preventDefault();
-    		eChild.defaultPrevented = eParent.defaultPrevented;
-    	};
-    	eChild.stopPropagation = function() {
-    		eParent.stopPropagation();
-    	};
-    	eChild.currentTarget = currentTarget;
-    	eChild.defaultPrevented = eParent.defaultPrevented;
-    	eChild.target = eParent.target;
-    	eChild.type = type;
-    	return eChild;
+		var eChild = {};
+		eChild.preventDefault = function() {
+			eParent.preventDefault();
+			eChild.defaultPrevented = eParent.defaultPrevented;
+		};
+		eChild.stopPropagation = function() {
+			eParent.stopPropagation();
+		};
+		eChild.currentTarget = currentTarget;
+		eChild.defaultPrevented = eParent.defaultPrevented;
+		eChild.target = eParent.target;
+		eChild.type = type;
+		return eChild;
     }-*/;
 
     /**
@@ -319,6 +332,20 @@ public final class OLUtil {
     }
 
     /**
+     * Fetches a Projection object for the code specified.
+     *
+     * @param projectionCode
+     *            Either a code string which is a combination of authority and
+     *            identifier such as "EPSG:4326", or an existing projection
+     *            object, or undefined.
+     * @return {ol.proj.Projection} Projection object, or null if not in list.
+     */
+    public static native Projection getProjection(String projectionCode)
+    /*-{
+		return $wnd.ol.proj.get(projectionCode);
+    }-*/;
+
+    /**
      * Gets a {@link TileGrid} from the given object, if the property is set
      *
      * @param o
@@ -327,7 +354,7 @@ public final class OLUtil {
      */
     private static native TileGrid getTileGrid(JavaScriptObject o)
     /*-{
-    	return o.tileGrid || null;
+		return o.tileGrid || null;
     }-*/;
 
     /**
@@ -339,7 +366,7 @@ public final class OLUtil {
      */
     private static native int getZoom(View v)
     /*-{
-    	return v.getZoom() || -1;
+		return v.getZoom() || -1;
     }-*/;
 
     /**
@@ -411,9 +438,9 @@ public final class OLUtil {
      */
     public static native MapEvent initMapEvent(Event e, Map map)
     /*-{
-    	e.map = map;
-    	e.framestate = null;
-    	return e;
+		e.map = map;
+		e.framestate = null;
+		return e;
     }-*/;
 
     /**
@@ -474,7 +501,7 @@ public final class OLUtil {
 
     /**
      * Sets the container for the given {@link Map} to the given {@link Widget}.
-     * 
+     *
      * @param map
      *            {@link Map}
      * @param target
@@ -495,5 +522,81 @@ public final class OLUtil {
     public static void setName(Base layer, String name) {
 	layer.set("name", name);
     }
+
+    /**
+     * Transforms a coordinate from source projection to destination projection.
+     * This returns a new coordinate (and does not modify the original).
+     *
+     * See {@link ol.proj.transformExtent} for extent transformation. See the
+     * transform method of {@link ol.geom.Geometry} and its subclasses for
+     * geometry transforms.
+     *
+     * @param coordinate
+     *            Coordinate.
+     * @param source
+     *            Source projection-like.
+     * @param destination
+     *            Destination projection-like.
+     * @return {ol.Coordinate} Coordinate.
+     */
+    public static native Coordinate transform(Coordinate coordinate, Projection source, Projection destination)
+    /*-{
+		return $wnd.ol.proj.transform(coordinate, source, destination);
+    }-*/;
+
+    /**
+     * Transforms a coordinate from source projection to destination projection.
+     * This returns a new coordinate (and does not modify the original).
+     *
+     * See {@link ol.proj.transformExtent} for extent transformation. See the
+     * transform method of {@link ol.geom.Geometry} and its subclasses for
+     * geometry transforms.
+     *
+     * @param coordinate
+     *            Coordinate.
+     * @param source
+     *            Source projection-like.
+     * @param destination
+     *            Destination projection-like.
+     * @return {ol.Coordinate} Coordinate.
+     */
+    public static native Coordinate transform(Coordinate coordinate, String source, String destination)
+    /*-{
+		return $wnd.ol.proj.transform(coordinate, source, destination);
+    }-*/;
+
+    /**
+     * Transforms an extent from source projection to destination projection.
+     * This returns a new extent (and does not modify the original).
+     *
+     * @param extent
+     *            The extent to transform.
+     * @param source
+     *            Source projection-like.
+     * @param destination
+     *            Destination projection-like.
+     * @return {ol.Extent} The transformed extent.
+     */
+    public static native Extent transformExtent(Extent extent, Projection source, Projection destination)
+    /*-{
+		return $wnd.ol.proj.transformExtent(extent, source, destination);
+    }-*/;
+
+    /**
+     * Transforms an extent from source projection to destination projection.
+     * This returns a new extent (and does not modify the original).
+     *
+     * @param extent
+     *            The extent to transform.
+     * @param source
+     *            Source projection-like.
+     * @param destination
+     *            Destination projection-like.
+     * @return {ol.Extent} The transformed extent.
+     */
+    public static native Extent transformExtent(Extent extent, String source, String destination)
+    /*-{
+		return $wnd.ol.proj.transformExtent(extent, source, destination);
+    }-*/;
 
 }

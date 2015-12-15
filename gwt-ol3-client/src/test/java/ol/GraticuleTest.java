@@ -11,7 +11,7 @@ public class GraticuleTest extends BaseTestCase {
 
     public void testGraticule() {
         
-        Graticule graticule = Graticule.newInstance();
+        Graticule graticule = OLFactory.createGraticule();
         
         assertNotNull(graticule);
         

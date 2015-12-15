@@ -7,6 +7,8 @@ import com.google.gwt.core.client.js.JsType;
 /**
  *
  * @author Tino Desjardins
+ * @param <T>
+ *            type of the elements
  *
  */
 @JsType

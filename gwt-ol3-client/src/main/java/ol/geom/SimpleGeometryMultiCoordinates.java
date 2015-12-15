@@ -2,6 +2,8 @@ package ol.geom;
 
 import javax.annotation.Nullable;
 
+import com.google.gwt.core.client.js.JsType;
+
 import ol.Coordinate;
 
 /**
@@ -11,6 +13,7 @@ import ol.Coordinate;
  * 
  * @author sbaumhekel
  */
+@JsType
 public interface SimpleGeometryMultiCoordinates extends SimpleGeometry {
     /**
      * Return the coordinates of this geometry.

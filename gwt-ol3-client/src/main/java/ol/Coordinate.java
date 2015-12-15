@@ -21,11 +21,20 @@ public class Coordinate extends JavaScriptObject {
      * @param delta
      *            {ol.Coordinate} delta Delta.
      * @return {ol.Coordinate} The input coordinate adjusted by the given delta.
-     * @api stable
      */
     public final native Coordinate add(Coordinate delta)
     /*-{
     	return $wnd.ol.coordinate.add(this, delta);
+    }-*/;
+
+    /**
+     * Clones this object.
+     *
+     * @return {ol.Coordinate} clone
+     */
+    public final native Coordinate cloneObject()
+    /*-{
+    	return this.slice(0);
     }-*/;
 
     /**

@@ -1,6 +1,6 @@
 package ol;
 
-import javax.annotation.Nullable;
+import javax.annotation.*;
 
 import ol.color.Color;
 import ol.control.*;
@@ -23,6 +23,7 @@ import ol.tilegrid.*;
  *
  * @author Tino Desjardins
  */
+@ParametersAreNonnullByDefault
 public final class OLFactory {
 
     // prevent instantiating this class
@@ -54,6 +55,21 @@ public final class OLFactory {
     }
 
     /**
+     * Creates an {@link ol.control.Attribution}.
+     *
+     * @return {@link ol.control.Attribution}
+     */
+    public static native ol.control.Attribution createAttributionControl()
+    /*-{
+    return new $wnd.ol.control.Attribution();
+    }-*/;
+
+    public static native Circle createCircle(CircleOptions circleOptions)
+    /*-{
+    return new $wnd.ol.style.Circle(circleOptions);
+    }-*/;
+
+    /**
      * Creates a {@link Circle}.
      *
      * @param center
@@ -65,6 +81,11 @@ public final class OLFactory {
     public static native Circle createCircle(Coordinate center, double radius)
     /*-{
     	return new $wnd.ol.geom.Circle(center, radius);
+    }-*/;
+
+    public static native CircleOptions createCircleOptions()
+    /*-{
+    return {};
     }-*/;
 
     /**
@@ -256,6 +277,16 @@ public final class OLFactory {
     	return new $wnd.ol.control.FullScreen();
     }-*/;
 
+    /**
+     * Creates an {@link Graticule}.
+     *
+     * @return {@link Graticule}
+     */
+    public static native Graticule createGraticule()
+    /*-{
+    return new $wnd.ol.Graticule();
+    }-*/;
+
     /** Layers **/
 
     public static native Image createImageLayer(LayerOptions layerOptions)
@@ -367,6 +398,11 @@ public final class OLFactory {
     public static native MapQuest createMapQuestSource(MapQuestOptions mapQuestOptions)
     /*-{
     	return new $wnd.ol.source.MapQuest(mapQuestOptions);
+    }-*/;
+
+    public static native Modify createModify()
+    /*-{
+    return new $wnd.ol.interaction.Modify();
     }-*/;
 
     public static native MousePosition createMousePosition()
@@ -681,6 +717,16 @@ public final class OLFactory {
     public static native Style createStyle(StyleOptions styleOptions)
     /*-{
     	return new $wnd.ol.style.Style(styleOptions);
+    }-*/;
+
+    public static native Text createText(TextOptions textOptions)
+    /*-{
+    return new $wnd.ol.style.Text(textOptions);
+    }-*/;
+
+    public static native TextOptions createTextOptions()
+    /*-{
+    return {};
     }-*/;
 
     public static native TileDebug createTileDebug(TileDebugOptions tileDebugOptions)

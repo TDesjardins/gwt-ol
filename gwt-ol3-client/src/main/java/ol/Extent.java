@@ -1,10 +1,10 @@
 package ol;
 
-import com.google.gwt.core.client.*;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * An array of numbers representing an extent: `[minx, miny, maxx, maxy]`.
- * 
+ *
  * @author sbaumhekel
  */
 public class Extent extends JavaScriptObject {
@@ -15,7 +15,7 @@ public class Extent extends JavaScriptObject {
 
     /**
      * Constructs an instance.
-     * 
+     *
      * @param minX
      *            minimum coordinate X
      * @param minY
@@ -32,8 +32,18 @@ public class Extent extends JavaScriptObject {
     }-*/;
 
     /**
+     * Clones this object.
+     *
+     * @return {ol.Extent} clone
+     */
+    public final native Extent cloneObject()
+    /*-{
+    	return this.slice(0);
+    }-*/;
+
+    /**
      * Gets the minimum X coordinate.
-     * 
+     *
      * @return minimum X coordinate.
      */
     public final native double getLowerLeftX()
@@ -43,7 +53,7 @@ public class Extent extends JavaScriptObject {
 
     /**
      * Gets the minimum Y coordinate.
-     * 
+     *
      * @return minimum Y coordinate.
      */
     public final native double getLowerLeftY()
@@ -53,7 +63,7 @@ public class Extent extends JavaScriptObject {
 
     /**
      * Gets the maximum X coordinate.
-     * 
+     *
      * @return maximum X coordinate.
      */
     public final native double getUpperRightX()
@@ -63,7 +73,7 @@ public class Extent extends JavaScriptObject {
 
     /**
      * Gets the maximum Y coordinate.
-     * 
+     *
      * @return maximum Y coordinate.
      */
     public final native double getUpperRightY()

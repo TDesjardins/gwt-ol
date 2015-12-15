@@ -1,33 +1,28 @@
 package ol.style;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import com.google.gwt.core.client.js.*;
 
 import ol.Options;
 
 /**
  * Options for the map.
- * 
+ *
  * @author Tino Desjardins
  *
  */
 @JsType
-public abstract class CircleOptions implements Options {
-
-    public static native CircleOptions newInstance() /*-{
-						     return {};
-						     }-*/;
+public interface CircleOptions extends Options {
 
     @JsProperty
-    public abstract CircleOptions fill(Fill fill);
+    CircleOptions fill(Fill fill);
 
     @JsProperty
-    public abstract CircleOptions radius(int radius);
+    CircleOptions radius(int radius);
 
     @JsProperty
-    public abstract CircleOptions snapToPixel(boolean snapToPixel);
+    CircleOptions snapToPixel(boolean snapToPixel);
 
     @JsProperty
-    public abstract CircleOptions stroke(Stroke stroke);
+    CircleOptions stroke(Stroke stroke);
 
 }

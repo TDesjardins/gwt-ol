@@ -2,7 +2,7 @@ package ol.proj;
 
 import com.google.gwt.core.client.js.JsType;
 
-import ol.*;
+import ol.Extent;
 
 /**
  * Projection definition class. One of these is created for each projection
@@ -29,75 +29,18 @@ import ol.*;
  *
  */
 @JsType
-public abstract class Projection {
+public interface Projection {
 
-    public static native void addProjection(Projection projection)
-    /*-{
-		$wnd.ol.proj.addProjection(projection);
-    }-*/;
+    String getCode();
 
-    /**
-     * Fetches a Projection object for the code specified.
-     *
-     * @param projectionCode
-     *            Either a code string which is a combination of authority and
-     *            identifier such as "EPSG:4326", or an existing projection
-     *            object, or undefined.
-     * @return {ol.proj.Projection} Projection object, or null if not in list.
-     */
-    public static native Projection get(String projectionCode)
-    /*-{
-		return $wnd.ol.proj.get(projectionCode);
-    }-*/;
+    Extent getExtent();
 
-    /**
-     * Transforms a coordinate from source projection to destination projection.
-     * This returns a new coordinate (and does not modify the original).
-     *
-     * See {@link ol.proj.transformExtent} for extent transformation. See the
-     * transform method of {@link ol.geom.Geometry} and its subclasses for
-     * geometry transforms.
-     *
-     * @param coordinate
-     *            Coordinate.
-     * @param source
-     *            Source projection-like.
-     * @param destination
-     *            Destination projection-like.
-     * @return {ol.Coordinate} Coordinate.
-     */
-    public static native Coordinate transform(Coordinate coordinate, String source, String destination)
-    /*-{
-		return $wnd.ol.proj.transform(coordinate, source, destination);
-    }-*/;
+    double getMetersPerUnit();
 
-    /**
-     * Transforms an extent from source projection to destination projection.
-     * This returns a new extent (and does not modify the original).
-     *
-     * @param extent
-     *            The extent to transform.
-     * @param source
-     *            Source projection-like.
-     * @param destination
-     *            Destination projection-like.
-     * @return {ol.Extent} The transformed extent.
-     */
-    public static native Extent transformExtent(Extent extent, String source, String destination)
-    /*-{
-		return $wnd.ol.proj.transformExtent(extent, source, destination);
-    }-*/;
+    String getUnits();
 
-    public abstract String getCode();
+    boolean isGlobal();
 
-    public abstract Extent getExtent();
-
-    public abstract double getMetersPerUnit();
-
-    public abstract String getUnits();
-
-    public abstract boolean isGlobal();
-
-    public abstract void setExtent(Extent extent);
+    void setExtent(Extent extent);
 
 }

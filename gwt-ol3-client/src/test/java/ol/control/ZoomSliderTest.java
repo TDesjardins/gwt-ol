@@ -1,6 +1,6 @@
 package ol.control;
 
-import ol.BaseTestCase;
+import ol.*;
 import ol.Object;
 
 /**
@@ -12,7 +12,7 @@ public class ZoomSliderTest extends BaseTestCase {
 
     public void testZoomSlider() {
 
-        ZoomSlider zoomSlider = ZoomSlider.newInstance();
+        ZoomSlider zoomSlider = OLFactory.createZoomSlider();
         
         assertNotNull(zoomSlider);
         assertTrue(zoomSlider instanceof Object);

@@ -44,9 +44,9 @@ public class ProjectionTest extends BaseTestCase {
         Projection projection = OLFactory.createProjection(projectionOptions);
         assertNotNull(projection);
         
-        Projection.addProjection(projection);
+        OLUtil.addProjection(projection);
         
-        Projection projectionToCompare = Projection.get(EPSG_CODE_3068);
+        Projection projectionToCompare = OLUtil.getProjection(EPSG_CODE_3068);
         assertNotNull(projectionToCompare);
         
         assertEquals(projection.getCode(), projectionToCompare.getCode());
@@ -55,7 +55,7 @@ public class ProjectionTest extends BaseTestCase {
     
     public void testGet() {
     	
-    	Projection projection = Projection.get(EPSG_CODE_4326);
+    	Projection projection = OLUtil.getProjection(EPSG_CODE_4326);
         
         assertNotNull(projection);
         assertEquals(EPSG_CODE_4326, projection.getCode());
@@ -74,7 +74,7 @@ public class ProjectionTest extends BaseTestCase {
     	double y = 47.5;
     	
     	Coordinate centerCoordinate = OLFactory.createCoordinate(x, y);
-    	Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, EPSG_CODE_4326, EPSG_CODE_3857); 
+    	Coordinate transformedCenterCoordinate = OLUtil.transform(centerCoordinate, EPSG_CODE_4326, EPSG_CODE_3857); 
         
         assertTrue(transformedCenterCoordinate.length() == 2);
         assertNotSame(transformedCenterCoordinate.getX(), x);
@@ -87,9 +87,9 @@ public class ProjectionTest extends BaseTestCase {
      */
     public void testTransformExtent() {
     	
-    	Extent extent = Projection.get(EPSG_CODE_4326).getExtent();
+    	Extent extent = OLUtil.getProjection(EPSG_CODE_4326).getExtent();
     	
-    	Extent transformedExtent = Projection.transformExtent(extent, EPSG_CODE_4326, EPSG_CODE_3857); 
+    	Extent transformedExtent = OLUtil.transformExtent(extent, EPSG_CODE_4326, EPSG_CODE_3857); 
         
         assertTrue(transformedExtent.<JsArrayNumber>cast().length() == 4);
         assertNotSame(extent.getLowerLeftX(), transformedExtent.getLowerLeftX());
