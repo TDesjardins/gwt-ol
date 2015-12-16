@@ -35,7 +35,7 @@ public class XyzExample implements Example {
         xyzOptions.setAttributions(attributions);
     	
     	Xyz xyzSource =  OLFactory.createXyz(xyzOptions);
-    	LayerOptions xyzLayerOptions = OLFactory.createLayerOptions();
+    	LayerOptions xyzLayerOptions = OLFactory.createOptions();
     	xyzLayerOptions.setSource(xyzSource);
     	
     	Tile xyzLayer = OLFactory.createTileLayer(xyzLayerOptions);
@@ -44,19 +44,19 @@ public class XyzExample implements Example {
         View view = OLFactory.createView();
 
         Coordinate centerCoordinate = OLFactory.createCoordinate(-121.1, 47.5);
-        Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857"); 
+        Coordinate transformedCenterCoordinate = OLUtil.transform(centerCoordinate, "EPSG:4326", "EPSG:3857"); 
         
         view.setCenter(transformedCenterCoordinate);
         view.setZoom(7);
         
         // create the map
-        MapOptions mapOptions = OLFactory.createMapOptions();
+        MapOptions mapOptions = OLFactory.createOptions();
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 
         Map map = OLFactory.createMap(mapOptions);
         
-        ol.control.Attribution attributionControl = ol.control.Attribution.newInstance();
+        ol.control.Attribution attributionControl = OLFactory.createAttributionControl();
         attributionControl.setCollapsed(false);
         
         map.addControl(attributionControl);

@@ -30,7 +30,7 @@ public class OsmExample implements Example {
         XyzOptions osmSourceOptions = OLFactory.createOptions();
         
         Osm osmSource = OLFactory.createOsm(osmSourceOptions);
-        LayerOptions osmLayerOptions = OLFactory.createLayerOptions();
+        LayerOptions osmLayerOptions = OLFactory.createOptions();
         osmLayerOptions.setSource(osmSource);
         
         Tile osmLayer = OLFactory.createTileLayer(osmLayerOptions);
@@ -42,7 +42,7 @@ public class OsmExample implements Example {
 
         TileDebug tileDebugSource = OLFactory.createTileDebug(tileDebugOptions);
         
-        LayerOptions tileDebugLayerOptions = OLFactory.createLayerOptions();
+        LayerOptions tileDebugLayerOptions = OLFactory.createOptions();
         
         tileDebugLayerOptions.setSource(tileDebugSource);
         
@@ -53,13 +53,13 @@ public class OsmExample implements Example {
         View view = OLFactory.createView();
 
         Coordinate centerCoordinate = OLFactory.createCoordinate(-0.1275, 51.507222);
-        Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857"); 
+        Coordinate transformedCenterCoordinate = OLUtil.transform(centerCoordinate, "EPSG:4326", "EPSG:3857"); 
         
         view.setCenter(transformedCenterCoordinate);
         view.setZoom(10);
 
         // create the map
-        MapOptions mapOptions = OLFactory.createMapOptions();
+        MapOptions mapOptions = OLFactory.createOptions();
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 
@@ -72,7 +72,7 @@ public class OsmExample implements Example {
         map.addControl(OLFactory.createScaleLine());
         DemoUtils.addDefaultControls(map.getControls());
         
-        Attribution attribution = Attribution.newInstance();
+        Attribution attribution = OLFactory.createAttributionControl();
         attribution.setCollapsed(true);
         
         map.addControl(attribution);

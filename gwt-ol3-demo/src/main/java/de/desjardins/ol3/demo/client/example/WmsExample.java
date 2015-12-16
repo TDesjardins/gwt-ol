@@ -34,7 +34,7 @@ public class WmsExample implements Example {
 
         ImageWMS imageWMSSource = OLFactory.createImageWMSSource(imageWMSOptions);
 
-        LayerOptions layerOptions = OLFactory.createLayerOptions();
+        LayerOptions layerOptions = OLFactory.createOptions();
         layerOptions.setSource(imageWMSSource);
         
         Image wmsLayer = OLFactory.createImageLayer(layerOptions);
@@ -57,7 +57,7 @@ public class WmsExample implements Example {
         view.setZoom(9);
 
         // create the map
-        MapOptions mapOptions = OLFactory.createMapOptions();
+        MapOptions mapOptions = OLFactory.createOptions();
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 

@@ -31,20 +31,20 @@ public class TileExample implements Example {
     public void show() {
         
         // create a MapQuest-layer
-        LayerOptions mapQuestLayerOptions = OLFactory.createLayerOptions();
+        LayerOptions mapQuestLayerOptions = OLFactory.createOptions();
         
-        MapQuestOptions mapQuestOptions = OLFactory.createMapQuestOptions();
+        MapQuestOptions mapQuestOptions = OLFactory.createOptions();
         mapQuestOptions.setLayer("hyb");
         
         MapQuest mapQuestSource = OLFactory.createMapQuestSource(mapQuestOptions);
         mapQuestLayerOptions.setSource(mapQuestSource);
         Tile mapQuestLayer = OLFactory.createTileLayer(mapQuestLayerOptions);
         
-        LayerOptions stamenLayerOptions = OLFactory.createLayerOptions();
+        LayerOptions stamenLayerOptions = OLFactory.createOptions();
         
         
         // create a Stamen-layer
-        StamenOptions stamenOptions = OLFactory.createStamenOptions();
+        StamenOptions stamenOptions = OLFactory.createOptions();
         stamenOptions.setLayer("watercolor");
         
         Stamen stamenSource = OLFactory.createStamenSource(stamenOptions);
@@ -60,7 +60,7 @@ public class TileExample implements Example {
         view.setZoom(10);
 
         // create the map
-        MapOptions mapOptions = OLFactory.createMapOptions();
+        MapOptions mapOptions = OLFactory.createOptions();
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 
@@ -73,7 +73,7 @@ public class TileExample implements Example {
         map.addControl(OLFactory.createScaleLine());
         DemoUtils.addDefaultControls(map.getControls());
         
-        Attribution attribution = Attribution.newInstance();
+        Attribution attribution = OLFactory.createAttributionControl();
         attribution.setCollapsed(true);
         
         map.addControl(attribution);

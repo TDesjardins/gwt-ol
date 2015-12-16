@@ -51,7 +51,7 @@ public class StaticImageExample implements Example {
         
         ImageStatic imageStatic = OLFactory.createImageStaticSource(imageStaticOptions);
         
-        LayerOptions layerOptions = OLFactory.createLayerOptions();
+        LayerOptions layerOptions = OLFactory.createOptions();
         layerOptions.setSource(imageStatic);
         Image image = OLFactory.createImageLayer(layerOptions);
         
@@ -75,7 +75,7 @@ public class StaticImageExample implements Example {
         // add some controls
         DemoUtils.addDefaultControls(map.getControls());
         
-        ol.control.Attribution attributionControl = ol.control.Attribution.newInstance();
+        ol.control.Attribution attributionControl = OLFactory.createAttributionControl();
         attributionControl.setCollapsed(false);
         
         map.addControl(attributionControl);

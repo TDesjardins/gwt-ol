@@ -21,9 +21,9 @@ public class GraticuleExample implements Example {
     public void show() {
         
         // create a MapQuest-layer
-        LayerOptions mapQuestLayerOptions = OLFactory.createLayerOptions();
+        LayerOptions mapQuestLayerOptions = OLFactory.createOptions();
         
-        MapQuestOptions mapQuestOptions = OLFactory.createMapQuestOptions();
+        MapQuestOptions mapQuestOptions = OLFactory.createOptions();
         mapQuestOptions.setLayer("hyb");
         
         MapQuest mapQuestSource = OLFactory.createMapQuestSource(mapQuestOptions);
@@ -39,7 +39,7 @@ public class GraticuleExample implements Example {
         view.setZoom(10);
 
         // create the map
-        MapOptions mapOptions = OLFactory.createMapOptions();
+        MapOptions mapOptions = OLFactory.createOptions();
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 
@@ -52,7 +52,7 @@ public class GraticuleExample implements Example {
         map.addControl(OLFactory.createMousePosition());
         map.addControl(OLFactory.createZoomToExtent());
         
-        Graticule graticule = Graticule.newInstance();
+        Graticule graticule = OLFactory.createGraticule();
         graticule.setMap(map);
         
     }
