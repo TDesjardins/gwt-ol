@@ -64,11 +64,6 @@ public final class OLFactory {
     return new $wnd.ol.control.Attribution();
     }-*/;
 
-    public static native Circle createCircle(CircleOptions circleOptions)
-    /*-{
-    return new $wnd.ol.style.Circle(circleOptions);
-    }-*/;
-
     /**
      * Creates a {@link Circle}.
      *
@@ -83,10 +78,36 @@ public final class OLFactory {
     	return new $wnd.ol.geom.Circle(center, radius);
     }-*/;
 
-    public static native CircleOptions createCircleOptions()
+    /**
+     * Creates a {@link ol.style.Circle} style.
+     *
+     * @param circleOptions
+     *            {@link CircleOptions}
+     * @return {@link ol.style.Circle}
+     */
+    public static native ol.style.Circle createCircleStyle(CircleOptions circleOptions)
     /*-{
-    return {};
+    return new $wnd.ol.style.Circle(circleOptions);
     }-*/;
+
+    /**
+     * Creates a {@link ol.style.Circle} style.
+     *
+     * @param fill
+     *            {@link Fill}
+     * @param stroke
+     *            {@link Stroke}
+     * @param radius
+     *            radius of the circle
+     * @return {@link ol.style.Circle}
+     */
+    public static ol.style.Circle createCircleStyle(Fill fill, Stroke stroke, double radius) {
+	CircleOptions circleOptions = createOptions();
+	circleOptions.fill(fill);
+	circleOptions.stroke(stroke);
+	circleOptions.radius(radius);
+	return createCircleStyle(circleOptions);
+    }
 
     /**
      * Creates a {@link Collection}.
@@ -108,10 +129,10 @@ public final class OLFactory {
      * @param blue
      *            blue (0-255)
      * @param alpha
-     *            alpha (0-1)
+     *            alpha (0-1), 1 is solid
      * @return {@link Color}
      */
-    public static native Color createColor(int red, int green, int blue, float alpha)
+    public static native Color createColor(int red, int green, int blue, double alpha)
     /*-{
     	return [ red, green, blue, alpha ];
     }-*/;
@@ -220,14 +241,28 @@ public final class OLFactory {
 
     /**
      * Creates a {@link Feature}.
-     *
+     * 
      * @param options
      *            {@link FeatureOptions}
+     *
      * @return {@link Feature}
      */
     public static native Feature createFeature(FeatureOptions options)
     /*-{
     	return new $wnd.ol.Feature(options);
+    }-*/;
+
+    /**
+     * Creates a {@link Feature}.
+     * 
+     * @param geom
+     *            {@link Geometry}
+     *
+     * @return {@link Feature}
+     */
+    public static native Feature createFeature(Geometry geom)
+    /*-{
+    	return new $wnd.ol.Feature(geom);
     }-*/;
 
     /**
@@ -241,10 +276,9 @@ public final class OLFactory {
      * @return {@link Feature}
      */
     public static Feature createFeature(Geometry geom, Style style) {
-	FeatureOptions options = createOptions();
-	options.setGeometry(geom);
-	options.setStyle(style);
-	return createFeature(options);
+	Feature f = createFeature(geom);
+	f.setStyle(style);
+	return f;
     }
 
     /**

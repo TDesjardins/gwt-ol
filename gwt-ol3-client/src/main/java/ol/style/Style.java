@@ -17,7 +17,7 @@ import ol.geom.Geometry;
 public interface Style {
     /**
      * Get the fill style.
-     * 
+     *
      * @return {ol.style.Fill} Fill style.
      */
     @Nullable
@@ -25,7 +25,7 @@ public interface Style {
 
     /**
      * Get the geometry to be rendered.
-     * 
+     *
      * @return {string|ol.geom.Geometry|ol.style.GeometryFunction} Feature
      *         property or geometry or function that returns the geometry that
      *         will be rendered with this style.
@@ -34,8 +34,15 @@ public interface Style {
     Geometry getGeometry();
 
     /**
-     * Get the stroke style.
+     * Get the image style.
      * 
+     * @return {ol.style.Image} Image style.
+     */
+    Image getImage();
+
+    /**
+     * Get the stroke style.
+     *
      * @return {ol.style.Stroke} Stroke style.
      */
     @Nullable
@@ -43,7 +50,7 @@ public interface Style {
 
     /**
      * Get the text style.
-     * 
+     *
      * @return {ol.style.Text} Text style.
      */
     @Nullable
@@ -51,7 +58,7 @@ public interface Style {
 
     /**
      * Get the z-index for the style.
-     * 
+     *
      * @return {number|undefined} ZIndex.
      */
     int getZIndex();

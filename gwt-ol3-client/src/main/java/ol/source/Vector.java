@@ -1,5 +1,7 @@
 package ol.source;
 
+import com.google.gwt.core.client.js.JsType;
+
 import ol.*;
 
 /**
@@ -9,6 +11,7 @@ import ol.*;
  * 
  * @author sbaumhekel
  */
+@JsType
 public interface Vector extends Source {
     /**
      * Add a single feature to the source. If you want to add a batch of
