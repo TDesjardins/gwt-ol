@@ -241,7 +241,7 @@ public final class OLFactory {
 
     /**
      * Creates a {@link Feature}.
-     * 
+     *
      * @param options
      *            {@link FeatureOptions}
      *
@@ -254,7 +254,7 @@ public final class OLFactory {
 
     /**
      * Creates a {@link Feature}.
-     * 
+     *
      * @param geom
      *            {@link Geometry}
      *
@@ -739,6 +739,17 @@ public final class OLFactory {
      */
     public static Style createStyle(Fill fill, Stroke stroke) {
 	return createStyle(OLFactory.<StyleOptions> createOptions().fill(fill).stroke(stroke));
+    }
+
+    /**
+     * Creates a new {@link Style} style.
+     * 
+     * @param image
+     *            {@link ol.style.Image}
+     * @return {@link Style}
+     */
+    public static Style createStyle(ol.style.Image image) {
+	return createStyle(OLFactory.<StyleOptions> createOptions().image(image));
     }
 
     /**
