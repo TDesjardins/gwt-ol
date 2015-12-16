@@ -4,16 +4,11 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
    <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>de.desjardins.ol3</groupId>
-    <artifactId>gwt-ol3</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
  
   <groupId>ol</groupId>
   <artifactId>gwt-ol3-client</artifactId>
   <name>${project.artifactId}</name>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
 
   <repositories>
     <repository>
@@ -21,20 +16,12 @@
       <name>GWT Sonatype Snapshots</name>
       <url>https://oss.sonatype.org/content/repositories/google-releases/</url>
     </repository>
-    <repository>
-      <id>org.codehaus.mojo</id>
-      <name>Nexus Snapshots</name>
-      <url>https://nexus.codehaus.org/content/repositories/snapshots/</url>
-    </repository>
   </repositories>
 
   <properties>
     <!-- Convenience property to set the GWT version -->
     <gwt.version>2.7.0</gwt.version>
-    <!-- GWT needs at least java 1.5 -->
-    <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <gwt.maven.plugin.version>2.7.0</gwt.maven.plugin.version>
   </properties>
   
   <dependencies>
@@ -75,17 +62,7 @@
   <build>
     <resources>
       <resource>
-        <filtering>false</filtering>
-        <directory>${basedir}/src/main/java</directory>
-        <includes>
-          <include>**/*.java</include>
-          <include>**/*.xml</include>
-          <include>**/*.js</include>
-        </includes>
-      </resource>
-      <resource>
-        <filtering>false</filtering>
-        <directory>${basedir}/src/test/java</directory>
+        <directory>src/main/java</directory>
         <includes>
           <include>**/*.java</include>
           <include>**/*.xml</include>
@@ -118,18 +95,14 @@
 		<plugin>
 			<groupId>org.codehaus.mojo</groupId>
 			<artifactId>gwt-maven-plugin</artifactId>
-			<version>${gwt.maven.plugin.version}</version>
+			<version>${gwt.version}</version>
 			<configuration>
 				<inplace>true</inplace>
-				<gwtVersion>${gwtVersion}</gwtVersion>
-				<sourceLevel>1.7</sourceLevel>
 				<extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
 				<includes>**/*TestSuite.java</includes>
-	            <mode>htmlunit</mode>
 	            <jsInteropMode>JS</jsInteropMode>
 	            <productionMode>true</productionMode>
 	            <strict>true</strict>
-	            <webMode>true</webMode>
 			</configuration>
 			<executions>
 				<execution>
