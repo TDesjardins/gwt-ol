@@ -4,12 +4,20 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.js.JsType;
 
 /**
- *
+ * Abstract base class; normally only used for creating subclasses and not
+ * instantiated in apps. An event target providing convenient methods for
+ * listener registration and unregistration. A generic `change` event is always
+ * available through {@link ol.Observable#changed}.
+ * 
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.Observable")
 public interface Observable {
+    /**
+     * Generic 'change' event.
+     */
+    static final String CHANGE = "source";
 
     /**
      * Increases the revision counter and dispatches a 'change' event.

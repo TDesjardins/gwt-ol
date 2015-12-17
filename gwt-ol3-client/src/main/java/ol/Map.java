@@ -41,7 +41,7 @@ import ol.layer.Base;
  *
  * @author Tino Desjardins
  */
-@JsType
+@JsType(prototype = "ol.Map")
 public interface Map extends Object {
 
     /**

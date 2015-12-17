@@ -10,7 +10,7 @@ import ol.Object;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.layer.Base")
 public interface Base extends Object {
 
     float getBrightness();

@@ -11,7 +11,7 @@ import ol.*;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.tilegrid.TileGrid")
 public interface TileGrid {
 
     /**

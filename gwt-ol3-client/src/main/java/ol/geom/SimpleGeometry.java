@@ -11,7 +11,7 @@ import ol.Coordinate;
  *
  * @author sbaumhekel
  */
-@JsType
+@JsType(prototype = "ol.geom.SimpleGeometry")
 public interface SimpleGeometry extends Geometry {
     /**
      * Return the first coordinate of the geometry.

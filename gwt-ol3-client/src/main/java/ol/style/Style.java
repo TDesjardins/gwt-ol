@@ -13,7 +13,7 @@ import ol.geom.Geometry;
  *
  * @author Tino Desjardins
  */
-@JsType
+@JsType(prototype = "ol.style.Style")
 public interface Style {
     /**
      * Get the fill style.

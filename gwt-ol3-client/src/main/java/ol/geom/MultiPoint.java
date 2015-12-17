@@ -7,7 +7,7 @@ import com.google.gwt.core.client.js.JsType;
  *
  * @author sbaumhekel
  */
-@JsType
+@JsType(prototype = "ol.geom.MultiPoint")
 public interface MultiPoint extends SimpleGeometryMultiCoordinates {
     /**
      * Append the passed point to this multipoint.

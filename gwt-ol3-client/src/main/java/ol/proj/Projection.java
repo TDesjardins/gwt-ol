@@ -28,7 +28,7 @@ import ol.Extent;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.proj.Projection")
 public interface Projection {
 
     String getCode();

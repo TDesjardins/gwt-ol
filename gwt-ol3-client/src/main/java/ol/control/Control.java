@@ -11,7 +11,7 @@ import ol.Object;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.control.Control")
 public interface Control extends Object {
 
     /**

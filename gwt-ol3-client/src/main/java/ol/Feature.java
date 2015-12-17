@@ -37,7 +37,7 @@ import ol.style.Style;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.Feature")
 public interface Feature extends Object {
 
     /**

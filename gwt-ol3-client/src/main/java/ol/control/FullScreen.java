@@ -7,7 +7,7 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.control.FullScreen")
 public interface FullScreen extends Control {
 
 }

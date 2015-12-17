@@ -9,7 +9,7 @@ import ol.Coordinate;
  *
  * @author sbaumhekel
  */
-@JsType
+@JsType(prototype = "ol.geom.Circle")
 public interface Circle extends SimpleGeometryMultiCoordinates {
     /**
      * Return the center of the circle as {@link ol.Coordinate coordinate}.

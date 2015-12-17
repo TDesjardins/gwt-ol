@@ -61,7 +61,7 @@ public final class OLFactory {
      */
     public static native ol.control.Attribution createAttributionControl()
     /*-{
-    return new $wnd.ol.control.Attribution();
+    	return new $wnd.ol.control.Attribution();
     }-*/;
 
     /**
@@ -87,7 +87,7 @@ public final class OLFactory {
      */
     public static native ol.style.Circle createCircleStyle(CircleOptions circleOptions)
     /*-{
-    return new $wnd.ol.style.Circle(circleOptions);
+    	return new $wnd.ol.style.Circle(circleOptions);
     }-*/;
 
     /**
@@ -216,6 +216,19 @@ public final class OLFactory {
     }-*/;
 
     /**
+     * Creates a {@link Draw}.
+     *
+     * @param options
+     *            {@link DrawOptions}
+     *
+     * @return {@link Draw}
+     */
+    public static native Draw createDraw(DrawOptions options)
+    /*-{
+    	return new $wnd.ol.interaction.Draw(options);
+    }-*/;
+
+    /**
      * Creates an {@link Extent}.
      *
      * @param minX
@@ -318,7 +331,7 @@ public final class OLFactory {
      */
     public static native Graticule createGraticule()
     /*-{
-    return new $wnd.ol.Graticule();
+    	return new $wnd.ol.Graticule();
     }-*/;
 
     /** Layers **/
@@ -436,7 +449,7 @@ public final class OLFactory {
 
     public static native Modify createModify()
     /*-{
-    return new $wnd.ol.interaction.Modify();
+    	return new $wnd.ol.interaction.Modify();
     }-*/;
 
     public static native MousePosition createMousePosition()
@@ -743,7 +756,7 @@ public final class OLFactory {
 
     /**
      * Creates a new {@link Style} style.
-     * 
+     *
      * @param image
      *            {@link ol.style.Image}
      * @return {@link Style}
@@ -766,12 +779,12 @@ public final class OLFactory {
 
     public static native Text createText(TextOptions textOptions)
     /*-{
-    return new $wnd.ol.style.Text(textOptions);
+    	return new $wnd.ol.style.Text(textOptions);
     }-*/;
 
     public static native TextOptions createTextOptions()
     /*-{
-    return {};
+    	return {};
     }-*/;
 
     public static native TileDebug createTileDebug(TileDebugOptions tileDebugOptions)
@@ -874,7 +887,7 @@ public final class OLFactory {
      */
     public static native Zoom createZoom()
     /*-{
-    return new $wnd.ol.control.Zoom();
+    	return new $wnd.ol.control.Zoom();
     }-*/;
 
     public static native ZoomSlider createZoomSlider()

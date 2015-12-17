@@ -11,7 +11,7 @@ import com.google.gwt.core.client.js.JsType;
  *            type of the elements
  *
  */
-@JsType
+@JsType(prototype = "ol.Collection")
 public interface Collection<T> extends Object {
 
     public void clear();

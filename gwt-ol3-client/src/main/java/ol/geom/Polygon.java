@@ -7,16 +7,23 @@ import com.google.gwt.core.client.js.JsType;
  *
  * @author sbaumhekel
  */
-@JsType
+@JsType(prototype="ol.geom.Polygon")
 public interface Polygon extends SimpleGeometryMultiCoordinates {
 
     /**
      * Append the passed linear ring to this polygon.
-     * 
+     *
      * @param linearRing
      *            Linear ring.
      */
     void appendLinearRing(LinearRing linearRing);
+
+    /**
+     * Return the area of the polygon on projected plane.
+     * 
+     * @return {number} Area (on projected plane).
+     */
+    double getArea();
 
     /**
      * Return the Nth linear ring of the polygon geometry. Return `null` if the
@@ -39,7 +46,7 @@ public interface Polygon extends SimpleGeometryMultiCoordinates {
 
     /**
      * Return the linear rings of the polygon.
-     * 
+     *
      * @return {Array.<ol.geom.LinearRing>} Linear rings.
      */
     LinearRing[] getLinearRings();

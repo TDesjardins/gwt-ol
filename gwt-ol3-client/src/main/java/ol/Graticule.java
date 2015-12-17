@@ -7,7 +7,7 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.Graticule")
 public interface Graticule {
 
     void setMap(Map map);

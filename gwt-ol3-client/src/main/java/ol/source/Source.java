@@ -14,7 +14,7 @@ import ol.proj.Projection;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.source.Source")
 public interface Source extends ol.Object {
     /**
      * Get the attributions of the source.

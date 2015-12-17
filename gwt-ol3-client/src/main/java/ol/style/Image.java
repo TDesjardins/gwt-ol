@@ -8,7 +8,7 @@ import com.google.gwt.core.client.js.JsType;
  * {@link ol.style.RegularShape}.
  * @author sbaumhekel
  */
-@JsType
+@JsType(prototype = "ol.style.Image")
 public interface Image {
 
 }

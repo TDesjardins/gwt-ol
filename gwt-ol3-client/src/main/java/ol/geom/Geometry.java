@@ -10,8 +10,17 @@ import ol.*;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.geom.Geometry")
 public interface Geometry extends Observable {
+    static final String CIRCLE = "Circle";
+    static final String GEOMETRY_COLLECTION = "GeometryCollection";
+    static final String LINE_STRING = "LineString";
+    static final String LINEAR_RING = "LinearRing";
+    static final String MULTI_LINE_STRING = "MultiLineString";
+    static final String MULTI_POINT = "MultiPoint";
+    static final String MULTI_POLYGON = "MultiPolygon";
+    static final String POINT = "Point";
+    static final String POLYGON = "Polygon";
 
     /**
      * Make a complete copy of the geometry.
@@ -40,7 +49,7 @@ public interface Geometry extends Observable {
 
     /**
      * Get the type of this geometry.
-     * 
+     *
      * @return Geometry type.
      */
     String getType();

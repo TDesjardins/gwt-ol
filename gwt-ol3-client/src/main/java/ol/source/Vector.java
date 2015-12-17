@@ -11,7 +11,7 @@ import ol.*;
  * 
  * @author sbaumhekel
  */
-@JsType
+@JsType(prototype = "ol.source.Vector")
 public interface Vector extends Source {
     /**
      * Add a single feature to the source. If you want to add a batch of

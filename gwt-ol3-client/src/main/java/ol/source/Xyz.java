@@ -18,6 +18,6 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.source.Xyz")
 public interface Xyz extends TileImage {
 }

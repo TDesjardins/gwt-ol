@@ -12,7 +12,7 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.control.ScaleLine")
 public interface ScaleLine extends Control {
 
 }

@@ -7,7 +7,7 @@ import com.google.gwt.core.client.js.JsType;
  *
  * @author sbaumhekel
  */
-@JsType
+@JsType(prototype = "ol.geom.MultiPolygon")
 public interface MultiPolygon extends SimpleGeometryMultiCoordinates {
     /**
      * Append the passed polygon to this multipolygon.

@@ -7,7 +7,7 @@ import com.google.gwt.core.client.js.JsType;
  *
  * @author sbaumhekel
  */
-@JsType
+@JsType(prototype = "ol.geom.MultiLineString")
 public interface MultiLineString extends SimpleGeometryMultiCoordinates {
     /**
      * Append the passed linestring to the multilinestring.

@@ -7,7 +7,7 @@ import com.google.gwt.core.client.js.JsType;
  *
  * @author sbaumhekel
  */
-@JsType
+@JsType(prototype = "ol.source.UrlTile")
 public interface UrlTile extends Tile {
     /**
      * Return the URLs used for this source. When a tileUrlFunction is used

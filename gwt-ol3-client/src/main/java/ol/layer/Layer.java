@@ -21,7 +21,7 @@ import ol.source.Source;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.layer.Layer")
 public interface Layer extends Base {
 
     /**

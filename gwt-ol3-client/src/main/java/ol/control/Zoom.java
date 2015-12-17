@@ -9,7 +9,7 @@ import com.google.gwt.core.client.js.JsType;
  * 
  * @author sbaumhekel
  */
-@JsType
+@JsType(prototype = "ol.control.Zoom")
 public interface Zoom extends Control {
 
 }

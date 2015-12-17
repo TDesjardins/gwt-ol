@@ -46,9 +46,9 @@ public final class OLUtil {
 	    final ClickListener listener) {
 	String type;
 	if (singleClicksOnly) {
-	    type = "singleclick";
+	    type = MapBrowserEvent.SINGLECLICK;
 	} else {
-	    type = "click";
+	    type = MapBrowserEvent.CLICK;
 	}
 	return observe(map, type, new EventListener<MapBrowserEvent>() {
 
@@ -69,7 +69,7 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static HandlerRegistration addDoubleClickListener(Map map, final DoubleClickListener listener) {
-	return observe(map, "dblclick", new EventListener<MapBrowserEvent>() {
+	return observe(map, MapBrowserEvent.DBLCLICK, new EventListener<MapBrowserEvent>() {
 
 	    @Override
 	    public void onEvent(MapBrowserEvent event) {
@@ -88,7 +88,7 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static HandlerRegistration addMapMoveListener(Map map, final MapMoveListener listener) {
-	return observe(map, "moveend", new EventListener<MapEvent>() {
+	return observe(map, MapEvent.MOVEEND, new EventListener<MapEvent>() {
 
 	    @Override
 	    public void onEvent(MapEvent event) {
@@ -455,8 +455,6 @@ public final class OLUtil {
      *            maximum zoomlevel (0-28)
      */
     public static void limitZoomLevels(XyzOptions options, int minZoomLevel, int maxZoomLevel) {
-	// TODO: set minResolution/maxResolution on ol.layer.Tile to hide/show
-	// layer outside of min/max zoomlevels
 	options.setTileGrid(OLFactory.createTileGridXYZ(
 		OLFactory.<TileGridOptions> createOptions().setMinZoom(minZoomLevel).setMaxZoom(maxZoomLevel)));
     }

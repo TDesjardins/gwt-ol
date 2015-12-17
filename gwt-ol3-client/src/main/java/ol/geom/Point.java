@@ -12,7 +12,7 @@ import ol.Coordinate;
  * @author sbaumhekel
  *
  */
-@JsType
+@JsType(prototype = "ol.geom.Point")
 public interface Point extends SimpleGeometry {
     /**
      * Return the coordinates of this geometry.

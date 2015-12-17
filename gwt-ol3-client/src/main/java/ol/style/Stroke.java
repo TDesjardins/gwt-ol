@@ -8,7 +8,7 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.style.Stroke")
 public interface Stroke {
 
 }

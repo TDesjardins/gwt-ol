@@ -12,7 +12,7 @@ import ol.tilegrid.TileGrid;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.source.Tile")
 public interface Tile extends Source {
 
     /**

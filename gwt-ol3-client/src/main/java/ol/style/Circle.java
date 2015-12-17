@@ -8,6 +8,6 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.style.Circle")
 public interface Circle extends Image {
 }

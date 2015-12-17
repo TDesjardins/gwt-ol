@@ -12,7 +12,7 @@ import ol.proj.Projection;
  * 
  * @author Tino Desjardins
  */
-@JsType
+@JsType(prototype = "ol.control.MousePosition")
 public interface MousePosition extends Control {
 
     /**
