@@ -1,6 +1,7 @@
 package ol.control;
 
-import com.google.gwt.core.client.js.*;
+import com.google.gwt.core.client.js.JsProperty;
+import com.google.gwt.core.client.js.JsType;
 import com.google.gwt.dom.client.Element;
 
 import ol.Map;
