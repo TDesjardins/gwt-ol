@@ -1,10 +1,15 @@
 package de.desjardins.ol3.demo.client.example;
 
-import ol.proj.Projection;
 import ol.source.Xyz;
 import ol.source.XyzOptions;
-import ol.*;
-import ol.control.MousePosition;
+import ol.Attribution;
+import ol.AttributionOptions;
+import ol.Coordinate;
+import ol.Map;
+import ol.MapOptions;
+import ol.OLFactory;
+import ol.OLUtil;
+import ol.View;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
 

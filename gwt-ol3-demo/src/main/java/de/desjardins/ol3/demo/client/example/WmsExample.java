@@ -1,7 +1,13 @@
 package de.desjardins.ol3.demo.client.example;
 
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
-import ol.*;
+
+import ol.Coordinate;
+import ol.Map;
+import ol.MapOptions;
+import ol.OLFactory;
+import ol.View;
+import ol.ViewOptions;
 import ol.layer.Image;
 import ol.layer.LayerOptions;
 import ol.proj.Projection;
