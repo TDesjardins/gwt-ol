@@ -2,9 +2,11 @@ package ol.proj;
 
 import com.google.gwt.core.client.JsArrayNumber;
 
-import ol.*;
-import ol.proj.Projection;
-import ol.proj.ProjectionOptions;
+import ol.BaseTestCase;
+import ol.Coordinate;
+import ol.Extent;
+import ol.OLFactory;
+import ol.OLUtil;
 
 /**
  * 
