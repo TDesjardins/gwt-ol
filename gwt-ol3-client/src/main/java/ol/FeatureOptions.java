@@ -1,6 +1,7 @@
 package ol;
 
-import com.google.gwt.core.client.js.*;
+import com.google.gwt.core.client.js.JsProperty;
+import com.google.gwt.core.client.js.JsType;
 
 import ol.geom.Geometry;
 
