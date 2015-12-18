@@ -1,6 +1,11 @@
 package de.desjardins.ol3.demo.client.example;
 
-import ol.*;
+import ol.Coordinate;
+import ol.Graticule;
+import ol.Map;
+import ol.MapOptions;
+import ol.OLFactory;
+import ol.View;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
 import ol.source.MapQuest;
