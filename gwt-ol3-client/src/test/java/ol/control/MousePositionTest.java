@@ -1,6 +1,7 @@
 package ol.control;
 
-import ol.*;
+import ol.BaseTestCase;
+import ol.OLFactory;
 import ol.Object;
 
 /**
