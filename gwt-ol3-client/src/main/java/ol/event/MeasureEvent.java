@@ -71,7 +71,7 @@ public class MeasureEvent {
      * @return measure on success, else {@link Double#NaN}
      */
     public double getMeasure(String proj) {
-	Geometry geom2 = geom.transform(MAP_PROJECTION, proj);
+	Geometry geom2 = geom.clone().transform(MAP_PROJECTION, proj);
 	return getMeasure(geom2);
     }
 

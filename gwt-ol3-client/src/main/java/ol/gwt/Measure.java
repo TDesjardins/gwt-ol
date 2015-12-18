@@ -22,6 +22,7 @@ public class Measure {
     private final Map map;
     private Feature sketch;
     private Style style;
+    private boolean eventListenerNeedsCleanup;
 
     /**
      * Constructs an instance.
@@ -38,12 +39,10 @@ public class Measure {
      */
     private void fireMeasureEvent() {
 	// check if measuring is active and properly set up
-	if (isActive && (sketch != null)) {
-	    if (listener != null) {
-		Geometry geom = sketch.getGeometry();
-		if (geom != null) {
-		    listener.onMeasure(new MeasureEvent(geom));
-		}
+	if (isActive && (sketch != null) && (listener != null)) {
+	    Geometry geom = sketch.getGeometry();
+	    if (geom != null) {
+		listener.onMeasure(new MeasureEvent(geom));
 	    }
 	}
     }
@@ -68,6 +67,7 @@ public class Measure {
 
     /**
      * Set the {@link Style} to be used for drawing the measured geometry.
+     * Remember to set it before calling one of the start methods.
      *
      * @param style
      *            {@link Style}
@@ -141,6 +141,7 @@ public class Measure {
 		    }
 		}
 	    });
+	    eventListenerNeedsCleanup = true;
 	}
 	// set flag
 	isActive = true;
@@ -176,25 +177,25 @@ public class Measure {
      * Stop measuring.
      */
     public void stop() {
-	if (isActive) {
-	    // reset flag
-	    isActive = false;
+	// reset flag
+	isActive = false;
+	// clean up
+	listener = null;
+	sketch = null;
+	// clean up interaction
+	if (draw != null) {
+	    map.removeInteraction(draw);
+	    draw = null;
+	}
+	// clean up event listener?
+	if (eventListenerNeedsCleanup) {
 	    // try to remove chained event listener
 	    Element elem = map.getViewport();
 	    if (elem != null) {
 		com.google.gwt.user.client.Event.setEventListener(elem, chainedListener);
 	    }
 	    chainedListener = null;
+	    eventListenerNeedsCleanup = false;
 	}
-	// clean up
-	if (listener != null) {
-	    listener = null;
-	}
-	if (draw != null) {
-	    draw.finishDrawing();
-	    map.removeInteraction(draw);
-	    draw = null;
-	}
-	sketch = null;
     }
 }
