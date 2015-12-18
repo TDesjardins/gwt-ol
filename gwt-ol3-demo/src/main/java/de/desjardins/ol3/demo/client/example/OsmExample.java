@@ -1,11 +1,15 @@
 package de.desjardins.ol3.demo.client.example;
 
-import ol.*;
+import ol.Coordinate;
+import ol.Map;
+import ol.MapOptions;
+import ol.OLFactory;
+import ol.OLUtil;
+import ol.View;
 import ol.control.Attribution;
 
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.layer.Tile;
-import ol.proj.Projection;
 import ol.source.Osm;
 import ol.source.TileDebug;
 import ol.source.TileDebugOptions;
@@ -80,8 +84,7 @@ public class OsmExample implements Example {
         // add some interactions
         map.addInteraction(OLFactory.createKeyboardPan());
         map.addInteraction(OLFactory.createKeyboardZoom());
-        
-        
+     
     }
     
 }
