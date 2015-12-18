@@ -24,8 +24,8 @@ public class OLHandlerRegistration implements HandlerRegistration {
      *            key
      */
     public OLHandlerRegistration(Observable o, JavaScriptObject key) {
-	this.o = o;
-	this.key = key;
+        this.o = o;
+        this.key = key;
     }
 
     /*
@@ -36,12 +36,12 @@ public class OLHandlerRegistration implements HandlerRegistration {
      */
     @Override
     public void removeHandler() {
-	// unregister handler and remove all references
-	if (o != null) {
-	    o.unByKey(key);
-	    o = null;
-	    key = null;
-	}
+        // unregister handler and remove all references
+        if (o != null) {
+            o.unByKey(key);
+            o = null;
+            key = null;
+        }
     }
 
 }

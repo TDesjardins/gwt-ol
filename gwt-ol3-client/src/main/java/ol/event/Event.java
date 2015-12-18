@@ -3,7 +3,8 @@ package ol.event;
 import javax.annotation.Nullable;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.*;
+import com.google.gwt.core.client.js.JsProperty;
+import com.google.gwt.core.client.js.JsType;
 
 /**
  * A base class for event objects, so that they can support preventDefault and

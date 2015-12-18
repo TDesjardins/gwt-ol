@@ -1,6 +1,6 @@
 package ol.event;
 
-import ol.geom.*;
+import ol.geom.Geometry;
 
 /**
  * An event for measuring.
@@ -22,8 +22,8 @@ public class MeasureEvent {
      *            measure {@link Geometry}
      */
     public MeasureEvent(Geometry geom) {
-	super();
-	this.geom = geom;
+        super();
+        this.geom = geom;
     }
 
     /**
@@ -34,14 +34,14 @@ public class MeasureEvent {
      * @return measure on success, else {@link Double#NaN}
      */
     private static double getMeasure(ol.geom.Geometry geom) {
-	if (geom instanceof ol.geom.LineString) {
-	    ol.geom.LineString ls = (ol.geom.LineString) geom;
-	    return ls.getLength();
-	} else if (geom instanceof ol.geom.Polygon) {
-	    ol.geom.Polygon poly = (ol.geom.Polygon) geom;
-	    return poly.getArea();
-	}
-	return Double.NaN;
+        if (geom instanceof ol.geom.LineString) {
+            ol.geom.LineString ls = (ol.geom.LineString) geom;
+            return ls.getLength();
+        } else if (geom instanceof ol.geom.Polygon) {
+            ol.geom.Polygon poly = (ol.geom.Polygon) geom;
+            return poly.getArea();
+        }
+        return Double.NaN;
     }
 
     /**
@@ -51,7 +51,7 @@ public class MeasureEvent {
      * @return {@link Geometry}
      */
     public Geometry getGeometry() {
-	return this.geom;
+        return this.geom;
     }
 
     /**
@@ -60,7 +60,7 @@ public class MeasureEvent {
      * @return measure on success, else {@link Double#NaN}
      */
     public double getMeasure() {
-	return getMeasure(geom);
+        return getMeasure(geom);
     }
 
     /**
@@ -71,8 +71,8 @@ public class MeasureEvent {
      * @return measure on success, else {@link Double#NaN}
      */
     public double getMeasure(String proj) {
-	Geometry geom2 = geom.clone().transform(MAP_PROJECTION, proj);
-	return getMeasure(geom2);
+        Geometry geom = this.geom.clone().transform(MAP_PROJECTION, proj);
+        return getMeasure(geom);
     }
 
 }
