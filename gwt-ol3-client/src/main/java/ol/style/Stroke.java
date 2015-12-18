@@ -8,12 +8,7 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType
-public abstract class Stroke {
-    
-    public static native Stroke newInstance(StrokeOptions strokeOptions) /*-{
-        return new $wnd.ol.style.Stroke(strokeOptions);
-    }-*/;
-    
-}
+@JsType(prototype = "ol.style.Stroke")
+public interface Stroke {
 
+}

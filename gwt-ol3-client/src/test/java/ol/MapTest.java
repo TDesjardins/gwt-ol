@@ -23,18 +23,18 @@ public class MapTest extends BaseTestCase {
         projectionOptions.code("EPSG:21781")
             .units("m");
         
-        Projection projection = Projection.newInstance(projectionOptions);
+        Projection projection = OLFactory.createProjection(projectionOptions);
         
         ViewOptions viewOptions = OLFactory.createOptions();
         viewOptions.setProjection(projection);
         View view = OLFactory.createView(viewOptions);
 
-        double[] centerCoordinate = OLFactory.createCoordinate(660000, 190000);
+        Coordinate centerCoordinate = OLFactory.createCoordinate(660000, 190000);
         
         view.setCenter(centerCoordinate);
         view.setZoom(9);
         
-        final MapOptions mapOptions = OLFactory.createMapOptions();
+        final MapOptions mapOptions = OLFactory.createOptions();
         mapOptions.setTarget("map");
         mapOptions.setView(view);
         

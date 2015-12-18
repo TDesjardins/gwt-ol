@@ -3,12 +3,7 @@ package de.desjardins.ol3.demo.client.example;
 import ol.proj.Projection;
 import ol.source.Xyz;
 import ol.source.XyzOptions;
-import ol.Attribution;
-import ol.AttributionOptions;
-import ol.Map;
-import ol.MapOptions;
-import ol.OLFactory;
-import ol.View;
+import ol.*;
 import ol.control.MousePosition;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
@@ -30,17 +25,17 @@ public class XyzExample implements Example {
     	XyzOptions xyzOptions = OLFactory.createOptions();
     	xyzOptions.setUrl("http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}");
     	
-    	AttributionOptions attributionOptions = AttributionOptions.newInstance()
-                .html("Tiles &copy; <a href=\"http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer\">ArcGIS</a>");
+    	AttributionOptions attributionOptions = OLFactory.<AttributionOptions>createOptions()
+                .setHtml("Tiles &copy; <a href=\"http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer\">ArcGIS</a>");
         
-        Attribution attribution = Attribution.newInstance(attributionOptions);
+        Attribution attribution = OLFactory.createAttribution(attributionOptions);
         Attribution[] attributions = new Attribution[1];
         attributions[0] = attribution;
         
         xyzOptions.setAttributions(attributions);
     	
     	Xyz xyzSource =  OLFactory.createXyz(xyzOptions);
-    	LayerOptions xyzLayerOptions = OLFactory.createLayerOptions();
+    	LayerOptions xyzLayerOptions = OLFactory.createOptions();
     	xyzLayerOptions.setSource(xyzSource);
     	
     	Tile xyzLayer = OLFactory.createTileLayer(xyzLayerOptions);
@@ -48,24 +43,24 @@ public class XyzExample implements Example {
     	// create a view
         View view = OLFactory.createView();
 
-        double[] centerCoordinate = OLFactory.createCoordinate(-121.1, 47.5);
-        double[] transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857"); 
+        Coordinate centerCoordinate = OLFactory.createCoordinate(-121.1, 47.5);
+        Coordinate transformedCenterCoordinate = OLUtil.transform(centerCoordinate, "EPSG:4326", "EPSG:3857"); 
         
         view.setCenter(transformedCenterCoordinate);
         view.setZoom(7);
         
         // create the map
-        MapOptions mapOptions = OLFactory.createMapOptions();
+        MapOptions mapOptions = OLFactory.createOptions();
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 
-        Map map = Map.newInstance(mapOptions);
+        Map map = OLFactory.createMap(mapOptions);
         
-        ol.control.Attribution attributionControl = ol.control.Attribution.newInstance();
+        ol.control.Attribution attributionControl = OLFactory.createAttributionControl();
         attributionControl.setCollapsed(false);
         
         map.addControl(attributionControl);
-        map.addControl(MousePosition.newInstance());
+        map.addControl(OLFactory.createMousePosition());
         map.addLayer(xyzLayer);
 
     }

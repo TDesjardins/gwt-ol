@@ -6,7 +6,7 @@
   <groupId>de.desjardins.ol3</groupId>
   <artifactId>gwt-ol3</artifactId>
   <packaging>pom</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.1</version>
   <name>${project.artifactId}</name>
 
   <repositories>
@@ -15,17 +15,10 @@
       <name>GWT Sonatype Snapshots</name>
       <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
     </repository-->
-    
     <repository>
       <id>com.google.gwt</id>
       <name>GWT Sonatype Releases</name>
       <url>https://oss.sonatype.org/content/repositories/google-releases/</url>
-    </repository>
-    
-    <repository>
-      <id>org.codehaus.mojo</id>
-      <name>Nexus Snapshots</name>
-      <url>https://nexus.codehaus.org/content/repositories/snapshots/</url>
     </repository>
   </repositories>
   <pluginRepositories>
@@ -33,11 +26,6 @@
       <id>com.google.gwt</id>
       <name>GWT Sonatype Releases</name>
       <url>https://oss.sonatype.org/content/repositories/google-releases/</url>
-    </pluginRepository>
-    <pluginRepository>
-      <id>org.codehaus.mojo</id>
-      <name>Nexus Snapshots</name>
-      <url>https://nexus.codehaus.org/content/repositories/snapshots/</url>
     </pluginRepository>
   </pluginRepositories>
 
@@ -80,7 +68,7 @@
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
-        <version>4.11</version>
+        <version>4.12</version>
         <scope>test</scope>
       </dependency>
     </dependencies>

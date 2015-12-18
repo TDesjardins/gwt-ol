@@ -1,6 +1,6 @@
 package ol.control;
 
-import ol.BaseTestCase;
+import ol.*;
 import ol.Object;
 
 /**
@@ -12,7 +12,7 @@ public class ScaleLineTest extends BaseTestCase {
 
     public void testScaleLine() {
 
-        ScaleLine scaleLine = ScaleLine.newInstance();
+        ScaleLine scaleLine = OLFactory.createScaleLine();
         
         assertNotNull(scaleLine);
         assertTrue(scaleLine instanceof Object);

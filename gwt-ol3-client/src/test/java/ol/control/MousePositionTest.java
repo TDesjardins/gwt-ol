@@ -1,6 +1,6 @@
 package ol.control;
 
-import ol.BaseTestCase;
+import ol.*;
 import ol.Object;
 
 /**
@@ -12,7 +12,7 @@ public class MousePositionTest extends BaseTestCase {
 
     public void testMousePosition() {
 
-        MousePosition mousePosition = MousePosition.newInstance();
+        MousePosition mousePosition = OLFactory.createMousePosition();
         
         assertNotNull(mousePosition);
         assertTrue(mousePosition instanceof Object);

@@ -1,7 +1,6 @@
 package ol.interaction;
 
-import ol.BaseTestCase;
-import ol.Observable;
+import ol.*;
 
 /**
  * 
@@ -12,7 +11,7 @@ public class KeyboardPanTest extends BaseTestCase {
 
     public void testKeyboardPan() {
 
-        KeyboardPan keyboardPan = KeyboardPan.newInstance();
+        KeyboardPan keyboardPan = OLFactory.createKeyboardPan();
         
         assertNotNull(keyboardPan);
         assertTrue(keyboardPan instanceof Observable);

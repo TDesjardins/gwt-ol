@@ -6,14 +6,14 @@
   <parent>
     <groupId>de.desjardins.ol3</groupId>
     <artifactId>gwt-ol3</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>ol</groupId>
   <artifactId>gwt-ol3-demo</artifactId>
   <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.1</version>
   <name>${project.artifactId}</name>
 
  <repositories>
@@ -21,11 +21,6 @@
       <id>com.google.gwt</id>
       <name>GWT Sonatype Releases</name>
       <url>https://oss.sonatype.org/content/repositories/google-releases/</url>
-    </repository>
-    <repository>
-      <id>org.codehaus.mojo</id>
-      <name>Nexus Snapshots</name>
-      <url>https://nexus.codehaus.org/content/repositories/snapshots/</url>
     </repository>
   </repositories>
 
@@ -55,19 +50,19 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <!--  version>4.7</version-->
-      <version>4.8.1</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>javax.validation</groupId>
       <artifactId>validation-api</artifactId>
-      <version>1.0.0.GA</version>
+      <version>1.1.0.Final</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>javax.validation</groupId>
       <artifactId>validation-api</artifactId>
-      <version>1.0.0.GA</version>
+      <version>1.1.0.Final</version>
       <classifier>sources</classifier>
       <scope>test</scope>
     </dependency>
@@ -130,10 +125,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
+        <version>3.3</version>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>1.7</source>
+          <target>1.7</target>
         </configuration>
       </plugin>
     </plugins>

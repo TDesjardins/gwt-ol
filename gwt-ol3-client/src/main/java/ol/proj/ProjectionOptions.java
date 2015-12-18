@@ -3,11 +3,13 @@ package ol.proj;
 import com.google.gwt.core.client.js.JsProperty;
 import com.google.gwt.core.client.js.JsType;
 
+import ol.*;
+
 /**
  * @author Tino Desjardins
  */
 @JsType
-public interface ProjectionOptions {
+public interface ProjectionOptions extends Options {
 
     @JsProperty
     void setCode(String code);
@@ -28,10 +30,9 @@ public interface ProjectionOptions {
     ProjectionOptions global(boolean global);
 
     @JsProperty
-    void setExtent(double[] extent);
+    void setExtent(Extent extent);
 
     @JsProperty
-    ProjectionOptions extent(double[] extent);
+    ProjectionOptions extent(Extent imageExtent);
 
 }
-

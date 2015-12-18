@@ -22,7 +22,7 @@ public class ViewTest extends BaseTestCase {
         
         assertNotNull(projectionOptions);
         
-        Projection projection = Projection.newInstance(projectionOptions);
+        Projection projection = OLFactory.createProjection(projectionOptions);
         
         assertNotNull(projection);
         
@@ -30,7 +30,7 @@ public class ViewTest extends BaseTestCase {
         viewOptions.setProjection(projection);
         View view = OLFactory.createView(viewOptions);
 
-        double[] centerCoordinate = OLFactory.createCoordinate(660000, 190000);
+        Coordinate centerCoordinate = OLFactory.createCoordinate(660000, 190000);
         
         view.setCenter(centerCoordinate);
         view.setZoom(9);
