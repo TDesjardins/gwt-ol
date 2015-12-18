@@ -1,6 +1,8 @@
 package ol.gwt;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import ol.Collection;
 
@@ -21,7 +23,7 @@ public class CollectionWrapper<T> extends Wrapper<Collection<T>> implements java
      *            {@link Collection}
      */
     public CollectionWrapper(Collection<T> impl) {
-	super(impl);
+        super(impl);
     }
 
     /*
@@ -31,8 +33,8 @@ public class CollectionWrapper<T> extends Wrapper<Collection<T>> implements java
      */
     @Override
     public boolean add(T e) {
-	impl.push(e);
-	return true;
+        impl.push(e);
+        return true;
     }
 
     /*
@@ -42,10 +44,10 @@ public class CollectionWrapper<T> extends Wrapper<Collection<T>> implements java
      */
     @Override
     public boolean addAll(java.util.Collection<? extends T> c) {
-	for (T e : c) {
-	    add(e);
-	}
-	return true;
+        for (T e : c) {
+            add(e);
+        }
+        return true;
     }
 
     /*
@@ -55,7 +57,7 @@ public class CollectionWrapper<T> extends Wrapper<Collection<T>> implements java
      */
     @Override
     public void clear() {
-	impl.clear();
+        impl.clear();
     }
 
     /*
@@ -65,17 +67,17 @@ public class CollectionWrapper<T> extends Wrapper<Collection<T>> implements java
      */
     @Override
     public boolean contains(Object o) {
-	int size = impl.getLength();
-	for (int i = 0; i < size; i++) {
-	    T e = impl.item(i);
-	    if (e == null) {
-		return (o == null);
-	    }
-	    if (e.equals(o)) {
-		return true;
-	    }
-	}
-	return false;
+        int size = impl.getLength();
+        for (int i = 0; i < size; i++) {
+            T e = impl.item(i);
+            if (e == null) {
+                return (o == null);
+            }
+            if (e.equals(o)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /*
@@ -85,12 +87,12 @@ public class CollectionWrapper<T> extends Wrapper<Collection<T>> implements java
      */
     @Override
     public boolean containsAll(java.util.Collection<?> c) {
-	for (Object e : c) {
-	    if (!contains(e)) {
-		return false;
-	    }
-	}
-	return true;
+        for (Object e : c) {
+            if (!contains(e)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /*
@@ -100,7 +102,7 @@ public class CollectionWrapper<T> extends Wrapper<Collection<T>> implements java
      */
     @Override
     public boolean isEmpty() {
-	return impl.getLength() == 0;
+        return impl.getLength() == 0;
     }
 
     /*
@@ -110,34 +112,34 @@ public class CollectionWrapper<T> extends Wrapper<Collection<T>> implements java
      */
     @Override
     public Iterator<T> iterator() {
-	return new Iterator<T>() {
-	    private int current = 0;
+        return new Iterator<T>() {
 
-	    @Override
-	    public boolean hasNext() {
-		return current < impl.getLength();
-	    }
+            private int current = 0;
 
-	    @Override
-	    public T next() {
-		if (hasNext()) {
-		    T e = impl.item(current);
-		    current++;
-		    return e;
-		}
-		throw new NoSuchElementException();
-	    }
+            @Override
+            public boolean hasNext() {
+                return current < impl.getLength();
+            }
 
-	    /*
-	     * (non-Javadoc)
-	     * 
-	     * @see java.util.Iterator#remove()
-	     */
-	    @Override
-	    public void remove() {
-		throw new UnsupportedOperationException();
-	    }
-	};
+            @Override
+            public T next() {
+                if(hasNext()) {
+                    T e = impl.item(current);
+                    current++;
+                    return e;
+                }
+                throw new NoSuchElementException();
+            }
+
+            /*
+             * (non-Javadoc)
+             * @see java.util.Iterator#remove()
+             */
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
     }
 
     /*
@@ -148,74 +150,69 @@ public class CollectionWrapper<T> extends Wrapper<Collection<T>> implements java
     @SuppressWarnings("unchecked")
     @Override
     public boolean remove(Object o) {
-	return impl.remove((T) o) != null;
+        return impl.remove((T)o) != null;
     }
 
     /*
      * (non-Javadoc)
-     *
      * @see java.util.Collection#removeAll(java.util.Collection)
      */
     @Override
     public boolean removeAll(java.util.Collection<?> c) {
-	boolean b = false;
-	for (Object e : c) {
-	    b |= remove(e);
-	}
-	return b;
+        boolean b = false;
+        for(Object e : c) {
+            b |= remove(e);
+        }
+        return b;
     }
 
     /*
      * (non-Javadoc)
-     *
      * @see java.util.Collection#retainAll(java.util.Collection)
      */
     @Override
     public boolean retainAll(java.util.Collection<?> c) {
-	ArrayList<Object> lRemove = new ArrayList<Object>();
-	// collect all elements to be removed
-	for (Object e : this) {
-	    if (!c.contains(e)) {
-		lRemove.add(e);
-	    }
-	}
-	boolean b = false;
-	// remove them
-	for (Object e : lRemove) {
-	    b |= remove(e);
-	}
-	return b;
+        ArrayList<Object> lRemove = new ArrayList<Object>();
+        // collect all elements to be removed
+        for(Object e : this) {
+            if(!c.contains(e)) {
+                lRemove.add(e);
+            }
+        }
+        boolean b = false;
+        // remove them
+        for(Object e : lRemove) {
+            b |= remove(e);
+        }
+        return b;
     }
 
     /*
      * (non-Javadoc)
-     *
      * @see java.util.Collection#size()
      */
     @Override
     public int size() {
-	return impl.getLength();
+        return impl.getLength();
     }
 
     /*
      * (non-Javadoc)
-     *
      * @see java.util.Collection#toArray()
      */
     @Override
     public Object[] toArray() {
-	return impl.getArray();
+        return impl.getArray();
     }
 
     /*
      * (non-Javadoc)
-     *
      * @see java.util.Collection#toArray(java.lang.Object[])
      */
     @SuppressWarnings("unchecked")
     @Override
     public <E> E[] toArray(E[] a) {
-	return (E[]) impl.getArray();
+        return (E[])impl.getArray();
     }
 
 }

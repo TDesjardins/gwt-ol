@@ -21,4 +21,5 @@ public class TypedObject<T, U> extends JavaScriptObject {
     @Deprecated
     protected TypedObject() {
     }
+    
 }
