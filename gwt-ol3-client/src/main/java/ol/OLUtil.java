@@ -1,18 +1,32 @@
 package ol;
 
-import javax.annotation.*;
-
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 
-import ol.event.*;
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+import ol.event.ClickListener;
+import ol.event.DoubleClickListener;
+import ol.event.Event;
+import ol.event.EventListener;
+import ol.event.MapMoveListener;
+import ol.event.MapZoomListener;
+import ol.event.OLHandlerRegistration;
+import ol.event.TileLoadErrorListener;
 import ol.gwt.CollectionWrapper;
-import ol.layer.*;
+import ol.layer.Base;
+import ol.layer.Layer;
 import ol.proj.Projection;
-import ol.source.*;
-import ol.tilegrid.*;
+import ol.source.Source;
+import ol.source.TileEvent;
+import ol.source.UrlTile;
+import ol.source.Xyz;
+import ol.source.XyzOptions;
+import ol.tilegrid.TileGrid;
+import ol.tilegrid.TileGridOptions;
 
 /**
  * Utility functions.
@@ -22,11 +36,12 @@ import ol.tilegrid.*;
 @ParametersAreNonnullByDefault
 public final class OLUtil {
 
-    private static final double dEarthRadius = 6378137;
+    private static final double EARTH_RADIUS = 6378137;
 
     // prevent instantiating this class
     @Deprecated
     private OLUtil() {
+        throw new AssertionError();
     }
 
     /**
@@ -43,20 +58,20 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static HandlerRegistration addClickListener(Map map, boolean singleClicksOnly,
-	    final ClickListener listener) {
-	String type;
-	if (singleClicksOnly) {
-	    type = MapBrowserEvent.SINGLECLICK;
-	} else {
-	    type = MapBrowserEvent.CLICK;
-	}
-	return observe(map, type, new EventListener<MapBrowserEvent>() {
+            final ClickListener listener) {
+        String type;
+        if(singleClicksOnly) {
+            type = MapBrowserEvent.SINGLECLICK;
+        } else {
+            type = MapBrowserEvent.CLICK;
+        }
+        return observe(map, type, new EventListener<MapBrowserEvent>() {
 
-	    @Override
-	    public void onEvent(MapBrowserEvent event) {
-		listener.onClick(event);
-	    }
-	});
+            @Override
+            public void onEvent(MapBrowserEvent event) {
+                listener.onClick(event);
+            }
+        });
     }
 
     /**
@@ -69,13 +84,13 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static HandlerRegistration addDoubleClickListener(Map map, final DoubleClickListener listener) {
-	return observe(map, MapBrowserEvent.DBLCLICK, new EventListener<MapBrowserEvent>() {
+        return observe(map, MapBrowserEvent.DBLCLICK, new EventListener<MapBrowserEvent>() {
 
-	    @Override
-	    public void onEvent(MapBrowserEvent event) {
-		listener.onDoubleClick(event);
-	    }
-	});
+            @Override
+            public void onEvent(MapBrowserEvent event) {
+                listener.onDoubleClick(event);
+            }
+        });
     }
 
     /**
@@ -88,13 +103,13 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static HandlerRegistration addMapMoveListener(Map map, final MapMoveListener listener) {
-	return observe(map, MapEvent.MOVEEND, new EventListener<MapEvent>() {
+        return observe(map, MapEvent.MOVEEND, new EventListener<MapEvent>() {
 
-	    @Override
-	    public void onEvent(MapEvent event) {
-		listener.onMapMove(event);
-	    }
-	});
+            @Override
+            public void onEvent(MapEvent event) {
+                listener.onMapMove(event);
+            }
+        });
     }
 
     /**
@@ -107,17 +122,17 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static HandlerRegistration addMapZoomListener(final Map map, final MapZoomListener listener) {
-	return observe(map.getView(), ObjectEvent.TYPE, new EventListener<ObjectEvent>() {
+        return observe(map.getView(), ObjectEvent.TYPE, new EventListener<ObjectEvent>() {
 
-	    @Override
-	    public void onEvent(ObjectEvent event) {
-		if ("resolution".equals(event.getKey())) {
-		    Event e2 = createLinkedEvent(event, "zoom", (JavaScriptObject) map);
-		    MapEvent me = initMapEvent(e2, map);
-		    listener.onMapZoom(me);
-		}
-	    }
-	});
+            @Override
+            public void onEvent(ObjectEvent event) {
+                if("resolution".equals(event.getKey())) {
+                    Event e2 = createLinkedEvent(event, "zoom", (JavaScriptObject)map);
+                    MapEvent me = initMapEvent(e2, map);
+                    listener.onMapZoom(me);
+                }
+            }
+        });
     }
 
     /**
@@ -127,8 +142,7 @@ public final class OLUtil {
      * @param projection
      *            Projection instance.
      */
-    public static native void addProjection(Projection projection)
-    /*-{
+    public static native void addProjection(Projection projection) /*-{
 		$wnd.ol.proj.addProjection(projection);
     }-*/;
 
@@ -143,13 +157,13 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static HandlerRegistration addTileLoadErrorListener(UrlTile source, final TileLoadErrorListener listener) {
-	return observe(source, "tileloaderror", new EventListener<TileEvent>() {
+        return observe(source, "tileloaderror", new EventListener<TileEvent>() {
 
-	    @Override
-	    public void onEvent(TileEvent event) {
-		listener.onTileLoadError(event);
-	    }
-	});
+            @Override
+            public void onEvent(TileEvent event) {
+                listener.onTileLoadError(event);
+            }
+        });
     }
 
     /**
@@ -159,8 +173,7 @@ public final class OLUtil {
      *            listener
      * @return JavaScript function
      */
-    public static native <E extends Event> JavaScriptObject createEventListenerFunction(EventListener<E> listener)
-    /*-{
+    public static native <E extends Event> JavaScriptObject createEventListenerFunction(EventListener<E> listener) /*-{
 		return function(evt) {
 			listener.onEvent(evt);
 		};
@@ -178,8 +191,7 @@ public final class OLUtil {
      *            current target of the child event
      * @return child {@link Event} (gets its methods linked to the parent event)
      */
-    public static native Event createLinkedEvent(Event eParent, String type, JavaScriptObject currentTarget)
-    /*-{
+    public static native Event createLinkedEvent(Event eParent, String type, JavaScriptObject currentTarget) /*-{
 		var eChild = {};
 		eChild.preventDefault = function() {
 			eParent.preventDefault();
@@ -203,10 +215,10 @@ public final class OLUtil {
      * @return geometry layout string
      */
     public static String getGeometryLayout(int dim) {
-	if (dim > 2) {
-	    return "XYZ";
-	}
-	return "XY";
+        if(dim > 2) {
+            return "XYZ";
+        }
+        return "XY";
     }
 
     /**
@@ -219,17 +231,17 @@ public final class OLUtil {
      * @return geometry layout string
      */
     public static String getGeometryLayout(int dim, boolean measure) {
-	if (measure) {
-	    if (dim > 2) {
-		return "XYZM";
-	    }
-	    return "XYM";
-	} else {
-	    if (dim > 2) {
-		return "XYZ";
-	    }
-	    return "XY";
-	}
+        if(measure) {
+            if(dim > 2) {
+                return "XYZM";
+            }
+            return "XYM";
+        } else {
+            if(dim > 2) {
+                return "XYZ";
+            }
+            return "XY";
+        }
     }
 
     /**
@@ -243,7 +255,7 @@ public final class OLUtil {
      * @return ground resolution
      */
     public static double getGroundResolutionInMeters(double latitude, int zoomLevel) {
-	return Math.cos(latitude * Math.PI / 180) * 2 * Math.PI * dEarthRadius / getMapSizeInPixels(zoomLevel);
+        return Math.cos(latitude * Math.PI / 180) * 2 * Math.PI * EARTH_RADIUS / getMapSizeInPixels(zoomLevel);
     }
 
     /**
@@ -257,13 +269,13 @@ public final class OLUtil {
      */
     @Nullable
     public static Base getLayerByName(Map map, String name) {
-	CollectionWrapper<Base> layers = new CollectionWrapper<Base>(map.getLayers());
-	for (Base l : layers) {
-	    if (name.equals(getName(l))) {
-		return l;
-	    }
-	}
-	return null;
+        CollectionWrapper<Base> layers = new CollectionWrapper<Base>(map.getLayers());
+        for(Base l : layers) {
+            if(name.equals(getName(l))) {
+                return l;
+            }
+        }
+        return null;
     }
 
     /**
@@ -276,7 +288,7 @@ public final class OLUtil {
      * @return The map width and height in pixels.
      */
     public static double getMapSizeInPixels(int zoomLevel) {
-	return ((double) (1 << zoomLevel)) * 256;
+        return ((double)(1 << zoomLevel)) * 256;
     }
 
     /**
@@ -287,16 +299,16 @@ public final class OLUtil {
      * @return zoomlevel on success, else -1
      */
     public static int getMaxZoomLevel(Base layer) {
-	// get source if layer instance has it
-	Source source = layer.get("source");
-	if (source != null) {
-	    // try to get a tilegrid from the source
-	    TileGrid tg = getTileGrid((JavaScriptObject) source);
-	    if (tg != null) {
-		return tg.getMaxZoom();
-	    }
-	}
-	return -1;
+        // get source if layer instance has it
+        Source source = layer.get("source");
+        if(source != null) {
+            // try to get a tilegrid from the source
+            TileGrid tg = getTileGrid((JavaScriptObject)source);
+            if(tg != null) {
+                return tg.getMaxZoom();
+            }
+        }
+        return -1;
     }
 
     /**
@@ -307,16 +319,16 @@ public final class OLUtil {
      * @return zoomlevel on success, else -1
      */
     public static int getMinZoomLevel(Base layer) {
-	// get source if layer instance has it
-	Source source = layer.get("source");
-	if (source != null) {
-	    // try to get a tilegrid from the source
-	    TileGrid tg = getTileGrid((JavaScriptObject) source);
-	    if (tg != null) {
-		return tg.getMinZoom();
-	    }
-	}
-	return -1;
+        // get source if layer instance has it
+        Source source = layer.get("source");
+        if(source != null) {
+            // try to get a tilegrid from the source
+            TileGrid tg = getTileGrid((JavaScriptObject)source);
+            if(tg != null) {
+                return tg.getMinZoom();
+            }
+        }
+        return -1;
     }
 
     /**
@@ -328,7 +340,7 @@ public final class OLUtil {
      */
     @Nullable
     public static String getName(Base layer) {
-	return layer.get("name");
+        return layer.get("name");
     }
 
     /**
@@ -340,8 +352,7 @@ public final class OLUtil {
      *            object, or undefined.
      * @return {ol.proj.Projection} Projection object, or null if not in list.
      */
-    public static native Projection getProjection(String projectionCode)
-    /*-{
+    public static native Projection getProjection(String projectionCode) /*-{
 		return $wnd.ol.proj.get(projectionCode);
     }-*/;
 
@@ -352,8 +363,7 @@ public final class OLUtil {
      *            {@link JavaScriptObject}
      * @return {@link TileGrid} on success, else null
      */
-    private static native TileGrid getTileGrid(JavaScriptObject o)
-    /*-{
+    private static native TileGrid getTileGrid(JavaScriptObject o) /*-{
 		return o.tileGrid || null;
     }-*/;
 
@@ -364,8 +374,7 @@ public final class OLUtil {
      *            {@link View}
      * @return Zoom on success, else -1
      */
-    private static native int getZoom(View v)
-    /*-{
+    private static native int getZoom(View v) /*-{
 		return v.getZoom() || -1;
     }-*/;
 
@@ -377,52 +386,52 @@ public final class OLUtil {
      * @return zoomlevel on success, else -1
      */
     public static int getZoomLevel(Map map) {
-	View v = map.getView();
-	// try to get zoom
-	int z = getZoom(v);
-	if (z >= 0) {
-	    return z;
-	}
-	// zoom is undefined, so check resolution
-	double zoomResolution = v.getResolution();
-	// walk layers to find resolution
-	CollectionWrapper<Base> layers = new CollectionWrapper<Base>(map.getLayers());
-	for (Base l : layers) {
-	    // get source if layer instance has it
-	    Source source = l.get("source");
-	    if (source != null) {
-		// try to get a tilegrid from the source
-		TileGrid tg = getTileGrid((JavaScriptObject) source);
-		if (tg != null) {
-		    // check resolutions
-		    double[] resolutions = tg.getResolutions();
-		    if (resolutions != null) {
-			double dPreviousResolution = 0;
-			for (int i = 0; i < resolutions.length; i++) {
-			    // resolutions are sorted in descending order, so
-			    // compare with actual one
-			    double resolution = resolutions[i];
-			    if (resolution <= zoomResolution) {
-				if (i > 1) {
-				    // check to which zoomlevel resolution is
-				    // nearer and prefer the larger number by
-				    // (75%:25%=3)
-				    if ((zoomResolution - resolution) / (dPreviousResolution - zoomResolution) < 3) {
-					return i;
-				    } else {
-					return i - 1;
-				    }
-				} else {
-				    return 0;
-				}
-			    }
-			    dPreviousResolution = resolution;
-			}
-		    }
-		}
-	    }
-	}
-	return -1;
+        View v = map.getView();
+        // try to get zoom
+        int z = getZoom(v);
+        if(z >= 0) {
+            return z;
+        }
+        // zoom is undefined, so check resolution
+        double zoomResolution = v.getResolution();
+        // walk layers to find resolution
+        CollectionWrapper<Base> layers = new CollectionWrapper<Base>(map.getLayers());
+        for(Base l : layers) {
+            // get source if layer instance has it
+            Source source = l.get("source");
+            if(source != null) {
+                // try to get a tilegrid from the source
+                TileGrid tg = getTileGrid((JavaScriptObject)source);
+                if(tg != null) {
+                    // check resolutions
+                    double[] resolutions = tg.getResolutions();
+                    if(resolutions != null) {
+                        double dPreviousResolution = 0;
+                        for(int i = 0; i < resolutions.length; i++) {
+                            // resolutions are sorted in descending order, so
+                            // compare with actual one
+                            double resolution = resolutions[i];
+                            if(resolution <= zoomResolution) {
+                                if(i > 1) {
+                                    // check to which zoomlevel resolution is
+                                    // nearer and prefer the larger number by
+                                    // (75%:25%=3)
+                                    if((zoomResolution - resolution) / (dPreviousResolution - zoomResolution) < 3) {
+                                        return i;
+                                    } else {
+                                        return i - 1;
+                                    }
+                                } else {
+                                    return 0;
+                                }
+                            }
+                            dPreviousResolution = resolution;
+                        }
+                    }
+                }
+            }
+        }
+        return -1;
     }
 
     /**
@@ -436,8 +445,7 @@ public final class OLUtil {
      *            {@link Map}
      * @return {@link MapEvent}
      */
-    public static native MapEvent initMapEvent(Event e, Map map)
-    /*-{
+    public static native MapEvent initMapEvent(Event e, Map map) /*-{
 		e.map = map;
 		e.framestate = null;
 		return e;
@@ -455,8 +463,8 @@ public final class OLUtil {
      *            maximum zoomlevel (0-28)
      */
     public static void limitZoomLevels(XyzOptions options, int minZoomLevel, int maxZoomLevel) {
-	options.setTileGrid(OLFactory.createTileGridXYZ(
-		OLFactory.<TileGridOptions> createOptions().setMinZoom(minZoomLevel).setMaxZoom(maxZoomLevel)));
+        options.setTileGrid(OLFactory.createTileGridXYZ(
+                OLFactory.<TileGridOptions> createOptions().setMinZoom(minZoomLevel).setMaxZoom(maxZoomLevel)));
     }
 
     /**
@@ -472,10 +480,10 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static <E extends Event> HandlerRegistration observe(Observable o, String eventType,
-	    EventListener<E> listener) {
-	JavaScriptObject handler = OLUtil.createEventListenerFunction(listener);
-	JavaScriptObject key = o.on(eventType, handler);
-	return new OLHandlerRegistration(o, key);
+            EventListener<E> listener) {
+        JavaScriptObject handler = OLUtil.createEventListenerFunction(listener);
+        JavaScriptObject key = o.on(eventType, handler);
+        return new OLHandlerRegistration(o, key);
     }
 
     /**
@@ -491,10 +499,10 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static <E extends Event> HandlerRegistration observeOnce(Observable o, String eventType,
-	    EventListener<E> listener) {
-	JavaScriptObject handler = OLUtil.createEventListenerFunction(listener);
-	JavaScriptObject key = o.once(eventType, handler);
-	return new OLHandlerRegistration(o, key);
+            EventListener<E> listener) {
+        JavaScriptObject handler = OLUtil.createEventListenerFunction(listener);
+        JavaScriptObject key = o.once(eventType, handler);
+        return new OLHandlerRegistration(o, key);
     }
 
     /**
@@ -506,7 +514,7 @@ public final class OLUtil {
      *            {@link Widget}
      */
     public static void setMapTarget(Map map, Widget target) {
-	map.setTarget(OLFactory.<Element, String> createObject1(target.getElement()));
+        map.setTarget(OLFactory.<Element, String> createObject1(target.getElement()));
     }
 
     /**
@@ -518,7 +526,7 @@ public final class OLUtil {
      *            name
      */
     public static void setName(Base layer, String name) {
-	layer.set("name", name);
+        layer.set("name", name);
     }
 
     /**
@@ -537,8 +545,7 @@ public final class OLUtil {
      *            Destination projection-like.
      * @return {ol.Coordinate} Coordinate.
      */
-    public static native Coordinate transform(Coordinate coordinate, Projection source, Projection destination)
-    /*-{
+    public static native Coordinate transform(Coordinate coordinate, Projection source, Projection destination) /*-{
 		return $wnd.ol.proj.transform(coordinate, source, destination);
     }-*/;
 
@@ -558,8 +565,7 @@ public final class OLUtil {
      *            Destination projection-like.
      * @return {ol.Coordinate} Coordinate.
      */
-    public static native Coordinate transform(Coordinate coordinate, String source, String destination)
-    /*-{
+    public static native Coordinate transform(Coordinate coordinate, String source, String destination) /*-{
 		return $wnd.ol.proj.transform(coordinate, source, destination);
     }-*/;
 
@@ -575,8 +581,7 @@ public final class OLUtil {
      *            Destination projection-like.
      * @return {ol.Extent} The transformed extent.
      */
-    public static native Extent transformExtent(Extent extent, Projection source, Projection destination)
-    /*-{
+    public static native Extent transformExtent(Extent extent, Projection source, Projection destination) /*-{
 		return $wnd.ol.proj.transformExtent(extent, source, destination);
     }-*/;
 
@@ -592,8 +597,7 @@ public final class OLUtil {
      *            Destination projection-like.
      * @return {ol.Extent} The transformed extent.
      */
-    public static native Extent transformExtent(Extent extent, String source, String destination)
-    /*-{
+    public static native Extent transformExtent(Extent extent, String source, String destination) /*-{
 		return $wnd.ol.proj.transformExtent(extent, source, destination);
     }-*/;
 
