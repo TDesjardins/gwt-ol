@@ -20,8 +20,7 @@ public class Color extends JavaScriptObject {
      *
      * @return alpha value (0-1)
      */
-    public final native float getAlpha()
-    /*-{
+    public final native float getAlpha() /*-{
 		return this[3];
     }-*/;
 
@@ -30,8 +29,7 @@ public class Color extends JavaScriptObject {
      *
      * @return blue value (0-255)
      */
-    public final native int getBlue()
-    /*-{
+    public final native int getBlue() /*-{
 		return this[2];
     }-*/;
 
@@ -40,8 +38,7 @@ public class Color extends JavaScriptObject {
      *
      * @return green value (0-255)
      */
-    public final native int getGreen()
-    /*-{
+    public final native int getGreen() /*-{
 		return this[1];
     }-*/;
 
@@ -50,8 +47,7 @@ public class Color extends JavaScriptObject {
      *
      * @return red value (0-255)
      */
-    public final native int getRed()
-    /*-{
+    public final native int getRed() /*-{
 		return this[0];
     }-*/;
 
