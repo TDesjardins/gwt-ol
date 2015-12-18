@@ -2,7 +2,10 @@ package ol.source;
 
 import com.google.gwt.core.client.js.JsType;
 
-import ol.*;
+import ol.Collection;
+import ol.Coordinate;
+import ol.Extent;
+import ol.Feature;
 
 /**
  * Provides a source of features for vector layers. Vector features provided by
