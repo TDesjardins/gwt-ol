@@ -1,8 +1,12 @@
 package ol.tilegrid;
 
-import com.google.gwt.core.client.js.*;
+import com.google.gwt.core.client.js.JsProperty;
+import com.google.gwt.core.client.js.JsType;
 
-import ol.*;
+import ol.Coordinate;
+import ol.Extent;
+import ol.Options;
+import ol.Size;
 
 /**
  * {@link TileGrid} options.

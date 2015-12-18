@@ -2,7 +2,9 @@ package ol.tilegrid;
 
 import com.google.gwt.core.client.js.JsType;
 
-import ol.*;
+import ol.Coordinate;
+import ol.Extent;
+import ol.Size;
 
 /**
  * Base class for setting the grid pattern for sources accessing tiled-image
