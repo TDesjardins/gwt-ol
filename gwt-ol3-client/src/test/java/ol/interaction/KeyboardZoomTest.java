@@ -1,6 +1,8 @@
 package ol.interaction;
 
-import ol.*;
+import ol.BaseTestCase;
+import ol.OLFactory;
+import ol.Observable;
 
 /**
  * 
