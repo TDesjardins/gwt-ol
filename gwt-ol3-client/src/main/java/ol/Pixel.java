@@ -19,8 +19,7 @@ public class Pixel extends JavaScriptObject {
      *
      * @return {ol.Pixel} clone
      */
-    public final native Pixel cloneObject()
-    /*-{
+    public final native Pixel cloneObject() /*-{
     	return this.slice(0);
     }-*/;
 
@@ -29,8 +28,7 @@ public class Pixel extends JavaScriptObject {
      *
      * @return X-coordinate
      */
-    public final native int getX()
-    /*-{
+    public final native int getX() /*-{
     	return this[0];
     }-*/;
 
@@ -39,8 +37,7 @@ public class Pixel extends JavaScriptObject {
      *
      * @return Y-coordinate
      */
-    public final native int getY()
-    /*-{
+    public final native int getY() /*-{
     	return this[1];
     }-*/;
 

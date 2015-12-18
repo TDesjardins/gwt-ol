@@ -153,4 +153,5 @@ public interface View extends Object {
      *            Zoom level
      */
     void setZoom(double zoom);
+    
 }

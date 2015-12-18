@@ -18,8 +18,7 @@ public class Size extends JavaScriptObject {
      *
      * @return {ol.Size} clone
      */
-    public final native Size cloneObject()
-    /*-{
+    public final native Size cloneObject() /*-{
     	return this.slice(0);
     }-*/;
 
@@ -28,8 +27,7 @@ public class Size extends JavaScriptObject {
      *
      * @return height
      */
-    public final native int getHeight()
-    /*-{
+    public final native int getHeight() /*-{
     	return this[1];
     }-*/;
 
@@ -38,8 +36,7 @@ public class Size extends JavaScriptObject {
      *
      * @return width
      */
-    public final native int getWidth()
-    /*-{
+    public final native int getWidth() /*-{
     	return this[0];
     }-*/;
 
