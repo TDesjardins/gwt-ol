@@ -781,6 +781,28 @@ public final class OLFactory {
      *
      * @param fill
      *            {@link Fill}
+     * @return {@link Style}
+     */
+    public static Style createStyle(Fill fill) {
+	return createStyle(OLFactory.<StyleOptions> createOptions().fill(fill));
+    }
+
+    /**
+     * Creates a new {@link Style} style.
+     *
+     * @param stroke
+     *            {@link Stroke}
+     * @return {@link Style}
+     */
+    public static Style createStyle(Stroke stroke) {
+        return createStyle(OLFactory.<StyleOptions> createOptions().stroke(stroke));
+    }
+
+   /**
+     * Creates a new {@link Style} style.
+     *
+     * @param fill
+     *            {@link Fill}
      * @param stroke
      *            {@link Stroke}
      * @return {@link Style}

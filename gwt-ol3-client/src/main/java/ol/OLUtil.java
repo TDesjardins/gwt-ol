@@ -1,12 +1,12 @@
 package ol;
 
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
-
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
 
 import ol.event.ClickListener;
 import ol.event.DoubleClickListener;
@@ -25,6 +25,7 @@ import ol.source.TileEvent;
 import ol.source.UrlTile;
 import ol.source.Xyz;
 import ol.source.XyzOptions;
+import ol.style.Style;
 import ol.tilegrid.TileGrid;
 import ol.tilegrid.TileGridOptions;
 
@@ -147,6 +148,33 @@ public final class OLUtil {
     }-*/;
 
     /**
+     * Adds a {@link Style} to the given array of {@link Style}s.
+     *
+     * @param s
+     *            array of {@link Style}s (will be changed)
+     * @param s2
+     *            {@link Style}
+     * @return the changed array
+     */
+    public static native ol.style.Style[] addStyle(ol.style.Style[] s, ol.style.Style s2) /*-{
+		s.push(s2);
+		return s;
+    }-*/;
+
+    /**
+     * Combines two arrays of {@link Style}s.
+     *
+     * @param s
+     *            array of {@link Style}s 1
+     * @param s2
+     *            array of {@link Style}s 2
+     * @return the combined array
+     */
+    public static native ol.style.Style[] addStyles(ol.style.Style[] s, ol.style.Style[] s2) /*-{
+		return s.concat(s2);
+    }-*/;
+
+    /**
      * Adds a listener for tile loading errors.
      *
      * @param source
@@ -165,6 +193,19 @@ public final class OLUtil {
             }
         });
     }
+
+    /**
+     * Combines two {@link Style}s into an array of {@link Style}s.
+     *
+     * @param s1
+     *            {@link Style} 1
+     * @param s2
+     *            {@link Style} 2
+     * @return array of {@link Style}s
+     */
+    public static native ol.style.Style[] combineStyles(ol.style.Style s1, ol.style.Style s2) /*-{
+		return [ s1, s2 ];
+    }-*/;
 
     /**
      * Creates a JavaScript function calling the given event listener.
