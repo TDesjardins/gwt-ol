@@ -29,8 +29,11 @@ import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
 import ol.interaction.Modify;
 import ol.layer.Image;
+import ol.layer.ImageLayerOptions;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
+import ol.layer.TileLayerOptions;
+import ol.layer.VectorLayerOptions;
 import ol.proj.Projection;
 import ol.proj.ProjectionOptions;
 import ol.source.ImageStatic;
@@ -394,6 +397,46 @@ public final class OLFactory {
         LayerOptions options = createOptions();
         options.setSource(source);
         return options;
+    }
+
+    /**
+     * Creates {@link VectorLayerOptions} using the given
+     * {@link ol.source.Vector}.
+     *
+     * @param source
+     *            {@link ol.source.Vector}
+     * @return {@link VectorLayerOptions}
+     */
+    public static VectorLayerOptions createLayerOptionsWithSource(ol.source.Vector source) {
+	VectorLayerOptions options = createOptions();
+	options.setSource(source);
+	return options;
+    }
+
+    /**
+     * Creates {@link TileLayerOptions} using the given {@link Tile}.
+     *
+     * @param source
+     *            {@link Tile}
+     * @return {@link TileLayerOptions}
+     */
+    public static TileLayerOptions createLayerOptionsWithSource(ol.source.Tile source) {
+	TileLayerOptions options = createOptions();
+	options.setSource(source);
+	return options;
+    }
+
+    /**
+     * Creates {@link ImageLayerOptions} using the given {@link Image}.
+     *
+     * @param source
+     *            {@link Image}
+     * @return {@link ImageLayerOptions}
+     */
+    public static ImageLayerOptions createLayerOptionsWithSource(ol.source.Image source) {
+	ImageLayerOptions options = createOptions();
+	options.setSource(source);
+	return options;
     }
 
     /**
