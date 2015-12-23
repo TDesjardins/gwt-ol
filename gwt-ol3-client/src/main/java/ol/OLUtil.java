@@ -104,13 +104,62 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static HandlerRegistration addMapMoveListener(Map map, final MapMoveListener listener) {
-        return observe(map, MapEvent.MOVEEND, new EventListener<MapEvent>() {
+        // default is true to track all changes to the map position immediately
+        return addMapMoveListener(map, listener, true);
+    }
 
+    /**
+     * Adds a map move listener for the given map.
+     *
+     * @param map
+     *            {@link Map}
+     * @param listener
+     *            {@link MapMoveListener}
+     * @param immediate
+     *            Fire events while the map is moving? If set to false only one
+     *            event will be fired after the map has finished moving.
+     * @return {@link HandlerRegistration}
+     */
+    public static HandlerRegistration addMapMoveListener(final Map map, final MapMoveListener listener,
+            boolean immediate) {
+        // listen to "moveend" events of map
+        final HandlerRegistration handlerMap = observe(map, MapEvent.MOVEEND, new EventListener<MapEvent>() {
             @Override
             public void onEvent(MapEvent event) {
                 listener.onMapMove(event);
             }
         });
+        // fire events while the map is moving?
+        if(immediate) {
+            // try to set up an event handler for the change of the view center
+            // as "moveend" will be only fired when the map stops moving
+            HandlerRegistration handlerView1 = null;
+            View view = map.getView();
+            if(view != null) {
+                handlerView1 = OLUtil.observe(view, "change:center", new EventListener<ObjectEvent>() {
+                    @Override
+                    public void onEvent(ObjectEvent event) {
+                        // create an artificial move event
+                        Event e2 = createLinkedEvent(event, "move", (JavaScriptObject)map);
+                        MapEvent me = initMapEvent(e2, map);
+                        listener.onMapMove(me);
+                    }
+                });
+                // needs to be final to be usable in anonymous inner class
+                final HandlerRegistration handlerView = handlerView1;
+                // return a handler registration, which detaches both event
+                // handlers
+                return new HandlerRegistration() {
+                    @Override
+                    public void removeHandler() {
+                        handlerMap.removeHandler();
+                        handlerView.removeHandler();
+                    }
+                };
+            }
+        }
+        // just return the map handler
+        return handlerMap;
     }
 
     /**
@@ -574,9 +623,9 @@ public final class OLUtil {
      * Transforms a coordinate from source projection to destination projection.
      * This returns a new coordinate (and does not modify the original).
      *
-     * See {@link ol.proj.transformExtent} for extent transformation. See the
-     * transform method of {@link ol.geom.Geometry} and its subclasses for
-     * geometry transforms.
+     * See {@link #transformExtent(Extent, Projection, Projection)} for extent
+     * transformation. See the transform method of {@link ol.geom.Geometry} and
+     * its subclasses for geometry transforms.
      *
      * @param coordinate
      *            Coordinate.
@@ -594,9 +643,9 @@ public final class OLUtil {
      * Transforms a coordinate from source projection to destination projection.
      * This returns a new coordinate (and does not modify the original).
      *
-     * See {@link ol.proj.transformExtent} for extent transformation. See the
-     * transform method of {@link ol.geom.Geometry} and its subclasses for
-     * geometry transforms.
+     * See {@link #transformExtent(Extent, Projection, Projection)} for extent
+     * transformation. See the transform method of {@link ol.geom.Geometry} and
+     * its subclasses for geometry transforms.
      *
      * @param coordinate
      *            Coordinate.
