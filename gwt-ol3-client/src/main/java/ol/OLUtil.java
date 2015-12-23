@@ -133,20 +133,18 @@ public final class OLUtil {
         if(immediate) {
             // try to set up an event handler for the change of the view center
             // as "moveend" will be only fired when the map stops moving
-            HandlerRegistration handlerView1 = null;
             View view = map.getView();
             if(view != null) {
-                handlerView1 = OLUtil.observe(view, "change:center", new EventListener<ObjectEvent>() {
-                    @Override
-                    public void onEvent(ObjectEvent event) {
-                        // create an artificial move event
-                        Event e2 = createLinkedEvent(event, "move", (JavaScriptObject)map);
-                        MapEvent me = initMapEvent(e2, map);
-                        listener.onMapMove(me);
-                    }
-                });
-                // needs to be final to be usable in anonymous inner class
-                final HandlerRegistration handlerView = handlerView1;
+                final HandlerRegistration handlerView = OLUtil.observe(view, "change:center",
+                        new EventListener<ObjectEvent>() {
+                            @Override
+                            public void onEvent(ObjectEvent event) {
+                                // create an artificial move event
+                                Event e2 = createLinkedEvent(event, "move", (JavaScriptObject)map);
+                                MapEvent me = initMapEvent(e2, map);
+                                listener.onMapMove(me);
+                            }
+                        });
                 // return a handler registration, which detaches both event
                 // handlers
                 return new HandlerRegistration() {
