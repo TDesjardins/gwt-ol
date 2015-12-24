@@ -2,16 +2,23 @@ package ol.event;
 
 import com.google.gwt.core.client.js.JsType;
 
+/**
+ * A listener for events of the given type.
+ * 
+ * @author sbaumhekel
+ *
+ * @param <E>
+ *            event type
+ */
 @JsType
-public abstract class EventListener<E extends Event> {
+public interface EventListener<E extends Event> {
 
-    protected abstract void on(E event);
-    
-    public static native <E extends Event> EventListener<E> createEventListener(EventListener<E> listener) /*-{
-        return function(evt){
-            listener.on(evt);
-        }
-    }-*/;
-    
+    /**
+     * Is called when an event is received.
+     * 
+     * @param event
+     *            event
+     */
+    void onEvent(E event);
+
 }
-

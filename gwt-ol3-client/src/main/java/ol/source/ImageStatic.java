@@ -9,7 +9,7 @@ import ol.control.Attribution;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.source.ImageStatic")
 public interface ImageStatic extends Image {
     
     void setAttributions (Attribution[] attributions);

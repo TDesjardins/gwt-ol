@@ -10,36 +10,52 @@ import ol.Object;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.layer.Base")
 public interface Base extends Object {
 
     float getBrightness();
 
-    void setBrightness(float brightness);
-
     float getContrast();
-
-    void setContrast(float contrast);
 
     float getMaxResolution();
 
-    void setMaxResolution(float maxResolution);
-
     float getMinResolution();
-
-    void setMinResolution(float minResolution);
 
     float getOpacity();
 
-    void setOpacity(float opacity);
-
     float getSaturation();
-
-    void setSaturation(float saturation);
 
     boolean getVisible();
 
+    /**
+     * Return the Z-index of the layer, which is used to order layers before
+     * rendering. The default Z-index is 0.
+     * 
+     * @return {number} The Z-index of the layer.
+     */
+    int getZIndex();
+
+    void setBrightness(float brightness);
+
+    void setContrast(float contrast);
+
+    void setMaxResolution(float maxResolution);
+
+    void setMinResolution(float minResolution);
+
+    void setOpacity(float opacity);
+
+    void setSaturation(float saturation);
+
     void setVisible(boolean visible);
 
-}
+    /**
+     * Set Z-index of the layer, which is used to order layers before rendering.
+     * The default Z-index is 0.
+     * 
+     * @param zindex
+     *            The z-index of the layer.
+     */
+    void setZIndex(int zindex);
 
+}

@@ -1,6 +1,7 @@
 package ol.control;
 
 import ol.BaseTestCase;
+import ol.OLFactory;
 import ol.Object;
 
 /**
@@ -12,7 +13,7 @@ public class FullScreenTest extends BaseTestCase {
 
     public void testFullScreen() {
 
-        FullScreen fullScreen = FullScreen.newInstance();
+        FullScreen fullScreen = OLFactory.createFullScreen();
         
         assertNotNull(fullScreen);
         assertTrue(fullScreen instanceof Object);

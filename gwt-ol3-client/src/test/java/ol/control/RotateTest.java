@@ -1,6 +1,7 @@
 package ol.control;
 
 import ol.BaseTestCase;
+import ol.OLFactory;
 import ol.Object;
 
 /**
@@ -12,7 +13,7 @@ public class RotateTest extends BaseTestCase {
 
     public void testRotate() {
 
-        Rotate rotate = Rotate.newInstance();
+        Rotate rotate = OLFactory.createRotate();
         
         assertNotNull(rotate);
         assertTrue(rotate instanceof Object);

@@ -1,9 +1,12 @@
 package ol.proj;
 
-import ol.proj.Projection;
-import ol.OLFactory;
-import ol.proj.ProjectionOptions;
+import com.google.gwt.core.client.JsArrayNumber;
+
 import ol.BaseTestCase;
+import ol.Coordinate;
+import ol.Extent;
+import ol.OLFactory;
+import ol.OLUtil;
 
 /**
  * 
@@ -22,10 +25,10 @@ public class ProjectionTest extends BaseTestCase {
     public void testProjection() {
     	
         ProjectionOptions projectionOptions = OLFactory.createOptions();
-        projectionOptions.code(EPSG_CODE_21781)
-            .units(UNIT_METRE);
+        projectionOptions.setCode(EPSG_CODE_21781);
+        projectionOptions.setUnits(UNIT_METRE);
         
-        Projection projection = Projection.newInstance(projectionOptions);
+        Projection projection = OLFactory.createProjection(projectionOptions);
         
         assertNotNull(projection);
         assertEquals(EPSG_CODE_21781, projection.getCode());
@@ -36,16 +39,16 @@ public class ProjectionTest extends BaseTestCase {
     public void testAddProjection() {
     	
     	ProjectionOptions projectionOptions = OLFactory.createOptions();
-        projectionOptions.code(EPSG_CODE_3068)
-        	.global(false)
-            .units(UNIT_METRE);
+        projectionOptions.setCode(EPSG_CODE_3068);
+        //projectionOptions.global(false);
+        projectionOptions.setUnits(UNIT_METRE);
         
-        Projection projection = Projection.newInstance(projectionOptions);
+        Projection projection = OLFactory.createProjection(projectionOptions);
         assertNotNull(projection);
         
-        Projection.addProjection(projection);
+        OLUtil.addProjection(projection);
         
-        Projection projectionToCompare = Projection.get(EPSG_CODE_3068);
+        Projection projectionToCompare = OLUtil.getProjection(EPSG_CODE_3068);
         assertNotNull(projectionToCompare);
         
         assertEquals(projection.getCode(), projectionToCompare.getCode());
@@ -54,12 +57,12 @@ public class ProjectionTest extends BaseTestCase {
     
     public void testGet() {
     	
-    	Projection projection = Projection.get(EPSG_CODE_4326);
+    	Projection projection = OLUtil.getProjection(EPSG_CODE_4326);
         
         assertNotNull(projection);
         assertEquals(EPSG_CODE_4326, projection.getCode());
         assertTrue(projection.isGlobal());
-        assertTrue(projection.getExtent().length == 4);
+        assertTrue(projection.getExtent().<JsArrayNumber>cast().length() == 4);
         assertEquals(projection.getUnits(), UNIT_DEGREES);
         
     }
@@ -72,12 +75,12 @@ public class ProjectionTest extends BaseTestCase {
     	double x = -121.1;
     	double y = 47.5;
     	
-    	double[] centerCoordinate = OLFactory.createCoordinate(x, y);
-        double[] transformedCenterCoordinate = Projection.transform(centerCoordinate, EPSG_CODE_4326, EPSG_CODE_3857); 
+    	Coordinate centerCoordinate = OLFactory.createCoordinate(x, y);
+    	Coordinate transformedCenterCoordinate = OLUtil.transform(centerCoordinate, EPSG_CODE_4326, EPSG_CODE_3857); 
         
-        assertTrue(transformedCenterCoordinate.length == 2);
-        assertNotSame(transformedCenterCoordinate[0], x);
-        assertNotSame(transformedCenterCoordinate[1], y);
+        assertTrue(transformedCenterCoordinate.length() == 2);
+        assertNotSame(transformedCenterCoordinate.getX(), x);
+        assertNotSame(transformedCenterCoordinate.getY(), y);
         
     }
     
@@ -86,15 +89,15 @@ public class ProjectionTest extends BaseTestCase {
      */
     public void testTransformExtent() {
     	
-    	double[] extent = Projection.get(EPSG_CODE_4326).getExtent();
+    	Extent extent = OLUtil.getProjection(EPSG_CODE_4326).getExtent();
     	
-        double[] transformedExtent = Projection.transformExtent(extent, EPSG_CODE_4326, EPSG_CODE_3857); 
+    	Extent transformedExtent = OLUtil.transformExtent(extent, EPSG_CODE_4326, EPSG_CODE_3857); 
         
-        assertTrue(transformedExtent.length == 4);
-        assertNotSame(extent[0], transformedExtent[0]);
-        assertNotSame(extent[1], transformedExtent[1]);
-        assertNotSame(extent[2], transformedExtent[2]);
-        assertNotSame(extent[3], transformedExtent[3]);
+        assertTrue(transformedExtent.<JsArrayNumber>cast().length() == 4);
+        assertNotSame(extent.getLowerLeftX(), transformedExtent.getLowerLeftX());
+        assertNotSame(extent.getLowerLeftY(), transformedExtent.getLowerLeftY());
+        assertNotSame(extent.getUpperRightX(), transformedExtent.getUpperRightX());
+        assertNotSame(extent.getUpperRightY(), transformedExtent.getUpperRightY());
         
     }
 

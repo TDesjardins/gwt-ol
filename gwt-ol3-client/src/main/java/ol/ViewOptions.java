@@ -11,10 +11,10 @@ import ol.proj.Projection;
  * @author Tino Desjardins
  */
 @JsType
-public interface ViewOptions {
+public interface ViewOptions extends Options {
 
     @JsProperty
-    void setCenter(double[] center);
+    void setCenter(Coordinate coordinate);
 
     @JsProperty
     void setProjection(Projection projection);

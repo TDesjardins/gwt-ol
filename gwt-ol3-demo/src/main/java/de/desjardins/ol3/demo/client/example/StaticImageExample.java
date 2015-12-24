@@ -5,6 +5,7 @@ import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.Attribution;
 import ol.AttributionOptions;
 import ol.Collection;
+import ol.Extent;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
@@ -34,24 +35,24 @@ public class StaticImageExample implements Example {
         
         ProjectionOptions projectionOptions = OLFactory.createOptions();
         
-        double[] imageExtent = OLFactory.createExtent(0, 0, 1024, 968);
+        Extent imageExtent = OLFactory.createExtent(0, 0, 1024, 968);
         
-        projectionOptions.code("pixel")
-          .extent(imageExtent)
-          .units("pixels");
+        projectionOptions.setCode("pixel");
+        projectionOptions.setExtent(imageExtent);
+        projectionOptions.setUnits("pixels");
         
-        Projection projection = Projection.newInstance(projectionOptions);
+        Projection projection = OLFactory.createProjection(projectionOptions);
         
         ImageStaticOptions imageStaticOptions = OLFactory.createOptions();
-        imageStaticOptions.url("http://imgs.xkcd.com/comics/online_communities.png")
-            .imageSize(OLFactory.createSize(1024, 968))
-            .imageExtent(imageExtent)
-            .projection(projection);
+        imageStaticOptions.setUrl("http://imgs.xkcd.com/comics/online_communities.png");
+        imageStaticOptions.setImageSize(OLFactory.createSize(1024, 968));
+        imageStaticOptions.setImageExtent(imageExtent);
+        imageStaticOptions.setProjection(projection);
         
-        AttributionOptions attributionOptions = AttributionOptions.newInstance()
-                .html("&copy; <a href=\"http://xkcd.com/license.html\">xkcd</a>");
+        AttributionOptions attributionOptions = OLFactory.<AttributionOptions>createOptions()
+                .setHtml("&copy; <a href=\"http://xkcd.com/license.html\">xkcd</a>");
         
-        Attribution attribution = Attribution.newInstance(attributionOptions);
+        Attribution attribution = OLFactory.createAttribution(attributionOptions);
         Attribution[] attributions = new Attribution[1];
         attributions[0] = attribution;
         
@@ -59,7 +60,7 @@ public class StaticImageExample implements Example {
         
         ImageStatic imageStatic = OLFactory.createImageStaticSource(imageStaticOptions);
         
-        LayerOptions layerOptions = OLFactory.createLayerOptions();
+        LayerOptions layerOptions = OLFactory.createOptions();
         layerOptions.setSource(imageStatic);
         Image image = OLFactory.createImageLayer(layerOptions);
         
@@ -78,12 +79,12 @@ public class StaticImageExample implements Example {
         mapOptions.setView(view);
         mapOptions.setLayers(layers);
         
-        Map map = Map.newInstance(mapOptions);
+        Map map = OLFactory.createMap(mapOptions);
         
         // add some controls
         DemoUtils.addDefaultControls(map.getControls());
         
-        ol.control.Attribution attributionControl = ol.control.Attribution.newInstance();
+        ol.control.Attribution attributionControl = OLFactory.createAttributionControl();
         attributionControl.setCollapsed(false);
         
         map.addControl(attributionControl);

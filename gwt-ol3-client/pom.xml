@@ -4,37 +4,37 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
    <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>de.desjardins.ol3</groupId>
-    <artifactId>gwt-ol3</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
  
   <groupId>ol</groupId>
   <artifactId>gwt-ol3-client</artifactId>
   <name>${project.artifactId}</name>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.1</version>
 
   <repositories>
-    <repository>
+    <!--  repository>
       <id>com.google.gwt</id>
       <name>GWT Sonatype Snapshots</name>
       <url>https://oss.sonatype.org/content/repositories/google-releases/</url>
+    </repository-->
+    <repository>
+      <id>com.google.gwt</id>
+      <name>GWT Sonatype Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
     </repository>
     <repository>
       <id>org.codehaus.mojo</id>
       <name>Nexus Snapshots</name>
-      <url>https://nexus.codehaus.org/content/repositories/snapshots/</url>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
     </repository>
   </repositories>
 
   <properties>
     <!-- Convenience property to set the GWT version -->
-    <gwt.version>2.7.0</gwt.version>
+    <gwt.version>2.8.0-SNAPSHOT</gwt.version>
     <!-- GWT needs at least java 1.5 -->
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <gwt.maven.plugin.version>2.7.0</gwt.maven.plugin.version>
+    <gwt.maven.plugin.version>2.8.0-SNAPSHOT</gwt.maven.plugin.version>
   </properties>
   
   <dependencies>
@@ -54,19 +54,19 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.7</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>javax.validation</groupId>
       <artifactId>validation-api</artifactId>
-      <version>1.0.0.GA</version>
+      <version>1.1.0.Final</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>javax.validation</groupId>
       <artifactId>validation-api</artifactId>
-      <version>1.0.0.GA</version>
+      <version>1.1.0.Final</version>
       <classifier>sources</classifier>
       <scope>test</scope>
     </dependency>
@@ -111,18 +111,18 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>1.7</source>
+          <target>1.7</target>
         </configuration>
       </plugin>
-	<plugin>
+	<!--  plugin>
 		<groupId>org.codehaus.mojo</groupId>
 		<artifactId>gwt-maven-plugin</artifactId>
 		<version>${gwt.maven.plugin.version}</version>
 		<configuration>
 			<inplace>true</inplace>
 			<gwtVersion>${gwtVersion}</gwtVersion>
-			<sourceLevel>1.6</sourceLevel>
+			<sourceLevel>1.7</sourceLevel>
 			<extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
 			<includes>**/*TestSuite.java</includes>
             <mode>htmlunit</mode>
@@ -138,7 +138,7 @@
 				</goals>
 			</execution>
 		</executions>
-	</plugin>
+	</plugin-->
     </plugins>
   </build>
 

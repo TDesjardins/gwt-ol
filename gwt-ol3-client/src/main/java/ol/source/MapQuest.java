@@ -8,7 +8,7 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(prototype = "ol.source.MapQuest")
 public interface MapQuest extends Xyz {
     
     @JsProperty

@@ -3,33 +3,47 @@ package ol.style;
 import com.google.gwt.core.client.js.JsProperty;
 import com.google.gwt.core.client.js.JsType;
 
+import ol.Options;
+
 /**
  * Options for the {@link Style}.
- * 
+ *
  * @author Tino Desjardins
  *
  */
 @JsType
-public abstract class StyleOptions {
-    
-    public static native StyleOptions newInstance() /*-{
-        return {};
-    }-*/;
-    
+public interface StyleOptions extends Options {
+
+    /**
+     * {@link Fill} style.
+     * 
+     * @param fill {@link Fill}
+     */
     @JsProperty
-    public abstract StyleOptions fill(Fill fill);
-    
+    public void setFill(Fill fill);
+
+    /**
+     * {@link Image} style.
+     * 
+     * @param image {@link Image}
+     */
     @JsProperty
-    public abstract void setStroke(Stroke stroke);
-    
+    public void setImage(Image image);
+
+    /**
+     * {@link Stroke} style.
+     * 
+     * @param stroke {@link Stroke}
+     */
     @JsProperty
-    public abstract StyleOptions stroke(Stroke stroke);
-    
+    public void setStroke(Stroke stroke);
+
+    /**
+     * Z index.
+     * 
+     * @param zIndex Z-index
+     */
     @JsProperty
-    public abstract void setZIndex(int zIndex);
-    
-    @JsProperty
-    public abstract StyleOptions zIndex(int zIndex);
+    public void setZIndex(int zIndex);
     
 }
-

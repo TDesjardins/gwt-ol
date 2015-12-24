@@ -1,6 +1,7 @@
 package ol.control;
 
 import ol.BaseTestCase;
+import ol.OLFactory;
 import ol.Object;
 
 /**
@@ -12,7 +13,7 @@ public class ZoomToExtentTest extends BaseTestCase {
 
     public void testZoomToExtent() {
 
-        ZoomToExtent zoomToExtent = ZoomToExtent.newInstance();
+        ZoomToExtent zoomToExtent = OLFactory.createZoomToExtent();
         
         assertNotNull(zoomToExtent);
         assertTrue(zoomToExtent instanceof Object);

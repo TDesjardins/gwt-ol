@@ -1,6 +1,7 @@
 package ol.control;
 
 import ol.BaseTestCase;
+import ol.OLFactory;
 
 /**
  * 
@@ -12,7 +13,7 @@ public class AttributionTest extends BaseTestCase {
     public void testAttribution() {
 
         
-        Attribution attribution = Attribution.newInstance();
+        Attribution attribution = OLFactory.createAttributionControl();
         
         assertNotNull(attribution);
         

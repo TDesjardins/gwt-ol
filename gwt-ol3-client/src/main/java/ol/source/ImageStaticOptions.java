@@ -3,6 +3,9 @@ package ol.source;
 import com.google.gwt.core.client.js.JsProperty;
 import com.google.gwt.core.client.js.JsType;
 
+import ol.Extent;
+
+import ol.Size;
 import ol.proj.Projection;
 
 /**
@@ -15,33 +18,18 @@ public interface ImageStaticOptions extends SourceOptions {
     void setCrossOrigin(String crossOrigin);
     
     @JsProperty
-    ImageStaticOptions crossOrigin(String crossOrigin);
-    
-    @JsProperty
-    void setImageExtent(double[] extent);
+    void setImageExtent(Extent extent);
 
     @JsProperty
-    ImageStaticOptions imageExtent(double[] extent);
-
-    @JsProperty
-    void setImageSize(int[] imageSize);
-
-    @JsProperty
-    ImageStaticOptions imageSize(int[] imageSize);
+    void setImageSize(Size imageSize);
 
     @JsProperty
     void setProjection(Projection projection);
-
-    @JsProperty
-    ImageStaticOptions projection(Projection projection);
 
     /**
      * @param url URL to image
      */
     @JsProperty
     void setUrl(String url);
-
-    @JsProperty
-    ImageStaticOptions url(String url);
 
 }

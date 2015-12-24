@@ -1,38 +1,56 @@
 package ol;
 
+import javax.annotation.Nullable;
+
 import com.google.gwt.core.client.js.JsType;
 
 /**
- * 
+ *
  * @author Tino Desjardins
+ * @param <T>
+ *            type of the elements
  *
  */
-@JsType
-public abstract class Collection<T> implements Object {
-    
-    public static native <T> Collection<T> newInstance() /*-{
-        return new $wnd.ol.Collection();
-    }-*/;
-    
-    public abstract void clear();
-    
-    public abstract T[] getArray();
-    
-    public abstract int getLength();
-    
-    public abstract void insertAt(int index, T element);
-    
-    public abstract T item(int index);
-    
-    public abstract void pop();
-    
-    public abstract void push(T element);
-    
-    public abstract void remove(T element);
-    
-    public abstract void removeAt(int index);
-    
-    public abstract void setAt(int index, T element);
-    
-}
+@JsType(prototype = "ol.Collection")
+public interface Collection<T> extends Object {
 
+    public void clear();
+
+    public T[] getArray();
+
+    public int getLength();
+
+    public void insertAt(int index, T element);
+
+    public T item(int index);
+
+    public void pop();
+
+    public void push(T element);
+
+    /**
+     * Remove the first occurrence of an element from the collection.
+     * 
+     * @param element
+     *            Element.
+     * @return The removed element or undefined if none found.
+     * @api stable
+     */
+    @Nullable
+    public T remove(T element);
+
+    /**
+     * Remove the element at the provided index and return it. Return
+     * `undefined` if the collection does not contain this index.
+     * 
+     * @param index
+     *            Index.
+     * @return Value.
+     * @api stable
+     */
+    @Nullable
+    public T removeAt(int index);
+
+    public void setAt(int index, T element);
+
+}

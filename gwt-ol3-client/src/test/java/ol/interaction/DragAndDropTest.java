@@ -1,6 +1,7 @@
 package ol.interaction;
 
 import ol.BaseTestCase;
+import ol.OLFactory;
 import ol.Observable;
 
 /**
@@ -12,7 +13,7 @@ public class DragAndDropTest extends BaseTestCase {
 
     public void testDragAndDrop() {
 
-        DragAndDrop dragAndDrop = DragAndDrop.newInstance();
+        DragAndDrop dragAndDrop = OLFactory.createDragAndDrop();
         
         assertNotNull(dragAndDrop);
         assertTrue(dragAndDrop instanceof Observable);

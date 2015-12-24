@@ -2,8 +2,8 @@ package de.desjardins.ol3.demo.client.example;
 
 import com.google.gwt.user.client.Window;
 
+import ol.*;
 import ol.control.Attribution;
-
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.event.EventListener;
 import ol.interaction.DragAndDrop;
@@ -13,10 +13,6 @@ import ol.source.MapQuest;
 import ol.source.MapQuestOptions;
 import ol.source.Stamen;
 import ol.source.StamenOptions;
-import ol.Map;
-import ol.MapOptions;
-import ol.OLFactory;
-import ol.View;
 import ol.layer.LayerOptions;
 
 /**
@@ -32,22 +28,21 @@ public class TileExample implements Example {
      */
     @Override
     public void show() {
-        
+
         // create a MapQuest-layer
-        LayerOptions mapQuestLayerOptions = OLFactory.createLayerOptions();
+        LayerOptions mapQuestLayerOptions = OLFactory.createOptions();
         
-        MapQuestOptions mapQuestOptions = OLFactory.createMapQuestOptions();
+        MapQuestOptions mapQuestOptions = OLFactory.createOptions();
         mapQuestOptions.setLayer("hyb");
         
         MapQuest mapQuestSource = OLFactory.createMapQuestSource(mapQuestOptions);
         mapQuestLayerOptions.setSource(mapQuestSource);
         Tile mapQuestLayer = OLFactory.createTileLayer(mapQuestLayerOptions);
         
-        LayerOptions stamenLayerOptions = OLFactory.createLayerOptions();
-        
+        LayerOptions stamenLayerOptions = OLFactory.createOptions();
         
         // create a Stamen-layer
-        StamenOptions stamenOptions = OLFactory.createStamenOptions();
+        StamenOptions stamenOptions = OLFactory.createOptions();
         stamenOptions.setLayer("watercolor");
         
         Stamen stamenSource = OLFactory.createStamenSource(stamenOptions);
@@ -57,17 +52,17 @@ public class TileExample implements Example {
         // create a view
         View view = OLFactory.createView();
 
-        double[] centerCoordinate = OLFactory.createCoordinate(1490463, 6894388);
+        Coordinate centerCoordinate = OLFactory.createCoordinate(1490463, 6894388);
         
         view.setCenter(centerCoordinate);
         view.setZoom(10);
 
         // create the map
-        MapOptions mapOptions = OLFactory.createMapOptions();
+        MapOptions mapOptions = OLFactory.createOptions();
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 
-        Map map = Map.newInstance(mapOptions);
+        Map map = OLFactory.createMap(mapOptions);
         
         stamenLayer.setOpacity(0.5f);
         map.addLayer(mapQuestLayer);
@@ -76,7 +71,7 @@ public class TileExample implements Example {
         map.addControl(OLFactory.createScaleLine());
         DemoUtils.addDefaultControls(map.getControls());
         
-        Attribution attribution = Attribution.newInstance();
+        Attribution attribution = OLFactory.createAttributionControl();
         attribution.setCollapsed(true);
         
         map.addControl(attribution);
@@ -91,7 +86,7 @@ public class TileExample implements Example {
         EventListener<DragAndDropEvent> eventListener = new EventListener<DragAndDropEvent>() {
             
             @Override
-            public void on(DragAndDropEvent event) {
+            public void onEvent(DragAndDropEvent event) {
                 Window.alert(String.valueOf(event.getFeatures().length));
                 Window.alert(event.getProjection().getUnits());
                 Window.alert(String.valueOf(event.getProjection().getMetersPerUnit()));
@@ -99,7 +94,7 @@ public class TileExample implements Example {
             }
         };
 
-        dragAndDrop.on("addfeatures", EventListener.createEventListener(eventListener));
+        OLUtil.observe(dragAndDrop, "addfeatures", eventListener);
 
         map.addControl(OLFactory.createRotate());
         

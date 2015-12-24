@@ -3,16 +3,11 @@ package ol.style;
 import com.google.gwt.core.client.js.JsType;
 
 /**
+ * Set circle style for vector features.
  * 
  * @author Tino Desjardins
  *
  */
-@JsType
-public abstract class Circle {
-    
-    public static native Circle newInstance(CircleOptions circleOptions) /*-{
-        return new $wnd.ol.style.Circle(circleOptions);
-    }-*/;
-    
+@JsType(prototype = "ol.style.Circle")
+public interface Circle extends Image {
 }
-

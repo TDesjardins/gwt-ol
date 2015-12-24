@@ -1,18 +1,19 @@
 package de.desjardins.ol3.demo.client.example;
 
+import ol.Coordinate;
+import ol.Map;
+import ol.MapOptions;
+import ol.OLFactory;
+import ol.OLUtil;
+import ol.View;
 import ol.control.Attribution;
 
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.layer.Tile;
-import ol.proj.Projection;
 import ol.source.Osm;
 import ol.source.TileDebug;
 import ol.source.TileDebugOptions;
 import ol.source.XyzOptions;
-import ol.Map;
-import ol.MapOptions;
-import ol.OLFactory;
-import ol.View;
 import ol.layer.LayerOptions;
 
 /**
@@ -32,8 +33,8 @@ public class OsmExample implements Example {
         // create a OSM-layer
         XyzOptions osmSourceOptions = OLFactory.createOptions();
         
-        Osm osmSource = Osm.newInstance(osmSourceOptions);
-        LayerOptions osmLayerOptions = OLFactory.createLayerOptions();
+        Osm osmSource = OLFactory.createOsm(osmSourceOptions);
+        LayerOptions osmLayerOptions = OLFactory.createOptions();
         osmLayerOptions.setSource(osmSource);
         
         Tile osmLayer = OLFactory.createTileLayer(osmLayerOptions);
@@ -43,9 +44,9 @@ public class OsmExample implements Example {
         tileDebugOptions.setProjection("EPSG:3857");
         tileDebugOptions.setTileGrid(osmSource.getTileGrid());
 
-        TileDebug tileDebugSource = TileDebug.newInstance(tileDebugOptions);
+        TileDebug tileDebugSource = OLFactory.createTileDebug(tileDebugOptions);
         
-        LayerOptions tileDebugLayerOptions = OLFactory.createLayerOptions();
+        LayerOptions tileDebugLayerOptions = OLFactory.createOptions();
         
         tileDebugLayerOptions.setSource(tileDebugSource);
         
@@ -55,18 +56,18 @@ public class OsmExample implements Example {
         // create a view
         View view = OLFactory.createView();
 
-        double[] centerCoordinate = OLFactory.createCoordinate(-0.1275, 51.507222);
-        double[] transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857"); 
+        Coordinate centerCoordinate = OLFactory.createCoordinate(-0.1275, 51.507222);
+        Coordinate transformedCenterCoordinate = OLUtil.transform(centerCoordinate, "EPSG:4326", "EPSG:3857"); 
         
         view.setCenter(transformedCenterCoordinate);
         view.setZoom(10);
 
         // create the map
-        MapOptions mapOptions = OLFactory.createMapOptions();
+        MapOptions mapOptions = OLFactory.createOptions();
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 
-        Map map = Map.newInstance(mapOptions);
+        Map map = OLFactory.createMap(mapOptions);
         
         map.addLayer(osmLayer);
         map.addLayer(tileDebugLayer);
@@ -75,7 +76,7 @@ public class OsmExample implements Example {
         map.addControl(OLFactory.createScaleLine());
         DemoUtils.addDefaultControls(map.getControls());
         
-        Attribution attribution = Attribution.newInstance();
+        Attribution attribution = OLFactory.createAttributionControl();
         attribution.setCollapsed(true);
         
         map.addControl(attribution);
@@ -83,8 +84,7 @@ public class OsmExample implements Example {
         // add some interactions
         map.addInteraction(OLFactory.createKeyboardPan());
         map.addInteraction(OLFactory.createKeyboardZoom());
-        
-        
+     
     }
     
 }

@@ -12,14 +12,14 @@ public class CollectionTest extends BaseTestCase {
 
     public void testCollection() {
         
-        Collection<Control> controls = Collection.newInstance();
+        Collection<Control> controls = OLFactory.createCollection();
         
         assertNotNull(controls);
         assertTrue(controls.getLength() == 0);
         
         assertNotNull(controls.getArray());
         
-        controls.push(ol.control.Attribution.newInstance());
+        controls.push(OLFactory.createAttributionControl());
         
         assertTrue(controls.getLength() == 1);
         

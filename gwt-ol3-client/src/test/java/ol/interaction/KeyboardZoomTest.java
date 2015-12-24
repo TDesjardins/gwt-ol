@@ -1,6 +1,7 @@
 package ol.interaction;
 
 import ol.BaseTestCase;
+import ol.OLFactory;
 import ol.Observable;
 
 /**
@@ -12,7 +13,7 @@ public class KeyboardZoomTest extends BaseTestCase {
 
     public void testKeyboardZoom() {
 
-        KeyboardZoom keyboardZoom = KeyboardZoom.newInstance();
+        KeyboardZoom keyboardZoom = OLFactory.createKeyboardZoom();
         
         assertNotNull(keyboardZoom);
         assertTrue(keyboardZoom instanceof Observable);

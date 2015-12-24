@@ -3,16 +3,11 @@ package ol.interaction;
 import com.google.gwt.core.client.js.JsType;
 
 /**
- * 
+ *
  * @author Tino Desjardins
  *
  */
-@JsType
-public abstract class KeyboardZoom implements Interaction {
+@JsType(prototype = "ol.interaction.KeyboardZoom")
+public interface KeyboardZoom extends Interaction {
 
-    public static native KeyboardZoom newInstance() /*-{
-        return new $wnd.ol.interaction.KeyboardZoom();
-    }-*/;
-   
 }
-
