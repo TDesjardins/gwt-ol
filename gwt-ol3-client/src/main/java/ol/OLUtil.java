@@ -1,12 +1,13 @@
 package ol;
 
+
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
-
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
 
 import ol.event.ClickListener;
 import ol.event.DoubleClickListener;
@@ -25,6 +26,7 @@ import ol.source.TileEvent;
 import ol.source.UrlTile;
 import ol.source.Xyz;
 import ol.source.XyzOptions;
+import ol.style.Style;
 import ol.tilegrid.TileGrid;
 import ol.tilegrid.TileGridOptions;
 
@@ -103,13 +105,60 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static HandlerRegistration addMapMoveListener(Map map, final MapMoveListener listener) {
-        return observe(map, MapEvent.MOVEEND, new EventListener<MapEvent>() {
+        // default is true to track all changes to the map position immediately
+        return addMapMoveListener(map, listener, true);
+    }
 
+    /**
+     * Adds a map move listener for the given map.
+     *
+     * @param map
+     *            {@link Map}
+     * @param listener
+     *            {@link MapMoveListener}
+     * @param immediate
+     *            Fire events while the map is moving? If set to false only one
+     *            event will be fired after the map has finished moving.
+     * @return {@link HandlerRegistration}
+     */
+    public static HandlerRegistration addMapMoveListener(final Map map, final MapMoveListener listener,
+            boolean immediate) {
+        // listen to "moveend" events of map
+        final HandlerRegistration handlerMap = observe(map, MapEvent.MOVEEND, new EventListener<MapEvent>() {
             @Override
             public void onEvent(MapEvent event) {
                 listener.onMapMove(event);
             }
         });
+        // fire events while the map is moving?
+        if(immediate) {
+            // try to set up an event handler for the change of the view center
+            // as "moveend" will be only fired when the map stops moving
+            View view = map.getView();
+            if(view != null) {
+                final HandlerRegistration handlerView = OLUtil.observe(view, "change:center",
+                        new EventListener<ObjectEvent>() {
+                            @Override
+                            public void onEvent(ObjectEvent event) {
+                                // create an artificial move event
+                                Event e2 = createLinkedEvent(event, "move", (JavaScriptObject)map);
+                                MapEvent me = initMapEvent(e2, map);
+                                listener.onMapMove(me);
+                            }
+                        });
+                // return a handler registration, which detaches both event
+                // handlers
+                return new HandlerRegistration() {
+                    @Override
+                    public void removeHandler() {
+                        handlerMap.removeHandler();
+                        handlerView.removeHandler();
+                    }
+                };
+            }
+        }
+        // just return the map handler
+        return handlerMap;
     }
 
     /**
@@ -147,6 +196,33 @@ public final class OLUtil {
     }-*/;
 
     /**
+     * Adds a {@link Style} to the given array of {@link Style}s.
+     *
+     * @param s
+     *            array of {@link Style}s (will be changed)
+     * @param s2
+     *            {@link Style}
+     * @return the changed array
+     */
+    public static native ol.style.Style[] addStyle(ol.style.Style[] s, ol.style.Style s2) /*-{
+		s.push(s2);
+		return s;
+    }-*/;
+
+    /**
+     * Combines two arrays of {@link Style}s.
+     *
+     * @param s
+     *            array of {@link Style}s 1
+     * @param s2
+     *            array of {@link Style}s 2
+     * @return the combined array
+     */
+    public static native ol.style.Style[] addStyles(ol.style.Style[] s, ol.style.Style[] s2) /*-{
+		return s.concat(s2);
+    }-*/;
+
+    /**
      * Adds a listener for tile loading errors.
      *
      * @param source
@@ -165,6 +241,19 @@ public final class OLUtil {
             }
         });
     }
+
+    /**
+     * Combines two {@link Style}s into an array of {@link Style}s.
+     *
+     * @param s1
+     *            {@link Style} 1
+     * @param s2
+     *            {@link Style} 2
+     * @return array of {@link Style}s
+     */
+    public static native ol.style.Style[] combineStyles(ol.style.Style s1, ol.style.Style s2) /*-{
+		return [ s1, s2 ];
+    }-*/;
 
     /**
      * Creates a JavaScript function calling the given event listener.
@@ -533,9 +622,9 @@ public final class OLUtil {
      * Transforms a coordinate from source projection to destination projection.
      * This returns a new coordinate (and does not modify the original).
      *
-     * See {@link ol.proj.transformExtent} for extent transformation. See the
-     * transform method of {@link ol.geom.Geometry} and its subclasses for
-     * geometry transforms.
+     * See {@link #transformExtent(Extent, Projection, Projection)} for extent
+     * transformation. See the transform method of {@link ol.geom.Geometry} and
+     * its subclasses for geometry transforms.
      *
      * @param coordinate
      *            Coordinate.
@@ -553,9 +642,9 @@ public final class OLUtil {
      * Transforms a coordinate from source projection to destination projection.
      * This returns a new coordinate (and does not modify the original).
      *
-     * See {@link ol.proj.transformExtent} for extent transformation. See the
-     * transform method of {@link ol.geom.Geometry} and its subclasses for
-     * geometry transforms.
+     * See {@link #transformExtent(Extent, Projection, Projection)} for extent
+     * transformation. See the transform method of {@link ol.geom.Geometry} and
+     * its subclasses for geometry transforms.
      *
      * @param coordinate
      *            Coordinate.

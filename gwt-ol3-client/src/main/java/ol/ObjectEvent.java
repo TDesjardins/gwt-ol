@@ -34,4 +34,5 @@ public interface ObjectEvent extends Event {
      */
     @JsProperty
     JavaScriptObject getOldValue();
+
 }

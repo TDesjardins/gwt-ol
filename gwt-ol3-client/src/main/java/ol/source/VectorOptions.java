@@ -19,9 +19,7 @@ public interface VectorOptions extends SourceOptions {
      * Set the features. If provided as {@link ol.Collection}, the features in
      * the source and the collection will stay in sync.
      *
-     * @param features
-     *            features
-     * @return this instance
+     * @param features features
      */
     @JsProperty
     void setFeatures(TypedObject<Feature[], Collection<Feature>> features);
@@ -39,9 +37,7 @@ public interface VectorOptions extends SourceOptions {
      * ol.Collection, which can be retrieved through
      * ol.source.Vector#getFeaturesCollection. The default is true.
      *
-     * @param useSpatialIndex
-     *            use spatial index?
-     * @return this instance
+     * @param useSpatialIndex use spatial index?
      */
     @JsProperty
     void setUseSpatialIndex(boolean useSpatialIndex);
@@ -52,10 +48,9 @@ public interface VectorOptions extends SourceOptions {
      * false. The resulting geometry coordinates will then exceed the world
      * bounds.
      * 
-     * @param wrapX
-     *            wrap?
-     * @return this instance
+     * @param wrapX wrap?
      */
     @JsProperty
     void setWrapX(boolean wrapX);
+
 }

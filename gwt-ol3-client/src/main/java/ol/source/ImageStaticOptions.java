@@ -4,7 +4,6 @@ import com.google.gwt.core.client.js.JsProperty;
 import com.google.gwt.core.client.js.JsType;
 
 import ol.Extent;
-
 import ol.Size;
 import ol.proj.Projection;
 

@@ -75,17 +75,7 @@
   <build>
     <resources>
       <resource>
-        <filtering>false</filtering>
-        <directory>${basedir}/src/main/java</directory>
-        <includes>
-          <include>**/*.java</include>
-          <include>**/*.xml</include>
-          <include>**/*.js</include>
-        </includes>
-      </resource>
-      <resource>
-        <filtering>false</filtering>
-        <directory>${basedir}/src/test/java</directory>
+        <directory>src/main/java</directory>
         <includes>
           <include>**/*.java</include>
           <include>**/*.xml</include>
@@ -96,7 +86,7 @@
     <plugins>
       <plugin>
 		<artifactId>maven-surefire-plugin</artifactId>
-		<version>2.4.3</version>
+		<version>2.19</version>
 		<configuration>
         <excludes>
 			<!-- todo rename *Test.java to *GwtTest.java in the project -->
@@ -109,36 +99,52 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
+        <version>3.3</version>
         <configuration>
           <source>1.7</source>
           <target>1.7</target>
         </configuration>
       </plugin>
-	<!--  plugin>
-		<groupId>org.codehaus.mojo</groupId>
-		<artifactId>gwt-maven-plugin</artifactId>
-		<version>${gwt.maven.plugin.version}</version>
-		<configuration>
-			<inplace>true</inplace>
-			<gwtVersion>${gwtVersion}</gwtVersion>
-			<sourceLevel>1.7</sourceLevel>
-			<extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
-			<includes>**/*TestSuite.java</includes>
-            <mode>htmlunit</mode>
-            <jsInteropMode>JS</jsInteropMode>
-            <productionMode>true</productionMode>
-            <webMode>true</webMode>
-		</configuration>
-		<executions>
-			<execution>
-				<id>test</id>
-				<goals>
-					<goal>test</goal>
-				</goals>
-			</execution>
-		</executions>
-	</plugin-->
+		<!-- plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>gwt-maven-plugin</artifactId>
+			<version>${gwt.version}</version>
+			<configuration>
+				<inplace>true</inplace>
+				<extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
+				<includes>**/*TestSuite.java</includes>
+	            <jsInteropMode>JS</jsInteropMode>
+	            <productionMode>true</productionMode>
+	            <strict>true</strict>
+			</configuration>
+			<executions>
+				<execution>
+					<id>test</id>
+					<goals>
+						<goal>test</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin-->
+	
+		<!-- copy javadoc -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-javadoc-plugin</artifactId>
+			<version>2.10.3</version>
+			<executions>
+				<execution>
+					<id>attach-javadocs</id>
+					<goals>
+						<goal>jar</goal>
+					</goals>
+					<configuration>
+						<additionalparam>-Xdoclint:none</additionalparam>
+						<failOnError>false</failOnError>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
     </plugins>
   </build>
 
