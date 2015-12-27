@@ -1,37 +1,39 @@
 package ol.proj;
 
-import ol.Extent;
+import com.google.gwt.core.client.js.JsProperty;
+import com.google.gwt.core.client.js.JsType;
 
-import jsinterop.annotations.JsType;
+import ol.Extent;
+import ol.Options;
 
 /**
  * @author Tino Desjardins
  */
 @JsType
-public class ProjectionOptions {
+public interface ProjectionOptions extends Options {
 
-    public String code;
-    
-    public Extent extent;
-    
-    public boolean global;
-    
-    public String units;
-    
-    public void setCode(String code) {
-        this.code = code;
-    }
-    
-    public void setUnits(String units) {
-        this.units = units;
-    }
+    @JsProperty
+    void setCode(String code);
 
-    public void setGlobal(boolean global) {
-        this.global = global;
-    }
-    
-    public void setExtent(Extent extent) {
-        this.extent = extent;
-    }
-    
+    @JsProperty
+    ProjectionOptions code(String code);
+
+    @JsProperty
+    void setUnits(String units);
+
+    @JsProperty
+    ProjectionOptions units(String units);
+
+    @JsProperty
+    void setGlobal(boolean global);
+
+    @JsProperty
+    ProjectionOptions global(boolean global);
+
+    @JsProperty
+    void setExtent(Extent extent);
+
+    @JsProperty
+    ProjectionOptions extent(Extent imageExtent);
+
 }

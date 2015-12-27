@@ -29,7 +29,7 @@ public interface DrawOptions extends Options {
      * @return this instance
      */
     @JsProperty
-    void setClickTolerance(int clickTolerance);
+    DrawOptions clickTolerance(int clickTolerance);
 
     /**
      * Destination collection for the drawn features.
@@ -39,7 +39,7 @@ public interface DrawOptions extends Options {
      * @return this instance
      */
     @JsProperty
-    void setFeatures(Collection<Feature> features);
+    DrawOptions features(Collection<Feature> features);
 
     /**
      * The number of points that can be drawn before a polygon ring or line
@@ -50,7 +50,7 @@ public interface DrawOptions extends Options {
      * @return this instance
      */
     @JsProperty
-    void setMaxPoints(Integer maxPoints);
+    DrawOptions maxPoints(Integer maxPoints);
 
     /**
      * The number of points that must be drawn before a polygon ring or line
@@ -62,7 +62,7 @@ public interface DrawOptions extends Options {
      * @return this instance
      */
     @JsProperty
-    void setMinPoints(int minPoints);
+    DrawOptions minPoints(int minPoints);
 
     /**
      * Pixel distance for snapping to the drawing finish. Default is 12.
@@ -72,7 +72,7 @@ public interface DrawOptions extends Options {
      * @return this instance
      */
     @JsProperty
-    void setSnapTolerance(int snapTolerance);
+    DrawOptions snapTolerance(int snapTolerance);
 
     /**
      * Destination source for the drawn features.
@@ -82,7 +82,7 @@ public interface DrawOptions extends Options {
      * @return this instance
      */
     @JsProperty
-    void setSource(Vector source);
+    DrawOptions source(Vector source);
 
     /**
      * Style for sketch features.
@@ -92,7 +92,7 @@ public interface DrawOptions extends Options {
      * @return this instance
      */
     @JsProperty
-    void setStyle(Style style);
+    DrawOptions style(Style style);
 
     /**
      * Drawing type ('Point', 'LineString', 'Polygon', 'MultiPoint',
@@ -103,7 +103,7 @@ public interface DrawOptions extends Options {
      * @return this instance
      */
     @JsProperty
-    void setType(String type);
+    DrawOptions type(String type);
 
     /**
      * Wrap the world horizontally on the sketch overlay. Default is false.
@@ -113,6 +113,6 @@ public interface DrawOptions extends Options {
      * @return this instance
      */
     @JsProperty
-    void setWrapX(boolean wrapX);
+    DrawOptions wrapX(boolean wrapX);
 
 }

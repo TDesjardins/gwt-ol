@@ -18,17 +18,21 @@ public interface StrokeOptions extends Options {
     /**
      * Set the stroke color.
      *
-     * @param color {@link Color}
+     * @param color
+     *            {@link Color}
+     * @return this instance
      */
     @JsProperty
-    public void setColor(Color color);
+    public StrokeOptions color(Color color);
 
     /**
      * Set the stroke width.
      *
-     * @param width width
+     * @param width
+     *            width
+     * @return this instance
      */
     @JsProperty
-    public void setWidth(int width);
+    public StrokeOptions width(int width);
 
 }

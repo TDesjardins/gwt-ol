@@ -1,15 +1,14 @@
 package de.desjardins.ol3.demo.client.example;
 
-import ol.OLUtil;
-
-import ol.Coordinate;
 import ol.source.Xyz;
 import ol.source.XyzOptions;
 import ol.Attribution;
 import ol.AttributionOptions;
+import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
+import ol.OLUtil;
 import ol.View;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
@@ -31,8 +30,8 @@ public class XyzExample implements Example {
     	XyzOptions xyzOptions = OLFactory.createOptions();
     	xyzOptions.setUrl("http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}");
     	
-    	AttributionOptions attributionOptions = OLFactory.<AttributionOptions>createOptions();
-    	attributionOptions.setHtml("Tiles &copy; <a href=\"http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer\">ArcGIS</a>");
+    	AttributionOptions attributionOptions = OLFactory.<AttributionOptions>createOptions()
+                .setHtml("Tiles &copy; <a href=\"http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer\">ArcGIS</a>");
         
         Attribution attribution = OLFactory.createAttribution(attributionOptions);
         Attribution[] attributions = new Attribution[1];

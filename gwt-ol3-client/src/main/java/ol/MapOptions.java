@@ -19,23 +19,28 @@ public interface MapOptions extends Options {
 
     @JsProperty
     String getTarget();
-    
-    @JsProperty
-    void setTarget(String target);
-    
-    @JsProperty
-    void setLayers(Collection<Base> layers);
 
     @JsProperty
     View getView();
 
+    @JsProperty
+    MapOptions layers(Collection<Base> layers);
+
     /**
      * Controls initially added to the map.
      *
-     * @param controls controls
+     * @param controls
+     *            controls
+     * @return this instance
      */
     @JsProperty
-    void setControls(Collection<Control> controls);
+    MapOptions setControls(Collection<Control> controls);
+
+    @JsProperty
+    MapOptions setLayers(Collection<Base> layers);
+
+    @JsProperty
+    MapOptions setTarget(String target);
 
     /**
      * Set the map's view. No layer sources will be fetched unless this is
@@ -46,6 +51,20 @@ public interface MapOptions extends Options {
      * @return this instance
      */
     @JsProperty
-    void setView(View view);
+    MapOptions setView(View view);
+
+    @JsProperty
+    MapOptions target(String target);
+
+    /**
+     * Set the map's view. No layer sources will be fetched unless this is
+     * specified at construction time or through ol.Map#setView.
+     * 
+     * @param view
+     *            {@link View}
+     * @return this instance
+     */
+    @JsProperty
+    MapOptions view(View view);
 
 }

@@ -16,13 +16,18 @@ public class Extent extends JavaScriptObject {
     /**
      * Constructs an instance.
      *
-     * @param minX minimum coordinate X
-     * @param minY minimum coordinate Y
-     * @param maxX maximum coordinate X
-     * @param maxY maximum coordinate Y
+     * @param minX
+     *            minimum coordinate X
+     * @param minY
+     *            minimum coordinate Y
+     * @param maxX
+     *            maximum coordinate X
+     * @param maxY
+     *            maximum coordinate Y
      * @return {@link Extent}
      */
-    public static native Extent create(double minX, double minY, double maxX, double maxY) /*-{
+    public static native Extent create(double minX, double minY, double maxX, double maxY)
+    /*-{
     	return [ minX, minY, maxX, maxY ];
     }-*/;
 
@@ -31,7 +36,8 @@ public class Extent extends JavaScriptObject {
      *
      * @return {ol.Extent} clone
      */
-    public final native Extent cloneObject() /*-{
+    public final native Extent cloneObject()
+    /*-{
     	return this.slice(0);
     }-*/;
 
@@ -40,7 +46,8 @@ public class Extent extends JavaScriptObject {
      *
      * @return minimum X coordinate.
      */
-    public final native double getLowerLeftX() /*-{
+    public final native double getLowerLeftX()
+    /*-{
     	return this[0];
     }-*/;
 
@@ -49,7 +56,8 @@ public class Extent extends JavaScriptObject {
      *
      * @return minimum Y coordinate.
      */
-    public final native double getLowerLeftY() /*-{
+    public final native double getLowerLeftY()
+    /*-{
     	return this[1];
     }-*/;
 
@@ -58,7 +66,8 @@ public class Extent extends JavaScriptObject {
      *
      * @return maximum X coordinate.
      */
-    public final native double getUpperRightX() /*-{
+    public final native double getUpperRightX()
+    /*-{
     	return this[2];
     }-*/;
 
@@ -67,7 +76,8 @@ public class Extent extends JavaScriptObject {
      *
      * @return maximum Y coordinate.
      */
-    public final native double getUpperRightY() /*-{
+    public final native double getUpperRightY()
+    /*-{
     	return this[3];
     }-*/;
 

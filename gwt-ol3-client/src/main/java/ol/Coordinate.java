@@ -22,7 +22,8 @@ public class Coordinate extends JavaScriptObject {
      *            {ol.Coordinate} delta Delta.
      * @return {ol.Coordinate} The input coordinate adjusted by the given delta.
      */
-    public final native Coordinate add(Coordinate delta) /*-{
+    public final native Coordinate add(Coordinate delta)
+    /*-{
     	return $wnd.ol.coordinate.add(this, delta);
     }-*/;
 
@@ -31,7 +32,8 @@ public class Coordinate extends JavaScriptObject {
      *
      * @return {ol.Coordinate} clone
      */
-    public final native Coordinate cloneObject() /*-{
+    public final native Coordinate cloneObject()
+    /*-{
     	return this.slice(0);
     }-*/;
 
@@ -42,7 +44,8 @@ public class Coordinate extends JavaScriptObject {
      *            the index to be retrieved
      * @return the value at the given index
      */
-    private final native double get(int index) /*-{
+    private final native double get(int index)
+    /*-{
     	return this[index];
     }-*/;
 
@@ -52,7 +55,7 @@ public class Coordinate extends JavaScriptObject {
      * @return dimension
      */
     public final int getDimension() {
-        return this.length();
+	return this.length();
     }
 
     /**
@@ -61,10 +64,10 @@ public class Coordinate extends JavaScriptObject {
      * @return X-coordinate (longitude)
      */
     public final double getX() {
-        if (this.getDimension() > 0) {
-            return this.get(0);
-        }
-        return Double.NaN;
+	if (this.getDimension() > 0) {
+	    return this.get(0);
+	}
+	return Double.NaN;
     }
 
     /**
@@ -73,10 +76,10 @@ public class Coordinate extends JavaScriptObject {
      * @return Y-coordinate (latitude)
      */
     public final double getY() {
-        if (this.getDimension() > 1) {
-            return this.get(1);
-        }
-        return Double.NaN;
+	if (this.getDimension() > 1) {
+	    return this.get(1);
+	}
+	return Double.NaN;
     }
 
     /**
@@ -85,10 +88,10 @@ public class Coordinate extends JavaScriptObject {
      * @return Y-coordinate (latitude)
      */
     public final double getZ() {
-        if (this.getDimension() > 2) {
-            return this.get(2);
-        }
-        return Double.NaN;
+	if (this.getDimension() > 2) {
+	    return this.get(2);
+	}
+	return Double.NaN;
     }
 
     /**
@@ -97,7 +100,7 @@ public class Coordinate extends JavaScriptObject {
      * @return latitude
      */
     public final double lat() {
-        return this.getY();
+	return this.getY();
     }
 
     /**
@@ -105,7 +108,8 @@ public class Coordinate extends JavaScriptObject {
      *
      * @return the array length
      */
-    public final native int length() /*-{
+    public final native int length()
+    /*-{
     	return this.length;
     }-*/;
 
@@ -115,7 +119,7 @@ public class Coordinate extends JavaScriptObject {
      * @return longitude
      */
     public final double lon() {
-        return this.getX();
+	return this.getX();
     }
 
     /**
@@ -131,8 +135,8 @@ public class Coordinate extends JavaScriptObject {
      * @return {string} XY.
      * @api stable
      */
-    public final native String toStringXY(int fractionDigits) /*-{
+    public final native String toStringXY(int fractionDigits)
+    /*-{
     	return $wnd.ol.coordinate.toStringXY(this, fractionDigits);
     }-*/;
-    
 }

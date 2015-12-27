@@ -109,10 +109,10 @@ public class Measure {
         this.listener = listener;
         // set up interaction
         DrawOptions drawOptions = OLFactory.createOptions();
-        drawOptions.setType(type);
+        drawOptions.type(type);
         // use a special style?
         if(style != null) {
-            drawOptions.setStyle(style);
+            drawOptions.style(style);
         }
         draw = OLFactory.createDraw(drawOptions);
 
@@ -126,7 +126,8 @@ public class Measure {
                 // create a default style resembling the default editing style,
                 // but adding a border to polygons
                 Style sPoly = OLFactory.createStyle(OLFactory.createFill(OLFactory.createColor(255, 255, 255, 0.5)));
-                Style sLine1 = OLFactory.createStyle(OLFactory.createStroke(OLFactory.createColor(255, 255, 255, 1), 5));
+                Style sLine1 = OLFactory
+                        .createStyle(OLFactory.createStroke(OLFactory.createColor(255, 255, 255, 1), 5));
                 Style sLine2 = OLFactory.createStyle(OLFactory.createStroke(OLFactory.createColor(0, 153, 255, 1), 3));
                 // combine all styles
                 Style[] s = OLUtil.addStyle(OLUtil.combineStyles(sPoly, sLine1), sLine2);

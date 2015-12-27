@@ -22,7 +22,7 @@ public interface SourceOptions extends Options {
      * @return this instance
      */
     @JsProperty
-    void setAttributions(Attribution[] attributions);
+    SourceOptions setAttributions(Attribution[] attributions);
 
     /**
      * Set the Projection. Default is EPSG:3857.
@@ -32,6 +32,6 @@ public interface SourceOptions extends Options {
      * @return this instance
      */
     @JsProperty
-    void setProjection(String projection);
+    SourceOptions setProjection(String projection);
 
 }

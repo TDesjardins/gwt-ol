@@ -18,9 +18,11 @@ public interface FillOptions extends Options {
     /**
      * Set the fill color.
      * 
-     * @param color {@link Color}
+     * @param color
+     *            {@link Color}
+     * @return this instance
      */
     @JsProperty
-    void setColor(Color color);
+    FillOptions color(Color color);
 
 }

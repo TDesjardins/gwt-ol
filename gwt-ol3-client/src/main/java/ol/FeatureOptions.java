@@ -21,6 +21,5 @@ public interface FeatureOptions extends Options {
      * @return this instance
      */
     @JsProperty
-    void setGeometry(Geometry geom);
-    
+    FeatureOptions setGeometry(Geometry geom);
 }

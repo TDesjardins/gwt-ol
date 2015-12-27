@@ -4,6 +4,7 @@ import com.google.gwt.user.client.Window;
 
 import ol.*;
 import ol.control.Attribution;
+
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.event.EventListener;
 import ol.interaction.DragAndDrop;
@@ -28,7 +29,7 @@ public class TileExample implements Example {
      */
     @Override
     public void show() {
-
+        
         // create a MapQuest-layer
         LayerOptions mapQuestLayerOptions = OLFactory.createOptions();
         
@@ -40,6 +41,7 @@ public class TileExample implements Example {
         Tile mapQuestLayer = OLFactory.createTileLayer(mapQuestLayerOptions);
         
         LayerOptions stamenLayerOptions = OLFactory.createOptions();
+        
         
         // create a Stamen-layer
         StamenOptions stamenOptions = OLFactory.createOptions();

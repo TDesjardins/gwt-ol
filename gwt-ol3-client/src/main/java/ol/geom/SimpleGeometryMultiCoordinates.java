@@ -13,7 +13,7 @@ import ol.Coordinate;
  * 
  * @author sbaumhekel
  */
-@JsType(prototype = "ol.geom.SimpleGeometryMultiCoordinates")
+@JsType
 public interface SimpleGeometryMultiCoordinates extends SimpleGeometry {
     /**
      * Return the coordinates of this geometry.

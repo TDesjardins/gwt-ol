@@ -20,8 +20,8 @@ public class MapTest extends BaseTestCase {
         // TODO Add OL3-script.
         
         ProjectionOptions projectionOptions = OLFactory.createOptions();
-        projectionOptions.setCode("EPSG:21781");
-        projectionOptions.setUnits("m");
+        projectionOptions.code("EPSG:21781")
+            .units("m");
         
         Projection projection = OLFactory.createProjection(projectionOptions);
         

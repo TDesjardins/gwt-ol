@@ -25,8 +25,8 @@ public class ProjectionTest extends BaseTestCase {
     public void testProjection() {
     	
         ProjectionOptions projectionOptions = OLFactory.createOptions();
-        projectionOptions.setCode(EPSG_CODE_21781);
-        projectionOptions.setUnits(UNIT_METRE);
+        projectionOptions.code(EPSG_CODE_21781)
+            .units(UNIT_METRE);
         
         Projection projection = OLFactory.createProjection(projectionOptions);
         
@@ -39,9 +39,9 @@ public class ProjectionTest extends BaseTestCase {
     public void testAddProjection() {
     	
     	ProjectionOptions projectionOptions = OLFactory.createOptions();
-        projectionOptions.setCode(EPSG_CODE_3068);
-        //projectionOptions.global(false);
-        projectionOptions.setUnits(UNIT_METRE);
+        projectionOptions.code(EPSG_CODE_3068)
+        	.global(false)
+            .units(UNIT_METRE);
         
         Projection projection = OLFactory.createProjection(projectionOptions);
         assertNotNull(projection);
