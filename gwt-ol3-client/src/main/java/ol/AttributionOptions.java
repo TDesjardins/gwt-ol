@@ -1,6 +1,7 @@
 package ol;
 
-import com.google.gwt.core.client.js.*;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * Options for {@link Attribution}.

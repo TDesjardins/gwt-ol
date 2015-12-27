@@ -25,24 +25,18 @@ public interface XyzOptions extends SourceOptions {
     /**
      * Set the optional max zoom level. Default is 18.
      *
-     * @param maxZoom
-     *            max zoom
-     *
-     * @return this instance
+     * @param maxZoom max zoom
      */
     @JsProperty
-    XyzOptions setMaxZoom(int maxZoom);
+    void setMaxZoom(int maxZoom);
 
     /**
      * Set the {@link TileGrid}.
      *
-     * @param tileGrid
-     *            {@link TileGrid}
-     *
-     * @return this instance
+     * @param tileGrid {@link TileGrid}
      */
     @JsProperty
-    XyzOptions setTileGrid(TileGrid tileGrid);
+    void setTileGrid(TileGrid tileGrid);
 
     /**
      * Set the URL template. Must include {x}, {y} or {-y}, and {z}
@@ -52,10 +46,9 @@ public interface XyzOptions extends SourceOptions {
      *
      * @param url
      *            URL template
-     * @return this instance
      */
     @JsProperty
-    XyzOptions setUrl(String url);
+    void setUrl(String url);
 
     /**
      * Set the URL templates. Must include {x}, {y} or {-y}, and {z}
@@ -68,6 +61,6 @@ public interface XyzOptions extends SourceOptions {
      * @return this instance
      */
     @JsProperty
-    XyzOptions setUrls(String[] urls);
+    void setUrls(String[] urls);
 
 }

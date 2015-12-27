@@ -17,8 +17,8 @@ public class ViewTest extends BaseTestCase {
     public void testView() {
         
         ProjectionOptions projectionOptions = OLFactory.createOptions();
-        projectionOptions.code("EPSG:21781")
-            .units("m");
+        projectionOptions.setCode("EPSG:21781");
+        projectionOptions.setUnits("m");
         
         assertNotNull(projectionOptions);
         

@@ -17,40 +17,33 @@ public interface StyleOptions extends Options {
     /**
      * {@link Fill} style.
      * 
-     * @param fill
-     *            {@link Fill}
-     * @return this instance.
+     * @param fill {@link Fill}
      */
     @JsProperty
-    public StyleOptions fill(Fill fill);
+    public void setFill(Fill fill);
 
     /**
      * {@link Image} style.
      * 
-     * @param image
-     *            {@link Image}
-     * @return this instance.
+     * @param image {@link Image}
      */
     @JsProperty
-    public StyleOptions image(Image image);
+    public void setImage(Image image);
 
     /**
      * {@link Stroke} style.
      * 
-     * @param stroke
-     *            {@link Stroke}
-     * @return this instance.
+     * @param stroke {@link Stroke}
      */
     @JsProperty
-    public StyleOptions stroke(Stroke stroke);
+    public void setStroke(Stroke stroke);
 
     /**
      * Z index.
      * 
-     * @param zIndex
-     *            Z index
-     * @return this instance.
+     * @param zIndex Z-index
      */
     @JsProperty
-    public StyleOptions zIndex(int zIndex);
+    public void setZIndex(int zIndex);
+    
 }

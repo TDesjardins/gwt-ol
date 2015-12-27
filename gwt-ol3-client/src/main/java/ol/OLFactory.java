@@ -86,7 +86,7 @@ public final class OLFactory {
      * @return {@link Attribution}
      */
     public static native Attribution createAttribution(AttributionOptions attributionOptions) /*-{
-    	return new $wnd.ol.Attribution(attributionOptions);
+        return new $wnd.ol.Attribution(attributionOptions);
     }-*/;
 
     /**
@@ -106,7 +106,7 @@ public final class OLFactory {
      * @return {@link ol.control.Attribution}
      */
     public static native ol.control.Attribution createAttributionControl() /*-{
-    	return new $wnd.ol.control.Attribution();
+        return new $wnd.ol.control.Attribution();
     }-*/;
 
     /**
@@ -119,7 +119,7 @@ public final class OLFactory {
      * @return {@link Circle}
      */
     public static native Circle createCircle(Coordinate center, double radius) /*-{
-    	return new $wnd.ol.geom.Circle(center, radius);
+        return new $wnd.ol.geom.Circle(center, radius);
     }-*/;
 
     /**
@@ -130,7 +130,7 @@ public final class OLFactory {
      * @return {@link ol.style.Circle}
      */
     public static native ol.style.Circle createCircleStyle(CircleOptions circleOptions) /*-{
-    	return new $wnd.ol.style.Circle(circleOptions);
+        return new $wnd.ol.style.Circle(circleOptions);
     }-*/;
 
     /**
@@ -146,9 +146,9 @@ public final class OLFactory {
      */
     public static ol.style.Circle createCircleStyle(Fill fill, Stroke stroke, double radius) {
         CircleOptions circleOptions = createOptions();
-        circleOptions.fill(fill);
-        circleOptions.stroke(stroke);
-        circleOptions.radius(radius);
+        circleOptions.setFill(fill);
+        circleOptions.setStroke(stroke);
+        circleOptions.setRadius(radius);
         return createCircleStyle(circleOptions);
     }
 
@@ -187,7 +187,7 @@ public final class OLFactory {
      * @return {@link Color}
      */
     public static native Color createColor(String color) /*-{
-    	return $wnd.ol.color.fromString(color);
+        return $wnd.ol.color.fromString(color);
     }-*/;
 
     /**
@@ -242,7 +242,7 @@ public final class OLFactory {
      * @return default map controls
      */
     public static native Collection<Control> createDefaultControls(@Nullable Options options) /*-{
-    	return new $wnd.ol.control.defaults(options);
+        return new $wnd.ol.control.defaults(options);
     }-*/;
 
     /** Interactions **/
@@ -333,7 +333,9 @@ public final class OLFactory {
      * @return {@link Fill}
      */
     public static Fill createFill(Color color) {
-        return createFill(OLFactory.<FillOptions> createOptions().color(color));
+        FillOptions fillOptions = OLFactory.<FillOptions> createOptions();
+        fillOptions.setColor(color);
+        return createFill(fillOptions);
     }
 
     /**
@@ -762,7 +764,10 @@ public final class OLFactory {
      * @return {@link Stroke}
      */
     public static Stroke createStroke(Color color, int width) {
-        return createStroke(OLFactory.<StrokeOptions> createOptions().color(color).width(width));
+        StrokeOptions strokeOptions = OLFactory.<StrokeOptions> createOptions();
+        strokeOptions.setColor(color);
+        strokeOptions.setWidth(width);
+        return createStroke(strokeOptions);
     }
 
     /**
@@ -784,7 +789,9 @@ public final class OLFactory {
      * @return {@link Style}
      */
     public static Style createStyle(Fill fill) {
-	return createStyle(OLFactory.<StyleOptions> createOptions().fill(fill));
+        StyleOptions styleOptions = OLFactory.<StyleOptions> createOptions();
+        styleOptions.setFill(fill);
+        return createStyle(styleOptions);
     }
 
     /**
@@ -795,7 +802,9 @@ public final class OLFactory {
      * @return {@link Style}
      */
     public static Style createStyle(Stroke stroke) {
-        return createStyle(OLFactory.<StyleOptions> createOptions().stroke(stroke));
+        StyleOptions styleOptions = OLFactory.<StyleOptions> createOptions();
+        styleOptions.setStroke(stroke);
+        return createStyle(styleOptions);
     }
 
    /**
@@ -808,7 +817,10 @@ public final class OLFactory {
      * @return {@link Style}
      */
     public static Style createStyle(Fill fill, Stroke stroke) {
-        return createStyle(OLFactory.<StyleOptions> createOptions().fill(fill).stroke(stroke));
+        StyleOptions styleOptions = OLFactory.<StyleOptions> createOptions();
+        styleOptions.setFill(fill);
+        styleOptions.setStroke(stroke);
+        return createStyle(styleOptions);
     }
 
     /**
@@ -819,7 +831,9 @@ public final class OLFactory {
      * @return {@link Style}
      */
     public static Style createStyle(ol.style.Image image) {
-        return createStyle(OLFactory.<StyleOptions> createOptions().image(image));
+        StyleOptions styleOptions = OLFactory.<StyleOptions> createOptions();
+        styleOptions.setImage(image);
+        return createStyle(styleOptions);
     }
 
     /**

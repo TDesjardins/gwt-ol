@@ -17,22 +17,18 @@ public interface CircleOptions extends Options {
     /**
      * Fill style.
      * 
-     * @param fill
-     *            {@link Fill}
-     * @return this instance
+     * @param fill {@link Fill}
      */
     @JsProperty
-    CircleOptions fill(Fill fill);
+    void setFill(Fill fill);
 
     /**
      * Circle radius. Required.
      * 
-     * @param radius
-     *            radius
-     * @return this instance
+     * @param radius radius
      */
     @JsProperty
-    CircleOptions radius(double radius);
+    void setRadius(double radius);
 
     /**
      * If true integral numbers of pixels are used as the X and Y pixel
@@ -42,21 +38,17 @@ public interface CircleOptions extends Options {
      * accuracy is important if the circle's position is animated. Without it,
      * the circle may jitter noticeably. Default value is true.
      * 
-     * @param snapToPixel
-     *            snap to pixels?
-     * @return this instance
+     * @param snapToPixel snap to pixels?
      */
     @JsProperty
-    CircleOptions snapToPixel(boolean snapToPixel);
+    void setSnapToPixel(boolean snapToPixel);
 
     /**
      * Stroke style.
      * 
-     * @param stroke
-     *            {@link Stroke}
-     * @return this instance
+     * @param stroke {@link Stroke}
      */
     @JsProperty
-    CircleOptions stroke(Stroke stroke);
+    void setStroke(Stroke stroke);
 
 }

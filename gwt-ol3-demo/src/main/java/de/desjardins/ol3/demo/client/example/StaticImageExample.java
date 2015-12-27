@@ -37,17 +37,17 @@ public class StaticImageExample implements Example {
         
         Extent imageExtent = OLFactory.createExtent(0, 0, 1024, 968);
         
-        projectionOptions.code("pixel")
-          .extent(imageExtent)
-          .units("pixels");
+        projectionOptions.setCode("pixel");
+        projectionOptions.setExtent(imageExtent);
+        projectionOptions.setUnits("pixels");
         
         Projection projection = OLFactory.createProjection(projectionOptions);
         
         ImageStaticOptions imageStaticOptions = OLFactory.createOptions();
-        imageStaticOptions.url("http://imgs.xkcd.com/comics/online_communities.png")
-            .imageSize(OLFactory.createSize(1024, 968))
-            .imageExtent(imageExtent)
-            .projection(projection);
+        imageStaticOptions.setUrl("http://imgs.xkcd.com/comics/online_communities.png");
+        imageStaticOptions.setImageSize(OLFactory.createSize(1024, 968));
+        imageStaticOptions.setImageExtent(imageExtent);
+        imageStaticOptions.setProjection(projection);
         
         AttributionOptions attributionOptions = OLFactory.<AttributionOptions>createOptions()
                 .setHtml("&copy; <a href=\"http://xkcd.com/license.html\">xkcd</a>");

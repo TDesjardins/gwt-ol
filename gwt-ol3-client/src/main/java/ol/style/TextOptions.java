@@ -15,6 +15,6 @@ import ol.Options;
 public interface TextOptions extends Options {
 
     @JsProperty
-    TextOptions text(String text);
+    void setText(String text);
 
 }
