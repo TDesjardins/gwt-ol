@@ -20,7 +20,7 @@
     <repository>
       <id>com.google.gwt</id>
       <name>GWT Sonatype Releases</name>
-      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+      <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
     </repository>
     <repository>
       <id>org.codehaus.mojo</id>
