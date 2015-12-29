@@ -22,7 +22,7 @@ public interface Event {
      * @return true on success, else false
      */
     @JsProperty
-    boolean defaultPrevented();
+    boolean getDefaultPrevented();
 
     /**
      * Object that had the listener attached.

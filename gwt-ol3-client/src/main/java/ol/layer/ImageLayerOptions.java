@@ -20,10 +20,8 @@ public interface ImageLayerOptions extends LayerOptions {
      * useful for temporary layers. The standard way to add a layer to a map and
      * have it managed by the map is to use {@link ol.Map#addLayer(Base)}.
      *
-     * @param map
-     *            {@link Map}
-     * @return this instance
+     * @param map {@link Map}
      */
     @JsProperty
-    ImageLayerOptions setMap(Map map);
+    void setMap(Map map);
 }

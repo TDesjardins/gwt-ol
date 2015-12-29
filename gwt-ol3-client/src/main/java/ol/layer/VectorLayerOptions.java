@@ -21,12 +21,10 @@ public interface VectorLayerOptions extends LayerOptions {
      * useful for temporary layers. The standard way to add a layer to a map and
      * have it managed by the map is to use {@link ol.Map#addLayer(Base)}.
      *
-     * @param map
-     *            {@link Map}
-     * @return this instance
+     * @param map {@link Map}
      */
     @JsProperty
-    VectorLayerOptions setMap(Map map);
+    void setMap(Map map);
 
     /**
      * The buffer around the viewport extent used by the renderer when getting
@@ -34,34 +32,19 @@ public interface VectorLayerOptions extends LayerOptions {
      * Recommended value: the size of the largest symbol, line width or label.
      * Default is 100 pixels.
      *
-     * @param renderBuffer
-     *            render buffer
-     * @return this instance
+     * @param renderBuffer render buffer
      */
     @JsProperty
-    VectorLayerOptions setRenderBuffer(double renderBuffer);
+    void setRenderBuffer(double renderBuffer);
 
     /**
      * Layer style. See ol.style for default style which will be used if this is
      * not defined.
      *
-     * @param style
-     *            {@link Style}
-     * @return this instance
+     * @param style {@link Style}
      */
     @JsProperty
-    VectorLayerOptions setStyle(Style style);
-
-    /**
-     * Layer style. See ol.style for default style which will be used if this is
-     * not defined.
-     *
-     * @param style
-     *            {@link Style}
-     * @return this instance
-     */
-    @JsProperty
-    VectorLayerOptions setStyle(Style[] style);
+    void setStyle(Style[] style);
 
     /**
      * When set to true, feature batches will be recreated during animations.
@@ -70,22 +53,18 @@ public interface VectorLayerOptions extends LayerOptions {
      * false, batches will be recreated when no animation is active. Default is
      * false.
      *
-     * @param updateWhileAnimating
-     *            update while animating?
-     * @return this instance
+     * @param updateWhileAnimating update while animating?
      */
     @JsProperty
-    VectorLayerOptions setUpdateWhileAnimating(boolean updateWhileAnimating);
+    void setUpdateWhileAnimating(boolean updateWhileAnimating);
 
     /**
      * When set to true, feature batches will be recreated during interactions.
      * See also updateWhileAnimating. Default is false.
      *
-     * @param updateWhileInteracting
-     *            update while interacting?
-     * @return this instance
+     * @param updateWhileInteracting update while interacting?
      */
     @JsProperty
-    VectorLayerOptions setUpdateWhileInteracting(boolean updateWhileInteracting);
+    void setUpdateWhileInteracting(boolean updateWhileInteracting);
 
 }

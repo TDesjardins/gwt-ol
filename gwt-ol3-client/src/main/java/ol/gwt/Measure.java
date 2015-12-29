@@ -121,7 +121,9 @@ public class Measure {
             // set up overlay options
             VectorLayerOptions voptions = OLFactory.createLayerOptionsWithSource(OLFactory.createVectorSource());
             if(style != null) {
-                voptions.setStyle(style);
+                Style[] styles = new Style[1];
+                styles[0] = style;
+                voptions.setStyle(styles);
             } else {
                 // create a default style resembling the default editing style,
                 // but adding a border to polygons

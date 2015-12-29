@@ -552,8 +552,10 @@ public final class OLUtil {
      *            maximum zoomlevel (0-28)
      */
     public static void limitZoomLevels(XyzOptions options, int minZoomLevel, int maxZoomLevel) {
-        options.setTileGrid(OLFactory.createTileGridXYZ(
-                OLFactory.<TileGridOptions> createOptions().setMinZoom(minZoomLevel).setMaxZoom(maxZoomLevel)));
+        TileGridOptions tileGridOptions = OLFactory.<TileGridOptions> createOptions();
+        tileGridOptions.setMinZoom(minZoomLevel);
+        tileGridOptions.setMaxZoom(maxZoomLevel);
+        options.setTileGrid(OLFactory.createTileGridXYZ(tileGridOptions));
     }
 
     /**
