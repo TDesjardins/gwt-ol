@@ -24,7 +24,7 @@
     </repository>
     <repository>
       <id>org.codehaus.mojo</id>
-      <name>Nexus Snapshots</name>
+      <name>Sonatype Snapshots</name>
       <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
     </repository>
   </repositories>
