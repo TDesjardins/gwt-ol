@@ -41,9 +41,7 @@ public interface MapOptions extends Options {
      * Set the map's view. No layer sources will be fetched unless this is
      * specified at construction time or through ol.Map#setView.
      * 
-     * @param view
-     *            {@link View}
-     * @return this instance
+     * @param view {@link View}
      */
     @JsProperty
     void setView(View view);

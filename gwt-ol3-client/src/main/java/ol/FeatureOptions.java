@@ -16,9 +16,7 @@ public interface FeatureOptions extends Options {
     /**
      * The default geometry for the feature.
      *
-     * @param geom
-     *            {@link Geometry}
-     * @return this instance
+     * @param geom {@link Geometry}
      */
     @JsProperty
     void setGeometry(Geometry geom);

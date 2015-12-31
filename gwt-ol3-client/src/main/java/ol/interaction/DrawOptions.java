@@ -24,9 +24,7 @@ public interface DrawOptions extends Options {
      * draw interaction to behave correctly on mouse as well as on touch
      * devices.
      *
-     * @param clickTolerance
-     *            clickTolerance
-     * @return this instance
+     * @param clickTolerance clickTolerance
      */
     @JsProperty
     void setClickTolerance(int clickTolerance);
@@ -34,9 +32,7 @@ public interface DrawOptions extends Options {
     /**
      * Destination collection for the drawn features.
      *
-     * @param features
-     *            features
-     * @return this instance
+     * @param features features
      */
     @JsProperty
     void setFeatures(Collection<Feature> features);
@@ -45,9 +41,7 @@ public interface DrawOptions extends Options {
      * The number of points that can be drawn before a polygon ring or line
      * string is finished. The default is no restriction.
      *
-     * @param maxPoints
-     *            maxPoints
-     * @return this instance
+     * @param maxPoints maxPoints
      */
     @JsProperty
     void setMaxPoints(Integer maxPoints);
@@ -57,9 +51,7 @@ public interface DrawOptions extends Options {
      * string can be finished. Default is 3 for polygon rings and 2 for line
      * strings.
      *
-     * @param minPoints
-     *            minPoints
-     * @return this instance
+     * @param minPoints minPoints
      */
     @JsProperty
     void setMinPoints(int minPoints);
@@ -67,9 +59,7 @@ public interface DrawOptions extends Options {
     /**
      * Pixel distance for snapping to the drawing finish. Default is 12.
      *
-     * @param snapTolerance
-     *            snapTolerance
-     * @return this instance
+     * @param snapTolerance snapTolerance
      */
     @JsProperty
     void setSnapTolerance(int snapTolerance);
@@ -77,9 +67,7 @@ public interface DrawOptions extends Options {
     /**
      * Destination source for the drawn features.
      *
-     * @param source
-     *            source
-     * @return this instance
+     * @param source source
      */
     @JsProperty
     void setSource(Vector source);
@@ -87,9 +75,7 @@ public interface DrawOptions extends Options {
     /**
      * Style for sketch features.
      *
-     * @param style
-     *            style
-     * @return this instance
+     * @param style style
      */
     @JsProperty
     void setStyle(Style style);
@@ -98,9 +84,7 @@ public interface DrawOptions extends Options {
      * Drawing type ('Point', 'LineString', 'Polygon', 'MultiPoint',
      * 'MultiLineString', 'MultiPolygon' or 'Circle'). Required.
      *
-     * @param type
-     *            type
-     * @return this instance
+     * @param type type
      */
     @JsProperty
     void setType(String type);
@@ -108,9 +92,7 @@ public interface DrawOptions extends Options {
     /**
      * Wrap the world horizontally on the sketch overlay. Default is false.
      *
-     * @param wrapX
-     *            wrapX
-     * @return this instance
+     * @param wrapX wrapX
      */
     @JsProperty
     void setWrapX(boolean wrapX);

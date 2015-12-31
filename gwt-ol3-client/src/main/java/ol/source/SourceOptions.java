@@ -17,9 +17,7 @@ public interface SourceOptions extends Options {
     /**
      * Set the Attributions.
      * 
-     * @param attributions
-     *            attributions
-     * @return this instance
+     * @param attributions attributions
      */
     @JsProperty
     void setAttributions(Attribution[] attributions);
@@ -27,9 +25,7 @@ public interface SourceOptions extends Options {
     /**
      * Set the Projection. Default is EPSG:3857.
      * 
-     * @param projection
-     *            projection
-     * @return this instance
+     * @param projection projection
      */
     @JsProperty
     void setProjection(String projection);
