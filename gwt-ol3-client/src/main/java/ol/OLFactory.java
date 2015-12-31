@@ -92,12 +92,13 @@ public final class OLFactory {
     /**
      * Creates an {@link Attribution}.
      *
-     * @param html
-     *            HTML markup for this attribution. Required.
+     * @param html HTML markup for this attribution. Required.
      * @return {@link Attribution}
      */
     public static Attribution createAttribution(String html) {
-        return createAttribution(OLFactory.<AttributionOptions> createOptions().setHtml(html));
+        AttributionOptions attributionOptions = OLFactory.<AttributionOptions> createOptions();
+        attributionOptions.setHtml(html);
+        return createAttribution(attributionOptions);
     }
 
     /**

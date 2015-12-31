@@ -15,11 +15,9 @@ public interface AttributionOptions extends Options {
     /**
      * Set the HTML markup for this attribution. Required.
      * 
-     * @param html
-     *            html
-     * @return this instance
+     * @param html html
      */
     @JsProperty
-    public AttributionOptions setHtml(String html);
+    public void setHtml(String html);
 
 }
