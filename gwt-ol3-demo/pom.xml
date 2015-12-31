@@ -106,8 +106,7 @@
           <runTarget>GwtOL3Playground.html</runTarget>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
           <!-- Use JSInterop -->
-          <jsInteropMode>JS</jsInteropMode>
-          
+          <!-- generateJsInteropExports/-->
           <!--  
           <compilePerFile>true</compilePerFile>
           <superDevMode>true</superDevMode>
