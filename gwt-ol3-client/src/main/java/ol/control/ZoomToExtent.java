@@ -1,13 +1,13 @@
 package ol.control;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  *
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.control.ZoomToExtent")
+@JsType(isNative = true)
 public interface ZoomToExtent extends Control {
 
 }

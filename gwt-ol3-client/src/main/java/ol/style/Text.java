@@ -1,13 +1,13 @@
 package ol.style;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  *
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.style.Text")
+@JsType(isNative = true)
 public interface Text {
 
 }

@@ -1,13 +1,13 @@
 package ol;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * Generic marker interface for options.
  * 
  * @author sbaumhekel
  */
-@JsType
+@JsType(isNative = true)
 public interface Options {
 
 }

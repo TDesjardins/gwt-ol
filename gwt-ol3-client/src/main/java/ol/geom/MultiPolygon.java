@@ -1,13 +1,13 @@
 package ol.geom;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * MultiPolygon geometry.
  *
  * @author sbaumhekel
  */
-@JsType(prototype = "ol.geom.MultiPolygon")
+@JsType(isNative = true)
 public interface MultiPolygon extends SimpleGeometryMultiCoordinates {
     /**
      * Append the passed polygon to this multipolygon.

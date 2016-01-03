@@ -1,6 +1,6 @@
 package ol.geom;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.Coordinate;
 
@@ -9,7 +9,7 @@ import ol.Coordinate;
  *
  * @author sbaumhekel
  */
-@JsType(prototype="ol.geom.LineString")
+@JsType(isNative = true)
 public interface LineString extends SimpleGeometryMultiCoordinates {
     /**
      * Append the passed coordinate to the coordinates of the linestring.

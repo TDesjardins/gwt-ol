@@ -1,13 +1,13 @@
 package ol.geom;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * LinearRing geometry.
  *
  * @author sbaumhekel
  */
-@JsType(prototype = "ol.geom.LinearRing")
+@JsType(isNative = true)
 public interface LinearRing extends SimpleGeometryMultiCoordinates {
     /**
      * Return the area of the linear ring on projected plane.

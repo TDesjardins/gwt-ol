@@ -1,13 +1,13 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * Base class for sources providing tiles divided into a tile grid over http.
  *
  * @author sbaumhekel
  */
-@JsType(prototype = "ol.source.UrlTile")
+@JsType(isNative = true)
 public interface UrlTile extends Tile {
     /**
      * Return the URLs used for this source. When a tileUrlFunction is used

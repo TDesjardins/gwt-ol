@@ -1,19 +1,18 @@
 package ol.geom;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * MultiLineString geometry.
  *
  * @author sbaumhekel
  */
-@JsType(prototype = "ol.geom.MultiLineString")
+@JsType(isNative = true)
 public interface MultiLineString extends SimpleGeometryMultiCoordinates {
     /**
      * Append the passed linestring to the multilinestring.
      * 
-     * @param lineString
-     *            LineString.
+     * @param lineString LineString.
      */
     void appendLineString(LineString lineString);
 

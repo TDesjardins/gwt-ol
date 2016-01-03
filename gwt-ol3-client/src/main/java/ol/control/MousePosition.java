@@ -1,6 +1,6 @@
 package ol.control;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.proj.Projection;
 
@@ -12,7 +12,7 @@ import ol.proj.Projection;
  * 
  * @author Tino Desjardins
  */
-@JsType(prototype = "ol.control.MousePosition")
+@JsType(isNative = true)
 public interface MousePosition extends Control {
 
     /**

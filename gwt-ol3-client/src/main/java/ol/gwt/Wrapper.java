@@ -1,6 +1,6 @@
 package ol.gwt;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * A wrapper for an underlying OpenLayers object to allow extending its

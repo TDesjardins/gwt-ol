@@ -1,6 +1,6 @@
 package ol;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * An attribution for a layer source.
@@ -8,7 +8,7 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.Attribution")
+@JsType(isNative = true)
 public interface Attribution {
 
     /**

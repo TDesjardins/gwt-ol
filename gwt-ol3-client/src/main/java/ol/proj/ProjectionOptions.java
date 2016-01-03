@@ -1,37 +1,27 @@
 package ol.proj;
 
-import ol.Extent;
+import jsinterop.annotations.JsProperty;
 
+import ol.Options;
+import ol.Extent;
 import jsinterop.annotations.JsType;
 
 /**
  * @author Tino Desjardins
  */
-@JsType
-public class ProjectionOptions {
+@JsType(isNative = true)
+public interface ProjectionOptions extends Options {
+    
+    @JsProperty
+    public void setCode(String code);
+    
+    @JsProperty
+    public void setUnits(String units);
 
-    public String code;
+    @JsProperty
+    public void setGlobal(boolean global);
     
-    public Extent extent;
-    
-    public boolean global;
-    
-    public String units;
-    
-    public void setCode(String code) {
-        this.code = code;
-    }
-    
-    public void setUnits(String units) {
-        this.units = units;
-    }
-
-    public void setGlobal(boolean global) {
-        this.global = global;
-    }
-    
-    public void setExtent(Extent extent) {
-        this.extent = extent;
-    }
+    @JsProperty
+    public void setExtent(Extent extent);
     
 }

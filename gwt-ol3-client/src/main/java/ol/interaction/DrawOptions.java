@@ -1,7 +1,7 @@
 package ol.interaction;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 import ol.Collection;
 import ol.Feature;
@@ -15,7 +15,7 @@ import ol.style.Style;
  * @author sbaumhekel
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface DrawOptions extends Options {
     /**
      * The maximum distance in pixels between "down" and "up" for a "up" event

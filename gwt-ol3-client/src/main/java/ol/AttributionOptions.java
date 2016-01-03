@@ -9,7 +9,7 @@ import jsinterop.annotations.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface AttributionOptions extends Options {
 
     /**

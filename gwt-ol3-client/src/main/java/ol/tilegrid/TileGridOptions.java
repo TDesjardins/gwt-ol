@@ -1,7 +1,7 @@
 package ol.tilegrid;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 import ol.Coordinate;
 import ol.Extent;
@@ -13,7 +13,7 @@ import ol.Size;
  *
  * @author Tino Desjardins
  */
-@JsType
+@JsType(isNative = true)
 public interface TileGridOptions extends Options {
 
     /**

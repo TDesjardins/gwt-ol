@@ -1,13 +1,13 @@
 package ol.style;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * Set fill style for vector features.
  * 
  * @author Tino Desjardins
  */
-@JsType(prototype = "ol.style.Fill")
+@JsType(isNative = true)
 public interface Fill {
 
 }

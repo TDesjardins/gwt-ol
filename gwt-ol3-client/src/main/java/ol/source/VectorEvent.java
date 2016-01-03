@@ -1,7 +1,7 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 import ol.Feature;
 import ol.event.Event;
@@ -12,7 +12,7 @@ import ol.event.Event;
  * 
  * @author sbaumhekel
  */
-@JsType
+@JsType(isNative = true)
 public interface VectorEvent extends Event {
     /**
      * The feature being added or removed.

@@ -1,6 +1,6 @@
 package ol.control;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * A control displaying rough x-axis distances, calculated for the center of the
@@ -12,7 +12,7 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.control.ScaleLine")
+@JsType(isNative = true)
 public interface ScaleLine extends Control {
 
 }

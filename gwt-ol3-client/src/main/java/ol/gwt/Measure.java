@@ -204,7 +204,7 @@ public class Measure {
      *            {@link MeasureListener}
      */
     public void startMeasureArea(MeasureListener listener) {
-        start(Geometry.POLYGON, listener, true, true);
+        start("Polygon", listener, true, true);
     }
 
     /**
@@ -222,7 +222,7 @@ public class Measure {
      *            {@link #stop()} is called.
      */
     public void startMeasureArea(MeasureListener listener, boolean immediate, boolean persist) {
-        start(Geometry.POLYGON, listener, immediate, persist);
+        start("Polygon", listener, immediate, persist);
     }
 
     /**
@@ -232,7 +232,7 @@ public class Measure {
      *            {@link MeasureListener}
      */
     public void startMeasureLength(MeasureListener listener) {
-        start(Geometry.LINE_STRING, listener, true, true);
+        start("LineString", listener, true, true);
     }
 
     /**
@@ -250,7 +250,7 @@ public class Measure {
      *            {@link #stop()} is called.
      */
     public void startMeasureLength(MeasureListener listener, boolean immediate, boolean persist) {
-        start(Geometry.LINE_STRING, listener, immediate, persist);
+        start("LineString", listener, immediate, persist);
     }
 
     /**

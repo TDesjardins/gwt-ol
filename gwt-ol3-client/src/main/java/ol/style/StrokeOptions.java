@@ -1,7 +1,7 @@
 package ol.style;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 import ol.Options;
 import ol.color.Color;
@@ -12,7 +12,7 @@ import ol.color.Color;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface StrokeOptions extends Options {
 
     /**

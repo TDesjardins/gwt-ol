@@ -1,8 +1,10 @@
 package ol;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.*;
 
+import jsinterop.annotations.JsProperty;
+
+import jsinterop.annotations.JsType;
 import ol.event.Event;
 
 /**
@@ -10,13 +12,8 @@ import ol.event.Event;
  *
  * @author sbaumhekel
  */
-@JsType
+@JsType(isNative = true)
 public interface ObjectEvent extends Event {
-
-    /**
-     * Type of this event.
-     */
-    public static final String TYPE = "propertychange";
 
     /**
      * The name of the property whose value is changing.

@@ -1,13 +1,13 @@
 package ol.geom;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * MultiPoint geometry.
  *
  * @author sbaumhekel
  */
-@JsType(prototype = "ol.geom.MultiPoint")
+@JsType(isNative = true)
 public interface MultiPoint extends SimpleGeometryMultiCoordinates {
     /**
      * Append the passed point to this multipoint.

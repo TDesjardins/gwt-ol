@@ -2,7 +2,7 @@ package ol.style;
 
 import javax.annotation.Nullable;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.geom.Geometry;
 
@@ -13,7 +13,7 @@ import ol.geom.Geometry;
  *
  * @author Tino Desjardins
  */
-@JsType(prototype = "ol.style.Style")
+@JsType(isNative = true)
 public interface Style {
     /**
      * Get the fill style.

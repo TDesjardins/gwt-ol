@@ -1,7 +1,7 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 import ol.Options;
 import ol.tilegrid.TileGrid;
@@ -11,7 +11,7 @@ import ol.tilegrid.TileGrid;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface TileDebugOptions extends Options {
 
     /**

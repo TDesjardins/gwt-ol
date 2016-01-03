@@ -1,6 +1,6 @@
 package ol.proj;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.Extent;
 
@@ -28,7 +28,7 @@ import ol.Extent;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.proj.Projection")
+@JsType(isNative = true)
 public interface Projection {
 
     String getCode();

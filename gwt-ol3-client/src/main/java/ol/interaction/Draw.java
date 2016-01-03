@@ -1,6 +1,6 @@
 package ol.interaction;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.Feature;
 
@@ -10,7 +10,7 @@ import ol.Feature;
  * @author sbaumhekel
  *
  */
-@JsType(prototype = "ol.interaction.Draw")
+@JsType(isNative = true)
 public interface Draw extends Interaction {
     /**
      * Extend an existing geometry by adding additional points. This only works

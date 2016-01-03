@@ -1,6 +1,6 @@
 package ol.style;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * stroke style
@@ -8,7 +8,7 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.style.Stroke")
+@JsType(isNative = true)
 public interface Stroke {
 
 }

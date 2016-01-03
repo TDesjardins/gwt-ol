@@ -1,7 +1,7 @@
 package ol;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 import ol.geom.Geometry;
 
@@ -10,7 +10,7 @@ import ol.geom.Geometry;
  *
  * @author sbaumhekel
  */
-@JsType
+@JsType(isNative = true)
 public interface FeatureOptions extends Options {
 
     /**

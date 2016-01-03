@@ -1,6 +1,6 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.control.Attribution;
 
@@ -9,7 +9,7 @@ import ol.control.Attribution;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.source.ImageStatic")
+@JsType(isNative = true)
 public interface ImageStatic extends Image {
     
     void setAttributions (Attribution[] attributions);

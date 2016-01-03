@@ -63,9 +63,9 @@ public final class OLUtil {
             final ClickListener listener) {
         String type;
         if(singleClicksOnly) {
-            type = MapBrowserEvent.SINGLECLICK;
+            type = "singleclick";
         } else {
-            type = MapBrowserEvent.CLICK;
+            type = "click";
         }
         return observe(map, type, new EventListener<MapBrowserEvent>() {
 
@@ -86,7 +86,7 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static HandlerRegistration addDoubleClickListener(Map map, final DoubleClickListener listener) {
-        return observe(map, MapBrowserEvent.DBLCLICK, new EventListener<MapBrowserEvent>() {
+        return observe(map, "dblclick", new EventListener<MapBrowserEvent>() {
 
             @Override
             public void onEvent(MapBrowserEvent event) {
@@ -124,7 +124,7 @@ public final class OLUtil {
     public static HandlerRegistration addMapMoveListener(final Map map, final MapMoveListener listener,
             boolean immediate) {
         // listen to "moveend" events of map
-        final HandlerRegistration handlerMap = observe(map, MapEvent.MOVEEND, new EventListener<MapEvent>() {
+        final HandlerRegistration handlerMap = observe(map, "moveend", new EventListener<MapEvent>() {
             @Override
             public void onEvent(MapEvent event) {
                 listener.onMapMove(event);
@@ -171,7 +171,7 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static HandlerRegistration addMapZoomListener(final Map map, final MapZoomListener listener) {
-        return observe(map.getView(), ObjectEvent.TYPE, new EventListener<ObjectEvent>() {
+        return observe(map.getView(), "propertychange", new EventListener<ObjectEvent>() {
 
             @Override
             public void onEvent(ObjectEvent event) {

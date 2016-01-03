@@ -1,8 +1,8 @@
 package ol.layer;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsProperty;
 
+import jsinterop.annotations.JsType;
 import ol.Map;
 import ol.style.Style;
 
@@ -12,7 +12,7 @@ import ol.style.Style;
  * @author sbaumhekel
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface VectorLayerOptions extends LayerOptions {
     /**
      *

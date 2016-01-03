@@ -1,6 +1,6 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * Base class for sources providing images divided into a tile grid.
@@ -8,6 +8,6 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.source.TileImage")
+@JsType(isNative = true)
 public interface TileImage extends UrlTile {
 }

@@ -1,6 +1,6 @@
 package ol.interaction;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * Base class that calls user-defined functions on `down`, `move` and `up`
@@ -14,7 +14,7 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.interaction.Pointer")
+@JsType(isNative = true)
 public interface Pointer extends Interaction {
 
 }

@@ -1,9 +1,10 @@
 package ol;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
 import com.google.gwt.dom.client.Element;
 
+import jsinterop.annotations.JsProperty;
+
+import jsinterop.annotations.JsType;
 import ol.control.Control;
 import ol.event.Event;
 import ol.gwt.TypedObject;
@@ -42,22 +43,20 @@ import ol.layer.Base;
  *
  * @author Tino Desjardins
  */
-@JsType(prototype = "ol.Map")
+@JsType(isNative = true)
 public interface Map extends Object {
 
     /**
      * Add the given control to the map.
      *
-     * @param control
-     *            Control.
+     * @param control Control.
      */
     public void addControl(Control control);
 
     /**
      * Add the given interaction to the map.
      *
-     * @param interaction
-     *            Interaction to add.
+     * @param interaction Interaction to add.
      */
     public void addInteraction(Interaction interaction);
 
@@ -66,8 +65,7 @@ public interface Map extends Object {
      * elsewhere in the stack, use `getLayers()` and the methods available on
      * {@link ol.Collection}.
      *
-     * @param layer
-     *            Layer.
+     * @param layer Layer.
      */
     public void addLayer(Base layer);
 

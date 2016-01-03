@@ -1,6 +1,6 @@
 package ol.layer;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.Object;
 
@@ -10,7 +10,7 @@ import ol.Object;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.layer.Base")
+@JsType(isNative = true)
 public interface Base extends Object {
 
     float getBrightness();

@@ -1,6 +1,6 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * A pseudo tile source, which does not fetch tiles from a server, but renders a
@@ -12,7 +12,7 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.source.TileDebug")
+@JsType(isNative = true)
 public interface TileDebug extends Tile {
 
 }

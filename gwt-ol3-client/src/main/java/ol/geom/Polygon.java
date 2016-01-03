@@ -1,13 +1,13 @@
 package ol.geom;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * Polygon geometry.
  *
  * @author sbaumhekel
  */
-@JsType(prototype="ol.geom.Polygon")
+@JsType(isNative = true)
 public interface Polygon extends SimpleGeometryMultiCoordinates {
 
     /**

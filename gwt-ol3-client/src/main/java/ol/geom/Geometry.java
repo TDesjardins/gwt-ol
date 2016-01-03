@@ -1,6 +1,6 @@
 package ol.geom;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.*;
 
@@ -10,17 +10,8 @@ import ol.*;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.geom.Geometry")
+@JsType(isNative = true)
 public interface Geometry extends Observable {
-    static final String CIRCLE = "Circle";
-    static final String GEOMETRY_COLLECTION = "GeometryCollection";
-    static final String LINE_STRING = "LineString";
-    static final String LINEAR_RING = "LinearRing";
-    static final String MULTI_LINE_STRING = "MultiLineString";
-    static final String MULTI_POINT = "MultiPoint";
-    static final String MULTI_POLYGON = "MultiPolygon";
-    static final String POINT = "Point";
-    static final String POLYGON = "Polygon";
 
     /**
      * Make a complete copy of the geometry.

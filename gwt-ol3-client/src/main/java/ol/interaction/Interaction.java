@@ -1,6 +1,6 @@
 package ol.interaction;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * Abstract base class; normally only used for creating subclasses and not
@@ -14,7 +14,7 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.interaction.Interaction")
+@JsType(isNative = true)
 public interface Interaction extends ol.Object {
     /**
      * Return whether the interaction is currently active.

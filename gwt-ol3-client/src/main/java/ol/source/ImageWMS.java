@@ -1,13 +1,13 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * 
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.source.ImageWMS")
+@JsType(isNative = true)
 public interface ImageWMS extends Image {
     
     String getUrl();

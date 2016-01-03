@@ -1,13 +1,13 @@
 package ol.layer;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * 
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.layer.Vector")
+@JsType(isNative = true)
 public interface Vector extends Layer {
 
 

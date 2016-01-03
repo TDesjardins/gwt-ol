@@ -1,8 +1,8 @@
 package ol.layer;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsProperty;
 
+import jsinterop.annotations.JsType;
 import ol.Map;
 
 /**
@@ -11,7 +11,7 @@ import ol.Map;
  * @author sbaumhekel
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface TileLayerOptions extends LayerOptions {
     
     /**
@@ -42,4 +42,5 @@ public interface TileLayerOptions extends LayerOptions {
      */
     @JsProperty
     void setUseInterimTilesOnError(boolean useInterimTilesOnError);
+    
 }

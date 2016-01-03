@@ -2,16 +2,15 @@ package ol;
 
 import javax.annotation.Nullable;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  *
  * @author Tino Desjardins
- * @param <T>
- *            type of the elements
+ * @param <T> type of the elements
  *
  */
-@JsType(prototype = "ol.Collection")
+@JsType(isNative = true)
 public interface Collection<T> extends Object {
 
     public void clear();
@@ -31,8 +30,7 @@ public interface Collection<T> extends Object {
     /**
      * Remove the first occurrence of an element from the collection.
      * 
-     * @param element
-     *            Element.
+     * @param element Element.
      * @return The removed element or undefined if none found.
      * @api stable
      */
@@ -43,8 +41,7 @@ public interface Collection<T> extends Object {
      * Remove the element at the provided index and return it. Return
      * `undefined` if the collection does not contain this index.
      * 
-     * @param index
-     *            Index.
+     * @param index Index.
      * @return Value.
      * @api stable
      */

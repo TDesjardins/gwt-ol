@@ -1,7 +1,8 @@
 package ol;
 
-import com.google.gwt.core.client.js.*;
+import jsinterop.annotations.JsProperty;
 
+import jsinterop.annotations.JsType;
 import ol.event.Event;
 
 /**
@@ -10,18 +11,8 @@ import ol.event.Event;
  *
  * @author sbaumhekel
  */
-@JsType
+@JsType(isNative = true)
 public interface MapEvent extends Event {
-
-    /**
-     * Triggered after the map is moved.
-     */
-    static final String MOVEEND = "moveend";
-
-    /**
-     * Triggered after a map frame is rendered.
-     */
-    static final String POSTRENDER = "postrender";
 
     /**
      * The map where the event occurred.
@@ -30,4 +21,5 @@ public interface MapEvent extends Event {
      */
     @JsProperty
     Map getMap();
+    
 }

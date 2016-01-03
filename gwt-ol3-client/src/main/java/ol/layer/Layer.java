@@ -1,6 +1,6 @@
 package ol.layer;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.Map;
 import ol.source.Source;
@@ -21,7 +21,7 @@ import ol.source.Source;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.layer.Layer")
+@JsType(isNative = true)
 public interface Layer extends Base {
 
     /**

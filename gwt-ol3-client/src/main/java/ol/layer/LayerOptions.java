@@ -1,8 +1,8 @@
 package ol.layer;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsProperty;
 
+import jsinterop.annotations.JsType;
 import ol.Extent;
 import ol.Options;
 import ol.source.Source;
@@ -13,7 +13,7 @@ import ol.source.Source;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface LayerOptions extends Options {
 
     /**

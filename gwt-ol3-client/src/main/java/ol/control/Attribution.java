@@ -1,13 +1,13 @@
 package ol.control;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  *
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.control.Attribution")
+@JsType(isNative = true)
 public interface Attribution extends Control {
 
     void setCollapsed(boolean collapsed);

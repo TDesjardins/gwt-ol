@@ -1,6 +1,6 @@
 package ol.geom;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.Coordinate;
 
@@ -11,7 +11,7 @@ import ol.Coordinate;
  *
  * @author sbaumhekel
  */
-@JsType(prototype = "ol.geom.SimpleGeometry")
+@JsType(isNative = true)
 public interface SimpleGeometry extends Geometry {
     /**
      * Return the first coordinate of the geometry.

@@ -2,7 +2,7 @@ package ol;
 
 import javax.annotation.Nullable;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.gwt.TypedObject;
 import ol.proj.Projection;
@@ -58,7 +58,7 @@ import ol.proj.Projection;
  *
  * @author Tino Desjardins
  */
-@JsType(prototype = "ol.View")
+@JsType(isNative = true)
 public interface View extends Object {
 
     /**

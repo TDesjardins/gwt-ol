@@ -1,7 +1,7 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 import ol.Collection;
 import ol.Feature;
@@ -12,7 +12,7 @@ import ol.gwt.TypedObject;
  *
  * @author sbaumhekel
  */
-@JsType
+@JsType(isNative = true)
 public interface VectorOptions extends SourceOptions {
 
     /**

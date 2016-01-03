@@ -1,14 +1,14 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * 
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.source.Stamen")
+@JsType(isNative = true)
 public interface Stamen extends Xyz {
     
     @JsProperty

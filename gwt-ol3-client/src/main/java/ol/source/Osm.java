@@ -1,6 +1,6 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * Layer source for the OpenStreetMap tile server.
@@ -8,7 +8,7 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.source.Osm")
+@JsType(isNative = true)
 public interface Osm extends Xyz {
     
 }

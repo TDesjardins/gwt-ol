@@ -1,13 +1,13 @@
 package ol.interaction;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  *
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.interaction.DragAndDrop")
+@JsType(isNative = true)
 public interface DragAndDrop extends Interaction {
 
 }

@@ -1,13 +1,13 @@
 package ol;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  *
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.Graticule")
+@JsType(isNative = true)
 public interface Graticule {
 
     void setMap(Map map);

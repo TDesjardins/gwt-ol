@@ -1,8 +1,8 @@
 package ol.layer;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsProperty;
 
+import jsinterop.annotations.JsType;
 import ol.Map;
 
 /**
@@ -11,8 +11,9 @@ import ol.Map;
  * @author sbaumhekel
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface ImageLayerOptions extends LayerOptions {
+    
     /**
      *
      * Sets the layer as overlay on a map. The map will not manage this layer in
@@ -24,4 +25,5 @@ public interface ImageLayerOptions extends LayerOptions {
      */
     @JsProperty
     void setMap(Map map);
+    
 }

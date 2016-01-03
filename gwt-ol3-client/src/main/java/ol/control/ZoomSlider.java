@@ -1,13 +1,13 @@
 package ol.control;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  *
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.control.ZoomSlider")
+@JsType(isNative = true)
 public interface ZoomSlider extends Control {
 
 }

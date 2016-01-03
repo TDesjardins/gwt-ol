@@ -1,7 +1,8 @@
 package ol;
 
-import com.google.gwt.core.client.js.*;
+import jsinterop.annotations.JsProperty;
 
+import jsinterop.annotations.JsType;
 import ol.control.Control;
 import ol.layer.Base;
 
@@ -11,7 +12,7 @@ import ol.layer.Base;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface MapOptions extends Options {
 
     @JsProperty

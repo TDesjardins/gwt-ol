@@ -1,6 +1,6 @@
 package ol.control;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * A control with 2 buttons, one for zoom in and one for zoom out. This control
@@ -9,7 +9,7 @@ import com.google.gwt.core.client.js.JsType;
  * 
  * @author sbaumhekel
  */
-@JsType(prototype = "ol.control.Zoom")
+@JsType(isNative = true)
 public interface Zoom extends Control {
 
 }

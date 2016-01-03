@@ -2,9 +2,11 @@ package ol.event;
 
 import javax.annotation.Nullable;
 
+import jsinterop.annotations.JsProperty;
+
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+
+import jsinterop.annotations.JsType;
 
 /**
  * A base class for event objects, so that they can support preventDefault and
@@ -13,7 +15,7 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface Event {
 
     /**

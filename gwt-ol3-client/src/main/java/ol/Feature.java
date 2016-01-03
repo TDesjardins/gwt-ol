@@ -1,6 +1,6 @@
 package ol;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.geom.Geometry;
 import ol.style.Style;
@@ -37,7 +37,7 @@ import ol.style.Style;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.Feature")
+@JsType(isNative = true)
 public interface Feature extends Object {
 
     /**

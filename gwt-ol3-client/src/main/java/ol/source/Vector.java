@@ -1,6 +1,6 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.Collection;
 import ol.Coordinate;
@@ -14,7 +14,7 @@ import ol.Feature;
  * 
  * @author sbaumhekel
  */
-@JsType(prototype = "ol.source.Vector")
+@JsType(isNative = true)
 public interface Vector extends Source {
     /**
      * Add a single feature to the source. If you want to add a batch of

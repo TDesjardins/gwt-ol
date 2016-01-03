@@ -1,6 +1,6 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * Layer source for tile data with URLs in a set XYZ format that are defined in
@@ -18,6 +18,6 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.source.Xyz")
+@JsType(isNative = true)
 public interface Xyz extends TileImage {
 }

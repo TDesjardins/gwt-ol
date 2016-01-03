@@ -1,6 +1,6 @@
 package ol.event;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * A listener for events of the given type.
@@ -10,7 +10,7 @@ import com.google.gwt.core.client.js.JsType;
  * @param <E>
  *            event type
  */
-@JsType
+@JsType(isNative = true)
 public interface EventListener<E extends Event> {
 
     /**

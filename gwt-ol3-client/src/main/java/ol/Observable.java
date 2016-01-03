@@ -1,7 +1,8 @@
 package ol;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.js.JsType;
+
+import jsinterop.annotations.JsType;
 
 /**
  * Abstract base class; normally only used for creating subclasses and not
@@ -12,12 +13,8 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.Observable")
+@JsType(isNative = true)
 public interface Observable {
-    /**
-     * Generic 'change' event.
-     */
-    static final String CHANGE = "source";
 
     /**
      * Increases the revision counter and dispatches a 'change' event.

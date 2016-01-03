@@ -1,9 +1,10 @@
 package ol.control;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
 import com.google.gwt.dom.client.Element;
 
+import jsinterop.annotations.JsProperty;
+
+import jsinterop.annotations.JsType;
 import ol.Map;
 import ol.Object;
 
@@ -12,7 +13,7 @@ import ol.Object;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.control.Control")
+@JsType(isNative = true)
 public interface Control extends Object {
 
     /**

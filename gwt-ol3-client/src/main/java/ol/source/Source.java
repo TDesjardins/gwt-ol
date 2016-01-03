@@ -1,6 +1,6 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.Attribution;
 import ol.proj.Projection;
@@ -14,7 +14,7 @@ import ol.proj.Projection;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.source.Source")
+@JsType(isNative = true)
 public interface Source extends ol.Object {
     /**
      * Get the attributions of the source.

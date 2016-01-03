@@ -1,13 +1,13 @@
 package ol.control;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  *
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.control.FullScreen")
+@JsType(isNative = true)
 public interface FullScreen extends Control {
 
 }

@@ -1,6 +1,6 @@
 package ol.geom;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.Coordinate;
 
@@ -9,7 +9,7 @@ import ol.Coordinate;
  *
  * @author sbaumhekel
  */
-@JsType(prototype = "ol.geom.Circle")
+@JsType(isNative = true)
 public interface Circle extends SimpleGeometryMultiCoordinates {
     /**
      * Return the center of the circle as {@link ol.Coordinate coordinate}.

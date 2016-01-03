@@ -1,6 +1,6 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.tilegrid.TileGrid;
 
@@ -12,7 +12,7 @@ import ol.tilegrid.TileGrid;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.source.Tile")
+@JsType(isNative = true)
 public interface Tile extends Source {
 
     /**

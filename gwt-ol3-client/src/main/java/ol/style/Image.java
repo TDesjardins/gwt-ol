@@ -1,6 +1,6 @@
 package ol.style;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * A base class used for creating subclasses and not instantiated in
@@ -8,7 +8,7 @@ import com.google.gwt.core.client.js.JsType;
  * {@link ol.style.RegularShape}.
  * @author sbaumhekel
  */
-@JsType(prototype = "ol.style.Image")
+@JsType(isNative = true)
 public interface Image {
 
 }

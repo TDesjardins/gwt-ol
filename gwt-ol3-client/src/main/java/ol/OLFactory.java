@@ -411,9 +411,9 @@ public final class OLFactory {
      * @return {@link VectorLayerOptions}
      */
     public static VectorLayerOptions createLayerOptionsWithSource(ol.source.Vector source) {
-	VectorLayerOptions options = createOptions();
-	options.setSource(source);
-	return options;
+        VectorLayerOptions options = createOptions();
+        options.setSource(source);
+        return options;
     }
 
     /**
@@ -424,9 +424,9 @@ public final class OLFactory {
      * @return {@link TileLayerOptions}
      */
     public static TileLayerOptions createLayerOptionsWithSource(ol.source.Tile source) {
-	TileLayerOptions options = createOptions();
-	options.setSource(source);
-	return options;
+        TileLayerOptions options = createOptions();
+        options.setSource(source);
+        return options;
     }
 
     /**
@@ -437,9 +437,9 @@ public final class OLFactory {
      * @return {@link ImageLayerOptions}
      */
     public static ImageLayerOptions createLayerOptionsWithSource(ol.source.Image source) {
-	ImageLayerOptions options = createOptions();
-	options.setSource(source);
-	return options;
+        ImageLayerOptions options = createOptions();
+        options.setSource(source);
+        return options;
     }
 
     /**
@@ -503,8 +503,7 @@ public final class OLFactory {
     	return new $wnd.ol.Map(mapOptions);
     }-*/;
 
-    public static native MapQuest createMapQuestSource(MapQuestOptions mapQuestOptions)
-    /*-{
+    public static native MapQuest createMapQuestSource(MapQuestOptions mapQuestOptions) /*-{
     	return new $wnd.ol.source.MapQuest(mapQuestOptions);
     }-*/;
 
@@ -631,10 +630,8 @@ public final class OLFactory {
     /**
      * Creates an instance.
      *
-     * @param x
-     *            X-coordinate
-     * @param y
-     *            Y-coordinate
+     * @param x X-coordinate
+     * @param y Y-coordinate
      * @return {@link Pixel}
      */
     public static native Pixel createPixel(int x, int y) /*-{
@@ -655,10 +652,8 @@ public final class OLFactory {
     /**
      * Creates an instance.
      *
-     * @param coordinates
-     *            coordinates
-     * @param geometryLayout
-     *            geometry layout
+     * @param coordinates coordinates
+     * @param geometryLayout geometry layout
      * @return {@link Point}
      */
     public static native Point createPoint(@Nullable Coordinate coordinates, @Nullable String geometryLayout) /*-{
@@ -668,10 +663,8 @@ public final class OLFactory {
     /**
      * Creates an instance.
      *
-     * @param x
-     *            X-coordinate (longitude)
-     * @param y
-     *            Y-coordinate (latitude)
+     * @param x X-coordinate (longitude)
+     * @param y Y-coordinate (latitude)
      * @return {@link Coordinate}
      */
     public static Point createPoint(double x, double y) {

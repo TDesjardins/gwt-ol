@@ -2,7 +2,7 @@ package ol.geom;
 
 import javax.annotation.Nullable;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 import ol.Coordinate;
 
@@ -12,7 +12,7 @@ import ol.Coordinate;
  * @author sbaumhekel
  *
  */
-@JsType(prototype = "ol.geom.Point")
+@JsType(isNative = true)
 public interface Point extends SimpleGeometry {
     /**
      * Return the coordinates of this geometry.
