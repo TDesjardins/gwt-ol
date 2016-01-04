@@ -141,7 +141,7 @@ public class Measure {
 
         map.addInteraction(draw);
         // set up event handlers
-        OLUtil.observe(draw, DrawEvent.DRAWSTART, new EventListener<DrawEvent>() {
+        OLUtil.observe(draw, "drawstart", new EventListener<DrawEvent>() {
 
             @Override
             public void onEvent(DrawEvent event) {
@@ -153,7 +153,7 @@ public class Measure {
                 }
             }
         });
-        OLUtil.observe(draw, DrawEvent.DRAWEND, new EventListener<DrawEvent>() {
+        OLUtil.observe(draw, "drawend", new EventListener<DrawEvent>() {
 
             @Override
             public void onEvent(DrawEvent event) {

@@ -15,15 +15,6 @@ import ol.event.Event;
  */
 @JsType(isNative = true)
 public interface DrawEvent extends Event {
-    /**
-     * Triggered upon feature draw end
-     */
-    static final String DRAWEND = "drawend";
-
-    /**
-     * Triggered upon feature draw start
-     */
-    static final String DRAWSTART = "drawstart";
 
     /**
      * The feature being drawn.

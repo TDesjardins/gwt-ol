@@ -7,7 +7,7 @@ import jsinterop.annotations.JsType;
  *
  * @author sbaumhekel
  */
-@JsType(isNative = true)
+@JsType()
 public interface Polygon extends SimpleGeometryMultiCoordinates {
 
     /**
@@ -20,7 +20,7 @@ public interface Polygon extends SimpleGeometryMultiCoordinates {
 
     /**
      * Return the area of the polygon on projected plane.
-     * 
+     *
      * @return {number} Area (on projected plane).
      */
     double getArea();

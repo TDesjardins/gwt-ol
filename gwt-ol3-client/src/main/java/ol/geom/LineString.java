@@ -9,7 +9,7 @@ import ol.Coordinate;
  *
  * @author sbaumhekel
  */
-@JsType(isNative = true)
+@JsType()
 public interface LineString extends SimpleGeometryMultiCoordinates {
     /**
      * Append the passed coordinate to the coordinates of the linestring.
