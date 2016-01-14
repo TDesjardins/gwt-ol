@@ -1,13 +1,13 @@
 package ol.geom;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * GeometryCollection.
  *
  * @author sbaumhekel
  */
-@JsType(prototype = "ol.geom.GeometryCollection")
+@JsType(isNative = true)
 public interface GeometryCollection extends Geometry {
     /**
      * Return the geometries that make up this geometry collection.
