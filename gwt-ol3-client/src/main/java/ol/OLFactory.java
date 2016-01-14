@@ -14,6 +14,7 @@ import ol.control.ZoomSlider;
 import ol.control.ZoomToExtent;
 import ol.geom.Circle;
 import ol.geom.Geometry;
+import ol.geom.GeometryCollection;
 import ol.geom.LineString;
 import ol.geom.LinearRing;
 import ol.geom.MultiLineString;
@@ -356,6 +357,16 @@ public final class OLFactory {
     	return new $wnd.ol.control.FullScreen();
     }-*/;
 
+    /**
+     * Creates a {@link GeometryCollection}.
+     * @param geoms An array of {@link ol.geom.Geometry} objects. (optional)
+     *
+     * @return {@link GeometryCollection}
+     */
+    public static native GeometryCollection createGeometryCollection(@Nullable Geometry[] geoms) /*-{
+	return new $wnd.ol.geom.GeometryCollection(geoms);
+    }-*/;
+    
     /**
      * Creates an {@link Graticule}.
      *
