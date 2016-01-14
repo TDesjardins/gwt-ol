@@ -1,4 +1,4 @@
-GWT-OL3-Playground
+GWT-OL3
 ==================
 
 [![Build Status](https://travis-ci.org/TDesjardins/GWT-OL3-Playground.svg?branch=gwt%2F2.8)](https://travis-ci.org/TDesjardins/GWT-OL3-Playground)
