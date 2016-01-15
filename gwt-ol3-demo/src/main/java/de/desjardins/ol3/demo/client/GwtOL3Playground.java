@@ -20,5 +20,5 @@ public class GwtOL3Playground implements EntryPoint {
         exampleType.getExample().show();
 
     }
-    
+
 }

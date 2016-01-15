@@ -1,27 +1,29 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.*;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * params for MapGuide-requests.
  * @author tlochmann
  */
 
-@JsType
+@JsType(isNative = true)
 public interface ImageMapGuideParams {
-    
-	 /**
+
+	/**
      * @param mapDefinition
      * 			MapGuide mapDefinition e.g. "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition"
      */
     @JsProperty
     void setMapDefinition(String mapDefinition);
-    
+
     /**
      * @param format
      * 	MapGuide image format
-     * 		
+     *
      */
     @JsProperty
     void setFormat(String format);
+
 }

@@ -1,13 +1,13 @@
 package ol.source;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * Source for images from Mapguide servers.
  * @author tlochmann
  */
-@JsType(prototype = "ol.source.ImageMapGuide")
-public interface ImageMapGuide extends Image {
-   
-    
+@JsType(isNative = true)
+public class ImageMapGuide extends Image {
+
+
 }

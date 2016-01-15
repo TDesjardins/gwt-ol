@@ -392,7 +392,7 @@ public final class OLFactory {
      * @return {@link ImageMapGuide}
      * **/
     public static native ImageMapGuide createImageMapGuideSource(ImageMapGuideOptions imageMapGuideOptions) /*-{
-	return new $wnd.ol.source.ImageMapGuide(imageMapGuideOptions);
+	    return new $wnd.ol.source.ImageMapGuide(imageMapGuideOptions);
 	}-*/;
     
     public static native ImageStatic createImageStaticSource(ImageStaticOptions imageStaticOptions) /*-{
