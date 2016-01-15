@@ -8,6 +8,7 @@ import ol.control.RotateTest;
 import ol.control.ScaleLineTest;
 import ol.control.ZoomSliderTest;
 import ol.control.ZoomToExtentTest;
+import ol.geom.GeometryCollectionTest;
 import ol.interaction.DragAndDropTest;
 import ol.interaction.KeyboardPanTest;
 import ol.interaction.KeyboardZoomTest;
@@ -28,6 +29,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         TestSuite suite = new TestSuite("Tests for GwtOL3-Wrapper");
         
         suite.addTestSuite(AttributionTest.class);
+        suite.addTestSuite(CollectionTest.class);
         suite.addTestSuite(GraticuleTest.class);
         suite.addTestSuite(MapTest.class);
         suite.addTestSuite(ViewTest.class);
@@ -40,6 +42,9 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(ScaleLineTest.class);
         suite.addTestSuite(ZoomSliderTest.class);
         suite.addTestSuite(ZoomToExtentTest.class);
+        
+        // geometries
+        suite.addTestSuite(GeometryCollectionTest.class);
         
         // interactions
         suite.addTestSuite(DragAndDropTest.class);
