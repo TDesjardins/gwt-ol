@@ -37,6 +37,8 @@ import ol.layer.TileLayerOptions;
 import ol.layer.VectorLayerOptions;
 import ol.proj.Projection;
 import ol.proj.ProjectionOptions;
+import ol.source.ImageMapGuide;
+import ol.source.ImageMapGuideOptions;
 import ol.source.ImageStatic;
 import ol.source.ImageStaticOptions;
 import ol.source.ImageWMS;
@@ -384,6 +386,15 @@ public final class OLFactory {
 
     /** Sources **/
 
+    /** 
+     * create a MapGuide image
+     * @param imageMapGuideOptions 
+     * @return {@link ImageMapGuide}
+     * **/
+    public static native ImageMapGuide createImageMapGuideSource(ImageMapGuideOptions imageMapGuideOptions) /*-{
+	return new $wnd.ol.source.ImageMapGuide(imageMapGuideOptions);
+	}-*/;
+    
     public static native ImageStatic createImageStaticSource(ImageStaticOptions imageStaticOptions) /*-{
     	return new $wnd.ol.source.ImageStatic(imageStaticOptions);
     }-*/;
