@@ -11,6 +11,7 @@ import de.desjardins.ol3.demo.client.example.Example;
 public enum OL3ExampleType {
     
     WmsExample(new WmsExample()),
+    MapGuideExample(new MapGuideExample()),
     TileExample(new TileExample()),
     ImageExample(new StaticImageExample()),
     GraticuleExample(new GraticuleExample()),
