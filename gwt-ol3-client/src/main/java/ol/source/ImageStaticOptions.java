@@ -12,13 +12,13 @@ import ol.proj.Projection;
  */
 @JsType
 public interface ImageStaticOptions extends SourceOptions {
-    
+
     @JsProperty
     void setCrossOrigin(String crossOrigin);
-    
+
     @JsProperty
     ImageStaticOptions crossOrigin(String crossOrigin);
-    
+
     @JsProperty
     void setImageExtent(Extent extent);
 
@@ -30,9 +30,6 @@ public interface ImageStaticOptions extends SourceOptions {
 
     @JsProperty
     ImageStaticOptions imageSize(Size size);
-
-    @JsProperty
-    void setProjection(Projection projection);
 
     @JsProperty
     ImageStaticOptions projection(Projection projection);
