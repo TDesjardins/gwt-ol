@@ -9,5 +9,5 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface TileImage extends UrlTile {
+public class TileImage extends UrlTile {
 }

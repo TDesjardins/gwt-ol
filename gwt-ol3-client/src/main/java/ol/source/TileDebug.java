@@ -13,6 +13,6 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface TileDebug extends Tile {
+public class TileDebug extends Tile {
 
 }

@@ -10,20 +10,21 @@ import ol.Coordinate;
  * @author sbaumhekel
  */
 @JsType(isNative = true)
-public interface Circle extends SimpleGeometryMultiCoordinates {
+public class Circle extends SimpleGeometryMultiCoordinates {
+    
     /**
      * Return the center of the circle as {@link ol.Coordinate coordinate}.
      * 
      * @return {ol.Coordinate} Center.
      */
-    Coordinate getCenter();
+    public native Coordinate getCenter();
 
     /**
      * Return the radius of the circle.
      * 
      * @return {number} Radius.
      */
-    double getRadius();
+    public native double getRadius();
 
     /**
      * Set the center of the circle as {@link ol.Coordinate coordinate}.
@@ -31,7 +32,7 @@ public interface Circle extends SimpleGeometryMultiCoordinates {
      * @param center
      *            Center.
      */
-    void setCenter(Coordinate center);
+    public native void setCenter(Coordinate center);
 
     /**
      * Set the center (as {@link ol.Coordinate coordinate}) and the radius (as
@@ -42,7 +43,7 @@ public interface Circle extends SimpleGeometryMultiCoordinates {
      * @param radius
      *            Radius.
      */
-    void setCenterAndRadius(Coordinate center, double radius);
+    public native void setCenterAndRadius(Coordinate center, double radius);
 
     /**
      * Set the radius of the circle. The radius is in the units of the
@@ -51,5 +52,6 @@ public interface Circle extends SimpleGeometryMultiCoordinates {
      * @param radius
      *            Radius.
      */
-    void setRadius(double radius);
+    public native void setRadius(double radius);
+    
 }

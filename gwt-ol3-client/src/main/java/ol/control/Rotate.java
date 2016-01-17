@@ -8,6 +8,6 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Rotate extends Control {
+public class Rotate extends Control {
 
 }

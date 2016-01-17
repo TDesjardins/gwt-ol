@@ -1,19 +1,24 @@
 package ol;
 
-import ol.BaseTestCase;
-
 /**
  * 
  * @author Tino Desjardins
  *
  */
-public class GraticuleTest extends BaseTestCase {
+public class GraticuleTest extends GwtOL3BaseTestCase {
 
     public void testGraticule() {
         
-        Graticule graticule = OLFactory.createGraticule();
-        
-        assertNotNull(graticule);
+        injectUrlAndTest(new TestWithInjection() {
+            
+            @Override
+            public void test() {
+                
+                Graticule graticule = OLFactory.createGraticule();
+                
+                assertNotNull(graticule);
+            }
+        });
         
     }
 

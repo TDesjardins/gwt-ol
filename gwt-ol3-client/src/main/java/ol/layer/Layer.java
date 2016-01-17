@@ -22,14 +22,14 @@ import ol.source.Source;
  *
  */
 @JsType(isNative = true)
-public interface Layer extends Base {
+public class Layer extends Base {
 
     /**
      * Gets the source for this layer.
      *
      * @return {@link Source}
      */
-    <T extends Source> T getSource();
+    public native <T extends Source> T getSource();
 
     /**
      * Sets the layer to be rendered on top of other layers on a map. The map
@@ -44,7 +44,7 @@ public interface Layer extends Base {
      * @param map
      *            Map.
      */
-    void setMap(Map map);
+    public native void setMap(Map map);
 
     /**
      * Sets the source for this layer. If not provided to the constructor, the
@@ -53,6 +53,6 @@ public interface Layer extends Base {
      * @param source
      *            {@link Source}
      */
-    void setSource(Source source);
+    public native void setSource(Source source);
 
 }

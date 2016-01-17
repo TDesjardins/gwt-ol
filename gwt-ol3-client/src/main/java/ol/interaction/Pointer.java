@@ -15,6 +15,6 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Pointer extends Interaction {
+public class Pointer extends Interaction {
 
 }

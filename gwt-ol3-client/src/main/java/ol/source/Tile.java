@@ -13,13 +13,13 @@ import ol.tilegrid.TileGrid;
  *
  */
 @JsType(isNative = true)
-public interface Tile extends Source {
+public class Tile extends Source {
 
     /**
      * Return the tile grid of the tile source.
      * 
      * @return {ol.tilegrid.TileGrid} Tile grid.
      */
-    TileGrid getTileGrid();
+    public native TileGrid getTileGrid();
 
 }

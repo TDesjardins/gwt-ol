@@ -8,6 +8,6 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Image extends Source {
+public class Image extends Source {
 }
 

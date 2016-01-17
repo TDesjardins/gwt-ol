@@ -19,5 +19,5 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Xyz extends TileImage {
+public class Xyz extends TileImage {
 }

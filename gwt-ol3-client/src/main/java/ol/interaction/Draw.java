@@ -11,7 +11,8 @@ import ol.Feature;
  *
  */
 @JsType(isNative = true)
-public interface Draw extends Interaction {
+public class Draw extends Interaction {
+    
     /**
      * Extend an existing geometry by adding additional points. This only works
      * on features with `LineString` geometries, where the interaction will
@@ -20,7 +21,7 @@ public interface Draw extends Interaction {
      * @param feature
      *            Feature to be extended.
      */
-    void extend(Feature feature);
+    public native void extend(Feature feature);
 
     /**
      * Stop drawing and add the sketch feature to the target layer. The
@@ -29,10 +30,11 @@ public interface Draw extends Interaction {
      * 
      * @api
      */
-    void finishDrawing();
+    public native void finishDrawing();
 
     /**
      * Remove last point of the feature currently being drawn.
      */
-    void removeLastPoint();
+    public native void removeLastPoint();
+    
 }

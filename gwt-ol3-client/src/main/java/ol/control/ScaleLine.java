@@ -13,6 +13,6 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface ScaleLine extends Control {
+public class ScaleLine extends Control {
 
 }

@@ -8,7 +8,7 @@
   <groupId>ol</groupId>
   <artifactId>gwt-ol3-client</artifactId>
   <name>${project.artifactId}</name>
-  <version>2.0.1</version>
+  <version>2.1.0</version>
 
   <repositories>
     <repository>
@@ -100,7 +100,7 @@
           <target>1.7</target>
         </configuration>
       </plugin>
-		<!-- plugin>
+		<plugin>
 			<groupId>org.codehaus.mojo</groupId>
 			<artifactId>gwt-maven-plugin</artifactId>
 			<version>${gwt.version}</version>
@@ -108,7 +108,7 @@
 				<inplace>true</inplace>
 				<extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
 				<includes>**/*TestSuite.java</includes>
-	            <jsInteropMode>JS</jsInteropMode>
+	            <!-- jsInteropMode>JS</jsInteropMode-->
 	            <productionMode>true</productionMode>
 	            <strict>true</strict>
 			</configuration>
@@ -120,7 +120,7 @@
 					</goals>
 				</execution>
 			</executions>
-		</plugin-->
+		</plugin>
 	
 		<!-- copy javadoc -->
 		<plugin>

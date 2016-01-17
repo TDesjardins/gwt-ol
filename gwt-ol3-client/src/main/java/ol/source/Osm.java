@@ -9,7 +9,7 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Osm extends Xyz {
+public class Osm extends Xyz {
     
 }
 

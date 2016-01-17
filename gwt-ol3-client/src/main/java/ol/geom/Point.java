@@ -13,13 +13,14 @@ import ol.Coordinate;
  *
  */
 @JsType(isNative = true)
-public interface Point extends SimpleGeometry {
+public class Point extends SimpleGeometry {
+    
     /**
      * Return the coordinates of this geometry.
      *
      * @return Coordinates.
      */
-    Coordinate getCoordinates();
+    public native Coordinate getCoordinates();
 
     /**
      * Set the coordinates of this geometry.
@@ -29,5 +30,6 @@ public interface Point extends SimpleGeometry {
      * @param geometryLayout
      *            opt_layout Layout.
      */
-    void setCoordinates(Coordinate coordinates, @Nullable String geometryLayout);
+    public native void setCoordinates(Coordinate coordinates, @Nullable String geometryLayout);
+    
 }

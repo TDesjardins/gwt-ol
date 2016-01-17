@@ -9,15 +9,15 @@ import ol.Coordinate;
  *
  * @author sbaumhekel
  */
-@JsType()
-public interface LineString extends SimpleGeometryMultiCoordinates {
+@JsType(isNative = true)
+public class LineString extends SimpleGeometryMultiCoordinates {
     /**
      * Append the passed coordinate to the coordinates of the linestring.
      *
      * @param coordinate
      *            Coordinate.
      */
-    void appendCoordinate(Coordinate coordinate);
+    public native void appendCoordinate(Coordinate coordinate);
 
     /**
      * Return the length of the linestring on projected plane.
@@ -25,6 +25,6 @@ public interface LineString extends SimpleGeometryMultiCoordinates {
      * @return {number} Length (on projected plane).
      * @api stable
      */
-    double getLength();
+    public native double getLength();
 
 }

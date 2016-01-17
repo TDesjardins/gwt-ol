@@ -29,18 +29,18 @@ import ol.Extent;
  *
  */
 @JsType(isNative = true)
-public interface Projection {
+public class Projection {
 
-    String getCode();
+    public native String getCode();
 
-    Extent getExtent();
+    public native Extent getExtent();
 
-    double getMetersPerUnit();
+    public native double getMetersPerUnit();
 
-    String getUnits();
+    public native String getUnits();
 
-    boolean isGlobal();
+    public native boolean isGlobal();
 
-    void setExtent(Extent extent);
-
+    public native void setExtent(Extent extent);
+    
 }

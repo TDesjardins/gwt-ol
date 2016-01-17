@@ -1,6 +1,6 @@
 package ol.control;
 
-import ol.BaseTestCase;
+import ol.GwtOL3BaseTestCase;
 import ol.OLFactory;
 
 /**
@@ -8,15 +8,19 @@ import ol.OLFactory;
  * @author Tino Desjardins
  *
  */
-public class AttributionTest extends BaseTestCase {
+public class AttributionTest extends GwtOL3BaseTestCase {
 
     public void testAttribution() {
 
-        
-        Attribution attribution = OLFactory.createAttributionControl();
-        
-        assertNotNull(attribution);
-        
+        this.injectUrlAndTest(new TestWithInjection() {
+            
+            @Override
+            public void test() {
+                Attribution attribution = OLFactory.createAttributionControl();
+                assertNotNull(attribution);
+            }
+        });
+
     }
 
 }

@@ -5,17 +5,24 @@ package ol;
  * @author Tino Desjardins
  *
  */
-public class AttributionTest extends BaseTestCase {
+public class AttributionTest extends GwtOL3BaseTestCase {
 
     public void testAttribution() {
 
-	AttributionOptions attributionOptions = OLFactory.createOptions();
+        injectUrlAndTest(new TestWithInjection() {
+            
+            @Override
+            public void test() {
+                AttributionOptions attributionOptions = OLFactory.createOptions();
 
-	assertNotNull(attributionOptions);
+                assertNotNull(attributionOptions);
 
-	Attribution attribution = OLFactory.createAttribution(attributionOptions);
+                Attribution attribution = OLFactory.createAttribution(attributionOptions);
 
-	assertNotNull(attribution);
+                assertNotNull(attribution);
+            }
+            
+        });
 
     }
 

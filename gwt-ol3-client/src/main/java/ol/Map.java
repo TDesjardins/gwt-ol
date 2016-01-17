@@ -44,21 +44,21 @@ import ol.layer.Base;
  * @author Tino Desjardins
  */
 @JsType(isNative = true)
-public interface Map extends Object {
+public class Map extends Object {
 
     /**
      * Add the given control to the map.
      *
      * @param control Control.
      */
-    public void addControl(Control control);
+    public native void addControl(Control control);
 
     /**
      * Add the given interaction to the map.
      *
      * @param interaction Interaction to add.
      */
-    public void addInteraction(Interaction interaction);
+    public native void addInteraction(Interaction interaction);
 
     /**
      * Adds the given layer to the top of this map. If you want to add a layer
@@ -67,7 +67,7 @@ public interface Map extends Object {
      *
      * @param layer Layer.
      */
-    public void addLayer(Base layer);
+    public native void addLayer(Base layer);
 
     /**
      * Get the map controls. Modifying this collection changes the controls
@@ -75,7 +75,7 @@ public interface Map extends Object {
      *
      * @return {ol.Collection.<ol.control.Control>} Controls.
      */
-    public Collection<Control> getControls();
+    public native Collection<Control> getControls();
 
     /**
      * Get the coordinate for a given pixel. This returns a coordinate in the
@@ -85,7 +85,7 @@ public interface Map extends Object {
      *            Pixel position in the map viewport.
      * @return {ol.Coordinate} The coordinate for the pixel position.
      */
-    Coordinate getCoordinateFromPixel(Pixel pixel);
+    public native Coordinate getCoordinateFromPixel(Pixel pixel);
 
     /**
      * Returns the geographical coordinate for a browser event.
@@ -94,7 +94,7 @@ public interface Map extends Object {
      *            Event.
      * @return {ol.Coordinate} Coordinate.
      */
-    Coordinate getEventCoordinate(Event event);
+    public native Coordinate getEventCoordinate(Event event);
 
     /**
      * Returns the map pixel position for a browser event relative to the
@@ -104,14 +104,14 @@ public interface Map extends Object {
      *            Event.
      * @return {ol.Pixel} Pixel.
      */
-    Pixel getEventPixel(Event event);
+    public native Pixel getEventPixel(Event event);
 
     /**
      * Get the collection of layers associated with this map.
      *
      * @return {!ol.Collection.<ol.layer.Base>} Layers.
      */
-    public Collection<Base> getLayers();
+    public native Collection<Base> getLayers();
 
     /**
      * Get the pixel for a coordinate. This takes a coordinate in the map view
@@ -121,7 +121,7 @@ public interface Map extends Object {
      *            A map coordinate.
      * @return {ol.Pixel} A pixel position in the map viewport.
      */
-    Pixel getPixelFromCoordinate(Coordinate coordinate);
+    public native Pixel getPixelFromCoordinate(Coordinate coordinate);
 
     /**
      * The ratio between physical pixels and device-independent pixels (dips) on
@@ -131,14 +131,14 @@ public interface Map extends Object {
      * @return pixel ratio
      */
     @JsProperty
-    public double getPixelRatio();
+    public native double getPixelRatio();
 
     /**
      * Get the size of this map.
      *
      * @return {ol.Size|undefined} The size in pixels of the map in the DOM.
      */
-    Size getSize();
+    public native Size getSize();
 
     /**
      * Get the target in which this map is rendered. Note that this returns what
@@ -148,7 +148,7 @@ public interface Map extends Object {
      * @return {Element|string|undefined} The Element or id of the Element that
      *         the map is rendered in.
      */
-    public String getTarget();
+    public native String getTarget();
 
     /**
      * Get the DOM element into which this map is rendered. In contrast to
@@ -157,7 +157,7 @@ public interface Map extends Object {
      *
      * @return {Element} The element that the map is rendered in.
      */
-    Element getTargetElement();
+    public native Element getTargetElement();
 
     /**
      * Get the view associated with this map. A view manages properties such as
@@ -165,14 +165,14 @@ public interface Map extends Object {
      *
      * @return The view that controls this map.
      */
-    public View getView();
+    public native View getView();
 
     /**
      * Get the element that serves as the map viewport.
      *
      * @return {Element} Viewport.
      */
-    Element getViewport();
+    public native Element getViewport();
 
     /**
      * Remove the given control from the map.
@@ -182,7 +182,7 @@ public interface Map extends Object {
      * @return {ol.control.Control|undefined} The removed control (or undefined
      *         if the control was not found).
      */
-    public Control removeControl(Control control);
+    public native Control removeControl(Control control);
 
     /**
      * Remove the given interaction from the map.
@@ -192,7 +192,7 @@ public interface Map extends Object {
      * @return {ol.interaction.Interaction|undefined} The removed interaction
      *         (or undefined if the interaction was not found).
      */
-    public Interaction removeInteraction(Interaction interaction);
+    public native Interaction removeInteraction(Interaction interaction);
 
     /**
      * Removes the given layer from the map.
@@ -202,13 +202,13 @@ public interface Map extends Object {
      * @return {ol.layer.Base|undefined} The removed layer (or undefined if the
      *         layer was not found).
      */
-    public Base removeLayer(Base layer);
+    public native Base removeLayer(Base layer);
 
     /**
      * Requests a render frame; rendering will effectively occur at the next
      * browser animation frame.
      */
-    public void render();
+    public native void render();
 
     /**
      * Set the size of this map.
@@ -216,7 +216,7 @@ public interface Map extends Object {
      * @param size
      *            The size in pixels of the map in the DOM.
      */
-    void setSize(Size size);
+    public native void setSize(Size size);
 
     /**
      * The container for the map, either the element itself or the id of the
@@ -226,7 +226,7 @@ public interface Map extends Object {
      * @param o
      *            id or element
      */
-    public void setTarget(TypedObject<Element, String> o);
+    public native void setTarget(TypedObject<Element, String> o);
 
     /**
      * Set the view for this map.
@@ -234,11 +234,12 @@ public interface Map extends Object {
      * @param view
      *            The view that controls this map.
      */
-    public void setView(View view);
+    public native void setView(View view);
 
     /**
      * Force a recalculation of the map viewport size. This should be called
      * when third-party code changes the size of the map viewport.
      */
-    public void updateSize();
+    public native void updateSize();
+    
 }

@@ -8,6 +8,6 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface KeyboardZoom extends Interaction {
+public class KeyboardZoom extends Interaction {
 
 }

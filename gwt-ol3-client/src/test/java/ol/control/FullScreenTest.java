@@ -1,6 +1,6 @@
 package ol.control;
 
-import ol.BaseTestCase;
+import ol.GwtOL3BaseTestCase;
 import ol.OLFactory;
 import ol.Object;
 
@@ -9,15 +9,21 @@ import ol.Object;
  * @author Tino Desjardins
  *
  */
-public class FullScreenTest extends BaseTestCase {
+public class FullScreenTest extends GwtOL3BaseTestCase {
 
     public void testFullScreen() {
 
-        FullScreen fullScreen = OLFactory.createFullScreen();
-        
-        assertNotNull(fullScreen);
-        assertTrue(fullScreen instanceof Object);
-        assertTrue(fullScreen instanceof Control);
+        injectUrlAndTest(new TestWithInjection() {
+            
+            @Override
+            public void test() {
+                FullScreen fullScreen = OLFactory.createFullScreen();
+                
+                assertNotNull(fullScreen);
+                assertTrue(fullScreen instanceof Object);
+                assertTrue(fullScreen instanceof Control);
+            }
+        }); 
         
     }
 

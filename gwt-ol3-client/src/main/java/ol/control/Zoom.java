@@ -10,6 +10,6 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  */
 @JsType(isNative = true)
-public interface Zoom extends Control {
+public class Zoom extends Control {
 
 }

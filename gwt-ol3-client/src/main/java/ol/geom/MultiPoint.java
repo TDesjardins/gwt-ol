@@ -8,14 +8,14 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  */
 @JsType(isNative = true)
-public interface MultiPoint extends SimpleGeometryMultiCoordinates {
+public class MultiPoint extends SimpleGeometryMultiCoordinates {
     /**
      * Append the passed point to this multipoint.
      * 
      * @param point
      *            Point.
      */
-    void appendPoint(Point point);
+    public native void appendPoint(Point point);
 
     /**
      * Return the point at the specified index.
@@ -24,12 +24,13 @@ public interface MultiPoint extends SimpleGeometryMultiCoordinates {
      *            Index.
      * @return {ol.geom.Point} Point.
      */
-    Point getPoint(int index);
+    public native Point getPoint(int index);
 
     /**
      * Return the points of this multipoint.
      * 
      * @return {Array.<ol.geom.Point>} Points.
      */
-    Point[] getPoints();
+    public native Point[] getPoints();
+    
 }

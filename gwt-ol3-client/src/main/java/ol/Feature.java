@@ -38,7 +38,7 @@ import ol.style.Style;
  *
  */
 @JsType(isNative = true)
-public interface Feature extends Object {
+public class Feature extends Object {
 
     /**
      * Clone this feature. If the original feature has a geometry it is also
@@ -46,7 +46,7 @@ public interface Feature extends Object {
      * 
      * @return {ol.Feature} The clone.
      */
-    Feature clone();
+    public native Feature clone();
 
     /**
      * Get the feature's default geometry. A feature may have any number of
@@ -56,7 +56,7 @@ public interface Feature extends Object {
      * @return {ol.geom.Geometry|undefined} The default geometry for the
      *         feature.
      */
-    Geometry getGeometry();
+    public native Geometry getGeometry();
 
     /**
      * Get the name of the feature's default geometry. By default, the default
@@ -65,7 +65,7 @@ public interface Feature extends Object {
      * @return {string} Get the property name associated with the default
      *         geometry for this feature.
      */
-    String getGeometryName();
+    public native String getGeometryName();
 
     /**
      * Get the feature identifier. This is a stable identifier for the feature
@@ -74,7 +74,7 @@ public interface Feature extends Object {
      * 
      * @return {number|string|undefined} Id.
      */
-    String getId();
+    public native String getId();
 
     /**
      * Get the feature's style. This return for this method depends on what was
@@ -83,7 +83,7 @@ public interface Feature extends Object {
      * @return {ol.style.Style|Array.<ol.style.Style>| ol.FeatureStyleFunction}
      *         The feature style.
      */
-    Style getStyle();
+    public native Style getStyle();
 
     /**
      * Set the default geometry for the feature. This will update the property
@@ -92,7 +92,7 @@ public interface Feature extends Object {
      * @param geometry
      *            The new geometry.
      */
-    void setGeometry(Geometry geometry);
+    public native void setGeometry(Geometry geometry);
 
     /**
      * Set the property name to be used when getting the feature's default
@@ -102,7 +102,7 @@ public interface Feature extends Object {
      * @param name
      *            The property name of the default geometry.
      */
-    void setGeometryName(String name);
+    public native void setGeometryName(String name);
 
     /**
      * Set the feature id. The feature id is considered stable and may be used
@@ -113,7 +113,7 @@ public interface Feature extends Object {
      * @param id
      *            The feature id.
      */
-    void setId(String id);
+    public native void setId(String id);
 
     /**
      * Set the style for the feature. This can be a single style object, an
@@ -124,6 +124,6 @@ public interface Feature extends Object {
      * @param style
      *            Style for this feature.
      */
-    void setStyle(Style style);
+    public native void setStyle(Style style);
 
 }

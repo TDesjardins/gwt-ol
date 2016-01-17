@@ -8,6 +8,6 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface DragAndDrop extends Interaction {
+public class DragAndDrop extends Interaction {
 
 }

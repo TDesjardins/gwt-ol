@@ -1,6 +1,6 @@
 package ol.control;
 
-import ol.BaseTestCase;
+import ol.GwtOL3BaseTestCase;
 import ol.OLFactory;
 import ol.Object;
 
@@ -9,16 +9,23 @@ import ol.Object;
  * @author Tino Desjardins
  *
  */
-public class RotateTest extends BaseTestCase {
+public class RotateTest extends GwtOL3BaseTestCase {
 
     public void testRotate() {
 
-        Rotate rotate = OLFactory.createRotate();
-        
-        assertNotNull(rotate);
-        assertTrue(rotate instanceof Object);
-        assertTrue(rotate instanceof Control);
-        
+        injectUrlAndTest(new TestWithInjection() {
+            
+            @Override
+            public void test() {
+                Rotate rotate = OLFactory.createRotate();
+                
+                assertNotNull(rotate);
+                assertTrue(rotate instanceof Object);
+                assertTrue(rotate instanceof Control);
+            }
+            
+        });
+ 
     }
 
 }

@@ -9,10 +9,10 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface MapQuest extends Xyz {
+public class MapQuest extends Xyz {
     
     @JsProperty
-    void setLayer(String layer);
+    public native void setLayer(String layer);
     
 }
 

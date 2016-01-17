@@ -8,10 +8,10 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Attribution extends Control {
+public class Attribution extends Control {
 
-    void setCollapsed(boolean collapsed);
+    public native void setCollapsed(boolean collapsed);
 
-    void setCollapsible(boolean collapsible);
+    public native void setCollapsible(boolean collapsible);
 
 }

@@ -14,13 +14,14 @@ import ol.Coordinate;
  * @author sbaumhekel
  */
 @JsType(isNative = true)
-public interface SimpleGeometryMultiCoordinates extends SimpleGeometry {
+public class SimpleGeometryMultiCoordinates extends SimpleGeometry {
+    
     /**
      * Return the coordinates of this geometry.
      *
      * @return Coordinates.
      */
-    Coordinate[] getCoordinates();
+    public native Coordinate[] getCoordinates();
 
     /**
      * Set the coordinates of this geometry.
@@ -30,6 +31,6 @@ public interface SimpleGeometryMultiCoordinates extends SimpleGeometry {
      * @param geometryLayout
      *            opt_layout Layout.
      */
-    void setCoordinates(Coordinate[] coordinates, @Nullable String geometryLayout);
+    public native void setCoordinates(Coordinate[] coordinates, @Nullable String geometryLayout);
 
 }

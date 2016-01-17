@@ -8,7 +8,7 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Image extends Layer {
+public class Image extends Layer {
 
 
 }

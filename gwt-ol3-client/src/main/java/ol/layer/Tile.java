@@ -8,6 +8,6 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Tile extends Layer {
+public class Tile extends Layer {
 }
 

@@ -15,13 +15,14 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Interaction extends ol.Object {
+public class Interaction extends ol.Object {
+    
     /**
      * Return whether the interaction is currently active.
      *
      * @return {boolean} `true` if the interaction is active, `false` otherwise.
      */
-    boolean getActive();
+    public native boolean getActive();
 
     /**
      * Activate or deactivate the interaction.
@@ -29,5 +30,6 @@ public interface Interaction extends ol.Object {
      * @param active
      *            Active.
      */
-    void setActive(boolean active);
+    public native void setActive(boolean active);
+    
 }

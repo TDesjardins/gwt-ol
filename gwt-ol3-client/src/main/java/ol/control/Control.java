@@ -14,7 +14,7 @@ import ol.Object;
  *
  */
 @JsType(isNative = true)
-public interface Control extends Object {
+public class Control extends Object {
 
     /**
      * Get the control's container element.
@@ -22,10 +22,10 @@ public interface Control extends Object {
      * @return {@link Element}
      */
     @JsProperty
-    Element getElement();
+    public native Element getElement();
 
-    Map getMap();
+    public native Map getMap();
 
-    void setMap(Map map);
+    public native void setMap(Map map);
 
 }

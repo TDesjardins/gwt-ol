@@ -1,13 +1,13 @@
 package ol.interaction;
 
-import ol.BaseTestCase;
+import ol.GwtOL3BaseTestCase;
 
 /**
  * 
  * @author Tino Desjardins
  *
  */
-public class ModifyTest extends BaseTestCase {
+public class ModifyTest extends GwtOL3BaseTestCase {
 
     public void testModify() {
 

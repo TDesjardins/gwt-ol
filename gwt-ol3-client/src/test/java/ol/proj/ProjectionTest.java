@@ -2,9 +2,9 @@ package ol.proj;
 
 import com.google.gwt.core.client.JsArrayNumber;
 
-import ol.BaseTestCase;
 import ol.Coordinate;
 import ol.Extent;
+import ol.GwtOL3BaseTestCase;
 import ol.OLFactory;
 import ol.OLUtil;
 
@@ -13,7 +13,7 @@ import ol.OLUtil;
  * @author Tino Desjardins
  *
  */
-public class ProjectionTest extends BaseTestCase {
+public class ProjectionTest extends GwtOL3BaseTestCase {
 
 	private static final String EPSG_CODE_4326 = "EPSG:4326";
 	private static final String EPSG_CODE_3068 = "EPSG:3068";
@@ -24,47 +24,69 @@ public class ProjectionTest extends BaseTestCase {
 	
     public void testProjection() {
     	
-        ProjectionOptions projectionOptions = OLFactory.createOptions();
-        projectionOptions.setCode(EPSG_CODE_21781);
-        projectionOptions.setUnits(UNIT_METRE);
-        
-        Projection projection = OLFactory.createProjection(projectionOptions);
-        
-        assertNotNull(projection);
-        assertEquals(EPSG_CODE_21781, projection.getCode());
-        assertEquals(UNIT_METRE, projection.getUnits());
-        
+        injectUrlAndTest(new TestWithInjection() {
+            
+            @Override
+            public void test() {
+                ProjectionOptions projectionOptions = OLFactory.createOptions();
+                projectionOptions.setCode(EPSG_CODE_21781);
+                projectionOptions.setUnits(UNIT_METRE);
+                
+                Projection projection = OLFactory.createProjection(projectionOptions);
+                
+                assertNotNull(projection);
+                assertEquals(EPSG_CODE_21781, projection.getCode());
+                assertEquals(UNIT_METRE, projection.getUnits());
+            }
+            
+        });
+
     }
     
     public void testAddProjection() {
     	
-    	ProjectionOptions projectionOptions = OLFactory.createOptions();
-        projectionOptions.setCode(EPSG_CODE_3068);
-        //projectionOptions.global(false);
-        projectionOptions.setUnits(UNIT_METRE);
-        
-        Projection projection = OLFactory.createProjection(projectionOptions);
-        assertNotNull(projection);
-        
-        OLUtil.addProjection(projection);
-        
-        Projection projectionToCompare = OLUtil.getProjection(EPSG_CODE_3068);
-        assertNotNull(projectionToCompare);
-        
-        assertEquals(projection.getCode(), projectionToCompare.getCode());
+        injectUrlAndTest(new TestWithInjection() {
+            
+            @Override
+            public void test() {
+                
+                ProjectionOptions projectionOptions = OLFactory.createOptions();
+                projectionOptions.setCode(EPSG_CODE_3068);
+                //projectionOptions.global(false);
+                projectionOptions.setUnits(UNIT_METRE);
+                
+                Projection projection = OLFactory.createProjection(projectionOptions);
+                assertNotNull(projection);
+                
+                OLUtil.addProjection(projection);
+                
+                Projection projectionToCompare = OLUtil.getProjection(EPSG_CODE_3068);
+                assertNotNull(projectionToCompare);
+                
+                assertEquals(projection.getCode(), projectionToCompare.getCode());
+                
+            }
+            
+        });
         
     }
     
     public void testGet() {
     	
-    	Projection projection = OLUtil.getProjection(EPSG_CODE_4326);
-        
-        assertNotNull(projection);
-        assertEquals(EPSG_CODE_4326, projection.getCode());
-        assertTrue(projection.isGlobal());
-        assertTrue(projection.getExtent().<JsArrayNumber>cast().length() == 4);
-        assertEquals(projection.getUnits(), UNIT_DEGREES);
-        
+        injectUrlAndTest(new TestWithInjection() {
+            
+            @Override
+            public void test() {
+                Projection projection = OLUtil.getProjection(EPSG_CODE_4326);
+                
+                assertNotNull(projection);
+                assertEquals(EPSG_CODE_4326, projection.getCode());
+                assertTrue(projection.isGlobal());
+                assertTrue(projection.getExtent().<JsArrayNumber>cast().length() == 4);
+                assertEquals(projection.getUnits(), UNIT_DEGREES);
+            }
+        });
+
     }
     
     /**
@@ -72,16 +94,23 @@ public class ProjectionTest extends BaseTestCase {
      */
     public void testTransform() {
     	
-    	double x = -121.1;
-    	double y = 47.5;
-    	
-    	Coordinate centerCoordinate = OLFactory.createCoordinate(x, y);
-    	Coordinate transformedCenterCoordinate = OLUtil.transform(centerCoordinate, EPSG_CODE_4326, EPSG_CODE_3857); 
-        
-        assertTrue(transformedCenterCoordinate.length() == 2);
-        assertNotSame(transformedCenterCoordinate.getX(), x);
-        assertNotSame(transformedCenterCoordinate.getY(), y);
-        
+        injectUrlAndTest(new TestWithInjection() {
+            
+            @Override
+            public void test() {
+                double x = -121.1;
+                double y = 47.5;
+                
+                Coordinate centerCoordinate = OLFactory.createCoordinate(x, y);
+                Coordinate transformedCenterCoordinate = OLUtil.transform(centerCoordinate, EPSG_CODE_4326, EPSG_CODE_3857); 
+                //Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, EPSG_CODE_4326, EPSG_CODE_3857); 
+                
+                assertTrue(transformedCenterCoordinate.length() == 2);
+                assertNotSame(transformedCenterCoordinate.getX(), x);
+                assertNotSame(transformedCenterCoordinate.getY(), y);
+            }
+        });
+
     }
     
     /**
@@ -89,15 +118,21 @@ public class ProjectionTest extends BaseTestCase {
      */
     public void testTransformExtent() {
     	
-    	Extent extent = OLUtil.getProjection(EPSG_CODE_4326).getExtent();
-    	
-    	Extent transformedExtent = OLUtil.transformExtent(extent, EPSG_CODE_4326, EPSG_CODE_3857); 
-        
-        assertTrue(transformedExtent.<JsArrayNumber>cast().length() == 4);
-        assertNotSame(extent.getLowerLeftX(), transformedExtent.getLowerLeftX());
-        assertNotSame(extent.getLowerLeftY(), transformedExtent.getLowerLeftY());
-        assertNotSame(extent.getUpperRightX(), transformedExtent.getUpperRightX());
-        assertNotSame(extent.getUpperRightY(), transformedExtent.getUpperRightY());
+        injectUrlAndTest(new TestWithInjection() {
+            
+            @Override
+            public void test() {
+                Extent extent = OLUtil.getProjection(EPSG_CODE_4326).getExtent();
+                
+                Extent transformedExtent = OLUtil.transformExtent(extent, EPSG_CODE_4326, EPSG_CODE_3857); 
+                
+                assertTrue(transformedExtent.<JsArrayNumber>cast().length() == 4);
+                assertNotSame(extent.getLowerLeftX(), transformedExtent.getLowerLeftX());
+                assertNotSame(extent.getLowerLeftY(), transformedExtent.getLowerLeftY());
+                assertNotSame(extent.getUpperRightX(), transformedExtent.getUpperRightX());
+                assertNotSame(extent.getUpperRightY(), transformedExtent.getUpperRightY());
+            }
+        });
         
     }
 

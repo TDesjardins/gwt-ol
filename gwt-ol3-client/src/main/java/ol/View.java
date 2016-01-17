@@ -59,7 +59,7 @@ import ol.proj.Projection;
  * @author Tino Desjardins
  */
 @JsType(isNative = true)
-public interface View extends Object {
+public class View extends Object {
 
     /**
      * Fit the given geometry or extent based on the given map size and border.
@@ -72,35 +72,35 @@ public interface View extends Object {
      * @param size
      *            Box pixel size.
      */
-    void fit(TypedObject<ol.geom.SimpleGeometry, ol.Extent> geometry, Size size);
+    public native void fit(TypedObject<ol.geom.SimpleGeometry, ol.Extent> geometry, Size size);
 
     /**
      * Get the view center.
      *
      * @return {ol.Coordinate|undefined} The center of the view.
      */
-    Coordinate getCenter();
+    public native Coordinate getCenter();
 
     /**
      * Get the view projection.
      *
      * @return {ol.proj.Projection} The projection of the view.
      */
-    Projection getProjection();
+    public native Projection getProjection();
 
     /**
      * Get the view resolution.
      *
      * @return The resolution of the view.
      */
-    double getResolution();
+    public native double getResolution();
 
     /**
      * Get the view rotation.
      *
      * @return The rotation of the view in radians.
      */
-    double getRotation();
+    public native double getRotation();
 
     /**
      * Get the current zoom level. Return undefined if the current resolution is
@@ -110,7 +110,7 @@ public interface View extends Object {
      * @deprecated use {@link OLUtil#getZoomLevel(Map) instead}
      */
     @Deprecated
-    int getZoom();
+    public native int getZoom();
 
     /**
      * Rotate the view around a given coordinate.
@@ -120,7 +120,7 @@ public interface View extends Object {
      * @param anchor
      *            Rotation anchor.
      */
-    void rotate(float rotation, @Nullable Coordinate anchor);
+    public native void rotate(float rotation, @Nullable Coordinate anchor);
 
     /**
      * Set the center of the current view.
@@ -128,7 +128,7 @@ public interface View extends Object {
      * @param center
      *            The center of the view.
      */
-    void setCenter(Coordinate center);
+    public native void setCenter(Coordinate center);
 
     /**
      * Set the resolution for this view.
@@ -136,7 +136,7 @@ public interface View extends Object {
      * @param resolution
      *            The resolution of the view.
      */
-    void setResolution(double resolution);
+    public native void setResolution(double resolution);
 
     /**
      * Get the rotation for this view.
@@ -144,7 +144,7 @@ public interface View extends Object {
      * @param rotation
      *            The rotation of the view in radians.
      */
-    void setRotation(double rotation);
+    public native void setRotation(double rotation);
 
     /**
      * Zoom to a specific zoom level.
@@ -152,6 +152,6 @@ public interface View extends Object {
      * @param zoom
      *            Zoom level
      */
-    void setZoom(double zoom);
+    public native void setZoom(double zoom);
     
 }

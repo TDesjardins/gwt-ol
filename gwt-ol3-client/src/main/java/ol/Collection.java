@@ -11,21 +11,21 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Collection<T> extends Object {
+public class Collection<T> extends Object {
 
-    public void clear();
+    public native void clear();
 
-    public T[] getArray();
+    public native T[] getArray();
 
-    public int getLength();
+    public native int getLength();
 
-    public void insertAt(int index, T element);
+    public native void insertAt(int index, T element);
 
-    public T item(int index);
+    public native T item(int index);
 
-    public void pop();
+    public native void pop();
 
-    public void push(T element);
+    public native void push(T element);
 
     /**
      * Remove the first occurrence of an element from the collection.
@@ -35,7 +35,7 @@ public interface Collection<T> extends Object {
      * @api stable
      */
     @Nullable
-    public T remove(T element);
+    public native T remove(T element);
 
     /**
      * Remove the element at the provided index and return it. Return
@@ -46,8 +46,8 @@ public interface Collection<T> extends Object {
      * @api stable
      */
     @Nullable
-    public T removeAt(int index);
+    public native T removeAt(int index);
 
-    public void setAt(int index, T element);
+    public native void setAt(int index, T element);
 
 }

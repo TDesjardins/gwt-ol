@@ -8,7 +8,7 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Vector extends Layer {
+public class Vector extends Layer {
 
 
 }

@@ -43,7 +43,7 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Object extends Observable {
+public class Object extends Observable {
 
     /**
      * Gets a value.
@@ -52,7 +52,7 @@ public interface Object extends Observable {
      *            Key name.
      * @return Value.
      */
-    <T> T get(String key);
+    public native <T> T get(String key);
 
     /**
      * Sets a value.
@@ -62,7 +62,7 @@ public interface Object extends Observable {
      * @param value
      *            Value.
      */
-    <T> void set(String key, T value);
+    public native <T> void set(String key, T value);
 
     /**
      * Unsets a property.
@@ -70,5 +70,6 @@ public interface Object extends Observable {
      * @param key
      *            Key name.
      */
-    void unset(String key);
+    public native void unset(String key);
+    
 }

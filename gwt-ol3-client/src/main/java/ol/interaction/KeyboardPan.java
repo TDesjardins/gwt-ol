@@ -8,6 +8,6 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface KeyboardPan extends Interaction {
+public class KeyboardPan extends Interaction {
 
 }

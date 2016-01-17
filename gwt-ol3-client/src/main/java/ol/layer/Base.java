@@ -11,21 +11,21 @@ import ol.Object;
  *
  */
 @JsType(isNative = true)
-public interface Base extends Object {
+public class Base extends Object {
 
-    float getBrightness();
+    public native float getBrightness();
 
-    float getContrast();
+    public native float getContrast();
 
-    float getMaxResolution();
+    public native float getMaxResolution();
 
-    float getMinResolution();
+    public native float getMinResolution();
 
-    float getOpacity();
+    public native float getOpacity();
 
-    float getSaturation();
+    public native float getSaturation();
 
-    boolean getVisible();
+    public native boolean getVisible();
 
     /**
      * Return the Z-index of the layer, which is used to order layers before
@@ -33,21 +33,21 @@ public interface Base extends Object {
      * 
      * @return {number} The Z-index of the layer.
      */
-    int getZIndex();
+    public native int getZIndex();
 
-    void setBrightness(float brightness);
+    public native void setBrightness(float brightness);
 
-    void setContrast(float contrast);
+    public native void setContrast(float contrast);
 
-    void setMaxResolution(float maxResolution);
+    public native void setMaxResolution(float maxResolution);
 
-    void setMinResolution(float minResolution);
+    public native void setMinResolution(float minResolution);
 
-    void setOpacity(float opacity);
+    public native void setOpacity(float opacity);
 
-    void setSaturation(float saturation);
+    public native void setSaturation(float saturation);
 
-    void setVisible(boolean visible);
+    public native void setVisible(boolean visible);
 
     /**
      * Set Z-index of the layer, which is used to order layers before rendering.
@@ -56,6 +56,6 @@ public interface Base extends Object {
      * @param zindex
      *            The z-index of the layer.
      */
-    void setZIndex(int zindex);
+    public native void setZIndex(int zindex);
 
 }

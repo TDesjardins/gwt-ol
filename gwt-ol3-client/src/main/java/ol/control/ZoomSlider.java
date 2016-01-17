@@ -8,6 +8,6 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface ZoomSlider extends Control {
+public class ZoomSlider extends Control {
 
 }

@@ -15,7 +15,8 @@ import ol.Feature;
  * @author sbaumhekel
  */
 @JsType(isNative = true)
-public interface Vector extends Source {
+public class Vector extends Source {
+    
     /**
      * Add a single feature to the source. If you want to add a batch of
      * features at once, call {@link ol.source.Vector#addFeatures
@@ -24,7 +25,7 @@ public interface Vector extends Source {
      * @param feature
      *            Feature to add.
      */
-    void addFeature(Feature feature);
+    public native void addFeature(Feature feature);
 
     /**
      * Add a batch of features to the source.
@@ -32,7 +33,7 @@ public interface Vector extends Source {
      * @param features
      *            Features to add.
      */
-    void addFeatures(Feature[] features);
+    public native void addFeatures(Feature[] features);
 
     /**
      * Remove all features from the source.
@@ -40,7 +41,7 @@ public interface Vector extends Source {
      * @param opt_fast
      *            Skip dispatching of {@link removefeature} events.
      */
-    void clear(boolean opt_fast);
+    public native void clear(boolean opt_fast);
 
     /**
      * Get the closest feature to the provided coordinate.
@@ -52,7 +53,7 @@ public interface Vector extends Source {
      *            Coordinate.
      * @return {ol.Feature} Closest feature.
      */
-    Feature getClosestFeatureToCoordinate(Coordinate coordinate);
+    public native Feature getClosestFeatureToCoordinate(Coordinate coordinate);
 
     /**
      * Get the extent of the features currently in the source.
@@ -62,7 +63,7 @@ public interface Vector extends Source {
      * 
      * @return {!ol.Extent} Extent.
      */
-    Extent getExtent();
+    public native Extent getExtent();
 
     /**
      * Get a feature by its identifier (the value returned by feature.getId()).
@@ -73,14 +74,14 @@ public interface Vector extends Source {
      *            Feature identifier {string|number}.
      * @return {ol.Feature} The feature (or `null` if not found).
      */
-    Feature getFeatureById(String id);
+    public native Feature getFeatureById(String id);
 
     /**
      * Get all features on the source.
      * 
      * @return {Array.<ol.Feature>} Features.
      */
-    Feature[] getFeatures();
+    public native Feature[] getFeatures();
 
     /**
      * Get all features whose geometry intersects the provided coordinate.
@@ -89,7 +90,7 @@ public interface Vector extends Source {
      *            Coordinate.
      * @return {Array.<ol.Feature>} Features.
      */
-    Feature[] getFeaturesAtCoordinate(Coordinate coordinate);
+    public native Feature[] getFeaturesAtCoordinate(Coordinate coordinate);
 
     /**
      * Get the features collection associated with this source. Will be `null`
@@ -98,7 +99,7 @@ public interface Vector extends Source {
      * 
      * @return {ol.Collection.<ol.Feature>}
      */
-    Collection<Feature> getFeaturesCollection();
+    public native Collection<Feature> getFeaturesCollection();
 
     /**
      * Get all features in the provided extent. Note that this returns all
@@ -113,7 +114,7 @@ public interface Vector extends Source {
      * @return {Array.<ol.Feature>} Features.
      * @api
      */
-    Feature[] getFeaturesInExtent(Extent extent);
+    public native Feature[] getFeaturesInExtent(Extent extent);
 
     /**
      * Remove a single feature from the source. If you want to remove all
@@ -123,5 +124,6 @@ public interface Vector extends Source {
      * @param feature
      *            Feature to remove.
      */
-    void removeFeature(Feature feature);
+    public native void removeFeature(Feature feature);
+    
 }

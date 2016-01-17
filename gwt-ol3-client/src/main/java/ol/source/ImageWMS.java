@@ -8,11 +8,11 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface ImageWMS extends Image {
+public class ImageWMS extends Image {
     
-    String getUrl();
+    public native String getUrl();
     
-    void setUrl(String url); 
+    public native void setUrl(String url); 
     
 }
 

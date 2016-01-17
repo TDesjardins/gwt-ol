@@ -11,14 +11,14 @@ import ol.*;
  *
  */
 @JsType(isNative = true)
-public interface Geometry extends Observable {
+public class Geometry extends Observable {
 
     /**
      * Make a complete copy of the geometry.
      *
      * @return {@link Geometry} Clone.
      */
-    Geometry clone();
+    public native Geometry clone();
 
     /**
      * Return the closest point of the geometry to the passed point as
@@ -29,21 +29,21 @@ public interface Geometry extends Observable {
      * @return Closest point.
      * @api stable
      */
-    Coordinate getClosestPoint(Coordinate point);
+    public native Coordinate getClosestPoint(Coordinate point);
 
     /**
      * Get the extent of the geometry.
      *
      * @return {ol.Extent} extent Extent.
      */
-    Extent getExtent();
+    public native Extent getExtent();
 
     /**
      * Get the type of this geometry.
      *
      * @return Geometry type.
      */
-    String getType();
+    public native String getType();
 
     /**
      * Create a simplified version of this geometry. For linestrings, this uses
@@ -58,7 +58,7 @@ public interface Geometry extends Observable {
      * @return {@link Geometry} A new, simplified version of the original
      *         geometry.
      */
-    Geometry simplify(double tolerance);
+    public native Geometry simplify(double tolerance);
 
     /**
      * Transform each coordinate of the geometry from one coordinate reference
@@ -76,5 +76,5 @@ public interface Geometry extends Observable {
      * @return {@link Geometry} This geometry. Note that original geometry is
      *         modified in place.
      */
-    Geometry transform(String source, String destination);
+    public native Geometry transform(String source, String destination);
 }

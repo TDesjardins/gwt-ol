@@ -8,13 +8,14 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  */
 @JsType(isNative = true)
-public interface GeometryCollection extends Geometry {
+public class GeometryCollection extends Geometry {
+    
     /**
      * Return the geometries that make up this geometry collection.
      * 
      * @return {Array.<ol.geom.Geometry>} Geometries.
      */
-    Geometry[] getGeometries();
+    public native Geometry[] getGeometries();
 
     /**
      * Test if the geometry and the passed extent intersect.
@@ -23,7 +24,7 @@ public interface GeometryCollection extends Geometry {
      *            Extent.
      * @return {boolean} `true` if the geometry and the extent intersect.
      */
-    boolean intersectsExtent(ol.Extent extent);
+    public native boolean intersectsExtent(ol.Extent extent);
 
     /**
      * Set the geometries that make up this geometry collection.
@@ -31,7 +32,7 @@ public interface GeometryCollection extends Geometry {
      * @param geometries
      *            Geometries.
      */
-    void setGeometries(ol.geom.Geometry[] geometries);
+    public native void setGeometries(ol.geom.Geometry[] geometries);
 
     /**
      * Translate the geometry. This modifies the geometry coordinates in place.
@@ -42,6 +43,6 @@ public interface GeometryCollection extends Geometry {
      * @param deltaY
      *            Delta Y.
      */
-    void translate(double deltaX, double deltaY);
+    public native void translate(double deltaX, double deltaY);
 
 }

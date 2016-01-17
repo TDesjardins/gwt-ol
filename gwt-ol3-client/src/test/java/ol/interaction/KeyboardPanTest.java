@@ -1,6 +1,6 @@
 package ol.interaction;
 
-import ol.BaseTestCase;
+import ol.GwtOL3BaseTestCase;
 import ol.OLFactory;
 import ol.Observable;
 
@@ -9,16 +9,23 @@ import ol.Observable;
  * @author Tino Desjardins
  *
  */
-public class KeyboardPanTest extends BaseTestCase {
+public class KeyboardPanTest extends GwtOL3BaseTestCase {
 
     public void testKeyboardPan() {
 
-        KeyboardPan keyboardPan = OLFactory.createKeyboardPan();
-        
-        assertNotNull(keyboardPan);
-        assertTrue(keyboardPan instanceof Observable);
-        assertTrue(keyboardPan instanceof Interaction);
-        
+        injectUrlAndTest(new TestWithInjection() {
+            
+            @Override
+            public void test() {
+                KeyboardPan keyboardPan = OLFactory.createKeyboardPan();
+                
+                assertNotNull(keyboardPan);
+                assertTrue(keyboardPan instanceof Observable);
+                assertTrue(keyboardPan instanceof Interaction);
+            }
+            
+        });
+ 
     }
 
 }

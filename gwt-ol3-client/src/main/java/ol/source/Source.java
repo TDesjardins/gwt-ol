@@ -15,25 +15,26 @@ import ol.proj.Projection;
  *
  */
 @JsType(isNative = true)
-public interface Source extends ol.Object {
+public class Source extends ol.Object {
+    
     /**
      * Get the attributions of the source.
      * 
      * @return {Array.<ol.Attribution>} Attributions.
      */
-    Attribution[] getAttributions();
+    public native Attribution[] getAttributions();
 
     /**
      * Get the projection of the source.
      * 
      * @return {ol.proj.Projection} Projection.
      */
-    Projection getProjection();
+    public native Projection getProjection();
 
     /**
      * @return {Array.<number>|undefined} Resolutions.
      */
-    double[] getResolutions();
+    public native double[] getResolutions();
 
     /**
      * Get the state of the source: one of 'undefined', 'loading', 'ready' or
@@ -41,7 +42,7 @@ public interface Source extends ol.Object {
      * 
      * @return {ol.source.State} State.
      */
-    String getState();
+    public native String getState();
 
     /**
      * Set the attributions of the source.
@@ -49,7 +50,7 @@ public interface Source extends ol.Object {
      * @param attributions
      *            Attributions.
      */
-    void setAttributions(Attribution[] attributions);
+    public native void setAttributions(Attribution[] attributions);
 
     /**
      * Set the projection of the source.
@@ -57,5 +58,6 @@ public interface Source extends ol.Object {
      * @param projection
      *            Projection.
      */
-    void setProjection(Projection projection);
+    public native void setProjection(Projection projection);
+    
 }

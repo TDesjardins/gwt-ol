@@ -8,12 +8,13 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  */
 @JsType(isNative = true)
-public interface LinearRing extends SimpleGeometryMultiCoordinates {
+public class LinearRing extends SimpleGeometryMultiCoordinates {
+    
     /**
      * Return the area of the linear ring on projected plane.
      * 
      * @return {number} Area (on projected plane).
      */
-    double getArea();
+    public native double getArea();
 
 }

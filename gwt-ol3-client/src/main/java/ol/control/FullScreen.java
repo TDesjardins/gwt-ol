@@ -8,6 +8,6 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface FullScreen extends Control {
+public class FullScreen extends Control {
 
 }

@@ -1,6 +1,6 @@
 package ol.interaction;
 
-import ol.BaseTestCase;
+import ol.GwtOL3BaseTestCase;
 import ol.OLFactory;
 import ol.Observable;
 
@@ -9,16 +9,22 @@ import ol.Observable;
  * @author Tino Desjardins
  *
  */
-public class KeyboardZoomTest extends BaseTestCase {
+public class KeyboardZoomTest extends GwtOL3BaseTestCase {
 
     public void testKeyboardZoom() {
 
-        KeyboardZoom keyboardZoom = OLFactory.createKeyboardZoom();
-        
-        assertNotNull(keyboardZoom);
-        assertTrue(keyboardZoom instanceof Observable);
-        assertTrue(keyboardZoom instanceof Interaction);
-        
+        injectUrlAndTest(new TestWithInjection() {
+            
+            @Override
+            public void test() {
+                KeyboardZoom keyboardZoom = OLFactory.createKeyboardZoom();
+                
+                assertNotNull(keyboardZoom);
+                assertTrue(keyboardZoom instanceof Observable);
+                assertTrue(keyboardZoom instanceof Interaction);
+            }
+        });
+ 
     }
 
 }

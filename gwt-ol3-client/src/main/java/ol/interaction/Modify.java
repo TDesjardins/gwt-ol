@@ -8,6 +8,6 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Modify extends Pointer {
+public class Modify extends Pointer {
 
 }

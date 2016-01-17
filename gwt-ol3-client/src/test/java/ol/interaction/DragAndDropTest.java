@@ -1,6 +1,6 @@
 package ol.interaction;
 
-import ol.BaseTestCase;
+import ol.GwtOL3BaseTestCase;
 import ol.OLFactory;
 import ol.Observable;
 
@@ -9,16 +9,24 @@ import ol.Observable;
  * @author Tino Desjardins
  *
  */
-public class DragAndDropTest extends BaseTestCase {
+public class DragAndDropTest extends GwtOL3BaseTestCase {
 
     public void testDragAndDrop() {
 
-        DragAndDrop dragAndDrop = OLFactory.createDragAndDrop();
         
-        assertNotNull(dragAndDrop);
-        assertTrue(dragAndDrop instanceof Observable);
-        assertTrue(dragAndDrop instanceof Interaction);
-        
+        injectUrlAndTest(new TestWithInjection() {
+            
+            @Override
+            public void test() {
+                DragAndDrop dragAndDrop = OLFactory.createDragAndDrop();
+                
+                assertNotNull(dragAndDrop);
+                assertTrue(dragAndDrop instanceof Observable);
+                assertTrue(dragAndDrop instanceof Interaction);
+            }
+            
+        });
+
     }
 
 }

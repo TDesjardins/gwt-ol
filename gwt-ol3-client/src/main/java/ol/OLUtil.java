@@ -13,15 +13,12 @@ import ol.event.ClickListener;
 import ol.event.DoubleClickListener;
 import ol.event.Event;
 import ol.event.EventListener;
-import ol.event.MapMoveListener;
-import ol.event.MapZoomListener;
 import ol.event.OLHandlerRegistration;
 import ol.event.TileLoadErrorListener;
 import ol.gwt.CollectionWrapper;
 import ol.layer.Base;
 import ol.layer.Layer;
 import ol.proj.Projection;
-import ol.source.Source;
 import ol.source.TileEvent;
 import ol.source.UrlTile;
 import ol.source.Xyz;
@@ -104,10 +101,10 @@ public final class OLUtil {
      *            {@link MapMoveListener}
      * @return {@link HandlerRegistration}
      */
-    public static HandlerRegistration addMapMoveListener(Map map, final MapMoveListener listener) {
+    /*public static HandlerRegistration addMapMoveListener(Map map, final MapMoveListener listener) {
         // default is true to track all changes to the map position immediately
         return addMapMoveListener(map, listener, true);
-    }
+    }*/
 
     /**
      * Adds a map move listener for the given map.
@@ -121,7 +118,7 @@ public final class OLUtil {
      *            event will be fired after the map has finished moving.
      * @return {@link HandlerRegistration}
      */
-    public static HandlerRegistration addMapMoveListener(final Map map, final MapMoveListener listener,
+    /*public static HandlerRegistration addMapMoveListener(final Map map, final MapMoveListener listener,
             boolean immediate) {
         // listen to "moveend" events of map
         final HandlerRegistration handlerMap = observe(map, "moveend", new EventListener<MapEvent>() {
@@ -159,7 +156,7 @@ public final class OLUtil {
         }
         // just return the map handler
         return handlerMap;
-    }
+    }*/
 
     /**
      * Adds a map zoom listener for the given map.
@@ -170,7 +167,7 @@ public final class OLUtil {
      *            {@link MapZoomListener}
      * @return {@link HandlerRegistration}
      */
-    public static HandlerRegistration addMapZoomListener(final Map map, final MapZoomListener listener) {
+    /*public static HandlerRegistration addMapZoomListener(final Map map, final MapZoomListener listener) {
         return observe(map.getView(), "propertychange", new EventListener<ObjectEvent>() {
 
             @Override
@@ -182,7 +179,7 @@ public final class OLUtil {
                 }
             }
         });
-    }
+    }*/
 
     /**
      * Add a Projection object to the list of supported projections that can be
@@ -387,7 +384,7 @@ public final class OLUtil {
      *            layer
      * @return zoomlevel on success, else -1
      */
-    public static int getMaxZoomLevel(Base layer) {
+    /*public static int getMaxZoomLevel(Base layer) {
         // get source if layer instance has it
         Source source = layer.get("source");
         if(source != null) {
@@ -398,7 +395,7 @@ public final class OLUtil {
             }
         }
         return -1;
-    }
+    }*/
 
     /**
      * Gets the minimum zoomlevel of the given layer.
@@ -407,7 +404,7 @@ public final class OLUtil {
      *            layer
      * @return zoomlevel on success, else -1
      */
-    public static int getMinZoomLevel(Base layer) {
+    /*public static int getMinZoomLevel(Base layer) {
         // get source if layer instance has it
         Source source = layer.get("source");
         if(source != null) {
@@ -418,7 +415,7 @@ public final class OLUtil {
             }
         }
         return -1;
-    }
+    }*/
 
     /**
      * Gets the name of the given {@link Layer}.
@@ -474,7 +471,7 @@ public final class OLUtil {
      *            {@link Map}
      * @return zoomlevel on success, else -1
      */
-    public static int getZoomLevel(Map map) {
+    /*public static int getZoomLevel(Map map) {
         View v = map.getView();
         // try to get zoom
         int z = getZoom(v);
@@ -521,7 +518,7 @@ public final class OLUtil {
             }
         }
         return -1;
-    }
+    }*/
 
     /**
      * Initializes a {@link MapEvent}, can be used for creating a new

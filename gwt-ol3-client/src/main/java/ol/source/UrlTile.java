@@ -8,14 +8,15 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  */
 @JsType(isNative = true)
-public interface UrlTile extends Tile {
+public class UrlTile extends Tile {
+    
     /**
      * Return the URLs used for this source. When a tileUrlFunction is used
      * instead of url or urls, null will be returned.
      * 
      * @return {!Array.<string>|null} URLs.
      */
-    String[] getUrls();
+    public native String[] getUrls();
 
     /**
      * Set the URL to use for requests.
@@ -23,7 +24,7 @@ public interface UrlTile extends Tile {
      * @param url
      *            URL.
      */
-    void setUrl(String url);
+    public native void setUrl(String url);
 
     /**
      * Set the URLs to use for requests.
@@ -31,5 +32,6 @@ public interface UrlTile extends Tile {
      * @param urls
      *            URLs.
      */
-    void setUrls(String[] urls);
+    public native void setUrls(String[] urls);
+    
 }

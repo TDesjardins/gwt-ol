@@ -12,26 +12,27 @@ import ol.Coordinate;
  * @author sbaumhekel
  */
 @JsType(isNative = true)
-public interface SimpleGeometry extends Geometry {
+public class SimpleGeometry extends Geometry {
+    
     /**
      * Return the first coordinate of the geometry.
      *
      * @return {ol.Coordinate} First coordinate.
      */
-    Coordinate getFirstCoordinate();
+    public native Coordinate getFirstCoordinate();
 
     /**
      * Return the last coordinate of the geometry.
      *
      * @return {ol.Coordinate} Last point.
      */
-    Coordinate getLastCoordinate();
+    public native Coordinate getLastCoordinate();
 
     /**
      * Return the {@link ol.geom.GeometryLayout layout} of the geometry.
      *
      * @return Layout.
      */
-    String getLayout();
+    public native String getLayout();
 
 }

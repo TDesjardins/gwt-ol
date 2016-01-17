@@ -13,7 +13,7 @@ import ol.proj.Projection;
  * @author Tino Desjardins
  */
 @JsType(isNative = true)
-public interface MousePosition extends Control {
+public class MousePosition extends Control {
 
     /**
      * Return the projection that is used to report the mouse position.
@@ -23,7 +23,7 @@ public interface MousePosition extends Control {
      * @observable
      * @api stable
      */
-    Projection getProjection();
+    public native Projection getProjection();
 
     /**
      * Set the projection that is used to report the mouse position.
@@ -33,6 +33,6 @@ public interface MousePosition extends Control {
      * @observable
      * @api stable
      */
-    void setProjection(Projection projection);
+    public native void setProjection(Projection projection);
 
 }

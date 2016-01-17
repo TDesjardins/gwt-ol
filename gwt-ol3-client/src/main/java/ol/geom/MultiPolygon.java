@@ -8,7 +8,8 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  */
 @JsType(isNative = true)
-public interface MultiPolygon extends SimpleGeometryMultiCoordinates {
+public class MultiPolygon extends SimpleGeometryMultiCoordinates {
+    
     /**
      * Append the passed polygon to this multipolygon.
      * 
@@ -16,7 +17,7 @@ public interface MultiPolygon extends SimpleGeometryMultiCoordinates {
      *            Polygon.
      * @api stable
      */
-    void appendPolygon(Polygon polygon);
+    public native void appendPolygon(Polygon polygon);
 
     /**
      * Return the polygon at the specified index.
@@ -26,7 +27,7 @@ public interface MultiPolygon extends SimpleGeometryMultiCoordinates {
      * @return {ol.geom.Polygon} Polygon.
      * @api stable
      */
-    Polygon getPolygon(int index);
+    public native Polygon getPolygon(int index);
 
     /**
      * Return the polygons of this multipolygon.
@@ -34,5 +35,6 @@ public interface MultiPolygon extends SimpleGeometryMultiCoordinates {
      * @return {Array.<ol.geom.Polygon>} Polygons.
      * @api stable
      */
-    Polygon[] getPolygons();
+    public native Polygon[] getPolygons();
+    
 }

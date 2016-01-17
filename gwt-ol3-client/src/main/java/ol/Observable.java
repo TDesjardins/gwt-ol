@@ -14,12 +14,12 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Observable {
+public class Observable {
 
     /**
      * Increases the revision counter and dispatches a 'change' event.
      */
-    void changed();
+    public native void changed();
 
     /**
      * Listen for a certain type of event.
@@ -30,7 +30,7 @@ public interface Observable {
      *            The listener function.
      * @return Unique key for the listener.
      */
-    JavaScriptObject on(String type, JavaScriptObject listener);
+    public native JavaScriptObject on(String type, JavaScriptObject listener);
 
     /**
      * Listen once for a certain type of event.
@@ -41,7 +41,7 @@ public interface Observable {
      *            The listener function.
      * @return {goog.events.Key} Unique key for the listener.
      */
-    JavaScriptObject once(String type, JavaScriptObject listener);
+    public native JavaScriptObject once(String type, JavaScriptObject listener);
 
     /**
      * Unlisten for a certain type of event.
@@ -52,7 +52,7 @@ public interface Observable {
      *            The listener function.
      * @api stable
      */
-    void un(String type, JavaScriptObject listener);
+    public native void un(String type, JavaScriptObject listener);
 
     /**
      * Removes an event listener using the key returned by on() or once(). Note
@@ -61,5 +61,5 @@ public interface Observable {
      * @param key
      *            The key returned by on() or once().
      */
-    void unByKey(JavaScriptObject key);
+    public native void unByKey(JavaScriptObject key);
 }
