@@ -13,25 +13,34 @@ public class GeometryCollectionTest extends GwtOL3BaseTestCase {
 
     public void test() {
 
-        Geometry[] geoms = new Geometry[] { OLFactory.createPoint(1, 2), OLFactory.createLineString(
-                new Coordinate[] { OLFactory.createCoordinate(1, 2), OLFactory.createCoordinate(2, 3) }) };
+        injectUrlAndTest(new TestWithInjection() {
 
-        GeometryCollection col = OLFactory.createGeometryCollection(geoms);
+            @Override
+            public void test() {
 
-        assertNotNull(col);
+                Geometry[] geoms = new Geometry[] { OLFactory.createPoint(1, 2), OLFactory.createLineString(
+                        new Coordinate[] { OLFactory.createCoordinate(1, 2), OLFactory.createCoordinate(2, 3) }) };
 
-        Geometry[] geoms2 = col.getGeometries();
+                GeometryCollection col = OLFactory.createGeometryCollection(geoms);
 
-        assertNotNull(geoms2);
-        assertEquals(2, geoms2.length);
+                assertNotNull(col);
 
-        Geometry g1 = geoms2[0];
-        Geometry g2 = geoms2[1];
+                Geometry[] geoms2 = col.getGeometries();
 
-        assertNotNull(g1);
-        assertNotNull(g2);
-        assertEquals("Point", g1.getType());
-        assertEquals("LineString", g2.getType());
+                assertNotNull(geoms2);
+                assertEquals(2, geoms2.length);
+
+                Geometry g1 = geoms2[0];
+                Geometry g2 = geoms2[1];
+
+                assertNotNull(g1);
+                assertNotNull(g2);
+                assertEquals("Point", g1.getType());
+                assertEquals("LineString", g2.getType());
+
+            }
+
+        });
 
     }
 
