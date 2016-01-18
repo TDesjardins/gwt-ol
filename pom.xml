@@ -91,6 +91,13 @@
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>gwt-maven-plugin</artifactId>
           <version>${gwt.maven.plugin.version}</version>
+          <configuration>
+            <!--  Enable to test with other browsers. -->
+            <!--
+            <mode>htmlunit</mode>
+            <htmlunit>IE9,IE10</htmlunit>
+            -->
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
