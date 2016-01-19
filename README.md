@@ -3,7 +3,7 @@ GWT-OpenLayers 3
 
 [![Build Status](https://travis-ci.org/TDesjardins/gwt-ol3.svg?branch=master)](https://travis-ci.org/TDesjardins/gwt-ol3)
 
-A [OpenLayers 3](http://openlayers.org/ "OpenLayers 3 website") - Wrapper for GWT using the new JSInterop-Features of the [GWT-SDK 2.7.0](http://www.gwtproject.org/versions.html "Link to GWT-SDK Downloads"). There is also a [branch](https://github.com/TDesjardins/GWT-OL3-Playground/tree/gwt/2.8) for the final JSInterop Specification of GWT 2.8.0.
+A [OpenLayers 3](http://openlayers.org/ "OpenLayers 3 website") - Wrapper for GWT using the new JSInterop-Features of the [GWT-SDK 2.7.0](http://www.gwtproject.org/versions.html "Link to GWT-SDK Downloads"). There is also a [branch](https://github.com/TDesjardins/gwt-ol3/tree/gwt/2.8) for the final JSInterop Specification of GWT 2.8.0.
 
 The project consists of two parts:
   
