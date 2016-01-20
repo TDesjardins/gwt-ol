@@ -43,11 +43,11 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public class Object extends Observable {
+public abstract class Object extends Observable {
 
     /**
      * Gets a value.
-     * 
+     *
      * @param key
      *            Key name.
      * @return Value.
@@ -56,7 +56,7 @@ public class Object extends Observable {
 
     /**
      * Sets a value.
-     * 
+     *
      * @param key
      *            Key name.
      * @param value
@@ -66,10 +66,10 @@ public class Object extends Observable {
 
     /**
      * Unsets a property.
-     * 
+     *
      * @param key
      *            Key name.
      */
     public native void unset(String key);
-    
+
 }

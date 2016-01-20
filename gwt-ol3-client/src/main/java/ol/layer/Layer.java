@@ -22,7 +22,7 @@ import ol.source.Source;
  *
  */
 @JsType(isNative = true)
-public class Layer extends Base {
+public abstract class Layer extends Base {
 
     /**
      * Gets the source for this layer.
@@ -40,7 +40,7 @@ public class Layer extends Base {
      *
      * To add the layer to a map and have it managed by the map, use
      * {@link ol.Map#addLayer} instead.
-     * 
+     *
      * @param map
      *            Map.
      */

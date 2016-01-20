@@ -61,6 +61,8 @@ import ol.proj.Projection;
 @JsType(isNative = true)
 public class View extends Object {
 
+    public View() {}
+
     /**
      * Fit the given geometry or extent based on the given map size and border.
      * The size is pixel dimensions of the box to fit the extent into. In most
@@ -153,5 +155,5 @@ public class View extends Object {
      *            Zoom level
      */
     public native void setZoom(double zoom);
-    
+
 }

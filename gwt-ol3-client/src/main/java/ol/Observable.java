@@ -9,12 +9,12 @@ import jsinterop.annotations.JsType;
  * instantiated in apps. An event target providing convenient methods for
  * listener registration and unregistration. A generic `change` event is always
  * available through {@link ol.Observable#changed}.
- * 
+ *
  * @author Tino Desjardins
  *
  */
 @JsType(isNative = true)
-public class Observable {
+public abstract class Observable {
 
     /**
      * Increases the revision counter and dispatches a 'change' event.

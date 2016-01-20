@@ -46,6 +46,8 @@ import ol.layer.Base;
 @JsType(isNative = true)
 public class Map extends Object {
 
+    public Map(MapOptions mapOptions) {}
+
     /**
      * Add the given control to the map.
      *
@@ -241,5 +243,5 @@ public class Map extends Object {
      * when third-party code changes the size of the map viewport.
      */
     public native void updateSize();
-    
+
 }

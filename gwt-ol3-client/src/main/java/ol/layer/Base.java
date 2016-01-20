@@ -11,7 +11,7 @@ import ol.Object;
  *
  */
 @JsType(isNative = true)
-public class Base extends Object {
+public abstract class Base extends Object {
 
     public native float getBrightness();
 
@@ -30,7 +30,7 @@ public class Base extends Object {
     /**
      * Return the Z-index of the layer, which is used to order layers before
      * rendering. The default Z-index is 0.
-     * 
+     *
      * @return {number} The Z-index of the layer.
      */
     public native int getZIndex();
@@ -52,7 +52,7 @@ public class Base extends Object {
     /**
      * Set Z-index of the layer, which is used to order layers before rendering.
      * The default Z-index is 0.
-     * 
+     *
      * @param zindex
      *            The z-index of the layer.
      */
