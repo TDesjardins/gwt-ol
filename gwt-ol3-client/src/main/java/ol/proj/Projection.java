@@ -30,17 +30,115 @@ import ol.Extent;
  */
 @JsType(prototype = "ol.proj.Projection")
 public interface Projection {
+    /**
+     * Projection unit 'degrees'.
+     */
+    static final String UNIT_DEGREES = "degrees";
+    /**
+     * Projection unit 'feet'.
+     */
+    static final String FEET = "ft";
+    /**
+     * Projection unit 'meters'.
+     */
+    static final String METERS = "m";
+    /**
+     * Projection unit 'pixels'.
+     */
+    static final String PIXELS = "pixels";
+    /**
+     * Projection unit 'tile pixels'.
+     */
+    static final String TILE_PIXELS = "tile-pixels";
+    /**
+     * Projection unit 'US feet'.
+     */
+    static final String USFEET = "'us-ft";
 
+    /**
+     * Get the code for this projection, e.g. 'EPSG:4326'.
+     * 
+     * @return {string} Code.
+     */
     String getCode();
 
+    /**
+     * Get the validity extent for this projection.
+     * 
+     * @return {ol.Extent} Extent.
+     */
     Extent getExtent();
 
+    /**
+     * Get the amount of meters per unit of this projection. If the projection
+     * is not configured with `metersPerUnit` or a units identifier, the return
+     * is `undefined`.
+     * 
+     * @return {number|undefined} Meters.
+     */
     double getMetersPerUnit();
 
+    /**
+     * Get the resolution of the point in degrees or distance units. For
+     * projections with degrees as the unit this will simply return the provided
+     * resolution. The default for other projections is to estimate the point
+     * resolution by transforming the 'point' pixel to EPSG:4326, measuring its
+     * width and height on the normal sphere, and taking the average of the
+     * width and height. An alternative implementation may be given when
+     * constructing a projection. For many local projections, such a custom
+     * function will return the resolution unchanged.
+     * 
+     * @param resolution
+     *            Resolution in projection units.
+     * @param point
+     *            Point.
+     * @return {number} Point resolution in projection units.
+     */
+    double getPointResolution(double resolution, ol.Coordinate point);
+
+    /**
+     * Get the units of this projection.
+     * 
+     * @return {ol.proj.Units} Units.
+     */
     String getUnits();
 
+    /**
+     * Get the world extent for this projection.
+     * 
+     * @return {ol.Extent} Extent.
+     */
+    Extent getWorldExtent();
+
+    /**
+     * Is this projection a global projection which spans the whole world?
+     * 
+     * @return {boolean} Whether the projection is global.
+     */
     boolean isGlobal();
 
+    /**
+     * Set if the projection is a global projection which spans the whole world
+     * 
+     * @param global
+     *            Whether the projection is global.
+     */
+    void setGlobal(boolean global);
+
+    /**
+     * Set the validity extent for this projection.
+     * 
+     * @param extent
+     *            Extent.
+     */
     void setExtent(Extent extent);
+
+    /**
+     * Set the world extent for this projection.
+     * 
+     * @param worldExtent
+     *            World extent [minlon, minlat, maxlon, maxlat].
+     */
+    void setWorldExtent(Extent worldExtent);
 
 }
