@@ -15,6 +15,7 @@ import ol.event.Event;
 import ol.event.EventListener;
 import ol.event.OLHandlerRegistration;
 import ol.event.TileLoadErrorListener;
+import ol.geom.Geometry;
 import ol.gwt.CollectionWrapper;
 import ol.layer.Base;
 import ol.layer.Layer;
@@ -182,6 +183,16 @@ public final class OLUtil {
     }*/
 
     /**
+     * Registers transformation functions that don't alter coordinates. Those allow
+     * to transform between projections with equal meaning.
+     *
+     * @param projections Projections.
+     */
+    public static native void addEquivalentProjections(Projection[] projections) /*-{
+		$wnd.ol.proj.addEquivalentProjections(projections);
+    }-*/;
+    
+    /**
      * Add a Projection object to the list of supported projections that can be
      * looked up by their code.
      *
@@ -293,6 +304,33 @@ public final class OLUtil {
 		return eChild;
     }-*/;
 
+    /**
+     * Checks if two projections are the same, that is every coordinate in one
+     * projection does represent the same geographic point as the same
+     * coordinate in the other projection. (Taken from proj.js source of
+     * 'ol.proj.equivalent' as it is not part of the official API but still
+     * useful for identifying equal projections).
+     *
+     * @param projection1
+     *            Projection 1.
+     * @param projection2
+     *            Projection 2.
+     * @return {boolean} Equivalent.
+     */
+    public static native boolean equivalent(ol.proj.Projection projection1, ol.proj.Projection projection2) /*-{
+      if (projection1 === projection2) {
+        return true;
+      }
+      var equalUnits = projection1.getUnits() === projection2.getUnits();
+      if (projection1.getCode() === projection2.getCode()) {
+        return equalUnits;
+      } else {
+        var transformFn = ol.proj.getTransformFromProjections(
+            projection1, projection2);
+        return transformFn === ol.proj.cloneTransform && equalUnits;
+      }
+    }-*/;
+    
     /**
      * Gets the geometry layout string for the given dimension.
      *
@@ -670,6 +708,28 @@ public final class OLUtil {
 		return $wnd.ol.proj.transform(coordinate, source, destination);
     }-*/;
 
+    /**
+     * Transform each coordinate of the geometry from one coordinate reference
+     * system to another. The geometry is modified in place. For example, a line
+     * will be transformed to a line and a circle to a circle. If you do not
+     * want the geometry modified in place, first clone() it and then use this
+     * function on the clone.
+     *
+     * @param geom {@link Geometry}
+     *
+     * @param source
+     *            The current projection. Can be a string identifier or a
+     *            {@link ol.proj.Projection} object.
+     * @param destination
+     *            The desired projection. Can be a string identifier or a
+     *            {@link ol.proj.Projection} object.
+     * @return {@link Geometry} This geometry. Note that original geometry is
+     *         modified in place.
+     */
+    public static native Geometry transform(Geometry geom, Projection source, Projection destination) /*-{
+		return geom.transform(source, destination);
+    }-*/;
+    
     /**
      * Transforms a coordinate from source projection to destination projection.
      * This returns a new coordinate (and does not modify the original).
