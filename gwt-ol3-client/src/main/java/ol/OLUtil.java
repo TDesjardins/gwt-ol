@@ -618,6 +618,39 @@ public final class OLUtil {
     }
 
     /**
+     * Set the style for the feature. This can be a single style object, an
+     * array of styles, or a function that takes a resolution and returns an
+     * array of styles. If it is `null` the feature has no style (a `null`
+     * style).
+     * 
+     * @param f
+     *            {@link ol.Feature}
+     * @param style
+     *            Style for this feature.
+     */
+    public static native void setStyle(ol.Feature f, @Nullable ol.style.Style[] style) /*-{
+        f.setStyle(style);
+    }-*/;
+
+    /**
+     * Set the style for features. This can be a single style object, an array
+     * of styles, or a function that takes a feature and resolution and returns
+     * an array of styles. If it is `undefined` the default style is used. If it
+     * is `null` the layer has no style (a `null` style), so only features that
+     * have their own styles will be rendered in the layer. See {@link ol.style}
+     * for information on the default style.
+     * 
+     * @param l
+     *            Layer
+     * @param style
+     *            Layer style.
+     */
+    public static native void setStyle(ol.layer.Vector l, @Nullable ol.style.Style[] style) /*-{
+        l.setStyle(style);
+    }-*/;
+
+    
+    /**
      * Transforms a coordinate from source projection to destination projection.
      * This returns a new coordinate (and does not modify the original).
      *
