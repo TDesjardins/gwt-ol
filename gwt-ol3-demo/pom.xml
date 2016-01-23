@@ -6,14 +6,14 @@
   <parent>
     <groupId>de.desjardins.ol3</groupId>
     <artifactId>gwt-ol3</artifactId>
-    <version>2.1.1</version>
+    <version>2.2.0</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>ol</groupId>
   <artifactId>gwt-ol3-demo</artifactId>
   <packaging>war</packaging>
-  <version>2.1.1</version>
+  <version>2.2.0</version>
   <name>${project.artifactId}</name>
 
  <repositories>
