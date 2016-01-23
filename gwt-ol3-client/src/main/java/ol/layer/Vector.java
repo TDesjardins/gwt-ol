@@ -21,7 +21,7 @@ public class Vector extends Layer {
      * @return {ol.style.Style|Array.<ol.style.Style>|ol.style.StyleFunction}
      *         Layer style.
      */
-    ol.style.Style getStyle();
+    public native ol.style.Style getStyle();
 
     /**
      * Set the style for features. This can be a single style object, an array
@@ -34,6 +34,6 @@ public class Vector extends Layer {
      * @param style
      *            Layer style.
      */
-    void setStyle(ol.style.Style style);
+    public native void setStyle(ol.style.Style style);
 
 }
