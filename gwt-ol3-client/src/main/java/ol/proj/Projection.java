@@ -37,23 +37,23 @@ public interface Projection {
     /**
      * Projection unit 'feet'.
      */
-    static final String FEET = "ft";
+    static final String UNIT_FEET = "ft";
     /**
      * Projection unit 'meters'.
      */
-    static final String METERS = "m";
+    static final String UNIT_METERS = "m";
     /**
      * Projection unit 'pixels'.
      */
-    static final String PIXELS = "pixels";
+    static final String UNIT_PIXELS = "pixels";
     /**
      * Projection unit 'tile pixels'.
      */
-    static final String TILE_PIXELS = "tile-pixels";
+    static final String UNIT_TILE_PIXELS = "tile-pixels";
     /**
      * Projection unit 'US feet'.
      */
-    static final String USFEET = "'us-ft";
+    static final String UNIT_USFEET = "'us-ft";
 
     /**
      * Get the code for this projection, e.g. 'EPSG:4326'.

@@ -14,6 +14,7 @@ import ol.interaction.Draw;
 import ol.interaction.DrawEvent;
 import ol.interaction.DrawOptions;
 import ol.layer.VectorLayerOptions;
+import ol.proj.Projection;
 import ol.style.Style;
 
 /**
@@ -30,6 +31,7 @@ public class Measure {
     private MeasureListener listener;
     private final Map map;
     private ol.layer.Vector persistOverlay;
+    private Projection proj;
     private Feature sketch;
     private Style style;
 
@@ -51,7 +53,7 @@ public class Measure {
         if(isActive && (sketch != null) && (listener != null)) {
             Geometry geom = sketch.getGeometry();
             if(geom != null) {
-                listener.onMeasure(new MeasureEvent(geom));
+                listener.onMeasure(new MeasureEvent(proj, geom));
             }
         }
     }
@@ -137,6 +139,9 @@ public class Measure {
             persistOverlay = OLFactory.createVector(voptions);
             persistOverlay.setMap(map);
         }
+
+        // set up projection to be used
+        proj = map.getView().getProjection();
 
         map.addInteraction(draw);
         // set up event handlers
@@ -261,6 +266,7 @@ public class Measure {
         // clean up
         listener = null;
         sketch = null;
+        proj = null;
         // clean up interaction
         if(draw != null) {
             map.removeInteraction(draw);

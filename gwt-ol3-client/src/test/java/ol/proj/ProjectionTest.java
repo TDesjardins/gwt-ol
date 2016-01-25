@@ -52,7 +52,15 @@ public class ProjectionTest extends BaseTestCase {
         assertNotNull(projectionToCompare);
         
         assertEquals(projection.getCode(), projectionToCompare.getCode());
-        
+	assertTrue(OLUtil.equivalent(projection, projectionToCompare));
+    }
+    
+    public void testEquivalent() {
+	Projection p1 = OLUtil.getProjection(EPSG_CODE_4326);
+	Projection p2 = OLUtil.getProjection(EPSG_CODE_4326);
+	Projection p3 = OLUtil.getProjection(EPSG_CODE_3857);
+	assertTrue(OLUtil.equivalent(p1, p2));
+	assertFalse(OLUtil.equivalent(p1, p3));
     }
     
     public void testGet() {
