@@ -27,10 +27,10 @@ public class MeasureEvent {
     }
 
     /**
-     * Gets the measure for the given {@link Geometry}.
+     * Gets the measure for the given {@link ol.geom.Geometry}.
      *
      * @param geom
-     *            measure {@link Geometry}
+     *            measure {@link ol.geom.Geometry}
      * @return measure on success, else {@link Double#NaN}
      */
     private static double getMeasure(ol.geom.Geometry geom) {
@@ -45,8 +45,8 @@ public class MeasureEvent {
     }
 
     /**
-     * Gets the measurement geometry: a {@link LineString} for length
-     * measurements and a {@link Polygon} for area measurements.
+     * Gets the measurement geometry: a {@link ol.geom.LineString} for length
+     * measurements and a {@link ol.geom.Polygon} for area measurements.
      * 
      * @return {@link Geometry}
      */
