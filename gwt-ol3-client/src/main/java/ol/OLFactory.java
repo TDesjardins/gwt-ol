@@ -31,6 +31,7 @@ import ol.interaction.KeyboardZoom;
 import ol.interaction.Modify;
 import ol.layer.Image;
 import ol.layer.ImageLayerOptions;
+import ol.layer.LayerGroupOptions;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
 import ol.layer.TileLayerOptions;
@@ -406,6 +407,17 @@ public final class OLFactory {
 
     public static native KeyboardZoom createKeyboardZoom() /*-{
     	return new $wnd.ol.interaction.KeyboardZoom();
+    }-*/;
+
+    /**
+     * Creates a {@link ol.layer.Group}.
+     *
+     * @param options
+     *            {@link ol.layer.LayerGroupOptions}
+     * @return {@link ol.layer.Group}
+     */
+    public static native ol.layer.Group createLayerGroup(LayerGroupOptions options) /*-{
+        return new $wnd.ol.layer.Group(options);
     }-*/;
 
     /**
