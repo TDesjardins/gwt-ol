@@ -13,6 +13,7 @@ import ol.interaction.DragAndDropTest;
 import ol.interaction.KeyboardPanTest;
 import ol.interaction.KeyboardZoomTest;
 import ol.interaction.ModifyTest;
+import ol.layer.LayerGroupTest;
 import ol.proj.ProjectionTest;
 import junit.framework.TestSuite;
 
@@ -52,6 +53,9 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(KeyboardPanTest.class);
         suite.addTestSuite(KeyboardZoomTest.class);
         suite.addTestSuite(ModifyTest.class);
+        
+        // layers
+        suite.addTestSuite(LayerGroupTest.class);
         
         // projection
         suite.addTestSuite(ProjectionTest.class);
