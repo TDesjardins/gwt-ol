@@ -51,7 +51,7 @@ public interface Map extends Object {
      * @param control
      *            Control.
      */
-    public void addControl(Control control);
+    void addControl(Control control);
 
     /**
      * Add the given interaction to the map.
@@ -59,7 +59,7 @@ public interface Map extends Object {
      * @param interaction
      *            Interaction to add.
      */
-    public void addInteraction(Interaction interaction);
+    void addInteraction(Interaction interaction);
 
     /**
      * Adds the given layer to the top of this map. If you want to add a layer
@@ -69,7 +69,14 @@ public interface Map extends Object {
      * @param layer
      *            Layer.
      */
-    public void addLayer(Base layer);
+    void addLayer(Base layer);
+
+    /**
+     * Add the given overlay to the map.
+     * @param overlay
+     *            Overlay.
+     */
+    void addOverlay(Overlay overlay);
 
     /**
      * Get the map controls. Modifying this collection changes the controls
@@ -77,7 +84,7 @@ public interface Map extends Object {
      *
      * @return {ol.Collection.<ol.control.Control>} Controls.
      */
-    public Collection<Control> getControls();
+    Collection<Control> getControls();
 
     /**
      * Get the coordinate for a given pixel. This returns a coordinate in the
@@ -113,7 +120,24 @@ public interface Map extends Object {
      *
      * @return {!ol.Collection.<ol.layer.Base>} Layers.
      */
-    public Collection<Base> getLayers();
+    Collection<Base> getLayers();
+
+    /**
+     * Get an overlay by its identifier (the value returned by overlay.getId()).
+     * Note that the index treats string and numeric identifiers as the same. So
+     * `map.getOverlayById(2)` will return an overlay with id `'2'` or `2`.
+     * @param id
+     *            Overlay identifier.
+     * @return {ol.Overlay} Overlay.
+     */
+    Overlay getOverlayById(String id);
+
+    /**
+     * Get the map overlays. Modifying this collection changes the overlays
+     * associated with the map.
+     * @return {ol.Collection.<ol.Overlay>} Overlays.
+     */
+    ol.Collection<ol.Overlay> getOverlays();
 
     /**
      * Get the pixel for a coordinate. This takes a coordinate in the map view
@@ -133,7 +157,7 @@ public interface Map extends Object {
      * @return pixel ratio
      */
     @JsProperty
-    public double getPixelRatio();
+    double getPixelRatio();
 
     /**
      * Get the size of this map.
@@ -150,7 +174,7 @@ public interface Map extends Object {
      * @return {Element|string|undefined} The Element or id of the Element that
      *         the map is rendered in.
      */
-    public String getTarget();
+    String getTarget();
 
     /**
      * Get the DOM element into which this map is rendered. In contrast to
@@ -167,7 +191,7 @@ public interface Map extends Object {
      *
      * @return The view that controls this map.
      */
-    public View getView();
+    View getView();
 
     /**
      * Get the element that serves as the map viewport.
@@ -184,7 +208,7 @@ public interface Map extends Object {
      * @return {ol.control.Control|undefined} The removed control (or undefined
      *         if the control was not found).
      */
-    public Control removeControl(Control control);
+    Control removeControl(Control control);
 
     /**
      * Remove the given interaction from the map.
@@ -194,7 +218,7 @@ public interface Map extends Object {
      * @return {ol.interaction.Interaction|undefined} The removed interaction
      *         (or undefined if the interaction was not found).
      */
-    public Interaction removeInteraction(Interaction interaction);
+    Interaction removeInteraction(Interaction interaction);
 
     /**
      * Removes the given layer from the map.
@@ -204,13 +228,22 @@ public interface Map extends Object {
      * @return {ol.layer.Base|undefined} The removed layer (or undefined if the
      *         layer was not found).
      */
-    public Base removeLayer(Base layer);
+    Base removeLayer(Base layer);
+
+    /**
+     * Remove the given overlay from the map.
+     * @param overlay
+     *            Overlay.
+     * @return {ol.Overlay|undefined} The removed overlay (or undefined if the
+     *         overlay was not found).
+     */
+    Overlay removeOverlay(Overlay overlay);
 
     /**
      * Requests a render frame; rendering will effectively occur at the next
      * browser animation frame.
      */
-    public void render();
+    void render();
 
     /**
      * Set the size of this map.
@@ -228,7 +261,7 @@ public interface Map extends Object {
      * @param o
      *            id or element
      */
-    public void setTarget(TypedObject<Element, String> o);
+    void setTarget(TypedObject<Element, String> o);
 
     /**
      * Set the view for this map.
@@ -236,11 +269,11 @@ public interface Map extends Object {
      * @param view
      *            The view that controls this map.
      */
-    public void setView(View view);
+    void setView(View view);
 
     /**
      * Force a recalculation of the map viewport size. This should be called
      * when third-party code changes the size of the map viewport.
      */
-    public void updateSize();
+    void updateSize();
 }

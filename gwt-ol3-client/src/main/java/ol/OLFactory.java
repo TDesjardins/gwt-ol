@@ -648,6 +648,17 @@ public final class OLFactory {
     }-*/;
 
     /**
+     * Creates an {@link Overlay}.
+     *
+     * @param options
+     *            {@link OverlayOptions}
+     * @return {@link Overlay}
+     */
+    public static native Overlay createOverlay(OverlayOptions options) /*-{
+        return new $wnd.ol.Overlay(options);
+    }-*/;
+    
+    /**
      * Creates an instance.
      *
      * @param x
