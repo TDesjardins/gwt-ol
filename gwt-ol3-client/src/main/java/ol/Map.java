@@ -72,6 +72,13 @@ public class Map extends Object {
     public native void addLayer(Base layer);
 
     /**
+     * Add the given overlay to the map.
+     * @param overlay
+     *            Overlay.
+     */
+    public native void addOverlay(Overlay overlay);
+
+    /**
      * Get the map controls. Modifying this collection changes the controls
      * associated with the map.
      *
@@ -114,6 +121,23 @@ public class Map extends Object {
      * @return {!ol.Collection.<ol.layer.Base>} Layers.
      */
     public native Collection<Base> getLayers();
+
+    /**
+     * Get an overlay by its identifier (the value returned by overlay.getId()).
+     * Note that the index treats string and numeric identifiers as the same. So
+     * `map.getOverlayById(2)` will return an overlay with id `'2'` or `2`.
+     * @param id
+     *            Overlay identifier.
+     * @return {ol.Overlay} Overlay.
+     */
+    public native Overlay getOverlayById(String id);
+
+    /**
+     * Get the map overlays. Modifying this collection changes the overlays
+     * associated with the map.
+     * @return {ol.Collection.<ol.Overlay>} Overlays.
+     */
+    public native Collection<Overlay> getOverlays();
 
     /**
      * Get the pixel for a coordinate. This takes a coordinate in the map view
@@ -205,6 +229,15 @@ public class Map extends Object {
      *         layer was not found).
      */
     public native Base removeLayer(Base layer);
+
+    /**
+     * Remove the given overlay from the map.
+     * @param overlay
+     *            Overlay.
+     * @return {ol.Overlay|undefined} The removed overlay (or undefined if the
+     *         overlay was not found).
+     */
+    public native Overlay removeOverlay(Overlay overlay);
 
     /**
      * Requests a render frame; rendering will effectively occur at the next
