@@ -20,4 +20,9 @@ import jsinterop.annotations.JsType;
  */
 @JsType(isNative = true)
 public class Xyz extends TileImage {
+    
+    public Xyz() {}
+    
+    public Xyz(XyzOptions xyzOptions) {}
+    
 }

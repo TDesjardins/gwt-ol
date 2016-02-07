@@ -9,13 +9,15 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Attribution {
-
+public class Attribution {
+    
+    public Attribution(AttributionOptions attributionOptions) {}
+    
     /**
      * Gets the HTML markup for this attribution.
      * 
      * @return html
      */
-    public String getHTML();
+    public native String getHTML();
 
 }

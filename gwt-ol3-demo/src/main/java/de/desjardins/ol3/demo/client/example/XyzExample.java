@@ -34,20 +34,20 @@ public class XyzExample implements Example {
     	AttributionOptions attributionOptions = OLFactory.<AttributionOptions>createOptions();
     	attributionOptions.setHtml("Tiles &copy; <a href=\"http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer\">ArcGIS</a>");
         
-        Attribution attribution = OLFactory.createAttribution(attributionOptions);
+        Attribution attribution = new Attribution(attributionOptions);
         Attribution[] attributions = new Attribution[1];
         attributions[0] = attribution;
         
         xyzOptions.setAttributions(attributions);
     	
-    	Xyz xyzSource =  OLFactory.createXyz(xyzOptions);
+    	Xyz xyzSource =  new Xyz(xyzOptions);
     	LayerOptions xyzLayerOptions = OLFactory.createOptions();
     	xyzLayerOptions.setSource(xyzSource);
     	
-    	Tile xyzLayer = OLFactory.createTileLayer(xyzLayerOptions);
+    	Tile xyzLayer = new Tile(xyzLayerOptions);
     	
     	// create a view
-        View view = OLFactory.createView();
+        View view = new View();
 
         Coordinate centerCoordinate = OLFactory.createCoordinate(-121.1, 47.5);
         Coordinate transformedCenterCoordinate = OLUtil.transform(centerCoordinate, "EPSG:4326", "EPSG:3857"); 
