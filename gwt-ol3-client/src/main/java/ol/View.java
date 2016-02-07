@@ -62,6 +62,8 @@ import ol.proj.Projection;
 public class View extends Object {
 
     public View() {}
+    
+    public View(ViewOptions viewOptions) {}
 
     /**
      * Fit the given geometry or extent based on the given map size and border.

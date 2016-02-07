@@ -1,7 +1,6 @@
 package ol.interaction;
 
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.Observable;
 
 /**
@@ -17,7 +16,7 @@ public class KeyboardZoomTest extends GwtOL3BaseTestCase {
             
             @Override
             public void test() {
-                KeyboardZoom keyboardZoom = OLFactory.createKeyboardZoom();
+                KeyboardZoom keyboardZoom = new KeyboardZoom();
                 
                 assertNotNull(keyboardZoom);
                 assertTrue(keyboardZoom instanceof Observable);

@@ -31,6 +31,8 @@ import ol.Extent;
 @JsType(isNative = true)
 public class Projection {
 
+    public Projection(ProjectionOptions projectionOptions) {}
+    
     /**
      * Get the code for this projection, e.g. 'EPSG:4326'.
      * 

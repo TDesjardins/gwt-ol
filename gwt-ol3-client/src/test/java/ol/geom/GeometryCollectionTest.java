@@ -21,7 +21,7 @@ public class GeometryCollectionTest extends GwtOL3BaseTestCase {
                 Geometry[] geoms = new Geometry[] { OLFactory.createPoint(1, 2), OLFactory.createLineString(
                         new Coordinate[] { OLFactory.createCoordinate(1, 2), OLFactory.createCoordinate(2, 3) }) };
 
-                GeometryCollection col = OLFactory.createGeometryCollection(geoms);
+                GeometryCollection col = new GeometryCollection(geoms);
 
                 assertNotNull(col);
 

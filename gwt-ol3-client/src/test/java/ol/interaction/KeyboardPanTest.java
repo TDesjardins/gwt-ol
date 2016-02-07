@@ -1,7 +1,6 @@
 package ol.interaction;
 
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.Observable;
 
 /**
@@ -17,7 +16,7 @@ public class KeyboardPanTest extends GwtOL3BaseTestCase {
             
             @Override
             public void test() {
-                KeyboardPan keyboardPan = OLFactory.createKeyboardPan();
+                KeyboardPan keyboardPan = new KeyboardPan();
                 
                 assertNotNull(keyboardPan);
                 assertTrue(keyboardPan instanceof Observable);

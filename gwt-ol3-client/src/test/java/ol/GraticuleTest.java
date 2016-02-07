@@ -14,7 +14,7 @@ public class GraticuleTest extends GwtOL3BaseTestCase {
             @Override
             public void test() {
                 
-                Graticule graticule = OLFactory.createGraticule();
+                Graticule graticule = new Graticule();
                 
                 assertNotNull(graticule);
             }

@@ -1,5 +1,6 @@
 package ol;
 
+import ol.control.Attribution;
 import ol.control.Control;
 
 /**
@@ -22,7 +23,7 @@ public class CollectionTest extends GwtOL3BaseTestCase {
                 
                 assertNotNull(controls.getArray());
                 
-                controls.push(OLFactory.createAttributionControl());
+                controls.push(new Attribution());
                 
                 assertTrue(controls.getLength() == 1);
                 

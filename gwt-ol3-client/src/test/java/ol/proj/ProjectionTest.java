@@ -32,7 +32,7 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
                 projectionOptions.setCode(EPSG_CODE_21781);
                 projectionOptions.setUnits(UNIT_METRE);
                 
-                Projection projection = OLFactory.createProjection(projectionOptions);
+                Projection projection = new Projection(projectionOptions);
                 
                 assertNotNull(projection);
                 assertEquals(EPSG_CODE_21781, projection.getCode());

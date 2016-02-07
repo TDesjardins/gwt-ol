@@ -1,7 +1,6 @@
 package ol.control;
 
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 
 /**
  * 
@@ -16,7 +15,7 @@ public class AttributionTest extends GwtOL3BaseTestCase {
             
             @Override
             public void test() {
-                Attribution attribution = OLFactory.createAttributionControl();
+                Attribution attribution = new Attribution();
                 assertNotNull(attribution);
             }
         });

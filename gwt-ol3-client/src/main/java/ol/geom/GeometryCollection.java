@@ -1,5 +1,7 @@
 package ol.geom;
 
+import javax.annotation.Nullable;
+
 import jsinterop.annotations.JsType;
 
 /**
@@ -9,6 +11,10 @@ import jsinterop.annotations.JsType;
  */
 @JsType(isNative = true)
 public class GeometryCollection extends Geometry {
+    
+    public GeometryCollection() {}
+    
+    public GeometryCollection(@Nullable Geometry[] geometries) {}
     
     /**
      * Return the geometries that make up this geometry collection.

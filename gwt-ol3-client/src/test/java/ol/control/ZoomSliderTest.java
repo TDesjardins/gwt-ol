@@ -1,7 +1,6 @@
 package ol.control;
 
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.Object;
 
 /**
@@ -17,7 +16,7 @@ public class ZoomSliderTest extends GwtOL3BaseTestCase {
             
             @Override
             public void test() {
-                ZoomSlider zoomSlider = OLFactory.createZoomSlider();
+                ZoomSlider zoomSlider = new ZoomSlider();
                 
                 assertNotNull(zoomSlider);
                 assertTrue(zoomSlider instanceof Object);

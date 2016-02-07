@@ -1,7 +1,6 @@
 package ol.control;
 
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.Object;
 
 /**
@@ -17,7 +16,7 @@ public class ZoomToExtentTest extends GwtOL3BaseTestCase {
             
             @Override
             public void test() {
-                ZoomToExtent zoomToExtent = OLFactory.createZoomToExtent();
+                ZoomToExtent zoomToExtent = new ZoomToExtent();
                 
                 assertNotNull(zoomToExtent);
                 assertTrue(zoomToExtent instanceof Object);

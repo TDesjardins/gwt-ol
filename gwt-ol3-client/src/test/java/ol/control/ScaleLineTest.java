@@ -1,7 +1,6 @@
 package ol.control;
 
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.Object;
 
 /**
@@ -17,7 +16,7 @@ public class ScaleLineTest extends GwtOL3BaseTestCase {
             
             @Override
             public void test() {
-                ScaleLine scaleLine = OLFactory.createScaleLine();
+                ScaleLine scaleLine = new ScaleLine();
                 
                 assertNotNull(scaleLine);
                 assertTrue(scaleLine instanceof Object);

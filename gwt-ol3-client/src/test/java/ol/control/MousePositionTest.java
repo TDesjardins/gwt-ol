@@ -1,7 +1,6 @@
 package ol.control;
 
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.Object;
 
 /**
@@ -17,7 +16,7 @@ public class MousePositionTest extends GwtOL3BaseTestCase {
             
             @Override
             public void test() {
-                MousePosition mousePosition = OLFactory.createMousePosition();
+                MousePosition mousePosition = new MousePosition();
                 
                 assertNotNull(mousePosition);
                 assertTrue(mousePosition instanceof Object);

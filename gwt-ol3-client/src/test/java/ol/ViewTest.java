@@ -26,13 +26,13 @@ public class ViewTest extends GwtOL3BaseTestCase {
                 
                 assertNotNull(projectionOptions);
                 
-                Projection projection = OLFactory.createProjection(projectionOptions);
+                Projection projection = new Projection(projectionOptions);
                 
                 assertNotNull(projection);
                 
                 ViewOptions viewOptions = OLFactory.createOptions();
                 viewOptions.setProjection(projection);
-                View view = OLFactory.createView(viewOptions);
+                View view = new View(viewOptions);
 
                 Coordinate centerCoordinate = OLFactory.createCoordinate(660000, 190000);
                 

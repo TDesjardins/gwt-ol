@@ -1,7 +1,6 @@
 package ol.control;
 
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.Object;
 
 /**
@@ -17,7 +16,7 @@ public class RotateTest extends GwtOL3BaseTestCase {
             
             @Override
             public void test() {
-                Rotate rotate = OLFactory.createRotate();
+                Rotate rotate = new Rotate();
                 
                 assertNotNull(rotate);
                 assertTrue(rotate instanceof Object);

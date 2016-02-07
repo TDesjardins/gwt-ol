@@ -8,8 +8,8 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Graticule {
+public class Graticule {
 
-    void setMap(Map map);
+    public native void setMap(Map map);
 
 }
