@@ -19,7 +19,6 @@ public interface OverlayOptions extends Options {
      * false.
      * @param autoPan
      *            auto pan?
-     * @return this instance
      */
     @JsProperty
     void setAutoPan(boolean autoPan);
@@ -29,7 +28,6 @@ public interface OverlayOptions extends Options {
      * when autopanning. The default is 20.
      * @param autoPanMargin
      *            auto pan margin
-     * @return this instance
      */
     @JsProperty
     void setAutoPanMargin(int autoPanMargin);
@@ -38,7 +36,6 @@ public interface OverlayOptions extends Options {
      * The overlay element.
      * @param element
      *            element
-     * @return this instance
      */
     @JsProperty
     void setElement(Element element);
@@ -48,7 +45,6 @@ public interface OverlayOptions extends Options {
      * ol.Map#getOverlayById method.
      * @param id
      *            id
-     * @return this instance
      */
     @JsProperty
     void setId(String id);
@@ -60,7 +56,6 @@ public interface OverlayOptions extends Options {
      * insertFirst to true so the overlay is displayed below the controls.
      * @param insertFirst
      *            insert first?
-     * @return this instance
      */
     @JsProperty
     void setInsertFirst(boolean insertFirst);
@@ -72,7 +67,6 @@ public interface OverlayOptions extends Options {
      * value shifts the overlay down. Default is [0, 0].
      * @param offset
      *            offset
-     * @return this instance
      */
     @JsProperty
     void setOffset(Pixel offset);
@@ -81,7 +75,6 @@ public interface OverlayOptions extends Options {
      * The overlay position in map projection.
      * @param position
      *            position
-     * @return this instance
      */
     @JsProperty
     void setPosition(Coordinate position);
@@ -93,7 +86,6 @@ public interface OverlayOptions extends Options {
      * 'top-left', 'top-center', and 'top-right'. Default is 'top-left'.
      * @param positioning
      *            positioning
-     * @return this instance
      */
     @JsProperty
     void setPositioning(String positioning);
@@ -105,7 +97,6 @@ public interface OverlayOptions extends Options {
      * is placed in the container with CSS class name ol-overlaycontainer.
      * @param stopEvent
      *            stop event propagation to the map viewport?
-     * @return this instance
      */
     @JsProperty
     void setStopEvent(boolean stopEvent);
