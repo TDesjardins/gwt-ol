@@ -1,6 +1,6 @@
 package ol.style;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * Set regular shape style for vector features.
@@ -8,6 +8,6 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.style.RegularShape")
+@JsType(isNative = true)
 public interface RegularShape extends Image {
 }

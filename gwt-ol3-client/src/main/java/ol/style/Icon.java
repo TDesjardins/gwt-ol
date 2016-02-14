@@ -1,6 +1,6 @@
 package ol.style;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * Set icon style for vector features.
@@ -8,6 +8,6 @@ import com.google.gwt.core.client.js.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.style.Icon")
+@JsType(isNative = true)
 public interface Icon extends Image {
 }
