@@ -1,12 +1,12 @@
 package ol.format;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * GPX format.
- * 
+ *
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.format.GPX")
-public interface GPX extends XMLFeature {}
+@JsType(isNative = true)
+public class GPX extends XMLFeature {}

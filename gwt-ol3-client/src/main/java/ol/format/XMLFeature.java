@@ -1,12 +1,12 @@
 package ol.format;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * XML feature format.
- * 
+ *
  * @author Tino Desjardins
  *
  */
-@JsType(prototype = "ol.format.XMLFeature")
-public interface XMLFeature extends Feature {}
+@JsType(isNative = true)
+public abstract class XMLFeature extends Feature {}
