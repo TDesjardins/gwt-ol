@@ -141,7 +141,7 @@ public final class OLUtil {
                             @Override
                             public void onEvent(ObjectEvent event) {
                                 // create an artificial move event
-                                Event e2 = createLinkedEvent(event, "move", (JavaScriptObject)map);
+                                Event e2 = createLinkedEvent(event, "move", map);
                                 MapEvent me = initMapEvent(e2, map);
                                 listener.onMapMove(me);
                             }
@@ -176,7 +176,7 @@ public final class OLUtil {
             @Override
             public void onEvent(ObjectEvent event) {
                 if("resolution".equals(event.getKey())) {
-                    Event e2 = createLinkedEvent(event, "zoom", (JavaScriptObject)map);
+                    Event e2 = createLinkedEvent(event, "zoom", map);
                     MapEvent me = initMapEvent(e2, map);
                     listener.onMapZoom(me);
                 }
@@ -289,8 +289,12 @@ public final class OLUtil {
      * @param currentTarget
      *            current target of the child event
      * @return child {@link Event} (gets its methods linked to the parent event)
+     * @param <T>
+     *            type of the event
+     * @param <U>
+     *            type of the target
      */
-    public static native Event createLinkedEvent(Event eParent, String type, JavaScriptObject currentTarget) /*-{
+    public static native <T extends Event, U> T createLinkedEvent(T eParent, String type, U currentTarget) /*-{
 		var eChild = {};
 		eChild.preventDefault = function() {
 			eParent.preventDefault();
@@ -430,7 +434,7 @@ public final class OLUtil {
         Source source = layer.get("source");
         if(source != null) {
             // try to get a tilegrid from the source
-            TileGrid tg = getTileGrid((JavaScriptObject)source);
+            TileGrid tg = getTileGrid(source);
             if(tg != null) {
                 return tg.getMaxZoom();
             }
@@ -450,7 +454,7 @@ public final class OLUtil {
         Source source = layer.get("source");
         if(source != null) {
             // try to get a tilegrid from the source
-            TileGrid tg = getTileGrid((JavaScriptObject)source);
+            TileGrid tg = getTileGrid(source);
             if(tg != null) {
                 return tg.getMinZoom();
             }
@@ -487,10 +491,10 @@ public final class OLUtil {
      * Gets a {@link TileGrid} from the given object, if the property is set
      *
      * @param o
-     *            {@link JavaScriptObject}
+     *            {@link ol.source.Source}
      * @return {@link TileGrid} on success, else null
      */
-    private static native TileGrid getTileGrid(JavaScriptObject o) /*-{
+    private static native TileGrid getTileGrid(ol.source.Source o) /*-{
 		return o.tileGrid || null;
     }-*/;
 
@@ -528,7 +532,7 @@ public final class OLUtil {
             Source source = l.get("source");
             if(source != null) {
                 // try to get a tilegrid from the source
-                TileGrid tg = getTileGrid((JavaScriptObject)source);
+                TileGrid tg = getTileGrid(source);
                 if(tg != null) {
                     // check resolutions
                     double[] resolutions = tg.getResolutions();
