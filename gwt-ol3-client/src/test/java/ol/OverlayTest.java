@@ -5,20 +5,29 @@ package ol;
  * @author Tino Desjardins
  *
  */
-public class OverlayTest extends BaseTestCase {
+public class OverlayTest extends GwtOL3BaseTestCase {
 
     public void testOverlay() {
 
-        OverlayOptions overlayOptions = OLFactory.createOptions();
+        injectUrlAndTest(new TestWithInjection() {
 
-        assertNotNull(overlayOptions);
+            @Override
+            public void test() {
+                
+                OverlayOptions overlayOptions = OLFactory.createOptions();
 
-        Overlay overlay = OLFactory.createOverlay(overlayOptions);
+                assertNotNull(overlayOptions);
 
-        assertNotNull(overlay);
-        
-        assertTrue(overlay instanceof Observable);
-        assertTrue(overlay instanceof Object);
+                Overlay overlay = OLFactory.createOverlay(overlayOptions);
+
+                assertNotNull(overlay);
+                
+                assertTrue(overlay instanceof Observable);
+                assertTrue(overlay instanceof Object);
+                
+            }
+            
+        });
 
     }
 
