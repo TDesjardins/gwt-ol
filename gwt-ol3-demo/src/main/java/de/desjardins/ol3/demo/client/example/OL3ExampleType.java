@@ -10,14 +10,16 @@ import de.desjardins.ol3.demo.client.example.Example;
  */
 public enum OL3ExampleType {
     
-    WmsExample(new WmsExample()),
-    MapGuideExample(new MapGuideExample()),
-    TileExample(new TileExample()),
-    ImageExample(new StaticImageExample()),
     GraticuleExample(new GraticuleExample()),
-    XyzExample(new XyzExample()),
+    ImageExample(new StaticImageExample()),
+    MapGuideExample(new MapGuideExample()),
+    MeasureExample(new MeasureExample()),
     OsmExample(new OsmExample()),
-    MeasureExample(new MeasureExample());
+    OverlayExamples(new OverlayExample()),
+    TileExample(new TileExample()),
+    WmsExample(new WmsExample()),
+    XyzExample(new XyzExample());
+
     
     private Example example;
     
