@@ -10,7 +10,7 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface OverlayOptions extends Options {
 
     /**
