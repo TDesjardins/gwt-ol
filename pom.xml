@@ -92,6 +92,7 @@
           <artifactId>gwt-maven-plugin</artifactId>
           <version>${gwt.maven.plugin.version}</version>
           <configuration>
+            <htmlunit>FF38</htmlunit>
             <!--  Enable to test with other browsers. -->
             <!--
             <mode>htmlunit</mode>
