@@ -24,6 +24,10 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class Overlay extends Object {
 
+    public Overlay() {}
+    
+    public Overlay(OverlayOptions options) {}
+    
     /**
      * Get the DOM element of this overlay.
      * @return {Element|undefined} The Element containing the overlay.
