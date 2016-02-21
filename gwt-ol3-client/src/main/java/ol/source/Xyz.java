@@ -18,7 +18,7 @@ import jsinterop.annotations.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
+@JsType(isNative = true, name = "XYZ")
 public class Xyz extends TileImage {
     
     public Xyz() {}
