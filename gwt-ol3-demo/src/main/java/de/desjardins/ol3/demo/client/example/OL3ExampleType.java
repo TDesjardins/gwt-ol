@@ -15,7 +15,7 @@ public enum OL3ExampleType {
     MapGuideExample(new MapGuideExample()),
     MeasureExample(new MeasureExample()),
     OsmExample(new OsmExample()),
-    OverlayExamples(new OverlayExample()),
+    OverlayExample(new OverlayExample()),
     TileExample(new TileExample()),
     WmsExample(new WmsExample()),
     XyzExample(new XyzExample());
