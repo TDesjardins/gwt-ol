@@ -18,7 +18,6 @@ import ol.event.TileLoadErrorListener;
 import ol.geom.Geometry;
 import ol.geom.Polygon;
 import ol.geom.SimpleGeometryCoordinates;
-import ol.geom.SimpleGeometryMultiCoordinates;
 import ol.gwt.CollectionWrapper;
 import ol.layer.Base;
 import ol.layer.Layer;
@@ -360,9 +359,7 @@ public final class OLUtil {
     /**
      * Checks if two projections are the same, that is every coordinate in one
      * projection does represent the same geographic point as the same
-     * coordinate in the other projection. (Taken from proj.js source of
-     * 'ol.proj.equivalent' as it is not part of the official API but still
-     * useful for identifying equal projections).
+     * coordinate in the other projection.
      *
      * @param projection1
      *            Projection 1.
@@ -371,17 +368,7 @@ public final class OLUtil {
      * @return {boolean} Equivalent.
      */
     public static native boolean equivalent(ol.proj.Projection projection1, ol.proj.Projection projection2) /*-{
-      if (projection1 === projection2) {
-        return true;
-      }
-      var equalUnits = projection1.getUnits() === projection2.getUnits();
-      if (projection1.getCode() === projection2.getCode()) {
-        return equalUnits;
-      } else {
-        var transformFn = ol.proj.getTransformFromProjections(
-            projection1, projection2);
-        return transformFn === ol.proj.cloneTransform && equalUnits;
-      }
+      return $wnd.ol.proj.equivalent(projection1, projection2);
     }-*/;
     
     /**
