@@ -6,12 +6,19 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import ol.color.Color;
 import ol.control.Control;
 import ol.control.FullScreen;
+import ol.control.FullScreenOptions;
 import ol.control.MousePosition;
+import ol.control.MousePositionOptions;
+import ol.control.OverviewMap;
+import ol.control.OverviewMapOptions;
 import ol.control.Rotate;
+import ol.control.RotateOptions;
 import ol.control.ScaleLine;
+import ol.control.ScaleLineOptions;
 import ol.control.Zoom;
 import ol.control.ZoomSlider;
 import ol.control.ZoomToExtent;
+import ol.control.ZoomToExtentOptions;
 import ol.geom.Circle;
 import ol.geom.Geometry;
 import ol.geom.GeometryCollection;
@@ -111,7 +118,18 @@ public final class OLFactory {
      * @return {@link ol.control.Attribution}
      */
     public static native ol.control.Attribution createAttributionControl() /*-{
-        return new $wnd.ol.control.Attribution();
+    	return new $wnd.ol.control.Attribution();
+    }-*/;
+
+    /**
+     * Creates an {@link ol.control.Attribution}.
+     * @param options
+     *            options
+     *
+     * @return {@link ol.control.Attribution}
+     */
+    public static native ol.control.Attribution createAttributionControl(ol.control.AttributionOptions options) /*-{
+        return new $wnd.ol.control.Attribution(options);
     }-*/;
 
     /**
@@ -356,8 +374,22 @@ public final class OLFactory {
 
     /** Controls **/
 
+    /**
+     * Creates a {@link FullScreen} control.
+     * @return {@link FullScreen}
+     */
     public static native FullScreen createFullScreen() /*-{
     	return new $wnd.ol.control.FullScreen();
+    }-*/;
+
+    /**
+     * Creates a {@link FullScreen} control.
+     * @param options
+     *            options
+     * @return {@link FullScreen}
+     */
+    public static native FullScreen createFullScreen(FullScreenOptions options) /*-{
+        return new $wnd.ol.control.FullScreen(options);
     }-*/;
 
     /**
@@ -369,7 +401,7 @@ public final class OLFactory {
     public static native GeometryCollection createGeometryCollection(@Nullable Geometry[] geoms) /*-{
 	return new $wnd.ol.geom.GeometryCollection(geoms);
     }-*/;
-    
+
     /**
      * Creates an {@link Graticule}.
      *
@@ -387,15 +419,15 @@ public final class OLFactory {
 
     /** Sources **/
 
-    /** 
+    /**
      * create a MapGuide image
-     * @param imageMapGuideOptions 
+     * @param imageMapGuideOptions
      * @return {@link ImageMapGuide}
      * **/
     public static native ImageMapGuide createImageMapGuideSource(ImageMapGuideOptions imageMapGuideOptions) /*-{
 	    return new $wnd.ol.source.ImageMapGuide(imageMapGuideOptions);
 	}-*/;
-    
+
     public static native ImageStatic createImageStaticSource(ImageStaticOptions imageStaticOptions) /*-{
     	return new $wnd.ol.source.ImageStatic(imageStaticOptions);
     }-*/;
@@ -545,8 +577,22 @@ public final class OLFactory {
     	return new $wnd.ol.interaction.Modify();
     }-*/;
 
+    /**
+     * Creates a {@link MousePosition} control.
+     * @return {@link MousePosition}
+     */
     public static native MousePosition createMousePosition() /*-{
     	return new $wnd.ol.control.MousePosition();
+    }-*/;
+
+    /**
+     * Creates a {@link MousePosition} control.
+     * @param options
+     *            options
+     * @return {@link MousePosition}
+     */
+    public static native MousePosition createMousePosition(MousePositionOptions options) /*-{
+        return new $wnd.ol.control.MousePosition(options);
     }-*/;
 
     /**
@@ -671,7 +717,25 @@ public final class OLFactory {
     public static native Overlay createOverlay(OverlayOptions options) /*-{
         return new $wnd.ol.Overlay(options);
     }-*/;
-    
+
+    /**
+     * Creates an {@link OverviewMap} control.
+     * @return {@link OverviewMap}
+     */
+    public static native OverviewMap createOverviewMap() /*-{
+        return new $wnd.ol.control.OverviewMap();
+    }-*/;
+
+    /**
+     * Creates an {@link OverviewMap} control.
+     * @param options
+     *            options
+     * @return {@link OverviewMap}
+     */
+    public static native OverviewMap createOverviewMap(OverviewMapOptions options) /*-{
+        return new $wnd.ol.control.OverviewMap(options);
+    }-*/;
+
     /**
      * Creates an instance.
      *
@@ -761,8 +825,22 @@ public final class OLFactory {
     	return new $wnd.ol.proj.Projection(projectionOptions);
     }-*/;
 
+    /**
+     * Create a {@link Rotate} control.
+     * @return {@link Rotate}
+     */
     public static native Rotate createRotate() /*-{
     	return new $wnd.ol.control.Rotate();
+    }-*/;
+
+    /**
+     * Create a {@link Rotate} control.
+     * @param options
+     *            options
+     * @return {@link Rotate}
+     */
+    public static native Rotate createRotate(RotateOptions options) /*-{
+        return new $wnd.ol.control.Rotate(options);
     }-*/;
 
     /**
@@ -772,6 +850,17 @@ public final class OLFactory {
      */
     public static native ScaleLine createScaleLine() /*-{
     	return new $wnd.ol.control.ScaleLine();
+    }-*/;
+
+    /**
+     * Creates a {@link ScaleLine}.
+     * @param options
+     *            options
+     *
+     * @return {@link ScaleLine}
+     */
+    public static native ScaleLine createScaleLine(ScaleLineOptions options) /*-{
+        return new $wnd.ol.control.ScaleLine(options);
     }-*/;
 
     /**
@@ -986,12 +1075,52 @@ public final class OLFactory {
     	return new $wnd.ol.control.Zoom();
     }-*/;
 
+    /**
+     * Creates a zoom control.
+     * @param options
+     *            options
+     *
+     * @return {@link Zoom}
+     */
+    public static native Zoom createZoom(ol.control.ZoomOptions options) /*-{
+        return new $wnd.ol.control.Zoom(options);
+    }-*/;
+
+    /**
+     * Creates a zoom silder control.
+     * @return {@link ZoomSlider}
+     */
     public static native ZoomSlider createZoomSlider() /*-{
     	return new $wnd.ol.control.ZoomSlider();
     }-*/;
 
+    /**
+     * Creates a zoom control.
+     * @param options
+     *            options
+     *
+     * @return {@link Zoom}
+     */
+    public static native ZoomSlider createZoomSlider(ol.control.ZoomSliderOptions options) /*-{
+        return new $wnd.ol.control.ZoomSlider(options);
+    }-*/;
+
+    /**
+     * Creates a {@link ZoomToExtent} control.
+     * @return {@link ZoomToExtent}
+     */
     public static native ZoomToExtent createZoomToExtent() /*-{
     	return new $wnd.ol.control.ZoomToExtent();
     }-*/;
-    
+
+    /**
+     * Creates a {@link ZoomToExtent} control.
+     * @param options
+     *            options
+     * @return {@link ZoomToExtent}
+     */
+    public static native ZoomToExtent createZoomToExtent(ZoomToExtentOptions options) /*-{
+        return new $wnd.ol.control.ZoomToExtent(options);
+    }-*/;
+
 }
