@@ -45,6 +45,11 @@ public class Source extends ol.Object {
     public native String getState();
 
     /**
+     * Refreshes the source and finally dispatches a 'change' event.
+     */
+    void refresh();
+    
+    /**
      * Set the attributions of the source.
      * 
      * @param attributions
