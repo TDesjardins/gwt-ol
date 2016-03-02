@@ -58,7 +58,6 @@ public interface XyzOptions extends SourceOptions {
      *
      * @param urls
      *            array of URL templates
-     * @return this instance
      */
     @JsProperty
     void setUrls(String[] urls);
