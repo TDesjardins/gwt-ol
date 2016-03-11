@@ -10,4 +10,8 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class Rotate extends Control {
 
+    public Rotate() {}
+
+    public Rotate(RotateOptions rotateOptions) {}
+
 }
