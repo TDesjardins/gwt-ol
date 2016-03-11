@@ -17,6 +17,7 @@ public class GwtOL3Playground implements EntryPoint {
 
         // choose your example
         OL3ExampleType exampleType = OL3ExampleType.TileExample;
+        OL3ExampleType exampleType = OL3ExampleType.GeoJSONExample;
         exampleType.getExample().show();
 
     }

@@ -10,6 +10,7 @@ import de.desjardins.ol3.demo.client.example.Example;
  */
 public enum OL3ExampleType {
     
+    GeoJSONExample(new GeoJSONExample()),
     GraticuleExample(new GraticuleExample()),
     ImageExample(new StaticImageExample()),
     MapGuideExample(new MapGuideExample()),

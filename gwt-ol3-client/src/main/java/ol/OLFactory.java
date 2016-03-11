@@ -19,6 +19,7 @@ import ol.control.Zoom;
 import ol.control.ZoomSlider;
 import ol.control.ZoomToExtent;
 import ol.control.ZoomToExtentOptions;
+import ol.format.*;
 import ol.geom.Circle;
 import ol.geom.Geometry;
 import ol.geom.GeometryCollection;
@@ -398,7 +399,26 @@ public final class OLFactory {
     public static native GeometryCollection createGeometryCollection(@Nullable Geometry[] geoms) /*-{
 	return new $wnd.ol.geom.GeometryCollection(geoms);
     }-*/;
+    /**
+     * Creates a {@link GeoJSON}.
+     *
+     * @param options
+     *            {@link GeoJSONOptions}
+     *
+     * @return {@link GeoJSON}
+     */
+    public static native GeoJSON createGeoJSON(GeoJSONOptions options) /*-{
+    	return new $wnd.ol.format.GeoJSON(options);
+    }-*/;
     
+    /**
+     * Creates a {@link GeoJSON}.
+       *
+     * @return {@link GeoJSON}
+     */
+    public static native GeoJSON createGeoJSON() /*-{
+    	return new $wnd.ol.format.GeoJSON();
+    }-*/;
     /**
      * Creates an {@link Graticule}.
      *
