@@ -5,7 +5,7 @@ import com.google.gwt.core.client.EntryPoint;
 import de.desjardins.ol3.demo.client.example.OL3ExampleType;
 
 /**
- * EntryPoint for playing with GwtOL3-Features.
+ * EntryPoint for playing with gwt-ol3-Features.
  *
  * @author Tino Desjardins
  *
@@ -16,9 +16,9 @@ public class GwtOL3Playground implements EntryPoint {
     public void onModuleLoad() {
 
         // choose your example
-        OL3ExampleType exampleType = OL3ExampleType.GeoJSONExample;
+        OL3ExampleType exampleType = OL3ExampleType.TileExample;
         exampleType.getExample().show();
 
     }
-    
+
 }

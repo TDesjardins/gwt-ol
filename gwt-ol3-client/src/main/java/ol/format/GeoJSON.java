@@ -5,8 +5,10 @@ package ol.format;
 
 import javax.annotation.Nullable;
 import com.google.gwt.core.client.js.JsType;
-import ol.*;
+
+import ol.Collection;
 import ol.Feature;
+import ol.Options;
 import ol.geom.Geometry;
 import ol.proj.Projection;
 
@@ -15,15 +17,14 @@ import ol.proj.Projection;
  * @author tlochmann
  */
 @JsType(prototype = "ol.format.GeoJSON")
-public interface GeoJSON extends JSONFeature
-{
+public interface GeoJSON extends JSONFeature {
 
 	/**
 	 * Read the projection from a GeoJSON source.
 	 * @param source Document | Node | Object | string
 	 * @return {@link Geometry}
 	 */
-	Projection Projection(java.lang.Object source);
+	Projection readProjection(java.lang.Object source);
 
 	/**
 	 * Read a feature from a GeoJSON Feature source. Only works for Feature, use readFeatures to read FeatureCollection

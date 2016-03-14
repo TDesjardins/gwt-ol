@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package ol.format;
 
@@ -11,21 +11,21 @@ import ol.proj.Projection;
  * @author tlochmann
  *
  */
-public interface  GeoJSONFeatureOptions extends Options
-{
-/**
- * @param projection
- */
-void setDataProjection(Projection projection);
-/**
- * @param projection
- */
-void setFeatureProjection(Projection projection);	
-/**
- * @param rightHanded 
- */
-void setRightHanded(boolean rightHanded);		
+public interface GeoJSONFeatureOptions extends Options {
 
+    /**
+     * @param projection
+     */
+    void setDataProjection(Projection projection);
 
+    /**
+     * @param projection
+     */
+    void setFeatureProjection(Projection projection);
+
+    /**
+     * @param rightHanded
+     */
+    void setRightHanded(boolean rightHanded);
 
 }
