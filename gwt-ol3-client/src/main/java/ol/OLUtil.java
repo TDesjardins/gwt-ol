@@ -18,6 +18,7 @@ import ol.event.OLHandlerRegistration;
 import ol.event.TileLoadErrorListener;
 import ol.geom.Geometry;
 import ol.geom.Polygon;
+import ol.geom.SimpleGeometryMultiCoordinates;
 import ol.gwt.CollectionWrapper;
 import ol.layer.Base;
 import ol.layer.Layer;
@@ -598,6 +599,50 @@ public final class OLUtil {
             }
         }
         return -1;
+    }
+
+    /**
+     * Returns the geodesic area in square meters of the given geometry using
+     * the haversine formula.
+     *
+     * @param geom
+     *            geometry.
+     * @return geodesic area on success, else {@link Double#NaN}
+     */
+    public static double geodesicArea(Polygon geom) {
+        // get coordinates and check that there are at least 2
+        Coordinate[] coordinates = geom.getCoordinates();
+        if((coordinates != null) && (coordinates.length > 1)) {
+            Sphere sphere = createSphereNormal();
+            // only return positive area
+            return Math.abs(sphere.geodesicArea(coordinates));
+        }
+        return Double.NaN;
+    }
+
+    /**
+     * Returns the geodesic length in meters of the given geometry using the
+     * haversine formula.
+     *
+     * @param geom
+     *            geometry.
+     * @return geodesic length on success, else {@link Double#NaN}
+     */
+    public static double geodesicLength(SimpleGeometryMultiCoordinates geom) {
+        // get coordinates and check that there are at least 2
+        Coordinate[] coordinates = geom.getCoordinates();
+        if((coordinates != null) && (coordinates.length > 1)) {
+            // calculate the distance on every segment of the line and add it up
+            Sphere sphere = createSphereNormal();
+            double distance = 0;
+            for(int i = 0; i <= coordinates.length - 2; i++) {
+                Coordinate c1 = coordinates[i];
+                Coordinate c2 = coordinates[i + 1];
+                distance += sphere.haversineDistance(c1, c2);
+            }
+            return distance;
+        }
+        return Double.NaN;
     }
 
     /**
