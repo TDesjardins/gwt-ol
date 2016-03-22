@@ -81,7 +81,7 @@ public class MeasureExample implements Example {
 			@Override
 			public void onMeasure(MeasureEvent evt) {
 				// log the measured length
-				GWT.log("measure: " + evt.getMeasure() + " Lat/Lon: " + evt.getMeasure("EPSG:4326"));
+				GWT.log("measure: " + evt.getMeasure());
 			}
 
 		}, true, true);

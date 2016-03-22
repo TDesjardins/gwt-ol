@@ -14,6 +14,7 @@ import ol.interaction.Draw;
 import ol.interaction.DrawEvent;
 import ol.interaction.DrawOptions;
 import ol.layer.VectorLayerOptions;
+import ol.proj.Projection;
 import ol.style.Style;
 
 /**
@@ -23,6 +24,10 @@ import ol.style.Style;
  */
 public class Measure {
 
+    /**
+     * Projection for WGS84 geographic coordinates (EPSG:4326).
+     */
+    private static final Projection PROJECTION_LATLON = ol.OLUtil.getProjection("EPSG:4326");
     private com.google.gwt.user.client.EventListener chainedListener;
     private Draw draw;
     private boolean eventListenerNeedsCleanup;
@@ -30,6 +35,7 @@ public class Measure {
     private MeasureListener listener;
     private final Map map;
     private ol.layer.Vector persistOverlay;
+    private Projection proj;
     private Feature sketch;
     private Style style;
 
@@ -49,9 +55,12 @@ public class Measure {
     private void fireMeasureEvent() {
         // check if measuring is active and properly set up
         if(isActive && (sketch != null) && (listener != null)) {
+            // get geometry in map projection
             Geometry geom = sketch.getGeometry();
             if(geom != null) {
-                listener.onMeasure(new MeasureEvent(geom));
+                // transform it to lat/lon and fire event
+                Geometry geomLatLon = OLUtil.transform(geom.clone(), proj, PROJECTION_LATLON);
+                listener.onMeasure(new MeasureEvent(geomLatLon));
             }
         }
     }
@@ -139,6 +148,9 @@ public class Measure {
             persistOverlay.setMap(map);
         }
 
+        // set up projection to be used
+        proj = map.getView().getProjection();
+        
         map.addInteraction(draw);
         // set up event handlers
         OLUtil.observe(draw, "drawstart", new EventListener<DrawEvent>() {
@@ -262,6 +274,7 @@ public class Measure {
         // clean up
         listener = null;
         sketch = null;
+        proj = null;
         // clean up interaction
         if(draw != null) {
             map.removeInteraction(draw);

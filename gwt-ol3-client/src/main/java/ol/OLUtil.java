@@ -17,6 +17,7 @@ import ol.event.OLHandlerRegistration;
 import ol.event.TileLoadErrorListener;
 import ol.geom.Geometry;
 import ol.geom.Polygon;
+import ol.geom.SimpleGeometryMultiCoordinates;
 import ol.gwt.CollectionWrapper;
 import ol.layer.Base;
 import ol.layer.Layer;
@@ -37,6 +38,18 @@ import ol.tilegrid.TileGridOptions;
 @ParametersAreNonnullByDefault
 public final class OLUtil {
 
+    /**
+     * Radius equal to the semi-major axis of the normal ellipsoid (like
+     * ol.sphere.NORMAL).
+     */
+    public static final double EARTH_RADIUS_NORMAL = 6370997;
+
+    /**
+     * Radius equal to the semi-major axis of the WGS84 ellipsoid (like
+     * ol.sphere.WGS84).
+     */
+    public static final double EARTH_RADIUS_WGS84 = 6378137;
+    
     // prevent instantiating this class
     @Deprecated
     private OLUtil() {
@@ -331,7 +344,7 @@ public final class OLUtil {
      * @return {@link Sphere}
      */
     public static Sphere createSphereWGS84() {
-        return OLFactory.createSphere(Sphere.EARTH_RADIUS_WGS84);
+        return OLFactory.createSphere(EARTH_RADIUS_WGS84);
     }
 
     /**
@@ -340,7 +353,7 @@ public final class OLUtil {
      * @return {@link Sphere}
      */
     public static Sphere createSphereNormal() {
-        return OLFactory.createSphere(Sphere.EARTH_RADIUS_NORMAL);
+        return OLFactory.createSphere(EARTH_RADIUS_NORMAL);
     }
     
     /**
@@ -418,7 +431,7 @@ public final class OLUtil {
      * @return ground resolution
      */
     public static double getGroundResolutionInMeters(double latitude, int zoomLevel) {
-        return Math.cos(latitude * Math.PI / 180) * 2 * Math.PI * ol.Sphere.EARTH_RADIUS_WGS84 / getMapSizeInPixels(zoomLevel);
+        return Math.cos(latitude * Math.PI / 180) * 2 * Math.PI * EARTH_RADIUS_WGS84 / getMapSizeInPixels(zoomLevel);
     }
 
     /**
@@ -596,6 +609,50 @@ public final class OLUtil {
         }
         return -1;
     }*/
+
+    /**
+     * Returns the geodesic area in square meters of the given geometry using
+     * the haversine formula.
+     *
+     * @param geom
+     *            geometry.
+     * @return geodesic area on success, else {@link Double#NaN}
+     */
+    public static double geodesicArea(Polygon geom) {
+        // get coordinates and check that there are at least 2
+        Coordinate[] coordinates = geom.getCoordinates();
+        if((coordinates != null) && (coordinates.length > 1)) {
+            Sphere sphere = createSphereNormal();
+            // only return positive area
+            return Math.abs(sphere.geodesicArea(coordinates));
+        }
+        return Double.NaN;
+    }
+
+    /**
+     * Returns the geodesic length in meters of the given geometry using the
+     * haversine formula.
+     *
+     * @param geom
+     *            geometry.
+     * @return geodesic length on success, else {@link Double#NaN}
+     */
+    public static double geodesicLength(SimpleGeometryMultiCoordinates geom) {
+        // get coordinates and check that there are at least 2
+        Coordinate[] coordinates = geom.getCoordinates();
+        if((coordinates != null) && (coordinates.length > 1)) {
+            // calculate the distance on every segment of the line and add it up
+            Sphere sphere = createSphereNormal();
+            double distance = 0;
+            for(int i = 0; i <= coordinates.length - 2; i++) {
+                Coordinate c1 = coordinates[i];
+                Coordinate c2 = coordinates[i + 1];
+                distance += sphere.haversineDistance(c1, c2);
+            }
+            return distance;
+        }
+        return Double.NaN;
+    }
 
     /**
      * Initializes a {@link MapEvent}, can be used for creating a new

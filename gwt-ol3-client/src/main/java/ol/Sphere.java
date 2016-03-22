@@ -16,18 +16,6 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class Sphere {
 
-    /**
-     * Radius equal to the semi-major axis of the normal ellipsoid (like
-     * ol.sphere.NORMAL).
-     */
-    public static final double EARTH_RADIUS_NORMAL = 6370997;
-
-    /**
-     * Radius equal to the semi-major axis of the WGS84 ellipsoid (like
-     * ol.sphere.WGS84).
-     */
-    public static final double EARTH_RADIUS_WGS84 = 6378137;
-
     
     public Sphere(double radius) {}
     

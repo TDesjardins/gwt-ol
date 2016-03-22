@@ -1,53 +1,34 @@
 package ol.event;
 
+import ol.OLUtil;
 import ol.geom.Geometry;
+import ol.proj.Projection;
 
 /**
- * An event for measuring.
+ * An event for measuring. It provides the measurment (length or area) directly
+ * as well as the underlying geometry in (WGS84 coordinates).
  *
  * @author sbaumhekel
  */
 public class MeasureEvent {
 
-    /**
-     * Map projection code.
-     */
-    private static final String MAP_PROJECTION = "EPSG:3857";
     private final Geometry geom;
 
     /**
      * Constructs an instance.
      *
      * @param geom
-     *            measure {@link Geometry}
+     *            measure {@link Geometry} (in WGS84 geographic coordinates
+     *            (EPSG:4326))
      */
     public MeasureEvent(Geometry geom) {
-        super();
         this.geom = geom;
-    }
-
-    /**
-     * Gets the measure for the given {@link ol.geom.Geometry}.
-     *
-     * @param geom
-     *            measure {@link ol.geom.Geometry}
-     * @return measure on success, else {@link Double#NaN}
-     */
-    private static double getMeasure(ol.geom.Geometry geom) {
-        if (geom instanceof ol.geom.LineString) {
-            ol.geom.LineString ls = (ol.geom.LineString) geom;
-            return ls.getLength();
-        } else if (geom instanceof ol.geom.Polygon) {
-            ol.geom.Polygon poly = (ol.geom.Polygon) geom;
-            return poly.getArea();
-        }
-        return Double.NaN;
     }
 
     /**
      * Gets the measurement geometry: a {@link ol.geom.LineString} for length
      * measurements and a {@link ol.geom.Polygon} for area measurements.
-     * 
+     *
      * @return {@link Geometry}
      */
     public Geometry getGeometry() {
@@ -55,12 +36,17 @@ public class MeasureEvent {
     }
 
     /**
-     * Gets the current measure.
+     * Gets the current measure (length in meters or area in square meters).
      *
      * @return measure on success, else {@link Double#NaN}
      */
     public double getMeasure() {
-        return getMeasure(geom);
+        if(geom instanceof ol.geom.LineString) {
+            return OLUtil.geodesicLength((ol.geom.LineString)geom);
+        } else if(geom instanceof ol.geom.Polygon) {
+            return OLUtil.geodesicArea((ol.geom.Polygon)geom);
+        }
+        return Double.NaN;
     }
 
     /**
@@ -69,10 +55,37 @@ public class MeasureEvent {
      * @param proj
      *            projection
      * @return measure on success, else {@link Double#NaN}
+     * @deprecated use {@link #getMeasure()} instead
      */
+    @Deprecated
+    public double getMeasure(Projection proj) {
+        return getMeasure();
+    }
+
+    /**
+     * Gets the current measure in the given projection (and its unit).
+     *
+     * @param proj
+     *            projection
+     * @return measure on success, else {@link Double#NaN}
+     * @deprecated use {@link #getMeasure()} instead
+     */
+    @Deprecated
     public double getMeasure(String proj) {
-        Geometry geom = this.geom.clone().transform(MAP_PROJECTION, proj);
-        return getMeasure(geom);
+        return getMeasure();
+    }
+
+    /**
+     * Gets the {@link Projection} of the geometry.
+     *
+     * @return {@link Projection}
+     * @deprecated the projection is always WGS84 geographic coordinates
+     *             (EPSG:4326)
+     */
+    @SuppressWarnings("static-method")
+    @Deprecated
+    public Projection getProjection() {
+        return ol.OLUtil.getProjection("EPSG:4326");
     }
 
 }
