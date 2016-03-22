@@ -16,6 +16,7 @@ import ol.event.EventListener;
 import ol.event.OLHandlerRegistration;
 import ol.event.TileLoadErrorListener;
 import ol.geom.Geometry;
+import ol.geom.Polygon;
 import ol.gwt.CollectionWrapper;
 import ol.layer.Base;
 import ol.layer.Layer;
@@ -35,8 +36,6 @@ import ol.tilegrid.TileGridOptions;
  */
 @ParametersAreNonnullByDefault
 public final class OLUtil {
-
-    private static final double EARTH_RADIUS = 6378137;
 
     // prevent instantiating this class
     @Deprecated
@@ -251,6 +250,24 @@ public final class OLUtil {
     }
 
     /**
+     * Create an approximation of a circle on the surface of a sphere.
+     * @param sphere
+     *            The sphere.
+     * @param center
+     *            Center (`[lon, lat]` in degrees).
+     * @param radius
+     *            The great-circle distance from the center to the polygon
+     *            vertices.
+     * @param opt_n
+     *            Optional number of vertices for the resulting polygon. Default
+     *            is `32`.
+     * @return {ol.geom.Polygon} The "circular" polygon.
+     */
+    public static native Polygon circular(Sphere sphere, ol.Coordinate center, double radius, int opt_n) /*-{
+        return $wnd.ol.geom.Polygon.circular(sphere, center, radius, opt_n);
+    }-*/;
+
+    /**
      * Combines two {@link Style}s into an array of {@link Style}s.
      *
      * @param s1
@@ -308,6 +325,24 @@ public final class OLUtil {
 		return eChild;
     }-*/;
 
+    /**
+     * Creates a sphere with radius equal to the semi-major axis of the WGS84
+     * ellipsoid.
+     * @return {@link Sphere}
+     */
+    public static Sphere createSphereWGS84() {
+        return OLFactory.createSphere(Sphere.EARTH_RADIUS_WGS84);
+    }
+
+    /**
+     * Creates a sphere with radius equal to the semi-major axis of the normal
+     * ellipsoid.
+     * @return {@link Sphere}
+     */
+    public static Sphere createSphereNormal() {
+        return OLFactory.createSphere(Sphere.EARTH_RADIUS_NORMAL);
+    }
+    
     /**
      * Checks if two projections are the same, that is every coordinate in one
      * projection does represent the same geographic point as the same
@@ -383,7 +418,7 @@ public final class OLUtil {
      * @return ground resolution
      */
     public static double getGroundResolutionInMeters(double latitude, int zoomLevel) {
-        return Math.cos(latitude * Math.PI / 180) * 2 * Math.PI * EARTH_RADIUS / getMapSizeInPixels(zoomLevel);
+        return Math.cos(latitude * Math.PI / 180) * 2 * Math.PI * ol.Sphere.EARTH_RADIUS_WGS84 / getMapSizeInPixels(zoomLevel);
     }
 
     /**
@@ -483,7 +518,7 @@ public final class OLUtil {
     public static native Projection getProjection(String projectionCode) /*-{
 		return $wnd.ol.proj.get(projectionCode);
     }-*/;
-
+    
     /**
      * Gets a {@link TileGrid} from the given object, if the property is set
      *
