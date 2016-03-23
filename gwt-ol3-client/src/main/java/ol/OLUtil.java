@@ -18,6 +18,7 @@ import ol.event.OLHandlerRegistration;
 import ol.event.TileLoadErrorListener;
 import ol.geom.Geometry;
 import ol.geom.Polygon;
+import ol.geom.SimpleGeometryCoordinates;
 import ol.geom.SimpleGeometryMultiCoordinates;
 import ol.gwt.CollectionWrapper;
 import ol.layer.Base;
@@ -611,7 +612,33 @@ public final class OLUtil {
      */
     public static double geodesicArea(Polygon geom) {
         // get coordinates and check that there are at least 2
-        Coordinate[] coordinates = geom.getCoordinates();
+        Coordinate[][] coordinates = geom.getCoordinates();
+        if((coordinates != null) && (coordinates.length > 0)) {
+            // get area of outer ring
+            double area = geodesicArea(coordinates[0]);
+            // walk through inner rings
+            for(int i = 1; i < coordinates.length; i++) {
+                // if area is valid, subtract it from the outer ring's area
+                double holeArea = geodesicArea(coordinates[i]);
+                if(!Double.isNaN(holeArea)) {
+                    area -= holeArea;
+                }
+            }
+            return area;
+        }
+        return Double.NaN;
+    }
+
+    /**
+     * Returns the geodesic area in square meters of the given geometry using
+     * the haversine formula.
+     *
+     * @param coordinates
+     *            coordinates.
+     * @return geodesic area on success, else {@link Double#NaN}
+     */
+    private static double geodesicArea(Coordinate[] coordinates) {
+        // check that there are at least 2
         if((coordinates != null) && (coordinates.length > 1)) {
             Sphere sphere = createSphereNormal();
             // only return positive area
@@ -628,7 +655,7 @@ public final class OLUtil {
      *            geometry.
      * @return geodesic length on success, else {@link Double#NaN}
      */
-    public static double geodesicLength(SimpleGeometryMultiCoordinates geom) {
+    public static double geodesicLength(SimpleGeometryCoordinates geom) {
         // get coordinates and check that there are at least 2
         Coordinate[] coordinates = geom.getCoordinates();
         if((coordinates != null) && (coordinates.length > 1)) {

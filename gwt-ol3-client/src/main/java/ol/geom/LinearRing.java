@@ -8,7 +8,7 @@ import com.google.gwt.core.client.js.JsType;
  * @author sbaumhekel
  */
 @JsType(prototype = "ol.geom.LinearRing")
-public interface LinearRing extends SimpleGeometryMultiCoordinates {
+public interface LinearRing extends SimpleGeometryCoordinates {
     /**
      * Return the area of the linear ring on projected plane.
      * 
