@@ -826,7 +826,7 @@ public final class OLFactory {
      *            coordinates
      * @return {@link Polygon}
      */
-    public static native Polygon createPolygon(Coordinate[] coordinates) /*-{
+    public static native Polygon createPolygon(Coordinate[][] coordinates) /*-{
     	return new $wnd.ol.geom.Polygon(coordinates);
     }-*/;
 
@@ -839,7 +839,7 @@ public final class OLFactory {
      *            geometry layout
      * @return {@link Polygon}
      */
-    public static native Polygon createPolygon(@Nullable Coordinate[] coordinates, @Nullable String geometryLayout) /*-{
+    public static native Polygon createPolygon(@Nullable Coordinate[][] coordinates, @Nullable String geometryLayout) /*-{
     	return new $wnd.ol.geom.Polygon(coordinates, geometryLayout);
     }-*/;
 
