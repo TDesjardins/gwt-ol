@@ -900,6 +900,17 @@ public final class OLFactory {
     	return [ width, height ];
     }-*/;
 
+    /**
+     * Creates a {@link Sphere}.
+     * @param radius
+     *            Radius.
+     *
+     * @return {@link Sphere}
+     */
+    public static native Sphere createSphere(double radius) /*-{
+        return new $wnd.ol.Sphere(radius);
+    }-*/;
+
     /** Common **/
 
     public static native Stamen createStamenSource(StamenOptions stamenOptions) /*-{

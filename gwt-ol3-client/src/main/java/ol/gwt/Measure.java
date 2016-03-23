@@ -24,6 +24,10 @@ import ol.style.Style;
  */
 public class Measure {
 
+    /**
+     * Projection for WGS84 geographic coordinates (EPSG:4326).
+     */
+    private static final Projection PROJECTION_LATLON = ol.OLUtil.getProjection("EPSG:4326");
     private com.google.gwt.user.client.EventListener chainedListener;
     private Draw draw;
     private boolean eventListenerNeedsCleanup;
@@ -51,9 +55,12 @@ public class Measure {
     private void fireMeasureEvent() {
         // check if measuring is active and properly set up
         if(isActive && (sketch != null) && (listener != null)) {
+            // get geometry in map projection
             Geometry geom = sketch.getGeometry();
             if(geom != null) {
-                listener.onMeasure(new MeasureEvent(proj, geom));
+                // transform it to lat/lon and fire event
+                Geometry geomLatLon = OLUtil.transform(geom.clone(), proj, PROJECTION_LATLON);
+                listener.onMeasure(new MeasureEvent(geomLatLon));
             }
         }
     }
