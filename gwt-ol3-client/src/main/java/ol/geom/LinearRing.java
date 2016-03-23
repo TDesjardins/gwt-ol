@@ -8,7 +8,7 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  */
 @JsType(isNative = true)
-public class LinearRing extends SimpleGeometryMultiCoordinates {
+public class LinearRing extends SimpleGeometryCoordinates {
     
     /**
      * Return the area of the linear ring on projected plane.

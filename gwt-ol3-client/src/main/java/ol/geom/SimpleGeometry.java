@@ -12,7 +12,7 @@ import ol.Coordinate;
  * @author sbaumhekel
  */
 @JsType(isNative = true)
-public class SimpleGeometry extends Geometry {
+public abstract class SimpleGeometry extends Geometry {
     
     /**
      * Return the first coordinate of the geometry.

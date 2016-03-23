@@ -11,7 +11,7 @@ import ol.*;
  *
  */
 @JsType(isNative = true)
-public class Geometry extends Observable {
+public abstract class Geometry extends Observable {
 
     /**
      * Make a complete copy of the geometry.
