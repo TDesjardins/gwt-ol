@@ -1,6 +1,6 @@
 package ol;
 
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.JsType;
 
 /**
  * Class to create objects that can be used with
@@ -13,21 +13,24 @@ import com.google.gwt.core.client.js.JsType;
  * @author sbaumhekel
  *
  */
-@JsType(prototype = "ol.Sphere")
-public interface Sphere {
+@JsType(isNative = true)
+public class Sphere {
 
     /**
      * Radius equal to the semi-major axis of the normal ellipsoid (like
      * ol.sphere.NORMAL).
      */
-    static final double EARTH_RADIUS_NORMAL = 6370997;
+    public static final double EARTH_RADIUS_NORMAL = 6370997;
 
     /**
      * Radius equal to the semi-major axis of the WGS84 ellipsoid (like
      * ol.sphere.WGS84).
      */
-    static final double EARTH_RADIUS_WGS84 = 6378137;
+    public static final double EARTH_RADIUS_WGS84 = 6378137;
 
+    
+    public Sphere(double radius) {}
+    
     /**
      * Returns the geodesic area for a list of coordinates.
      *
@@ -42,16 +45,16 @@ public interface Sphere {
      *            negative.
      * @return {number} Area.
      */
-    double geodesicArea(ol.Coordinate[] coordinates);
+    public native double geodesicArea(ol.Coordinate[] coordinates);
 
     /**
      * Returns the distance from c1 to c2 using the haversine formula.
      *
-     * @param c1
+     * @param coordinate1
      *            Coordinate 1.
-     * @param c2
+     * @param coordinate2
      *            Coordinate 2.
      * @return {number} Haversine distance.
      */
-    double haversineDistance(ol.Coordinate c1, ol.Coordinate c2);
+    public native double haversineDistance(ol.Coordinate coordinate1, ol.Coordinate coordinate2);
 }
