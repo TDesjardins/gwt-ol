@@ -15,6 +15,11 @@ import ol.proj.Projection;
 @JsType(isNative = true)
 public class MousePosition extends Control {
 
+    
+    public MousePosition() {}
+    
+    public MousePosition(MousePositionOptions mousePositionOptions) {}
+    
     /**
      * Return the projection that is used to report the mouse position.
      * 

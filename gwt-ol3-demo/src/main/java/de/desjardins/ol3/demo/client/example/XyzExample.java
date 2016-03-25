@@ -11,6 +11,7 @@ import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
 import ol.View;
+import ol.control.MousePosition;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
 
@@ -60,13 +61,13 @@ public class XyzExample implements Example {
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 
-        Map map = OLFactory.createMap(mapOptions);
+        Map map = new Map(mapOptions);
         
-        ol.control.Attribution attributionControl = OLFactory.createAttributionControl();
+        ol.control.Attribution attributionControl = new ol.control.Attribution();
         attributionControl.setCollapsed(false);
         
         map.addControl(attributionControl);
-        map.addControl(OLFactory.createMousePosition());
+        map.addControl(new MousePosition());
         map.addLayer(xyzLayer);
 
     }
