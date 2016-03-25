@@ -12,6 +12,10 @@ import ol.control.Attribution;
 @JsType(isNative = true)
 public class ImageStatic extends Image {
     
+    public ImageStatic() {}
+    
+    public ImageStatic(ImageStaticOptions imageStaticOptions) {}
+    
     public native void setAttributions (Attribution[] attributions);
             
 }

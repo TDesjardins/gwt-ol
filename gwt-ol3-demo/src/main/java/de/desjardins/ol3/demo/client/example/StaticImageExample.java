@@ -41,7 +41,7 @@ public class StaticImageExample implements Example {
         projectionOptions.setExtent(imageExtent);
         projectionOptions.setUnits("pixels");
         
-        Projection projection = OLFactory.createProjection(projectionOptions);
+        Projection projection = new Projection(projectionOptions);
         
         ImageStaticOptions imageStaticOptions = OLFactory.createOptions();
         imageStaticOptions.setUrl("http://imgs.xkcd.com/comics/online_communities.png");
@@ -52,19 +52,19 @@ public class StaticImageExample implements Example {
         AttributionOptions attributionOptions = OLFactory.<AttributionOptions>createOptions();
         attributionOptions.setHtml("&copy; <a href=\"http://xkcd.com/license.html\">xkcd</a>");
         
-        Attribution attribution = OLFactory.createAttribution(attributionOptions);
+        Attribution attribution = new Attribution(attributionOptions);
         Attribution[] attributions = new Attribution[1];
         attributions[0] = attribution;
         
         imageStaticOptions.setAttributions(attributions);
         
-        ImageStatic imageStatic = OLFactory.createImageStaticSource(imageStaticOptions);
+        ImageStatic imageStatic = new ImageStatic(imageStaticOptions);
         
         LayerOptions layerOptions = OLFactory.createOptions();
         layerOptions.setSource(imageStatic);
-        Image image = OLFactory.createImageLayer(layerOptions);
+        Image image = new Image(layerOptions);
         
-        Collection<Base> layers = OLFactory.createCollection();
+        Collection<Base> layers = new Collection<Base>();
         layers.push(image);
         
         ViewOptions viewOptions = OLFactory.createOptions();
@@ -72,19 +72,19 @@ public class StaticImageExample implements Example {
         viewOptions.setProjection(projection);
         viewOptions.setZoom(2);
         
-        View view = OLFactory.createView(viewOptions);
+        View view = new View(viewOptions);
         
         MapOptions mapOptions = OLFactory.createOptions();
         mapOptions.setTarget("map");
         mapOptions.setView(view);
         mapOptions.setLayers(layers);
         
-        Map map = OLFactory.createMap(mapOptions);
+        Map map = new Map(mapOptions);
         
         // add some controls
         DemoUtils.addDefaultControls(map.getControls());
         
-        ol.control.Attribution attributionControl = OLFactory.createAttributionControl();
+        ol.control.Attribution attributionControl = new ol.control.Attribution();
         attributionControl.setCollapsed(false);
         
         map.addControl(attributionControl);
