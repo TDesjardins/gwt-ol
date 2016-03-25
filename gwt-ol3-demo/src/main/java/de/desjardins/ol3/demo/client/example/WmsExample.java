@@ -8,6 +8,10 @@ import ol.MapOptions;
 import ol.OLFactory;
 import ol.View;
 import ol.ViewOptions;
+import ol.control.Rotate;
+import ol.control.ScaleLine;
+import ol.interaction.KeyboardPan;
+import ol.interaction.KeyboardZoom;
 import ol.layer.Image;
 import ol.layer.LayerOptions;
 import ol.proj.Projection;
@@ -38,24 +42,24 @@ public class WmsExample implements Example {
         imageWMSOptions.setParams(imageWMSParams);
         imageWMSOptions.setRatio(1.5f);
 
-        ImageWMS imageWMSSource = OLFactory.createImageWMSSource(imageWMSOptions);
+        ImageWMS imageWMSSource = new ImageWMS(imageWMSOptions);
 
         LayerOptions layerOptions = OLFactory.createOptions();
         layerOptions.setSource(imageWMSSource);
         
-        Image wmsLayer = OLFactory.createImageLayer(layerOptions);
+        Image wmsLayer = new Image(layerOptions);
         
         // create a projection
         ProjectionOptions projectionOptions = OLFactory.createOptions();
         projectionOptions.setCode("EPSG:21781");
         projectionOptions.setUnits("m");
         
-        Projection projection = OLFactory.createProjection(projectionOptions);
+        Projection projection = new Projection(projectionOptions);
         
         // create a view
         ViewOptions viewOptions = OLFactory.createOptions();
         viewOptions.setProjection(projection);
-        View view = OLFactory.createView(viewOptions);
+        View view = new View(viewOptions);
 
         Coordinate centerCoordinate = OLFactory.createCoordinate(660000, 190000);
         
@@ -67,18 +71,18 @@ public class WmsExample implements Example {
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 
-        Map map = OLFactory.createMap(mapOptions);
+        Map map = new Map(mapOptions);
         
         map.addLayer(wmsLayer);
 
         // add some controls
-        map.addControl(OLFactory.createScaleLine());
+        map.addControl(new ScaleLine());
         DemoUtils.addDefaultControls(map.getControls());
 
         // add some interactions
-        map.addInteraction(OLFactory.createKeyboardPan());
-        map.addInteraction(OLFactory.createKeyboardZoom());
-        map.addControl(OLFactory.createRotate());
+        map.addInteraction(new KeyboardPan());
+        map.addInteraction(new KeyboardZoom());
+        map.addControl(new Rotate());
         
     }
     

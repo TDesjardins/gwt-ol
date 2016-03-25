@@ -10,6 +10,10 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class Image extends Layer {
 
+    public Image() {}
 
+    public Image(LayerOptions layerOptions) {
+    }
+    
 }
 

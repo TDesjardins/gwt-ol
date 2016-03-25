@@ -10,6 +10,8 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class ImageWMS extends Image {
     
+    public ImageWMS(ImageWMSOptions imageWMSOptions) {}
+    
     public native String getUrl();
     
     public native void setUrl(String url); 
