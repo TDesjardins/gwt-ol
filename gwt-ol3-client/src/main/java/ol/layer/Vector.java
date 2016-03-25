@@ -14,6 +14,11 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class Vector extends Layer {
 
+
+    public Vector() {}
+    
+    public Vector(VectorLayerOptions vectorLayerOptions) {}
+    
     /**
      * Get the style for features. This returns whatever was passed to the
      * `style` option at construction or to the `setStyle` method.

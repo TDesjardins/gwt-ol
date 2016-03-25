@@ -7,8 +7,12 @@ import com.google.gwt.core.client.GWT;
 
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.*;
+import ol.control.Rotate;
+import ol.control.ScaleLine;
 import ol.format.GeoJSON;
 import ol.geom.LineString;
+import ol.interaction.KeyboardPan;
+import ol.interaction.KeyboardZoom;
 import ol.layer.*;
 import ol.layer.Tile;
 import ol.source.*;
@@ -35,36 +39,38 @@ public class GeoJSONExample implements Example {
         // Create featrue
         FeatureOptions featureOptions = OLFactory.createOptions();
         featureOptions.setGeometry(lineString);
-        Feature feature = OLFactory.createFeature(featureOptions);
+        Feature feature = new Feature(featureOptions);
         GWT.log("Feature: " + feature);
 
         // Convert Feature to GeoJson
-        GeoJSON gj = OLFactory.createGeoJSON();
+        GeoJSON gj = new GeoJSON();
         GeoJSON geoJSON = gj.writeFeatureObject(feature, null);
 
         // Convert Features from GeoJSON
         Feature featureGeoJSON = gj.readFeature(geoJSON, null);
 
         // show converted Features
-        Collection<Feature> lstFeatures = OLFactory.createCollection();
+        Collection<Feature> lstFeatures = new Collection<Feature>();
         lstFeatures.push(featureGeoJSON);
         VectorOptions vectorSourceOptions = OLFactory.createOptions();
         vectorSourceOptions.setFeatures(OLFactory.<Feature[], Collection<Feature>> createObject2(lstFeatures));
-        Vector vectorSource = OLFactory.createVectorSource(vectorSourceOptions);
+        Vector vectorSource = new Vector(vectorSourceOptions);
 
         VectorLayerOptions vectorLayerOptions = OLFactory.createOptions();
         vectorLayerOptions.setSource(vectorSource);
-        ol.layer.Vector vectorLayer = OLFactory.createVector(vectorLayerOptions);
+        ol.layer.Vector vectorLayer = new ol.layer.Vector(vectorLayerOptions);
 
         // create a OSM-layer
         XyzOptions osmSourceOptions = OLFactory.createOptions();
-        Osm osmSource = OLFactory.createOsm(osmSourceOptions);
+        Osm osmSource = new Osm(osmSourceOptions);
+        
         LayerOptions osmLayerOptions = OLFactory.createOptions();
         osmLayerOptions.setSource(osmSource);
-        Tile osmLayer = OLFactory.createTileLayer(osmLayerOptions);
+        
+        Tile osmLayer = new Tile(osmLayerOptions);
 
         // create a view
-        View view = OLFactory.createView();
+        View view = new View();
         Coordinate centerCoordinate = OLFactory.createCoordinate(0, 0);
         view.setCenter(centerCoordinate);
         view.setZoom(2);
@@ -73,20 +79,20 @@ public class GeoJSONExample implements Example {
         MapOptions mapOptions = OLFactory.createOptions();
         mapOptions.setTarget("map");
         mapOptions.setView(view);
-        Collection<Base> lstLayer = OLFactory.createCollection();
+        Collection<Base> lstLayer = new Collection<Base>();
         lstLayer.push(osmLayer);
         lstLayer.push(vectorLayer);
         mapOptions.setLayers(lstLayer);
-        Map map = OLFactory.createMap(mapOptions);
+        Map map = new Map(mapOptions);
 
         // add some controls
-        map.addControl(OLFactory.createScaleLine());
+        map.addControl(new ScaleLine());
         DemoUtils.addDefaultControls(map.getControls());
 
         // add some interactions
-        map.addInteraction(OLFactory.createKeyboardPan());
-        map.addInteraction(OLFactory.createKeyboardZoom());
-        map.addControl(OLFactory.createRotate());
+        map.addInteraction(new KeyboardPan());
+        map.addInteraction(new KeyboardZoom());
+        map.addControl(new Rotate());
 
     }
 

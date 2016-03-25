@@ -17,6 +17,11 @@ import ol.Feature;
 @JsType(isNative = true)
 public class Vector extends Source {
     
+    
+    public Vector() {}
+    
+    public Vector(VectorOptions vectorOptions) {}
+    
     /**
      * Add a single feature to the source. If you want to add a batch of
      * features at once, call {@link ol.source.Vector#addFeatures
