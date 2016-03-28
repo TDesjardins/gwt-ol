@@ -20,7 +20,6 @@ public interface SourceOptions extends Options {
      *
      * @param attributions
      *            attributions
-     * @return this instance
      */
     @JsProperty
     void setAttributions(Attribution[] attributions);
@@ -30,7 +29,6 @@ public interface SourceOptions extends Options {
      *
      * @param projection
      *            projection
-     * @return this instance
      */
     @JsProperty
     void setProjection(Projection projection);
