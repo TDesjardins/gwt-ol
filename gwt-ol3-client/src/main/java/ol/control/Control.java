@@ -33,6 +33,10 @@ import ol.Object;
 @JsType(isNative = true)
 public class Control extends Object {
 
+    public Control() {}
+    
+    public Control(ControlOptions controlOptions) {}
+    
     /**
      * Get the control's container element.
      *
