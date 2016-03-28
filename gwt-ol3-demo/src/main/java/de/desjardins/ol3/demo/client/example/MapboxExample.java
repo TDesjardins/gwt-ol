@@ -11,7 +11,6 @@ import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
 
 import ol.Attribution;
-import ol.AttributionOptions;
 import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
@@ -39,16 +38,15 @@ public class MapboxExample implements Example {
     	XyzOptions mapboxOptions = OLFactory.createOptions();
     	mapboxOptions.setTileSize(OLFactory.createSize(512, 512));
     	mapboxOptions.setUrl("https://api.mapbox.com/styles/v1/mapbox/dark-v8/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ3d0LW9sMyIsImEiOiJjaW0yMDM5aTgwMGxsdnVtNXNiNDg2b2VvIn0.qqoJgK-09q7UeOwh-hNtCA");
-    	
-    	AttributionOptions attributionOptions = OLFactory.<AttributionOptions>createOptions()
-                .setHtml("© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>");
         
-        Attribution attribution = OLFactory.createAttribution(attributionOptions);
-        Attribution[] attributions = new Attribution[1];
-        attributions[0] = attribution;
+    	// set attributions
+        Attribution[] attributions = new Attribution[2];
+        attributions[0] = OLFactory.createAttribution("© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a>");
+        attributions[1] = OLFactory.createAttribution("© <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>");
         
         mapboxOptions.setAttributions(attributions);
     	
+        // create layer
     	Xyz mapboxSource =  OLFactory.createXyz(mapboxOptions);
     	LayerOptions xyzLayerOptions = OLFactory.createOptions();
     	xyzLayerOptions.setSource(mapboxSource);
