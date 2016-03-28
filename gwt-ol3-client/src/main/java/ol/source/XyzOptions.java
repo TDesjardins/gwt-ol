@@ -3,6 +3,7 @@ package ol.source;
 import com.google.gwt.core.client.js.JsProperty;
 import com.google.gwt.core.client.js.JsType;
 
+import ol.Size;
 import ol.tilegrid.TileGrid;
 
 /**
@@ -44,6 +45,14 @@ public interface XyzOptions extends SourceOptions {
     @JsProperty
     XyzOptions setTileGrid(TileGrid tileGrid);
 
+    /**
+     * Set the {@link Size} of a tile.
+     * @param size {@link Size}
+     * @return this instance
+     */
+    @JsProperty
+    XyzOptions setTileSize(Size size);
+    
     /**
      * Set the URL template. Must include {x}, {y} or {-y}, and {z}
      * placeholders. A {?-?} template pattern, for example
