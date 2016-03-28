@@ -3,7 +3,6 @@ package de.desjardins.ol3.demo.client.example;
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
 
 import ol.Attribution;
-import ol.AttributionOptions;
 import ol.Collection;
 import ol.Extent;
 import ol.Map;
@@ -49,10 +48,7 @@ public class StaticImageExample implements Example {
             .imageExtent(imageExtent)
             .projection(projection);
         
-        AttributionOptions attributionOptions = OLFactory.<AttributionOptions>createOptions()
-                .setHtml("&copy; <a href=\"http://xkcd.com/license.html\">xkcd</a>");
-        
-        Attribution attribution = OLFactory.createAttribution(attributionOptions);
+        Attribution attribution = OLFactory.createAttribution("&copy; <a href=\"http://xkcd.com/license.html\">xkcd</a>");
         Attribution[] attributions = new Attribution[1];
         attributions[0] = attribution;
         
@@ -67,6 +63,7 @@ public class StaticImageExample implements Example {
         Collection<Base> layers = OLFactory.createCollection();
         layers.push(image);
         
+        // create view
         ViewOptions viewOptions = OLFactory.createOptions();
         viewOptions.setCenter(OLFactory.createCoordinate(500, 500));
         viewOptions.setProjection(projection);
@@ -74,6 +71,7 @@ public class StaticImageExample implements Example {
         
         View view = OLFactory.createView(viewOptions);
         
+        // create the map
         MapOptions mapOptions = OLFactory.createOptions();
         mapOptions.setTarget("map");
         mapOptions.setView(view);
