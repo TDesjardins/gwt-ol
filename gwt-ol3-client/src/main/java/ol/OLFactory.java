@@ -5,6 +5,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import ol.color.Color;
 import ol.control.Control;
+import ol.control.ControlOptions;
 import ol.control.FullScreen;
 import ol.control.FullScreenOptions;
 import ol.control.MousePosition;
@@ -211,6 +212,15 @@ public final class OLFactory {
      */
     public static native Color createColor(String color) /*-{
     	return $wnd.ol.color.fromString(color);
+    }-*/;
+    
+    /**
+     * Creates a {@link Control}.
+     * @param controlOptions options
+     * @return {@link Control}
+     */
+    public static native Control createControl(ControlOptions controlOptions) /*-{
+        return new $wnd.ol.control.Control(controlOptions);
     }-*/;
 
     /**
