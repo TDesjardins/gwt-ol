@@ -41,8 +41,8 @@ public class MapboxExample implements Example {
         
     	// set attributions
         Attribution[] attributions = new Attribution[2];
-        attributions[0] = OLFactory.createAttribution("© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a>");
-        attributions[1] = OLFactory.createAttribution("© <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>");
+        attributions[0] = OLFactory.createAttribution("&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a>");
+        attributions[1] = OLFactory.createAttribution("&copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>");
         
         mapboxOptions.setAttributions(attributions);
     	
