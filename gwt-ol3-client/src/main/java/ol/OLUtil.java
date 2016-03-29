@@ -19,7 +19,6 @@ import ol.event.TileLoadErrorListener;
 import ol.geom.Geometry;
 import ol.geom.Polygon;
 import ol.geom.SimpleGeometryCoordinates;
-import ol.geom.SimpleGeometryMultiCoordinates;
 import ol.gwt.CollectionWrapper;
 import ol.layer.Base;
 import ol.layer.Layer;
@@ -194,7 +193,7 @@ public final class OLUtil {
     public static native void addEquivalentProjections(Projection[] projections) /*-{
 		$wnd.ol.proj.addEquivalentProjections(projections);
     }-*/;
-    
+
     /**
      * Add a Projection object to the list of supported projections that can be
      * looked up by their code.
@@ -346,7 +345,7 @@ public final class OLUtil {
     public static Sphere createSphereNormal() {
         return OLFactory.createSphere(Sphere.EARTH_RADIUS_NORMAL);
     }
-    
+
     /**
      * Checks if two projections are the same, that is every coordinate in one
      * projection does represent the same geographic point as the same
@@ -374,7 +373,7 @@ public final class OLUtil {
         return transformFn === transformFn2 && equalUnits;
       }
     }-*/;
-    
+
     /**
      * Gets the geometry layout string for the given dimension.
      *
@@ -478,7 +477,7 @@ public final class OLUtil {
         }
         return -1;
     }
-    
+
     /**
      * Gets the minimum zoomlevel of the given layer.
      *
@@ -523,7 +522,7 @@ public final class OLUtil {
     public static native Projection getProjection(String projectionCode) /*-{
 		return $wnd.ol.proj.get(projectionCode);
     }-*/;
-    
+
     /**
      * Gets a {@link TileGrid} from the given object, if the property is set
      *
@@ -772,7 +771,7 @@ public final class OLUtil {
      * array of styles, or a function that takes a resolution and returns an
      * array of styles. If it is `null` the feature has no style (a `null`
      * style).
-     * 
+     *
      * @param f
      *            {@link ol.Feature}
      * @param style
@@ -789,7 +788,7 @@ public final class OLUtil {
      * is `null` the layer has no style (a `null` style), so only features that
      * have their own styles will be rendered in the layer. See {@link ol.style}
      * for information on the default style.
-     * 
+     *
      * @param l
      *            Layer
      * @param style
@@ -799,7 +798,7 @@ public final class OLUtil {
         l.setStyle(style);
     }-*/;
 
-    
+
     /**
      * Transforms a coordinate from source projection to destination projection.
      * This returns a new coordinate (and does not modify the original).
@@ -841,7 +840,7 @@ public final class OLUtil {
     public static native Geometry transform(Geometry geom, Projection source, Projection destination) /*-{
 		return geom.transform(source, destination);
     }-*/;
-    
+
     /**
      * Transforms a coordinate from source projection to destination projection.
      * This returns a new coordinate (and does not modify the original).
