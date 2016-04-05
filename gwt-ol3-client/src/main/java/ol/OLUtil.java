@@ -349,10 +349,7 @@ public final class OLUtil {
     /**
      * Checks if two projections are the same, that is every coordinate in one
      * projection does represent the same geographic point as the same
-     * coordinate in the other projection. The source code was taken from
-     * proj.js source of 'ol.proj.equivalent' as it is not part of the official
-     * API but still useful for identifying equal projections. It was only
-     * modified to not use non-public APIs.
+     * coordinate in the other projection.
      *
      * @param projection1
      *            Projection 1.
@@ -361,17 +358,7 @@ public final class OLUtil {
      * @return {boolean} Equivalent.
      */
     public static native boolean equivalent(ol.proj.Projection projection1, ol.proj.Projection projection2) /*-{
-      if (projection1 === projection2) {
-        return true;
-      }
-      var equalUnits = projection1.getUnits() === projection2.getUnits();
-      if (projection1.getCode() === projection2.getCode()) {
-        return equalUnits;
-      } else {
-        var transformFn = $wnd.ol.proj.getTransform(projection1, projection2);
-        var transformFn2 = $wnd.ol.proj.getTransform(projection2, projection1);
-        return transformFn === transformFn2 && equalUnits;
-      }
+      return $wnd.ol.proj.equivalent(projection1, projection2);
     }-*/;
 
     /**
