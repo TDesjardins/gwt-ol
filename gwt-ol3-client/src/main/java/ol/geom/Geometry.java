@@ -46,6 +46,16 @@ public abstract class Geometry extends Observable {
     public native String getType();
 
     /**
+     * Rotate the geometry around a given coordinate. This modifies the geometry
+     * coordinates in place.
+     * @param angle
+     *            Rotation angle in radians.
+     * @param anchor
+     *            The rotation center.
+     */
+    void rotate(double angle, Coordinate anchor);
+    
+    /**
      * Create a simplified version of this geometry. For linestrings, this uses
      * the the
      * <a href="https://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm">
