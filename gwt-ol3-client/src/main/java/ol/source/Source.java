@@ -47,7 +47,7 @@ public class Source extends ol.Object {
     /**
      * Refreshes the source and finally dispatches a 'change' event.
      */
-    void refresh();
+    public native void refresh();
     
     /**
      * Set the attributions of the source.
