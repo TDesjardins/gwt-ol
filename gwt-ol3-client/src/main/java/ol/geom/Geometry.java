@@ -1,8 +1,9 @@
 package ol.geom;
 
 import jsinterop.annotations.JsType;
-
-import ol.*;
+import ol.Coordinate;
+import ol.Extent;
+import ol.Observable;
 
 /**
  * Base for vector geometries.
@@ -53,7 +54,7 @@ public abstract class Geometry extends Observable {
      * @param anchor
      *            The rotation center.
      */
-    void rotate(double angle, Coordinate anchor);
+    public native void rotate(double angle, Coordinate anchor);
     
     /**
      * Create a simplified version of this geometry. For linestrings, this uses
