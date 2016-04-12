@@ -1,7 +1,7 @@
 package ol.geom;
 
-import ol.BaseTestCase;
 import ol.Coordinate;
+import ol.GwtOL3BaseTestCase;
 import ol.OLFactory;
 
 /**
@@ -9,18 +9,26 @@ import ol.OLFactory;
  *
  * @author Tino Desjardins
  */
-public class PointTest extends BaseTestCase {
+public class PointTest extends GwtOL3BaseTestCase {
 
     public void test() {
 
-        Point point = OLFactory.createPoint(1, 2);
-        assertNotNull(point);
-        assertTrue(point instanceof Geometry);
+        injectUrlAndTest(new TestWithInjection() {
 
-        Coordinate coordinate = point.getCoordinates();
-        assertNotNull(coordinate);
-        assert(1 == coordinate.getX());
-        assert(2 == coordinate.getY());
+
+            @Override
+            public void test() {
+                Point point = OLFactory.createPoint(1, 2);
+                assertNotNull(point);
+                assertTrue(point instanceof Geometry);
+
+                Coordinate coordinate = point.getCoordinates();
+                assertNotNull(coordinate);
+                assert(1 == coordinate.getX());
+                assert(2 == coordinate.getY());
+            }
+
+        });
 
     }
 
