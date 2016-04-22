@@ -31,4 +31,40 @@ public interface StrokeOptions extends Options {
     @JsProperty
     public void setWidth(int width);
 
+    /**
+     * Set the Line cap style: butt, round, or square. Default is round.
+     *
+     * @param lineCap
+     *            lineCap
+     */
+    @JsProperty
+    public void setLineCap(String lineCap);
+
+    /**
+     * Set the Line join style: bevel, round, or miter. Default is round.
+     *
+     * @param lineJoin
+     *           lineJoin
+     */
+    @JsProperty
+    public void setLineJoin(String lineJoin);
+
+    /**
+     * Set the Line dash pattern. Default is undefined (no dash).
+     *
+     * @param lineDash
+     *           int[]
+     */
+    @JsProperty
+    public void setLineDash(int[] lineDash);
+
+    /**
+     * Set the Miter limit. Default is 10.
+     *
+     * @param miterLimit
+     *           int
+     */
+    @JsProperty
+    public void setMiterLimit(int miterLimit);
+
 }
