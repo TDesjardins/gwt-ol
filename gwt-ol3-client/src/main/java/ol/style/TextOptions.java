@@ -10,8 +10,7 @@ import ol.Options;
  * @author Tino Desjardins
  */
 @JsType
-public interface TextOptions extends Options
-{
+public interface TextOptions extends Options {
 
 	/**
 	 * Font style as CSS 'font' value, see:
@@ -28,7 +27,7 @@ public interface TextOptions extends Options
 	 * @return this instance.
 	 */
 	@JsProperty
-	public StyleOptions offsetX(int offsetX);
+	TextOptions offsetX(int offsetX);
 
 	/**
 	 * Vertical text offset in pixels. A positive will shift the text down. Default is 0.
@@ -36,7 +35,7 @@ public interface TextOptions extends Options
 	 * @return this instance.
 	 */
 	@JsProperty
-	public StyleOptions offsetY(int offsetY);
+	TextOptions offsetY(int offsetY);
 
 	/**
 	 * Rotation in radians (positive rotation clockwise). Default is 0.
@@ -44,7 +43,7 @@ public interface TextOptions extends Options
 	 * @return this instance.
 	 */
 	@JsProperty
-	public StyleOptions rotation(int rotation);
+	TextOptions rotation(int rotation);
 
 	/**
 	 * Scale.
@@ -52,7 +51,7 @@ public interface TextOptions extends Options
 	 * @return this instance.
 	 */
 	@JsProperty
-	public StyleOptions scale(int scale);
+	TextOptions scale(int scale);
 
 	/**
 	 * Fill style. If none is provided, we'll use a dark fill-style (#333).
@@ -60,7 +59,7 @@ public interface TextOptions extends Options
 	 * @return this instance.
 	 */
 	@JsProperty
-	TextOptions stroke(ol.style.Fill fill);
+	TextOptions fill(ol.style.Fill fill);
 
 	/**
 	 * Stroke style.
@@ -84,7 +83,6 @@ public interface TextOptions extends Options
 	 * @return this instance.
 	 */
 	@JsProperty
-
 	TextOptions textAlign(String textAlign);
 
 	/**
