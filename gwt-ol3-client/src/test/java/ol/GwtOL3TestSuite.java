@@ -20,7 +20,7 @@ import ol.proj.ProjectionTest;
 import junit.framework.TestSuite;
 
 /**
- * Testsuite for GwtOL3.
+ * Testsuite for gwt-ol3.
  *
  * @author Tino Desjardins
  *
@@ -29,7 +29,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
 
     public static TestSuite suite() {
 
-        TestSuite suite = new TestSuite("Tests for GwtOL3-Wrapper");
+        TestSuite suite = new TestSuite("Tests for gwt-ol3 client");
 
         suite.addTestSuite(AttributionTest.class);
         suite.addTestSuite(CollectionTest.class);
