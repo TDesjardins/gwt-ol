@@ -11,7 +11,7 @@ import ol.OLFactory;
  */
 public class GeometryCollectionTest extends GwtOL3BaseTestCase {
 
-    public void test() {
+    public void testGeometryCollection() {
 
         injectUrlAndTest(new TestWithInjection() {
 

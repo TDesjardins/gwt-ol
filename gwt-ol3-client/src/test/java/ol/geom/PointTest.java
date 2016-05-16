@@ -11,7 +11,7 @@ import ol.OLFactory;
  */
 public class PointTest extends GwtOL3BaseTestCase {
 
-    public void test() {
+    public void testPoint() {
 
         injectUrlAndTest(new TestWithInjection() {
 

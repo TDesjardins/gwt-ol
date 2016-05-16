@@ -15,7 +15,7 @@ import ol.source.Vector;
 public class LayerGroupTest extends GwtOL3BaseTestCase {
 
     @SuppressWarnings({ "static-method", "javadoc" })
-    public void test() {
+    public void testLayerGroup() {
 
         injectUrlAndTest(new TestWithInjection() {
 
