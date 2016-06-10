@@ -4,6 +4,7 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 import ol.Options;
+import ol.geom.Point;
 
 /**
  * Options for the {@link Style}.
@@ -20,7 +21,7 @@ public interface StyleOptions extends Options {
      * @param fill {@link Fill}
      */
     @JsProperty
-    public void setFill(Fill fill);
+    void setFill(Fill fill);
 
     /**
      * {@link Image} style.
@@ -28,7 +29,7 @@ public interface StyleOptions extends Options {
      * @param image {@link Image}
      */
     @JsProperty
-    public void setImage(Image image);
+    void setImage(Image image);
 
     /**
      * {@link Stroke} style.
@@ -36,7 +37,7 @@ public interface StyleOptions extends Options {
      * @param stroke {@link Stroke}
      */
     @JsProperty
-    public void setStroke(Stroke stroke);
+    void setStroke(Stroke stroke);
 
     /**
      * Z index.
@@ -44,6 +45,14 @@ public interface StyleOptions extends Options {
      * @param zIndex Z-index
      */
     @JsProperty
-    public void setZIndex(int zIndex);
-    
+    void setZIndex(int zIndex);
+
+    /**
+     * Text style.
+     *
+     * @param text {@Text text}
+     */
+    @JsProperty(name = "text")
+    void setText(Text text);
+
 }

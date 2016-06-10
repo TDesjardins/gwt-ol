@@ -1,6 +1,9 @@
 package ol.layer;
 
 import jsinterop.annotations.JsType;
+import ol.Feature;
+import ol.style.Style;
+import ol.GenericFunction;
 
 /**
  * Vector data that is rendered client-side. Note that any property set in the
@@ -23,7 +26,7 @@ public class Vector extends Layer {
      * Get the style for features. This returns whatever was passed to the
      * `style` option at construction or to the `setStyle` method.
      * 
-     * @return {ol.style.Style|Array.<ol.style.Style>|ol.style.StyleFunction}
+     * @return {ol.style.Style|Array.<ol.style.Style>|ol.StyleFunction}
      *         Layer style.
      */
     public native ol.style.Style getStyle();
@@ -40,5 +43,7 @@ public class Vector extends Layer {
      *            Layer style.
      */
     public native void setStyle(ol.style.Style style);
+
+    public native void setStyle(GenericFunction<Feature, Style[]> style);
 
 }

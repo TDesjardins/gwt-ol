@@ -10,4 +10,10 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public interface Text {
 
+    /**
+     * Set the text.
+     *
+     * @param text
+     */
+    void setText(String text);
 }

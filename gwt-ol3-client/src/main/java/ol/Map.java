@@ -277,4 +277,13 @@ public class Map extends Object {
      */
     public native void updateSize();
 
+    /**
+     * Get the map interactions. Modifying this collection changes the interactions associated with the map.
+     *
+     * Interactions are used for e.g. pan, zoom and rotate.
+     *
+     * @return {@link Collection<Interaction>} interactions.
+     */
+    public native Collection<Interaction> getInteractions();
+
 }

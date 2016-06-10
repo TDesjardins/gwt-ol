@@ -50,5 +50,12 @@ public class Polygon extends SimpleGeometryMultiCoordinates {
      * @return {Array.<ol.geom.LinearRing>} Linear rings.
      */
     public native LinearRing[] getLinearRings();
+
+    /**
+     * Return an interior point of the polygon.
+     *
+     * @return {ol.geom.Point} Point.
+     */
+    public native Point getInteriorPoint();
     
 }
