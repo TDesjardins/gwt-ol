@@ -14,5 +14,7 @@ import jsinterop.annotations.JsType;
  */
 @JsType(isNative = true)
 public class TileDebug extends Tile {
+	
+	public TileDebug(TileDebugOptions tileDebugOptions) {}
 
 }
