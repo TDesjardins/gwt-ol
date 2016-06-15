@@ -8,6 +8,7 @@ import ol.control.RotateTest;
 import ol.control.ScaleLineTest;
 import ol.control.ZoomSliderTest;
 import ol.control.ZoomToExtentTest;
+import ol.format.GeoJSONTest;
 import ol.geom.CircleTest;
 import ol.geom.GeometryCollectionTest;
 import ol.geom.PointTest;
@@ -47,6 +48,9 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(ScaleLineTest.class);
         suite.addTestSuite(ZoomSliderTest.class);
         suite.addTestSuite(ZoomToExtentTest.class);
+        
+        // formats
+        suite.addTestSuite(GeoJSONTest.class);
 
         // geometries
         suite.addTestSuite(CircleTest.class);
