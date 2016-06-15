@@ -27,7 +27,7 @@ import ol.source.VectorOptions;
 import ol.source.XyzOptions;
 
 /**
- * Example of GeoJSON
+ * Example of GeoJSON format.
  *
  * @author Tobias Lochmann
  */
@@ -44,7 +44,7 @@ public class GeoJSONExample implements Example {
         Coordinate[] coordinates = { coordinate1, coordinate2 };
         LineString ls = OLFactory.createLineString(coordinates);
 
-        // Create featrue
+        // Create feature
         FeatureOptions featureOptions = OLFactory.createOptions();
         featureOptions.setGeometry(ls);
         Feature feature = OLFactory.createFeature(featureOptions);
