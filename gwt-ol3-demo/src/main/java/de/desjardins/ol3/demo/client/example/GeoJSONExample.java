@@ -4,6 +4,7 @@
 package de.desjardins.ol3.demo.client.example;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JavaScriptObject;
 
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.*;
@@ -44,7 +45,8 @@ public class GeoJSONExample implements Example {
 
         // Convert Feature to GeoJson
         GeoJSON gj = new GeoJSON();
-        GeoJSON geoJSON = gj.writeFeatureObject(feature, null);
+        JavaScriptObject geoJSON = gj.writeFeatureObject(feature, null);
+
 
         // Convert Features from GeoJSON
         Feature featureGeoJSON = gj.readFeature(geoJSON, null);
