@@ -22,4 +22,14 @@ public interface FeatureOptions extends Options {
      */
     @JsProperty
     FeatureOptions setGeometry(Geometry geom);
+    
+    /**
+     * Id.
+     * 
+     * @param id
+     * @return this instance
+     */
+    @JsProperty
+    FeatureOptions setId(String id);
+    
 }
