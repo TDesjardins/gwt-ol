@@ -48,8 +48,6 @@ public class GeoJSONTest extends GwtOL3BaseTestCase {
             }
             
         });
-	    
-		
 
 	}
 
@@ -109,12 +107,12 @@ public class GeoJSONTest extends GwtOL3BaseTestCase {
 		Coordinate coordinate1 = OLFactory.createCoordinate(1, 1);
 		Coordinate coordinate2 = OLFactory.createCoordinate(5, 5);
 		Coordinate[] coordinates = { coordinate1, coordinate2 };
-		LineString lineString = OLFactory.createLineString(coordinates);
+		LineString lineString = new LineString(coordinates);
 
 		// Create feature
 		FeatureOptions featureOptions = OLFactory.createOptions();
 		featureOptions.setGeometry(lineString);
-		return OLFactory.createFeature(featureOptions);
+		return new Feature(featureOptions);
 		
 	}
 
