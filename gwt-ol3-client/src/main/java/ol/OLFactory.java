@@ -53,8 +53,6 @@ import ol.source.ImageStatic;
 import ol.source.ImageStaticOptions;
 import ol.source.ImageWMS;
 import ol.source.ImageWMSOptions;
-import ol.source.MapQuest;
-import ol.source.MapQuestOptions;
 import ol.source.Osm;
 import ol.source.Source;
 import ol.source.Stamen;
@@ -213,7 +211,7 @@ public final class OLFactory {
     public static native Color createColor(String color) /*-{
     	return $wnd.ol.color.fromString(color);
     }-*/;
-    
+
     /**
      * Creates a {@link Control}.
      * @param controlOptions options
@@ -420,7 +418,7 @@ public final class OLFactory {
     public static native GeoJSON createGeoJSON(GeoJSONOptions options) /*-{
     	return new $wnd.ol.format.GeoJSON(options);
     }-*/;
-    
+
     /**
      * Creates a {@link GeoJSON}.
        *
@@ -446,15 +444,15 @@ public final class OLFactory {
 
     /** Sources **/
 
-    /** 
+    /**
      * create a MapGuide image
-     * @param imageMapGuideOptions 
+     * @param imageMapGuideOptions
      * @return {@link ImageMapGuide}
      * **/
     public static native ImageMapGuide createImageMapGuideSource(ImageMapGuideOptions imageMapGuideOptions) /*-{
 	return new $wnd.ol.source.ImageMapGuide(imageMapGuideOptions);
 	}-*/;
-    
+
     public static native ImageStatic createImageStaticSource(ImageStaticOptions imageStaticOptions) /*-{
     	return new $wnd.ol.source.ImageStatic(imageStaticOptions);
     }-*/;
@@ -594,11 +592,6 @@ public final class OLFactory {
      */
     public static native Map createMap(MapOptions mapOptions) /*-{
     	return new $wnd.ol.Map(mapOptions);
-    }-*/;
-
-    public static native MapQuest createMapQuestSource(MapQuestOptions mapQuestOptions)
-    /*-{
-    	return new $wnd.ol.source.MapQuest(mapQuestOptions);
     }-*/;
 
     public static native Modify createModify() /*-{
@@ -745,7 +738,7 @@ public final class OLFactory {
     public static native Overlay createOverlay(OverlayOptions options) /*-{
         return new $wnd.ol.Overlay(options);
     }-*/;
-    
+
     /**
      * Creates an {@link OverviewMap} control.
      * @return {@link OverviewMap}
@@ -753,7 +746,7 @@ public final class OLFactory {
     public static native OverviewMap createOverviewMap() /*-{
         return new $wnd.ol.control.OverviewMap();
     }-*/;
-    
+
     /**
      * Creates an {@link OverviewMap} control.
      * @param options
@@ -763,7 +756,7 @@ public final class OLFactory {
     public static native OverviewMap createOverviewMap(OverviewMapOptions options) /*-{
         return new $wnd.ol.control.OverviewMap(options);
     }-*/;
-    
+
     /**
      * Creates an instance.
      *
@@ -1145,7 +1138,7 @@ public final class OLFactory {
     public static native ZoomToExtent createZoomToExtent() /*-{
     	return new $wnd.ol.control.ZoomToExtent();
     }-*/;
-    
+
     /**
      * Creates a {@link ZoomToExtent} control.
      * @param options
@@ -1155,5 +1148,5 @@ public final class OLFactory {
     public static native ZoomToExtent createZoomToExtent(ZoomToExtentOptions options) /*-{
         return new $wnd.ol.control.ZoomToExtent(options);
     }-*/;
-    
+
 }

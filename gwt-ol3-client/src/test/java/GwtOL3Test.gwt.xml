@@ -4,6 +4,6 @@
 	
 	<add-linker name="std"/>
 	
-	<script src="http://openlayers.org/en/v3.16.0/build/ol.js"/>
-	<stylesheet src="http://openlayers.org/en/v3.16.0/css/ol.css"/>
+	<script src="http://openlayers.org/en/v3.17.1/build/ol.js"/>
+	<stylesheet src="http://openlayers.org/en/v3.17.1/css/ol.css"/>
 </module>
