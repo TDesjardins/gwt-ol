@@ -52,8 +52,6 @@ import ol.source.ImageStatic;
 import ol.source.ImageStaticOptions;
 import ol.source.ImageWMS;
 import ol.source.ImageWMSOptions;
-import ol.source.MapQuest;
-import ol.source.MapQuestOptions;
 import ol.source.Osm;
 import ol.source.Source;
 import ol.source.Stamen;
@@ -588,10 +586,6 @@ public final class OLFactory {
      */
     public static native Map createMap(MapOptions mapOptions) /*-{
     	return new $wnd.ol.Map(mapOptions);
-    }-*/;
-
-    public static native MapQuest createMapQuestSource(MapQuestOptions mapQuestOptions) /*-{
-    	return new $wnd.ol.source.MapQuest(mapQuestOptions);
     }-*/;
 
     public static native Modify createModify() /*-{
