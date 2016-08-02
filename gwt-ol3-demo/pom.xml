@@ -28,15 +28,6 @@
       <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
     </repository>
   </repositories>
-
-  <properties>
-    <!-- Convenience property to set the GWT version -->
-    <gwt.version>2.8.0-SNAPSHOT</gwt.version>
-    <!-- GWT needs at least java 1.5 -->
-    <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <gwt.maven.plugin.version>2.8.0-SNAPSHOT</gwt.maven.plugin.version>
-  </properties>
   
   <dependencies>
     <dependency>

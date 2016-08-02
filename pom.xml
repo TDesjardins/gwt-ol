@@ -12,8 +12,8 @@
   <repositories>
     <repository>
       <id>com.google.gwt</id>
-      <name>GWT Sonatype Snapshots</name>
-      <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
+      <name>GWT Central Maven</name>
+      <url>https://central.maven.org/maven2/</url>
     </repository>
     <repository>
       <id>org.codehaus.mojo</id>
@@ -46,8 +46,7 @@
 
   <properties>
     <!-- Convenience property to set the GWT version -->
-    <gwt.version>2.8.0-SNAPSHOT</gwt.version>
-    <!-- GWT needs at least java 1.5 -->
+    <gwt.version>2.8.0-rc1</gwt.version>
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <gwt.maven.plugin.version>2.8.0-SNAPSHOT</gwt.maven.plugin.version>
