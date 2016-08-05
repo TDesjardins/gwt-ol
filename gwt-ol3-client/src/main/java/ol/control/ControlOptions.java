@@ -12,7 +12,7 @@ import ol.Options;
  * @author sbaumhekel
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface ControlOptions extends Options {
 
     /**

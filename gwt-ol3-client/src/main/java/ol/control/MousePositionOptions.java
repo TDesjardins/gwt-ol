@@ -12,7 +12,7 @@ import ol.proj.Projection;
  * @author sbaumhekel
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface MousePositionOptions extends ControlOptions {
 
     /**
@@ -29,7 +29,7 @@ public interface MousePositionOptions extends ControlOptions {
      * @return this instance
      */
     @JsProperty
-    MousePositionOptions setCoordinateFormat(JavaScriptObject coordinateFormat);
+    void setCoordinateFormat(JavaScriptObject coordinateFormat);
     
     /**
      * Projection.
