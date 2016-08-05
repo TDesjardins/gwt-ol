@@ -1,5 +1,6 @@
 package ol.control;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.js.JsProperty;
 import com.google.gwt.core.client.js.JsType;
 
@@ -23,6 +24,14 @@ public interface MousePositionOptions extends ControlOptions {
     @JsProperty
     MousePositionOptions setClassName(String className);
 
+    /**
+     * 
+     * @param coordinateFormat Coordinate format function.
+     * @return this instance
+     */
+    @JsProperty
+    MousePositionOptions setCoordinateFormat(JavaScriptObject coordinateFormat);
+    
     /**
      * Projection.
      * @param projection

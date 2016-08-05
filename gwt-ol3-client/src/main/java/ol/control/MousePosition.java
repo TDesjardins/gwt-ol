@@ -1,5 +1,6 @@
 package ol.control;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.js.JsType;
 
 import ol.proj.Projection;
@@ -15,6 +16,12 @@ import ol.proj.Projection;
 @JsType(prototype = "ol.control.MousePosition")
 public interface MousePosition extends Control {
 
+	/**
+     * 
+     * @param coordinateFormat Coordinate format function.
+     */
+    void setCoordinateFormat(JavaScriptObject coordinateFormat);
+	
     /**
      * Return the projection that is used to report the mouse position.
      * 
