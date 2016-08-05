@@ -121,7 +121,20 @@ public class Coordinate extends JavaScriptObject {
     public final double lon() {
 	return this.getX();
     }
-
+    
+    /**
+     * Returns a {@link ol.CoordinateFormatType} function that can be used to format
+     * a {ol.Coordinate} to a string.
+     * 
+     * @param fractionDigits The number of digits to include after the decimal point.
+     * Default is `0`
+     * @return format function
+     */
+    public final static native JavaScriptObject createStringXY(int fractionDigits)
+    /*-{
+    	return $wnd.ol.coordinate.createStringXY(fractionDigits);
+    }-*/;
+    
     /**
      * Format a coordinate as a comma delimited string. Example without
      * specifying fractional digits: var coord = [7.85, 47.983333]; var out =
