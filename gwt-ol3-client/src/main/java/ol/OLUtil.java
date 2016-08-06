@@ -859,6 +859,27 @@ public final class OLUtil {
     public static native Coordinate transform(Coordinate coordinate, String source, String destination) /*-{
 		return $wnd.ol.proj.transform(coordinate, source, destination);
     }-*/;
+    
+    /**
+     * Transforms coordinates from source projection to destination projection.
+     * This returns new coordinates (and does not modify the original).
+     * 
+     * @param coordinates coordinates to transform
+     * @param source source projection
+     * @param destination destination projection
+     * @return transformed coordinates
+     */
+    public static Coordinate[] transform(Coordinate[] coordinates, String source, String destination) {
+		
+    	Coordinate[] transformedCoordinates = new Coordinate[coordinates.length];
+    	
+    	for (int i = 0; i < coordinates.length; i++) {
+			transformedCoordinates[i] = transform(coordinates[i], source, destination);
+		}
+    	
+    	return transformedCoordinates;
+    	
+	};
 
     /**
      * Transforms an extent from source projection to destination projection.
