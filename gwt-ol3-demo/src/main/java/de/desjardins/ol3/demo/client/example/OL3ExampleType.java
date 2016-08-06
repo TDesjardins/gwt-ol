@@ -18,6 +18,7 @@ public enum OL3ExampleType {
     MeasureExample(new MeasureExample()),
     OsmExample(new OsmExample()),
     OverlayExample(new OverlayExample()),
+    SelectFeatureExample(new SelectFeaturesExample()),
     TileExample(new TileExample()),
     WmsExample(new WmsExample()),
     XyzExample(new XyzExample());
