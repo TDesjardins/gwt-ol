@@ -3,7 +3,6 @@
  */
 package de.desjardins.ol3.demo.client.example;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
@@ -42,29 +41,29 @@ public class GeoJSONExample implements Example {
     @Override
     public void show() {
 
-        // Create Linestring
+        // create linestring
         Coordinate coordinate1 = OLFactory.createCoordinate(4e6, 2e6);
         Coordinate coordinate2 = OLFactory.createCoordinate(8e6, -2e6);
         Coordinate[] coordinates = { coordinate1, coordinate2 };
+
         LineString lineString = new LineString(coordinates);
 
-        // Create feature
+        // create feature
         FeatureOptions featureOptions = OLFactory.createOptions();
         featureOptions.setGeometry(lineString);
         Feature feature = new Feature(featureOptions);
-        GWT.log("Feature: " + feature);
 
-        // Convert Feature to GeoJson
-        GeoJSON gj = new GeoJSON();
-        JavaScriptObject geoJSON = gj.writeFeatureObject(feature, null);
+        // convert feature to GeoJSON
+        GeoJSON geoJsonFormat = new GeoJSON();
+        JavaScriptObject geoJSON = geoJsonFormat.writeFeatureObject(feature, null);
 
+        // convert features from GeoJSON
+        Feature featureGeoJSON = geoJsonFormat.readFeature(geoJSON, null);
 
-        // Convert Features from GeoJSON
-        Feature featureGeoJSON = gj.readFeature(geoJSON, null);
-
-        // show converted Features
+        // show converted features
         Collection<Feature> lstFeatures = new Collection<Feature>();
         lstFeatures.push(featureGeoJSON);
+        
         VectorOptions vectorSourceOptions = OLFactory.createOptions();
         vectorSourceOptions.setFeatures(OLFactory.<Feature[], Collection<Feature>> createObject2(lstFeatures));
         Vector vectorSource = new Vector(vectorSourceOptions);
