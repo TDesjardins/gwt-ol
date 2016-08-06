@@ -38,6 +38,8 @@ import ol.interaction.DrawOptions;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
 import ol.interaction.Modify;
+import ol.interaction.Select;
+import ol.interaction.SelectOptions;
 import ol.layer.Image;
 import ol.layer.ImageLayerOptions;
 import ol.layer.LayerGroupOptions;
@@ -461,6 +463,10 @@ public final class OLFactory {
     	return new $wnd.ol.source.ImageWMS(imageWMSOptions);
     }-*/;
 
+    public static native Select createSelect(SelectOptions selectOptions) /*-{
+		return new $wnd.ol.interaction.Select(selectOptions);
+	}-*/;
+    
     public static native KeyboardPan createKeyboardPan() /*-{
     	return new $wnd.ol.interaction.KeyboardPan();
     }-*/;
