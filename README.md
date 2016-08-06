@@ -8,7 +8,7 @@ A [OpenLayers 3](http://openlayers.org/ "OpenLayers 3 website") - Wrapper for GW
   * a GWT wrapper for OpenLayers 3 (gwt-ol3-client)
   * a demo module for showing wrapper functionality (gwt-ol3-demo)
 
-You can build and run the application with Maven. If you would like to test superdev-mode you can run it on module `gwt-ol-demo` with the goal `gwt:run`. To only start the codeserver, e.g. using superdev-mode with your servlet container, use goal `gwt:run-codeserver`.
+You can build (`mvn package`) and run (`mvn gwt:devmode`) the application using Maven.
 
 If you want to build the application without Maven please consider the following hints: 
 
