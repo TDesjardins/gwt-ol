@@ -1,9 +1,0 @@
-<module>
-	<inherits name="GwtOL3"/>
-	<source path="ol"/> 
-	
-	<add-linker name="std"/>
-	
-	<script src="http://openlayers.org/en/v3.17.1/build/ol.js"/>
-	<stylesheet src="http://openlayers.org/en/v3.17.1/css/ol.css"/>
-</module>
