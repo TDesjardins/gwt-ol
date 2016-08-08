@@ -1,4 +1,0 @@
-<module>
-	<inherits name="GwtOL3"/>
-	<source path="ol"/>
-</module>
