@@ -1,7 +1,6 @@
 package ol.interaction;
 
-import com.google.gwt.core.client.js.JsType;
-
+import jsinterop.annotations.JsType;
 import ol.Options;
 
 /**
@@ -10,6 +9,6 @@ import ol.Options;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface SelectOptions extends Options {
 }

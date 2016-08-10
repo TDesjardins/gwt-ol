@@ -1,8 +1,7 @@
 package ol.interaction;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
-
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 import ol.event.Event;
 
 /**
@@ -11,7 +10,7 @@ import ol.event.Event;
  * @author Tino Desjardins
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface SelectEvent extends Event {
 
     @JsProperty

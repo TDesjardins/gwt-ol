@@ -1,9 +1,8 @@
 package ol.interaction;
 
+import jsinterop.annotations.JsType;
 import ol.Collection;
 import ol.Feature;
-
-import com.google.gwt.core.client.js.JsType;
 
 /**
  * Interaction for selecting vector features. By default, selected features are
@@ -18,9 +17,9 @@ import com.google.gwt.core.client.js.JsType;
  * 
  * @author Tino Desjardins
  */
-@JsType(prototype = "ol.interaction.Select")
-public interface Select extends Interaction {
+@JsType(isNative = true)
+public class Select extends Interaction {
 
-	public Collection<Feature> getFeatures();
+	public native Collection<Feature> getFeatures();
 	
 }
