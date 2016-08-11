@@ -2,7 +2,6 @@ package ol.format;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsonUtils;
-
 import ol.Coordinate;
 import ol.Feature;
 import ol.FeatureOptions;

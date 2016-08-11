@@ -1,7 +1,7 @@
 package ol.control;
 
-import ol.GwtOL3BaseTestCase;
 import ol.Coordinate;
+import ol.GwtOL3BaseTestCase;
 import ol.OLFactory;
 import ol.OLUtil;
 import ol.Object;

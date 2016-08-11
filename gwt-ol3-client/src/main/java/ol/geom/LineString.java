@@ -1,7 +1,6 @@
 package ol.geom;
 
 import jsinterop.annotations.JsType;
-
 import ol.Coordinate;
 
 /**

@@ -1,7 +1,7 @@
 package ol;
 
 import com.google.gwt.junit.tools.GWTTestSuite;
-
+import junit.framework.TestSuite;
 import ol.control.FullScreenTest;
 import ol.control.MousePositionTest;
 import ol.control.RotateTest;
@@ -18,7 +18,6 @@ import ol.interaction.KeyboardZoomTest;
 import ol.interaction.ModifyTest;
 import ol.layer.LayerGroupTest;
 import ol.proj.ProjectionTest;
-import junit.framework.TestSuite;
 
 /**
  * Testsuite for GwtOL3.

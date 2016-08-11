@@ -1,9 +1,7 @@
 package ol;
 
 import com.google.gwt.dom.client.Element;
-
 import jsinterop.annotations.JsProperty;
-
 import jsinterop.annotations.JsType;
 import ol.control.Control;
 import ol.event.Event;
@@ -298,14 +296,5 @@ public class Map extends Object {
      * when third-party code changes the size of the map viewport.
      */
     public native void updateSize();
-
-    /**
-     * Get the map interactions. Modifying this collection changes the interactions associated with the map.
-     *
-     * Interactions are used for e.g. pan, zoom and rotate.
-     *
-     * @return {@link Collection<Interaction>} interactions.
-     */
-    public native Collection<Interaction> getInteractions();
 
 }

@@ -3,16 +3,15 @@
  */
 package ol.format;
 
-import javax.annotation.Nullable;
-
 import com.google.gwt.core.client.JavaScriptObject;
-
 import jsinterop.annotations.JsType;
 import ol.Collection;
 import ol.Feature;
 import ol.Options;
 import ol.geom.Geometry;
 import ol.proj.Projection;
+
+import javax.annotation.Nullable;
 
 /**
  * Feature format for reading and writing data in the GeoJSON format.
