@@ -4,22 +4,34 @@
 package de.desjardins.ol3.demo.client.example;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JavaScriptObject;
 
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
-import ol.*;
+import ol.Collection;
+import ol.Coordinate;
+import ol.Feature;
+import ol.FeatureOptions;
+import ol.Map;
+import ol.MapOptions;
+import ol.OLFactory;
+import ol.View;
 import ol.control.Rotate;
 import ol.control.ScaleLine;
 import ol.format.GeoJSON;
 import ol.geom.LineString;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
-import ol.layer.*;
+import ol.layer.Base;
+import ol.layer.LayerOptions;
 import ol.layer.Tile;
-import ol.source.*;
+import ol.layer.VectorLayerOptions;
+import ol.source.Osm;
 import ol.source.Vector;
+import ol.source.VectorOptions;
+import ol.source.XyzOptions;
 
 /**
- * Example of GeoJSON
+ * Example of GeoJSON format.
  *
  * @author Tobias Lochmann
  */
@@ -34,9 +46,9 @@ public class GeoJSONExample implements Example {
         Coordinate coordinate1 = OLFactory.createCoordinate(4e6, 2e6);
         Coordinate coordinate2 = OLFactory.createCoordinate(8e6, -2e6);
         Coordinate[] coordinates = { coordinate1, coordinate2 };
-        LineString lineString = OLFactory.createLineString(coordinates);
+        LineString lineString = new LineString(coordinates);
 
-        // Create featrue
+        // Create feature
         FeatureOptions featureOptions = OLFactory.createOptions();
         featureOptions.setGeometry(lineString);
         Feature feature = new Feature(featureOptions);
@@ -44,7 +56,8 @@ public class GeoJSONExample implements Example {
 
         // Convert Feature to GeoJson
         GeoJSON gj = new GeoJSON();
-        GeoJSON geoJSON = gj.writeFeatureObject(feature, null);
+        JavaScriptObject geoJSON = gj.writeFeatureObject(feature, null);
+
 
         // Convert Features from GeoJSON
         Feature featureGeoJSON = gj.readFeature(geoJSON, null);

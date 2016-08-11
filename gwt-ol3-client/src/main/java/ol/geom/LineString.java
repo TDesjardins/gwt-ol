@@ -11,7 +11,9 @@ import ol.Coordinate;
  */
 @JsType(isNative = true)
 public class LineString extends SimpleGeometryCoordinates {
-
+    
+    public LineString(Coordinate[] coordinates) {}
+    
     /**
      * Append the passed coordinate to the coordinates of the linestring.
      *

@@ -1,14 +1,3 @@
-/**
- * $$Id$$
- *
- * @author mribeiro
- * @date 07/06/16 17:29
- * <p/>
- * Copyright (C) 2016 MRibeiro
- * marco.lob@gmail.com
- * <p/>
- * All rights reserved.
- */
 package ol.interaction;
 
 import jsinterop.annotations.JsProperty;
@@ -18,8 +7,10 @@ import ol.Options;
 import ol.layer.Layer;
 
 /**
- * @author mribeiro
- *         19-05-2016.
+ * Options for interaction {@link Select}.
+ *
+ * @author Tino Desjardins
+ *
  */
 @JsType(isNative = true)
 public interface SelectOptions extends Options{

@@ -1,147 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <parent>
-    <groupId>de.desjardins.ol3</groupId>
-    <artifactId>gwt-ol3</artifactId>
-    <version>2.3.1</version>
-  </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>de.desjardins.ol3</groupId>
+        <artifactId>gwt-ol3</artifactId>
+        <version>2.4.0</version>
+    </parent>
+    <artifactId>gwt-ol3-demo</artifactId>
+    <packaging>gwt-app</packaging>
 
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>ol</groupId>
-  <artifactId>gwt-ol3-demo</artifactId>
-  <packaging>war</packaging>
-  <version>2.3.1</version>
-  <name>${project.artifactId}</name>
+    <dependencies>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>gwt-ol3-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
- <repositories>
-    <repository>
-      <id>com.google.gwt</id>
-      <name>GWT Sonatype Releases</name>
-      <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
-    </repository>
-    <repository>
-      <id>org.codehaus.mojo</id>
-      <name>Sonatype Snapshots</name>
-      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-    </repository>
-  </repositories>
-
-  <properties>
-    <!-- Convenience property to set the GWT version -->
-    <gwt.version>2.8.0-beta1</gwt.version>
-    <!-- GWT needs at least java 1.5 -->
-    <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <gwt.maven.plugin.version>2.8.0-beta1</gwt.maven.plugin.version>
-  </properties>
-  
-  <dependencies>
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-user</artifactId>
-      <version>${gwt.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.gwt</groupId>
-      <artifactId>gwt-dev</artifactId>
-      <version>${gwt.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>gwt-ol3-client</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <!--  version>4.7</version-->
-      <version>4.12</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.validation</groupId>
-      <artifactId>validation-api</artifactId>
-      <version>1.1.0.Final</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.validation</groupId>
-      <artifactId>validation-api</artifactId>
-      <version>1.1.0.Final</version>
-      <classifier>sources</classifier>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-
-  <build>
-    <!-- Generate compiled stuff in the folder used for developing mode -->
-    <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
-
-    <plugins>
-
-      <!-- GWT Maven Plugin -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>gwt-maven-plugin</artifactId>
-        <version>${gwt.maven.plugin.version}</version>
-        <executions>
-          <execution>
-            <goals>
-              <!--  goal>run-codeserver</goal-->
-              <goal>compile</goal>
-              <goal>test</goal>
-              <!--  goal>i18n</goal-->
-              <goal>generateAsync</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <module>de.desjardins.ol3.demo.GwtOL3Playground</module>
-          <runTarget>GwtOL3Playground.html</runTarget>
-          <hostedWebapp>${webappDirectory}</hostedWebapp>
-          <!-- Use JSInterop -->
-          <!-- generateJsInteropExports/-->
-          <!--  
-          <compilePerFile>true</compilePerFile>
-          <superDevMode>true</superDevMode>
-          -->
-          
-        </configuration>
-      </plugin>
-
-      <!-- Copy static web files before executing gwt:run -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>2.6</version>
-        <executions>
-          <execution>
-            <phase>compile</phase>
-            <goals>
-              <goal>exploded</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <webappDirectory>${webappDirectory}</webappDirectory>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.ltgt.gwt.maven</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <version>1.0-rc-6</version>
+                <configuration>
+                    <moduleName>de.desjardins.ol3.demo.GwtOL3Playground</moduleName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

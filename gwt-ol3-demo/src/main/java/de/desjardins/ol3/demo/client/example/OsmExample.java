@@ -7,7 +7,8 @@ import ol.OLFactory;
 import ol.OLUtil;
 import ol.View;
 import ol.control.Attribution;
-
+import ol.interaction.KeyboardPan;
+import ol.interaction.KeyboardZoom;
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.layer.Tile;
 import ol.source.Osm;
@@ -33,28 +34,28 @@ public class OsmExample implements Example {
         // create a OSM-layer
         XyzOptions osmSourceOptions = OLFactory.createOptions();
         
-        Osm osmSource = OLFactory.createOsm(osmSourceOptions);
+        Osm osmSource = new Osm(osmSourceOptions);
         LayerOptions osmLayerOptions = OLFactory.createOptions();
         osmLayerOptions.setSource(osmSource);
         
-        Tile osmLayer = OLFactory.createTileLayer(osmLayerOptions);
+        Tile osmLayer = new Tile(osmLayerOptions);
 
         // create debug layer
         TileDebugOptions tileDebugOptions = OLFactory.createOptions();
         tileDebugOptions.setProjection("EPSG:3857");
         tileDebugOptions.setTileGrid(osmSource.getTileGrid());
 
-        TileDebug tileDebugSource = OLFactory.createTileDebug(tileDebugOptions);
+        TileDebug tileDebugSource = new TileDebug(tileDebugOptions);
         
         LayerOptions tileDebugLayerOptions = OLFactory.createOptions();
         
         tileDebugLayerOptions.setSource(tileDebugSource);
         
-        Tile tileDebugLayer = OLFactory.createTileLayer(tileDebugLayerOptions);
+        Tile tileDebugLayer = new Tile(tileDebugLayerOptions);
         
         
         // create a view
-        View view = OLFactory.createView();
+        View view = new View();
 
         Coordinate centerCoordinate = OLFactory.createCoordinate(-0.1275, 51.507222);
         Coordinate transformedCenterCoordinate = OLUtil.transform(centerCoordinate, "EPSG:4326", "EPSG:3857"); 
@@ -67,7 +68,7 @@ public class OsmExample implements Example {
         mapOptions.setTarget("map");
         mapOptions.setView(view);
 
-        Map map = OLFactory.createMap(mapOptions);
+        Map map = new Map(mapOptions);
         
         map.addLayer(osmLayer);
         map.addLayer(tileDebugLayer);
@@ -76,14 +77,14 @@ public class OsmExample implements Example {
         map.addControl(OLFactory.createScaleLine());
         DemoUtils.addDefaultControls(map.getControls());
         
-        Attribution attribution = OLFactory.createAttributionControl();
+        Attribution attribution = new Attribution();
         attribution.setCollapsed(true);
         
         map.addControl(attribution);
         
         // add some interactions
-        map.addInteraction(OLFactory.createKeyboardPan());
-        map.addInteraction(OLFactory.createKeyboardZoom());
+        map.addInteraction(new KeyboardPan());
+        map.addInteraction(new KeyboardZoom());
      
     }
     

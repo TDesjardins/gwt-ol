@@ -2,6 +2,8 @@ package ol.control;
 
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import com.google.gwt.core.client.JavaScriptObject;
+
 import ol.proj.Projection;
 
 /**
@@ -10,7 +12,7 @@ import ol.proj.Projection;
  * @author sbaumhekel
  *
  */
-@JsType
+@JsType(isNative = true)
 public interface MousePositionOptions extends ControlOptions {
 
     /**
@@ -21,6 +23,14 @@ public interface MousePositionOptions extends ControlOptions {
     @JsProperty
     void setClassName(String className);
 
+    /**
+     * 
+     * @param coordinateFormat Coordinate format function.
+     * @return this instance
+     */
+    @JsProperty
+    void setCoordinateFormat(JavaScriptObject coordinateFormat);
+    
     /**
      * Projection.
      * @param projection

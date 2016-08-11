@@ -1,7 +1,8 @@
 package ol.control;
 
-import jsinterop.annotations.JsType;
+import com.google.gwt.core.client.JavaScriptObject;
 
+import jsinterop.annotations.JsType;
 import ol.proj.Projection;
 
 /**
@@ -15,11 +16,16 @@ import ol.proj.Projection;
 @JsType(isNative = true)
 public class MousePosition extends Control {
 
-    
     public MousePosition() {}
     
     public MousePosition(MousePositionOptions mousePositionOptions) {}
     
+	/**
+     * 
+     * @param coordinateFormat Coordinate format function.
+     */
+    public native void setCoordinateFormat(JavaScriptObject coordinateFormat);
+
     /**
      * Return the projection that is used to report the mouse position.
      * 

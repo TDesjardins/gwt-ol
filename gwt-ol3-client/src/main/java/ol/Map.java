@@ -10,6 +10,7 @@ import ol.event.Event;
 import ol.gwt.TypedObject;
 import ol.interaction.Interaction;
 import ol.layer.Base;
+import ol.layer.Group;
 
 /**
  * The map is the core component of OpenLayers. For a map to render, a view, one
@@ -114,6 +115,22 @@ public class Map extends Object {
      * @return {ol.Pixel} Pixel.
      */
     public native Pixel getEventPixel(Event event);
+
+
+    /**
+     * Get the map interactions. Modifying this collection changes the interactions associated with the map.
+     * Interactions are used for e.g. pan, zoom and rotate.
+     *
+     * @return map interactions
+     */
+    public native Collection<Interaction> getInteractions();
+
+    /**
+     * Get the layergroup associated with this map.
+     *
+     * @return layergroup associated with this map
+     */
+    public native Group getLayerGroup();
 
     /**
      * Get the collection of layers associated with this map.
@@ -244,6 +261,11 @@ public class Map extends Object {
      * browser animation frame.
      */
     public native void render();
+
+    /**
+     * Requests an immediate render in a synchronous manner.
+     */
+    public native void renderSync();
 
     /**
      * Set the size of this map.

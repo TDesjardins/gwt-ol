@@ -19,8 +19,6 @@ import ol.interaction.DragAndDropEvent;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
 import ol.layer.Tile;
-import ol.source.MapQuest;
-import ol.source.MapQuestOptions;
 import ol.source.Stamen;
 import ol.source.StamenOptions;
 import ol.layer.LayerOptions;
@@ -38,16 +36,6 @@ public class TileExample implements Example {
      */
     @Override
     public void show() {
-
-        // create a MapQuest-layer
-        LayerOptions mapQuestLayerOptions = OLFactory.createOptions();
-
-        MapQuestOptions mapQuestOptions = OLFactory.createOptions();
-        mapQuestOptions.setLayer("hyb");
-
-        MapQuest mapQuestSource = new MapQuest(mapQuestOptions);
-        mapQuestLayerOptions.setSource(mapQuestSource);
-        Tile mapQuestLayer = new Tile(mapQuestLayerOptions);
 
         LayerOptions stamenLayerOptions = OLFactory.createOptions();
 
@@ -75,7 +63,6 @@ public class TileExample implements Example {
         Map map = new Map(mapOptions);
 
         stamenLayer.setOpacity(0.5f);
-        map.addLayer(mapQuestLayer);
 
         // add some controls
         map.addControl(new ScaleLine());
