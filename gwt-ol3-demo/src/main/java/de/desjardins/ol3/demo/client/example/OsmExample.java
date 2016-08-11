@@ -1,5 +1,6 @@
 package de.desjardins.ol3.demo.client.example;
 
+import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
@@ -9,13 +10,12 @@ import ol.View;
 import ol.control.Attribution;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
-import de.desjardins.ol3.demo.client.utils.DemoUtils;
+import ol.layer.LayerOptions;
 import ol.layer.Tile;
 import ol.source.Osm;
 import ol.source.TileDebug;
 import ol.source.TileDebugOptions;
 import ol.source.XyzOptions;
-import ol.layer.LayerOptions;
 
 /**
  * Example with OSM layer and tile debug layer.

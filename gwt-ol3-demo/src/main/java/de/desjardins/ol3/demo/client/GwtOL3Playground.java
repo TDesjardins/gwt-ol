@@ -1,7 +1,6 @@
 package de.desjardins.ol3.demo.client;
 
 import com.google.gwt.core.client.EntryPoint;
-
 import de.desjardins.ol3.demo.client.example.OL3ExampleType;
 
 /**

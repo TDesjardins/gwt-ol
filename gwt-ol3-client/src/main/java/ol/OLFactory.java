@@ -1,8 +1,5 @@
 package ol;
 
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
-
 import com.google.gwt.core.client.JavaScriptObject;
 import ol.color.Color;
 import ol.control.Control;
@@ -20,7 +17,8 @@ import ol.control.Zoom;
 import ol.control.ZoomSlider;
 import ol.control.ZoomToExtent;
 import ol.control.ZoomToExtentOptions;
-import ol.format.*;
+import ol.format.GeoJSON;
+import ol.format.GeoJSONOptions;
 import ol.geom.Circle;
 import ol.geom.Geometry;
 import ol.geom.GeometryCollection;
@@ -79,6 +77,9 @@ import ol.style.Text;
 import ol.style.TextOptions;
 import ol.tilegrid.TileGrid;
 import ol.tilegrid.TileGridOptions;
+
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 /**
  * Factory to create GWT-OL3 instances from JavaScript based on OL3-Interfaces.
@@ -462,10 +463,6 @@ public final class OLFactory {
     	return new $wnd.ol.source.ImageWMS(imageWMSOptions);
     }-*/;
 
-    public static native Select createSelect(SelectOptions selectOptions) /*-{
-		return new $wnd.ol.interaction.Select(selectOptions);
-	}-*/;
-    
     public static native KeyboardPan createKeyboardPan() /*-{
     	return new $wnd.ol.interaction.KeyboardPan();
     }-*/;
