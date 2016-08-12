@@ -1,7 +1,6 @@
 package ol.control;
 
 import com.google.gwt.core.client.JavaScriptObject;
-
 import jsinterop.annotations.JsType;
 import ol.proj.Projection;
 

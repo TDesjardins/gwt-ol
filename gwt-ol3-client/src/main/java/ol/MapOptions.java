@@ -4,6 +4,7 @@ import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
 import ol.control.Control;
+import ol.interaction.Interaction;
 import ol.layer.Base;
 
 /**
@@ -46,5 +47,8 @@ public interface MapOptions extends Options {
      */
     @JsProperty
     void setView(View view);
+
+    @JsProperty
+    void setInteractions(Interaction[] interactions);
 
 }

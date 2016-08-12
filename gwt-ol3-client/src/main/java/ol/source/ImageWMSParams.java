@@ -17,6 +17,12 @@ public interface ImageWMSParams {
      */
     @JsProperty
     void setLayers(String layers);
+
+    @JsProperty(name = "WIDTH")
+    void setWidth(String width);
+
+    @JsProperty(name = "HEIGHT")
+    void setHeight(String height);
     
 }
 

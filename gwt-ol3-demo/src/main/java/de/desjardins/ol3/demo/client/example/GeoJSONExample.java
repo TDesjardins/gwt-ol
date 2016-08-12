@@ -4,7 +4,6 @@
 package de.desjardins.ol3.demo.client.example;
 
 import com.google.gwt.core.client.JavaScriptObject;
-
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.Collection;
 import ol.Coordinate;

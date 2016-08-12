@@ -1,8 +1,6 @@
 package ol;
 
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
-
+import com.google.gwt.core.client.JavaScriptObject;
 import ol.color.Color;
 import ol.control.Control;
 import ol.control.FullScreen;
@@ -19,7 +17,8 @@ import ol.control.Zoom;
 import ol.control.ZoomSlider;
 import ol.control.ZoomToExtent;
 import ol.control.ZoomToExtentOptions;
-import ol.format.*;
+import ol.format.GeoJSON;
+import ol.format.GeoJSONOptions;
 import ol.geom.Circle;
 import ol.geom.Geometry;
 import ol.geom.GeometryCollection;
@@ -60,12 +59,16 @@ import ol.source.Stamen;
 import ol.source.StamenOptions;
 import ol.source.TileDebug;
 import ol.source.TileDebugOptions;
+import ol.source.TileWMS;
+import ol.source.TileWMSOptions;
 import ol.source.VectorOptions;
 import ol.source.Xyz;
 import ol.source.XyzOptions;
 import ol.style.CircleOptions;
 import ol.style.Fill;
 import ol.style.FillOptions;
+import ol.style.RegularShape;
+import ol.style.RegularShapeOptions;
 import ol.style.Stroke;
 import ol.style.StrokeOptions;
 import ol.style.Style;
@@ -74,6 +77,9 @@ import ol.style.Text;
 import ol.style.TextOptions;
 import ol.tilegrid.TileGrid;
 import ol.tilegrid.TileGridOptions;
+
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 /**
  * Factory to create GWT-OL3 instances from JavaScript based on OL3-Interfaces.
@@ -457,10 +463,6 @@ public final class OLFactory {
     	return new $wnd.ol.source.ImageWMS(imageWMSOptions);
     }-*/;
 
-    public static native Select createSelect(SelectOptions selectOptions) /*-{
-		return new $wnd.ol.interaction.Select(selectOptions);
-	}-*/;
-    
     public static native KeyboardPan createKeyboardPan() /*-{
     	return new $wnd.ol.interaction.KeyboardPan();
     }-*/;
@@ -1154,5 +1156,46 @@ public final class OLFactory {
     public static native ZoomToExtent createZoomToExtent(ZoomToExtentOptions options) /*-{
         return new $wnd.ol.control.ZoomToExtent(options);
     }-*/;
+
+
+    /**
+     * Creates a {@link Select} interaction.
+     * @param options
+     *          options
+     * @return {@link Select}
+     */
+    public static native Select createSelect(SelectOptions options) /*-{
+        return new $wnd.ol.interaction.Select(options);
+    }-*/;
+
+    /**
+     * Creates a {@link ol.style.RegularShape} style.
+     *
+     * @param regularShapeOptions
+     *            {@link RegularShapeOptions}
+     * @return {@link ol.style.RegularShape}
+     */
+    public static native RegularShape createRegularShape(RegularShapeOptions regularShapeOptions) /*-{
+        return new $wnd.ol.style.RegularShape(regularShapeOptions);
+    }-*/;
+
+    public static native TileWMS createTileWMSSource(TileWMSOptions tileWmsOptions) /*-{
+        return new $wnd.ol.source.TileWMS(tileWmsOptions);
+    }-*/;
+
+    public static native Projection get(String proj) /*-{
+        return new $wnd.ol.proj.get(proj);
+    }-*/;
+
+    public static native JavaScriptObject createEventFunction(Executor t) /*-{
+        return function (selectevent) {
+            t.action(selectevent);
+        };
+    }-*/;
+
+    public static JavaScriptObject createEventFunction(GenericFunction genericFunction){
+        Executor executor = new Executor(genericFunction);
+        return createEventFunction(executor);
+    }
 
 }

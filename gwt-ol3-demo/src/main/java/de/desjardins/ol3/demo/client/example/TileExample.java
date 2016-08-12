@@ -1,7 +1,7 @@
 package de.desjardins.ol3.demo.client.example;
 
 import com.google.gwt.user.client.Window;
-
+import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
@@ -11,17 +11,15 @@ import ol.View;
 import ol.control.Attribution;
 import ol.control.Rotate;
 import ol.control.ScaleLine;
-
-import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.event.EventListener;
 import ol.interaction.DragAndDrop;
 import ol.interaction.DragAndDropEvent;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
+import ol.layer.LayerOptions;
 import ol.layer.Tile;
 import ol.source.Stamen;
 import ol.source.StamenOptions;
-import ol.layer.LayerOptions;
 
 /**
  * Example with Tile-layers.

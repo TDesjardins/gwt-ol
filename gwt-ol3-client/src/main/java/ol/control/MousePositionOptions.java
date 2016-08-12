@@ -1,9 +1,8 @@
 package ol.control;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-import com.google.gwt.core.client.JavaScriptObject;
-
 import ol.proj.Projection;
 
 /**

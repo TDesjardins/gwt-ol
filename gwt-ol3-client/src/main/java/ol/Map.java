@@ -1,9 +1,7 @@
 package ol;
 
 import com.google.gwt.dom.client.Element;
-
 import jsinterop.annotations.JsProperty;
-
 import jsinterop.annotations.JsType;
 import ol.control.Control;
 import ol.event.Event;
