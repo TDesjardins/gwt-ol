@@ -2,9 +2,7 @@ package ol.style;
 
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-
 import ol.Options;
-import ol.geom.Point;
 
 /**
  * Options for the {@link Style}.
@@ -52,7 +50,7 @@ public interface StyleOptions extends Options {
      *
      * @param text {@Text text}
      */
-    @JsProperty(name = "text")
+    @JsProperty
     void setText(Text text);
 
 }

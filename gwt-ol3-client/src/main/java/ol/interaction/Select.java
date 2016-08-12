@@ -22,7 +22,7 @@ import ol.Feature;
 @JsType(isNative = true)
 public class Select extends Interaction {
 
-    @JsProperty(name = "options")
+    @JsProperty
     public native void setOptions(SelectOptions options);
 
 	public native Collection<Feature> getFeatures();

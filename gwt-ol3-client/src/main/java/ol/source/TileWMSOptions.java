@@ -1,13 +1,8 @@
 /**
- * $$Id$$
  *
  * @author mribeiro
  * @date 07/06/16 18:04
- * <p/>
- * Copyright (C) 2016 MRibeiro
- * marco.lob@gmail.com
- * <p/>
- * All rights reserved.
+ *
  */
 package ol.source;
 
@@ -26,21 +21,21 @@ public interface TileWMSOptions extends Options{
      *
      * @param url
      */
-    @JsProperty(name = "url")
+    @JsProperty
     void setUrl(String url);
 
     /**
      *
      * @param serverType
      */
-    @JsProperty(name = "serverType")
+    @JsProperty
     void setServerType(String serverType);
 
     /**
      *
      * @param crossOrigin
      */
-    @JsProperty(name = "crossOrigin")
+    @JsProperty
     void setCrossOrigin(String crossOrigin);
 
     /**
@@ -55,7 +50,7 @@ public interface TileWMSOptions extends Options{
      *
      * @param projection
      */
-    @JsProperty(name = "projection")
+    @JsProperty
     void setProjection(Projection projection);
 
 }

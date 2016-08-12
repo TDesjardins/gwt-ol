@@ -15,23 +15,19 @@ import ol.layer.Layer;
 @JsType(isNative = true)
 public interface SelectOptions extends Options{
 
-    @JsProperty(name = "style")
+    @JsProperty
     void setStyle(GenericFunction styleFunction);
 
-//    @JsProperty(name = "style")
-//    @JsProperty
-//    void setStyle(Style selectStyle);
-
-    @JsProperty(name = "layers")
+    @JsProperty
     void setLayers(Layer[] layers);
 
-    @JsProperty(name = "removeCondition")
+    @JsProperty
     void setRemoveCondition(GenericFunction function);
 
-    @JsProperty(name = "multi")
+    @JsProperty
     void setMulti(boolean multi);
 
-    @JsProperty(name = "toggleCondition")
+    @JsProperty
     void setToogleCondition(GenericFunction function);
 
 }

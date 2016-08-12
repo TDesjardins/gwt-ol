@@ -1,13 +1,8 @@
 /**
- * $$Id$$
  *
  * @author mribeiro
  * @date 08/06/16 10:30
- * <p/>
- * Copyright (C) 2016 MRibeiro
- * marco.lob@gmail.com
- * <p/>
- * All rights reserved.
+ *
  */
 package ol;
 
