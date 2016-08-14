@@ -1,5 +1,6 @@
 package de.desjardins.ol3.demo.client.example;
 
+import com.google.gwt.dom.client.Element;
 import ol.Coordinate;
 import ol.Graticule;
 import ol.Map;
@@ -23,7 +24,7 @@ public class GraticuleExample implements Example {
      * @see de.desjardins.ol3.demo.client.example.Example#show()
      */
     @Override
-    public void show() {
+    public void show(Element element) {
 
         // create an OSM-layer
         XyzOptions osmSourceOptions = OLFactory.createOptions();
@@ -44,7 +45,7 @@ public class GraticuleExample implements Example {
 
         // create the map
         MapOptions mapOptions = OLFactory.createOptions();
-        mapOptions.setTarget("map");
+        mapOptions.setTargetElement(element);
         mapOptions.setView(view);
 
         Map map = OLFactory.createMap(mapOptions);

@@ -1,5 +1,6 @@
 package de.desjardins.ol3.demo.client.example;
 
+import com.google.gwt.dom.client.Element;
 import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
@@ -31,7 +32,7 @@ public class OverlayExample implements Example {
      * @see de.desjardins.ol3.demo.client.example.Example#show()
      */
     @Override
-    public void show() {
+    public void show(Element element) {
         
         // create a OSM-layer
         XyzOptions osmSourceOptions = OLFactory.createOptions();
@@ -53,7 +54,7 @@ public class OverlayExample implements Example {
         
         // create the map
         MapOptions mapOptions = OLFactory.createOptions();
-        mapOptions.setTarget("map");
+        mapOptions.setTargetElement(element);
         mapOptions.setView(view);
 
         Map map = new Map(mapOptions);
@@ -73,18 +74,16 @@ public class OverlayExample implements Example {
         map.addInteraction(OLFactory.createKeyboardPan());
         map.addInteraction(OLFactory.createKeyboardZoom());
 
-        DivElement element = Document.get().createDivElement();
-        element.setClassName("overlay-font");
-        element.setInnerText("Created with GWT SDK " + GWT.getVersion());
+        DivElement overlay = Document.get().createDivElement();
+        overlay.setClassName("overlay-font");
+        overlay.setInnerText("Created with GWT SDK " + GWT.getVersion());
         
         OverlayOptions overlayOptions = OLFactory.createOptions();
-        overlayOptions.setElement(element);
+        overlayOptions.setElement(overlay);
         overlayOptions.setPosition(transformedCenterCoordinate);
         overlayOptions.setOffset(OLFactory.createPixel(-300, 0));
-        
-        Overlay overlay = new Overlay(overlayOptions);
-        
-        map.addOverlay(overlay);
+
+        map.addOverlay(new Overlay(overlayOptions));
         
     }
     

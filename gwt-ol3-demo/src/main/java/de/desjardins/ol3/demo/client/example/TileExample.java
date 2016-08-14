@@ -1,5 +1,6 @@
 package de.desjardins.ol3.demo.client.example;
 
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Window;
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.Coordinate;
@@ -33,7 +34,7 @@ public class TileExample implements Example {
      * @see de.desjardins.ol3.demo.client.example.Example#show()
      */
     @Override
-    public void show() {
+    public void show(Element element) {
 
         LayerOptions stamenLayerOptions = OLFactory.createOptions();
 
@@ -55,7 +56,7 @@ public class TileExample implements Example {
 
         // create the map
         MapOptions mapOptions = OLFactory.createOptions();
-        mapOptions.setTarget("map");
+        mapOptions.setTargetElement(element);
         mapOptions.setView(view);
 
         Map map = new Map(mapOptions);

@@ -21,3 +21,7 @@ body {
 	letter-spacing: 1px;
 	text-shadow: 0px 0px 10px #F00;
 }
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelContent {
+	box-sizing: border-box;
+}

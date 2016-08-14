@@ -1,5 +1,6 @@
 package de.desjardins.ol3.demo.client.example;
 
+import com.google.gwt.dom.client.Element;
 import ol.OLUtil;
 
 import ol.Coordinate;
@@ -27,7 +28,7 @@ public class XyzExample implements Example {
      * @see de.desjardins.ol3.demo.client.example.Example#show()
      */
     @Override
-    public void show() {
+    public void show(Element element) {
         
     	XyzOptions xyzOptions = OLFactory.createOptions();
     	xyzOptions.setUrl("http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}");
@@ -58,7 +59,7 @@ public class XyzExample implements Example {
         
         // create the map
         MapOptions mapOptions = OLFactory.createOptions();
-        mapOptions.setTarget("map");
+        mapOptions.setTargetElement(element);
         mapOptions.setView(view);
 
         Map map = new Map(mapOptions);

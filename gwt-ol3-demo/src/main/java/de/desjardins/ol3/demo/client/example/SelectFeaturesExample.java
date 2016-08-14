@@ -3,6 +3,7 @@
  */
 package de.desjardins.ol3.demo.client.example;
 
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Window;
 
 import de.desjardins.ol3.demo.client.constants.DemoConstants;
@@ -43,7 +44,7 @@ public class SelectFeaturesExample implements Example {
     /* (non-Javadoc)
      * @see de.desjardins.ol3.demo.client.example.Example#show() */
     @Override
-    public void show() {
+    public void show(Element element) {
 
     	Coordinate centerCoordinate = OLFactory.createCoordinate(13.37, 52.52);
         Coordinate transformedMidPoint = OLUtil.transform(centerCoordinate, DemoConstants.EPSG_4326, DemoConstants.EPSG_3857);

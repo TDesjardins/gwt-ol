@@ -1,5 +1,6 @@
 package de.desjardins.ol3.demo.client.example;
 
+import com.google.gwt.dom.client.Element;
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
 
 import ol.Attribution;
@@ -31,7 +32,7 @@ public class StaticImageExample implements Example {
      * @see de.desjardins.ol3.demo.client.example.Example#show()
      */
     @Override
-    public void show() {
+    public void show(Element element) {
         
         ProjectionOptions projectionOptions = OLFactory.createOptions();
         
@@ -75,7 +76,7 @@ public class StaticImageExample implements Example {
         View view = new View(viewOptions);
         
         MapOptions mapOptions = OLFactory.createOptions();
-        mapOptions.setTarget("map");
+        mapOptions.setTargetElement(element);
         mapOptions.setView(view);
         mapOptions.setLayers(layers);
         
