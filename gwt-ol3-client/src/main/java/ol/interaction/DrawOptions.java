@@ -11,7 +11,7 @@ import ol.style.Style;
 
 /**
  * Options for {@link Draw}.
- * 
+ *
  * @author sbaumhekel
  *
  */
@@ -44,7 +44,7 @@ public interface DrawOptions extends Options {
      * @param maxPoints maxPoints
      */
     @JsProperty
-    void setMaxPoints(Integer maxPoints);
+    void setMaxPoints(int maxPoints);
 
     /**
      * The number of points that must be drawn before a polygon ring or line
