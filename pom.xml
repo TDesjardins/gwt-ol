@@ -64,6 +64,16 @@
                     <extensions>true</extensions>
                     <configuration>
                         <skipModule>true</skipModule>
+                    	<compilerArgs>
+                            <arg>-generateJsInteropExports</arg>
+                        </compilerArgs>
+                        <useCompilerArgsForTests>true</useCompilerArgsForTests>
+                        <codeserverArgs>
+                            <arg>-generateJsInteropExports</arg>
+                        </codeserverArgs>
+                        <devmodeArgs>
+                            <arg>-generateJsInteropExports</arg>
+                        </devmodeArgs>
                     </configuration>
                 </plugin>
             </plugins>
