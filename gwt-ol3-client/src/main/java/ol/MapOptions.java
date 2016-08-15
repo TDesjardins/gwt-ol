@@ -1,6 +1,5 @@
 package ol;
 
-import com.google.gwt.dom.client.Element;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
@@ -22,13 +21,10 @@ public interface MapOptions extends Options {
 
     @JsProperty
     String getTarget();
-    
+
     @JsProperty
     void setTarget(String target);
 
-    @JsProperty(name = "target")
-    void setTargetElement(Element element);
-    
     @JsProperty
     void setLayers(Collection<Base> layers);
 
@@ -46,7 +42,7 @@ public interface MapOptions extends Options {
     /**
      * Set the map's view. No layer sources will be fetched unless this is
      * specified at construction time or through ol.Map#setView.
-     * 
+     *
      * @param view {@link View}
      */
     @JsProperty

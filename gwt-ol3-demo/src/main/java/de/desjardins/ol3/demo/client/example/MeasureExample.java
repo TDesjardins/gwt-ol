@@ -1,6 +1,5 @@
 package de.desjardins.ol3.demo.client.example;
 
-import com.google.gwt.dom.client.Element;
 import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
@@ -32,7 +31,7 @@ public class MeasureExample implements Example {
      * @see de.desjardins.ol3.demo.client.example.Example#show()
      */
     @Override
-    public void show(Element element) {
+    public void show(String exampleId) {
 
         // create a OSM-layer
         XyzOptions osmSourceOptions = OLFactory.createOptions();
@@ -54,7 +53,7 @@ public class MeasureExample implements Example {
 
         // create the map
         MapOptions mapOptions = OLFactory.createOptions();
-        mapOptions.setTargetElement(element);
+        mapOptions.setTarget(exampleId);
         mapOptions.setView(view);
 
         Map map = OLFactory.createMap(mapOptions);

@@ -4,7 +4,6 @@
 package de.desjardins.ol3.demo.client.example;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.dom.client.Element;
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.Collection;
 import ol.Coordinate;
@@ -39,7 +38,7 @@ public class GeoJSONExample implements Example {
     /* (non-Javadoc)
      * @see de.desjardins.ol3.demo.client.example.Example#show() */
     @Override
-    public void show(Element element) {
+    public void show(String exampleId) {
 
         // create linestring
         Coordinate coordinate1 = OLFactory.createCoordinate(4e6, 2e6);
@@ -89,7 +88,7 @@ public class GeoJSONExample implements Example {
 
         // create the map
         MapOptions mapOptions = OLFactory.createOptions();
-        mapOptions.setTargetElement(element);
+        mapOptions.setTarget(exampleId);
         mapOptions.setView(view);
         Collection<Base> lstLayer = new Collection<Base>();
         lstLayer.push(osmLayer);

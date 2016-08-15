@@ -1,6 +1,5 @@
 package de.desjardins.ol3.demo.client.example;
 
-import com.google.gwt.dom.client.Element;
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
 
 import ol.Coordinate;
@@ -23,7 +22,7 @@ import ol.source.ImageWMSParams;
 
 /**
  * Example with WMS layers.
- * 
+ *
  * @author Tino Desjardins
  *
  */
@@ -33,11 +32,11 @@ public class WmsExample implements Example {
      * @see de.desjardins.ol3.demo.client.example.Example#show()
      */
     @Override
-    public void show(Element element) {
-        
+    public void show(String exampleId) {
+
         ImageWMSParams imageWMSParams = OLFactory.createOptions();
         imageWMSParams.setLayers("ch.swisstopo.geologie-geotechnik-gk500-gesteinsklassierung,ch.bafu.schutzgebiete-paerke_nationaler_bedeutung");
-        
+
         ImageWMSOptions imageWMSOptions = OLFactory.createOptions();
         imageWMSOptions.setUrl("http://wms.geo.admin.ch/");
         imageWMSOptions.setParams(imageWMSParams);
@@ -47,33 +46,33 @@ public class WmsExample implements Example {
 
         LayerOptions layerOptions = OLFactory.createOptions();
         layerOptions.setSource(imageWMSSource);
-        
+
         Image wmsLayer = new Image(layerOptions);
-        
+
         // create a projection
         ProjectionOptions projectionOptions = OLFactory.createOptions();
         projectionOptions.setCode("EPSG:21781");
         projectionOptions.setUnits("m");
-        
+
         Projection projection = new Projection(projectionOptions);
-        
+
         // create a view
         ViewOptions viewOptions = OLFactory.createOptions();
         viewOptions.setProjection(projection);
         View view = new View(viewOptions);
 
         Coordinate centerCoordinate = OLFactory.createCoordinate(660000, 190000);
-        
+
         view.setCenter(centerCoordinate);
         view.setZoom(9);
 
         // create the map
         MapOptions mapOptions = OLFactory.createOptions();
-        mapOptions.setTargetElement(element);
+        mapOptions.setTarget(exampleId);
         mapOptions.setView(view);
 
         Map map = new Map(mapOptions);
-        
+
         map.addLayer(wmsLayer);
 
         // add some controls
@@ -84,8 +83,8 @@ public class WmsExample implements Example {
         map.addInteraction(new KeyboardPan());
         map.addInteraction(new KeyboardZoom());
         map.addControl(new Rotate());
-        
+
     }
-    
+
 }
 

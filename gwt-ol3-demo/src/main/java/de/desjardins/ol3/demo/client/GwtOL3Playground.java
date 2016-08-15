@@ -27,18 +27,23 @@ public class GwtOL3Playground implements EntryPoint {
     }
 
     private static class LazyExampleWidget extends SimplePanel {
+
         private final OL3ExampleType example;
         private boolean initialized = false;
+
         private LazyExampleWidget(OL3ExampleType example) {
             this.example = example;
-            setWidth("100%"); setHeight("100%");
+            this.setSize("100%", "100%");
+            this.getElement().setId(example.getExample().toString());
         }
+
         @Override public void setVisible(boolean visible) {
             if (visible && !initialized) {
-                Scheduler.get().scheduleDeferred(() -> example.getExample().show(getElement()));
+                Scheduler.get().scheduleDeferred(() -> example.getExample().show(example.getExample().toString()));
                 initialized = true;
             }
             super.setVisible(visible);
         }
+
     }
 }
