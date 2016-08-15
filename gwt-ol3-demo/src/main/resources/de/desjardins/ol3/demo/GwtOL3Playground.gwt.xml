@@ -2,6 +2,7 @@
 <module rename-to='gwtol3playground'>
     <inherits name='com.google.gwt.user.User'/>
     <inherits name='GwtOL3'/>
+    <inherits name="com.google.gwt.user.theme.chrome.Chrome"/>
 
     <entry-point class='de.desjardins.ol3.demo.client.GwtOL3Playground'/>
 </module>

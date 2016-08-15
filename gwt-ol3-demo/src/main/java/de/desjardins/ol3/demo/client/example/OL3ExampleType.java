@@ -1,7 +1,5 @@
 package de.desjardins.ol3.demo.client.example;
 
-import de.desjardins.ol3.demo.client.example.Example;
-
 /**
  * Provided example types.
  *
@@ -22,10 +20,9 @@ public enum OL3ExampleType {
     WmsExample(new WmsExample()),
     XyzExample(new XyzExample());
 
+    private transient Example example;
     
-    private Example example;
-    
-    private OL3ExampleType(Example example) {
+    OL3ExampleType(Example example) {
         this.example = example;
     }
     

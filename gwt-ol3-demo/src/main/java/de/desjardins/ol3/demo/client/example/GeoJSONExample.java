@@ -4,6 +4,7 @@
 package de.desjardins.ol3.demo.client.example;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.dom.client.Element;
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.Collection;
 import ol.Coordinate;
@@ -38,7 +39,7 @@ public class GeoJSONExample implements Example {
     /* (non-Javadoc)
      * @see de.desjardins.ol3.demo.client.example.Example#show() */
     @Override
-    public void show() {
+    public void show(Element element) {
 
         // create linestring
         Coordinate coordinate1 = OLFactory.createCoordinate(4e6, 2e6);
@@ -62,7 +63,7 @@ public class GeoJSONExample implements Example {
         // show converted features
         Collection<Feature> lstFeatures = new Collection<Feature>();
         lstFeatures.push(featureGeoJSON);
-        
+
         VectorOptions vectorSourceOptions = OLFactory.createOptions();
         vectorSourceOptions.setFeatures(OLFactory.<Feature[], Collection<Feature>> createObject2(lstFeatures));
         Vector vectorSource = new Vector(vectorSourceOptions);
@@ -74,10 +75,10 @@ public class GeoJSONExample implements Example {
         // create a OSM-layer
         XyzOptions osmSourceOptions = OLFactory.createOptions();
         Osm osmSource = new Osm(osmSourceOptions);
-        
+
         LayerOptions osmLayerOptions = OLFactory.createOptions();
         osmLayerOptions.setSource(osmSource);
-        
+
         Tile osmLayer = new Tile(osmLayerOptions);
 
         // create a view
@@ -88,7 +89,7 @@ public class GeoJSONExample implements Example {
 
         // create the map
         MapOptions mapOptions = OLFactory.createOptions();
-        mapOptions.setTarget("map");
+        mapOptions.setTargetElement(element);
         mapOptions.setView(view);
         Collection<Base> lstLayer = new Collection<Base>();
         lstLayer.push(osmLayer);

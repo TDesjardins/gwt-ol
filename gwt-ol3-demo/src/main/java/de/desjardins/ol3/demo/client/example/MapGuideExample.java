@@ -1,5 +1,6 @@
 package de.desjardins.ol3.demo.client.example;
 
+import com.google.gwt.dom.client.Element;
 import de.desjardins.ol3.demo.client.utils.DemoUtils;
 import ol.*;
 import ol.Collection;
@@ -20,7 +21,7 @@ public class MapGuideExample implements Example {
      * @see de.desjardins.ol3.demo.client.example.Example#show()
      */
     @Override
-    public void show() {
+    public void show(Element element) {
     	
     	// create a projection
         Projection projection = OLUtil.getProjection("EPSG:4326");
@@ -56,7 +57,7 @@ public class MapGuideExample implements Example {
         
         // create the map
         MapOptions mapOptions = OLFactory.createOptions();
-        mapOptions.setTarget("map");
+        mapOptions.setTargetElement(element);
         mapOptions.setView(view);        
         Collection<Base> lstLayer= OLFactory.createCollection();
         lstLayer.push(MapGuideLayer);

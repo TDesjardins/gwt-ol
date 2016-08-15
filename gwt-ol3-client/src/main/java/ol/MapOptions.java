@@ -1,5 +1,6 @@
 package ol;
 
+import com.google.gwt.dom.client.Element;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
@@ -24,6 +25,9 @@ public interface MapOptions extends Options {
     
     @JsProperty
     void setTarget(String target);
+
+    @JsProperty(name = "target")
+    void setTargetElement(Element element);
     
     @JsProperty
     void setLayers(Collection<Base> layers);
