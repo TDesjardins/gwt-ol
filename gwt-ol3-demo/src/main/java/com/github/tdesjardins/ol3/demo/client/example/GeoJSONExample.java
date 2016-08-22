@@ -1,10 +1,11 @@
 /**
  *
  */
-package de.desjardins.ol3.demo.client.example;
+package com.github.tdesjardins.ol3.demo.client.example;
 
+import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
 import com.google.gwt.core.client.JavaScriptObject;
-import de.desjardins.ol3.demo.client.utils.DemoUtils;
+
 import ol.Collection;
 import ol.Coordinate;
 import ol.Feature;

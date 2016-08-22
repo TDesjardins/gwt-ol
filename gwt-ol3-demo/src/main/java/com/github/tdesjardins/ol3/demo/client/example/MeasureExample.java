@@ -1,31 +1,31 @@
-package de.desjardins.ol3.demo.client.example;
+package com.github.tdesjardins.ol3.demo.client.example;
 
 import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
 import ol.OLUtil;
-import ol.Overlay;
-import ol.OverlayOptions;
 import ol.View;
 import ol.control.Attribution;
+import ol.event.MeasureEvent;
+import ol.event.MeasureListener;
+import ol.gwt.Measure;
 
+import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.DivElement;
-import com.google.gwt.dom.client.Document;
-import de.desjardins.ol3.demo.client.utils.DemoUtils;
+
 import ol.layer.Tile;
 import ol.source.Osm;
 import ol.source.XyzOptions;
 import ol.layer.LayerOptions;
 
 /**
- * Example with OSM layer and tile debug layer.
+ * Example measuring on an OSM layer.
  *
  * @author Tino Desjardins
  *
  */
-public class OverlayExample implements Example {
+public class MeasureExample implements Example {
 
     /* (non-Javadoc)
      * @see de.desjardins.ol3.demo.client.example.Example#show()
@@ -36,16 +36,16 @@ public class OverlayExample implements Example {
         // create a OSM-layer
         XyzOptions osmSourceOptions = OLFactory.createOptions();
 
-        Osm osmSource = new Osm(osmSourceOptions);
+        Osm osmSource = OLFactory.createOsm(osmSourceOptions);
         LayerOptions osmLayerOptions = OLFactory.createOptions();
         osmLayerOptions.setSource(osmSource);
 
-        Tile osmLayer = new Tile(osmLayerOptions);
+        Tile osmLayer = OLFactory.createTileLayer(osmLayerOptions);
 
         // create a view
-        View view = new View();
+        View view = OLFactory.createView();
 
-        Coordinate centerCoordinate = OLFactory.createCoordinate(2.3, 51.507222);
+        Coordinate centerCoordinate = OLFactory.createCoordinate(-0.1275, 51.507222);
         Coordinate transformedCenterCoordinate = OLUtil.transform(centerCoordinate, "EPSG:4326", "EPSG:3857");
 
         view.setCenter(transformedCenterCoordinate);
@@ -56,7 +56,7 @@ public class OverlayExample implements Example {
         mapOptions.setTarget(exampleId);
         mapOptions.setView(view);
 
-        Map map = new Map(mapOptions);
+        Map map = OLFactory.createMap(mapOptions);
 
         map.addLayer(osmLayer);
 
@@ -64,7 +64,7 @@ public class OverlayExample implements Example {
         map.addControl(OLFactory.createScaleLine());
         DemoUtils.addDefaultControls(map.getControls());
 
-        Attribution attribution = new Attribution();
+        Attribution attribution = OLFactory.createAttributionControl();
         attribution.setCollapsed(true);
 
         map.addControl(attribution);
@@ -73,16 +73,18 @@ public class OverlayExample implements Example {
         map.addInteraction(OLFactory.createKeyboardPan());
         map.addInteraction(OLFactory.createKeyboardZoom());
 
-        DivElement overlay = Document.get().createDivElement();
-        overlay.setClassName("overlay-font");
-        overlay.setInnerText("Created with GWT SDK " + GWT.getVersion());
+		// add measurement functionality to the map
+		final Measure measure = new Measure(map);
+		// start measuring immediately
+		measure.startMeasureLength(new MeasureListener() {
 
-        OverlayOptions overlayOptions = OLFactory.createOptions();
-        overlayOptions.setElement(overlay);
-        overlayOptions.setPosition(transformedCenterCoordinate);
-        overlayOptions.setOffset(OLFactory.createPixel(-300, 0));
+			@Override
+			public void onMeasure(MeasureEvent evt) {
+				// log the measured length
+				GWT.log("measure: " + evt.getMeasure());
+			}
 
-        map.addOverlay(new Overlay(overlayOptions));
+		}, true, true);
 
     }
 

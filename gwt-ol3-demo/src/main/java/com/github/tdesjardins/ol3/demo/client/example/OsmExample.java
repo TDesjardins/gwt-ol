@@ -1,6 +1,7 @@
-package de.desjardins.ol3.demo.client.example;
+package com.github.tdesjardins.ol3.demo.client.example;
 
-import de.desjardins.ol3.demo.client.utils.DemoUtils;
+import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
+
 import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;

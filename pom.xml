@@ -10,9 +10,9 @@
         <version>9</version>
     </parent>
 
-    <groupId>de.desjardins.ol3</groupId>
+    <groupId>com.github.tdesjardins</groupId>
     <artifactId>gwt-ol3</artifactId>
-    <version>2.4.0</version>
+    <version>2.5.0</version>
     <packaging>pom</packaging>
 
     <name>GWT OpenLayers 3</name>
@@ -38,8 +38,8 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/TDesjardins/gwt-ol3.git</connection>
-        <developerConnection>scm:git:git://github.com/TDesjardins/gwt-ol3.git</developerConnection>
+        <connection>scm:git:https://github.com/TDesjardins/gwt-ol3.git</connection>
+        <developerConnection>scm:git:git@github.com/TDesjardins/gwt-ol3.git</developerConnection>
         <url>https://github.com/TDesjardins/gwt-ol3</url>
         <tag>HEAD</tag>
     </scm>

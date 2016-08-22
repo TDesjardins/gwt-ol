@@ -1,4 +1,4 @@
-package de.desjardins.ol3.demo.client.utils;
+package com.github.tdesjardins.ol3.demo.client.utils;
 
 import ol.Collection;
 import ol.Coordinate;

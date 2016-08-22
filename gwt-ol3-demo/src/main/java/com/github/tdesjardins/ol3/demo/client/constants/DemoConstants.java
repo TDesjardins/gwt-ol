@@ -1,4 +1,4 @@
-package de.desjardins.ol3.demo.client.constants;
+package com.github.tdesjardins.ol3.demo.client.constants;
 
 /**
  * 

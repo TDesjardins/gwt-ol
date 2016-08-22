@@ -1,12 +1,12 @@
-package de.desjardins.ol3.demo.client;
+package com.github.tdesjardins.ol3.demo.client;
 
+import com.github.tdesjardins.ol3.demo.client.example.OL3ExampleType;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
-import de.desjardins.ol3.demo.client.example.OL3ExampleType;
 
 /**
  * EntryPoint for playing with GwtOL3-Features.
