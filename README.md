@@ -14,3 +14,6 @@ You can build (`mvn package`) and run (`mvn gwt:devmode`) the application using 
 If you want to build the application without Maven please consider the following hints: 
 
   * Building the application with older GWT-SDK than 2.8.0-beta1 (e.g. SDK 2.7.0) will not work. You can download the SDK 2.8.0-RC2 [here](http://goo.gl/TkKVlY).
+
+## Live example
+http://tdesjardins.github.io/gwt-ol3/
