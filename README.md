@@ -19,3 +19,6 @@ If you want to build the application without Maven please consider the following
   * Building the application with older GWT-SDK than 2.7.0 (e.g. SDK 2.6.1) will not work. You can download the latest SDK at http://www.gwtproject.org/versions.html
 
   * It is essential to compile the application with compiler args `-XjsInteropMode JS`.
+
+## Live example
+http://tdesjardins.github.io/gwt-ol3/
