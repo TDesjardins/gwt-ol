@@ -19,7 +19,7 @@ public class GwtOL3Playground implements EntryPoint {
     public void onModuleLoad() {
 
         // choose your example
-        TabLayoutPanel tabs = new TabLayoutPanel(20, Style.Unit.PX);
+        TabLayoutPanel tabs = new TabLayoutPanel(27, Style.Unit.PX);
         for (OL3ExampleType example : OL3ExampleType.values()) {
             tabs.add(new LazyExampleWidget(example), example.name().replace("Example", ""));
         }
