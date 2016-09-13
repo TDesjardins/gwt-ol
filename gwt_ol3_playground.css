@@ -1,6 +1,7 @@
 /** Add css rules here for your application. */
 html, body {
 	height: 100%;
+	font-family: 'Arial', sans-serif;
 }
 
 body {
@@ -22,6 +23,37 @@ body {
 	text-shadow: 0px 0px 10px #F00;
 }
 
-.gwt-TabLayoutPanel .gwt-TabLayoutPanelContent {
+/*.gwt-TabLayoutPanel .gwt-TabLayoutPanelContent {
 	box-sizing: border-box;
-}
+}*/
+
+/**TabLayoutPanel**/
+.gwt-TabLayoutPanelContentContainer {
+	border: 5px; solid #999;}
+.gwt-TabLayoutPanel {
+	font-weight: normal;}
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelContent {
+	border-top: 1px solid rgba(0,60,136,.7);
+	padding: 0px;}
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTabs {
+	margin-bottom: -1px;}
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTab {
+	font-weight: normal;
+	text-align: center;
+	color: #FFF;
+	background: rgba(0,60,136,.5);
+	border-radius: 2px 2px 0 0;
+	margin: 0px 1px 0px 0px;
+	padding: 3px 15px;
+	cursor: pointer;}
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTab:link,
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTab:visited,
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTab:active {}
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTab:hover {
+	color: #FFF;
+	background: rgba(0,60,136,.7);
+    cursor: pointer;}
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTab-selected {
+	color: #FFF;
+	background: rgba(0,60,136,.7);}
+.gwt-TabLayoutPanelTabInner {}
