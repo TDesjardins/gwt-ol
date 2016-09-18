@@ -18,6 +18,7 @@ public enum OL3ExampleType {
     SelectFeatureExample(new SelectFeaturesExample()),
     TileExample(new TileExample()),
     WmsExample(new WmsExample()),
+    WmtsExample(new WmtsExample()),
     XyzExample(new XyzExample());
 
     private transient Example example;
