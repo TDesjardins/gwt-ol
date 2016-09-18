@@ -530,6 +530,24 @@ public final class OLUtil {
     private static native TileGrid getTileGrid(ol.source.Source o) /*-{
 		return o.tileGrid || null;
     }-*/;
+    
+    /**
+     *
+     * @param extent
+     * @return width of extent
+     */
+    public static native double getWidth(Extent extent) /*-{
+        return $wnd.ol.extent.getWidth(extent);
+    }-*/;
+    
+    /**
+    *
+    * @param extent
+    * @return top left coordinate of the extent
+    */
+   public static native Coordinate getTopLeft(Extent extent) /*-{
+       return $wnd.ol.extent.getTopLeft(extent);
+   }-*/;
 
     /**
      * Gets the current zoom level of the given {@link View}.
