@@ -6,6 +6,7 @@ import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
 import ol.View;
+import ol.control.MousePosition;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
 import ol.source.Osm;
@@ -53,7 +54,9 @@ public class GraticuleExample implements Example {
 
         // add some controls
         map.addControl(OLFactory.createZoomSlider());
-        map.addControl(OLFactory.createMousePosition());
+        MousePosition mousePosition = new MousePosition();
+        mousePosition.setCoordinateFormat(Coordinate.createStringXY(2));
+        map.addControl(mousePosition);
         map.addControl(OLFactory.createZoomToExtent());
 
         Graticule graticule = OLFactory.createGraticule();

@@ -5,6 +5,7 @@ import ol.Coordinate;
 import ol.OLFactory;
 import ol.OLUtil;
 import ol.control.Control;
+import ol.control.MousePosition;
 import ol.geom.Polygon;
 
 /**
@@ -27,7 +28,9 @@ public final class DemoUtils {
 
         controls.push(OLFactory.createFullScreen());
         controls.push(OLFactory.createZoomSlider());
-        controls.push(OLFactory.createMousePosition());
+        MousePosition mousePosition = new MousePosition();
+        mousePosition.setCoordinateFormat(Coordinate.createStringXY(5));
+        controls.push(mousePosition);
         controls.push(OLFactory.createZoomToExtent());
 
     }

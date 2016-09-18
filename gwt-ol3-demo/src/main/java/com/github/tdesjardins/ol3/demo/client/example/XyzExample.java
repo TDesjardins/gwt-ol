@@ -67,7 +67,9 @@ public class XyzExample implements Example {
         attributionControl.setCollapsed(false);
 
         map.addControl(attributionControl);
-        map.addControl(new MousePosition());
+        MousePosition mousePosition = new MousePosition();
+        mousePosition.setCoordinateFormat(Coordinate.createStringXY(2));
+        map.addControl(mousePosition);
         map.addLayer(xyzLayer);
 
     }
