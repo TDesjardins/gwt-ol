@@ -14,28 +14,32 @@ import ol.Size;
  *
  */
 @JsType(isNative = true)
-public interface TileGrid {
+public class TileGrid {
 
+    public TileGrid() {}
+    
+    public TileGrid(TileGridOptions tileGridOptions) {}
+    
     /**
      * Get the extent for this tile grid, if it was configured.
      * 
      * @return {ol.Extent} Extent.
      */
-    Extent getExtent();
+    public native Extent getExtent();
 
     /**
      * Get the maximum zoom level for the grid.
      * 
      * @return {number} Max zoom.
      */
-    int getMaxZoom();
+    public native int getMaxZoom();
 
     /**
      * Get the minimum zoom level for the grid.
      * 
      * @return {number} Min zoom.
      */
-    int getMinZoom();
+    public native int getMinZoom();
 
     /**
      * Get the origin for the grid at the given zoom level.
@@ -44,7 +48,7 @@ public interface TileGrid {
      *            Z.
      * @return {ol.Coordinate} Origin.
      */
-    Coordinate getOrigin(int z);
+    public native Coordinate getOrigin(int z);
 
     /**
      * Get the resolution for the given zoom level.
@@ -53,14 +57,14 @@ public interface TileGrid {
      *            Z.
      * @return {number} Resolution.
      */
-    double getResolution(int z);
+    public native double getResolution(int z);
 
     /**
      * Get the list of resolutions for the tile grid.
      * 
      * @return {Array.<number>} Resolutions.
      */
-    double[] getResolutions();
+    public native double[] getResolutions();
 
     /**
      * Get the tile size for a zoom level. The type of the return value matches
@@ -71,6 +75,6 @@ public interface TileGrid {
      *            Z.
      * @return {number|ol.Size} Tile size.
      */
-    Size getTileSize(int z);
+    public native Size getTileSize(int z);
 
 }
