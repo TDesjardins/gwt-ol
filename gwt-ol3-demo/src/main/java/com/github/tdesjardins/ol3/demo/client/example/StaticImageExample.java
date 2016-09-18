@@ -49,6 +49,7 @@ public class StaticImageExample implements Example {
         imageStaticOptions.setImageExtent(imageExtent);
         imageStaticOptions.setProjection(projection);
 
+        // create attribution
         AttributionOptions attributionOptions = OLFactory.<AttributionOptions>createOptions();
         attributionOptions.setHtml("&copy; <a href=\"http://xkcd.com/license.html\">xkcd</a>");
 
