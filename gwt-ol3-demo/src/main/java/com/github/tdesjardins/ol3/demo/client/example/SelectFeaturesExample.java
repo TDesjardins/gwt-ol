@@ -57,7 +57,7 @@ public class SelectFeaturesExample implements Example {
         // featureOptions.setId("g1");
         featureOptions.setGeometry(polygon);
 
-        Feature feature = OLFactory.createFeature(featureOptions);
+        Feature feature = new Feature(featureOptions);
         feature.setId("g1");
         feature.set("name", "triangle");
 
@@ -66,27 +66,27 @@ public class SelectFeaturesExample implements Example {
         feature2.setId("g2");
         feature2.getGeometry().rotate(180, transformedMidPoint);
 
-        Collection<Feature> lstFeatures = OLFactory.createCollection();
+        Collection<Feature> lstFeatures = new Collection<Feature>();
         lstFeatures.push(feature);
         lstFeatures.push(feature2);
 
         VectorOptions vectorSourceOptions = OLFactory.createOptions();
         vectorSourceOptions.setFeatures(OLFactory.<Feature[], Collection<Feature>> createObject2(lstFeatures));
-        Vector vectorSource = OLFactory.createVectorSource(vectorSourceOptions);
+        Vector vectorSource = new Vector(vectorSourceOptions);
 
         VectorLayerOptions vectorLayerOptions = OLFactory.createOptions();
         vectorLayerOptions.setSource(vectorSource);
-        ol.layer.Vector vectorLayer = OLFactory.createVector(vectorLayerOptions);
+        ol.layer.Vector vectorLayer = new ol.layer.Vector(vectorLayerOptions);
 
         // create an OSM-layer
         XyzOptions osmSourceOptions = OLFactory.createOptions();
-        Osm osmSource = OLFactory.createOsm(osmSourceOptions);
+        Osm osmSource = new Osm(osmSourceOptions);
         LayerOptions osmLayerOptions = OLFactory.createOptions();
         osmLayerOptions.setSource(osmSource);
-        Tile osmLayer = OLFactory.createTileLayer(osmLayerOptions);
+        Tile osmLayer = new Tile(osmLayerOptions);
 
         // create a view
-        View view = OLFactory.createView();
+        View view = new View();
 
         view.setCenter(transformedMidPoint);
         view.setZoom(14);
@@ -95,11 +95,11 @@ public class SelectFeaturesExample implements Example {
         MapOptions mapOptions = OLFactory.createOptions();
         mapOptions.setTarget(exampleId);
         mapOptions.setView(view);
-        Collection<Base> lstLayer = OLFactory.createCollection();
+        Collection<Base> lstLayer = new Collection<Base>();
         lstLayer.push(osmLayer);
         lstLayer.push(vectorLayer);
         mapOptions.setLayers(lstLayer);
-        Map map = OLFactory.createMap(mapOptions);
+        Map map = new Map(mapOptions);
 
         // add some controls
         map.addControl(OLFactory.createScaleLine());
@@ -109,12 +109,12 @@ public class SelectFeaturesExample implements Example {
         projectionOptions.setCode(DemoConstants.EPSG_4326);
         mousePositionOptions.setProjection(OLFactory.createProjection(projectionOptions));
 
-        MousePosition mousePosition = OLFactory.createMousePosition(mousePositionOptions);
+        MousePosition mousePosition = new MousePosition(mousePositionOptions);
         mousePosition.setCoordinateFormat(Coordinate.createStringXY(5));
         map.addControl(mousePosition);
 
         // create a select interaction
-        final Select selectFeature = OLFactory.createSelect((SelectOptions)OLFactory.createOptions());
+        final Select selectFeature = new Select((SelectOptions)OLFactory.createOptions());
         map.addInteraction(selectFeature);
 
         EventListener<SelectEvent> selectListener = new EventListener<SelectEvent>() {
