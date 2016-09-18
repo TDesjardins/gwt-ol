@@ -22,6 +22,10 @@ import ol.Feature;
 @JsType(isNative = true)
 public class Select extends Interaction {
 
+    public Select() {}
+    
+    public Select(SelectOptions selectOptions) {}
+    
     @JsProperty
     public native void setOptions(SelectOptions options);
 
