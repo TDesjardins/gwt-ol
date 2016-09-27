@@ -5,6 +5,8 @@ import jsinterop.annotations.JsType;
 
 import ol.Collection;
 import ol.Feature;
+import ol.GenericFunction;
+import ol.GeometryFunction;
 import ol.Options;
 import ol.source.Vector;
 import ol.style.Style;
@@ -29,6 +31,14 @@ public interface DrawOptions extends Options {
     @JsProperty
     void setClickTolerance(int clickTolerance);
 
+	/**
+	 *
+	 * Function that is called when a geometry's coordinates are updated.
+	 *
+	 * @param geometryFunction
+	 */
+	@JsProperty
+	void setGeometryFunction(GeometryFunction<?, ?, ?> geometryFunction);
     /**
      * Destination collection for the drawn features.
      *
@@ -97,4 +107,14 @@ public interface DrawOptions extends Options {
     @JsProperty
     void setWrapX(boolean wrapX);
 
+	/**
+	 * A function that takes an ol.MapBrowserEvent and returns a boolean to
+	 * indicate whether that event should be handled. By default
+	 * ol.events.condition.noModifierKeys, i.e. a click, adds a vertex or
+	 * deactivates freehand drawing.
+	 *
+	 * @param condition condition
+	 */
+	@JsProperty
+	void setCondition(GenericFunction<?, ?> condition);
 }
