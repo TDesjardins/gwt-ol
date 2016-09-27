@@ -1,7 +1,8 @@
 package ol.proj;
 
+import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsType;
-
+import ol.Coordinate;
 import ol.Extent;
 
 /**
@@ -118,5 +119,28 @@ public class Projection {
      *            World extent [minlon, minlat, maxlon, maxlat].
      */
     public native void setWorldExtent(Extent worldExtent);
+
+	/**
+	 * 
+	 * Transforms a coordinate from longitude/latitude to a different projection.
+	 *
+	 * @param coordinate
+	 * @return
+	 */
+	@JsMethod(name = "fromLonLat", namespace = "ol.proj")
+	public static native Coordinate fromLonLat(Coordinate coordinate);
+
+	/**
+	 * 
+	 * Transforms a coordinate from source projection to destination projection.
+	 * This returns a new coordinate (and does not modify the original).
+	 *
+	 * @param coordinate
+	 * @param source
+	 * @param target
+	 * @return
+	 */
+	@JsMethod(name = "transform", namespace = "ol.proj")
+	public static native Coordinate transform(Coordinate coordinate, String source, String target);
 
 }
