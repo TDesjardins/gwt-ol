@@ -51,4 +51,13 @@ public interface MapOptions extends Options {
     @JsProperty
     void setInteractions(Interaction[] interactions);
 
+	/**
+	 * Interactions that are initially added to the map. If not specified,
+	 * ol.interaction.defaults() is used.
+	 *
+	 * @param interactions
+	 */
+	@JsProperty
+	void setInteractions(Collection<Interaction> interactions);
+
 }
