@@ -2,6 +2,8 @@ package ol.interaction;
 
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import ol.Collection;
+import ol.Feature;
 import ol.GenericFunction;
 import ol.Options;
 import ol.layer.Layer;
@@ -75,4 +77,14 @@ public interface SelectOptions extends Options{
     @JsProperty
     void setToogleCondition(GenericFunction<?, ?> function);
 
+	/**
+	 * Collection where the interaction will place selected features. Optional. If
+	 * not set the interaction will create a collection. In any case the
+	 * collection used by the interaction is returned by
+	 * ol.interaction.Select#getFeatures.
+	 *
+	 * @param features
+	 */
+	@JsProperty
+	void setFeatures(Collection<Feature> features);
 }
