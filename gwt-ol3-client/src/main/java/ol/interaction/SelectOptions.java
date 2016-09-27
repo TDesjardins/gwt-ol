@@ -23,7 +23,7 @@ public interface SelectOptions extends Options{
 	 * @param styleFunction
 	 */
     @JsProperty
-    void setStyle(GenericFunction styleFunction);
+    void setStyle(GenericFunction<?, ?> styleFunction);
 
 	/**
 	 * 
@@ -48,7 +48,7 @@ public interface SelectOptions extends Options{
 	 * @param function
 	 */
     @JsProperty
-    void setRemoveCondition(GenericFunction function);
+    void setRemoveCondition(GenericFunction<?, ?> function);
 
 	/**
 	 * 
@@ -73,6 +73,6 @@ public interface SelectOptions extends Options{
 	 * @param function
 	 */
     @JsProperty
-    void setToogleCondition(GenericFunction function);
+    void setToogleCondition(GenericFunction<?, ?> function);
 
 }

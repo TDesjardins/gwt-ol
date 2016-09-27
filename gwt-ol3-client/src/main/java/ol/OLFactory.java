@@ -1193,7 +1193,7 @@ public final class OLFactory {
         };
     }-*/;
 
-    public static JavaScriptObject createEventFunction(GenericFunction genericFunction){
+    public static JavaScriptObject createEventFunction(GenericFunction<JavaScriptObject, Void> genericFunction){
         Executor executor = new Executor(genericFunction);
         return createEventFunction(executor);
     }

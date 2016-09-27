@@ -15,9 +15,9 @@ import jsinterop.annotations.JsType;
 @JsType
 public class Executor {
 
-    private final GenericFunction function;
+    private final GenericFunction<JavaScriptObject, Void> function;
 
-    public Executor(GenericFunction function) {
+    public Executor(GenericFunction<JavaScriptObject, Void> function) {
         this.function = function;
     }
 
