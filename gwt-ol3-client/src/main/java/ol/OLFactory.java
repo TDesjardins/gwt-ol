@@ -1237,6 +1237,16 @@ public final class OLFactory {
 	public static final native void registerSpatialReference(int srid, String proj4text) /*-{
 		$wnd.proj4.defs('EPSG:' + srid, proj4text);
 	}-*/;
+	
+	/**
+	 * Registers a proj4 definition by its spatial reference id.
+	 *
+	 * @param srid
+	 * @param proj4text
+	 */
+	public static final native void registerSpatialReference(String srid, String proj4text) /*-{
+		$wnd.proj4.defs(srid, proj4text);
+	}-*/;
 
 	/**
 	 * 
