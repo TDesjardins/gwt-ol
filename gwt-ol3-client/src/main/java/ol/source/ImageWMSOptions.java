@@ -4,6 +4,7 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 import ol.Options;
+import ol.proj.Projection;
 
 /**
  * 
@@ -35,5 +36,12 @@ public interface ImageWMSOptions extends Options {
      */
     @JsProperty
     void setUrl(String url);
+    
+    /**
+     * 
+     * @param projection
+     */
+    @JsProperty
+    void setProjection(Projection projection);
 
 }
