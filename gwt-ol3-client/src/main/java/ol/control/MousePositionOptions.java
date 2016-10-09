@@ -25,7 +25,6 @@ public interface MousePositionOptions extends ControlOptions {
     /**
      * 
      * @param coordinateFormat Coordinate format function.
-     * @return this instance
      */
     @JsProperty
     void setCoordinateFormat(JavaScriptObject coordinateFormat);
