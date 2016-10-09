@@ -19,8 +19,7 @@ import ol.layer.Group;
  * }) ], target: 'map' });
  *
  * The above snippet creates a map using a {@link ol.layer.Tile} to display
- * {@link ol.source.MapQuest} OSM data and render it to a DOM element with the
- * id `map`.
+ * OSM data and render it to a DOM element with the id `map`.
  *
  * The constructor places a viewport container (with CSS class name
  * `ol-viewport`) in the target element (see `getViewport()`), and then two
