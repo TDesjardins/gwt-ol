@@ -32,7 +32,6 @@
             <plugin>
                 <groupId>net.ltgt.gwt.maven</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>1.0-rc-6</version>
                 <configuration>
                     <moduleName>com.github.tdesjardins.ol3.demo.GwtOL3Playground</moduleName>
                 </configuration>
