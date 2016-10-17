@@ -2,7 +2,6 @@ package ol.interaction;
 
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-
 import ol.Collection;
 import ol.Feature;
 import ol.GenericFunction;
@@ -19,102 +18,104 @@ import ol.style.Style;
  */
 @JsType(isNative = true)
 public interface DrawOptions extends Options {
-    /**
-     * The maximum distance in pixels between "down" and "up" for a "up" event
-     * to be considered a "click" event and actually add a point/vertex to the
-     * geometry being drawn. Default is 6 pixels. That value was chosen for the
-     * draw interaction to behave correctly on mouse as well as on touch
-     * devices.
-     *
-     * @param clickTolerance clickTolerance
-     */
-    @JsProperty
-    void setClickTolerance(int clickTolerance);
 
 	/**
+	 * The maximum distance in pixels between "down" and "up" for a "up" event to
+	 * be considered a "click" event and actually add a point/vertex to the
+	 * geometry being drawn. Default is 6 pixels. That value was chosen for the
+	 * draw interaction to behave correctly on mouse as well as on touch devices.
 	 *
+	 * @param clickTolerance clickTolerance
+	 */
+	@JsProperty
+	void setClickTolerance(int clickTolerance);
+
+	/**
+	 * 
 	 * Function that is called when a geometry's coordinates are updated.
-	 *
+	 * 
 	 * @param geometryFunction
 	 */
 	@JsProperty
 	void setGeometryFunction(GeometryFunction<?, ?, ?> geometryFunction);
-    /**
-     * Destination collection for the drawn features.
-     *
-     * @param features features
-     */
-    @JsProperty
-    void setFeatures(Collection<Feature> features);
 
-    /**
-     * The number of points that can be drawn before a polygon ring or line
-     * string is finished. The default is no restriction.
-     *
-     * @param maxPoints maxPoints
-     */
-    @JsProperty
-    void setMaxPoints(int maxPoints);
+	/**
+	 * Destination collection for the drawn features.
+	 *
+	 * @param features features
+	 */
+	@JsProperty
+	void setFeatures(Collection<Feature> features);
 
-    /**
-     * The number of points that must be drawn before a polygon ring or line
-     * string can be finished. Default is 3 for polygon rings and 2 for line
-     * strings.
-     *
-     * @param minPoints minPoints
-     */
-    @JsProperty
-    void setMinPoints(int minPoints);
+	/**
+	 * The number of points that can be drawn before a polygon ring or line string
+	 * is finished. The default is no restriction.
+	 *
+	 * @param maxPoints maxPoints
+	 */
+	@JsProperty
+	void setMaxPoints(int maxPoints);
 
-    /**
-     * Pixel distance for snapping to the drawing finish. Default is 12.
-     *
-     * @param snapTolerance snapTolerance
-     */
-    @JsProperty
-    void setSnapTolerance(int snapTolerance);
+	/**
+	 * The number of points that must be drawn before a polygon ring or line
+	 * string can be finished. Default is 3 for polygon rings and 2 for line
+	 * strings.
+	 *
+	 * @param minPoints minPoints
+	 */
+	@JsProperty
+	void setMinPoints(int minPoints);
 
-    /**
-     * Destination source for the drawn features.
-     *
-     * @param source source
-     */
-    @JsProperty
-    void setSource(Vector source);
+	/**
+	 * Pixel distance for snapping to the drawing finish. Default is 12.
+	 *
+	 * @param snapTolerance snapTolerance
+	 */
+	@JsProperty
+	void setSnapTolerance(int snapTolerance);
 
-    /**
-     * Style for sketch features.
-     *
-     * @param style style
-     */
-    @JsProperty
-    void setStyle(Style style);
+	/**
+	 * Destination source for the drawn features.
+	 *
+	 * @param source source
+	 */
+	@JsProperty
+	void setSource(Vector source);
 
-    /**
-     * Drawing type ('Point', 'LineString', 'Polygon', 'MultiPoint',
-     * 'MultiLineString', 'MultiPolygon' or 'Circle'). Required.
-     *
-     * @param type type
-     */
-    @JsProperty
-    void setType(String type);
+	/**
+	 * Style for sketch features.
+	 *
+	 * @param style style
+	 */
+	@JsProperty
+	void setStyle(Style style);
 
-    /**
-     * Wrap the world horizontally on the sketch overlay. Default is false.
-     *
-     * @param wrapX wrapX
-     */
-    @JsProperty
-    void setWrapX(boolean wrapX);
+	/**
+	 * Drawing type ('Point', 'LineString', 'Polygon', 'MultiPoint',
+	 * 'MultiLineString', 'MultiPolygon' or 'Circle'). Required.
+	 *
+	 * @param type type
+	 */
+	@JsProperty
+	void setType(String type);
+
+	/**
+	 * Wrap the world horizontally on the sketch overlay. Default is false.
+	 *
+	 * @param wrapX wrapX
+	 */
+	@JsProperty
+	void setWrapX(boolean wrapX);
 
 	/**
 	 * A function that takes an ol.MapBrowserEvent and returns a boolean to
 	 * indicate whether that event should be handled. By default
 	 * ol.events.condition.noModifierKeys, i.e. a click, adds a vertex or
 	 * deactivates freehand drawing.
-	 *
+	 * 
 	 * @param condition condition
 	 */
 	@JsProperty
 	void setCondition(GenericFunction<?, ?> condition);
+
 }
