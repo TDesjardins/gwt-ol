@@ -4,7 +4,6 @@ import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
-import ol.OLUtil;
 import ol.Overlay;
 import ol.OverlayOptions;
 import ol.View;
@@ -16,6 +15,7 @@ import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.Document;
 
 import ol.layer.Tile;
+import ol.proj.Projection;
 import ol.source.Osm;
 import ol.source.XyzOptions;
 import ol.layer.LayerOptions;
@@ -47,7 +47,7 @@ public class OverlayExample implements Example {
         View view = new View();
 
         Coordinate centerCoordinate = OLFactory.createCoordinate(2.3, 51.507222);
-        Coordinate transformedCenterCoordinate = OLUtil.transform(centerCoordinate, "EPSG:4326", "EPSG:3857");
+        Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857");
 
         view.setCenter(transformedCenterCoordinate);
         view.setZoom(10);
