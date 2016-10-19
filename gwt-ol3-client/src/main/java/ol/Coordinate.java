@@ -102,9 +102,9 @@ public class Coordinate extends JavaScriptObject {
     }
 
 	/**
-	 * Sets the X-coordinate (longitude).
+	 * Sets the Y-coordinate (latitude).
 	 *
-	 * @param X-coordinate (longitude)
+	 * @param Y-coordinate (latitude)
 	 */
 	public final double setY(double y) {
 		if (this.getDimension() > 1) {
@@ -151,11 +151,11 @@ public class Coordinate extends JavaScriptObject {
     public final double lon() {
         return this.getX();
     }
-    
+
     /**
      * Returns a {@link ol.CoordinateFormatType} function that can be used to format
      * a {ol.Coordinate} to a string.
-     * 
+     *
      * @param fractionDigits The number of digits to include after the decimal point.
      * Default is `0`
      * @return format function
@@ -164,7 +164,7 @@ public class Coordinate extends JavaScriptObject {
     /*-{
     	return $wnd.ol.coordinate.createStringXY(fractionDigits);
     }-*/;
-    
+
     /**
      * Format a coordinate as a comma delimited string. Example without
      * specifying fractional digits: var coord = [7.85, 47.983333]; var out =
@@ -181,5 +181,5 @@ public class Coordinate extends JavaScriptObject {
     public final native String toStringXY(int fractionDigits) /*-{
     	return $wnd.ol.coordinate.toStringXY(this, fractionDigits);
     }-*/;
-    
+
 }
