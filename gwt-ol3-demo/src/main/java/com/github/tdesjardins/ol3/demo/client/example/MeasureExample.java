@@ -4,7 +4,6 @@ import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
-import ol.OLUtil;
 import ol.View;
 import ol.control.Attribution;
 import ol.event.MeasureEvent;
@@ -15,6 +14,7 @@ import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
 import com.google.gwt.core.client.GWT;
 
 import ol.layer.Tile;
+import ol.proj.Projection;
 import ol.source.Osm;
 import ol.source.XyzOptions;
 import ol.layer.LayerOptions;
@@ -46,7 +46,7 @@ public class MeasureExample implements Example {
         View view = OLFactory.createView();
 
         Coordinate centerCoordinate = OLFactory.createCoordinate(-0.1275, 51.507222);
-        Coordinate transformedCenterCoordinate = OLUtil.transform(centerCoordinate, "EPSG:4326", "EPSG:3857");
+        Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857");
 
         view.setCenter(transformedCenterCoordinate);
         view.setZoom(10);

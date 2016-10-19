@@ -1,7 +1,5 @@
 package com.github.tdesjardins.ol3.demo.client.example;
 
-import ol.OLUtil;
-
 import ol.Coordinate;
 import ol.source.Xyz;
 import ol.source.XyzOptions;
@@ -14,6 +12,7 @@ import ol.View;
 import ol.control.MousePosition;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
+import ol.proj.Projection;
 
 /**
  * Example with XYZ-Source.
@@ -51,7 +50,7 @@ public class XyzExample implements Example {
         View view = new View();
 
         Coordinate centerCoordinate = OLFactory.createCoordinate(-121.1, 47.5);
-        Coordinate transformedCenterCoordinate = OLUtil.transform(centerCoordinate, "EPSG:4326", "EPSG:3857");
+        Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857");
 
         view.setCenter(transformedCenterCoordinate);
         view.setZoom(7);

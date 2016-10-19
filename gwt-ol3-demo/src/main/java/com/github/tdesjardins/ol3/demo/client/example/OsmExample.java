@@ -6,13 +6,13 @@ import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
-import ol.OLUtil;
 import ol.View;
 import ol.control.Attribution;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
+import ol.proj.Projection;
 import ol.source.Osm;
 import ol.source.TileDebug;
 import ol.source.TileDebugOptions;
@@ -59,7 +59,7 @@ public class OsmExample implements Example {
         View view = new View();
 
         Coordinate centerCoordinate = OLFactory.createCoordinate(-0.1275, 51.507222);
-        Coordinate transformedCenterCoordinate = OLUtil.transform(centerCoordinate, "EPSG:4326", "EPSG:3857");
+        Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857");
 
         view.setCenter(transformedCenterCoordinate);
         view.setZoom(10);

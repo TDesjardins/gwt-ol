@@ -10,18 +10,26 @@ import ol.Coordinate;
  * This is an additional class to provide an array of arrays of coordinates for
  * geometries and still allow {@link Point} to be a {@link SimpleGeometry}
  * though it only has one coordinate.
- * 
+ *
  * @author sbaumhekel
  */
 @JsType(isNative = true)
-public class SimpleGeometryMultiCoordinates extends SimpleGeometry {
-    
+public abstract class SimpleGeometryMultiCoordinates extends SimpleGeometry {
+
     /**
      * Return the coordinates of this geometry.
      *
      * @return Coordinates.
      */
     public native Coordinate[][] getCoordinates();
+
+    /**
+     *
+     * Set the coordinates of the polygon.
+     *
+     * @param coordinates
+     */
+    public native void setCoordinates(Coordinate[][] coordinates);
 
     /**
      * Set the coordinates of this geometry.

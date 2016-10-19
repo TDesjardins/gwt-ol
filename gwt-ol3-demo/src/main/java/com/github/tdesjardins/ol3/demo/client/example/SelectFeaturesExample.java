@@ -27,6 +27,7 @@ import ol.layer.Base;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
 import ol.layer.VectorLayerOptions;
+import ol.proj.Projection;
 import ol.proj.ProjectionOptions;
 import ol.source.Osm;
 import ol.source.Vector;
@@ -46,7 +47,7 @@ public class SelectFeaturesExample implements Example {
     public void show(String exampleId) {
 
     	Coordinate centerCoordinate = OLFactory.createCoordinate(13.37, 52.52);
-        Coordinate transformedMidPoint = OLUtil.transform(centerCoordinate, DemoConstants.EPSG_4326, DemoConstants.EPSG_3857);
+        Coordinate transformedMidPoint = Projection.transform(centerCoordinate, DemoConstants.EPSG_4326, DemoConstants.EPSG_3857);
 
         // create a polygon
         Polygon polygon = DemoUtils.createTestPolygon();
