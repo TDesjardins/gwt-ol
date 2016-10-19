@@ -1,5 +1,7 @@
 package ol.source;
 
+import com.google.gwt.core.client.JavaScriptObject;
+
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -19,5 +21,12 @@ public interface XyzOptions extends TileImageOptions {
      */
     @JsProperty
     void setMaxZoom(int maxZoom);
+
+    /**
+     * Optional function to get tile URL given a tile coordinate and the
+     * projection. Required if url or urls are not provided.
+     */
+    @JsProperty
+    void setTileUrlFunction(JavaScriptObject tileUrlFunction);
 
 }

@@ -1,6 +1,7 @@
 package ol.geom;
 
 import jsinterop.annotations.JsType;
+import ol.Coordinate;
 
 /**
  * Polygon geometry.
@@ -58,4 +59,12 @@ public class Polygon extends SimpleGeometryMultiCoordinates {
      */
     public native Point getInteriorPoint();
     
+	/**
+	 * 
+	 * Set the coordinates of the polygon.
+	 *
+	 * @param coordinates
+	 */
+	public native void setCoordinates(Coordinate[][] coordinates);
+
 }

@@ -46,6 +46,16 @@ public class Coordinate extends JavaScriptObject {
     	return this[index];
     }-*/;
 
+	/**
+	 * Sets the value at a given index.
+	 *
+	 * @param index the index to be retrieved
+	 * @param value to set
+	 */
+	private final native double set(int index, double value) /*-{
+		this[index] = value;
+	}-*/;
+
     /**
      * Gets the dimension of this coordinate.
      *
@@ -67,6 +77,18 @@ public class Coordinate extends JavaScriptObject {
         return Double.NaN;
     }
 
+	/**
+	 * Sets the X-coordinate (longitude).
+	 *
+	 * @param X-coordinate (longitude)
+	 */
+	public final double setX(double x) {
+		if (this.getDimension() > 0) {
+			return this.set(0, x);
+		}
+		return Double.NaN;
+	}
+
     /**
      * Gets the Y-coordinate (latitude).
      *
@@ -78,6 +100,18 @@ public class Coordinate extends JavaScriptObject {
         }
         return Double.NaN;
     }
+
+	/**
+	 * Sets the X-coordinate (longitude).
+	 *
+	 * @param X-coordinate (longitude)
+	 */
+	public final double setY(double y) {
+		if (this.getDimension() > 1) {
+			return this.set(1, y);
+		}
+		return Double.NaN;
+	}
 
     /**
      * Gets the Y-coordinate (latitude).

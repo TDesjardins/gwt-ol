@@ -33,11 +33,15 @@ import ol.gwt.TypedObject;
 import ol.interaction.DragAndDrop;
 import ol.interaction.Draw;
 import ol.interaction.DrawOptions;
+import ol.interaction.Interaction;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
 import ol.interaction.Modify;
+import ol.interaction.ModifyOptions;
 import ol.interaction.Select;
 import ol.interaction.SelectOptions;
+import ol.interaction.Snap;
+import ol.interaction.SnapOptions;
 import ol.layer.Image;
 import ol.layer.ImageLayerOptions;
 import ol.layer.LayerGroupOptions;
@@ -596,9 +600,16 @@ public final class OLFactory {
     	return new $wnd.ol.Map(mapOptions);
     }-*/;
 
-    public static native Modify createModify() /*-{
-    	return new $wnd.ol.interaction.Modify();
-    }-*/;
+	/**
+	 * 
+	 * Creates a {@link ol.interaction.Modify}
+	 *
+	 * @param modifyOptions {@link ol.interaction.ModifyOptions}
+	 * @return {@link ol.interaction.Modify}
+	 */
+	public static native Modify createModify(ModifyOptions modifyOptions) /*-{
+		return new $wnd.ol.interaction.Modify(modifyOptions);
+	}-*/;
 
     /**
      * Creates a {@link MousePosition} control.
@@ -818,6 +829,15 @@ public final class OLFactory {
         return createPoint(createCoordinate(x, y, z), OLUtil.getGeometryLayout(3));
     }
 
+	/**
+	 * Creates a {@link Polygon}.
+	 *
+	 * @return {@link Polygon}
+	 */
+	public static native Polygon createPolygon() /*-{
+		return new $wnd.ol.geom.Polygon([]);
+	}-*/;
+
     /**
      * Creates a {@link Polygon}.
      *
@@ -1021,6 +1041,16 @@ public final class OLFactory {
     	return new $wnd.ol.source.TileDebug(tileDebugOptions);
     }-*/;
 
+	/**
+	 * Creates a new Snap interaction
+	 *
+	 * @param snapOptions snap options
+	 * @return {@link Snap}
+	 */
+	public static native Snap createSnap(SnapOptions snapOptions)/*-{
+		return new $wnd.ol.interaction.Snap(snapOptions);
+	}-*/;
+
     /**
      * Creates a tile grid.
      *
@@ -1193,9 +1223,41 @@ public final class OLFactory {
         };
     }-*/;
 
-    public static JavaScriptObject createEventFunction(GenericFunction genericFunction){
+    public static JavaScriptObject createEventFunction(GenericFunction<JavaScriptObject, Void> genericFunction){
         Executor executor = new Executor(genericFunction);
         return createEventFunction(executor);
     }
 
+	/**
+	 * Registers a proj4 definition by its spatial reference id.
+	 *
+	 * @param srid
+	 * @param proj4text
+	 */
+	public static final native void registerSpatialReference(int srid, String proj4text) /*-{
+		$wnd.proj4.defs('EPSG:' + srid, proj4text);
+	}-*/;
+	
+	/**
+	 * Registers a proj4 definition by its spatial reference id.
+	 *
+	 * @param srid
+	 * @param proj4text
+	 */
+	public static final native void registerSpatialReference(String srid, String proj4text) /*-{
+		$wnd.proj4.defs(srid, proj4text);
+	}-*/;
+
+	/**
+	 * 
+	 * get the default map interactions
+	 *
+	 * @param doubleClickToZoom
+	 * @return
+	 */
+	public static final native Collection<Interaction> getDefaultInteractions(boolean doubleClickToZoom)/*-{
+		return $wnd.ol.interaction.defaults({
+			doubleClickZoom : doubleClickToZoom
+		});
+	}-*/;
 }
