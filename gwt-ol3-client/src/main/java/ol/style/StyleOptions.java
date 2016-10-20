@@ -45,6 +45,15 @@ public interface StyleOptions extends Options {
     public StyleOptions stroke(Stroke stroke);
 
     /**
+     * {@link Text} style.
+     * @param text
+     *            {@link Text}
+     * @return this instance.
+     */
+    @JsProperty
+    public StyleOptions text(Text text);
+
+    /**
      * Z index.
      * 
      * @param zIndex
