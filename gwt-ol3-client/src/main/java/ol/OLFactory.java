@@ -979,8 +979,7 @@ public final class OLFactory {
     public static Style createStyle(Text text)
     {
             return createStyle(OLFactory.<StyleOptions> createOptions().text(text));
-    }
-    
+    }    
    /**
      * Creates a new {@link Style} style.
      *
