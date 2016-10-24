@@ -970,8 +970,7 @@ public final class OLFactory {
      */
     public static Style createStyle(Stroke stroke) {
         return createStyle(OLFactory.<StyleOptions> createOptions().stroke(stroke));
-    }
-    
+    }   
     /**
      * Creates a new {@link Style} style.
      * @param text {@link Text}
