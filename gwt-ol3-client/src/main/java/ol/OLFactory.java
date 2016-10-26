@@ -919,6 +919,21 @@ public final class OLFactory {
     	return [ width, height ];
     }-*/;
 
+	/**
+	 * Creates a {@link TileCoord}.
+	 *
+	 * @param z
+	 *            z
+	 * @param x
+	 *            x
+	 * @param y
+	 *            y
+	 * @return {@link TileCoord}
+	 */
+	public static native TileCoord createTileCoord(double x, double y, double z) /*-{
+		return [ z, x, y ];
+	}-*/;
+
     /**
      * Creates a {@link Sphere}.
      * @param radius
