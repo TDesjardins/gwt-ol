@@ -29,4 +29,12 @@ public interface XyzOptions extends TileImageOptions {
     @JsProperty
     void setTileUrlFunction(JavaScriptObject tileUrlFunction);
 
+	/**
+	 * Optional function to load a tile given a URL. The default is
+	 * 
+	 * function(imageTile, src) { imageTile.getImage().src = src; };
+	 */
+	@JsProperty
+	void setTileLoadFunction(JavaScriptObject tileLoadFunction);
+
 }
