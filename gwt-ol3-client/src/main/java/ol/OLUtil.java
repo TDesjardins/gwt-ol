@@ -15,7 +15,9 @@ import ol.event.EventListener;
 import ol.event.MapMoveListener;
 import ol.event.MapZoomListener;
 import ol.event.OLHandlerRegistration;
+import ol.event.TileLoadEndListener;
 import ol.event.TileLoadErrorListener;
+import ol.event.TileLoadStartListener;
 import ol.geom.Geometry;
 import ol.geom.Polygon;
 import ol.geom.SimpleGeometryCoordinates;
@@ -243,6 +245,46 @@ public final class OLUtil {
             }
         });
     }
+
+	/**
+	 * Adds a listener for tile start loading.
+	 *
+	 * @param source
+	 *            source
+	 *
+	 * @param listener
+	 *            {@link TileLoadStartListener}
+	 * @return {@link HandlerRegistration}
+	 */
+	public static HandlerRegistration addTileLoadStartListener(UrlTile source, final TileLoadStartListener listener) {
+		return observe(source, "tileloadstart", new EventListener<TileEvent>() {
+
+			@Override
+			public void onEvent(TileEvent event) {
+				listener.onTileLoadStart(event);
+			}
+		});
+	}
+
+	/**
+	 * Adds a listener for tile end loading.
+	 *
+	 * @param source
+	 *            source
+	 *
+	 * @param listener
+	 *            {@link TileLoadEndListener}
+	 * @return {@link HandlerRegistration}
+	 */
+	public static HandlerRegistration addTileLoadEndListener(UrlTile source, final TileLoadEndListener listener) {
+		return observe(source, "tileloadend", new EventListener<TileEvent>() {
+
+			@Override
+			public void onEvent(TileEvent event) {
+				listener.onTileLoadEnd(event);
+			}
+		});
+	}
 
     /**
      * Create an approximation of a circle on the surface of a sphere.
