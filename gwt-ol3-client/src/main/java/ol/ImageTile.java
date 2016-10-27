@@ -1,5 +1,7 @@
 package ol;
 
+import com.google.gwt.dom.client.ImageElement;
+
 import jsinterop.annotations.JsType;
 
 /**
@@ -10,4 +12,5 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class ImageTile extends Tile {
 
+	public native ImageElement getImage();
 }
