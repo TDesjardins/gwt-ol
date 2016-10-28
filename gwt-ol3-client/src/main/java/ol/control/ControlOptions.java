@@ -16,10 +16,20 @@ public interface ControlOptions extends Options {
 
     /**
      * The element is the control's container element.
-     * @param element
-     *            control's container element
+     * This only needs to be specified if you're developing a custom control.
+     * 
+     * @param element control's container element
      */
     @JsProperty
-    void setTarget(Element element);
+    void setElement(Element element);
+    
+    /**
+     * Specify a target if you want the control to be rendered outside of the map's viewport.
+     * 
+     * @param target
+     *            target element
+     */
+    @JsProperty
+    void setTarget(Element target);
 
 }

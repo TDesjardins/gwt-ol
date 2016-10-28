@@ -1,6 +1,5 @@
 package ol;
 
-
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -13,6 +12,8 @@ import ol.event.ClickListener;
 import ol.event.DoubleClickListener;
 import ol.event.Event;
 import ol.event.EventListener;
+import ol.event.MapMoveListener;
+import ol.event.MapZoomListener;
 import ol.event.OLHandlerRegistration;
 import ol.event.TileLoadErrorListener;
 import ol.geom.Geometry;
@@ -22,6 +23,7 @@ import ol.gwt.CollectionWrapper;
 import ol.layer.Base;
 import ol.layer.Layer;
 import ol.proj.Projection;
+import ol.source.Source;
 import ol.source.TileEvent;
 import ol.source.UrlTile;
 import ol.source.Xyz;
@@ -114,25 +116,7 @@ public final class OLUtil {
      *            {@link MapMoveListener}
      * @return {@link HandlerRegistration}
      */
-    /*public static HandlerRegistration addMapMoveListener(Map map, final MapMoveListener listener) {
-        // default is true to track all changes to the map position immediately
-        return addMapMoveListener(map, listener, true);
-    }*/
-
-    /**
-     * Adds a map move listener for the given map.
-     *
-     * @param map
-     *            {@link Map}
-     * @param listener
-     *            {@link MapMoveListener}
-     * @param immediate
-     *            Fire events while the map is moving? If set to false only one
-     *            event will be fired after the map has finished moving.
-     * @return {@link HandlerRegistration}
-     */
-    /*public static HandlerRegistration addMapMoveListener(final Map map, final MapMoveListener listener,
-            boolean immediate) {
+    public static HandlerRegistration addMapMoveListener(final Map map, final MapMoveListener listener) {
         // listen to "moveend" events of map
         final HandlerRegistration handlerMap = observe(map, "moveend", new EventListener<MapEvent>() {
             @Override
@@ -140,36 +124,34 @@ public final class OLUtil {
                 listener.onMapMove(event);
             }
         });
-        // fire events while the map is moving?
-        if(immediate) {
-            // try to set up an event handler for the change of the view center
-            // as "moveend" will be only fired when the map stops moving
-            View view = map.getView();
-            if(view != null) {
-                final HandlerRegistration handlerView = OLUtil.observe(view, "change:center",
-                        new EventListener<ObjectEvent>() {
-                            @Override
-                            public void onEvent(ObjectEvent event) {
-                                // create an artificial move event
-                                Event e2 = createLinkedEvent(event, "move", map);
-                                MapEvent me = initMapEvent(e2, map);
-                                listener.onMapMove(me);
-                            }
-                        });
-                // return a handler registration, which detaches both event
-                // handlers
-                return new HandlerRegistration() {
-                    @Override
-                    public void removeHandler() {
-                        handlerMap.removeHandler();
-                        handlerView.removeHandler();
-                    }
-                };
-            }
+        // fire events while the map is moving
+        // try to set up an event handler for the change of the view center
+        // as "moveend" will be only fired when the map stops moving
+        View view = map.getView();
+        if(view != null) {
+            final HandlerRegistration handlerView = OLUtil.observe(view, "change:center",
+                    new EventListener<ObjectEvent>() {
+                        @Override
+                        public void onEvent(ObjectEvent event) {
+                            // create an artificial move event
+                            Event e2 = createLinkedEvent(event, "move", map);
+                            MapEvent me = initMapEvent(e2, map);
+                            listener.onMapMove(me);
+                        }
+                    });
+            // return a handler registration, which detaches both event
+            // handlers
+            return new HandlerRegistration() {
+                @Override
+                public void removeHandler() {
+                    handlerMap.removeHandler();
+                    handlerView.removeHandler();
+                }
+            };
         }
         // just return the map handler
         return handlerMap;
-    }*/
+    }
 
     /**
      * Adds a map zoom listener for the given map.
@@ -180,7 +162,7 @@ public final class OLUtil {
      *            {@link MapZoomListener}
      * @return {@link HandlerRegistration}
      */
-    /*public static HandlerRegistration addMapZoomListener(final Map map, final MapZoomListener listener) {
+    public static HandlerRegistration addMapZoomListener(final Map map, final MapZoomListener listener) {
         return observe(map.getView(), "propertychange", new EventListener<ObjectEvent>() {
 
             @Override
@@ -192,7 +174,7 @@ public final class OLUtil {
                 }
             }
         });
-    }*/
+    }
 
     /**
      * Registers transformation functions that don't alter coordinates. Those allow
@@ -456,46 +438,6 @@ public final class OLUtil {
     }
 
     /**
-     * Gets the maximum zoomlevel of the given layer.
-     *
-     * @param layer
-     *            layer
-     * @return zoomlevel on success, else -1
-     */
-    /*public static int getMaxZoomLevel(Base layer) {
-        // get source if layer instance has it
-        Source source = layer.get("source");
-        if(source != null) {
-            // try to get a tilegrid from the source
-            TileGrid tg = getTileGrid(source);
-            if(tg != null) {
-                return tg.getMaxZoom();
-            }
-        }
-        return -1;
-    }*/
-
-    /**
-     * Gets the minimum zoomlevel of the given layer.
-     *
-     * @param layer
-     *            layer
-     * @return zoomlevel on success, else -1
-     */
-    /*public static int getMinZoomLevel(Base layer) {
-        // get source if layer instance has it
-        Source source = layer.get("source");
-        if(source != null) {
-            // try to get a tilegrid from the source
-            TileGrid tg = getTileGrid(source);
-            if(tg != null) {
-                return tg.getMinZoom();
-            }
-        }
-        return -1;
-    }*/
-
-    /**
      * Gets the name of the given {@link Layer}.
      *
      * @param layer
@@ -567,7 +509,7 @@ public final class OLUtil {
      *            {@link Map}
      * @return zoomlevel on success, else -1
      */
-    /*public static int getZoomLevel(Map map) {
+    public static int getZoomLevel(Map map) {
         View v = map.getView();
         // try to get zoom
         int z = getZoom(v);
@@ -614,7 +556,7 @@ public final class OLUtil {
             }
         }
         return -1;
-    }*/
+    }
 
     /**
      * Returns the geodesic area in square meters of the given geometry using
@@ -882,22 +824,24 @@ public final class OLUtil {
      * Transforms coordinates from source projection to destination projection.
      * This returns new coordinates (and does not modify the original).
      * 
-     * @param coordinates coordinates to transform
-     * @param source source projection
-     * @param destination destination projection
+     * @param coordinates
+     *            coordinates to transform
+     * @param source
+     *            source projection
+     * @param destination
+     *            destination projection
      * @return transformed coordinates
      */
     public static Coordinate[] transform(Coordinate[] coordinates, String source, String destination) {
-		
-    	Coordinate[] transformedCoordinates = new Coordinate[coordinates.length];
-    	
-    	for (int i = 0; i < coordinates.length; i++) {
-			transformedCoordinates[i] = transform(coordinates[i], source, destination);
-		}
-    	
-    	return transformedCoordinates;
-    	
-	};
+
+        Coordinate[] transformedCoordinates = new Coordinate[coordinates.length];
+
+        for(int i = 0; i < coordinates.length; i++) {
+            transformedCoordinates[i] = transform(coordinates[i], source, destination);
+        }
+
+        return transformedCoordinates;
+    }
 
     /**
      * Transforms an extent from source projection to destination projection.
