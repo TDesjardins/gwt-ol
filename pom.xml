@@ -12,7 +12,7 @@
 
     <groupId>com.github.tdesjardins</groupId>
     <artifactId>gwt-ol3</artifactId>
-    <version>2.6.0</version>
+    <version>2.7.0</version>
     <packaging>pom</packaging>
 
     <name>GWT OpenLayers 3</name>
@@ -106,6 +106,7 @@
                     <extensions>true</extensions>
                     <configuration>
                         <skipModule>true</skipModule>
+                        <style>DETAILED</style>
                     	<compilerArgs>
                             <arg>-generateJsInteropExports</arg>
                         </compilerArgs>

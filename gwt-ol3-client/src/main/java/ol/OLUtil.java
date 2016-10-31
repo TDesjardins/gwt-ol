@@ -24,7 +24,7 @@ import ol.layer.Base;
 import ol.layer.Layer;
 import ol.proj.Projection;
 import ol.source.Source;
-import ol.source.TileEvent;
+import ol.source.Tile;
 import ol.source.UrlTile;
 import ol.source.Xyz;
 import ol.source.XyzOptions;
@@ -235,10 +235,10 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static HandlerRegistration addTileLoadErrorListener(UrlTile source, final TileLoadErrorListener listener) {
-        return observe(source, "tileloaderror", new EventListener<TileEvent>() {
+        return observe(source, "tileloaderror", new EventListener<Tile.Event>() {
 
             @Override
-            public void onEvent(TileEvent event) {
+            public void onEvent(Tile.Event event) {
                 listener.onTileLoadError(event);
             }
         });

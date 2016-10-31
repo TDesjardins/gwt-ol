@@ -30,5 +30,19 @@ public class Select extends Interaction {
     public native void setOptions(SelectOptions options);
 
 	public native Collection<Feature> getFeatures();
+	
+	/**
+	 * Events emitted by {@link Select} instances are instances of this type.
+	 * 
+	 * @author Tino Desjardins
+	 *
+	 */
+	@JsType(isNative = true)
+	public interface Event extends ol.event.Event {
+
+	    @JsProperty
+	    public String getType();
+	    
+	}
 
 }

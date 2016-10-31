@@ -1,5 +1,6 @@
 package ol.source;
 
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 import ol.Collection;
@@ -130,5 +131,23 @@ public class Vector extends Source {
      *            Feature to remove.
      */
     public native void removeFeature(Feature feature);
+    
+    /**
+     * Events emitted by {@link ol.source.Vector} instances are instances of this
+     * type.
+     * 
+     * @author sbaumhekel
+     */
+    @JsType(isNative = true)
+    public interface Event extends ol.event.Event {
+        /**
+         * The feature being added or removed.
+         *
+         * @return {@link ol.Feature}
+         */
+        @JsProperty
+        Feature getFeature();
+
+    }
     
 }
