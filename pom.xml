@@ -106,7 +106,6 @@
                     <extensions>true</extensions>
                     <configuration>
                         <skipModule>true</skipModule>
-                        <style>DETAILED</style>
                     	<compilerArgs>
                             <arg>-generateJsInteropExports</arg>
                         </compilerArgs>
@@ -117,6 +116,7 @@
                         <devmodeArgs>
                             <arg>-generateJsInteropExports</arg>
                         </devmodeArgs>
+                        <style>OBFUSCATED</style> <!-- OBFUSCATED, PRETTY, or DETAILED -->
                     </configuration>
                 </plugin>
             </plugins>
