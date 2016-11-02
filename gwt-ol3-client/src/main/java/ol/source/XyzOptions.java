@@ -4,6 +4,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import ol.Size;
 
 /**
  * XYZ options.
@@ -36,5 +37,14 @@ public interface XyzOptions extends TileImageOptions {
 	 */
 	@JsProperty
 	void setTileLoadFunction(JavaScriptObject tileLoadFunction);
+
+	/**
+	 * Set the tile size used by the tile service. Default is [256, 256] pixels.
+	 * 
+	 * @param tileSize
+	 *            tile size
+	 */
+	@JsProperty
+	void setTileSize(Size tileSize);
 
 }
