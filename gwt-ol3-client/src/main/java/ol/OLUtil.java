@@ -257,10 +257,10 @@ public final class OLUtil {
 	 * @return {@link HandlerRegistration}
 	 */
 	public static HandlerRegistration addTileLoadStartListener(UrlTile source, final TileLoadStartListener listener) {
-		return observe(source, "tileloadstart", new EventListener<TileEvent>() {
+		return observe(source, "tileloadstart", new EventListener<Tile.Event>() {
 
 			@Override
-			public void onEvent(TileEvent event) {
+			public void onEvent(Tile.Event event) {
 				listener.onTileLoadStart(event);
 			}
 		});
@@ -277,10 +277,10 @@ public final class OLUtil {
 	 * @return {@link HandlerRegistration}
 	 */
 	public static HandlerRegistration addTileLoadEndListener(UrlTile source, final TileLoadEndListener listener) {
-		return observe(source, "tileloadend", new EventListener<TileEvent>() {
+		return observe(source, "tileloadend", new EventListener<Tile.Event>() {
 
 			@Override
-			public void onEvent(TileEvent event) {
+			public void onEvent(Tile.Event event) {
 				listener.onTileLoadEnd(event);
 			}
 		});
