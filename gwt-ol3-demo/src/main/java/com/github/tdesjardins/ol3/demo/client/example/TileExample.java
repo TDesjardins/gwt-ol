@@ -14,7 +14,6 @@ import ol.control.Rotate;
 import ol.control.ScaleLine;
 import ol.event.EventListener;
 import ol.interaction.DragAndDrop;
-import ol.interaction.DragAndDropEvent;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
 import ol.layer.LayerOptions;
@@ -79,10 +78,10 @@ public class TileExample implements Example {
         DragAndDrop dragAndDrop = new DragAndDrop();
         map.addInteraction(dragAndDrop);
 
-        EventListener<DragAndDropEvent> eventListener = new EventListener<DragAndDropEvent>() {
+        EventListener<DragAndDrop.Event> eventListener = new EventListener<DragAndDrop.Event>() {
 
             @Override
-            public void onEvent(DragAndDropEvent event) {
+            public void onEvent(DragAndDrop.Event event) {
                 Window.alert(String.valueOf(event.getFeatures().length));
                 Window.alert(event.getProjection().getUnits());
                 Window.alert(String.valueOf(event.getProjection().getMetersPerUnit()));

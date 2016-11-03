@@ -1004,6 +1004,17 @@ public final class OLFactory {
         return createStyle(styleOptions);
     }
 
+    /**
+     * Creates a new {@link Style} style.
+     * @param text {@link Text}
+     * @return {@link Style}
+     */
+    public static Style createStyle(Text text){
+        StyleOptions styleOptions = OLFactory.<StyleOptions> createOptions();
+        styleOptions.setText(text);
+        return createStyle(styleOptions);
+    }    
+    
    /**
      * Creates a new {@link Style} style.
      *
@@ -1017,6 +1028,22 @@ public final class OLFactory {
         StyleOptions styleOptions = OLFactory.<StyleOptions> createOptions();
         styleOptions.setFill(fill);
         styleOptions.setStroke(stroke);
+        return createStyle(styleOptions);
+    }
+
+    /**
+     * Creates a new {@link Style} style.
+     * @param fill {@link Fill}
+     * @param stroke {@link Stroke}
+     * @param text {@link Text}
+     * @return {@link Style}
+     */
+    public static Style createStyle(Fill fill, Stroke stroke, Text text)
+    {
+        StyleOptions styleOptions = OLFactory.<StyleOptions> createOptions();
+        styleOptions.setFill(fill);
+        styleOptions.setStroke(stroke);
+        styleOptions.setText(text);
         return createStyle(styleOptions);
     }
 
