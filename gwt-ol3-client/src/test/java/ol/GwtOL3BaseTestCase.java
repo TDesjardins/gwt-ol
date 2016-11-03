@@ -8,7 +8,7 @@ package ol;
 public class GwtOL3BaseTestCase extends BaseTestCase {
 
     public GwtOL3BaseTestCase() {
-        super("http://openlayers.org/en/v3.18.2/build/ol.js", "ol.GwtOL3Test", 10000);
+        super("http://openlayers.org/en/v3.19.1/build/ol.js", "ol.GwtOL3Test", 10000);
     }
 
 }

@@ -11,7 +11,6 @@ import ol.event.MeasureEvent;
 import ol.event.MeasureListener;
 import ol.geom.Geometry;
 import ol.interaction.Draw;
-import ol.interaction.DrawEvent;
 import ol.interaction.DrawOptions;
 import ol.layer.VectorLayerOptions;
 import ol.proj.Projection;
@@ -153,10 +152,10 @@ public class Measure {
         
         map.addInteraction(draw);
         // set up event handlers
-        OLUtil.observe(draw, "drawstart", new EventListener<DrawEvent>() {
+        OLUtil.observe(draw, "drawstart", new EventListener<Draw.Event>() {
 
             @Override
-            public void onEvent(DrawEvent event) {
+            public void onEvent(Draw.Event event) {
                 // remember measure feature
                 sketch = event.getFeature();
                 // clean up overlay
@@ -165,10 +164,10 @@ public class Measure {
                 }
             }
         });
-        OLUtil.observe(draw, "drawend", new EventListener<DrawEvent>() {
+        OLUtil.observe(draw, "drawend", new EventListener<Draw.Event>() {
 
             @Override
-            public void onEvent(DrawEvent event) {
+            public void onEvent(Draw.Event event) {
                 // fire event and clean up
                 fireMeasureEvent();
                 // persist feature?

@@ -83,7 +83,24 @@ public class GeoJSONTest extends GwtOL3BaseTestCase {
 
     }
 	
-    public void testReadGeoJSON() {
+    public void testReadFeatureFromGeoJSON() {
+        
+        injectUrlAndTest(new TestWithInjection() {
+
+            @Override
+            public void test() {
+                String geoJSON = geoJSONFormat.writeFeature(createTestFeature(), null);
+                assertNotNull(geoJSON);
+                Feature feature = geoJSONFormat.readFeature(geoJSON, null);
+
+                assertNotNull(feature);
+                //assertTrue(features.length > 0);
+            }
+        });
+
+    }
+    
+    public void testReadFeatureCollectionFromGeoJSON() {
         
         injectUrlAndTest(new TestWithInjection() {
 
@@ -91,11 +108,11 @@ public class GeoJSONTest extends GwtOL3BaseTestCase {
             public void test() {
                 String geoJSON = geoJSONFormat.writeFeatures(createTestFeature(), null);
                 assertNotNull(geoJSON);
+                //JavaScriptObject javaScriptObject = JsonUtils.safeEval(geoJSON);
+                Feature[] features = geoJSONFormat.readFeatures(geoJSON, null);
 
-                Feature feature = geoJSONFormat.readFeature(geoJSON, null);
-
-                assertNotNull(feature);
-                // assertTrue(features.length > 0);
+                assertNotNull(features);
+                //assertTrue(features.length > 0);
             }
         });
 

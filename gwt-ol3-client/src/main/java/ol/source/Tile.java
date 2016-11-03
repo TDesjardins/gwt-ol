@@ -1,7 +1,6 @@
 package ol.source;
 
 import jsinterop.annotations.JsType;
-
 import ol.tilegrid.TileGrid;
 
 /**
@@ -21,5 +20,17 @@ public class Tile extends Source {
      * @return {ol.tilegrid.TileGrid} Tile grid.
      */
     public native TileGrid getTileGrid();
+    
+    /**
+     * Events emitted by {@link ol.source.Tile} instances are instances of this
+     * type.
+     * 
+     * @author sbaumhekel
+     *
+     */
+    @JsType(isNative = true)
+    public interface Event extends ol.event.Event {
+
+    }
 
 }
