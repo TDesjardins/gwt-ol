@@ -1,6 +1,6 @@
 package ol.event;
 
-import ol.source.TileEvent;
+import ol.source.Tile;
 
 /**
  * A listener for tile starts loading.
@@ -14,6 +14,6 @@ public interface TileLoadStartListener {
 	 * @param evt
 	 *            {@link TileEvent}
 	 */
-	void onTileLoadStart(TileEvent evt);
+	void onTileLoadStart(Tile.Event evt);
 
 }
