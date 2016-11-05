@@ -24,7 +24,6 @@ public interface FeatureOptions extends Options {
      * Id.
      * 
      * @param id
-     * @return this instance
      */
     @JsProperty
     void setId(String id);

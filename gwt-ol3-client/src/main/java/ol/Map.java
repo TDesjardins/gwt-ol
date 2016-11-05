@@ -215,13 +215,12 @@ public class Map extends Object {
     public native Element getViewport();
 
 	/**
-	 * 
 	 * Detect features that intersect a pixel on the viewport, and execute a
 	 * callback with each intersecting feature. Layers included in the detection
 	 * can be configured through opt_layerFilter.
 	 * 
 	 * @param pixel
-	 * @param fn
+	 * @param callback
 	 */
 	public native Feature forEachFeatureAtPixel(Pixel pixel, GenericFunction<Feature, ?> callback);
 
