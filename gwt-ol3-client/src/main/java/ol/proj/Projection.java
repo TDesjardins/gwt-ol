@@ -125,7 +125,7 @@ public class Projection {
 	 * Transforms a coordinate from longitude/latitude to a different projection.
 	 *
 	 * @param coordinate
-	 * @return
+	 * @return transformed coordinate
 	 */
 	@JsMethod(name = "fromLonLat", namespace = "ol.proj")
 	public static native Coordinate fromLonLat(Coordinate coordinate);
@@ -138,7 +138,7 @@ public class Projection {
 	 * @param coordinate
 	 * @param source
 	 * @param target
-	 * @return
+	 * @return transformed coordinate
 	 */
 	@JsMethod(name = "transform", namespace = "ol.proj")
 	public static native Coordinate transform(Coordinate coordinate, String source, String target);
