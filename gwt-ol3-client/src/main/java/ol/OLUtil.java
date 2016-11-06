@@ -821,7 +821,9 @@ public final class OLUtil {
      * @param destination
      *            Destination projection-like.
      * @return {ol.Coordinate} Coordinate.
+     * @deprecated Use {@link ol.proj.Projection#transform(Coordinate, Projection, Projection)} instead.
      */
+    @Deprecated
     public static native Coordinate transform(Coordinate coordinate, Projection source, Projection destination) /*-{
 		return $wnd.ol.proj.transform(coordinate, source, destination);
     }-*/;

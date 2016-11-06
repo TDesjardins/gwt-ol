@@ -173,6 +173,25 @@ public class Projection {
 	public static native Coordinate transform(Coordinate coordinate, String source, String target);
 	
 	/**
+     * Transforms a coordinate from source projection to destination projection.
+     * This returns a new coordinate (and does not modify the original).
+     *
+     * See {@link #transformExtent(Extent, Projection, Projection)} for extent
+     * transformation. See the transform method of {@link ol.geom.Geometry} and
+     * its subclasses for geometry transforms.
+     *
+     * @param coordinate
+     *            Coordinate.
+     * @param source
+     *            Source projection-like.
+     * @param destination
+     *            Destination projection-like.
+     * @return {ol.Coordinate} Coordinate.
+     */
+	@JsMethod(name = "transform", namespace = "ol.proj")
+    public static native Coordinate transform(Coordinate coordinate, Projection source, Projection destination);
+	
+	/**
      * Transforms an extent from source projection to destination projection.
      * This returns a new extent (and does not modify the original).
      *

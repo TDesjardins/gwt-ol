@@ -97,6 +97,7 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
 
             @Override
             public void test() {
+                
                 double x = -121.1;
                 double y = 47.5;
 
@@ -106,6 +107,13 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
                 assertTrue(transformedCenterCoordinate.length() == 2);
                 assertNotSame(transformedCenterCoordinate.getX(), x);
                 assertNotSame(transformedCenterCoordinate.getY(), y);
+                
+                Coordinate sameTransformedCenterCoordinate = Projection.transform(centerCoordinate, Projection.get(EPSG_CODE_4326), Projection.get(EPSG_CODE_3857));
+                
+                assertTrue(sameTransformedCenterCoordinate.length() == 2);
+                assertSame(transformedCenterCoordinate.getX(), sameTransformedCenterCoordinate.getX());
+                assertSame(transformedCenterCoordinate.getY(), transformedCenterCoordinate.getY());
+                
             }
         });
 
