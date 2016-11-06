@@ -498,11 +498,13 @@ public final class OLUtil {
      *            Either a code string which is a combination of authority and
      *            identifier such as "EPSG:4326", or an existing projection
      *            object, or undefined.
-     * @return {ol.proj.Projection} Projection object, or null if not in list.
+     * @return {@link ol.proj.Projection} Projection object, or null if not in list.
+     * @deprecated Use {@link ol.proj.Projection#get(String)} instead.
      */
-    public static native Projection getProjection(String projectionCode) /*-{
-		return $wnd.ol.proj.get(projectionCode);
-    }-*/;
+    @Deprecated
+    public static Projection getProjection(String projectionCode) {
+        return Projection.get(projectionCode);
+    }
     
     /**
      * Gets a {@link TileGrid} from the given object, if the property is set

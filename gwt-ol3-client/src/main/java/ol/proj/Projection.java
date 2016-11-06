@@ -12,7 +12,7 @@ import ol.Extent;
  * options use {@link ol.proj.ProjectionLike} which means the simple string code
  * will suffice.
  *
- * You can use {@link ol.proj.get} to retrieve the object for a particular
+ * You can use {@link ol.proj.Projection#get(String)} to retrieve the object for a particular
  * projection.
  *
  * The library includes definitions for `EPSG:4326` and `EPSG:3857`, together
@@ -129,6 +129,16 @@ public class Projection {
 	 */
 	@JsMethod(name = "fromLonLat", namespace = "ol.proj")
 	public static native Coordinate fromLonLat(Coordinate coordinate);
+	
+	/**
+     * 
+     * Fetches a Projection object for the code specified.
+     *
+     * @param projectionCode combination of authority and identifier such as "EPSG:4326"
+     * @return projection
+     */
+    @JsMethod(name = "get", namespace = "ol.proj")
+    public static native Projection get(String projectionCode);
 
 	/**
 	 * 

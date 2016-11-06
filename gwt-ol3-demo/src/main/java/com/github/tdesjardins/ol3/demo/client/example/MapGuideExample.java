@@ -24,7 +24,7 @@ public class MapGuideExample implements Example {
     public void show(String exampleId) {
 
     	// create a projection
-        Projection projection = OLUtil.getProjection("EPSG:4326");
+        Projection projection = Projection.get("EPSG:4326");
 
         // create a MapGuide params
     	ImageMapGuideParams imageMapGuideParams = OLFactory.createOptions();

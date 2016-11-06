@@ -42,7 +42,7 @@ public class WmtsExample implements Example {
     public void show(String exampleId) {
 
         // create a projection       
-        Projection projection = OLUtil.getProjection(DemoConstants.EPSG_3857);
+        Projection projection = Projection.get(DemoConstants.EPSG_3857);
         
         // create a OSM-layer
         XyzOptions osmSourceOptions = OLFactory.createOptions();

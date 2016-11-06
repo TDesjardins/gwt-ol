@@ -26,7 +26,7 @@ public class Measure {
     /**
      * Projection for WGS84 geographic coordinates (EPSG:4326).
      */
-    private static final Projection PROJECTION_LATLON = ol.OLUtil.getProjection("EPSG:4326");
+    private static final Projection PROJECTION_LATLON = Projection.get("EPSG:4326");
     private com.google.gwt.user.client.EventListener chainedListener;
     private Draw draw;
     private boolean eventListenerNeedsCleanup;

@@ -60,7 +60,7 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
 
                 OLUtil.addProjection(projection);
 
-                Projection projectionToCompare = OLUtil.getProjection(EPSG_CODE_3068);
+                Projection projectionToCompare = Projection.get(EPSG_CODE_3068);
                 assertNotNull(projectionToCompare);
 
                 assertEquals(projection.getCode(), projectionToCompare.getCode());
@@ -77,7 +77,7 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
 
             @Override
             public void test() {
-                Projection projection = OLUtil.getProjection(EPSG_CODE_4326);
+                Projection projection = Projection.get(EPSG_CODE_4326);
 
                 assertNotNull(projection);
                 assertEquals(EPSG_CODE_4326, projection.getCode());
@@ -121,7 +121,7 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
 
             @Override
             public void test() {
-                Extent extent = OLUtil.getProjection(EPSG_CODE_4326).getExtent();
+                Extent extent = Projection.get(EPSG_CODE_4326).getExtent();
 
                 Extent transformedExtent = OLUtil.transformExtent(extent, EPSG_CODE_4326, EPSG_CODE_3857);
 
