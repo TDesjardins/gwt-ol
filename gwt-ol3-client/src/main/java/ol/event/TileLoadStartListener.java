@@ -12,7 +12,7 @@ public interface TileLoadStartListener {
 	 * Triggered when a tile starts loading.
 	 * 
 	 * @param evt
-	 *            {@link Tile.Event}
+	 *            {@link ol.source.Tile.Event}
 	 */
 	void onTileLoadStart(Tile.Event evt);
 
