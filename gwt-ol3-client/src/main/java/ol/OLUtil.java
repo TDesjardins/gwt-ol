@@ -183,10 +183,12 @@ public final class OLUtil {
      * to transform between projections with equal meaning.
      *
      * @param projections Projections.
+     * @deprecated Use {@link ol.proj.Projection#addEquivalentProjections(Projection[])} instead.
      */
-    public static native void addEquivalentProjections(Projection[] projections) /*-{
-		$wnd.ol.proj.addEquivalentProjections(projections);
-    }-*/;
+    @Deprecated
+    public static void addEquivalentProjections(Projection[] projections) {
+		Projection.addEquivalentProjections(projections);
+    };
     
     /**
      * Add a Projection object to the list of supported projections that can be
@@ -194,10 +196,12 @@ public final class OLUtil {
      *
      * @param projection
      *            Projection instance.
+     * @deprecated Use {@link ol.proj.Projection#addProjection(Projection)} instead.
      */
-    public static native void addProjection(Projection projection) /*-{
-		$wnd.ol.proj.addProjection(projection);
-    }-*/;
+    @Deprecated
+    public static void addProjection(Projection projection) {
+        Projection.addProjection(projection);
+    };
 
     /**
      * Adds a {@link Style} to the given array of {@link Style}s.
@@ -859,10 +863,12 @@ public final class OLUtil {
      * @param destination
      *            Destination projection-like.
      * @return {ol.Coordinate} Coordinate.
+     * @deprecated Use {@link ol.proj.Projection#transform(Coordinate, String, String)} instead.
      */
-    public static native Coordinate transform(Coordinate coordinate, String source, String destination) /*-{
-		return $wnd.ol.proj.transform(coordinate, source, destination);
-    }-*/;
+    @Deprecated
+    public static Coordinate transform(Coordinate coordinate, String source, String destination) {
+        return Projection.transform(coordinate, source, destination);
+    }
     
     /**
      * Transforms coordinates from source projection to destination projection.
@@ -881,7 +887,7 @@ public final class OLUtil {
         Coordinate[] transformedCoordinates = new Coordinate[coordinates.length];
 
         for(int i = 0; i < coordinates.length; i++) {
-            transformedCoordinates[i] = transform(coordinates[i], source, destination);
+            transformedCoordinates[i] = Projection.transform(coordinates[i], source, destination);
         }
 
         return transformedCoordinates;
@@ -898,10 +904,12 @@ public final class OLUtil {
      * @param destination
      *            Destination projection-like.
      * @return {ol.Extent} The transformed extent.
+     * @deprecated Use {@link ol.proj.Projection#transformExtent(Extent, Projection, Projection)} instead.
      */
-    public static native Extent transformExtent(Extent extent, Projection source, Projection destination) /*-{
-		return $wnd.ol.proj.transformExtent(extent, source, destination);
-    }-*/;
+    @Deprecated
+    public static Extent transformExtent(Extent extent, Projection source, Projection destination) {
+		return Projection.transformExtent(extent, source, destination);
+    };
 
     /**
      * Transforms an extent from source projection to destination projection.
@@ -914,9 +922,11 @@ public final class OLUtil {
      * @param destination
      *            Destination projection-like.
      * @return {ol.Extent} The transformed extent.
+     * @deprecated Use {@link ol.proj.Projection#transformExtent(Extent, String, String)} instead.
      */
-    public static native Extent transformExtent(Extent extent, String source, String destination) /*-{
-		return $wnd.ol.proj.transformExtent(extent, source, destination);
-    }-*/;
+    @Deprecated
+    public static Extent transformExtent(Extent extent, String source, String destination) {
+		return Projection.transformExtent(extent, source, destination);
+    };
 
 }

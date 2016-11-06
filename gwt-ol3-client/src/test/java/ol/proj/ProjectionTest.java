@@ -6,7 +6,6 @@ import ol.Coordinate;
 import ol.Extent;
 import ol.GwtOL3BaseTestCase;
 import ol.OLFactory;
-import ol.OLUtil;
 
 /**
  *
@@ -55,10 +54,10 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
                 //projectionOptions.global(false);
                 projectionOptions.setUnits(UNIT_METRE);
 
-                Projection projection = OLFactory.createProjection(projectionOptions);
+                Projection projection = new Projection(projectionOptions);
                 assertNotNull(projection);
 
-                OLUtil.addProjection(projection);
+                Projection.addProjection(projection);
 
                 Projection projectionToCompare = Projection.get(EPSG_CODE_3068);
                 assertNotNull(projectionToCompare);
@@ -123,7 +122,7 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
             public void test() {
                 Extent extent = Projection.get(EPSG_CODE_4326).getExtent();
 
-                Extent transformedExtent = OLUtil.transformExtent(extent, EPSG_CODE_4326, EPSG_CODE_3857);
+                Extent transformedExtent = Projection.transformExtent(extent, EPSG_CODE_4326, EPSG_CODE_3857);
 
                 assertTrue(transformedExtent.<JsArrayNumber>cast().length() == 4);
                 assertNotSame(extent.getLowerLeftX(), transformedExtent.getLowerLeftX());
