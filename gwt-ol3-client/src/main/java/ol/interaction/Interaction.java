@@ -10,13 +10,13 @@ import jsinterop.annotations.JsType;
  * {@link ol.control.Zoom}, but triggered by a keyboard event not a button
  * element event. Although interactions do not have a DOM element, some of them
  * do render vectors and so are visible on the screen.
- * 
+ *
  * @author Tino Desjardins
  *
  */
 @JsType(isNative = true)
-public class Interaction extends ol.Object {
-    
+public abstract class Interaction extends ol.Object {
+
     /**
      * Return whether the interaction is currently active.
      *
@@ -31,5 +31,5 @@ public class Interaction extends ol.Object {
      *            Active.
      */
     public native void setActive(boolean active);
-    
+
 }
