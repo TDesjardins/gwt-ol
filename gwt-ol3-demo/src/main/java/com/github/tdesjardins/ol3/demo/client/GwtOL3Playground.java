@@ -35,6 +35,8 @@ public class GwtOL3Playground implements EntryPoint {
             this.example = example;
             this.setSize("100%", "100%");
             this.getElement().setId(example.getExample().toString());
+            // set tabindex to "0" to make it focusable (needed for keyboard navigation)
+            this.getElement().setTabIndex(0);
         }
 
         @Override public void setVisible(boolean visible) {
