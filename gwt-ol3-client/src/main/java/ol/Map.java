@@ -1,10 +1,15 @@
 package ol;
 
 import com.google.gwt.dom.client.Element;
+import com.google.web.bindery.event.shared.HandlerRegistration;
+
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.control.Control;
+import ol.event.DoubleClickListener;
 import ol.event.Event;
+import ol.event.EventListener;
 import ol.gwt.TypedObject;
 import ol.interaction.Interaction;
 import ol.layer.Base;
@@ -218,7 +223,7 @@ public class Map extends Object {
 	 * Detect features that intersect a pixel on the viewport, and execute a
 	 * callback with each intersecting feature. Layers included in the detection
 	 * can be configured through opt_layerFilter.
-	 * 
+	 *
 	 * @param pixel
 	 * @param callback
 	 */
@@ -305,5 +310,16 @@ public class Map extends Object {
      * when third-party code changes the size of the map viewport.
      */
     public native void updateSize();
+
+    @JsOverlay
+    public final HandlerRegistration addDoubleClickListener(final DoubleClickListener listener) {
+        return OLUtil.observe(this, "dblclick", new EventListener<MapBrowserEvent>() {
+
+            @Override
+            public void onEvent(MapBrowserEvent event) {
+                listener.onDoubleClick(event);
+            }
+        });
+    }
 
 }
