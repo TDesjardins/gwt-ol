@@ -19,6 +19,8 @@ import ol.Map;
 @JsType(isNative = true)
 public class Snap extends Interaction {
 
+    public Snap(SnapOptions snapOptions) {}
+    
     /**
      * Add a feature to the collection of features that we may snap to.
      *

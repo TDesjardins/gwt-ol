@@ -12,6 +12,8 @@ import ol.Feature;
  */
 @JsType(isNative = true)
 public class Modify extends Pointer {
+
+    public Modify(ModifyOptions modifyOptions) {}
     
     /** 
      * Events emitted by ol.interaction.Modify instances are instances of this type.
