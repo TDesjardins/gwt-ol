@@ -1,6 +1,3 @@
-/**
- *
- */
 package ol.format;
 
 import jsinterop.annotations.JsType;
@@ -12,7 +9,7 @@ import ol.proj.Projection;
  *
  * @author tlochmann
  */
-@JsType
+@JsType(isNative = true)
 public interface GeoJSONFeatureOptions extends Options {
 
     /**
