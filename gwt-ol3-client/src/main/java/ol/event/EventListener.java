@@ -1,7 +1,5 @@
 package ol.event;
 
-import jsinterop.annotations.JsType;
-
 /**
  * A listener for events of the given type.
  * 
@@ -10,7 +8,6 @@ import jsinterop.annotations.JsType;
  * @param <E>
  *            event type
  */
-@JsType(isNative = true)
 public interface EventListener<E extends Event> {
 
     /**

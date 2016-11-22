@@ -8,6 +8,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 
+import jsinterop.annotations.JsType;
 import ol.event.ClickListener;
 import ol.event.DoubleClickListener;
 import ol.event.Event;
@@ -328,7 +329,7 @@ public final class OLUtil {
      *            listener
      * @return JavaScript function
      */
-    public static native <E extends Event> JavaScriptObject createEventListenerFunction(EventListener<E> listener) /*-{
+    public static native JavaScriptObject createEventListenerFunction(PlainEventListener listener) /*-{
 		return function(evt) {
 			listener.onEvent(evt);
 		};
@@ -724,8 +725,15 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static <E extends Event> HandlerRegistration observe(Observable o, String eventType,
-            EventListener<E> listener) {
-        JavaScriptObject handler = OLUtil.createEventListenerFunction(listener);
+            final EventListener<E> listener) {
+        JavaScriptObject handler = OLUtil.createEventListenerFunction(new PlainEventListener() {
+
+            @SuppressWarnings("unchecked")
+            @Override
+            public void onEvent(Event event) {
+                listener.onEvent((E)event);
+            }
+        });
         JavaScriptObject key = o.on(eventType, handler);
         return new OLHandlerRegistration(o, key);
     }
@@ -744,7 +752,14 @@ public final class OLUtil {
      */
     public static <E extends Event> HandlerRegistration observeOnce(Observable o, String eventType,
             EventListener<E> listener) {
-        JavaScriptObject handler = OLUtil.createEventListenerFunction(listener);
+        JavaScriptObject handler = OLUtil.createEventListenerFunction(new PlainEventListener() {
+            
+            @SuppressWarnings("unchecked")
+            @Override
+            public void onEvent(Event event) {
+                listener.onEvent((E)event);
+            }
+        });
         JavaScriptObject key = o.once(eventType, handler);
         return new OLHandlerRegistration(o, key);
     }
@@ -930,5 +945,21 @@ public final class OLUtil {
     public static Extent transformExtent(Extent extent, String source, String destination) {
 		return Projection.transformExtent(extent, source, destination);
     };
+
+    /**
+     * An untyped event listener.
+     * @author sbaumhekel
+     */
+    @JsType
+    private static interface PlainEventListener {
+
+        /**
+         * Is called when an event is received.
+         * 
+         * @param event
+         *            event
+         */
+        void onEvent(Event event);
+    }
 
 }
