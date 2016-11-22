@@ -4,6 +4,7 @@ import jsinterop.annotations.JsType;
 import ol.Coordinate;
 import ol.Extent;
 import ol.Observable;
+import ol.proj.Projection;
 
 /**
  * Base for vector geometries.
@@ -79,13 +80,29 @@ public abstract class Geometry extends Observable {
      * function on the clone.
      *
      * @param source
-     *            The current projection. Can be a string identifier or a
-     *            {@link ol.proj.Projection} object.
+     *            The current projection. Can be a string identifier.
      * @param destination
-     *            The desired projection. Can be a string identifier or a
-     *            {@link ol.proj.Projection} object.
+     *            The desired projection. Can be a string identifier.
      * @return {@link Geometry} This geometry. Note that original geometry is
      *         modified in place.
      */
     public native Geometry transform(String source, String destination);
+    
+    /**
+     * Transform each coordinate of the geometry from one coordinate reference
+     * system to another. The geometry is modified in place. For example, a line
+     * will be transformed to a line and a circle to a circle. If you do not
+     * want the geometry modified in place, first clone() it and then use this
+     * function on the clone.
+     *
+     * @param geom {@link Geometry}
+     *
+     * @param source
+     *            The current projection. Can be a {@link ol.proj.Projection} object.
+     * @param destination
+     *            The desired projection. Can be a {@link ol.proj.Projection} object.
+     * @return {@link Geometry} This geometry. Note that original geometry is
+     *         modified in place.
+     */
+    public native Geometry transform(Projection source, Projection destination);
 }

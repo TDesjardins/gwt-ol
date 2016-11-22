@@ -845,7 +845,9 @@ public final class OLUtil {
      *            {@link ol.proj.Projection} object.
      * @return {@link Geometry} This geometry. Note that original geometry is
      *         modified in place.
+     * @deprecated Use {@link ol.geom.Geometry#transform(ol.proj.Projection, ol.proj.Projection)} instead.
      */
+    @Deprecated
     public static native Geometry transform(Geometry geom, Projection source, Projection destination) /*-{
 		return geom.transform(source, destination);
     }-*/;

@@ -58,7 +58,7 @@ public class Measure {
             Geometry geom = sketch.getGeometry();
             if(geom != null) {
                 // transform it to lat/lon and fire event
-                Geometry geomLatLon = OLUtil.transform(geom.clone(), proj, PROJECTION_LATLON);
+                Geometry geomLatLon = geom.clone().transform(proj, PROJECTION_LATLON);
                 listener.onMeasure(new MeasureEvent(geomLatLon));
             }
         }
