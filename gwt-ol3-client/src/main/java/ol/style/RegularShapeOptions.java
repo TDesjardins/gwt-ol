@@ -53,4 +53,35 @@ public interface RegularShapeOptions extends Options {
      */
     @JsProperty
     void setStroke(Stroke stroke);
+
+    /**
+     * Rotation in radians (positive rotation clockwise). Default is 0
+     *
+     * @param rotation in rad
+     */
+    @JsProperty
+    void setRotation(double rotation);
+
+    /**
+     * Inner radius of a star.
+     *
+     * @param radius1 radius
+     */
+    @JsProperty
+    void setRadius1(int radius1);
+
+    /**
+     * Outer radius of a star.
+     *
+     * @param radius2 radius
+     */
+    @JsProperty
+    void setRadius2(int radius2);
+
+    /**
+     * Whether to rotate the shape with the view. Default is false.
+     * @param value
+     */
+    @JsProperty
+    void setRotateWithView(boolean value);
 }
