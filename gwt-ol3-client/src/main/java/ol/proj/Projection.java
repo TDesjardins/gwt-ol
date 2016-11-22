@@ -139,6 +139,21 @@ public class Projection {
     @JsMethod(name = "addProjection", namespace = "ol.proj")
     public static native void addProjection(Projection projection);
     
+    /**
+     * Checks if two projections are the same, that is every coordinate in one
+     * projection does represent the same geographic point as the same
+     * coordinate in the other projection.
+     *
+     * @param projection1
+     *            Projection 1.
+     * @param projection2
+     *            Projection 2.
+     * @return {boolean} Equivalent.
+     */
+    @JsMethod(name = "equivalent", namespace = "ol.proj")
+    public static native boolean equivalent(ol.proj.Projection projection1, ol.proj.Projection projection2);
+    
+    
 	/**
 	 * 
 	 * Transforms a coordinate from longitude/latitude to a different projection.

@@ -396,7 +396,9 @@ public final class OLUtil {
      * @param projection2
      *            Projection 2.
      * @return {boolean} Equivalent.
+     * @deprecated Use {@link ol.proj.Projection#equivalent(Projection, Projection)} instead.
      */
+    @Deprecated
     public static native boolean equivalent(ol.proj.Projection projection1, ol.proj.Projection projection2) /*-{
       return $wnd.ol.proj.equivalent(projection1, projection2);
     }-*/;
