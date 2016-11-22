@@ -1,12 +1,14 @@
 package ol.style;
 
-import ol.*;
+import ol.GwtOL3BaseTestCase;
+import ol.OLFactory;
 import ol.style.RegularShape;
 import ol.style.RegularShapeOptions;
-import ol.style.StyleOptions;
 
 /**
- * Created by mribeiro on 22/11/16.
+ *
+ * @author mribeiro
+ * @date 22/11/16.
  */
 public class RegularShapeTest extends GwtOL3BaseTestCase {
 
