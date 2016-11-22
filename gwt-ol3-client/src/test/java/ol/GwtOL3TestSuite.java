@@ -32,6 +32,7 @@ import ol.interaction.SnapTest;
 import ol.interaction.TranslateTest;
 import ol.layer.LayerGroupTest;
 import ol.proj.ProjectionTest;
+import ol.style.RegularShapeTest;
 
 /**
  * Testsuite for GwtOL3.
@@ -96,6 +97,9 @@ public class GwtOL3TestSuite extends GWTTestSuite {
 
         // projection
         suite.addTestSuite(ProjectionTest.class);
+
+        // style
+        suite.addTestSuite(RegularShapeTest.class);
 
         return suite;
 
