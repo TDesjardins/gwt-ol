@@ -1,15 +1,13 @@
-/**
- *
- * @author mribeiro
- * @date 07/06/16 17:51
- *
- */
 package ol.style;
 
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.Options;
 
+/**
+ * @author mribeiro
+ * @date 07/06/16 17:51
+ */
 @JsType(isNative = true)
 public interface RegularShapeOptions extends Options {
 
