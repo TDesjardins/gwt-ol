@@ -7,7 +7,6 @@ import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
-import ol.OLUtil;
 import ol.View;
 import ol.control.Attribution;
 import ol.control.Rotate;
@@ -89,7 +88,7 @@ public class TileExample implements Example {
             }
         };
 
-        OLUtil.observe(dragAndDrop, "addfeatures", eventListener);
+        dragAndDrop.on("addfeatures", eventListener);
 
         map.addControl(new Rotate());
 

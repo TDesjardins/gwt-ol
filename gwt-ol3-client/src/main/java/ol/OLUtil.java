@@ -53,7 +53,7 @@ public final class OLUtil {
      * ol.sphere.WGS84).
      */
     public static final double EARTH_RADIUS_WGS84 = 6378137;
-    
+
     // prevent instantiating this class
     @Deprecated
     private OLUtil() {
@@ -189,7 +189,7 @@ public final class OLUtil {
     public static void addEquivalentProjections(Projection[] projections) {
 		Projection.addEquivalentProjections(projections);
     };
-    
+
     /**
      * Add a Projection object to the list of supported projections that can be
      * looked up by their code.
@@ -327,7 +327,9 @@ public final class OLUtil {
      * @param listener
      *            listener
      * @return JavaScript function
+     * @deprecated Use functional interfaces {@link jsinterop.annotations.JsFunction} instead.
      */
+    @Deprecated
     public static native <E extends Event> JavaScriptObject createEventListenerFunction(EventListener<E> listener) /*-{
 		return function(evt) {
 			listener.onEvent(evt);
@@ -383,7 +385,7 @@ public final class OLUtil {
     public static Sphere createSphereNormal() {
         return OLFactory.createSphere(EARTH_RADIUS_NORMAL);
     }
-    
+
     /**
      * Checks if two projections are the same, that is every coordinate in one
      * projection does represent the same geographic point as the same
@@ -398,7 +400,7 @@ public final class OLUtil {
     public static native boolean equivalent(ol.proj.Projection projection1, ol.proj.Projection projection2) /*-{
       return $wnd.ol.proj.equivalent(projection1, projection2);
     }-*/;
-    
+
     /**
      * Gets the geometry layout string for the given dimension.
      *
@@ -509,7 +511,7 @@ public final class OLUtil {
     public static Projection getProjection(String projectionCode) {
         return Projection.get(projectionCode);
     }
-    
+
     /**
      * Gets a {@link TileGrid} from the given object, if the property is set
      *
@@ -520,7 +522,7 @@ public final class OLUtil {
     private static native TileGrid getTileGrid(ol.source.Source o) /*-{
 		return o.tileGrid || null;
     }-*/;
-    
+
     /**
      *
      * @param extent
@@ -529,7 +531,7 @@ public final class OLUtil {
     public static native double getWidth(Extent extent) /*-{
         return $wnd.ol.extent.getWidth(extent);
     }-*/;
-    
+
     /**
     *
     * @param extent
@@ -725,8 +727,7 @@ public final class OLUtil {
      */
     public static <E extends Event> HandlerRegistration observe(Observable o, String eventType,
             EventListener<E> listener) {
-        JavaScriptObject handler = OLUtil.createEventListenerFunction(listener);
-        JavaScriptObject key = o.on(eventType, handler);
+        JavaScriptObject key = o.on(eventType, listener);
         return new OLHandlerRegistration(o, key);
     }
 
@@ -744,8 +745,7 @@ public final class OLUtil {
      */
     public static <E extends Event> HandlerRegistration observeOnce(Observable o, String eventType,
             EventListener<E> listener) {
-        JavaScriptObject handler = OLUtil.createEventListenerFunction(listener);
-        JavaScriptObject key = o.once(eventType, handler);
+        JavaScriptObject key = o.once(eventType, listener);
         return new OLHandlerRegistration(o, key);
     }
 
@@ -778,7 +778,7 @@ public final class OLUtil {
      * array of styles, or a function that takes a resolution and returns an
      * array of styles. If it is `null` the feature has no style (a `null`
      * style).
-     * 
+     *
      * @param f
      *            {@link ol.Feature}
      * @param style
@@ -795,7 +795,7 @@ public final class OLUtil {
      * is `null` the layer has no style (a `null` style), so only features that
      * have their own styles will be rendered in the layer. See {@link ol.style}
      * for information on the default style.
-     * 
+     *
      * @param l
      *            Layer
      * @param style
@@ -805,7 +805,7 @@ public final class OLUtil {
         l.setStyle(style);
     }-*/;
 
-    
+
     /**
      * Transforms a coordinate from source projection to destination projection.
      * This returns a new coordinate (and does not modify the original).
@@ -849,7 +849,7 @@ public final class OLUtil {
     public static native Geometry transform(Geometry geom, Projection source, Projection destination) /*-{
 		return geom.transform(source, destination);
     }-*/;
-    
+
     /**
      * Transforms a coordinate from source projection to destination projection.
      * This returns a new coordinate (and does not modify the original).
@@ -871,11 +871,11 @@ public final class OLUtil {
     public static Coordinate transform(Coordinate coordinate, String source, String destination) {
         return Projection.transform(coordinate, source, destination);
     }
-    
+
     /**
      * Transforms coordinates from source projection to destination projection.
      * This returns new coordinates (and does not modify the original).
-     * 
+     *
      * @param coordinates
      *            coordinates to transform
      * @param source
