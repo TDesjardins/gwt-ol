@@ -107,16 +107,16 @@
                     <configuration>
                         <skipModule>true</skipModule>
                     	<compilerArgs>
-                            <arg>-generateJsInteropExports</arg>
+                            <!-- arg>-generateJsInteropExports</arg-->
                             <arg>-XdisableUpdateCheck</arg>
                         </compilerArgs>
                         <useCompilerArgsForTests>true</useCompilerArgsForTests>
                         <codeserverArgs>
-                            <arg>-generateJsInteropExports</arg>
+                            <!-- arg>-generateJsInteropExports</arg-->
                             <arg>-XdisableUpdateCheck</arg>
                         </codeserverArgs>
                         <devmodeArgs>
-                            <arg>-generateJsInteropExports</arg>
+                            <!-- arg>-generateJsInteropExports</arg-->
                             <arg>-XdisableUpdateCheck</arg>
                         </devmodeArgs>
                         <style>OBFUSCATED</style> <!-- OBFUSCATED, PRETTY, or DETAILED -->
