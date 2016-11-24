@@ -158,4 +158,14 @@ public class View extends Object {
      */
     public native void setZoom(double zoom);
 
+    /**
+     * Calculate the extent for the current view state and the passed size.
+     * The size is the pixel dimensions of the box into which the calculated extent should fit.
+     * In most cases you want to get the extent of the entire map, that is map.getSize().
+     *
+     * @param size
+     *            Box pixel size.
+     */
+    public native Extent calculateExtent(Size size);
+
 }
