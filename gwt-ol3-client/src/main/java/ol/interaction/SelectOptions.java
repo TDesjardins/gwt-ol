@@ -75,7 +75,7 @@ public interface SelectOptions extends Options{
 	 * @param function
 	 */
     @JsProperty
-    void setToogleCondition(GenericFunction<?, ?> function);
+    void setToggleCondition(GenericFunction<?, ?> function);
 
 	/**
 	 * Collection where the interaction will place selected features. Optional. If
