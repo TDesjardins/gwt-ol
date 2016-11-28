@@ -105,4 +105,15 @@ public abstract class Geometry extends Observable {
      *         modified in place.
      */
     public native Geometry transform(Projection source, Projection destination);
+
+    /**
+     * Returns true if this geometry includes the specified coordinate.
+     * If the coordinate is on the boundary of the geometry, returns false.
+     *
+     * @param coordinate
+     *                  The coordinate to check if intersects this geometry.
+     * @return
+     *          true if intersects otherwise false
+     */
+    public native boolean intersectsCoordinate(Coordinate coordinate);
 }
