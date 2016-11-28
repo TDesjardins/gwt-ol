@@ -2,7 +2,11 @@ package ol.interaction;
 
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-import ol.*;
+import ol.Collection;
+import ol.Feature;
+import ol.GenericFunction;
+import ol.Options;
+import ol.SelectFilterFunction;
 import ol.layer.Layer;
 
 /**
@@ -12,7 +16,7 @@ import ol.layer.Layer;
  *
  */
 @JsType(isNative = true)
-public interface SelectOptions extends Options{
+public interface SelectOptions extends Options {
 
 	/**
 	 * 
