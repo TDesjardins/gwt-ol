@@ -1,9 +1,3 @@
-/**
- *
- * @author mribeiro
- * @date 07/06/16 16:45
- *
- */
 package ol;
 
 import jsinterop.annotations.JsFunction;
