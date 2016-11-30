@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.github.tdesjardins</groupId>
-        <artifactId>gwt-ol3</artifactId>
-        <version>2.8.0</version>
+        <artifactId>gwt-ol3-parent</artifactId>
+        <version>HEAD-SNAPSHOT</version>
     </parent>
     <artifactId>gwt-ol3-demo</artifactId>
     <packaging>gwt-app</packaging>
@@ -22,22 +22,28 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>gwt-ol3-client</artifactId>
+            <artifactId>gwt-ol3</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>net.ltgt.gwt.maven</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>1.0-rc-6</version>
                 <configuration>
                     <moduleName>com.github.tdesjardins.ol3.demo.GwtOL3Playground</moduleName>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
 </project>
