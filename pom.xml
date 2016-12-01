@@ -53,6 +53,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <github.global.server>github</github.global.server>
         <gwt.version>2.8.0</gwt.version>
     </properties>
 
@@ -135,7 +136,7 @@
                 <inherited>false</inherited>
                 <configuration>
                     <startupUrls>
-                        <url>gwtol3playground/GwtOL3Playground.html</url>
+                        <url>/gwtol3playground</url>
                     </startupUrls>
                 </configuration>
             </plugin>
@@ -147,6 +148,15 @@
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                     <developmentVersion>HEAD-SNAPSHOT</developmentVersion>
                     <tagNameFormat>v@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.12</version>
+                <configuration>
+                    <message>Creating site for ${project.version}</message>
+                    <outputDirectory>${basedir}/gwt-ol3-demo/target/gwt-ol3-demo/demo</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>
