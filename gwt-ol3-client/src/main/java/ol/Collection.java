@@ -2,6 +2,7 @@ package ol;
 
 import javax.annotation.Nullable;
 
+import jsinterop.annotations.JsIgnore;
 import jsinterop.annotations.JsType;
 
 /**
@@ -13,41 +14,50 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class Collection<T> extends Object {
 
-    public native void clear();
+	public native void clear();
 
-    public native T[] getArray();
+	public native T[] getArray();
 
-    public native int getLength();
+	public native int getLength();
 
-    public native void insertAt(int index, T element);
+	public native void insertAt(int index, T element);
 
-    public native T item(int index);
+	/**
+	 * Returns <tt>true</tt> if this collection contains no elements.
+	 *
+	 * @return <tt>true</tt> if this collection contains no elements
+	 */
+	@JsIgnore
+	public boolean isEmpty() {
+		return getLength() > 0;
+	}
 
-    public native void pop();
+	public native T item(int index);
 
-    public native void push(T element);
+	public native void pop();
 
-    /**
-     * Remove the first occurrence of an element from the collection.
-     * 
-     * @param element Element.
-     * @return The removed element or undefined if none found.
-     * @api stable
-     */
-    @Nullable
-    public native T remove(T element);
+	public native void push(T element);
 
-    /**
-     * Remove the element at the provided index and return it. Return
-     * `undefined` if the collection does not contain this index.
-     * 
-     * @param index Index.
-     * @return Value.
-     * @api stable
-     */
-    @Nullable
-    public native T removeAt(int index);
+	/**
+	 * Remove the first occurrence of an element from the collection.
+	 * 
+	 * @param element Element.
+	 * @return The removed element or undefined if none found.
+	 * @api stable
+	 */
+	@Nullable
+	public native T remove(T element);
 
-    public native void setAt(int index, T element);
+	/**
+	 * Remove the element at the provided index and return it. Return `undefined`
+	 * if the collection does not contain this index.
+	 * 
+	 * @param index Index.
+	 * @return Value.
+	 * @api stable
+	 */
+	@Nullable
+	public native T removeAt(int index);
 
+	public native void setAt(int index, T element);
 }
