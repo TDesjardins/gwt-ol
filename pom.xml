@@ -136,7 +136,7 @@
                 <inherited>false</inherited>
                 <configuration>
                     <startupUrls>
-                        <url>/gwtol3playground</url>
+                        <url>/demo</url>
                     </startupUrls>
                 </configuration>
             </plugin>
