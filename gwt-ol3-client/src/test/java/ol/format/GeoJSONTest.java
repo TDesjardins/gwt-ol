@@ -26,7 +26,7 @@ public class GeoJSONTest extends GwtOL3BaseTestCase {
 
             @Override
             public void test() {
-                geoJSONFormat = OLFactory.createGeoJSON();
+                geoJSONFormat = new GeoJSON();
             }
 	        
 	    });

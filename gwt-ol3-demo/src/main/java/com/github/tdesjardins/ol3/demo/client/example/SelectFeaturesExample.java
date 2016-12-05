@@ -14,7 +14,6 @@ import ol.FeatureOptions;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
-import ol.OLUtil;
 import ol.View;
 import ol.control.MousePosition;
 import ol.control.MousePositionOptions;
@@ -137,7 +136,7 @@ public class SelectFeaturesExample implements Example {
 
         };
 
-        OLUtil.observe(selectFeature, "select", selectListener);
+        selectFeature.on("select", selectListener);
 
     }
 

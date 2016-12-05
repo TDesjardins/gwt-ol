@@ -1255,9 +1255,20 @@ public final class OLFactory {
         return new $wnd.ol.source.TileWMS(tileWmsOptions);
     }-*/;
 
-    public static native Projection get(String proj) /*-{
-        return new $wnd.ol.proj.get(proj);
-    }-*/;
+    /**
+     * Fetches a Projection object for the code specified.
+     *
+     * @param proj
+     *            Either a code string which is a combination of authority and
+     *            identifier such as "EPSG:4326", or an existing projection
+     *            object, or undefined.
+     * @return {@link ol.proj.Projection} Projection object, or null if not in list.
+     * @deprecated Use {@link ol.proj.Projection#get(String)} instead.
+     */
+    @Deprecated
+    public static Projection get(String proj) {
+        return Projection.get(proj);
+    }
 
     public static native JavaScriptObject createEventFunction(Executor t) /*-{
         return function (selectevent) {
@@ -1291,11 +1302,10 @@ public final class OLFactory {
 	}-*/;
 
 	/**
-	 * 
-	 * get the default map interactions
+	 * Get the default map interactions.
 	 *
 	 * @param doubleClickToZoom
-	 * @return
+	 * @return default map interactions
 	 */
 	public static final native Collection<Interaction> getDefaultInteractions(boolean doubleClickToZoom)/*-{
 		return $wnd.ol.interaction.defaults({

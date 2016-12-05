@@ -12,12 +12,27 @@ import ol.format.GeoJSONTest;
 import ol.geom.CircleTest;
 import ol.geom.GeometryCollectionTest;
 import ol.geom.PointTest;
+import ol.interaction.DoubleClickZoomTest;
 import ol.interaction.DragAndDropTest;
+import ol.interaction.DragBoxTest;
+import ol.interaction.DragPanTest;
+import ol.interaction.DragRotateAndZoomTest;
+import ol.interaction.DragRotateTest;
+import ol.interaction.DragZoomTest;
+import ol.interaction.DrawTest;
+import ol.interaction.ExtentTest;
 import ol.interaction.KeyboardPanTest;
 import ol.interaction.KeyboardZoomTest;
 import ol.interaction.ModifyTest;
+import ol.interaction.MouseWheelZoomTest;
+import ol.interaction.PinchRotateTest;
+import ol.interaction.PinchZoomTest;
+import ol.interaction.SelectTest;
+import ol.interaction.SnapTest;
+import ol.interaction.TranslateTest;
 import ol.layer.LayerGroupTest;
 import ol.proj.ProjectionTest;
+import ol.style.RegularShapeTest;
 
 /**
  * Testsuite for GwtOL3.
@@ -37,6 +52,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(GraticuleTest.class);
         suite.addTestSuite(MapTest.class);
         suite.addTestSuite(OverlayTest.class);
+        suite.addTestSuite(SphereTest.class);
         suite.addTestSuite(ViewTest.class);
 
         // controls
@@ -57,16 +73,33 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(PointTest.class);
 
         // interactions
+        suite.addTestSuite(DoubleClickZoomTest.class);
         suite.addTestSuite(DragAndDropTest.class);
+        suite.addTestSuite(DragBoxTest.class);
+        suite.addTestSuite(DragPanTest.class);
+        suite.addTestSuite(DragRotateAndZoomTest.class);
+        suite.addTestSuite(DragRotateTest.class);
+        suite.addTestSuite(DragZoomTest.class);
+        suite.addTestSuite(DrawTest.class);
+        suite.addTestSuite(ExtentTest.class);
         suite.addTestSuite(KeyboardPanTest.class);
         suite.addTestSuite(KeyboardZoomTest.class);
         suite.addTestSuite(ModifyTest.class);
+        suite.addTestSuite(MouseWheelZoomTest.class);
+        suite.addTestSuite(PinchRotateTest.class);
+        suite.addTestSuite(PinchZoomTest.class);
+        suite.addTestSuite(SelectTest.class);
+        suite.addTestSuite(SnapTest.class);
+        suite.addTestSuite(TranslateTest.class);
 
         // layers
         suite.addTestSuite(LayerGroupTest.class);
 
         // projection
         suite.addTestSuite(ProjectionTest.class);
+
+        // style
+        suite.addTestSuite(RegularShapeTest.class);
 
         return suite;
 
