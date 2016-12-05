@@ -5,6 +5,7 @@ import jsinterop.annotations.JsType;
 import ol.Collection;
 import ol.Feature;
 import ol.GenericFunction;
+import ol.MapBrowserEvent;
 import ol.Options;
 import ol.SelectFilterFunction;
 import ol.layer.Layer;
@@ -108,4 +109,16 @@ public interface SelectOptions extends Options {
      */
 	@JsProperty
 	void setAddCondition(GenericFunction<?, ?> function);
+
+	/**
+	 * A function that takes an ol.MapBrowserEvent and returns a boolean to indicate whether that event should be handled.
+	 * This is the event for the selected features as a whole. By default, this is ol.events.condition.singleClick.
+	 * Clicking on a feature selects that feature and removes any that were in the selection.
+	 * Clicking outside any feature removes all from the selection.
+	 * See toggle, add, remove options for adding/removing extra features to/ from the selection.
+	 *
+	 * @param function
+	 */
+	@JsProperty
+	void setCondition(GenericFunction<MapBrowserEvent, Boolean> function);
 }

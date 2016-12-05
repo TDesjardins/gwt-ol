@@ -16,4 +16,9 @@ public interface Text {
      * @param text
      */
     void setText(String text);
+
+    /**
+     * Clones the Text.
+     */
+    Text clone();
 }
