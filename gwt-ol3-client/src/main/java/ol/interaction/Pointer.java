@@ -10,11 +10,11 @@ import jsinterop.annotations.JsType;
  * started. During a drag sequence the `handleDragEvent` user function is called
  * on `move` events. The drag sequence ends when the `handleUpEvent` user
  * function is called and returns `false`.
- * 
+ *
  * @author Tino Desjardins
  *
  */
 @JsType(isNative = true)
-public class Pointer extends Interaction {
+public abstract class Pointer extends Interaction {
 
 }

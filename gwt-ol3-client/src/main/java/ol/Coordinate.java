@@ -80,7 +80,7 @@ public class Coordinate extends JavaScriptObject {
 	/**
 	 * Sets the X-coordinate (longitude).
 	 *
-	 * @param X-coordinate (longitude)
+	 * @param x X-coordinate (longitude)
 	 */
 	public final double setX(double x) {
 		if (this.getDimension() > 0) {
@@ -104,7 +104,7 @@ public class Coordinate extends JavaScriptObject {
 	/**
 	 * Sets the Y-coordinate (latitude).
 	 *
-	 * @param Y-coordinate (latitude)
+	 * @param y Y-coordinate (latitude)
 	 */
 	public final double setY(double y) {
 		if (this.getDimension() > 1) {

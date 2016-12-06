@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
         <version>9</version>
     </parent>
-
     <groupId>com.github.tdesjardins</groupId>
-    <artifactId>gwt-ol3</artifactId>
-    <version>2.7.0</version>
+    <artifactId>gwt-ol3-parent</artifactId>
+    <version>HEAD-SNAPSHOT</version>
     <packaging>pom</packaging>
-
     <name>GWT OpenLayers 3</name>
     <description>GWT JsInterop API for OpenLayers 3</description>
     <url>https://github.com/TDesjardins/gwt-ol3</url>
@@ -39,7 +34,7 @@
 
     <scm>
         <connection>scm:git:https://github.com/TDesjardins/gwt-ol3.git</connection>
-        <developerConnection>scm:git:git@github.com/TDesjardins/gwt-ol3.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:TDesjardins/gwt-ol3.git</developerConnection>
         <url>https://github.com/TDesjardins/gwt-ol3</url>
         <tag>HEAD</tag>
     </scm>
@@ -48,13 +43,6 @@
         <system>GitHub</system>
         <url>https://github.com/TDesjardins/gwt-ol3/issues</url>
     </issueManagement>
-
-    <distributionManagement>
-        <site>
-            <id>github-ssh</id>
-            <url>gitsite:git@github.com/TDesjardins/gwt-ol3.git</url>
-        </site>
-    </distributionManagement>
 
     <prerequisites>
         <maven>3</maven>
@@ -65,6 +53,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <github.global.server>github</github.global.server>
         <gwt.version>2.8.0</gwt.version>
     </properties>
 
@@ -95,9 +84,16 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.5.1</version>
+                    <version>3.6.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.19.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
                 </plugin>
                 <plugin>
                     <groupId>net.ltgt.gwt.maven</groupId>
@@ -106,49 +102,63 @@
                     <extensions>true</extensions>
                     <configuration>
                         <skipModule>true</skipModule>
-                    	<compilerArgs>
-                            <arg>-generateJsInteropExports</arg>
+                        <failOnError>true</failOnError>
+                        <compilerArgs>
+                            <!-- arg>-generateJsInteropExports</arg-->
+                            <arg>-XdisableUpdateCheck</arg>
                         </compilerArgs>
                         <useCompilerArgsForTests>true</useCompilerArgsForTests>
                         <codeserverArgs>
-                            <arg>-generateJsInteropExports</arg>
+                            <!-- arg>-generateJsInteropExports</arg-->
+                            <arg>-XdisableUpdateCheck</arg>
                         </codeserverArgs>
                         <devmodeArgs>
-                            <arg>-generateJsInteropExports</arg>
+                            <!-- arg>-generateJsInteropExports</arg-->
+                            <arg>-XdisableUpdateCheck</arg>
                         </devmodeArgs>
                         <style>OBFUSCATED</style> <!-- OBFUSCATED, PRETTY, or DETAILED -->
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <configuration>
+                        <additionalparam>-Xdoclint:none</additionalparam>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
+
         <plugins>
             <plugin>
                 <groupId>net.ltgt.gwt.maven</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
+                <inherited>false</inherited>
                 <configuration>
                     <startupUrls>
-                        <url>gwtol3playground/GwtOL3Playground.html</url>
+                        <url>/demo</url>
                     </startupUrls>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.4</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.github.stephenc.wagon</groupId>
-                        <artifactId>wagon-gitsite</artifactId>
-                        <version>0.5</version>
-                    </dependency>
-                </dependencies>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <developmentVersion>HEAD-SNAPSHOT</developmentVersion>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.8</version>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.12</version>
+                <configuration>
+                    <message>Creating site for ${project.version}</message>
+                    <outputDirectory>${basedir}/gwt-ol3-demo/target/gwt-ol3-demo/demo</outputDirectory>
+                </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>

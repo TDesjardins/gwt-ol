@@ -6,7 +6,6 @@ import ol.Coordinate;
 import ol.Extent;
 import ol.GwtOL3BaseTestCase;
 import ol.OLFactory;
-import ol.OLUtil;
 
 /**
  *
@@ -55,12 +54,12 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
                 //projectionOptions.global(false);
                 projectionOptions.setUnits(UNIT_METRE);
 
-                Projection projection = OLFactory.createProjection(projectionOptions);
+                Projection projection = new Projection(projectionOptions);
                 assertNotNull(projection);
 
-                OLUtil.addProjection(projection);
+                Projection.addProjection(projection);
 
-                Projection projectionToCompare = OLUtil.getProjection(EPSG_CODE_3068);
+                Projection projectionToCompare = Projection.get(EPSG_CODE_3068);
                 assertNotNull(projectionToCompare);
 
                 assertEquals(projection.getCode(), projectionToCompare.getCode());
@@ -77,7 +76,7 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
 
             @Override
             public void test() {
-                Projection projection = OLUtil.getProjection(EPSG_CODE_4326);
+                Projection projection = Projection.get(EPSG_CODE_4326);
 
                 assertNotNull(projection);
                 assertEquals(EPSG_CODE_4326, projection.getCode());
@@ -98,6 +97,7 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
 
             @Override
             public void test() {
+                
                 double x = -121.1;
                 double y = 47.5;
 
@@ -107,6 +107,13 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
                 assertTrue(transformedCenterCoordinate.length() == 2);
                 assertNotSame(transformedCenterCoordinate.getX(), x);
                 assertNotSame(transformedCenterCoordinate.getY(), y);
+                
+                Coordinate sameTransformedCenterCoordinate = Projection.transform(centerCoordinate, Projection.get(EPSG_CODE_4326), Projection.get(EPSG_CODE_3857));
+                
+                assertTrue(sameTransformedCenterCoordinate.length() == 2);
+                assertSame(transformedCenterCoordinate.getX(), sameTransformedCenterCoordinate.getX());
+                assertSame(transformedCenterCoordinate.getY(), transformedCenterCoordinate.getY());
+                
             }
         });
 
@@ -121,9 +128,9 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
 
             @Override
             public void test() {
-                Extent extent = OLUtil.getProjection(EPSG_CODE_4326).getExtent();
+                Extent extent = Projection.get(EPSG_CODE_4326).getExtent();
 
-                Extent transformedExtent = OLUtil.transformExtent(extent, EPSG_CODE_4326, EPSG_CODE_3857);
+                Extent transformedExtent = Projection.transformExtent(extent, EPSG_CODE_4326, EPSG_CODE_3857);
 
                 assertTrue(transformedExtent.<JsArrayNumber>cast().length() == 4);
                 assertNotSame(extent.getLowerLeftX(), transformedExtent.getLowerLeftX());

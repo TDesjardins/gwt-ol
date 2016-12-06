@@ -12,7 +12,7 @@ import ol.Extent;
  * options use {@link ol.proj.ProjectionLike} which means the simple string code
  * will suffice.
  *
- * You can use {@link ol.proj.get} to retrieve the object for a particular
+ * You can use {@link ol.proj.Projection#get(String)} to retrieve the object for a particular
  * projection.
  *
  * The library includes definitions for `EPSG:4326` and `EPSG:3857`, together
@@ -31,7 +31,7 @@ import ol.Extent;
  */
 @JsType(isNative = true)
 public class Projection {
-
+    
     public Projection(ProjectionOptions projectionOptions) {}
     
     /**
@@ -120,15 +120,59 @@ public class Projection {
      */
     public native void setWorldExtent(Extent worldExtent);
 
+    /**
+     * Registers transformation functions that don't alter coordinates. Those allow
+     * to transform between projections with equal meaning.
+     *
+     * @param projections Projections.
+     */
+    @JsMethod(name = "addEquivalentProjections", namespace = "ol.proj")
+    public static native void addEquivalentProjections(Projection[] projections);
+    
+    /**
+     * Add a Projection object to the list of supported projections that can be
+     * looked up by their code.
+     *
+     * @param projection
+     *            Projection instance.
+     */
+    @JsMethod(name = "addProjection", namespace = "ol.proj")
+    public static native void addProjection(Projection projection);
+    
+    /**
+     * Checks if two projections are the same, that is every coordinate in one
+     * projection does represent the same geographic point as the same
+     * coordinate in the other projection.
+     *
+     * @param projection1
+     *            Projection 1.
+     * @param projection2
+     *            Projection 2.
+     * @return {boolean} Equivalent.
+     */
+    @JsMethod(name = "equivalent", namespace = "ol.proj")
+    public static native boolean equivalent(ol.proj.Projection projection1, ol.proj.Projection projection2);
+    
+    
 	/**
 	 * 
 	 * Transforms a coordinate from longitude/latitude to a different projection.
 	 *
 	 * @param coordinate
-	 * @return
+	 * @return transformed coordinate
 	 */
 	@JsMethod(name = "fromLonLat", namespace = "ol.proj")
 	public static native Coordinate fromLonLat(Coordinate coordinate);
+	
+	/**
+     * 
+     * Fetches a Projection object for the code specified.
+     *
+     * @param projectionCode combination of authority and identifier such as "EPSG:4326"
+     * @return projection
+     */
+    @JsMethod(name = "get", namespace = "ol.proj")
+    public static native Projection get(String projectionCode);
 
 	/**
 	 * 
@@ -138,9 +182,58 @@ public class Projection {
 	 * @param coordinate
 	 * @param source
 	 * @param target
-	 * @return
+	 * @return transformed coordinate
 	 */
 	@JsMethod(name = "transform", namespace = "ol.proj")
 	public static native Coordinate transform(Coordinate coordinate, String source, String target);
+	
+	/**
+     * Transforms a coordinate from source projection to destination projection.
+     * This returns a new coordinate (and does not modify the original).
+     *
+     * See {@link #transformExtent(Extent, Projection, Projection)} for extent
+     * transformation. See the transform method of {@link ol.geom.Geometry} and
+     * its subclasses for geometry transforms.
+     *
+     * @param coordinate
+     *            Coordinate.
+     * @param source
+     *            Source projection-like.
+     * @param destination
+     *            Destination projection-like.
+     * @return {ol.Coordinate} Coordinate.
+     */
+	@JsMethod(name = "transform", namespace = "ol.proj")
+    public static native Coordinate transform(Coordinate coordinate, Projection source, Projection destination);
+	
+	/**
+     * Transforms an extent from source projection to destination projection.
+     * This returns a new extent (and does not modify the original).
+     *
+     * @param extent
+     *            The extent to transform.
+     * @param source
+     *            Source projection-like.
+     * @param destination
+     *            Destination projection-like.
+     * @return {ol.Extent} The transformed extent.
+     */
+	@JsMethod(name = "transformExtent", namespace = "ol.proj")
+    public static native Extent transformExtent(Extent extent, Projection source, Projection destination);
+
+    /**
+     * Transforms an extent from source projection to destination projection.
+     * This returns a new extent (and does not modify the original).
+     *
+     * @param extent
+     *            The extent to transform.
+     * @param source
+     *            Source projection-like.
+     * @param destination
+     *            Destination projection-like.
+     * @return {ol.Extent} The transformed extent.
+     */
+	@JsMethod(name = "transformExtent", namespace = "ol.proj")
+    public static native Extent transformExtent(Extent extent, String source, String destination);
 
 }

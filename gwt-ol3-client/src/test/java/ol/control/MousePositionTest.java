@@ -3,7 +3,6 @@ package ol.control;
 import ol.Coordinate;
 import ol.GwtOL3BaseTestCase;
 import ol.OLFactory;
-import ol.OLUtil;
 import ol.Object;
 import ol.proj.Projection;
 
@@ -37,7 +36,7 @@ public class MousePositionTest extends GwtOL3BaseTestCase {
 			@Override
 			public void test() {
 
-				Projection projection = OLUtil.getProjection("EPSG:4326");
+				Projection projection = Projection.get("EPSG:4326");
 				String undefinedHtml = "no coordinates";
 
 				MousePositionOptions mousePositionOptions = OLFactory

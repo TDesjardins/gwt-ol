@@ -13,6 +13,8 @@ import ol.Feature;
  */
 @JsType(isNative = true)
 public class Draw extends Interaction {
+
+    public Draw(DrawOptions drawOptions) {}
     
     /**
      * Extend an existing geometry by adding additional points. This only works

@@ -5,7 +5,9 @@ import jsinterop.annotations.JsType;
 import ol.Collection;
 import ol.Feature;
 import ol.GenericFunction;
+import ol.MapBrowserEvent;
 import ol.Options;
+import ol.SelectFilterFunction;
 import ol.layer.Layer;
 
 /**
@@ -15,7 +17,7 @@ import ol.layer.Layer;
  *
  */
 @JsType(isNative = true)
-public interface SelectOptions extends Options{
+public interface SelectOptions extends Options {
 
 	/**
 	 * 
@@ -75,7 +77,7 @@ public interface SelectOptions extends Options{
 	 * @param function
 	 */
     @JsProperty
-    void setToogleCondition(GenericFunction<?, ?> function);
+    void setToggleCondition(GenericFunction<?, ?> function);
 
 	/**
 	 * Collection where the interaction will place selected features. Optional. If
@@ -87,4 +89,36 @@ public interface SelectOptions extends Options{
 	 */
 	@JsProperty
 	void setFeatures(Collection<Feature> features);
+
+	/**
+	 * A function that takes an ol.Feature and an ol.layer.Layer and returns true
+	 * if the feature may be selected or false otherwise.
+	 *
+	 * @param function
+     */
+	@JsProperty
+	void setFilter(SelectFilterFunction function);
+
+	/**
+	 * A function that takes an ol.MapBrowserEvent and returns a boolean
+	 * to indicate whether that event should be handled.
+	 * By default, this is ol.events.condition.never.
+	 * Use this if you want to use different events for add and remove instead of toggle.
+	 *
+	 * @param function
+     */
+	@JsProperty
+	void setAddCondition(GenericFunction<?, ?> function);
+
+	/**
+	 * A function that takes an ol.MapBrowserEvent and returns a boolean to indicate whether that event should be handled.
+	 * This is the event for the selected features as a whole. By default, this is ol.events.condition.singleClick.
+	 * Clicking on a feature selects that feature and removes any that were in the selection.
+	 * Clicking outside any feature removes all from the selection.
+	 * See toggle, add, remove options for adding/removing extra features to/ from the selection.
+	 *
+	 * @param function
+	 */
+	@JsProperty
+	void setCondition(GenericFunction<MapBrowserEvent, Boolean> function);
 }

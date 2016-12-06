@@ -45,7 +45,7 @@ public class Vector extends Source {
      * Remove all features from the source.
      * 
      * @param opt_fast
-     *            Skip dispatching of {@link removefeature} events.
+     *            Skip dispatching of removefeature events.
      */
     public native void clear(boolean opt_fast);
 

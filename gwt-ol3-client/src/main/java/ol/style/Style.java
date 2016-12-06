@@ -80,4 +80,9 @@ public interface Style {
      */
     void setZIndex(int zIndex);
 
+    /**
+     * Clones the style.
+     */
+    Style clone();
+
 }

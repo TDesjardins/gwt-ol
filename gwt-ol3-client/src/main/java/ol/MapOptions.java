@@ -60,4 +60,23 @@ public interface MapOptions extends Options {
 	@JsProperty
 	void setInteractions(Collection<Interaction> interactions);
 
+    /**
+     * The map logo. A logo to be displayed on the map at all times.
+     *  To disable the map logo, set the option to false. By default, the OpenLayers 3 logo is shown.
+     *
+     * @param value
+     *              boolean
+     */
+    @JsProperty
+    void setLogo(boolean value);
+
+    /**
+     * The map logo. A logo to be displayed on the map at all times.
+     * If a string is provided, it will be set as the image source of the logo.
+     * @param value
+     *              String
+     */
+    @JsProperty
+    void setLogo(String value);
+
 }
