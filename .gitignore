@@ -1,7 +1,5 @@
-/bin/
-/.project
-/.classpath
-/.settings/
-
-/gwt-ol3-client/target
-/gwt-ol3-demo/target
+target/
+.settings/
+.classpath
+.project
+*.class

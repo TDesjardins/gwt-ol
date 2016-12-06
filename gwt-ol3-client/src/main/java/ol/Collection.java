@@ -2,6 +2,7 @@ package ol;
 
 import javax.annotation.Nullable;
 
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 
 /**
@@ -21,6 +22,16 @@ public class Collection<T> extends Object {
 
     public native void insertAt(int index, T element);
 
+  	/**
+  	 * Returns <tt>true</tt> if this collection contains no elements.
+  	 *
+  	 * @return <tt>true</tt> if this collection contains no elements
+  	 */
+    @JsOverlay
+  	public final boolean isEmpty() {
+  		return getLength() > 0;
+  	}
+    
     public native T item(int index);
 
     public native void pop();

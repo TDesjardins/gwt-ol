@@ -12,7 +12,7 @@ public interface TileLoadEndListener {
 	 * Triggered when a tile finishes loading.
 	 * 
 	 * @param evt
-	 *            {@link ol.source.Tile.Event}
+	 *            {@link TileEvent}
 	 */
 	void onTileLoadEnd(Tile.Event evt);
 
