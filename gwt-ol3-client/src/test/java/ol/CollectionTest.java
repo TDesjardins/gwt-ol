@@ -26,12 +26,20 @@ public class CollectionTest extends GwtOL3BaseTestCase {
 
                 controls.push(new Attribution());
 
+                // commented because bug in ol3
+                //int length = controls.push(new Attribution());
+                //assertTrue(length == 1);
+
                 assertTrue(controls.getLength() == 1);
                 assertFalse(controls.isEmpty());
-
                 //assertTrue(controls.getArray().length == 1);
 
-                //Control[] controlArray = controls.getArray();
+                Control control = controls.pop();
+                assertTrue(control instanceof Attribution);
+
+                assertTrue(controls.getLength() == 0);
+                assertTrue(controls.isEmpty());
+
             }
         });
 

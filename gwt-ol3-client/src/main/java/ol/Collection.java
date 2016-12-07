@@ -34,9 +34,9 @@ public class Collection<T> extends Object {
 
     public native T item(int index);
 
-    public native void pop();
+    public native T pop();
 
-    public native void push(T element);
+    public native int push(T element);
 
     /**
      * Remove the first occurrence of an element from the collection.
