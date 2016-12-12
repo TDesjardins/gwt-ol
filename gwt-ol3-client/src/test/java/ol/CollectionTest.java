@@ -24,11 +24,9 @@ public class CollectionTest extends GwtOL3BaseTestCase {
 
                 assertNotNull(controls.getArray());
 
-                controls.push(new Attribution());
-
-                // commented because bug in ol3
-                //int length = controls.push(new Attribution());
-                //assertTrue(length == 1);
+                // Does not work before ol v3.20. because bug in ol3.
+                int length = controls.push(new Attribution());
+                assertTrue(length == 1);
 
                 assertTrue(controls.getLength() == 1);
                 assertFalse(controls.isEmpty());
