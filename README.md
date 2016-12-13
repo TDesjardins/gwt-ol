@@ -1,6 +1,8 @@
 GWT-OpenLayers 3
 ==================
 
+[![Join the chat at https://gitter.im/gwt-ol3/Lobby](https://badges.gitter.im/gwt-ol3/Lobby.svg)](https://gitter.im/gwt-ol3/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/TDesjardins/gwt-ol3.svg?branch=gwt%2F2.8)](https://travis-ci.org/TDesjardins/gwt-ol3)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.tdesjardins/gwt-ol3-parent/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.tdesjardins/gwt-ol3-parent)
 
