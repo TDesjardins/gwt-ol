@@ -1,10 +1,9 @@
 GWT-OpenLayers 3
 ==================
 
-[![Join the chat at https://gitter.im/gwt-ol3/Lobby](https://badges.gitter.im/gwt-ol3/Lobby.svg)](https://gitter.im/gwt-ol3/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![Build Status](https://travis-ci.org/TDesjardins/gwt-ol3.svg?branch=gwt%2F2.8)](https://travis-ci.org/TDesjardins/gwt-ol3)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.tdesjardins/gwt-ol3-parent/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.tdesjardins/gwt-ol3-parent)
+[![Join the chat at https://gitter.im/gwt-ol3/Lobby](https://badges.gitter.im/gwt-ol3/Lobby.svg)](https://gitter.im/gwt-ol3/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 A [OpenLayers 3](http://openlayers.org/ "OpenLayers 3 website") - Wrapper for GWT using the new [JSInterop](https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/edit)-Features of the [GWT-SDK 2.8.0](http://www.gwtproject.org/release-notes.html#Release_Notes_2_8_0 "Release notes"). The project consists of two parts:
   
