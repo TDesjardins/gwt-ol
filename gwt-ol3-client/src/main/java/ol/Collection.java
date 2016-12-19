@@ -29,18 +29,18 @@ public class Collection<T> extends Object {
   	 */
     @JsOverlay
   	public final boolean isEmpty() {
-  		return getLength() > 0;
+  		return getLength() == 0;
   	}
-    
+
     public native T item(int index);
 
-    public native void pop();
+    public native T pop();
 
-    public native void push(T element);
+    public native int push(T element);
 
     /**
      * Remove the first occurrence of an element from the collection.
-     * 
+     *
      * @param element Element.
      * @return The removed element or undefined if none found.
      * @api stable
@@ -51,7 +51,7 @@ public class Collection<T> extends Object {
     /**
      * Remove the element at the provided index and return it. Return
      * `undefined` if the collection does not contain this index.
-     * 
+     *
      * @param index Index.
      * @return Value.
      * @api stable
