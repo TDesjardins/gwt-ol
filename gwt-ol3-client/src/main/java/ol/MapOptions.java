@@ -1,5 +1,6 @@
 package ol;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
@@ -13,23 +14,23 @@ import ol.layer.Base;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface MapOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class MapOptions implements Options {
 
     @JsProperty
-    double getPixelRatio();
+    public native double getPixelRatio();
 
     @JsProperty
-    String getTarget();
+    public native String getTarget();
 
     @JsProperty
-    void setTarget(String target);
+    public native void setTarget(String target);
 
     @JsProperty
-    void setLayers(Collection<Base> layers);
+    public native void setLayers(Collection<Base> layers);
 
     @JsProperty
-    View getView();
+    public native View getView();
 
     /**
      * Controls initially added to the map.
@@ -37,7 +38,7 @@ public interface MapOptions extends Options {
      * @param controls controls
      */
     @JsProperty
-    void setControls(Collection<Control> controls);
+    public native void setControls(Collection<Control> controls);
 
     /**
      * Set the map's view. No layer sources will be fetched unless this is
@@ -46,10 +47,10 @@ public interface MapOptions extends Options {
      * @param view {@link View}
      */
     @JsProperty
-    void setView(View view);
+    public native void setView(View view);
 
     @JsProperty
-    void setInteractions(Interaction[] interactions);
+    public native void setInteractions(Interaction[] interactions);
 
 	/**
 	 * Interactions that are initially added to the map. If not specified,
@@ -58,7 +59,7 @@ public interface MapOptions extends Options {
 	 * @param interactions
 	 */
 	@JsProperty
-	void setInteractions(Collection<Interaction> interactions);
+	public native void setInteractions(Collection<Interaction> interactions);
 
     /**
      * The map logo. A logo to be displayed on the map at all times.
@@ -68,7 +69,7 @@ public interface MapOptions extends Options {
      *              boolean
      */
     @JsProperty
-    void setLogo(boolean value);
+    public native void setLogo(boolean value);
 
     /**
      * The map logo. A logo to be displayed on the map at all times.
@@ -77,6 +78,6 @@ public interface MapOptions extends Options {
      *              String
      */
     @JsProperty
-    void setLogo(String value);
+    public native void setLogo(String value);
 
 }
