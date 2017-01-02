@@ -1,5 +1,6 @@
 package ol.control;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -9,8 +10,8 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  *
  */
-@JsType(isNative = true)
-public interface RotateOptions extends ControlOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class RotateOptions extends ControlOptions {
 
     /**
      * Hide the control when rotation is 0. Default is true.
@@ -18,7 +19,7 @@ public interface RotateOptions extends ControlOptions {
      *            auto hide
      */
     @JsProperty
-    void setAutoHide(boolean autoHide);
+    public native void setAutoHide(boolean autoHide);
 
     /**
      * CSS class name. Default is "ol-rotate".
@@ -26,7 +27,7 @@ public interface RotateOptions extends ControlOptions {
      *            class name
      */
     @JsProperty
-    void setClassName(String className);
+    public native void setClassName(String className);
 
     /**
      * Animation duration in milliseconds. Default is 250.
@@ -34,7 +35,7 @@ public interface RotateOptions extends ControlOptions {
      *            animation duration
      */
     @JsProperty
-    void setDuration(int duration);
+    public native void setDuration(int duration);
 
     /**
      * Text label to use for the rotate button. Default is (arrow up). Instead
@@ -43,7 +44,7 @@ public interface RotateOptions extends ControlOptions {
      *            label
      */
     @JsProperty
-    void setLabel(String label);
+    public native void setLabel(String label);
 
     /**
      * Text label to use for the button tip. Default is "Reset rotation".
@@ -51,6 +52,6 @@ public interface RotateOptions extends ControlOptions {
      *            tip label
      */
     @JsProperty
-    void setTipLabel(String tipLabel);
+    public native void setTipLabel(String tipLabel);
 
 }

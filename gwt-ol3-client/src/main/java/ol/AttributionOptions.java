@@ -1,5 +1,6 @@
 package ol;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -9,8 +10,8 @@ import jsinterop.annotations.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface AttributionOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class AttributionOptions implements Options {
 
     /**
      * Set the HTML markup for this attribution. Required.
@@ -18,6 +19,6 @@ public interface AttributionOptions extends Options {
      * @param html html
      */
     @JsProperty
-    public void setHtml(String html);
+    public native void setHtml(String html);
 
 }

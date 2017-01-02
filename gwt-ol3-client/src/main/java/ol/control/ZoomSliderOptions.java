@@ -1,5 +1,6 @@
 package ol.control;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -9,8 +10,8 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  *
  */
-@JsType(isNative = true)
-public interface ZoomSliderOptions extends ControlOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class ZoomSliderOptions extends ControlOptions {
 
     /**
      * CSS class name. Default is "ol-zoomslider".
@@ -18,7 +19,7 @@ public interface ZoomSliderOptions extends ControlOptions {
      *            class name
      */
     @JsProperty
-    void setClassName(String className);
+    public native void setClassName(String className);
 
     /**
      * Animation duration in milliseconds. Default is 200.
@@ -26,7 +27,7 @@ public interface ZoomSliderOptions extends ControlOptions {
      *            animation duration
      */
     @JsProperty
-    void setDuration(int duration);
+    public native void setDuration(int duration);
 
     /**
      * Maximum resolution.
@@ -34,7 +35,7 @@ public interface ZoomSliderOptions extends ControlOptions {
      *            max resolution
      */
     @JsProperty
-    void setMaxResolution(double maxResolution);
+    public native void setMaxResolution(double maxResolution);
 
     /**
      * Minimum resolution.
@@ -42,6 +43,6 @@ public interface ZoomSliderOptions extends ControlOptions {
      *            min resolution
      */
     @JsProperty
-    void setMinResolution(double minResolution);
+    public native void setMinResolution(double minResolution);
 
 }

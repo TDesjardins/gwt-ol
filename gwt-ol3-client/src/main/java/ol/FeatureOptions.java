@@ -1,5 +1,6 @@
 package ol;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.geom.Geometry;
@@ -9,8 +10,8 @@ import ol.geom.Geometry;
  *
  * @author sbaumhekel
  */
-@JsType(isNative = true)
-public interface FeatureOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class FeatureOptions implements Options {
 
     /**
      * The default geometry for the feature.
@@ -18,7 +19,7 @@ public interface FeatureOptions extends Options {
      * @param geom {@link Geometry}
      */
     @JsProperty
-    void setGeometry(Geometry geom);
+    public native void setGeometry(Geometry geom);
     
     /**
      * Id.
@@ -26,6 +27,6 @@ public interface FeatureOptions extends Options {
      * @param id
      */
     @JsProperty
-    void setId(String id);
+    public native void setId(String id);
     
 }

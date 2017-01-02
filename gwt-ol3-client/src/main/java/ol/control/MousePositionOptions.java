@@ -1,6 +1,8 @@
 package ol.control;
 
 import com.google.gwt.core.client.JavaScriptObject;
+
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.proj.Projection;
@@ -11,8 +13,8 @@ import ol.proj.Projection;
  * @author sbaumhekel
  *
  */
-@JsType(isNative = true)
-public interface MousePositionOptions extends ControlOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class MousePositionOptions extends ControlOptions {
 
     /**
      * CSS class name. Default is "ol-mouse-position".
@@ -20,14 +22,14 @@ public interface MousePositionOptions extends ControlOptions {
      *            class name
      */
     @JsProperty
-    void setClassName(String className);
+    public native void setClassName(String className);
 
     /**
      * 
      * @param coordinateFormat Coordinate format function.
      */
     @JsProperty
-    void setCoordinateFormat(JavaScriptObject coordinateFormat);
+    public native void setCoordinateFormat(JavaScriptObject coordinateFormat);
     
     /**
      * Projection.
@@ -35,7 +37,7 @@ public interface MousePositionOptions extends ControlOptions {
      *            {@link Projection}
      */
     @JsProperty
-    void setProjection(Projection projection);
+    public native void setProjection(Projection projection);
 
     /**
      * Markup for undefined coordinates. Default is "" (empty string).
@@ -43,6 +45,6 @@ public interface MousePositionOptions extends ControlOptions {
      *            undefined HTML
      */
     @JsProperty
-    void setUndefinedHTML(String undefinedHTML);
+    public native void setUndefinedHTML(String undefinedHTML);
 
 }
