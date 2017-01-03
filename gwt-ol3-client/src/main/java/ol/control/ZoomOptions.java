@@ -1,5 +1,6 @@
 package ol.control;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -9,8 +10,8 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  *
  */
-@JsType(isNative = true)
-public interface ZoomOptions extends ControlOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class ZoomOptions extends ControlOptions {
 
     /**
      * CSS class name. Default is "ol-zoom".
@@ -18,7 +19,7 @@ public interface ZoomOptions extends ControlOptions {
      *            class name
      */
     @JsProperty
-    void setClassName(String className);
+    public native void setClassName(String className);
 
     /**
      * The zoom delta applied on each click. Default is 1.
@@ -26,7 +27,7 @@ public interface ZoomOptions extends ControlOptions {
      *            delta
      */
     @JsProperty
-    void setDelta(int delta);
+    public native void setDelta(int delta);
 
     /**
      * Animation duration in milliseconds. Default is 250.
@@ -34,7 +35,7 @@ public interface ZoomOptions extends ControlOptions {
      *            animation duration
      */
     @JsProperty
-    void setDuration(int duration);
+    public native void setDuration(int duration);
 
     /**
      * Text label to use for the zoom-in button. Default is "+". Instead of
@@ -43,7 +44,7 @@ public interface ZoomOptions extends ControlOptions {
      *            label
      */
     @JsProperty
-    void setZoomInLabel(String zoomInLabel);
+    public native void setZoomInLabel(String zoomInLabel);
 
     /**
      * Text label to use for the button tip. Default is "Zoom in".
@@ -51,7 +52,7 @@ public interface ZoomOptions extends ControlOptions {
      *            label
      */
     @JsProperty
-    void setZoomInTipLabel(String zoomInTipLabel);
+    public native void setZoomInTipLabel(String zoomInTipLabel);
 
     /**
      * Text label to use for the zoom-out button. Default is "-". Instead of
@@ -60,7 +61,7 @@ public interface ZoomOptions extends ControlOptions {
      *            label
      */
     @JsProperty
-    void setZoomOutLabel(String zoomOutLabel);
+    public native void setZoomOutLabel(String zoomOutLabel);
 
     /**
      * Text label to use for the button tip. Default is "Zoom out".
@@ -68,6 +69,6 @@ public interface ZoomOptions extends ControlOptions {
      *            label
      */
     @JsProperty
-    void setZoomOutTipLabel(String zoomOutTipLabel);
+    public native void setZoomOutTipLabel(String zoomOutTipLabel);
 
 }

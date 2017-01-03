@@ -1,5 +1,6 @@
 package ol.control;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -9,8 +10,8 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  *
  */
-@JsType(isNative = true)
-public interface OverviewMapOptions extends ControlOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class OverviewMapOptions extends ControlOptions {
 
     /**
      * Whether the control should start collapsed or not (expanded). Default to
@@ -19,7 +20,7 @@ public interface OverviewMapOptions extends ControlOptions {
      *            collapsed
      */
     @JsProperty
-    void setCollapsed(boolean collapsed);
+    public native void setCollapsed(boolean collapsed);
 
     /**
      * Text label to use for the expanded overviewmap button. Default is "«".
@@ -28,7 +29,7 @@ public interface OverviewMapOptions extends ControlOptions {
      *            collapseLabel
      */
     @JsProperty
-    void setCollapseLabel(String collapseLabel);
+    public native void setCollapseLabel(String collapseLabel);
 
     /**
      * Whether the control can be collapsed or not. Default to true.
@@ -36,7 +37,7 @@ public interface OverviewMapOptions extends ControlOptions {
      *            collapsible
      */
     @JsProperty
-    void setCollapsible(boolean collapsible);
+    public native void setCollapsible(boolean collapsible);
 
     /**
      * Text label to use for the collapsed overviewmap button. Default is ».
@@ -45,7 +46,7 @@ public interface OverviewMapOptions extends ControlOptions {
      *            label
      */
     @JsProperty
-    void setLabel(String label);
+    public native void setLabel(String label);
 
     /**
      * Layers for the overview map. If not set, then all main map layers are
@@ -54,7 +55,7 @@ public interface OverviewMapOptions extends ControlOptions {
      *            layers
      */
     @JsProperty
-    void setLayers(ol.Collection<ol.layer.Layer> layers);
+    public native void setLayers(ol.Collection<ol.layer.Layer> layers);
 
     /**
      * Text label to use for the button tip. Default is "Overview map".
@@ -62,7 +63,7 @@ public interface OverviewMapOptions extends ControlOptions {
      *            tip label
      */
     @JsProperty
-    void setTipLabel(String tipLabel);
+    public native void setTipLabel(String tipLabel);
 
     /**
      * Custom view for the overview map. If not provided, a default view with an
@@ -71,6 +72,6 @@ public interface OverviewMapOptions extends ControlOptions {
      *            view
      */
     @JsProperty
-    void setView(ol.View view);
+    public native void setView(ol.View view);
 
 }

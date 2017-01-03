@@ -2,6 +2,7 @@ package ol;
 
 import com.google.gwt.dom.client.Element;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -10,8 +11,8 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  *
  */
-@JsType(isNative = true)
-public interface OverlayOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class OverlayOptions implements Options {
 
     /**
      * If set to true the map is panned when calling setPosition, so that the
@@ -21,7 +22,7 @@ public interface OverlayOptions extends Options {
      *            auto pan?
      */
     @JsProperty
-    void setAutoPan(boolean autoPan);
+    public native void setAutoPan(boolean autoPan);
 
     /**
      * The margin (in pixels) between the overlay and the borders of the map
@@ -30,7 +31,7 @@ public interface OverlayOptions extends Options {
      *            auto pan margin
      */
     @JsProperty
-    void setAutoPanMargin(int autoPanMargin);
+    public native void setAutoPanMargin(int autoPanMargin);
 
     /**
      * The overlay element.
@@ -38,7 +39,7 @@ public interface OverlayOptions extends Options {
      *            element
      */
     @JsProperty
-    void setElement(Element element);
+    public native void setElement(Element element);
 
     /**
      * Set the overlay id. The overlay id can be used with the
@@ -47,7 +48,7 @@ public interface OverlayOptions extends Options {
      *            id
      */
     @JsProperty
-    void setId(String id);
+    public native void setId(String id);
 
     /**
      * Whether the overlay is inserted first in the overlay container, or
@@ -58,7 +59,7 @@ public interface OverlayOptions extends Options {
      *            insert first?
      */
     @JsProperty
-    void setInsertFirst(boolean insertFirst);
+    public native void setInsertFirst(boolean insertFirst);
 
     /**
      * Offsets in pixels used when positioning the overlay. The first element in
@@ -69,7 +70,7 @@ public interface OverlayOptions extends Options {
      *            offset
      */
     @JsProperty
-    void setOffset(Pixel offset);
+    public native void setOffset(Pixel offset);
 
     /**
      * The overlay position in map projection.
@@ -77,7 +78,7 @@ public interface OverlayOptions extends Options {
      *            position
      */
     @JsProperty
-    void setPosition(Coordinate position);
+    public native void setPosition(Coordinate position);
 
     /**
      * Defines how the overlay is actually positioned with respect to its
@@ -88,7 +89,7 @@ public interface OverlayOptions extends Options {
      *            positioning
      */
     @JsProperty
-    void setPositioning(String positioning);
+    public native void setPositioning(String positioning);
 
     /**
      * Whether event propagation to the map viewport should be stopped. Default
@@ -99,6 +100,6 @@ public interface OverlayOptions extends Options {
      *            stop event propagation to the map viewport?
      */
     @JsProperty
-    void setStopEvent(boolean stopEvent);
+    public native void setStopEvent(boolean stopEvent);
 
 }

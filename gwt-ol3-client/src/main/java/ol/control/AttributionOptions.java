@@ -1,5 +1,6 @@
 package ol.control;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -9,8 +10,8 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  *
  */
-@JsType(isNative = true)
-public interface AttributionOptions extends ControlOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class AttributionOptions extends ControlOptions {
 
     /**
      * CSS class name. Default is "ol-attribution".
@@ -18,7 +19,7 @@ public interface AttributionOptions extends ControlOptions {
      *            class name
      */
     @JsProperty
-    void setClassName(String className);
+    public native void setClassName(String className);
 
     /**
      * Specify if attributions should be collapsed at startup. Default is true.
@@ -26,7 +27,7 @@ public interface AttributionOptions extends ControlOptions {
      *            collapsed
      */
     @JsProperty
-    void setCollapsed(boolean collapsed);
+    public native void setCollapsed(boolean collapsed);
 
     /**
      * Text label to use for the expanded attributions button. Default is "»".
@@ -35,7 +36,7 @@ public interface AttributionOptions extends ControlOptions {
      *            collapseLabel
      */
     @JsProperty
-    void setCollapseLabel(String collapseLabel);
+    public native void setCollapseLabel(String collapseLabel);
 
     /**
      * Specify if attributions can be collapsed. If you use an OSM source,
@@ -44,7 +45,7 @@ public interface AttributionOptions extends ControlOptions {
      *            collapsible
      */
     @JsProperty
-    void setCollapsible(boolean collapsible);
+    public native void setCollapsible(boolean collapsible);
 
     /**
      * Text label to use for the collapsed attributions button. Default is "i".
@@ -53,7 +54,7 @@ public interface AttributionOptions extends ControlOptions {
      *            label
      */
     @JsProperty
-    void setLabel(String label);
+    public native void setLabel(String label);
 
     /**
      * Text label to use for the button tip. Default is "Attributions".
@@ -61,6 +62,6 @@ public interface AttributionOptions extends ControlOptions {
      *            tip label
      */
     @JsProperty
-    void setTipLabel(String tipLabel);
+    public native void setTipLabel(String tipLabel);
 
 }

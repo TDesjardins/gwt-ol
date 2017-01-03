@@ -1,6 +1,8 @@
 package ol.control;
 
 import com.google.gwt.dom.client.Element;
+
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.Options;
@@ -11,8 +13,8 @@ import ol.Options;
  * @author sbaumhekel
  *
  */
-@JsType(isNative = true)
-public interface ControlOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class ControlOptions implements Options {
 
     /**
      * The element is the control's container element.
@@ -21,7 +23,7 @@ public interface ControlOptions extends Options {
      * @param element control's container element
      */
     @JsProperty
-    void setElement(Element element);
+    public native void setElement(Element element);
     
     /**
      * Specify a target if you want the control to be rendered outside of the map's viewport.
@@ -30,6 +32,6 @@ public interface ControlOptions extends Options {
      *            target element
      */
     @JsProperty
-    void setTarget(Element target);
+    public native void setTarget(Element target);
 
 }

@@ -1,5 +1,6 @@
 package ol.control;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -9,8 +10,8 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  *
  */
-@JsType(isNative = true)
-public interface FullScreenOptions extends ControlOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class FullScreenOptions extends ControlOptions {
 
     /**
      * CSS class name. Default is "ol-full-screen".
@@ -18,7 +19,7 @@ public interface FullScreenOptions extends ControlOptions {
      *            class name
      */
     @JsProperty
-    void setClassName(String className);
+    public native void setClassName(String className);
 
     /**
      * Full keyboard access.
@@ -26,7 +27,7 @@ public interface FullScreenOptions extends ControlOptions {
      *            keys
      */
     @JsProperty
-    void setKeys(boolean keys);
+    public native void setKeys(boolean keys);
 
     /**
      * Text label to use for the button. Default is \u2922 (NORTH EAST AND SOUTH
@@ -36,7 +37,7 @@ public interface FullScreenOptions extends ControlOptions {
      *            label
      */
     @JsProperty
-    void setLabel(String label);
+    public native void setLabel(String label);
 
     /**
      * Text label to use for the button when full-screen is active. Default is
@@ -46,7 +47,7 @@ public interface FullScreenOptions extends ControlOptions {
      *            labelActive
      */
     @JsProperty
-    void setLabelActive(String labelActive);
+    public native void setLabelActive(String labelActive);
 
     /**
      * Text label to use for the button tip. Default is "Toggle full-screen".
@@ -54,6 +55,6 @@ public interface FullScreenOptions extends ControlOptions {
      *            tip label
      */
     @JsProperty
-    void setTipLabel(String tipLabel);
+    public native void setTipLabel(String tipLabel);
 
 }

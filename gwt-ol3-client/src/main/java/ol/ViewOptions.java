@@ -1,5 +1,6 @@
 package ol;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
@@ -10,16 +11,16 @@ import ol.proj.Projection;
  * 
  * @author Tino Desjardins
  */
-@JsType(isNative = true)
-public interface ViewOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class ViewOptions implements Options {
 
     @JsProperty
-    void setCenter(Coordinate coordinate);
+    public native void setCenter(Coordinate coordinate);
 
     @JsProperty
-    void setProjection(Projection projection);
+    public native void setProjection(Projection projection);
 
     @JsProperty
-    void setZoom(double zoom);
+    public native void setZoom(double zoom);
 
 }

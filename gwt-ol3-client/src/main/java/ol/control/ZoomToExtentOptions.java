@@ -1,5 +1,6 @@
 package ol.control;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -9,8 +10,8 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  *
  */
-@JsType(isNative = true)
-public interface ZoomToExtentOptions extends ControlOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class ZoomToExtentOptions extends ControlOptions {
 
     /**
      * CSS class name. Default is "ol-zoom-extent".
@@ -18,7 +19,7 @@ public interface ZoomToExtentOptions extends ControlOptions {
      *            class name
      */
     @JsProperty
-    void setClassName(String className);
+    public native void setClassName(String className);
 
     /**
      * The extent to zoom to. If undefined the validity extent of the view
@@ -27,7 +28,7 @@ public interface ZoomToExtentOptions extends ControlOptions {
      *            extent
      */
     @JsProperty
-    void setExtent(ol.Extent extent);
+    public native void setExtent(ol.Extent extent);
 
     /**
      * Text label to use for the button. Default is "E". Instead of text, also a
@@ -36,7 +37,7 @@ public interface ZoomToExtentOptions extends ControlOptions {
      *            label
      */
     @JsProperty
-    void setLabel(String label);
+    public native void setLabel(String label);
 
     /**
      * Text label to use for the button tip. Default is "Zoom to extent".
@@ -44,6 +45,6 @@ public interface ZoomToExtentOptions extends ControlOptions {
      *            tip label
      */
     @JsProperty
-    void setTipLabel(String tipLabel);
+    public native void setTipLabel(String tipLabel);
 
 }

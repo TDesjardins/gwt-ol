@@ -88,7 +88,7 @@ public class GeoJSONExample implements Example {
         view.setZoom(2);
 
         // create the map
-        MapOptions mapOptions = OLFactory.createOptions();
+        MapOptions mapOptions = new MapOptions();
         mapOptions.setTarget(exampleId);
         mapOptions.setView(view);
         Collection<Base> lstLayer = new Collection<Base>();
