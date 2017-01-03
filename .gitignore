@@ -3,3 +3,5 @@ bin/
 .classpath
 .settings/
 target
+gwt-unitCache/
+www-test/
