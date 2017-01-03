@@ -1,5 +1,6 @@
 package ol.format;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.Options;
@@ -9,8 +10,8 @@ import ol.proj.Projection;
  * The {@link WKTFeatureOptions} class represents the options for reading or
  * writing a feature from or to wkt
  */
-@JsType(isNative = true)
-public interface WKTFeatureOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class WKTFeatureOptions implements Options {
 
 	/**
 	 * Projection of the data we are reading. If not provided, the projection will
@@ -22,7 +23,7 @@ public interface WKTFeatureOptions extends Options {
 	 * @param projection
 	 */
 	@JsProperty
-	void setDataProjection(Projection projection);
+	public native void setDataProjection(Projection projection);
 
 	/**
 	 * Projection of the feature geometries created by the format reader. If not
@@ -31,5 +32,5 @@ public interface WKTFeatureOptions extends Options {
 	 * @param projection
 	 */
 	@JsProperty
-	void setFeatureProjection(Projection projection);
+	public native void setFeatureProjection(Projection projection);
 }

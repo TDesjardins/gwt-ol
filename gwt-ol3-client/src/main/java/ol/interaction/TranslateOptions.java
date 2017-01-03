@@ -1,6 +1,7 @@
 
 package ol.interaction;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.Collection;
@@ -10,8 +11,8 @@ import ol.Options;
 /**
  * @author Tino Desjardins
  */
-@JsType(isNative = true)
-public interface TranslateOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class TranslateOptions implements Options {
 
 	/**
 	 * Only features contained in this collection will be able to be translated. If not specified, all features on the map will be able to be translated.
@@ -19,6 +20,6 @@ public interface TranslateOptions extends Options {
 	 * @param features
 	 */
 	@JsProperty
-	public void setFeatures(Collection<Feature> features);
+	public native void setFeatures(Collection<Feature> features);
 
 }

@@ -1,5 +1,6 @@
 package ol.interaction;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.Collection;
@@ -16,8 +17,8 @@ import ol.layer.Layer;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface SelectOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class SelectOptions implements Options {
 
 	/**
 	 * 
@@ -27,7 +28,7 @@ public interface SelectOptions extends Options {
 	 * @param styleFunction
 	 */
     @JsProperty
-    void setStyle(GenericFunction<?, ?> styleFunction);
+    public native void setStyle(GenericFunction<?, ?> styleFunction);
 
 	/**
 	 * 
@@ -40,7 +41,7 @@ public interface SelectOptions extends Options {
 	 * @param layers
 	 */
     @JsProperty
-    void setLayers(Layer[] layers);
+    public native void setLayers(Layer[] layers);
 
 	/**
 	 * 
@@ -52,7 +53,7 @@ public interface SelectOptions extends Options {
 	 * @param function
 	 */
     @JsProperty
-    void setRemoveCondition(GenericFunction<?, ?> function);
+    public native void setRemoveCondition(GenericFunction<?, ?> function);
 
 	/**
 	 * 
@@ -63,7 +64,7 @@ public interface SelectOptions extends Options {
 	 * @param multi
 	 */
     @JsProperty
-    void setMulti(boolean multi);
+    public native void setMulti(boolean multi);
 
 	/**
 	 * 
@@ -77,7 +78,7 @@ public interface SelectOptions extends Options {
 	 * @param function
 	 */
     @JsProperty
-    void setToggleCondition(GenericFunction<?, ?> function);
+    public native void setToggleCondition(GenericFunction<?, ?> function);
 
 	/**
 	 * Collection where the interaction will place selected features. Optional. If
@@ -88,7 +89,7 @@ public interface SelectOptions extends Options {
 	 * @param features
 	 */
 	@JsProperty
-	void setFeatures(Collection<Feature> features);
+	public native void setFeatures(Collection<Feature> features);
 
 	/**
 	 * A function that takes an ol.Feature and an ol.layer.Layer and returns true
@@ -97,7 +98,7 @@ public interface SelectOptions extends Options {
 	 * @param function
      */
 	@JsProperty
-	void setFilter(SelectFilterFunction function);
+	public native void setFilter(SelectFilterFunction function);
 
 	/**
 	 * A function that takes an ol.MapBrowserEvent and returns a boolean
@@ -108,7 +109,7 @@ public interface SelectOptions extends Options {
 	 * @param function
      */
 	@JsProperty
-	void setAddCondition(GenericFunction<?, ?> function);
+	public native void setAddCondition(GenericFunction<?, ?> function);
 
 	/**
 	 * A function that takes an ol.MapBrowserEvent and returns a boolean to indicate whether that event should be handled.
@@ -120,5 +121,5 @@ public interface SelectOptions extends Options {
 	 * @param function
 	 */
 	@JsProperty
-	void setCondition(GenericFunction<MapBrowserEvent, Boolean> function);
+	public native void setCondition(GenericFunction<MapBrowserEvent, Boolean> function);
 }

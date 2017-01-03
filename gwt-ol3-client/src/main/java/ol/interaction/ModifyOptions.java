@@ -1,5 +1,6 @@
 package ol.interaction;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.Collection;
@@ -12,8 +13,8 @@ import ol.Options;
  * 
  * @author guandalini
  */
-@JsType(isNative = true)
-public interface ModifyOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class ModifyOptions implements Options {
 
 	/**
 	 * A function that takes an ol.MapBrowserEvent and returns a boolean to
@@ -23,7 +24,7 @@ public interface ModifyOptions extends Options {
 	 * @param function
 	 */
 	@JsProperty
-	void setCondition(GenericFunction<?, ?> function);
+	public native void setCondition(GenericFunction<?, ?> function);
 
 	/**
 	 * A function that takes an ol.MapBrowserEvent and returns a boolean to
@@ -34,7 +35,7 @@ public interface ModifyOptions extends Options {
 	 * @param function
 	 */
 	@JsProperty
-	void setDeleteCondition(GenericFunction<?, ?> function);
+	public native void setDeleteCondition(GenericFunction<?, ?> function);
 
 	/**
 	 * Pixel tolerance for considering the pointer close enough to a segment or
@@ -43,7 +44,7 @@ public interface ModifyOptions extends Options {
 	 * @param clickTolerance
 	 */
 	@JsProperty
-	void setPixelTolerance(int clickTolerance);
+	public native void setPixelTolerance(int clickTolerance);
 
 	/**
 	 * Style used for the features being modified. By default the default edit
@@ -52,7 +53,7 @@ public interface ModifyOptions extends Options {
 	 * @param styleFunction
 	 */
 	@JsProperty
-	void setStyle(GenericFunction<?, ?> styleFunction);
+	public native void setStyle(GenericFunction<?, ?> styleFunction);
 
 	/**
 	 * The features the interaction works on. Required.
@@ -60,7 +61,7 @@ public interface ModifyOptions extends Options {
 	 * @param features
 	 */
 	@JsProperty
-	void setFeatures(Collection<Feature> features);
+	public native void setFeatures(Collection<Feature> features);
 
 	/**
 	 * Wrap the world horizontally on the sketch overlay. Default is false.
@@ -68,6 +69,6 @@ public interface ModifyOptions extends Options {
 	 * @param wrapX
 	 */
 	@JsProperty
-	void setWrapX(boolean wrapX);
+	public native void setWrapX(boolean wrapX);
 
 }
