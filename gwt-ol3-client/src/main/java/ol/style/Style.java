@@ -14,14 +14,19 @@ import ol.geom.Geometry;
  * @author Tino Desjardins
  */
 @JsType(isNative = true)
-public interface Style {
+public class Style {
+
+    public Style() {}
+
+    public Style(StyleOptions styleOptions) {}
+
     /**
      * Get the fill style.
      *
      * @return {ol.style.Fill} Fill style.
      */
     @Nullable
-    Fill getFill();
+    public native Fill getFill();
 
     /**
      * Get the geometry to be rendered.
@@ -31,14 +36,14 @@ public interface Style {
      *         will be rendered with this style.
      */
     @Nullable
-    Geometry getGeometry();
+    public native Geometry getGeometry();
 
     /**
      * Get the image style.
-     * 
+     *
      * @return {ol.style.Image} Image style.
      */
-    Image getImage();
+    public native Image getImage();
 
     /**
      * Get the stroke style.
@@ -46,7 +51,7 @@ public interface Style {
      * @return {ol.style.Stroke} Stroke style.
      */
     @Nullable
-    Stroke getStroke();
+    public native Stroke getStroke();
 
     /**
      * Get the text style.
@@ -54,14 +59,14 @@ public interface Style {
      * @return {ol.style.Text} Text style.
      */
     @Nullable
-    Text getText();
+    public native Text getText();
 
     /**
      * Get the z-index for the style.
      *
      * @return {number|undefined} ZIndex.
      */
-    int getZIndex();
+    public native int getZIndex();
 
     /**
      * Set a geometry that is rendered instead of the feature's geometry.
@@ -70,7 +75,7 @@ public interface Style {
      *            Feature property or geometry or function returning a geometry
      *            to render for this style.
      */
-    void setGeometry(Geometry geometry);
+    public native void setGeometry(Geometry geometry);
 
     /**
      * Set the z-index.
@@ -78,11 +83,11 @@ public interface Style {
      * @param zIndex
      *            ZIndex.
      */
-    void setZIndex(int zIndex);
+    public native void setZIndex(int zIndex);
 
     /**
      * Clones the style.
      */
-    Style clone();
+    public native Style clone();
 
 }
