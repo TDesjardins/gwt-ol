@@ -14,7 +14,9 @@ import ol.Coordinate;
  */
 @JsType(isNative = true)
 public class Point extends SimpleGeometry {
-    
+
+    public Point(Coordinate coordinate) {}
+
     /**
      * Return the coordinates of this geometry.
      *
@@ -31,5 +33,5 @@ public class Point extends SimpleGeometry {
      *            opt_layout Layout.
      */
     public native void setCoordinates(Coordinate coordinates, @Nullable String geometryLayout);
-    
+
 }
