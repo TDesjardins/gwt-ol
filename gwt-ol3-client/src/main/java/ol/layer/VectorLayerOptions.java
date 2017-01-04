@@ -37,6 +37,9 @@ public interface VectorLayerOptions extends LayerOptions {
     @JsProperty
     void setRenderBuffer(double renderBuffer);
 
+    @JsProperty
+    void setStyle(Style style);
+
     /**
      * Layer style. See ol.style for default style which will be used if this is
      * not defined.
