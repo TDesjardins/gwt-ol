@@ -13,6 +13,7 @@ public enum OL3ExampleType {
     ImageExample(new StaticImageExample()),
     MapEventsExample(new MapEventsExample()),
     MapGuideExample(new MapGuideExample()),
+    MarkerExample(new MarkerExample()),
     MeasureExample(new MeasureExample()),
     OsmExample(new OsmExample()),
     OverlayExample(new OverlayExample()),
