@@ -1,5 +1,6 @@
 package ol.style;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -12,8 +13,8 @@ import ol.color.Color;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface FillOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class FillOptions implements Options {
 
     /**
      * Set the fill color.
@@ -21,6 +22,6 @@ public interface FillOptions extends Options {
      * @param color {@link Color}
      */
     @JsProperty
-    void setColor(Color color);
+    public native void setColor(Color color);
 
 }
