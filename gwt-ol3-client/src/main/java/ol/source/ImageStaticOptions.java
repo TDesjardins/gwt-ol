@@ -1,5 +1,6 @@
 package ol.source;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
@@ -9,22 +10,22 @@ import ol.Size;
 /**
  * @author Tino Desjardins
  */
-@JsType(isNative = true)
-public interface ImageStaticOptions extends SourceOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class ImageStaticOptions extends SourceOptions {
 
     @JsProperty
-    void setCrossOrigin(String crossOrigin);
+    public native void setCrossOrigin(String crossOrigin);
 
     @JsProperty
-    void setImageExtent(Extent extent);
+    public native void setImageExtent(Extent extent);
 
     @JsProperty
-    void setImageSize(Size imageSize);
+    public native void setImageSize(Size imageSize);
 
     /**
      * @param url URL to image
      */
     @JsProperty
-    void setUrl(String url);
+    public native void setUrl(String url);
 
 }

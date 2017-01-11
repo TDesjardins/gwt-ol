@@ -1,5 +1,6 @@
 package ol.source;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -9,8 +10,8 @@ import jsinterop.annotations.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface UrlTileOptions extends TileOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class UrlTileOptions extends TileOptions {
     
     /**
      * Return the URLs used for this source. When a tileUrlFunction is used
@@ -19,7 +20,7 @@ public interface UrlTileOptions extends TileOptions {
      * @return {!Array.<string>|null} URLs.
      */
     @JsProperty
-    String[] getUrls();
+    public native String[] getUrls();
 
     /**
      * Set the URL to use for requests.
@@ -28,7 +29,7 @@ public interface UrlTileOptions extends TileOptions {
      *            URL.
      */
     @JsProperty
-    void setUrl(String url);
+    public native void setUrl(String url);
 
     /**
      * Set the URLs to use for requests.
@@ -37,6 +38,6 @@ public interface UrlTileOptions extends TileOptions {
      *            URLs.
      */
     @JsProperty
-    void setUrls(String[] urls);
+    public native void setUrls(String[] urls);
 
 }

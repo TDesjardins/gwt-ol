@@ -1,5 +1,6 @@
 package ol.source;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -9,8 +10,8 @@ import jsinterop.annotations.JsType;
  * @author tlochmann
  * @author Tino Desjardins
  */
-@JsType(isNative = true)
-public interface ImageMapGuideOptions extends SourceOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class ImageMapGuideOptions extends SourceOptions {
 
     /**
      *
@@ -18,7 +19,7 @@ public interface ImageMapGuideOptions extends SourceOptions {
      *            params for MapGuide-requests
      */
     @JsProperty
-    void setParams(ImageMapGuideParams imageMapGuideParams);
+    public native void setParams(ImageMapGuideParams imageMapGuideParams);
 
     /**
      *
@@ -26,7 +27,7 @@ public interface ImageMapGuideOptions extends SourceOptions {
      * 				ratio. 1 means image requests are the size of the map viewport, 2 means twice the width and height of the map viewport, and so on. Must be 1 or higher. Default is 1
      */
     @JsProperty
-    void setRatio(float ratio);
+    public native void setRatio(float ratio);
 
     /**
      *
@@ -34,20 +35,20 @@ public interface ImageMapGuideOptions extends SourceOptions {
      *            The mapagent url
      */
     @JsProperty
-    void setUrl(String url);
+    public native void setUrl(String url);
 
     /**
      * @param useOverlay
      *  	If true, will use GETDYNAMICMAPOVERLAYIMAGE otherwise GETMAPIMAGE
      */
     @JsProperty
-    void setUseOverlay(boolean useOverlay);
+    public native void setUseOverlay(boolean useOverlay);
 
     /**
      * @param metersPerUnit
      * The meters-per-unit value. Default is 1. value returned from MapGuide
      */
     @JsProperty
-    void setMetersPerUnit(double  metersPerUnit);
+    public native void setMetersPerUnit(double  metersPerUnit);
 
 }
