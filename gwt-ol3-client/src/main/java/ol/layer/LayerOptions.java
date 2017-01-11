@@ -1,5 +1,6 @@
 package ol.layer;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
@@ -13,8 +14,8 @@ import ol.source.Source;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface LayerOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class LayerOptions implements Options {
 
     /**
      * The bounding extent for layer rendering. The layer will not be rendered
@@ -23,7 +24,7 @@ public interface LayerOptions extends Options {
      * @param extent extent
      */
     @JsProperty
-    void setExtent(Extent extent);
+    public native void setExtent(Extent extent);
 
     /**
      * The maximum resolution (exclusive) below which this layer will be
@@ -32,7 +33,7 @@ public interface LayerOptions extends Options {
      * @param maxResolution maximum resolution
      */
     @JsProperty
-    void setMaxResolution(double maxResolution);
+    public native void setMaxResolution(double maxResolution);
 
     /**
      * The minimum resolution (inclusive) at which this layer will be visible.
@@ -40,7 +41,7 @@ public interface LayerOptions extends Options {
      * @param minResolution minimum resolution
      */
     @JsProperty
-    void setMinResolution(double minResolution);
+    public native void setMinResolution(double minResolution);
 
     /**
      * Opacity (0, 1). Default is 1.
@@ -48,7 +49,7 @@ public interface LayerOptions extends Options {
      * @param opacity opacity
      */
     @JsProperty
-    void setOpacity(double opacity);
+    public native void setOpacity(double opacity);
 
     /**
      * Source for this layer. Required.
@@ -56,7 +57,7 @@ public interface LayerOptions extends Options {
      * @param source {@link Source}
      */
     @JsProperty
-    void setSource(Source source);
+    public native void setSource(Source source);
 
     /**
      * Visibility. Default is true (visible).
@@ -64,7 +65,7 @@ public interface LayerOptions extends Options {
      * @param visible visible?
      */
     @JsProperty
-    void setVisible(boolean visible);
+    public native void setVisible(boolean visible);
 
     /**
      * The z-index for layer rendering. At rendering time, the layers will be
@@ -73,6 +74,6 @@ public interface LayerOptions extends Options {
      * @param zIndex z-index
      */
     @JsProperty
-    void setZIndex(int zIndex);
+    public native void setZIndex(int zIndex);
     
 }

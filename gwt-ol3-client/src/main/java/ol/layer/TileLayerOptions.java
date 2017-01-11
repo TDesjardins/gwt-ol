@@ -1,5 +1,6 @@
 package ol.layer;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
@@ -11,8 +12,8 @@ import ol.Map;
  * @author sbaumhekel
  *
  */
-@JsType(isNative = true)
-public interface TileLayerOptions extends LayerOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class TileLayerOptions extends LayerOptions {
     
     /**
      *
@@ -24,7 +25,7 @@ public interface TileLayerOptions extends LayerOptions {
      * @param map {@link Map}
      */
     @JsProperty
-    void setMap(Map map);
+    public native void setMap(Map map);
 
     /**
      * Preload. Load low-resolution tiles up to preload levels. By default
@@ -33,7 +34,7 @@ public interface TileLayerOptions extends LayerOptions {
      * @param preload preload levels
      */
     @JsProperty
-    void setPreLoad(int preload);
+    public native void setPreLoad(int preload);
 
     /**
      * Use interim tiles on error. Default is true.
@@ -41,6 +42,6 @@ public interface TileLayerOptions extends LayerOptions {
      * @param useInterimTilesOnError use interim tiles on error?
      */
     @JsProperty
-    void setUseInterimTilesOnError(boolean useInterimTilesOnError);
+    public native void setUseInterimTilesOnError(boolean useInterimTilesOnError);
     
 }
