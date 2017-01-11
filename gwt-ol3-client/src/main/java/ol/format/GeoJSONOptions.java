@@ -1,5 +1,6 @@
 package ol.format;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 import ol.Options;
 import ol.proj.Projection;
@@ -9,17 +10,17 @@ import ol.proj.Projection;
  *
  * @author tlochmann
  */
-@JsType(isNative = true)
-public interface GeoJSONOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class GeoJSONOptions implements Options {
 
     /**
      * @param projection
      */
-    void setDefaultDataProjection(Projection projection);
+    public native void setDefaultDataProjection(Projection projection);
 
     /**
      * @param geometryName
      */
-    void setGeometryName(String geometryName);
+    public native void setGeometryName(String geometryName);
 
 }
