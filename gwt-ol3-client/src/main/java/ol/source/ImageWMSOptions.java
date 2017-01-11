@@ -1,5 +1,6 @@
 package ol.source;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -11,8 +12,8 @@ import ol.proj.Projection;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface ImageWMSOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class ImageWMSOptions implements Options {
 
     /**
      * 
@@ -20,14 +21,14 @@ public interface ImageWMSOptions extends Options {
      *            params for WMS-requests
      */
     @JsProperty
-    void setParams(ImageWMSParams imageWMSParams);
+    public native void setParams(ImageWMSParams imageWMSParams);
 
     /**
      * 
      * @param ratio
      */
     @JsProperty
-    void setRatio(float ratio);
+    public native void setRatio(float ratio);
 
     /**
      * 
@@ -35,13 +36,13 @@ public interface ImageWMSOptions extends Options {
      *            WMS service URL
      */
     @JsProperty
-    void setUrl(String url);
+    public native void setUrl(String url);
     
     /**
      * 
      * @param projection
      */
     @JsProperty
-    void setProjection(Projection projection);
+    public native void setProjection(Projection projection);
 
 }
