@@ -1,5 +1,6 @@
 package ol.layer;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
@@ -12,8 +13,8 @@ import ol.style.Style;
  * @author sbaumhekel
  *
  */
-@JsType(isNative = true)
-public interface VectorLayerOptions extends LayerOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class VectorLayerOptions extends LayerOptions {
     /**
      *
      * Sets the layer as overlay on a map. The map will not manage this layer in
@@ -24,7 +25,7 @@ public interface VectorLayerOptions extends LayerOptions {
      * @param map {@link Map}
      */
     @JsProperty
-    void setMap(Map map);
+    public native void setMap(Map map);
 
     /**
      * The buffer around the viewport extent used by the renderer when getting
@@ -35,10 +36,10 @@ public interface VectorLayerOptions extends LayerOptions {
      * @param renderBuffer render buffer
      */
     @JsProperty
-    void setRenderBuffer(double renderBuffer);
+    public native void setRenderBuffer(double renderBuffer);
 
     @JsProperty
-    void setStyle(Style style);
+    public native void setStyle(Style style);
 
     /**
      * Layer style. See ol.style for default style which will be used if this is
@@ -47,7 +48,7 @@ public interface VectorLayerOptions extends LayerOptions {
      * @param style {@link Style}
      */
     @JsProperty
-    void setStyle(Style[] style);
+    public native void setStyle(Style[] style);
 
     /**
      * When set to true, feature batches will be recreated during animations.
@@ -59,7 +60,7 @@ public interface VectorLayerOptions extends LayerOptions {
      * @param updateWhileAnimating update while animating?
      */
     @JsProperty
-    void setUpdateWhileAnimating(boolean updateWhileAnimating);
+    public native void setUpdateWhileAnimating(boolean updateWhileAnimating);
 
     /**
      * When set to true, feature batches will be recreated during interactions.
@@ -68,6 +69,6 @@ public interface VectorLayerOptions extends LayerOptions {
      * @param updateWhileInteracting update while interacting?
      */
     @JsProperty
-    void setUpdateWhileInteracting(boolean updateWhileInteracting);
+    public native void setUpdateWhileInteracting(boolean updateWhileInteracting);
 
 }
