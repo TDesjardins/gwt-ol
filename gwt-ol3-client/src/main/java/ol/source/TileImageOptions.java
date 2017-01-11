@@ -1,5 +1,6 @@
 package ol.source;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
 /**
@@ -8,5 +9,5 @@ import jsinterop.annotations.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface TileImageOptions extends UrlTileOptions {}
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class TileImageOptions extends UrlTileOptions {}

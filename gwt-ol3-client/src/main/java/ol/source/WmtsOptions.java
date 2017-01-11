@@ -1,5 +1,6 @@
 package ol.source;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -9,8 +10,8 @@ import jsinterop.annotations.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface WmtsOptions extends TileImageOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class WmtsOptions extends TileImageOptions {
     
     
     /**
@@ -19,19 +20,19 @@ public interface WmtsOptions extends TileImageOptions {
      * @param layer layername
      */
     @JsProperty
-    void setLayer(String layer);
+    public native void setLayer(String layer);
     
     @JsProperty
-    void setStyle(String style);
+    public native void setStyle(String style);
     
     @JsProperty
-    void setFormat(String format);
+    public native void setFormat(String format);
     
     @JsProperty
-    void setVersion(String version);
+    public native void setVersion(String version);
     
     @JsProperty
-    void setMatrixSet(String matrixSet);
+    public native void setMatrixSet(String matrixSet);
     
     /**
      * experimental
@@ -39,6 +40,6 @@ public interface WmtsOptions extends TileImageOptions {
      * @param wrapX
      */
     @JsProperty
-    void setWrapX(boolean wrapX);
+    public native void setWrapX(boolean wrapX);
     
 }

@@ -1,5 +1,6 @@
 package ol.source;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -12,8 +13,8 @@ import ol.gwt.TypedObject;
  *
  * @author sbaumhekel
  */
-@JsType(isNative = true)
-public interface VectorOptions extends SourceOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class VectorOptions extends SourceOptions {
 
     /**
      * Set the features. If provided as {@link ol.Collection}, the features in
@@ -22,7 +23,7 @@ public interface VectorOptions extends SourceOptions {
      * @param features features
      */
     @JsProperty
-    void setFeatures(TypedObject<Feature[], Collection<Feature>> features);
+    public native void setFeatures(TypedObject<Feature[], Collection<Feature>> features);
 
     /**
      *
@@ -40,7 +41,7 @@ public interface VectorOptions extends SourceOptions {
      * @param useSpatialIndex use spatial index?
      */
     @JsProperty
-    void setUseSpatialIndex(boolean useSpatialIndex);
+    public native void setUseSpatialIndex(boolean useSpatialIndex);
 
     /**
      * Wrap the world horizontally. Default is true. For vector editing across
@@ -51,6 +52,6 @@ public interface VectorOptions extends SourceOptions {
      * @param wrapX wrap?
      */
     @JsProperty
-    void setWrapX(boolean wrapX);
+    public native void setWrapX(boolean wrapX);
 
 }

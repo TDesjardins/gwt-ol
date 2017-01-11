@@ -1,5 +1,6 @@
 package ol.source;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.Size;
@@ -11,8 +12,8 @@ import ol.Size;
  *
  * @see http://openlayers.org/en/latest/apidoc/ol.source.XYZ.html
  */
-@JsType(isNative = true)
-public interface XyzOptions extends TileImageOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class XyzOptions extends TileImageOptions {
 
 	/**
 	 * Set the optional max zoom level. Default is 18.
@@ -20,14 +21,14 @@ public interface XyzOptions extends TileImageOptions {
 	 * @param maxZoom max zoom
 	 */
 	@JsProperty
-	void setMaxZoom(int maxZoom);
+	public native void setMaxZoom(int maxZoom);
 
 	/**
 	 * Optional function to get tile URL given a tile coordinate and the
 	 * projection. Required if url or urls are not provided.
 	 */
 	@JsProperty
-	void setTileUrlFunction(TileUrlFunction callback);
+	public native void setTileUrlFunction(TileUrlFunction callback);
 
 	/**
 	 * Optional function to load a tile given a URL. The default is
@@ -35,7 +36,7 @@ public interface XyzOptions extends TileImageOptions {
 	 * function(imageTile, src) { imageTile.getImage().src = src; };
 	 */
 	@JsProperty
-	void setTileLoadFunction(TileLoadFunction callback);
+	public native void setTileLoadFunction(TileLoadFunction callback);
 
 	/**
 	 * Set the tile size used by the tile service. Default is [256, 256] pixels.
@@ -43,5 +44,5 @@ public interface XyzOptions extends TileImageOptions {
 	 * @param tileSize tile size
 	 */
 	@JsProperty
-	void setTileSize(Size tileSize);
+	public native void setTileSize(Size tileSize);
 }

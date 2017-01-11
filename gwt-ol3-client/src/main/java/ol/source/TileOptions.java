@@ -1,5 +1,6 @@
 package ol.source;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -11,8 +12,8 @@ import ol.tilegrid.TileGrid;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface TileOptions extends SourceOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class TileOptions extends SourceOptions {
 
     /**
      * Gets the {@link TileGrid}.
@@ -20,7 +21,7 @@ public interface TileOptions extends SourceOptions {
      * @return tileGrid {@link TileGrid}
      */
     @JsProperty
-    TileGrid getTileGrid();
+    public native TileGrid getTileGrid();
     
     /**
      * Set the {@link TileGrid}.
@@ -28,6 +29,6 @@ public interface TileOptions extends SourceOptions {
      * @param tileGrid {@link TileGrid}
      */
     @JsProperty
-    void setTileGrid(TileGrid tileGrid);
+    public native void setTileGrid(TileGrid tileGrid);
     
 }

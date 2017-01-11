@@ -1,5 +1,6 @@
 package ol.source;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -12,8 +13,8 @@ import ol.proj.Projection;
  *
  * @author Tino Desjardins
  */
-@JsType(isNative = true)
-public interface SourceOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class SourceOptions implements Options {
 
     /**
      * Set the Attributions.
@@ -21,7 +22,7 @@ public interface SourceOptions extends Options {
      * @param attributions attributions
      */
     @JsProperty
-    void setAttributions(Attribution[] attributions);
+    public native void setAttributions(Attribution[] attributions);
 
     /**
      * Set the Projection. Default is EPSG:3857.
@@ -29,6 +30,6 @@ public interface SourceOptions extends Options {
      * @param projection projection
      */
     @JsProperty
-    void setProjection(Projection projection);
+    public native void setProjection(Projection projection);
 
 }
