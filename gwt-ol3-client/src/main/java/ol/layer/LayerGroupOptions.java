@@ -1,5 +1,6 @@
 package ol.layer;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.Options;
@@ -11,8 +12,8 @@ import ol.Options;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface LayerGroupOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class LayerGroupOptions implements Options {
 
     /**
      * Set the {@link ol.Collection collection} of {@link ol.layer.Layer layers}
@@ -22,6 +23,6 @@ public interface LayerGroupOptions extends Options {
      *            this group.
      */
     @JsProperty
-    void setLayers(ol.Collection<ol.layer.Base> layers);
+    public native void setLayers(ol.Collection<ol.layer.Base> layers);
 
 }
