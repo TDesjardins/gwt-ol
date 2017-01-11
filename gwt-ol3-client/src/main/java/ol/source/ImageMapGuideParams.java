@@ -1,5 +1,6 @@
 package ol.source;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -8,15 +9,15 @@ import jsinterop.annotations.JsType;
  * @author tlochmann
  */
 
-@JsType(isNative = true)
-public interface ImageMapGuideParams {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class ImageMapGuideParams {
 
 	/**
      * @param mapDefinition
      * 			MapGuide mapDefinition e.g. "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition"
      */
     @JsProperty
-    void setMapDefinition(String mapDefinition);
+    public native void setMapDefinition(String mapDefinition);
 
     /**
      * @param format
@@ -24,6 +25,6 @@ public interface ImageMapGuideParams {
      *
      */
     @JsProperty
-    void setFormat(String format);
+    public native void setFormat(String format);
 
 }
