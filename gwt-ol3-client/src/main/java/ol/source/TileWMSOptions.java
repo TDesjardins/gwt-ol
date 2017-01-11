@@ -6,6 +6,7 @@
  */
 package ol.source;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.Options;
@@ -14,29 +15,29 @@ import ol.proj.Projection;
 /**
  *
  */
-@JsType(isNative = true)
-public interface TileWMSOptions extends Options{
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class TileWMSOptions implements Options{
 
     /**
      *
      * @param url
      */
     @JsProperty
-    void setUrl(String url);
+    public native void setUrl(String url);
 
     /**
      *
      * @param serverType
      */
     @JsProperty
-    void setServerType(String serverType);
+    public native void setServerType(String serverType);
 
     /**
      *
      * @param crossOrigin
      */
     @JsProperty
-    void setCrossOrigin(String crossOrigin);
+    public native void setCrossOrigin(String crossOrigin);
 
     /**
      *
@@ -44,13 +45,13 @@ public interface TileWMSOptions extends Options{
      *            params for WMS-requests
      */
     @JsProperty
-    void setParams(TileWMSParams tileWMSParams);
+    public native void setParams(TileWMSParams tileWMSParams);
 
     /**
      *
      * @param projection
      */
     @JsProperty
-    void setProjection(Projection projection);
+    public native void setProjection(Projection projection);
 
 }
