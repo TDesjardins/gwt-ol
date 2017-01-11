@@ -1,5 +1,6 @@
 package ol.style;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -11,8 +12,8 @@ import ol.Options;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface CircleOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class CircleOptions implements Options {
 
     /**
      * Fill style.
@@ -20,7 +21,7 @@ public interface CircleOptions extends Options {
      * @param fill {@link Fill}
      */
     @JsProperty
-    void setFill(Fill fill);
+    public native void setFill(Fill fill);
 
     /**
      * Circle radius. Required.
@@ -28,7 +29,7 @@ public interface CircleOptions extends Options {
      * @param radius radius
      */
     @JsProperty
-    void setRadius(double radius);
+    public native void setRadius(double radius);
 
     /**
      * If true integral numbers of pixels are used as the X and Y pixel
@@ -41,7 +42,7 @@ public interface CircleOptions extends Options {
      * @param snapToPixel snap to pixels?
      */
     @JsProperty
-    void setSnapToPixel(boolean snapToPixel);
+    public native void setSnapToPixel(boolean snapToPixel);
 
     /**
      * Stroke style.
@@ -49,6 +50,6 @@ public interface CircleOptions extends Options {
      * @param stroke {@link Stroke}
      */
     @JsProperty
-    void setStroke(Stroke stroke);
+    public native void setStroke(Stroke stroke);
 
 }
