@@ -1,5 +1,6 @@
 package ol.style;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -9,8 +10,8 @@ import ol.Options;
  * Options for {@link Text}.
  * @author Tino Desjardins
  */
-@JsType(isNative = true)
-public interface TextOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class TextOptions implements Options {
 
 	/**
 	 * Font style as CSS 'font' value, see:
@@ -18,63 +19,63 @@ public interface TextOptions extends Options {
 	 * @param font String
 	 */
 	@JsProperty
-	void setFont(String font);
+	public native void setFont(String font);
 
 	/**
 	 * Horizontal text offset in pixels. A positive will shift the text right. Default is 0.
 	 * @param offsetX int
 	 */
 	@JsProperty
-	void setOffsetX(int offsetX);
+	public native void setOffsetX(int offsetX);
 
 	/**
 	 * Vertical text offset in pixels. A positive will shift the text down. Default is 0.
 	 * @param offsetY int
 	 */
 	@JsProperty
-	void setOffsetY(int offsetY);
+	public native void setOffsetY(int offsetY);
 
 	/**
 	 * Rotation in radians (positive rotation clockwise). Default is 0.
 	 * @param rotation int
 	 */
 	@JsProperty
-	void setRotation(int rotation);
+	public native void setRotation(int rotation);
 
 	/**
 	 * Scale.
 	 * @param scale int
 	 */
 	@JsProperty
-	void setScale(int scale);
+	public native void setScale(int scale);
 
 	/**
 	 * Fill style. If none is provided, we'll use a dark fill-style (#333).
 	 * @param fill ol.style.Fill
 	 */
 	@JsProperty
-	void setFill(ol.style.Fill fill);
+	public native void setFill(ol.style.Fill fill);
 
 	/**
 	 * Stroke style.
 	 * @param stroke ol.style.Stroke
 	 */
 	@JsProperty
-	void setStroke(ol.style.Stroke stroke);
+	public native void setStroke(ol.style.Stroke stroke);
 
 	/**
 	 * Text content.
 	 * @param text String
 	 */
 	@JsProperty
-	void setText(String text);
+	public native void setText(String text);
 
 	/**
 	 * Text alignment. Possible values: 'left', 'right', 'center', 'end' or 'start'. Default is 'start'.
 	 * @param textAlign String
 	 */
 	@JsProperty
-	void setTextAlign(String textAlign);
+	public native void setTextAlign(String textAlign);
 
 	/**
 	 * Text base line. Possible values: 'bottom', 'top', 'middle', 'alphabetic', 'hanging', 'ideographic'. Default is
@@ -82,6 +83,6 @@ public interface TextOptions extends Options {
 	 * @param textBaseline String
 	 */
 	@JsProperty
-	void setTextBaseline(String textBaseline);
+	public native void setTextBaseline(String textBaseline);
 
 }
