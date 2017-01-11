@@ -1,5 +1,6 @@
 package ol.tilegrid;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -8,10 +9,10 @@ import jsinterop.annotations.JsType;
  *
  * @author Tino Desjardins
  */
-@JsType(isNative = true)
-public interface WmtsTileGridOptions extends TileGridOptions {
-    
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class WmtsTileGridOptions extends TileGridOptions {
+
     @JsProperty
-    void setMatrixIds(String[] matrixIds);
+    public native void setMatrixIds(String[] matrixIds);
 
 }

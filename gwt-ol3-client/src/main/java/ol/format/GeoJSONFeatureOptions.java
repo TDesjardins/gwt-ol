@@ -1,5 +1,6 @@
 package ol.format;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 import ol.Options;
 import ol.proj.Projection;
@@ -9,22 +10,22 @@ import ol.proj.Projection;
  *
  * @author tlochmann
  */
-@JsType(isNative = true)
-public interface GeoJSONFeatureOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class GeoJSONFeatureOptions implements Options {
 
     /**
      * @param projection
      */
-    void setDataProjection(Projection projection);
+    public native void setDataProjection(Projection projection);
 
     /**
      * @param projection
      */
-    void setFeatureProjection(Projection projection);
+    public native void setFeatureProjection(Projection projection);
 
     /**
      * @param rightHanded
      */
-    void setRightHanded(boolean rightHanded);
+    public native void setRightHanded(boolean rightHanded);
 
 }

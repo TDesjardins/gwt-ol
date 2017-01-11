@@ -1,5 +1,6 @@
 package ol.proj;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 
 import ol.Options;
@@ -9,19 +10,19 @@ import jsinterop.annotations.JsType;
 /**
  * @author Tino Desjardins
  */
-@JsType(isNative = true)
-public interface ProjectionOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class ProjectionOptions implements Options {
     
     @JsProperty
-    public void setCode(String code);
+    public native void setCode(String code);
     
     @JsProperty
-    public void setUnits(String units);
+    public native void setUnits(String units);
 
     @JsProperty
-    public void setGlobal(boolean global);
+    public native void setGlobal(boolean global);
     
     @JsProperty
-    public void setExtent(Extent extent);
+    public native void setExtent(Extent extent);
     
 }

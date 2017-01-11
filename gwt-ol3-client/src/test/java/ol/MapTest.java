@@ -21,13 +21,13 @@ public class MapTest extends GwtOL3BaseTestCase {
             @Override
             public void test() {
 
-                ProjectionOptions projectionOptions = OLFactory.createOptions();
+                ProjectionOptions projectionOptions = new ProjectionOptions();
                 projectionOptions.setCode("EPSG:21781");
                 projectionOptions.setUnits("m");
 
                 Projection projection = new Projection(projectionOptions);
 
-                ViewOptions viewOptions = OLFactory.createOptions();
+                ViewOptions viewOptions = new ViewOptions();
                 viewOptions.setProjection(projection);
                 View view = new View(viewOptions);
 
@@ -36,7 +36,7 @@ public class MapTest extends GwtOL3BaseTestCase {
                 view.setCenter(centerCoordinate);
                 view.setZoom(9);
 
-                final MapOptions mapOptions = OLFactory.createOptions();
+                final MapOptions mapOptions = new MapOptions();
                 mapOptions.setTarget("map");
                 mapOptions.setView(view);
 

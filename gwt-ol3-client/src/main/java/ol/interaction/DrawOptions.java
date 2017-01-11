@@ -1,5 +1,6 @@
 package ol.interaction;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.Collection;
@@ -16,8 +17,8 @@ import ol.style.Style;
  * @author sbaumhekel
  *
  */
-@JsType(isNative = true)
-public interface DrawOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class DrawOptions implements Options {
 
 	/**
 	 * The maximum distance in pixels between "down" and "up" for a "up" event to
@@ -28,7 +29,7 @@ public interface DrawOptions extends Options {
 	 * @param clickTolerance clickTolerance
 	 */
 	@JsProperty
-	void setClickTolerance(int clickTolerance);
+	public native void setClickTolerance(int clickTolerance);
 
 	/**
 	 * 
@@ -37,7 +38,7 @@ public interface DrawOptions extends Options {
 	 * @param geometryFunction
 	 */
 	@JsProperty
-	void setGeometryFunction(GeometryFunction<?, ?, ?> geometryFunction);
+	public native void setGeometryFunction(GeometryFunction<?, ?, ?> geometryFunction);
 
 	/**
 	 * Destination collection for the drawn features.
@@ -45,7 +46,7 @@ public interface DrawOptions extends Options {
 	 * @param features features
 	 */
 	@JsProperty
-	void setFeatures(Collection<Feature> features);
+	public native void setFeatures(Collection<Feature> features);
 
 	/**
 	 * The number of points that can be drawn before a polygon ring or line string
@@ -54,7 +55,7 @@ public interface DrawOptions extends Options {
 	 * @param maxPoints maxPoints
 	 */
 	@JsProperty
-	void setMaxPoints(int maxPoints);
+	public native void setMaxPoints(int maxPoints);
 
 	/**
 	 * The number of points that must be drawn before a polygon ring or line
@@ -64,7 +65,7 @@ public interface DrawOptions extends Options {
 	 * @param minPoints minPoints
 	 */
 	@JsProperty
-	void setMinPoints(int minPoints);
+	public native void setMinPoints(int minPoints);
 
 	/**
 	 * Pixel distance for snapping to the drawing finish. Default is 12.
@@ -72,7 +73,7 @@ public interface DrawOptions extends Options {
 	 * @param snapTolerance snapTolerance
 	 */
 	@JsProperty
-	void setSnapTolerance(int snapTolerance);
+	public native void setSnapTolerance(int snapTolerance);
 
 	/**
 	 * Destination source for the drawn features.
@@ -80,7 +81,7 @@ public interface DrawOptions extends Options {
 	 * @param source source
 	 */
 	@JsProperty
-	void setSource(Vector source);
+	public native void setSource(Vector source);
 
 	/**
 	 * Style for sketch features.
@@ -88,7 +89,7 @@ public interface DrawOptions extends Options {
 	 * @param style style
 	 */
 	@JsProperty
-	void setStyle(Style style);
+	public native void setStyle(Style style);
 
 	/**
 	 * Drawing type ('Point', 'LineString', 'Polygon', 'MultiPoint',
@@ -97,7 +98,7 @@ public interface DrawOptions extends Options {
 	 * @param type type
 	 */
 	@JsProperty
-	void setType(String type);
+	public native void setType(String type);
 
 	/**
 	 * Wrap the world horizontally on the sketch overlay. Default is false.
@@ -105,7 +106,7 @@ public interface DrawOptions extends Options {
 	 * @param wrapX wrapX
 	 */
 	@JsProperty
-	void setWrapX(boolean wrapX);
+	public native void setWrapX(boolean wrapX);
 
 	/**
 	 * A function that takes an ol.MapBrowserEvent and returns a boolean to
@@ -116,6 +117,6 @@ public interface DrawOptions extends Options {
 	 * @param condition condition
 	 */
 	@JsProperty
-	void setCondition(GenericFunction<?, ?> condition);
+	public native void setCondition(GenericFunction<?, ?> condition);
 
 }
