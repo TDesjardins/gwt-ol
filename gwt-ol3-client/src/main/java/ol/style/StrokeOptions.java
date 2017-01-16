@@ -1,5 +1,6 @@
 package ol.style;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -12,8 +13,8 @@ import ol.color.Color;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface StrokeOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class StrokeOptions implements Options {
 
     /**
      * Set the stroke color.
@@ -21,7 +22,7 @@ public interface StrokeOptions extends Options {
      * @param color {@link Color}
      */
     @JsProperty
-    public void setColor(Color color);
+    public native void setColor(Color color);
 
     /**
      * Set the stroke width.
@@ -29,7 +30,7 @@ public interface StrokeOptions extends Options {
      * @param width width
      */
     @JsProperty
-    public void setWidth(int width);
+    public native void setWidth(int width);
 
     /**
      * Set the Line cap style: butt, round, or square. Default is round.
@@ -38,7 +39,7 @@ public interface StrokeOptions extends Options {
      *            lineCap
      */
     @JsProperty
-    public void setLineCap(String lineCap);
+    public native void setLineCap(String lineCap);
 
     /**
      * Set the Line join style: bevel, round, or miter. Default is round.
@@ -47,7 +48,7 @@ public interface StrokeOptions extends Options {
      *           lineJoin
      */
     @JsProperty
-    public void setLineJoin(String lineJoin);
+    public native void setLineJoin(String lineJoin);
 
     /**
      * Set the Line dash pattern. Default is undefined (no dash).
@@ -56,7 +57,7 @@ public interface StrokeOptions extends Options {
      *           int[]
      */
     @JsProperty
-    public void setLineDash(int[] lineDash);
+    public native void setLineDash(int[] lineDash);
 
     /**
      * Set the Miter limit. Default is 10.
@@ -65,6 +66,6 @@ public interface StrokeOptions extends Options {
      *           int
      */
     @JsProperty
-    public void setMiterLimit(int miterLimit);
+    public native void setMiterLimit(int miterLimit);
 
 }

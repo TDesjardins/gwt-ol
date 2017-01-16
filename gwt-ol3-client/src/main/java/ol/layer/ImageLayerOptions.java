@@ -1,5 +1,6 @@
 package ol.layer;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
@@ -11,8 +12,8 @@ import ol.Map;
  * @author sbaumhekel
  *
  */
-@JsType(isNative = true)
-public interface ImageLayerOptions extends LayerOptions {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class ImageLayerOptions extends LayerOptions {
     
     /**
      *
@@ -24,6 +25,6 @@ public interface ImageLayerOptions extends LayerOptions {
      * @param map {@link Map}
      */
     @JsProperty
-    void setMap(Map map);
+    public native void setMap(Map map);
     
 }

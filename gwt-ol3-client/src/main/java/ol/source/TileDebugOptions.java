@@ -1,5 +1,6 @@
 package ol.source;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -11,8 +12,8 @@ import ol.tilegrid.TileGrid;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface TileDebugOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class TileDebugOptions implements Options {
 
     /**
      * 
@@ -20,7 +21,7 @@ public interface TileDebugOptions extends Options {
      *            projection
      */
     @JsProperty
-    void setProjection(String projection);
+    public native void setProjection(String projection);
 
     /**
      * 
@@ -28,13 +29,13 @@ public interface TileDebugOptions extends Options {
      *            tilegrid
      */
     @JsProperty
-    void setTileGrid(TileGrid tileGrid);
+    public native void setTileGrid(TileGrid tileGrid);
 
     /**
      * 
      * @param wrapX
      */
     @JsProperty
-    void setWrapX(boolean wrapX);
+    public native void setWrapX(boolean wrapX);
 
 }

@@ -1,5 +1,6 @@
 package ol.source;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
@@ -8,21 +9,21 @@ import jsinterop.annotations.JsType;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface ImageWMSParams {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class ImageWMSParams {
     
     /**
      * 
      * @param layers comma seperated layernames
      */
     @JsProperty
-    void setLayers(String layers);
+    public native void setLayers(String layers);
 
     @JsProperty(name = "WIDTH")
-    void setWidth(String width);
+    public native void setWidth(String width);
 
     @JsProperty(name = "HEIGHT")
-    void setHeight(String height);
+    public native void setHeight(String height);
     
 }
 

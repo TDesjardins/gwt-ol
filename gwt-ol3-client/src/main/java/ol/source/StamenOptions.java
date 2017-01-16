@@ -1,5 +1,6 @@
 package ol.source;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
@@ -10,8 +11,8 @@ import ol.Options;
  * @author Tino Desjardins
  *
  */
-@JsType(isNative = true)
-public interface StamenOptions extends Options {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class StamenOptions implements Options {
 
     /**
      * 
@@ -19,6 +20,6 @@ public interface StamenOptions extends Options {
      *            watercolor, toner
      */
     @JsProperty
-    void setLayer(String layerName);
+    public native void setLayer(String layerName);
 
 }
