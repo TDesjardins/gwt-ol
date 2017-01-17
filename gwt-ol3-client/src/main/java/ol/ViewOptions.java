@@ -23,4 +23,9 @@ public class ViewOptions implements Options {
     @JsProperty
     public native void setZoom(double zoom);
 
+    @JsProperty
+    public native void setMinZoom(double minZoom);
+
+    @JsProperty
+    public native void setMaxZoom(double maxZoom);
 }

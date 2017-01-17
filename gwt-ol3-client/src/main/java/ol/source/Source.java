@@ -4,6 +4,7 @@ import jsinterop.annotations.JsType;
 
 import ol.Attribution;
 import ol.proj.Projection;
+import ol.Feature;
 
 /**
  * Abstract base class; normally only used for creating subclasses and not
@@ -64,5 +65,11 @@ public class Source extends ol.Object {
      *            Projection.
      */
     public native void setProjection(Projection projection);
+
+    /**
+     * Gets all features of the source.
+     * 
+     */
+    public native Feature[] getFeatures();
     
 }
