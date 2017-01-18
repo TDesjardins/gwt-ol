@@ -63,5 +63,6 @@ public class Source extends ol.Object {
      * @param projection
      *            Projection.
      */
-    public native void setProjection(Projection projection);    
+    public native void setProjection(Projection projection);
+    
 }
