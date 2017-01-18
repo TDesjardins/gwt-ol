@@ -64,12 +64,5 @@ public class Source extends ol.Object {
      * @param projection
      *            Projection.
      */
-    public native void setProjection(Projection projection);
-
-    /**
-     * Gets all features of the source.
-     * 
-     */
-    public native Feature[] getFeatures();
-    
+    public native void setProjection(Projection projection);    
 }
