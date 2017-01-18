@@ -4,7 +4,6 @@ import jsinterop.annotations.JsType;
 
 import ol.Attribution;
 import ol.proj.Projection;
-import ol.Feature;
 
 /**
  * Abstract base class; normally only used for creating subclasses and not
