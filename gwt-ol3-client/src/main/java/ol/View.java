@@ -3,7 +3,7 @@ package ol;
 import javax.annotation.Nullable;
 
 import jsinterop.annotations.JsType;
-
+import ol.animation.AnimationOptions;
 import ol.gwt.TypedObject;
 import ol.proj.Projection;
 
@@ -65,6 +65,13 @@ public class View extends Object {
     
     public View(ViewOptions viewOptions) {}
 
+    /**
+     * Animates the view.
+     * 
+     * @param animationOptions
+     */
+    public native void animate(AnimationOptions... animationOptions);
+    
     /**
      * Fit the given geometry or extent based on the given map size and border.
      * The size is pixel dimensions of the box to fit the extent into. In most
