@@ -32,6 +32,7 @@ import ol.interaction.SnapTest;
 import ol.interaction.TranslateTest;
 import ol.layer.LayerGroupTest;
 import ol.proj.ProjectionTest;
+import ol.source.ImageArcGISRestTest;
 import ol.style.RegularShapeTest;
 
 /**
@@ -94,6 +95,9 @@ public class GwtOL3TestSuite extends GWTTestSuite {
 
         // layers
         suite.addTestSuite(LayerGroupTest.class);
+        
+        //source
+        suite.addTestSuite(ImageArcGISRestTest.class);
 
         // projection
         suite.addTestSuite(ProjectionTest.class);
