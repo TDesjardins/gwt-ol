@@ -14,22 +14,10 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class TileWMSParams {
-
-    /**
-     *
-     * @param layers
-     */
-    @JsProperty(name = "LAYERS")
-    public native void setLayers(String layers);
-
-    /**
-     *
-     * @param version
-     */
-    @JsProperty(name = "VERSION")
-    public native void setVersion(String version);
-
+public class TileWMSParams extends ImageWMSParams {
+	@JsProperty
+	public boolean	TILED;
+	
     /**
      *
      * @param tiled
