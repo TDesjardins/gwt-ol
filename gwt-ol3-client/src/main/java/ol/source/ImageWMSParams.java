@@ -36,7 +36,7 @@ public class ImageWMSParams {
 	public native void setHeight(String height);
 
 	@JsOverlay
-	public void setSize(Size size) {
+	public final void setSize(Size size) {
 		HEIGHT = size.getHeight();
 		WIDTH = size.getWidth();
 	}

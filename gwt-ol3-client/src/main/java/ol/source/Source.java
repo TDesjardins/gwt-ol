@@ -56,7 +56,7 @@ public class Source extends ol.Object {
     public native String getStateString();
 
   	@JsOverlay
-  	public State getState() {
+  	public final State getState() {
   		return Constant.of(State.class, getStateString());
   	}
   	
