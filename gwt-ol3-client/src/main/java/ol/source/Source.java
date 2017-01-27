@@ -1,9 +1,12 @@
 package ol.source;
 
+import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
-
 import ol.Attribution;
+import ol.LogoOptions;
 import ol.proj.Projection;
+import tol.j2cl.elem.util.Constant;
 
 /**
  * Abstract base class; normally only used for creating subclasses and not
@@ -24,6 +27,13 @@ public class Source extends ol.Object {
      */
     public native Attribution[] getAttributions();
 
+  	/**
+  	 * Get the logo of the source.
+  	 *
+  	 * @return {@link LogoOptions}
+  	 */
+  	public native LogoOptions getLogo();
+  	
     /**
      * Get the projection of the source.
      * 
@@ -42,8 +52,14 @@ public class Source extends ol.Object {
      * 
      * @return {ol.source.State} State.
      */
-    public native String getState();
+  	@JsMethod(name = "getState")
+    public native String getStateString();
 
+  	@JsOverlay
+  	public State getState() {
+  		return Constant.of(State.class, getStateString());
+  	}
+  	
     /**
      * Refreshes the source and finally dispatches a 'change' event.
      */
