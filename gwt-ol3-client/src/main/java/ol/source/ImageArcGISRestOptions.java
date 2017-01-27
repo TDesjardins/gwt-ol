@@ -21,12 +21,6 @@ public class ImageArcGISRestOptions extends SourceOptions {
 	public native String getCrossOrigin();
 
 	@JsProperty
-	public native void setLogo(LogoOptions logo);
-
-	@JsProperty
-	public native LogoOptions getLogo();
-
-	@JsProperty
 	public native void setImageLoadFunction(ImageLoadFunction imageLoadFunction);
 	
 	@JsProperty
