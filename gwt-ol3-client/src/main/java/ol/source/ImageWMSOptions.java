@@ -28,12 +28,12 @@ public class ImageWMSOptions extends SourceOptions {
 	public native void setServerTypeString(String serverType);
 
 	@JsOverlay
-	public WMSServerType getServerType() {
+	public final WMSServerType getServerType() {
 		return Constant.of(WMSServerType.class, getServerTypeString());
 	}
 
 	@JsOverlay
-	public void setServerType(WMSServerType serverType) {
+	public final void setServerType(WMSServerType serverType) {
 		setServerTypeString(serverType.getValue());
 	}
 
@@ -51,13 +51,13 @@ public class ImageWMSOptions extends SourceOptions {
 	public native void setParams(ImageWMSParams params);
 
 	@JsProperty(name = "params")
-	public native void setParams(Map<String> params);
-	
-	@JsProperty(name = "params")
-	public native ImageWMSParams getImageWMSParams();
+	public native ImageWMSParams getParams();
 
 	@JsProperty(name = "params")
-	public native Map<String> getParams();
+	public native void setParamsMap(Map<String> params);
+	
+	@JsProperty(name = "params")
+	public native Map<String> getParamsMap();
 
 	/**
 	 * 
