@@ -1,6 +1,6 @@
 package ol.source;
 
-import tol.j2cl.elem.util.Constant;
+import ol.Constant;
 
 /**
  * State of the source, one of 'undefined', 'loading', 'ready' or 'error'.

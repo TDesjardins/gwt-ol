@@ -1,8 +1,6 @@
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.8.0//EN" "http://gwtproject.org/doctype/2.8.0/gwt-module.dtd">
 <module>
   <inherits name='com.google.gwt.user.User' />
-  <!-- Territorium Online's GWT-Elemental API used for converting Java Arrays and Map's to JavaScript -->
-  <inherits name='tol.j2cl.elem.Elemental' />
 
   <source path='' />
 </module>

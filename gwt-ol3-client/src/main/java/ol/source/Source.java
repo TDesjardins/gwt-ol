@@ -4,9 +4,9 @@ import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import ol.Attribution;
+import ol.Constant;
 import ol.LogoOptions;
 import ol.proj.Projection;
-import tol.j2cl.elem.util.Constant;
 
 /**
  * Abstract base class; normally only used for creating subclasses and not

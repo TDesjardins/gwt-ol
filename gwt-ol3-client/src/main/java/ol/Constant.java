@@ -13,7 +13,7 @@
  * the specific language governing rights and limitations under the License.
  */
 
-package tol.j2cl.elem.util;
+package ol;
 
 import java.util.Objects;
 
