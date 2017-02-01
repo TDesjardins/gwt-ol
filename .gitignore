@@ -5,3 +5,7 @@ bin/
 
 target
 target
+
+gwt-ol3-client/gwt-unitCache/
+
+gwt-ol3-client/www-test/
