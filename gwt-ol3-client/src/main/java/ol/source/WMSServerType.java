@@ -1,6 +1,6 @@
 package ol.source;
 
-import tol.j2cl.elem.util.Constant;
+import ol.Constant;
 
 /**
  * Available server types: `'carmentaserver'`, `'geoserver'`, `'mapserver'`,

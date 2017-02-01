@@ -1,7 +1,6 @@
 package ol.source;
 
 import ol.GwtOL3BaseTestCase;
-import tol.j2cl.elem.global.Map;
 
 /**
  * A test case for {@link ol.source.TileWMS}.
@@ -19,25 +18,23 @@ public class TileWMSTest extends GwtOL3BaseTestCase {
 			@Override
 			public void test() {
 
-				TileWMSParams tileWMSParams = new TileWMSParams();
-				tileWMSParams.setLayers("topp:states");
-				tileWMSParams.setTiled(true);
+				TileWMSParams params = new TileWMSParams();
+				params.setLayers("topp:states");
+				params.setTiled(true);
 
 				TileWMSOptions options = new TileWMSOptions();
 				options.setUrl("https://ahocevar.com/geoserver/wms");
-				options.setParams(tileWMSParams);
+				options.setParams(params);
 				options.setServerType(WMSServerType.GEOSERVER);
 
 				TileWMS source = new TileWMS(options);
 
-				assertEquals("topp:states", source.getParams().get("LAYERS"));
-				assertEquals("topp:states", source.getTileWMSParams().LAYERS);
+				assertEquals("topp:states", source.getParams().getLayers());
 
-				Map<String> params = new Map<>();
-				params.set("LAYERS", "topp");
+				params.setLayers("topp");
 
 				source.updateParams(params);
-				assertEquals("topp", source.getParams().get("LAYERS"));
+				assertEquals("topp", source.getParams().getLayers());
 			}
 
 		});

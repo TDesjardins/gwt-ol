@@ -15,13 +15,11 @@ import jsinterop.annotations.JsType;
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class TileWMSParams extends ImageWMSParams {
-	@JsProperty
-	public boolean	TILED;
-	
-    /**
-     *
-     * @param tiled
-     */
-    @JsProperty(name = "TILED")
-    public native void setTiled(boolean tiled);
+
+	/**
+	 *
+	 * @param tiled
+	 */
+	@JsProperty(name = "TILED")
+	public native void setTiled(boolean tiled);
 }

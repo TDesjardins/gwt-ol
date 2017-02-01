@@ -10,8 +10,7 @@ import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-import tol.j2cl.elem.global.Map;
-import tol.j2cl.elem.util.Constant;
+import ol.Constant;
 
 /**
  *
@@ -40,20 +39,10 @@ public class TileWMSOptions extends TileImageOptions {
 	public final void setServerType(WMSServerType serverType) {
 		setServerTypeString(serverType.getValue());
 	}
-
-	/**
-	 *
-	 * @param tileWMSParams params for WMS-requests
-	 */
-	@JsProperty(name = "params")
+	
+	@JsProperty
 	public native void setParams(TileWMSParams params);
 
-	@JsProperty(name = "params")
+	@JsProperty
 	public native TileWMSParams getParams();
-	
-	@JsProperty(name = "params")
-	public native void setParamsMap(Map<String> params);
-	
-	@JsProperty(name = "params")
-	public native Map<String> getParamsMap();
 }

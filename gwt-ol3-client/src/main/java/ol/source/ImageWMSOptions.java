@@ -4,8 +4,7 @@ import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-import tol.j2cl.elem.global.Map;
-import tol.j2cl.elem.util.Constant;
+import ol.Constant;
 
 /**
  * 
@@ -43,21 +42,11 @@ public class ImageWMSOptions extends SourceOptions {
 	@JsProperty
 	public native ImageLoadFunction getImageLoadFunction();
 
-	/**
-	 * 
-	 * @param imageWMSParams params for WMS-requests
-	 */
-	@JsProperty(name = "params")
+	@JsProperty
 	public native void setParams(ImageWMSParams params);
 
-	@JsProperty(name = "params")
+	@JsProperty
 	public native ImageWMSParams getParams();
-
-	@JsProperty(name = "params")
-	public native void setParamsMap(Map<String> params);
-	
-	@JsProperty(name = "params")
-	public native Map<String> getParamsMap();
 
 	/**
 	 * 
