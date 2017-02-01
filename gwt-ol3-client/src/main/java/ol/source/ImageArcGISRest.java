@@ -1,6 +1,5 @@
 package ol.source;
 
-import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsType;
 
 /**
@@ -13,6 +12,5 @@ public class ImageArcGISRest extends Image {
 
 	public ImageArcGISRest(ImageArcGISRestOptions options) {}
 
-	@JsMethod
 	public native ImageLoadFunction getImageLoadFunction();
 }

@@ -15,6 +15,7 @@ import ol.layer.Image;
 import ol.layer.LayerOptions;
 import ol.source.ImageArcGISRest;
 import ol.source.ImageArcGISRestOptions;
+import ol.source.ImageArcGISRestParams;
 
 /**
  * Example with ArcGIS Server layer
@@ -31,8 +32,8 @@ public class ArcGISExample implements Example {
 	@Override
 	public void show(String exampleId) {
 
-		tol.j2cl.elem.global.Map<String> params = new tol.j2cl.elem.global.Map<>();
-		params.set("layers", "show:2");
+		ImageArcGISRestParams params = new ImageArcGISRestParams();
+		params.showLayers("2");
 
 		ImageArcGISRestOptions options = new ImageArcGISRestOptions();
 		options.setUrl(
