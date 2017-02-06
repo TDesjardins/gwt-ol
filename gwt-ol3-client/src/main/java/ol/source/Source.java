@@ -1,8 +1,8 @@
 package ol.source;
 
 import jsinterop.annotations.JsType;
-
 import ol.Attribution;
+import ol.LogoOptions;
 import ol.proj.Projection;
 
 /**
@@ -24,6 +24,13 @@ public class Source extends ol.Object {
      */
     public native Attribution[] getAttributions();
 
+  	/**
+  	 * Get the logo of the source.
+  	 *
+  	 * @return {@link LogoOptions}
+  	 */
+  	public native LogoOptions getLogo();
+  	
     /**
      * Get the projection of the source.
      * 

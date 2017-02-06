@@ -1,5 +1,7 @@
 package ol;
 
+import javax.validation.constraints.NotNull;
+
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
@@ -12,6 +14,17 @@ public class Coordinate extends JavaScriptObject {
     @Deprecated
     protected Coordinate() {
     }
+
+    /**
+     * Creates an instance.
+     *
+     * @param x X-coordinate (longitude)
+     * @param y Y-coordinate (latitude)
+     * @return {@link Coordinate}
+     */
+    public static native Coordinate create(@NotNull double x, @NotNull double y) /*-{
+        return [x, y];
+    }-*/;
 
     /**
      * Add `delta` to `coordinate`. `coordinate` is modified in place and

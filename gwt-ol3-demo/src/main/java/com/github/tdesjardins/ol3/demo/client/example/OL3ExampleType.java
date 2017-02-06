@@ -9,6 +9,7 @@ package com.github.tdesjardins.ol3.demo.client.example;
 public enum OL3ExampleType {
 
     AnimationExample(new AnimationExample()),
+    ArcGISExample(new ArcGISExample()),
     GeoJSONExample(new GeoJSONExample()),
     GraticuleExample(new GraticuleExample()),
     ImageExample(new StaticImageExample()),
