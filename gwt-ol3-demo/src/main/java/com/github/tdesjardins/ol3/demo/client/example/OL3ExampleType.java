@@ -8,23 +8,22 @@ package com.github.tdesjardins.ol3.demo.client.example;
  */
 public enum OL3ExampleType {
 
-		AnimationExample(new AnimationExample()),
-		ArcGISExample(new ArcGISExample()),
-		GeoJSONExample(new GeoJSONExample()),
-		GraticuleExample(new GraticuleExample()),
-		ImageExample(new StaticImageExample()),
-		MapEventsExample(new MapEventsExample()),
-		MapGuideExample(new MapGuideExample()),
-		MarkerExample(new MarkerExample()),
-		MeasureExample(new MeasureExample()),
-		OsmExample(new OsmExample()),
-		OverlayExample(new OverlayExample()),
-		SelectFeatureExample(new SelectFeaturesExample()),
-		TileExample(new TileExample()),
-		TileWmsExample(new TileWmsExample()),
-		WmsExample(new WmsExample()),
-		WmtsExample(new WmtsExample()),
-		XyzExample(new XyzExample());
+    AnimationExample(new AnimationExample()),
+    ArcGISExample(new ArcGISExample()),
+    GeoJSONExample(new GeoJSONExample()),
+    GraticuleExample(new GraticuleExample()),
+    ImageExample(new StaticImageExample()),
+    MapEventsExample(new MapEventsExample()),
+    MapGuideExample(new MapGuideExample()),
+    MarkerExample(new MarkerExample()),
+    MeasureExample(new MeasureExample()),
+    OsmExample(new OsmExample()),
+    OverlayExample(new OverlayExample()),
+    SelectFeatureExample(new SelectFeaturesExample()),
+    TileExample(new TileExample()),
+    WmsExample(new WmsExample()),
+    WmtsExample(new WmtsExample()),
+    XyzExample(new XyzExample());
 
 	private transient Example example;
 

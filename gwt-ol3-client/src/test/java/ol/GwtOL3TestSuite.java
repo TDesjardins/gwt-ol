@@ -32,8 +32,6 @@ import ol.interaction.SnapTest;
 import ol.interaction.TranslateTest;
 import ol.layer.LayerGroupTest;
 import ol.proj.ProjectionTest;
-import ol.source.ImageArcGISRestTest;
-import ol.source.TileWMSTest;
 import ol.style.RegularShapeTest;
 
 /**
@@ -65,7 +63,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(ScaleLineTest.class);
         suite.addTestSuite(ZoomSliderTest.class);
         suite.addTestSuite(ZoomToExtentTest.class);
-        
+
         // formats
         suite.addTestSuite(GeoJSONTest.class);
 
@@ -101,6 +99,9 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(ImageArcGISRestTest.class);
         suite.addTestSuite(TileWMSTest.class);
 
+        // source
+        suite.addTestSuite(ImageArcGISRestTest.class);
+
         // projection
         suite.addTestSuite(ProjectionTest.class);
 
@@ -113,3 +114,5 @@ public class GwtOL3TestSuite extends GWTTestSuite {
 
 }
 
+
+import ol.source.ImageArcGISRestTest;

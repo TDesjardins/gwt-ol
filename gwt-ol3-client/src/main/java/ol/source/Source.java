@@ -4,7 +4,6 @@ import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import ol.Attribution;
-import ol.Constant;
 import ol.LogoOptions;
 import ol.proj.Projection;
 
