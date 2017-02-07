@@ -2,6 +2,6 @@ bin/
 .project
 .classpath
 .settings/
-
 target
-target
+gwt-unitCache/
+www-test/
