@@ -22,7 +22,11 @@ public class XyzOptions extends TileImageOptions {
 	 */
 	@JsProperty
 	public native void setMaxZoom(int maxZoom);
-
+	
+	@JsProperty
+	public native int getMaxZoom();
+	
+	
 	/**
 	 * Optional function to get tile URL given a tile coordinate and the
 	 * projection. Required if url or urls are not provided.
@@ -30,13 +34,8 @@ public class XyzOptions extends TileImageOptions {
 	@JsProperty
 	public native void setTileUrlFunction(TileUrlFunction callback);
 
-	/**
-	 * Optional function to load a tile given a URL. The default is
-	 * 
-	 * function(imageTile, src) { imageTile.getImage().src = src; };
-	 */
 	@JsProperty
-	public native void setTileLoadFunction(TileLoadFunction callback);
+	public native TileUrlFunction getTileUrlFunction();
 
 	/**
 	 * Set the tile size used by the tile service. Default is [256, 256] pixels.
@@ -45,4 +44,7 @@ public class XyzOptions extends TileImageOptions {
 	 */
 	@JsProperty
 	public native void setTileSize(Size tileSize);
+
+	@JsProperty
+	public native Size getTileSize();
 }
