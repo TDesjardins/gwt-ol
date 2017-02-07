@@ -28,7 +28,7 @@ public class ImageWMSOptions extends SourceOptions {
 
 	@JsOverlay
 	public final WMSServerType getServerType() {
-		return Constant.of(WMSServerType.class, getServerTypeString());
+		return WMSServerType.getInstance(getServerTypeString());
 	}
 
 	@JsOverlay
