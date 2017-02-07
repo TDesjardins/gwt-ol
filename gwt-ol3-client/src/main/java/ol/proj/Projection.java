@@ -1,9 +1,13 @@
 package ol.proj;
 
+import java.util.Calendar;
+
 import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import ol.Coordinate;
 import ol.Extent;
+import ol.OLFactory;
 
 /**
  * Projection definition class. One of these is created for each projection
@@ -173,7 +177,7 @@ public class Projection {
      */
     @JsMethod(name = "get", namespace = "ol.proj")
     public static native Projection get(String projectionCode);
-
+    
 	/**
 	 * 
 	 * Transforms a coordinate from source projection to destination projection.
@@ -236,4 +240,18 @@ public class Projection {
 	@JsMethod(name = "transformExtent", namespace = "ol.proj")
     public static native Extent transformExtent(Extent extent, String source, String destination);
 
+	/**
+	 * Creates a new {@link Projection} for the given SRS-code. 
+	 * The projection should have been registered with {@link OLFactory#registerSpatialReference(String, String)} first!
+	 *
+	 * @param code combination of authority and identifier such as "EPSG:4326"
+	 * @return an {@link Projection} for the given code
+	 * @see {@link OLFactory#registerSpatialReference(String, String)}
+	 */
+	@JsOverlay
+	public static Projection getInstance(String code){
+		ProjectionOptions options = new ProjectionOptions();
+		options.setCode(code);
+		return new Projection(options);
+	}
 }
