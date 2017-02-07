@@ -10,7 +10,6 @@ import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-import ol.Constant;
 
 /**
  *
@@ -32,7 +31,7 @@ public class TileWMSOptions extends TileImageOptions {
 
 	@JsOverlay
 	public final WMSServerType getServerType() {
-		return Constant.of(WMSServerType.class, getServerTypeString());
+		return WMSServerType.getInstance(getServerTypeString());
 	}
 
 	@JsOverlay

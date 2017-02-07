@@ -1,7 +1,5 @@
 package ol.source;
 
-import jsinterop.annotations.JsMethod;
-import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import ol.Attribution;
 import ol.LogoOptions;
@@ -51,14 +49,8 @@ public class Source extends ol.Object {
      * 
      * @return {ol.source.State} State.
      */
-  	@JsMethod(name = "getState")
-    public native String getStateString();
+    public native String getState();
 
-  	@JsOverlay
-  	public final State getState() {
-  		return Constant.of(State.class, getStateString());
-  	}
-  	
     /**
      * Refreshes the source and finally dispatches a 'change' event.
      */

@@ -1,6 +1,6 @@
 package ol.source;
 
-import ol.Constant;
+import java.util.Objects;
 
 /**
  * Available server types: `'carmentaserver'`, `'geoserver'`, `'mapserver'`,
@@ -9,7 +9,7 @@ import ol.Constant;
  * 
  * @author Peter Zanetti
  */
-public enum WMSServerType implements Constant<String> {
+public enum WMSServerType  {
   CARMENTA_SERVER ("carmentaserver"),
   GEOSERVER ("geoserver"),
   MAPSERVER ("mapserver"),
@@ -28,9 +28,17 @@ public enum WMSServerType implements Constant<String> {
 	}
 
 
-	@Override
 	public String getValue() {
 		return value;
+	}
+	
+	public static final WMSServerType getInstance(String value){
+    for (WMSServerType wmsServerType : WMSServerType.class.getEnumConstants()) {
+      if (Objects.equals(wmsServerType.getValue(), value)) {
+        return wmsServerType;
+      }
+    }
+    return null;
 	}
 }
 
