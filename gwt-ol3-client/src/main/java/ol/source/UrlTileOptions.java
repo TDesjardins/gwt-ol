@@ -22,6 +22,9 @@ public class UrlTileOptions extends TileOptions {
     @JsProperty
     public native String[] getUrls();
 
+  	@JsProperty	
+  	public native String getUrl();
+  	
     /**
      * Set the URL to use for requests.
      * 
