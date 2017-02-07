@@ -21,19 +21,19 @@ public enum OL3ExampleType {
     OverlayExample(new OverlayExample()),
     SelectFeatureExample(new SelectFeaturesExample()),
     TileExample(new TileExample()),
-    WmsExample(new WmsExample()),
+		TileWmsExample(new TileWmsExample()),
+		WmsExample(new WmsExample()),    
     WmtsExample(new WmtsExample()),
     XyzExample(new XyzExample());
 
-    private transient Example example;
+	private transient Example example;
 
-    OL3ExampleType(Example example) {
-        this.example = example;
-    }
+	OL3ExampleType(Example example) {
+		this.example = example;
+	}
 
-    public Example getExample() {
-        return this.example;
-    }
+	public Example getExample() {
+		return this.example;
+	}
 
 }
-
