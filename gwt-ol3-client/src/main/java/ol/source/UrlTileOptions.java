@@ -14,6 +14,27 @@ import jsinterop.annotations.JsType;
 public class UrlTileOptions extends TileOptions {
     
     /**
+     * Optional function to load a tile given a URL. The default is
+     * 
+     * function(imageTile, src) { imageTile.getImage().src = src; };
+     */
+    @JsProperty
+    public native void setTileLoadFunction(TileLoadFunction callback);
+
+    @JsProperty
+    public native TileLoadFunction getTileLoadFunction();
+    
+    /**
+     * Optional function to get tile URL given a tile coordinate and the
+     * projection. Required if url or urls are not provided.
+     */
+    @JsProperty
+    public native void setTileUrlFunction(TileUrlFunction callback);
+
+    @JsProperty
+    public native TileUrlFunction getTileUrlFunction();
+    
+    /**
      * Return the URLs used for this source. When a tileUrlFunction is used
      * instead of url or urls, null will be returned.
      * 
@@ -21,6 +42,9 @@ public class UrlTileOptions extends TileOptions {
      */
     @JsProperty
     public native String[] getUrls();
+
+    @JsProperty	
+  	public native String getUrl();
 
     /**
      * Set the URL to use for requests.

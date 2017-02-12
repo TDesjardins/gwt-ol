@@ -6,52 +6,42 @@
  */
 package ol.source;
 
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-import ol.Options;
-import ol.proj.Projection;
 
 /**
  *
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class TileWMSOptions implements Options{
+public class TileWMSOptions extends TileImageOptions {
 
-    /**
-     *
-     * @param url
-     */
-    @JsProperty
-    public native void setUrl(String url);
+	@JsProperty
+	public native void setCrossOrigin(String crossOrigin);
 
-    /**
-     *
-     * @param serverType
-     */
-    @JsProperty
-    public native void setServerType(String serverType);
+	@JsProperty
+	public native String getCrossOrigin();
 
-    /**
-     *
-     * @param crossOrigin
-     */
-    @JsProperty
-    public native void setCrossOrigin(String crossOrigin);
+	@JsProperty(name = "serverType")
+	public native String getServerTypeString();
 
-    /**
-     *
-     * @param tileWMSParams
-     *            params for WMS-requests
-     */
-    @JsProperty
-    public native void setParams(TileWMSParams tileWMSParams);
+	@JsProperty(name = "serverType")
+	public native void setServerTypeString(String serverType);
 
-    /**
-     *
-     * @param projection
-     */
-    @JsProperty
-    public native void setProjection(Projection projection);
+	@JsOverlay
+	public final WMSServerType getServerType() {
+		return WMSServerType.getInstance(getServerTypeString());
+	}
 
+	@JsOverlay
+	public final void setServerType(WMSServerType serverType) {
+		setServerTypeString(serverType.getValue());
+	}
+	
+	@JsProperty
+	public native void setParams(TileWMSParams params);
+
+	@JsProperty
+	public native TileWMSParams getParams();
 }

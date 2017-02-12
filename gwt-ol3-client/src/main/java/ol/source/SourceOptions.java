@@ -5,6 +5,7 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 import ol.Attribution;
+import ol.LogoOptions;
 import ol.Options;
 import ol.proj.Projection;
 
@@ -24,6 +25,15 @@ public class SourceOptions implements Options {
     @JsProperty
     public native void setAttributions(Attribution[] attributions);
 
+    @JsProperty
+    public native Attribution[] getAttributions();
+
+    @JsProperty
+    public native void setLogo(LogoOptions logo);
+
+  	@JsProperty
+  	public native LogoOptions getLogo();
+
     /**
      * Set the Projection. Default is EPSG:3857.
      *
@@ -32,4 +42,7 @@ public class SourceOptions implements Options {
     @JsProperty
     public native void setProjection(Projection projection);
 
+    @JsProperty
+    public native Projection getProjection();
+    
 }

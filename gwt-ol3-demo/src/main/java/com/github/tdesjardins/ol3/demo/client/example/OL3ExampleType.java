@@ -21,6 +21,7 @@ public enum OL3ExampleType {
     OverlayExample(new OverlayExample()),
     SelectFeatureExample(new SelectFeaturesExample()),
     TileExample(new TileExample()),
+    TileWmsExample(new TileWmsExample()),
     WmsExample(new WmsExample()),
     WmtsExample(new WmtsExample()),
     XyzExample(new XyzExample());
