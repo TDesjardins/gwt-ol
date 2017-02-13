@@ -13,6 +13,7 @@ public enum OL3ExampleType {
     GeoJSONExample(new GeoJSONExample()),
     GraticuleExample(new GraticuleExample()),
     ImageExample(new StaticImageExample()),
+    MapBoxExample(new MapboxExample()),
     MapEventsExample(new MapEventsExample()),
     MapGuideExample(new MapGuideExample()),
     MarkerExample(new MarkerExample()),
