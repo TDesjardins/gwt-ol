@@ -1,15 +1,11 @@
 package ol;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import jsinterop.annotations.JsType;
 
 /**
  * Key to use with {@link ol.Observable#unByKey}.
  *
  * @author sbaumhekel
  */
-public class EventsKey extends JavaScriptObject {
-
-    @Deprecated
-    protected EventsKey() {
-    }
-}
+@JsType(isNative = true)
+public interface EventsKey {}
