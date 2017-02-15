@@ -1,8 +1,8 @@
 package ol.event;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.HandlerRegistration;
 
+import ol.EventsKey;
 import ol.Observable;
 
 /**
@@ -12,7 +12,7 @@ import ol.Observable;
  */
 public class OLHandlerRegistration implements HandlerRegistration {
 
-    private JavaScriptObject key;
+    private EventsKey key;
     private Observable o;
 
     /**
@@ -23,7 +23,7 @@ public class OLHandlerRegistration implements HandlerRegistration {
      * @param key
      *            key
      */
-    public OLHandlerRegistration(Observable o, JavaScriptObject key) {
+    public OLHandlerRegistration(Observable o, EventsKey key) {
         this.o = o;
         this.key = key;
     }
@@ -37,8 +37,8 @@ public class OLHandlerRegistration implements HandlerRegistration {
     @Override
     public void removeHandler() {
         // unregister handler and remove all references
-        if (o != null) {
-            o.unByKey(key);
+        if(o != null) {
+            Observable.unByKey(key);
             o = null;
             key = null;
         }

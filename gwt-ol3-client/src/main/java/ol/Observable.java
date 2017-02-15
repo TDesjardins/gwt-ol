@@ -1,7 +1,5 @@
 package ol;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 import jsinterop.annotations.JsType;
 import ol.event.Event;
 import ol.event.EventListener;
@@ -32,7 +30,7 @@ public abstract class Observable {
      *            The listener function.
      * @return Unique key for the listener.
      */
-    public native JavaScriptObject on(String type, EventListener<? extends Event> listener);
+    public native EventsKey on(String type, EventListener<? extends Event> listener);
 
     /**
      * Listen once for a certain type of event.
@@ -43,7 +41,7 @@ public abstract class Observable {
      *            The listener function.
      * @return {goog.events.Key} Unique key for the listener.
      */
-    public native JavaScriptObject once(String type, EventListener<? extends Event> listener);
+    public native EventsKey once(String type, EventListener<? extends Event> listener);
 
     /**
      * Unlisten for a certain type of event.
@@ -57,11 +55,11 @@ public abstract class Observable {
     public native void un(String type, EventListener<? extends Event> listener);
 
     /**
-     * Removes an event listener using the key returned by on() or once(). Note
-     * that using the ol.Observable.unByKey static function is to be preferred.
-     *
+     * Removes an event listener using the key returned by on() or once(). *
      * @param key
-     *            The key returned by on() or once().
+     *            {ol.EventsKey|Array.<ol.EventsKey>} key The key returned by
+     *            `on()` or `once()` (or an array of keys).
      */
-    public native void unByKey(JavaScriptObject key);
+    public static native void unByKey(EventsKey key);
+
 }
