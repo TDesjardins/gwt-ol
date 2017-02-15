@@ -4,7 +4,7 @@ import jsinterop.annotations.JsType;
 
 /**
  * Class to create objects that can be used with
- * {@link ol.geom.Polygon.circular}.
+ * {@link ol.geom.Polygon#circular(Sphere, Coordinate, double, int)}.
  *
  * For example to create a sphere whose radius is equal to the semi-major axis
  * of the WGS84 ellipsoid:
@@ -16,7 +16,10 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class Sphere {
 
-    
+    /**
+     * @param radius
+     *            Radius.
+     */
     public Sphere(double radius) {}
     
     /**

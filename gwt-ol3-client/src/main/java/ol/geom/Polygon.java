@@ -11,6 +11,64 @@ import jsinterop.annotations.JsType;
 public class Polygon extends SimpleGeometryMultiCoordinates {
 
     /**
+     * Create an approximation of a circle on the surface of a sphere.
+     * @param sphere
+     *            The sphere.
+     * @param center
+     *            Center (`[lon, lat]` in degrees).
+     * @param radius
+     *            The great-circle distance from the center to the polygon
+     *            vertices.
+     * @return {ol.geom.Polygon} The "circular" polygon.
+     */
+    public static native Polygon circular(ol.Sphere sphere, ol.Coordinate center, double radius);
+
+    /**
+     * Create an approximation of a circle on the surface of a sphere.
+     * @param sphere
+     *            The sphere.
+     * @param center
+     *            Center (`[lon, lat]` in degrees).
+     * @param radius
+     *            The great-circle distance from the center to the polygon
+     *            vertices.
+     * @param opt_n
+     *            Optional number of vertices for the resulting polygon. Default
+     *            is `32`.
+     * @return {ol.geom.Polygon} The "circular" polygon.
+     */
+    public static native Polygon circular(ol.Sphere sphere, ol.Coordinate center, double radius, int opt_n);
+
+    /**
+     * Create a regular polygon from a circle.
+     * @param circle
+     *            Circle geometry.
+     * @return {ol.geom.Polygon} Polygon geometry.
+     */
+    public static native Polygon fromCircle(Circle circle);
+
+    /**
+     * Create a regular polygon from a circle.
+     * @param circle
+     *            Circle geometry.
+     * @param opt_sides
+     *            Number of sides of the polygon. Default is 32.
+     * @param opt_angle
+     *            Start angle for the first vertex of the polygon in radians.
+     *            Default is 0.
+     * @return {ol.geom.Polygon} Polygon geometry.
+     */
+    public static native Polygon fromCircle(Circle circle, int opt_sides, double opt_angle);
+
+    /**
+     * Create a polygon from an extent. The layout used is `XY`.
+     * @param extent
+     *            The extent.
+     * @return {ol.geom.Polygon} The polygon.
+     */
+    public static native Polygon fromExtent(ol.Extent extent);
+
+    /**
      * Append the passed linear ring to this polygon.
      *
      * @param linearRing
@@ -24,6 +82,13 @@ public class Polygon extends SimpleGeometryMultiCoordinates {
      * @return {number} Area (on projected plane).
      */
     public native double getArea();
+
+    /**
+     * Return an interior point of the polygon.
+     *
+     * @return {ol.geom.Point} Point.
+     */
+    public native Point getInteriorPoint();
 
     /**
      * Return the Nth linear ring of the polygon geometry. Return `null` if the
@@ -50,12 +115,5 @@ public class Polygon extends SimpleGeometryMultiCoordinates {
      * @return {Array.<ol.geom.LinearRing>} Linear rings.
      */
     public native LinearRing[] getLinearRings();
-
-    /**
-     * Return an interior point of the polygon.
-     *
-     * @return {ol.geom.Point} Point.
-     */
-    public native Point getInteriorPoint();
 
 }

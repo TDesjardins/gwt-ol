@@ -2,7 +2,6 @@ package ol.event;
 
 import ol.OLUtil;
 import ol.geom.Geometry;
-import ol.proj.Projection;
 
 /**
  * An event for measuring. It provides the measurment (length or area) directly
@@ -47,45 +46,6 @@ public class MeasureEvent {
             return OLUtil.geodesicArea((ol.geom.Polygon)geom);
         }
         return Double.NaN;
-    }
-
-    /**
-     * Gets the current measure in the given projection (and its unit).
-     *
-     * @param proj
-     *            projection
-     * @return measure on success, else {@link Double#NaN}
-     * @deprecated use {@link #getMeasure()} instead
-     */
-    @Deprecated
-    public double getMeasure(Projection proj) {
-        return getMeasure();
-    }
-
-    /**
-     * Gets the current measure in the given projection (and its unit).
-     *
-     * @param proj
-     *            projection
-     * @return measure on success, else {@link Double#NaN}
-     * @deprecated use {@link #getMeasure()} instead
-     */
-    @Deprecated
-    public double getMeasure(String proj) {
-        return getMeasure();
-    }
-
-    /**
-     * Gets the {@link Projection} of the geometry.
-     *
-     * @return {@link Projection}
-     * @deprecated the projection is always WGS84 geographic coordinates
-     *             (EPSG:4326)
-     */
-    @SuppressWarnings("static-method")
-    @Deprecated
-    public Projection getProjection() {
-        return ol.OLUtil.getProjection("EPSG:4326");
     }
 
 }

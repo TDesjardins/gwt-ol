@@ -80,10 +80,21 @@ public class View extends Object {
      *
      * @param geometry
      *            {ol.geom.SimpleGeometry|ol.Extent} Geometry.
-     * @param size
-     *            Box pixel size.
+     * @param opt_options
+     *            options
      */
-    public native void fit(TypedObject<ol.geom.SimpleGeometry, ol.Extent> geometry, Size size);
+    public native void fit(TypedObject<ol.geom.SimpleGeometry, ol.Extent> geometry, ViewFitOptions opt_options);
+
+    /**
+     * Fit the given geometry or extent based on the given map size and border.
+     * The size is pixel dimensions of the box to fit the extent into. In most
+     * cases you will want to use the map size, that is `map.getSize()`. Takes
+     * care of the map angle.
+     *
+     * @param geometry
+     *            {ol.geom.SimpleGeometry|ol.Extent} Geometry.
+     */
+    public native void fit(TypedObject<ol.geom.SimpleGeometry, ol.Extent> geometry);
 
     /**
      * Get the view center.
