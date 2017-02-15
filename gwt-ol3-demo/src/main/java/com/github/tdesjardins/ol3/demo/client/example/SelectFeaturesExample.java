@@ -18,6 +18,7 @@ import ol.View;
 import ol.control.MousePosition;
 import ol.control.MousePositionOptions;
 import ol.event.EventListener;
+import ol.events.condition.Condition;
 import ol.geom.Polygon;
 import ol.interaction.Select;
 import ol.interaction.SelectOptions;
@@ -112,8 +113,11 @@ public class SelectFeaturesExample implements Example {
         mousePosition.setCoordinateFormat(Coordinate.createStringXY(5));
         map.addControl(mousePosition);
 
+        SelectOptions selectOptions = new SelectOptions();
+        selectOptions.setCondition(Condition.getClick());
+        
         // create a select interaction
-        final Select selectFeature = new Select((SelectOptions)OLFactory.createOptions());
+        final Select selectFeature = new Select(selectOptions);
         map.addInteraction(selectFeature);
 
         EventListener<Select.Event> selectListener = new EventListener<Select.Event>() {
