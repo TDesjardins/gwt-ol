@@ -26,7 +26,7 @@ import ol.GwtOL3BaseTestCase;
 public class ImageTest extends GwtOL3BaseTestCase {
 
     @SuppressWarnings({ "static-method", "javadoc" })
-    public void testLayerGroup() {
+    public void testImageLayer() {
 
         injectUrlAndTest(new TestWithInjection() {
 

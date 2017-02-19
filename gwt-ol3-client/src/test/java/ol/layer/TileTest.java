@@ -26,7 +26,7 @@ import ol.GwtOL3BaseTestCase;
 public class TileTest extends GwtOL3BaseTestCase {
 
     @SuppressWarnings({ "static-method", "javadoc" })
-    public void testLayerGroup() {
+    public void testTileLayer() {
 
         injectUrlAndTest(new TestWithInjection() {
 
