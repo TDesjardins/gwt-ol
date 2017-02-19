@@ -29,11 +29,11 @@ public class OverlayTest extends GwtOL3BaseTestCase {
             @Override
             public void test() {
                 
-                OverlayOptions overlayOptions = OLFactory.createOptions();
+                OverlayOptions overlayOptions = new OverlayOptions();
 
                 assertNotNull(overlayOptions);
 
-                Overlay overlay = OLFactory.createOverlay(overlayOptions);
+                Overlay overlay = new Overlay(overlayOptions);
 
                 assertNotNull(overlay);
                 

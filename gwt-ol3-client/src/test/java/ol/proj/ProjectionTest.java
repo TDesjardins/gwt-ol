@@ -42,7 +42,7 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
 
             @Override
             public void test() {
-                ProjectionOptions projectionOptions = OLFactory.createOptions();
+                ProjectionOptions projectionOptions = new ProjectionOptions();
                 projectionOptions.setCode(EPSG_CODE_21781);
                 projectionOptions.setUnits(UNIT_METRE);
 
@@ -64,7 +64,7 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
             @Override
             public void test() {
 
-                ProjectionOptions projectionOptions = OLFactory.createOptions();
+                ProjectionOptions projectionOptions = new ProjectionOptions();
                 projectionOptions.setCode(EPSG_CODE_3068);
                 //projectionOptions.global(false);
                 projectionOptions.setUnits(UNIT_METRE);

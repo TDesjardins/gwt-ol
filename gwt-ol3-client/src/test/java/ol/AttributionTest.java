@@ -29,7 +29,7 @@ public class AttributionTest extends GwtOL3BaseTestCase {
             @Override
             public void test() {
                 
-                AttributionOptions attributionOptions = OLFactory.createOptions();
+                AttributionOptions attributionOptions = new AttributionOptions();
                 assertNotNull(attributionOptions);
                 
                 Attribution attribution = new Attribution(attributionOptions);

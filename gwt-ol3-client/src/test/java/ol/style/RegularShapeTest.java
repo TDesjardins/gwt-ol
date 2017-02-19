@@ -33,7 +33,7 @@ public class RegularShapeTest extends GwtOL3BaseTestCase {
 
             @Override
             public void test() {
-                RegularShapeOptions regularShapeOptions = OLFactory.createOptions();
+                RegularShapeOptions regularShapeOptions = new RegularShapeOptions();
                 regularShapeOptions.setAngle(Math.PI / 4);
                 regularShapeOptions.setRadius1(4);
                 regularShapeOptions.setRadius2(4);

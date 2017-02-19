@@ -35,7 +35,7 @@ public class ViewTest extends GwtOL3BaseTestCase {
             @Override
             public void test() {
                 
-                ProjectionOptions projectionOptions = OLFactory.createOptions();
+                ProjectionOptions projectionOptions = new ProjectionOptions();
                 projectionOptions.setCode("EPSG:21781");
                 projectionOptions.setUnits("m");
                 
@@ -45,7 +45,7 @@ public class ViewTest extends GwtOL3BaseTestCase {
                 
                 assertNotNull(projection);
                 
-                ViewOptions viewOptions = OLFactory.createOptions();
+                ViewOptions viewOptions = new ViewOptions();
                 viewOptions.setProjection(projection);
                 View view = new View(viewOptions);
 
