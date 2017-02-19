@@ -110,7 +110,10 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(TranslateTest.class);
 
         // layers
+        suite.addTestSuite(ol.layer.ImageTest.class);
         suite.addTestSuite(LayerGroupTest.class);
+        suite.addTestSuite(ol.layer.TileTest.class);
+        suite.addTestSuite(ol.layer.VectorTest.class);
 
         // source
         suite.addTestSuite(ImageArcGISRestTest.class);
