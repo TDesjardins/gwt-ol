@@ -26,6 +26,10 @@ import ol.Map;
 @JsType(isNative = true)
 public class OverviewMap extends Control {
 
+    public OverviewMap() {}
+    
+    public OverviewMap(OverviewMapOptions overviewMapOptions) {}
+    
     /**
      * Determine if the overview map is collapsed.
      * @return {boolean} The overview map is collapsed.
