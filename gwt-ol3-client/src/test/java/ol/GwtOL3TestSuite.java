@@ -19,6 +19,7 @@ import com.google.gwt.junit.tools.GWTTestSuite;
 import junit.framework.TestSuite;
 import ol.control.FullScreenTest;
 import ol.control.MousePositionTest;
+import ol.control.OverviewMapTest;
 import ol.control.RotateTest;
 import ol.control.ScaleLineTest;
 import ol.control.ZoomSliderTest;
@@ -76,6 +77,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(ol.control.AttributionTest.class);
         suite.addTestSuite(FullScreenTest.class);
         suite.addTestSuite(MousePositionTest.class);
+        suite.addTestSuite(OverviewMapTest.class);
         suite.addTestSuite(RotateTest.class);
         suite.addTestSuite(ScaleLineTest.class);
         suite.addTestSuite(ZoomSliderTest.class);
