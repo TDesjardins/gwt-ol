@@ -54,6 +54,10 @@ public class CollectionTest extends GwtOL3BaseTestCase {
                 assertTrue(controls.getLength() == 0);
                 assertTrue(controls.isEmpty());
 
+                Attribution attr =  new Attribution();
+                controls.push(attr);
+                assertTrue(controls.contains(attr));
+                assertFalse(controls.contains(new Attribution()));
             }
         });
 
