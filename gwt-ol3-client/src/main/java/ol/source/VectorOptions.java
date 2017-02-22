@@ -15,12 +15,14 @@
  *******************************************************************************/
 package ol.source;
 
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 import ol.Collection;
 import ol.Feature;
+import ol.OLFactory;
 import ol.gwt.TypedObject;
 
 /**
@@ -39,7 +41,17 @@ public class VectorOptions extends SourceOptions {
      */
     @JsProperty
     public native void setFeatures(TypedObject<Feature[], Collection<Feature>> features);
+    
+  	@JsOverlay
+    public final void  setFeatures(Collection<Feature> features){
+  		setFeatures(OLFactory.<Feature[], Collection<Feature>> createObject2(features));
+  	}
 
+  	@JsOverlay
+    public final void  setFeatures(Feature[] features){
+  		setFeatures(OLFactory.<Feature[], Collection<Feature>> createObject1(features));
+  	}
+  	
     /**
      *
      * By default, an RTree is used as spatial index. When features are removed
