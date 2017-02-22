@@ -15,10 +15,13 @@
  *******************************************************************************/
 package ol.interaction;
 
+import javax.annotation.Nullable;
+
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.Collection;
 import ol.Feature;
+import ol.MapBrowserEvent;
 
 /**
  * Interaction for selecting vector features. By default, selected features are
@@ -54,10 +57,17 @@ public class Select extends Interaction {
 	 */
 	@JsType(isNative = true)
 	public interface Event extends ol.event.Event {
-
-	    @JsProperty
-	    public String getType();
 	    
+	    @Nullable
+	    @JsProperty
+	    public Feature[] getSelected();
+	    
+	    @Nullable
+	    @JsProperty
+	    public Feature[] getDeselected();
+	    
+	    @JsProperty	    
+	    public MapBrowserEvent getMapBrowserEvent();
 	}
 
 }
