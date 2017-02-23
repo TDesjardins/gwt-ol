@@ -47,6 +47,24 @@ public class Collection<T> extends Object {
   		return getLength() == 0;
   	}
 
+    /**
+     * Returns <tt>true</tt> if this collection contains the specified element.
+     * 
+     * @param o element whose presence in this collection is to be tested
+     * @return <tt>true</tt> if this collection contains the specified element
+     */
+    @JsOverlay
+    public final boolean contains(T o){
+    	if(o!= null){
+	    	for (int i = 0; i < getLength(); i++) {
+					if(item(i).equals(o)){
+						return true;
+					}
+				}
+    	}
+    	return false;
+    }
+    
     public native T item(int index);
 
     public native T pop();
