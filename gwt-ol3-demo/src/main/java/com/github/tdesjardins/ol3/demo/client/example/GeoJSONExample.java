@@ -80,7 +80,7 @@ public class GeoJSONExample implements Example {
         lstFeatures.push(featureGeoJSON);
 
         VectorOptions vectorSourceOptions = OLFactory.createOptions();
-        vectorSourceOptions.setFeatures(OLFactory.<Feature[], Collection<Feature>> createObject2(lstFeatures));
+        vectorSourceOptions.setFeatures(lstFeatures);
         Vector vectorSource = new Vector(vectorSourceOptions);
 
         VectorLayerOptions vectorLayerOptions = OLFactory.createOptions();

@@ -86,7 +86,7 @@ public class SelectFeaturesExample implements Example {
         lstFeatures.push(feature2);
 
         VectorOptions vectorSourceOptions = OLFactory.createOptions();
-        vectorSourceOptions.setFeatures(OLFactory.<Feature[], Collection<Feature>> createObject2(lstFeatures));
+        vectorSourceOptions.setFeatures(lstFeatures);
         Vector vectorSource = new Vector(vectorSourceOptions);
 
         VectorLayerOptions vectorLayerOptions = OLFactory.createOptions();

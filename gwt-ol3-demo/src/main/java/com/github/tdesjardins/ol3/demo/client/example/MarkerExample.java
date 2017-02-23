@@ -72,7 +72,7 @@ public class MarkerExample implements Example {
 
         // create source
         VectorOptions vectorSourceOptions = OLFactory.createOptions();
-        vectorSourceOptions.setFeatures(OLFactory.<Feature[], Collection<Feature>> createObject2(features));
+        vectorSourceOptions.setFeatures(features);
         Vector vectorSource = new Vector(vectorSourceOptions);
 
         // create style

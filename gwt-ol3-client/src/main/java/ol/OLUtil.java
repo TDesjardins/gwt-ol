@@ -18,7 +18,6 @@ package ol;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -702,7 +701,7 @@ public final class OLUtil {
      *            {@link Widget}
      */
     public static void setMapTarget(Map map, Widget target) {
-        map.setTarget(OLFactory.<Element, String> createObject1(target.getElement()));
+        map.setTarget(target.getElement());
     }
 
     /**

@@ -15,15 +15,12 @@
  *******************************************************************************/
 package ol.source;
 
-import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 import ol.Collection;
 import ol.Feature;
-import ol.OLFactory;
-import ol.gwt.TypedObject;
 
 /**
  * Vector source options.
@@ -40,17 +37,10 @@ public class VectorOptions extends SourceOptions {
      * @param features features
      */
     @JsProperty
-    public native void setFeatures(TypedObject<Feature[], Collection<Feature>> features);
+    public native void setFeatures(Feature[] features);
     
-  	@JsOverlay
-    public final void  setFeatures(Collection<Feature> features){
-  		setFeatures(OLFactory.<Feature[], Collection<Feature>> createObject2(features));
-  	}
-
-  	@JsOverlay
-    public final void  setFeatures(Feature[] features){
-  		setFeatures(OLFactory.<Feature[], Collection<Feature>> createObject1(features));
-  	}
+    @JsProperty
+    public native void setFeatures(Collection<Feature> features);
   	
     /**
      *

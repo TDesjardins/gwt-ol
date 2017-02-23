@@ -17,6 +17,7 @@ package ol.gwt;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
+import jsinterop.annotations.JsType;
 import ol.OLFactory;
 
 /**
@@ -30,7 +31,9 @@ import ol.OLFactory;
  *            first type
  * @param <U>
  *            second type
+  * @deprecated use method overloading on {@link JsType} instead
  */
+@Deprecated
 public class TypedObject<T, U> extends JavaScriptObject {
 
     @Deprecated

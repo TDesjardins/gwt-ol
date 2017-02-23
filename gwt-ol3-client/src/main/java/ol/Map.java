@@ -25,7 +25,6 @@ import ol.control.Control;
 import ol.event.DoubleClickListener;
 import ol.event.Event;
 import ol.event.EventListener;
-import ol.gwt.TypedObject;
 import ol.interaction.Interaction;
 import ol.layer.Base;
 import ol.layer.Group;
@@ -303,14 +302,20 @@ public class Map extends Object {
     public native void setSize(Size size);
 
     /**
-     * The container for the map, either the element itself or the id of the
-     * element. If not specified at construction time, ol.Map#setTarget must be
-     * called for the map to be rendered.
+     * The id of the container for the map. If not specified at construction time,
+     * ol.Map#setTarget must be called for the map to be rendered.
      *
-     * @param o
-     *            id or element
+     * @param targetId id
      */
-    public native void setTarget(TypedObject<Element, String> o);
+    public native void setTarget(String targetId);
+    
+    /**
+     * The the container element for the map. If not specified at construction time,
+     * ol.Map#setTarget must be called for the map to be rendered.
+     * 
+     * @param targetElement target element
+     */
+    public native void setTarget(Element targetElement);
 
     /**
      * Set the view for this map.
