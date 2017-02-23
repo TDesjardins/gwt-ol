@@ -31,6 +31,24 @@ public class Collection<T> extends Object {
 
     public native void clear();
 
+    /**
+     * Returns <tt>true</tt> if this collection contains the specified element.
+     * 
+     * @param item element whose presence in this collection is to be tested
+     * @return <tt>true</tt> if this collection contains the specified element
+     */
+    @JsOverlay
+    public final boolean contains(T item) {
+        if (item != null) {
+            for (int i = 0; i < getLength(); i++) {
+                if (item(i).equals(item)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
     public native T[] getArray();
 
     public native int getLength();
@@ -46,24 +64,6 @@ public class Collection<T> extends Object {
   	public final boolean isEmpty() {
   		return getLength() == 0;
   	}
-
-    /**
-     * Returns <tt>true</tt> if this collection contains the specified element.
-     * 
-     * @param o element whose presence in this collection is to be tested
-     * @return <tt>true</tt> if this collection contains the specified element
-     */
-    @JsOverlay
-    public final boolean contains(T o){
-    	if(o!= null){
-	    	for (int i = 0; i < getLength(); i++) {
-					if(item(i).equals(o)){
-						return true;
-					}
-				}
-    	}
-    	return false;
-    }
     
     public native T item(int index);
 
