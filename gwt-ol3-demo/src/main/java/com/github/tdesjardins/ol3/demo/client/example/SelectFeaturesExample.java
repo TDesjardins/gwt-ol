@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Copyright 2014, 2017 gwt-ol3
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 /**
  *
  */
@@ -18,6 +33,7 @@ import ol.View;
 import ol.control.MousePosition;
 import ol.control.MousePositionOptions;
 import ol.event.EventListener;
+import ol.events.condition.Condition;
 import ol.geom.Polygon;
 import ol.interaction.Select;
 import ol.interaction.SelectOptions;
@@ -70,7 +86,7 @@ public class SelectFeaturesExample implements Example {
         lstFeatures.push(feature2);
 
         VectorOptions vectorSourceOptions = OLFactory.createOptions();
-        vectorSourceOptions.setFeatures(OLFactory.<Feature[], Collection<Feature>> createObject2(lstFeatures));
+        vectorSourceOptions.setFeatures(lstFeatures);
         Vector vectorSource = new Vector(vectorSourceOptions);
 
         VectorLayerOptions vectorLayerOptions = OLFactory.createOptions();
@@ -112,8 +128,11 @@ public class SelectFeaturesExample implements Example {
         mousePosition.setCoordinateFormat(Coordinate.createStringXY(5));
         map.addControl(mousePosition);
 
+        SelectOptions selectOptions = new SelectOptions();
+        selectOptions.setCondition(Condition.getClick());
+        
         // create a select interaction
-        final Select selectFeature = new Select((SelectOptions)OLFactory.createOptions());
+        final Select selectFeature = new Select(selectOptions);
         map.addInteraction(selectFeature);
 
         EventListener<Select.Event> selectListener = new EventListener<Select.Event>() {

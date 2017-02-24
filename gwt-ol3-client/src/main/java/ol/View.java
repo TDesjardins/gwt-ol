@@ -1,10 +1,24 @@
+/*******************************************************************************
+ * Copyright 2014, 2017 gwt-ol3
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 package ol;
 
 import javax.annotation.Nullable;
 
 import jsinterop.annotations.JsType;
 import ol.animation.AnimationOptions;
-import ol.gwt.TypedObject;
 import ol.proj.Projection;
 
 /**
@@ -73,17 +87,50 @@ public class View extends Object {
     public native void animate(AnimationOptions... animationOptions);
     
     /**
-     * Fit the given geometry or extent based on the given map size and border.
+     * Fit the given extent based on the given map size and border.
+     * The size is pixel dimensions of the box to fit the extent into. In most
+     * cases you will want to use the map size, that is `map.getSize()`. Takes
+     * care of the map angle.
+     * 
+     * @param geometry {ol.Extent} extent.
+     */
+    public native void fit(ol.Extent extent);
+    
+    /**
+     * Fit the given geometry based on the given map size and border.
+     * The size is pixel dimensions of the box to fit the extent into. In most
+     * cases you will want to use the map size, that is `map.getSize()`. Takes
+     * care of the map angle.
+     * 
+     * @param geometry {ol.geom.SimpleGeometry} geometry.
+     */
+    public native void fit(ol.geom.SimpleGeometry geometry);
+    
+    /**
+     * Fit the given extent on the given map size and border.
      * The size is pixel dimensions of the box to fit the extent into. In most
      * cases you will want to use the map size, that is `map.getSize()`. Takes
      * care of the map angle.
      *
      * @param geometry
-     *            {ol.geom.SimpleGeometry|ol.Extent} Geometry.
-     * @param size
-     *            Box pixel size.
+     *            {ol.Extent} extent.
+     * @param opt_options
+     *            options
      */
-    public native void fit(TypedObject<ol.geom.SimpleGeometry, ol.Extent> geometry, Size size);
+    public native void fit(ol.Extent extent, ViewFitOptions opt_options);
+    
+    /**
+     * Fit the given geometry on the given map size and border.
+     * The size is pixel dimensions of the box to fit the extent into. In most
+     * cases you will want to use the map size, that is `map.getSize()`. Takes
+     * care of the map angle.
+     *
+     * @param geometry
+     *            {ol.geom.SimpleGeometry} geometry.
+     * @param opt_options
+     *            options
+     */
+    public native void fit(ol.geom.SimpleGeometry geometry, ViewFitOptions opt_options);
 
     /**
      * Get the view center.

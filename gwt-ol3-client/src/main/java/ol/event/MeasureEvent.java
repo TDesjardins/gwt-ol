@@ -1,8 +1,22 @@
+/*******************************************************************************
+ * Copyright 2014, 2017 gwt-ol3
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 package ol.event;
 
 import ol.OLUtil;
 import ol.geom.Geometry;
-import ol.proj.Projection;
 
 /**
  * An event for measuring. It provides the measurment (length or area) directly
@@ -47,45 +61,6 @@ public class MeasureEvent {
             return OLUtil.geodesicArea((ol.geom.Polygon)geom);
         }
         return Double.NaN;
-    }
-
-    /**
-     * Gets the current measure in the given projection (and its unit).
-     *
-     * @param proj
-     *            projection
-     * @return measure on success, else {@link Double#NaN}
-     * @deprecated use {@link #getMeasure()} instead
-     */
-    @Deprecated
-    public double getMeasure(Projection proj) {
-        return getMeasure();
-    }
-
-    /**
-     * Gets the current measure in the given projection (and its unit).
-     *
-     * @param proj
-     *            projection
-     * @return measure on success, else {@link Double#NaN}
-     * @deprecated use {@link #getMeasure()} instead
-     */
-    @Deprecated
-    public double getMeasure(String proj) {
-        return getMeasure();
-    }
-
-    /**
-     * Gets the {@link Projection} of the geometry.
-     *
-     * @return {@link Projection}
-     * @deprecated the projection is always WGS84 geographic coordinates
-     *             (EPSG:4326)
-     */
-    @SuppressWarnings("static-method")
-    @Deprecated
-    public Projection getProjection() {
-        return ol.OLUtil.getProjection("EPSG:4326");
     }
 
 }

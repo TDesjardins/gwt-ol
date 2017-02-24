@@ -1,10 +1,23 @@
+/*******************************************************************************
+ * Copyright 2014, 2017 gwt-ol3
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 package ol;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -18,7 +31,6 @@ import ol.event.OLHandlerRegistration;
 import ol.event.TileLoadEndListener;
 import ol.event.TileLoadErrorListener;
 import ol.event.TileLoadStartListener;
-import ol.geom.Geometry;
 import ol.geom.Polygon;
 import ol.geom.SimpleGeometryCoordinates;
 import ol.gwt.CollectionWrapper;
@@ -179,31 +191,6 @@ public final class OLUtil {
     }
 
     /**
-     * Registers transformation functions that don't alter coordinates. Those allow
-     * to transform between projections with equal meaning.
-     *
-     * @param projections Projections.
-     * @deprecated Use {@link ol.proj.Projection#addEquivalentProjections(Projection[])} instead.
-     */
-    @Deprecated
-    public static void addEquivalentProjections(Projection[] projections) {
-		Projection.addEquivalentProjections(projections);
-    };
-
-    /**
-     * Add a Projection object to the list of supported projections that can be
-     * looked up by their code.
-     *
-     * @param projection
-     *            Projection instance.
-     * @deprecated Use {@link ol.proj.Projection#addProjection(Projection)} instead.
-     */
-    @Deprecated
-    public static void addProjection(Projection projection) {
-        Projection.addProjection(projection);
-    };
-
-    /**
      * Adds a {@link Style} to the given array of {@link Style}s.
      *
      * @param s
@@ -250,45 +237,45 @@ public final class OLUtil {
         });
     }
 
-	/**
-	 * Adds a listener for tile start loading.
-	 *
-	 * @param source
-	 *            source
-	 *
-	 * @param listener
-	 *            {@link TileLoadStartListener}
-	 * @return {@link HandlerRegistration}
-	 */
-	public static HandlerRegistration addTileLoadStartListener(UrlTile source, final TileLoadStartListener listener) {
-		return observe(source, "tileloadstart", new EventListener<Tile.Event>() {
+    /**
+     * Adds a listener for tile start loading.
+     *
+     * @param source
+     *            source
+     *
+     * @param listener
+     *            {@link TileLoadStartListener}
+     * @return {@link HandlerRegistration}
+     */
+    public static HandlerRegistration addTileLoadStartListener(UrlTile source, final TileLoadStartListener listener) {
+        return observe(source, "tileloadstart", new EventListener<Tile.Event>() {
 
-			@Override
-			public void onEvent(Tile.Event event) {
-				listener.onTileLoadStart(event);
-			}
-		});
-	}
+            @Override
+            public void onEvent(Tile.Event event) {
+                listener.onTileLoadStart(event);
+            }
+        });
+    }
 
-	/**
-	 * Adds a listener for tile end loading.
-	 *
-	 * @param source
-	 *            source
-	 *
-	 * @param listener
-	 *            {@link TileLoadEndListener}
-	 * @return {@link HandlerRegistration}
-	 */
-	public static HandlerRegistration addTileLoadEndListener(UrlTile source, final TileLoadEndListener listener) {
-		return observe(source, "tileloadend", new EventListener<Tile.Event>() {
+    /**
+     * Adds a listener for tile end loading.
+     *
+     * @param source
+     *            source
+     *
+     * @param listener
+     *            {@link TileLoadEndListener}
+     * @return {@link HandlerRegistration}
+     */
+    public static HandlerRegistration addTileLoadEndListener(UrlTile source, final TileLoadEndListener listener) {
+        return observe(source, "tileloadend", new EventListener<Tile.Event>() {
 
-			@Override
-			public void onEvent(Tile.Event event) {
-				listener.onTileLoadEnd(event);
-			}
-		});
-	}
+            @Override
+            public void onEvent(Tile.Event event) {
+                listener.onTileLoadEnd(event);
+            }
+        });
+    }
 
     /**
      * Create an approximation of a circle on the surface of a sphere.
@@ -321,20 +308,6 @@ public final class OLUtil {
 		return [ s1, s2 ];
     }-*/;
 
-    /**
-     * Creates a JavaScript function calling the given event listener.
-     *
-     * @param listener
-     *            listener
-     * @return JavaScript function
-     * @deprecated Use functional interfaces {@link jsinterop.annotations.JsFunction} instead.
-     */
-    @Deprecated
-    public static native <E extends Event> JavaScriptObject createEventListenerFunction(EventListener<E> listener) /*-{
-		return function(evt) {
-			listener.onEvent(evt);
-		};
-    }-*/;
 
     /**
      * Links to {@link Event}s by delegating the childs methods to the parents
@@ -385,23 +358,6 @@ public final class OLUtil {
     public static Sphere createSphereNormal() {
         return OLFactory.createSphere(EARTH_RADIUS_NORMAL);
     }
-
-    /**
-     * Checks if two projections are the same, that is every coordinate in one
-     * projection does represent the same geographic point as the same
-     * coordinate in the other projection.
-     *
-     * @param projection1
-     *            Projection 1.
-     * @param projection2
-     *            Projection 2.
-     * @return {boolean} Equivalent.
-     * @deprecated Use {@link ol.proj.Projection#equivalent(Projection, Projection)} instead.
-     */
-    @Deprecated
-    public static native boolean equivalent(ol.proj.Projection projection1, ol.proj.Projection projection2) /*-{
-      return $wnd.ol.proj.equivalent(projection1, projection2);
-    }-*/;
 
     /**
      * Gets the geometry layout string for the given dimension.
@@ -497,21 +453,6 @@ public final class OLUtil {
     @Nullable
     public static String getName(Base layer) {
         return layer.get("name");
-    }
-
-    /**
-     * Fetches a Projection object for the code specified.
-     *
-     * @param projectionCode
-     *            Either a code string which is a combination of authority and
-     *            identifier such as "EPSG:4326", or an existing projection
-     *            object, or undefined.
-     * @return {@link ol.proj.Projection} Projection object, or null if not in list.
-     * @deprecated Use {@link ol.proj.Projection#get(String)} instead.
-     */
-    @Deprecated
-    public static Projection getProjection(String projectionCode) {
-        return Projection.get(projectionCode);
     }
 
     /**
@@ -729,7 +670,7 @@ public final class OLUtil {
      */
     public static <E extends Event> HandlerRegistration observe(Observable o, String eventType,
             EventListener<E> listener) {
-        JavaScriptObject key = o.on(eventType, listener);
+        EventsKey key = o.on(eventType, listener);
         return new OLHandlerRegistration(o, key);
     }
 
@@ -747,7 +688,7 @@ public final class OLUtil {
      */
     public static <E extends Event> HandlerRegistration observeOnce(Observable o, String eventType,
             EventListener<E> listener) {
-        JavaScriptObject key = o.once(eventType, listener);
+        EventsKey key = o.once(eventType, listener);
         return new OLHandlerRegistration(o, key);
     }
 
@@ -760,7 +701,7 @@ public final class OLUtil {
      *            {@link Widget}
      */
     public static void setMapTarget(Map map, Widget target) {
-        map.setTarget(OLFactory.<Element, String> createObject1(target.getElement()));
+        map.setTarget(target.getElement());
     }
 
     /**
@@ -809,74 +750,6 @@ public final class OLUtil {
 
 
     /**
-     * Transforms a coordinate from source projection to destination projection.
-     * This returns a new coordinate (and does not modify the original).
-     *
-     * See {@link #transformExtent(Extent, Projection, Projection)} for extent
-     * transformation. See the transform method of {@link ol.geom.Geometry} and
-     * its subclasses for geometry transforms.
-     *
-     * @param coordinate
-     *            Coordinate.
-     * @param source
-     *            Source projection-like.
-     * @param destination
-     *            Destination projection-like.
-     * @return {ol.Coordinate} Coordinate.
-     * @deprecated Use {@link ol.proj.Projection#transform(Coordinate, Projection, Projection)} instead.
-     */
-    @Deprecated
-    public static native Coordinate transform(Coordinate coordinate, Projection source, Projection destination) /*-{
-		return $wnd.ol.proj.transform(coordinate, source, destination);
-    }-*/;
-
-    /**
-     * Transform each coordinate of the geometry from one coordinate reference
-     * system to another. The geometry is modified in place. For example, a line
-     * will be transformed to a line and a circle to a circle. If you do not
-     * want the geometry modified in place, first clone() it and then use this
-     * function on the clone.
-     *
-     * @param geom {@link Geometry}
-     *
-     * @param source
-     *            The current projection. Can be a string identifier or a
-     *            {@link ol.proj.Projection} object.
-     * @param destination
-     *            The desired projection. Can be a string identifier or a
-     *            {@link ol.proj.Projection} object.
-     * @return {@link Geometry} This geometry. Note that original geometry is
-     *         modified in place.
-     * @deprecated Use {@link ol.geom.Geometry#transform(ol.proj.Projection, ol.proj.Projection)} instead.
-     */
-    @Deprecated
-    public static native Geometry transform(Geometry geom, Projection source, Projection destination) /*-{
-		return geom.transform(source, destination);
-    }-*/;
-
-    /**
-     * Transforms a coordinate from source projection to destination projection.
-     * This returns a new coordinate (and does not modify the original).
-     *
-     * See {@link #transformExtent(Extent, Projection, Projection)} for extent
-     * transformation. See the transform method of {@link ol.geom.Geometry} and
-     * its subclasses for geometry transforms.
-     *
-     * @param coordinate
-     *            Coordinate.
-     * @param source
-     *            Source projection-like.
-     * @param destination
-     *            Destination projection-like.
-     * @return {ol.Coordinate} Coordinate.
-     * @deprecated Use {@link ol.proj.Projection#transform(Coordinate, String, String)} instead.
-     */
-    @Deprecated
-    public static Coordinate transform(Coordinate coordinate, String source, String destination) {
-        return Projection.transform(coordinate, source, destination);
-    }
-
-    /**
      * Transforms coordinates from source projection to destination projection.
      * This returns new coordinates (and does not modify the original).
      *
@@ -898,41 +771,5 @@ public final class OLUtil {
 
         return transformedCoordinates;
     }
-
-    /**
-     * Transforms an extent from source projection to destination projection.
-     * This returns a new extent (and does not modify the original).
-     *
-     * @param extent
-     *            The extent to transform.
-     * @param source
-     *            Source projection-like.
-     * @param destination
-     *            Destination projection-like.
-     * @return {ol.Extent} The transformed extent.
-     * @deprecated Use {@link ol.proj.Projection#transformExtent(Extent, Projection, Projection)} instead.
-     */
-    @Deprecated
-    public static Extent transformExtent(Extent extent, Projection source, Projection destination) {
-		return Projection.transformExtent(extent, source, destination);
-    };
-
-    /**
-     * Transforms an extent from source projection to destination projection.
-     * This returns a new extent (and does not modify the original).
-     *
-     * @param extent
-     *            The extent to transform.
-     * @param source
-     *            Source projection-like.
-     * @param destination
-     *            Destination projection-like.
-     * @return {ol.Extent} The transformed extent.
-     * @deprecated Use {@link ol.proj.Projection#transformExtent(Extent, String, String)} instead.
-     */
-    @Deprecated
-    public static Extent transformExtent(Extent extent, String source, String destination) {
-		return Projection.transformExtent(extent, source, destination);
-    };
 
 }

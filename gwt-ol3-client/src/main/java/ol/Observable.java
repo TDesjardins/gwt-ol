@@ -1,6 +1,19 @@
+/*******************************************************************************
+ * Copyright 2014, 2017 gwt-ol3
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 package ol;
-
-import com.google.gwt.core.client.JavaScriptObject;
 
 import jsinterop.annotations.JsType;
 import ol.event.Event;
@@ -32,7 +45,7 @@ public abstract class Observable {
      *            The listener function.
      * @return Unique key for the listener.
      */
-    public native JavaScriptObject on(String type, EventListener<? extends Event> listener);
+    public native EventsKey on(String type, EventListener<? extends Event> listener);
 
     /**
      * Listen once for a certain type of event.
@@ -43,7 +56,7 @@ public abstract class Observable {
      *            The listener function.
      * @return {goog.events.Key} Unique key for the listener.
      */
-    public native JavaScriptObject once(String type, EventListener<? extends Event> listener);
+    public native EventsKey once(String type, EventListener<? extends Event> listener);
 
     /**
      * Unlisten for a certain type of event.
@@ -57,11 +70,11 @@ public abstract class Observable {
     public native void un(String type, EventListener<? extends Event> listener);
 
     /**
-     * Removes an event listener using the key returned by on() or once(). Note
-     * that using the ol.Observable.unByKey static function is to be preferred.
-     *
+     * Removes an event listener using the key returned by on() or once(). *
      * @param key
-     *            The key returned by on() or once().
+     *            {ol.EventsKey|Array.<ol.EventsKey>} key The key returned by
+     *            `on()` or `once()` (or an array of keys).
      */
-    public native void unByKey(JavaScriptObject key);
+    public static native void unByKey(EventsKey key);
+
 }
