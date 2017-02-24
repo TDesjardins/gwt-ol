@@ -18,6 +18,7 @@ package ol;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
+import ol.event.Event;
 
 /**
  * Events emitted as map browser events are instances of this type. See
@@ -52,4 +53,12 @@ public interface MapBrowserEvent extends MapEvent {
      */
     @JsProperty
     Pixel getPixel();
+    
+    /**
+     * The original browser event.
+     *
+     * @return {ol.event.Event}
+     */
+    @JsProperty
+    Event getOriginalEvent();
 }
