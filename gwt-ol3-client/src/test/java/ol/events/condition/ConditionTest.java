@@ -1,0 +1,64 @@
+/*******************************************************************************
+ * Copyright 2014, 2017 gwt-ol3
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
+package ol.events.condition;
+
+import ol.GenericFunction;
+import ol.GwtOL3BaseTestCase;
+import ol.MapBrowserEvent;
+
+/**
+ * Test for {@link Condition}.
+ * 
+ * @author Tino Desjardins
+ *
+ */
+public class ConditionTest extends GwtOL3BaseTestCase {
+
+    public void testConditions() {
+
+        injectUrlAndTest(new TestWithInjection() {
+            
+            @Override
+            public void test() {
+                
+                assertNotNull(Condition.getAltKeyOnly());
+                assertNotNull(Condition.getAltShiftKeysOnly());
+                assertNotNull(Condition.getAlways());
+                assertNotNull(Condition.getClick());
+                assertNotNull(Condition.getDoubleClick());
+                assertNotNull(Condition.getMouseOnly());
+                assertNotNull(Condition.getNever());
+                assertNotNull(Condition.getNoModifierKeys());
+                assertNotNull(Condition.getPlatformModifierKeyOnly());
+                assertNotNull(Condition.getPointerMove());
+                assertNotNull(Condition.getPrimaryAction());
+                assertNotNull(Condition.getShiftKeyOnly());
+                assertNotNull(Condition.getSingleClick());
+                assertNotNull(Condition.getTargetNotEditable());
+                
+                GenericFunction<MapBrowserEvent, Boolean> alwaysFunction = Condition.getAlways();
+                assertTrue(alwaysFunction.call(null));
+                
+                GenericFunction<MapBrowserEvent, Boolean> neverFunction = Condition.getNever();
+                assertFalse(neverFunction.call(null));
+                
+            }
+            
+        });
+
+    }
+
+}
