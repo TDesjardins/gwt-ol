@@ -236,8 +236,8 @@ public final class OLFactory {
      * @return {@link Color}
      */
     public static native Color createColor(String color) /*-{
-        var colorString = $wnd.ol.color.asString(color);
-        return $wnd.ol.color.asArray(colorString);
+        // clone because original color is cached
+        return $wnd.ol.color.asArray(color).slice(0);
     }-*/;
 
     /**
