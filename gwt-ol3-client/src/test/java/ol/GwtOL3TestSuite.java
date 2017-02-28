@@ -74,6 +74,9 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(SphereTest.class);
         suite.addTestSuite(ViewTest.class);
 
+        // color
+        suite.addTestSuite(ol.color.ColorTest.class);
+        
         // controls
         suite.addTestSuite(ol.control.AttributionTest.class);
         suite.addTestSuite(FullScreenTest.class);
