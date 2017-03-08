@@ -18,7 +18,7 @@ package ol;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
-import ol.event.Event;
+import ol.events.Event;
 
 /**
  * Events emitted as map events are instances of this type. See {@link ol.Map}

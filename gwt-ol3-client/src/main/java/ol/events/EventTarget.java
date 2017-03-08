@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2017, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,38 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol;
-
-import com.google.gwt.core.client.JavaScriptObject;
-
-import jsinterop.annotations.JsProperty;
+package ol.events;
 
 import jsinterop.annotations.JsType;
-import ol.events.Event;
+import ol.Disposable;
 
 /**
- * Events emitted by {@link ol.Object} instances are instances of this type.
+ * A simplified implementation of the W3C DOM Level 2 EventTarget interface.
  *
- * @author sbaumhekel
+ * @author Tino Desjardins
  */
 @JsType(isNative = true)
-public interface ObjectEvent extends Event {
-
-    /**
-     * The name of the property whose value is changing.
-     *
-     * @return key
-     */
-    @JsProperty
-    String getKey();
-
-    /**
-     * The old value. To get the new value use e.target.get(e.key) where e is
-     * the event object.
-     *
-     * @return old value
-     */
-    @JsProperty
-    JavaScriptObject getOldValue();
-
-}
+public interface EventTarget extends Disposable {}

@@ -154,7 +154,7 @@ public class Vector extends Source {
      * @author sbaumhekel
      */
     @JsType(isNative = true)
-    public interface Event extends ol.event.Event {
+    public interface Event extends ol.events.Event {
         /**
          * The feature being added or removed.
          *

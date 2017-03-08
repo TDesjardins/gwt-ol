@@ -16,6 +16,7 @@
 package ol;
 
 import jsinterop.annotations.JsType;
+import ol.events.EventTarget;
 
 /**
  *
@@ -23,7 +24,7 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public abstract class Tile {
+public abstract class Tile implements EventTarget {
 
 	/**
 	 * Get the tile coordinate for this tile.

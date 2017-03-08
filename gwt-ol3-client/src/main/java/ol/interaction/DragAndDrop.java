@@ -29,7 +29,7 @@ import ol.proj.Projection;
 public class DragAndDrop extends Interaction {
 
     @JsType(isNative = true)
-    public interface Event extends ol.event.Event {
+    public interface Event extends ol.events.Event {
 
         @JsProperty
         public Feature[] getFeatures();

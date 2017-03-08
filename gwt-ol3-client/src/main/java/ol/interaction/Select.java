@@ -56,7 +56,7 @@ public class Select extends Interaction {
 	 *
 	 */
 	@JsType(isNative = true)
-	public interface Event extends ol.event.Event {
+	public interface Event extends ol.events.Event {
 	    
 	    @Nullable
 	    @JsProperty

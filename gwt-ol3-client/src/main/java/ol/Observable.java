@@ -16,8 +16,9 @@
 package ol;
 
 import jsinterop.annotations.JsType;
-import ol.event.Event;
 import ol.event.EventListener;
+import ol.events.Event;
+import ol.events.EventTarget;
 
 /**
  * Abstract base class; normally only used for creating subclasses and not
@@ -29,7 +30,7 @@ import ol.event.EventListener;
  *
  */
 @JsType(isNative = true)
-public abstract class Observable {
+public abstract class Observable implements EventTarget {
 
     /**
      * Increases the revision counter and dispatches a 'change' event.

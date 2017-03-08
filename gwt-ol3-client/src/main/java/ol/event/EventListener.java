@@ -16,6 +16,7 @@
 package ol.event;
 
 import jsinterop.annotations.JsFunction;
+import ol.events.Event;
 
 /**
  * A listener for events of the given type.

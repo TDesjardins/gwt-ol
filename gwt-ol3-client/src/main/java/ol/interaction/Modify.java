@@ -36,7 +36,7 @@ public class Modify extends Pointer {
      * @author guadanlini
      */ 
     @JsType(isNative = true) 
-    public interface Event extends ol.event.Event { 
+    public interface Event extends ol.events.Event { 
      
       /** 
        * The features being modified. 

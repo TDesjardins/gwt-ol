@@ -22,7 +22,7 @@ import jsinterop.annotations.JsType;
  * @author Peter Zanetti
  */
 @JsType(isNative = true)
-public class Image {
+public class Image implements ImageBase {
 
     @JsMethod
     public native void load();

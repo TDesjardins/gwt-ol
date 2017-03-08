@@ -23,7 +23,6 @@ import com.google.gwt.user.client.ui.Widget;
 
 import ol.event.ClickListener;
 import ol.event.DoubleClickListener;
-import ol.event.Event;
 import ol.event.EventListener;
 import ol.event.MapMoveListener;
 import ol.event.MapZoomListener;
@@ -31,6 +30,7 @@ import ol.event.OLHandlerRegistration;
 import ol.event.TileLoadEndListener;
 import ol.event.TileLoadErrorListener;
 import ol.event.TileLoadStartListener;
+import ol.events.Event;
 import ol.geom.Polygon;
 import ol.geom.SimpleGeometryCoordinates;
 import ol.gwt.CollectionWrapper;
