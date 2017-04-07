@@ -37,7 +37,7 @@ public class OSMXML extends XMLFeature {
 
 
 	/**
-	 * Read all features from a GeoJSON source. Works with both Feature and FeatureCollection sources.
+	 * Read all features from a OpenStreetMaps.org OSMXML source. Works with both Feature and FeatureCollection sources.
 	 * @param source Document | Node | Object | string
 	 * @param opt_options Read options.
 	 * @return [] {@link Feature}
@@ -45,7 +45,7 @@ public class OSMXML extends XMLFeature {
 	public native Feature[] readFeatures(java.lang.Object source, @Nullable Options opt_options);
 
 	/**
-	 * Read the projection from a GeoJSON source.
+	 * Read the projection from an OSM source.
 	 * @param source Document | Node | Object | string
 	 * @return {@link Geometry}
 	 */
