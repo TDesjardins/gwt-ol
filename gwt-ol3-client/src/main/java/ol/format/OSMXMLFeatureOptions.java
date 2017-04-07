@@ -22,23 +22,29 @@ import ol.Options;
 import ol.proj.Projection;
 
 /**
- * Options for the GeoJSON
+ * Options for the OSMXML.
  *
  * @author tlochmann
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class GeoJSONOptions implements Options {
+public class OSMXMLFeatureOptions implements Options {
 
     /**
      * @param projection
      */
     @JsProperty
-    public native void setDefaultDataProjection(Projection projection);
+    public native void setDataProjection(Projection projection);
 
     /**
-     * @param geometryName
+     * @param projection
      */
     @JsProperty
-    public native void setGeometryName(String geometryName);
+    public native void setFeatureProjection(Projection projection);
+
+    /**
+     * @param rightHanded
+     */
+    @JsProperty
+    public native void setRightHanded(boolean rightHanded);
 
 }
