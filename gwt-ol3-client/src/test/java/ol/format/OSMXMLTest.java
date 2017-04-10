@@ -36,7 +36,7 @@ public class OSMXMLTest extends GwtOL3BaseTestCase {
 
             @Override
             public void test() {
-                osmXMLFormat = new osmXML();
+                osmXMLFormat = new OSMXML();
             }	        
 	    });
 	}
