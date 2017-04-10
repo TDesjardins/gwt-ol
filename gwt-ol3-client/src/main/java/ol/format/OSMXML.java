@@ -22,9 +22,9 @@ import ol.Options;
 
 import javax.annotation.Nullable;
 /**
- * OSMXML format
+ * OSM-XML format
  *
- * @author Tino Desjardins
+ * @author mazlixek
  *
  * @see http://openlayers.org/en/latest/apidoc/ol.format.OSMXML.html
  */

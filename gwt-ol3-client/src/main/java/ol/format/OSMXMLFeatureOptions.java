@@ -22,9 +22,9 @@ import ol.Options;
 import ol.proj.Projection;
 
 /**
- * Options for the OSMXML.
+ * Options for the OSM-XML.
  *
- * @author tlochmann
+ * @author mazlixek
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class OSMXMLFeatureOptions implements Options {
