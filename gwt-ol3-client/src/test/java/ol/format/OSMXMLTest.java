@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import ol.GwtOL3BaseTestCase;
 
 /**
  *
- * @author Tino Desjardins
+ * @author mazlixek
  *
  */
 public class OSMXMLTest extends GwtOL3BaseTestCase {
@@ -48,6 +48,7 @@ public class OSMXMLTest extends GwtOL3BaseTestCase {
             public void test() {
                 Feature[] features = osmXMLFormat.readFeatures(osmXMLString, null);
                 assertNotNull(features);
+                assertTrue(features.length > 0);
             }
         });
     }
