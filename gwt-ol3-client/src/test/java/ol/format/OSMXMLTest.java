@@ -46,7 +46,7 @@ public class OSMXMLTest extends GwtOL3BaseTestCase {
 
             @Override
             public void test() {
-                Feature[] features = osmXMLFormat.readFeatures(osmXML, null);
+                Feature[] features = osmXMLFormat.readFeatures(osmXMLString, null);
                 assertNotNull(features);
             }
         });
