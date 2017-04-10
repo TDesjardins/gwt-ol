@@ -40,11 +40,4 @@ public class OSMXMLFeatureOptions implements Options {
      */
     @JsProperty
     public native void setFeatureProjection(Projection projection);
-
-    /**
-     * @param rightHanded
-     */
-    @JsProperty
-    public native void setRightHanded(boolean rightHanded);
-
 }
