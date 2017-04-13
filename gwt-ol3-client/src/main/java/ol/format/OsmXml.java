@@ -33,7 +33,7 @@ public class OsmXml extends XmlFeature {
 
 	public OsmXml() {}
     
-    public OsmXml(Options osmXMLOptions) {}
+    public OsmXml(Options osmXmlOptions) {}
 
 
 	/**
