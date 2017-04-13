@@ -49,7 +49,7 @@ import ol.source.XyzOptions;
  *
  * @author Tobias Lochmann
  */
-public class GeoJSONExample implements Example {
+public class GeoJsonExample implements Example {
 
     /* (non-Javadoc)
      * @see de.desjardins.ol3.demo.client.example.Example#show() */
@@ -70,14 +70,14 @@ public class GeoJSONExample implements Example {
 
         // convert feature to GeoJSON
         GeoJson geoJsonFormat = new GeoJson();
-        JavaScriptObject geoJSON = geoJsonFormat.writeFeatureObject(feature, null);
+        JavaScriptObject geoJson = geoJsonFormat.writeFeatureObject(feature, null);
 
         // convert features from GeoJSON
-        Feature featureGeoJSON = geoJsonFormat.readFeature(geoJSON, null);
+        Feature featureGeoJson = geoJsonFormat.readFeature(geoJson, null);
 
         // show converted features
         Collection<Feature> lstFeatures = new Collection<Feature>();
-        lstFeatures.push(featureGeoJSON);
+        lstFeatures.push(featureGeoJson);
 
         VectorOptions vectorSourceOptions = OLFactory.createOptions();
         vectorSourceOptions.setFeatures(lstFeatures);
