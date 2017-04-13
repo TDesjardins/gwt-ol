@@ -36,7 +36,7 @@ import ol.Options;
  * 
  */
 @JsType(isNative = true, name = "WKT")
-public class Wkt extends Feature {
+public class Wkt extends TextFeature {
 
 	/**
 	 * 
@@ -51,7 +51,16 @@ public class Wkt extends Feature {
 	 * 
 	 * @param source
 	 * @param readOptions
-	 * @return
+	 * @return features
 	 */
 	public native Feature readFeature(java.lang.Object source, @Nullable Options readOptions);
+	
+	/**
+	 * Read all features from a WKT source.
+	 * 
+	 * @param source
+	 * @param readOptions
+	 * @return features
+	 */
+	public native Feature[] readFeatures(java.lang.Object source, @Nullable Options readOptions);
 }
