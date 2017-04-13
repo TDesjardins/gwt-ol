@@ -19,7 +19,6 @@ import javax.annotation.Nullable;
 
 import jsinterop.annotations.JsType;
 import ol.Feature;
-import ol.Options;
 
 /**
  * Geometry format for reading and writing data in the WellKnownText (WKT)
@@ -53,7 +52,7 @@ public class Wkt extends TextFeature {
 	 * @param readOptions
 	 * @return features
 	 */
-	public native Feature readFeature(java.lang.Object source, @Nullable Options readOptions);
+	public native Feature readFeature(java.lang.Object source, @Nullable WktReadOptions readOptions);
 	
 	/**
 	 * Read all features from a WKT source.
@@ -62,5 +61,5 @@ public class Wkt extends TextFeature {
 	 * @param readOptions
 	 * @return features
 	 */
-	public native Feature[] readFeatures(java.lang.Object source, @Nullable Options readOptions);
+	public native Feature[] readFeatures(java.lang.Object source, @Nullable WktReadOptions readOptions);
 }

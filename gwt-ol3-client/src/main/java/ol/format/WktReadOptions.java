@@ -22,11 +22,11 @@ import ol.Options;
 import ol.proj.Projection;
 
 /**
- * The {@link WktFeatureOptions} class represents the options for reading or
- * writing a feature from or to wkt
+ * The {@link WktReadOptions} class represents the options for reading features
+ * from WKT.
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class WktFeatureOptions implements Options {
+public class WktReadOptions implements Options {
 
 	/**
 	 * Projection of the data we are reading. If not provided, the projection will
