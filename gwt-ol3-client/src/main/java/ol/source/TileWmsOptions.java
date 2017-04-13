@@ -13,39 +13,50 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol.format;
+/**
+ *
+ * @author mribeiro
+ * @date 07/06/16 18:04
+ *
+ */
+package ol.source;
 
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-import ol.Options;
-import ol.proj.Projection;
 
 /**
- * The {@link WKTFeatureOptions} class represents the options for reading or
- * writing a feature from or to wkt
+ *
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class WKTFeatureOptions implements Options {
+public class TileWmsOptions extends TileImageOptions {
 
-	/**
-	 * Projection of the data we are reading. If not provided, the projection will
-	 * be derived from the data (where possible) or the defaultDataProjection of
-	 * the format is assigned (where set). If the projection can not be derived
-	 * from the data and if no defaultDataProjection is set for a format, the
-	 * features will not be reprojected.
-	 * 
-	 * @param projection
-	 */
 	@JsProperty
-	public native void setDataProjection(Projection projection);
+	public native void setCrossOrigin(String crossOrigin);
 
-	/**
-	 * Projection of the feature geometries created by the format reader. If not
-	 * provided, features will be returned in the dataProjection.
-	 * 
-	 * @param projection
-	 */
 	@JsProperty
-	public native void setFeatureProjection(Projection projection);
+	public native String getCrossOrigin();
+
+	@JsProperty(name = "serverType")
+	public native String getServerTypeString();
+
+	@JsProperty(name = "serverType")
+	public native void setServerTypeString(String serverType);
+
+	@JsOverlay
+	public final WmsServerType getServerType() {
+		return WmsServerType.getInstance(getServerTypeString());
+	}
+
+	@JsOverlay
+	public final void setServerType(WmsServerType serverType) {
+		setServerTypeString(serverType.getValue());
+	}
+	
+	@JsProperty
+	public native void setParams(TileWmsParams params);
+
+	@JsProperty
+	public native TileWmsParams getParams();
 }

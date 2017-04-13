@@ -28,9 +28,9 @@ import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
 import ol.layer.Image;
 import ol.layer.LayerOptions;
-import ol.source.ImageArcGISRest;
-import ol.source.ImageArcGISRestOptions;
-import ol.source.ImageArcGISRestParams;
+import ol.source.ImageArcGisRest;
+import ol.source.ImageArcGisRestOptions;
+import ol.source.ImageArcGisRestParams;
 
 /**
  * Example with ArcGIS Server layer
@@ -44,16 +44,16 @@ public class ArcGISExample implements Example {
     @Override
     public void show(String exampleId) {
 
-        ImageArcGISRestParams params = new ImageArcGISRestParams();
+        ImageArcGisRestParams params = new ImageArcGisRestParams();
         params.showLayers("2");
 
-        ImageArcGISRestOptions options = new ImageArcGISRestOptions();
+        ImageArcGisRestOptions options = new ImageArcGisRestOptions();
         options.setUrl(
                 "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StateCityHighway_USA/MapServer");
         options.setParams(params);
         options.setRatio(1.5f);
 
-        ImageArcGISRest source = new ImageArcGISRest(options);
+        ImageArcGisRest source = new ImageArcGisRest(options);
 
         LayerOptions layerOptions = OLFactory.createOptions();
         layerOptions.setSource(source);

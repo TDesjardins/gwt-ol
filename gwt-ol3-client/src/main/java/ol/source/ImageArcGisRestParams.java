@@ -24,7 +24,7 @@ import jsinterop.annotations.JsType;
  * @author Peter Zanetti
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class ImageArcGISRestParams {
+public class ImageArcGisRestParams {
 
     @JsOverlay
     private static final String DELIMITER = ",";
@@ -40,12 +40,12 @@ public class ImageArcGISRestParams {
 
     @JsOverlay
     public final void showLayers(String... layerNames) {
-        setLayers(ImageArcGISRestParams.SHOW + String.join(ImageArcGISRestParams.DELIMITER, layerNames));
+        setLayers(ImageArcGisRestParams.SHOW + String.join(ImageArcGisRestParams.DELIMITER, layerNames));
     }
 
     @JsOverlay
     public final void hideLayers(String... layerNames) {
-        setLayers(ImageArcGISRestParams.HIDE + String.join(ImageArcGISRestParams.DELIMITER, layerNames));
+        setLayers(ImageArcGisRestParams.HIDE + String.join(ImageArcGisRestParams.DELIMITER, layerNames));
     }
 
     @JsProperty(name = "LAYERS")

@@ -25,7 +25,7 @@ import jsinterop.annotations.JsType;
  * @author Peter Zanetti
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class ImageArcGISRestOptions extends SourceOptions {
+public class ImageArcGisRestOptions extends SourceOptions {
 
     @JsProperty
     public native void setCrossOrigin(String crossOrigin);
@@ -40,10 +40,10 @@ public class ImageArcGISRestOptions extends SourceOptions {
     public native ImageLoadFunction getImageLoadFunction();
 
     @JsProperty
-    public native void setParams(ImageArcGISRestParams params);
+    public native void setParams(ImageArcGisRestParams params);
 
     @JsProperty
-    public native ImageArcGISRestParams getParams();
+    public native ImageArcGisRestParams getParams();
 
     @JsProperty
     public native void setRatio(float ratio);

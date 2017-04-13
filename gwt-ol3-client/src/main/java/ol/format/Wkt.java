@@ -15,15 +15,43 @@
  *******************************************************************************/
 package ol.format;
 
+import javax.annotation.Nullable;
+
 import jsinterop.annotations.JsType;
+import ol.Feature;
+import ol.Options;
 
 /**
- * Abstract base class; normally only used for creating subclasses and not instantiated in apps. Base class for JSON feature formats.
+ * Geometry format for reading and writing data in the WellKnownText (WKT)
+ * format.
  *
- * @author tlochmann
- *  *
+ * @author Elena Guandalini
+ *
  */
-@JsType(isNative = true)
-public abstract class JSONFeature extends Feature {
 
+/**
+ * The {@link Wkt} class is used
+ * 
+ * for reading and writing data in the WellKnownText (WKT) format.
+ * 
+ */
+@JsType(isNative = true, name = "WKT")
+public class Wkt extends Feature {
+
+	/**
+	 * 
+	 * Constructs a(n) {@link Wkt} object.
+	 * 
+	 */
+	public Wkt() {};
+
+	/**
+	 * 
+	 * Read a feature from a WKT source.
+	 * 
+	 * @param source
+	 * @param readOptions
+	 * @return
+	 */
+	public native Feature readFeature(java.lang.Object source, @Nullable Options readOptions);
 }

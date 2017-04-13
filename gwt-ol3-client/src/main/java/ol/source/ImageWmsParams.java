@@ -25,7 +25,7 @@ import ol.Size;
  * @author Tino Desjardins
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class ImageWMSParams {
+public class ImageWmsParams {
 
     @JsOverlay
     public static String DELIMITER = ",";
@@ -35,7 +35,7 @@ public class ImageWMSParams {
 
     @JsOverlay
     public final void setLayers(String... layerNames) {
-        setLayers(String.join(ImageWMSParams.DELIMITER, layerNames));
+        setLayers(String.join(ImageWmsParams.DELIMITER, layerNames));
     }
 
     @JsProperty(name = "LAYERS")

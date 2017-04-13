@@ -18,7 +18,7 @@ package ol.source;
 import ol.GwtOL3BaseTestCase;
 
 /**
- * A test case for {@link ol.source.TileWMS}.
+ * A test case for {@link ol.source.TileWms}.
  *
  * @author Peter Zanetti
  */
@@ -32,16 +32,16 @@ public class TileWMSTest extends GwtOL3BaseTestCase {
             @Override
             public void test() {
 
-                TileWMSParams params = new TileWMSParams();
+                TileWmsParams params = new TileWmsParams();
                 params.setLayers("topp:states");
                 params.setTiled(true);
 
-                TileWMSOptions options = new TileWMSOptions();
+                TileWmsOptions options = new TileWmsOptions();
                 options.setUrl("https://ahocevar.com/geoserver/wms");
                 options.setParams(params);
-                options.setServerType(WMSServerType.GEOSERVER);
+                options.setServerType(WmsServerType.GEOSERVER);
 
-                TileWMS source = new TileWMS(options);
+                TileWms source = new TileWms(options);
 
                 assertEquals("topp:states", source.getParams().getLayers());
 

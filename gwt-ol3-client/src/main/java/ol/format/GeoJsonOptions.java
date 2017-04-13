@@ -13,50 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/**
- *
- * @author mribeiro
- * @date 07/06/16 18:04
- *
- */
-package ol.source;
+package ol.format;
 
-import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import jsinterop.annotations.JsProperty;
+import ol.Options;
+import ol.proj.Projection;
 
 /**
+ * Options for the GeoJSON
  *
+ * @author tlochmann
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class TileWMSOptions extends TileImageOptions {
+public class GeoJsonOptions implements Options {
 
-	@JsProperty
-	public native void setCrossOrigin(String crossOrigin);
+    /**
+     * @param projection
+     */
+    @JsProperty
+    public native void setDefaultDataProjection(Projection projection);
 
-	@JsProperty
-	public native String getCrossOrigin();
+    /**
+     * @param geometryName
+     */
+    @JsProperty
+    public native void setGeometryName(String geometryName);
 
-	@JsProperty(name = "serverType")
-	public native String getServerTypeString();
-
-	@JsProperty(name = "serverType")
-	public native void setServerTypeString(String serverType);
-
-	@JsOverlay
-	public final WMSServerType getServerType() {
-		return WMSServerType.getInstance(getServerTypeString());
-	}
-
-	@JsOverlay
-	public final void setServerType(WMSServerType serverType) {
-		setServerTypeString(serverType.getValue());
-	}
-	
-	@JsProperty
-	public native void setParams(TileWMSParams params);
-
-	@JsProperty
-	public native TileWMSParams getParams();
 }

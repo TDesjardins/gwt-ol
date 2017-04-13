@@ -31,7 +31,7 @@ import ol.OLFactory;
 import ol.View;
 import ol.control.Rotate;
 import ol.control.ScaleLine;
-import ol.format.GeoJSON;
+import ol.format.GeoJson;
 import ol.geom.LineString;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
@@ -69,7 +69,7 @@ public class GeoJSONExample implements Example {
         Feature feature = new Feature(featureOptions);
 
         // convert feature to GeoJSON
-        GeoJSON geoJsonFormat = new GeoJSON();
+        GeoJson geoJsonFormat = new GeoJson();
         JavaScriptObject geoJSON = geoJsonFormat.writeFeatureObject(feature, null);
 
         // convert features from GeoJSON

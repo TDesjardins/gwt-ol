@@ -13,19 +13,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol.source;
+package ol.format;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
+import jsinterop.annotations.JsProperty;
+import ol.Options;
+import ol.proj.Projection;
 
 /**
- * Source for data from ArcGIS Rest services providing single, untiled images.
+ * Options for the GeoJSON.
  *
- * @author Peter Zanetti
+ * @author tlochmann
  */
-@JsType(isNative = true)
-public class ImageArcGISRest extends Image {
-    
-    public ImageArcGISRest(ImageArcGISRestOptions options) {}
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class GeoJsonFeatureOptions implements Options {
 
-	public native ImageLoadFunction getImageLoadFunction();
+    /**
+     * @param projection
+     */
+    @JsProperty
+    public native void setDataProjection(Projection projection);
+
+    /**
+     * @param projection
+     */
+    @JsProperty
+    public native void setFeatureProjection(Projection projection);
+
+    /**
+     * @param rightHanded
+     */
+    @JsProperty
+    public native void setRightHanded(boolean rightHanded);
+
 }

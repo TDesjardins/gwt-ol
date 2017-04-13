@@ -13,31 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol.format;
+/**
+ *
+ * @author mribeiro
+ * @date 07/06/16 18:03
+ *
+ */
+package ol.source;
 
-import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
-import jsinterop.annotations.JsProperty;
-import ol.Options;
+import ol.Coordinate;
 import ol.proj.Projection;
 
 /**
- * Options for the OSM-XML.
  *
- * @author mazlixek
  */
-@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class OSMXMLFeatureOptions implements Options {
+@JsType(isNative = true, name = "TileWMS")
+public class TileWms extends TileImage {
 
-    /**
-     * @param projection
-     */
-    @JsProperty
-    public native void setDataProjection(Projection projection);
+	/**
+	 * Constructs a(n) {@link TileWms} object.
+	 *
+	 */
+	public TileWms(TileWmsOptions options) {}
 
-    /**
-     * @param projection
-     */
-    @JsProperty
-    public native void setFeatureProjection(Projection projection);
+	public native String getGetFeatureInfoUrl(Coordinate coordinate, double resolution, Projection projection,
+			WmsFeatureInfoParams params);
+
+	public native TileWmsParams getParams();
+
+	public native void updateParams(TileWmsParams params);
+
 }

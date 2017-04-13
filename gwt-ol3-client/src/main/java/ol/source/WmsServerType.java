@@ -23,7 +23,7 @@ import java.util.Objects;
  * 
  * @author Peter Zanetti
  */
-public enum WMSServerType {
+public enum WmsServerType {
     
     CARMENTA_SERVER("carmentaserver"),
     GEOSERVER("geoserver"),
@@ -33,11 +33,11 @@ public enum WMSServerType {
     private final String value;
 
     /**
-     * Constructs a(n) {@link WMSServerType} object.
+     * Constructs a(n) {@link WmsServerType} object.
      *
      * @param value
      */
-    WMSServerType(final String value) {
+    WmsServerType(final String value) {
         this.value = value;
     }
 
@@ -45,9 +45,9 @@ public enum WMSServerType {
         return value;
     }
 
-    public static final WMSServerType getInstance(String value) {
+    public static final WmsServerType getInstance(String value) {
         
-        for (WMSServerType wmsServerType : WMSServerType.class.getEnumConstants()) {
+        for (WmsServerType wmsServerType : WmsServerType.class.getEnumConstants()) {
             if (Objects.equals(wmsServerType.getValue(), value)) {
                 return wmsServerType;
             }

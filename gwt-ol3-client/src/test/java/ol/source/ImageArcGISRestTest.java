@@ -18,7 +18,7 @@ package ol.source;
 import ol.GwtOL3BaseTestCase;
 
 /**
- * A test case for {@link ol.source.ImageArcGISRest}.
+ * A test case for {@link ol.source.ImageArcGisRest}.
  *
  * @author Peter Zanetti
  */
@@ -32,11 +32,11 @@ public class ImageArcGISRestTest extends GwtOL3BaseTestCase {
             @Override
             public void test() {
 
-                ImageArcGISRestParams params = new ImageArcGISRestParams();
+                ImageArcGisRestParams params = new ImageArcGisRestParams();
                 params.showLayers("1");
                 assertEquals("show:1", params.getLayers());
 
-                ImageArcGISRestOptions options = new ImageArcGISRestOptions();
+                ImageArcGisRestOptions options = new ImageArcGisRestOptions();
                 options.setUrl(
                         "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StateCityHighway_USA/MapServer");
                 options.setParams(params);
@@ -46,7 +46,7 @@ public class ImageArcGISRestTest extends GwtOL3BaseTestCase {
                 assertNotNull(options.getParams());
                 assertEquals("show:1", options.getParams().getLayers());
 
-                ImageArcGISRest source = new ImageArcGISRest(options);
+                ImageArcGisRest source = new ImageArcGisRest(options);
                 assertNotNull(source.getImageLoadFunction());
             }
 

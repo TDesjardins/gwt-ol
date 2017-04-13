@@ -31,7 +31,7 @@ import ol.geom.LineString;
  */
 public class GeoJSONTest extends GwtOL3BaseTestCase {
 
-	private GeoJSON geoJSONFormat;
+	private GeoJson geoJSONFormat;
 	
 	
 	
@@ -41,7 +41,7 @@ public class GeoJSONTest extends GwtOL3BaseTestCase {
 
             @Override
             public void test() {
-                geoJSONFormat = new GeoJSON();
+                geoJSONFormat = new GeoJson();
             }
 	        
 	    });

@@ -31,9 +31,9 @@ import ol.layer.Image;
 import ol.layer.LayerOptions;
 import ol.proj.Projection;
 import ol.proj.ProjectionOptions;
-import ol.source.ImageWMS;
-import ol.source.ImageWMSOptions;
-import ol.source.ImageWMSParams;
+import ol.source.ImageWms;
+import ol.source.ImageWmsOptions;
+import ol.source.ImageWmsParams;
 
 /**
  * Example with WMS layers.
@@ -49,15 +49,15 @@ public class WmsExample implements Example {
     @Override
     public void show(String exampleId) {
 
-        ImageWMSParams imageWMSParams = OLFactory.createOptions();
+        ImageWmsParams imageWMSParams = OLFactory.createOptions();
         imageWMSParams.setLayers("ch.swisstopo.geologie-geotechnik-gk500-gesteinsklassierung,ch.bafu.schutzgebiete-paerke_nationaler_bedeutung");
 
-        ImageWMSOptions imageWMSOptions = OLFactory.createOptions();
+        ImageWmsOptions imageWMSOptions = OLFactory.createOptions();
         imageWMSOptions.setUrl("http://wms.geo.admin.ch/");
         imageWMSOptions.setParams(imageWMSParams);
         imageWMSOptions.setRatio(1.5f);
 
-        ImageWMS imageWMSSource = new ImageWMS(imageWMSOptions);
+        ImageWms imageWMSSource = new ImageWms(imageWMSOptions);
 
         LayerOptions layerOptions = OLFactory.createOptions();
         layerOptions.setSource(imageWMSSource);

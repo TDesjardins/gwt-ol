@@ -32,8 +32,8 @@ import ol.control.Zoom;
 import ol.control.ZoomSlider;
 import ol.control.ZoomToExtent;
 import ol.control.ZoomToExtentOptions;
-import ol.format.GeoJSON;
-import ol.format.GeoJSONOptions;
+import ol.format.GeoJson;
+import ol.format.GeoJsonOptions;
 import ol.geom.Circle;
 import ol.geom.Geometry;
 import ol.geom.GeometryCollection;
@@ -70,16 +70,16 @@ import ol.source.ImageMapGuide;
 import ol.source.ImageMapGuideOptions;
 import ol.source.ImageStatic;
 import ol.source.ImageStaticOptions;
-import ol.source.ImageWMS;
-import ol.source.ImageWMSOptions;
+import ol.source.ImageWms;
+import ol.source.ImageWmsOptions;
 import ol.source.Osm;
 import ol.source.Source;
 import ol.source.Stamen;
 import ol.source.StamenOptions;
 import ol.source.TileDebug;
 import ol.source.TileDebugOptions;
-import ol.source.TileWMS;
-import ol.source.TileWMSOptions;
+import ol.source.TileWms;
+import ol.source.TileWmsOptions;
 import ol.source.VectorOptions;
 import ol.source.Xyz;
 import ol.source.XyzOptions;
@@ -430,23 +430,23 @@ public final class OLFactory {
     }-*/;
 
     /**
-     * Creates a {@link GeoJSON}.
+     * Creates a {@link GeoJson}.
      *
      * @param options
-     *            {@link GeoJSONOptions}
+     *            {@link GeoJsonOptions}
      *
-     * @return {@link GeoJSON}
+     * @return {@link GeoJson}
      */
-    public static native GeoJSON createGeoJSON(GeoJSONOptions options) /*-{
+    public static native GeoJson createGeoJSON(GeoJsonOptions options) /*-{
     	return new $wnd.ol.format.GeoJSON(options);
     }-*/;
 
     /**
-     * Creates a {@link GeoJSON}.
+     * Creates a {@link GeoJson}.
        *
-     * @return {@link GeoJSON}
+     * @return {@link GeoJson}
      */
-    public static native GeoJSON createGeoJSON() /*-{
+    public static native GeoJson createGeoJSON() /*-{
     	return new $wnd.ol.format.GeoJSON();
     }-*/;
     /**
@@ -479,7 +479,7 @@ public final class OLFactory {
     	return new $wnd.ol.source.ImageStatic(imageStaticOptions);
     }-*/;
 
-    public static native ImageWMS createImageWMSSource(ImageWMSOptions imageWMSOptions) /*-{
+    public static native ImageWms createImageWMSSource(ImageWmsOptions imageWMSOptions) /*-{
     	return new $wnd.ol.source.ImageWMS(imageWMSOptions);
     }-*/;
 
@@ -1267,7 +1267,7 @@ public final class OLFactory {
         return new $wnd.ol.style.RegularShape(regularShapeOptions);
     }-*/;
 
-    public static native TileWMS createTileWMSSource(TileWMSOptions tileWmsOptions) /*-{
+    public static native TileWms createTileWMSSource(TileWmsOptions tileWmsOptions) /*-{
         return new $wnd.ol.source.TileWMS(tileWmsOptions);
     }-*/;
 

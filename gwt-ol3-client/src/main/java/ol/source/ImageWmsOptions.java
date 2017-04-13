@@ -26,7 +26,7 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class ImageWMSOptions extends SourceOptions {
+public class ImageWmsOptions extends SourceOptions {
 
 	@JsProperty
 	public native void setCrossOrigin(String crossOrigin);
@@ -41,12 +41,12 @@ public class ImageWMSOptions extends SourceOptions {
 	public native void setServerTypeString(String serverType);
 
 	@JsOverlay
-	public final WMSServerType getServerType() {
-		return WMSServerType.getInstance(getServerTypeString());
+	public final WmsServerType getServerType() {
+		return WmsServerType.getInstance(getServerTypeString());
 	}
 
 	@JsOverlay
-	public final void setServerType(WMSServerType serverType) {
+	public final void setServerType(WmsServerType serverType) {
 		setServerTypeString(serverType.getValue());
 	}
 
@@ -57,10 +57,10 @@ public class ImageWMSOptions extends SourceOptions {
 	public native ImageLoadFunction getImageLoadFunction();
 
 	@JsProperty
-	public native void setParams(ImageWMSParams params);
+	public native void setParams(ImageWmsParams params);
 
 	@JsProperty
-	public native ImageWMSParams getParams();
+	public native ImageWmsParams getParams();
 
 	/**
 	 *

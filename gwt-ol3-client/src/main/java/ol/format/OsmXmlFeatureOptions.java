@@ -15,40 +15,29 @@
  *******************************************************************************/
 package ol.format;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
-import ol.proj.Projection;
-import ol.Feature;
+import jsinterop.annotations.JsProperty;
 import ol.Options;
+import ol.proj.Projection;
 
-import javax.annotation.Nullable;
 /**
- * OSM-XML format
+ * Options for the OSM-XML.
  *
  * @author mazlixek
- *
- * @see http://openlayers.org/en/latest/apidoc/ol.format.OSMXML.html
  */
-@JsType(isNative = true)
-public class OSMXML extends XMLFeature {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class OsmXmlFeatureOptions implements Options {
 
-	public OSMXML() {}
-    
-    public OSMXML(Options osmXMLOptions) {}
+    /**
+     * @param projection
+     */
+    @JsProperty
+    public native void setDataProjection(Projection projection);
 
-
-	/**
-	 * Read all features from a OpenStreetMaps.org OSMXML source. Works with both Feature and FeatureCollection sources.
-	 * @param source Document | Node | Object | string
-	 * @param opt_options Read options.
-	 * @return [] {@link Feature}
-	 */
-	public native Feature[] readFeatures(java.lang.Object source, @Nullable Options opt_options);
-
-	/**
-	 * Read the projection from an OSM source.
-	 * @param source Document | Node | Object | string
-	 * @return {@link Geometry}
-	 */
-	public native Projection readProjection(java.lang.Object source);
-    
+    /**
+     * @param projection
+     */
+    @JsProperty
+    public native void setFeatureProjection(Projection projection);
 }

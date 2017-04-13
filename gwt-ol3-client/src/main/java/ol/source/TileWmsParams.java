@@ -13,32 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol.format;
+/**
+ *
+ * @author mribeiro
+ * @date 07/06/16 18:05
+ *
+ */
+package ol.source;
 
 import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsProperty;
-import ol.Options;
-import ol.proj.Projection;
+import jsinterop.annotations.JsType;
 
 /**
- * Options for the GeoJSON
  *
- * @author tlochmann
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class GeoJSONOptions implements Options {
+public class TileWmsParams extends ImageWmsParams {
 
-    /**
-     * @param projection
-     */
-    @JsProperty
-    public native void setDefaultDataProjection(Projection projection);
-
-    /**
-     * @param geometryName
-     */
-    @JsProperty
-    public native void setGeometryName(String geometryName);
-
+	/**
+	 *
+	 * @param tiled
+	 */
+	@JsProperty(name = "TILED")
+	public native void setTiled(boolean tiled);
 }

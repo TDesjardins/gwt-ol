@@ -18,10 +18,12 @@ package ol.format;
 import jsinterop.annotations.JsType;
 
 /**
- * GPX format.
+ * Abstract base class; normally only used for creating subclasses and not instantiated in apps. Base class for JSON feature formats.
  *
- * @author Tino Desjardins
- *
+ * @author tlochmann
+ *  *
  */
-@JsType(isNative = true)
-public class GPX extends XMLFeature {}
+@JsType(isNative = true, name = "JSONFeature")
+public abstract class JsonFeature extends Feature {
+
+}

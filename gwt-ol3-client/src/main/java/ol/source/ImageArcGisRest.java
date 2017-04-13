@@ -15,22 +15,17 @@
  *******************************************************************************/
 package ol.source;
 
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
- * 
- * @author Peter Zanetti
+ * Source for data from ArcGIS Rest services providing single, untiled images.
  *
+ * @author Peter Zanetti
  */
-@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class WMSFeatureInfoParams {
+@JsType(isNative = true, name = "ImageArcGISRest")
+public class ImageArcGisRest extends Image {
     
-	@JsProperty(name = "QUERY_LAYERS")
-	public native void setQueryLayers(String layers);
+    public ImageArcGisRest(ImageArcGisRestOptions options) {}
 
-	@JsProperty(name = "INFO_FORMAT")
-	public native void setInfoFormat(String version);
-
+	public native ImageLoadFunction getImageLoadFunction();
 }

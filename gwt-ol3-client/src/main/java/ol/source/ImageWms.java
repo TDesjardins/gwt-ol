@@ -13,38 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol.format;
+package ol.source;
 
-import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
-import jsinterop.annotations.JsProperty;
-import ol.Options;
+import ol.Coordinate;
 import ol.proj.Projection;
 
 /**
- * Options for the GeoJSON.
- *
- * @author tlochmann
+ * @author Tino Desjardins
  */
-@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class GeoJSONFeatureOptions implements Options {
+@JsType(isNative = true, name = "ImageWMS")
+public class ImageWms extends Image {
+    
+    public ImageWms(ImageWmsOptions imageWMSOptions) {}
 
-    /**
-     * @param projection
-     */
-    @JsProperty
-    public native void setDataProjection(Projection projection);
+    public native String getGetFeatureInfoUrl(Coordinate coordinate, double resolution, Projection projection,
+            WmsFeatureInfoParams params);
 
-    /**
-     * @param projection
-     */
-    @JsProperty
-    public native void setFeatureProjection(Projection projection);
+    public native void setImageLoadFunction(ImageLoadFunction imageLoadFunction);
 
-    /**
-     * @param rightHanded
-     */
-    @JsProperty
-    public native void setRightHanded(boolean rightHanded);
+    public native ImageLoadFunction getImageLoadFunction();
+
+    public native String getUrl();
+
+    public native void setUrl(String url);
+
+    public native ImageWmsParams getParams();
+
+    public native void updateParams(ImageWmsParams params);
 
 }

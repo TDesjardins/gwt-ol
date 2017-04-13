@@ -27,10 +27,10 @@ import ol.control.ScaleLine;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
 import ol.layer.Tile;
-import ol.source.TileWMS;
-import ol.source.TileWMSOptions;
-import ol.source.TileWMSParams;
-import ol.source.WMSServerType;
+import ol.source.TileWms;
+import ol.source.TileWmsOptions;
+import ol.source.TileWmsParams;
+import ol.source.WmsServerType;
 
 /**
  * Example with WMS layers.
@@ -47,17 +47,17 @@ public class TileWmsExample implements Example {
 	 */
 	@Override
 	public void show(String exampleId) {
-		TileWMSParams.DELIMITER = ":";
-		TileWMSParams params = new TileWMSParams();
+		TileWmsParams.DELIMITER = ":";
+		TileWmsParams params = new TileWmsParams();
 		params.setLayers("topp", "states");
 		params.setTiled(true);
 
-		TileWMSOptions options = new TileWMSOptions();
+		TileWmsOptions options = new TileWmsOptions();
 		options.setUrl("https://ahocevar.com/geoserver/wms");
 		options.setParams(params);
-		options.setServerType(WMSServerType.GEOSERVER);
+		options.setServerType(WmsServerType.GEOSERVER);
 
-		TileWMS source = new TileWMS(options);
+		TileWms source = new TileWms(options);
 
 		Extent extent = Extent.create(-13884991, 2870341, -7455066, 6338219);
 		Tile layer = new Tile();
