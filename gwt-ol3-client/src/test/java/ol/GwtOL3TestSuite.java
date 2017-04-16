@@ -25,8 +25,8 @@ import ol.control.ScaleLineTest;
 import ol.control.ZoomSliderTest;
 import ol.control.ZoomToExtentTest;
 import ol.events.condition.ConditionTest;
-import ol.format.GeoJSONTest;
-import ol.format.OSMXMLTest;
+import ol.format.GeoJsonTest;
+import ol.format.OsmXmlTest;
 import ol.geom.CircleTest;
 import ol.geom.GeometryCollectionTest;
 import ol.geom.PointTest;
@@ -92,8 +92,8 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(ConditionTest.class);
         
         // formats
-        suite.addTestSuite(GeoJSONTest.class);
-        suite.addTestSuite(OSMXMLTest.class);
+        suite.addTestSuite(GeoJsonTest.class);
+        suite.addTestSuite(OsmXmlTest.class);
 
         // geometries
         suite.addTestSuite(CircleTest.class);
