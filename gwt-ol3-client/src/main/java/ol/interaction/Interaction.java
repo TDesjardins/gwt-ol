@@ -15,6 +15,7 @@
  *******************************************************************************/
 package ol.interaction;
 
+import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsType;
 
 /**
@@ -31,6 +32,22 @@ import jsinterop.annotations.JsType;
  */
 @JsType(isNative = true)
 public abstract class Interaction extends ol.Object {
+
+    /**
+     * Set of interactions included in maps by default. Specific interactions
+     * can be excluded by setting the appropriate option to false in the
+     * constructor options, but the order of the interactions is fixed. If you
+     * want to specify a different order for interactions, you will need to
+     * create your own ol.interaction.Interaction instances and insert them into
+     * a ol.Collection in the order you want before creating your ol.Map
+     * instance.
+     *
+     * @param options
+     *            options.
+     * @return interactions
+     */
+    @JsMethod(name = "defaults", namespace = "ol.interaction")
+    public static native ol.Collection<ol.interaction.Interaction> defaults(InteractionOptions options);
 
     /**
      * Return whether the interaction is currently active.

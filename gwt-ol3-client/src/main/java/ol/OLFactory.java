@@ -44,7 +44,6 @@ import ol.geom.MultiPoint;
 import ol.geom.MultiPolygon;
 import ol.geom.Point;
 import ol.geom.Polygon;
-import ol.gwt.TypedObject;
 import ol.interaction.DragAndDrop;
 import ol.interaction.Draw;
 import ol.interaction.DrawOptions;
@@ -719,30 +718,6 @@ public final class OLFactory {
 	    @Nullable String geometryLayout) /*-{
 	    return new $wnd.ol.geom.MultiPolygon(coordinates, geometryLayout);
 	}-*/;
-
-    /**
-     * Create a typed object. Returns the same instance as the given object
-     * while checking types to comply to one of the types of the TypedObject.
-     *
-     * @param object
-     *            object
-     * @return {@link TypedObject}
-     */
-    public static native <T, U> TypedObject<T, U> createObject1(T object) /*-{
-    	return object;
-    }-*/;
-
-    /**
-     * Create a typed object. Returns the same instance as the given object
-     * while checking types to comply to one of the types of the TypedObject.
-     *
-     * @param object
-     *            object
-     * @return {@link TypedObject}
-     */
-    public static native <T, U> TypedObject<T, U> createObject2(U object) /*-{
-    	return object;
-    }-*/;
 
     /**
      * Create generic options.

@@ -20,7 +20,8 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
- * Options for calling {@link ol.View#fit(ol.gwt.TypedObject, ViewFitOptions)}.
+ * Options for calling {@link ol.View#fit(Extent, ViewFitOptions)} or
+ * {@link ol.View#fit(ol.geom.SimpleGeometry, ViewFitOptions)}.
  *
  * @author sbaumhekel
  */

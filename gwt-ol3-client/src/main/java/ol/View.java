@@ -92,7 +92,7 @@ public class View extends Object {
      * cases you will want to use the map size, that is `map.getSize()`. Takes
      * care of the map angle.
      * 
-     * @param geometry {ol.Extent} extent.
+     * @param extent {ol.Extent} extent.
      */
     public native void fit(ol.Extent extent);
     
@@ -112,7 +112,7 @@ public class View extends Object {
      * cases you will want to use the map size, that is `map.getSize()`. Takes
      * care of the map angle.
      *
-     * @param geometry
+     * @param extent
      *            {ol.Extent} extent.
      * @param opt_options
      *            options
@@ -140,6 +140,30 @@ public class View extends Object {
     public native Coordinate getCenter();
 
     /**
+     * Get the maximum resolution of the view.
+     * @return The maximum resolution of the view.
+     */
+    public native double getMaxResolution();
+    
+    /**
+     * Get the maximum zoom level for the view.
+     * @return The maximum zoom level.
+     */
+    public native double getMaxZoom();
+    
+    /**
+     * Get the minimum resolution of the view.
+     * @return The minimum resolution of the view.
+     */
+    public native double getMinResolution();
+    
+    /**
+     * Get the minimum zoom level for the view.
+     * @return The minimum zoom level.
+     */
+    public native double getMinZoom();
+        
+    /**
      * Get the view projection.
      *
      * @return {ol.proj.Projection} The projection of the view.
@@ -162,13 +186,18 @@ public class View extends Object {
 
     /**
      * Get the current zoom level. Return undefined if the current resolution is
-     * undefined or not a "constrained resolution".
-     *
+     * undefined or not within the "resolution constraints".
      * @return Zoom.
-     * @deprecated use {@link OLUtil#getZoomLevel(Map) instead}
      */
-    @Deprecated
-    public native int getZoom();
+    public native double getZoom();
+    
+    /**
+     * Get the zoom level for a resolution.
+     * @param resolution
+     *            The resolution.
+     * @return {number|undefined} The zoom level for the provided resolution.
+     */
+    public native double getZoomForResolution(double resolution);
 
     /**
      * Rotate the view around a given coordinate.
@@ -188,6 +217,20 @@ public class View extends Object {
      */
     public native void setCenter(Coordinate center);
 
+    /**
+     * Set a new minimum zoom level for the view.
+     * @param zoom
+     *            The minimum zoom level.
+     */
+    public native void setMinZoom (double zoom);
+
+    /**
+     * Set a new maximum zoom level for the view.
+     * @param zoom
+     *            The maximum zoom level.
+     */
+    public native void setMaxZoom (double zoom);
+  
     /**
      * Set the resolution for this view.
      *
