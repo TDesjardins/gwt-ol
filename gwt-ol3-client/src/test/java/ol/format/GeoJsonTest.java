@@ -109,7 +109,6 @@ public class GeoJsonTest extends GwtOL3BaseTestCase {
                 Feature feature = geoJsonFormat.readFeature(geoJson, null);
 
                 assertNotNull(feature);
-                //assertTrue(features.length > 0);
             }
         });
 
@@ -123,7 +122,6 @@ public class GeoJsonTest extends GwtOL3BaseTestCase {
             public void test() {
                 String geoJson = geoJsonFormat.writeFeatures(createTestFeature(), null);
                 assertNotNull(geoJson);
-                //JavaScriptObject javaScriptObject = JsonUtils.safeEval(geoJSON);
                 Feature[] features = geoJsonFormat.readFeatures(geoJson, null);
 
                 assertNotNull(features);
