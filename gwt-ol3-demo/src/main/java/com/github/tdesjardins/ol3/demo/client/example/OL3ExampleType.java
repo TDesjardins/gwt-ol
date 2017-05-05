@@ -25,6 +25,7 @@ public enum OL3ExampleType {
 
     AnimationExample(new AnimationExample()),
     ArcGISExample(new ArcGISExample()),
+    ClusterExample(new ClusterExample()),
     GeoJSONExample(new GeoJsonExample()),
     GraticuleExample(new GraticuleExample()),
     ImageExample(new StaticImageExample()),
