@@ -22,6 +22,7 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>gwt-ol3</artifactId>
             <version>${project.version}</version>
+            <type>gwt-lib</type>
         </dependency>
     </dependencies>
 
