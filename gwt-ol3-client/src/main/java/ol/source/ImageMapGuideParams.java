@@ -41,5 +41,13 @@ public class ImageMapGuideParams {
      */
     @JsProperty
     public native void setFormat(String format);
+    
+    /**
+     * @param version
+     * 	MapGuide image version
+     *
+     */
+    @JsProperty
+    public native void setVersion(String version);
 
 }
