@@ -27,27 +27,52 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class ImageMapGuideParams {
 
+    /**
+     * @param format
+     *  MapGuide image format (JPG/PNG/PNG8)
+     *
+     */
+    @JsProperty(name = "FORMAT")
+    public native void setFormat(String format);
+    
+    /**
+     * @param hideLayers List of layers to hide.
+     */
+    @JsProperty(name = "HIDELAYERS")
+    public native void setHideLayers(String hideLayers);
+    
 	/**
      * @param mapDefinition
      * 			MapGuide mapDefinition e.g. "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition"
      */
-    @JsProperty
+    @JsProperty(name = "MAPDEFINITION")
     public native void setMapDefinition(String mapDefinition);
 
     /**
-     * @param format
-     * 	MapGuide image format
-     *
+     * 
+     * @param mapName Name of the map to display.
      */
-    @JsProperty
-    public native void setFormat(String format);
+    @JsProperty(name = "MAPNAME")
+    public native void setMapName(String mapName);
+    
+    @JsProperty(name = "PASSWORD")
+    public native void setPassword(String password);
+    
+    /**
+     * @param showLayers List of layers to display.
+     */
+    @JsProperty(name = "SHOWLAYERS")
+    public native void setShowLayers(String showLayers);
+    
+    @JsProperty(name = "USERNAME")
+    public native void setUserName(String userName);
     
     /**
      * @param version
      * 	MapGuide image version
      *
      */
-    @JsProperty
+    @JsProperty(name = "VERSION")
     public native void setVersion(String version);
 
 }
