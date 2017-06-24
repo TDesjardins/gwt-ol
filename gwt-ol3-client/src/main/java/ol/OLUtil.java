@@ -177,18 +177,47 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static HandlerRegistration addMapZoomListener(final Map map, final MapZoomListener listener) {
-        return observe(map.getView(), "propertychange", new EventListener<ObjectEvent>() {
+        return observe(map.getView(), "change:resolution", new EventListener<ObjectEvent>() {
 
             @Override
             public void onEvent(ObjectEvent event) {
-                if("resolution".equals(event.getKey())) {
-                    Event e2 = createLinkedEvent(event, "zoom", map);
-                    MapEvent me = initMapEvent(e2, map);
-                    listener.onMapZoom(me);
-                }
+                Event zoomEvent = createLinkedEvent(event, "zoom", map);
+                MapEvent mapEvent = initMapEvent(zoomEvent, map);
+                listener.onMapZoom(mapEvent);
             }
         });
     }
+    
+    /**
+     * Adds a map zoom end listener for the given map.
+     *
+     * @param map
+     *            {@link Map}
+     * @param listener
+     *            {@link MapZoomListener}
+     * @return {@link HandlerRegistration}
+     */
+    public static HandlerRegistration addMapZoomEndListener(final Map map, final MapZoomListener listener) {
+        return observe(map, "moveend", new EventListener<ObjectEvent>() {
+
+        private double zoomLevel = (double) map.getView().getZoom();
+        
+            @Override
+            public void onEvent(ObjectEvent event) {
+                
+                double newZoomLevel = (double) map.getView().getZoom();
+                
+                if(newZoomLevel != this.zoomLevel) {
+                    this.zoomLevel = newZoomLevel;
+                    Event zoomEndEvent = createLinkedEvent(event, "zoomend", map);
+                    MapEvent mapEvent = initMapEvent(zoomEndEvent, map);
+                    listener.onMapZoom(mapEvent);
+                }
+                
+            }
+        });
+    }
+
 
     /**
      * Adds a {@link Style} to the given array of {@link Style}s.
