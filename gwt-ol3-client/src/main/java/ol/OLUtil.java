@@ -177,11 +177,15 @@ public final class OLUtil {
      * @return {@link HandlerRegistration}
      */
     public static HandlerRegistration addMapZoomListener(final Map map, final MapZoomListener listener) {
-        return observe(map.getView(), "propertychange", new EventListener<ObjectEvent>() {
+        return observe(map, "moveend", new EventListener<ObjectEvent>() {
 
+	    private int zoomLevel = (int) map.getView().getZoom();
+		
             @Override
             public void onEvent(ObjectEvent event) {
-                if("resolution".equals(event.getKey())) {
+                int newZoomLevel = (int) map.getView().getZoom();
+                if(newZoomLevel != zoomLevel) {
+                    zoomLevel = newZoomLevel;
                     Event e2 = createLinkedEvent(event, "zoom", map);
                     MapEvent me = initMapEvent(e2, map);
                     listener.onMapZoom(me);
