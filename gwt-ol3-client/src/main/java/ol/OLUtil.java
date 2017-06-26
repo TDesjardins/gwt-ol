@@ -200,12 +200,12 @@ public final class OLUtil {
     public static HandlerRegistration addMapZoomEndListener(final Map map, final MapZoomListener listener) {
         return observe(map, "moveend", new EventListener<ObjectEvent>() {
 
-        private double zoomLevel = (double) map.getView().getZoom();
+        private double zoomLevel = map.getView().getZoom();
         
             @Override
             public void onEvent(ObjectEvent event) {
                 
-                double newZoomLevel = (double) map.getView().getZoom();
+                double newZoomLevel = map.getView().getZoom();
                 
                 if(newZoomLevel != this.zoomLevel) {
                     this.zoomLevel = newZoomLevel;
@@ -515,27 +515,25 @@ public final class OLUtil {
 
     /**
      * Gets the current zoom level of the given {@link View}.
-     *
      * @param v
      *            {@link View}
-     * @return Zoom on success, else -1
+     * @return Zoom on success, else {@link Double#NaN}
      */
-    private static native int getZoom(View v) /*-{
-		return v.getZoom() || -1;
+    private static native double getZoom(View v) /*-{
+	return v.getZoom() || NaN;
     }-*/;
 
     /**
      * Gets the current zoomlevel of the given {@link Map}.
-     *
      * @param map
      *            {@link Map}
-     * @return zoomlevel on success, else -1
+     * @return zoomlevel on success, else {@link Double#NaN}
      */
-    public static int getZoomLevel(Map map) {
+    public static double getZoomLevel(Map map) {
         View v = map.getView();
         // try to get zoom
-        int z = getZoom(v);
-        if(z >= 0) {
+        double z = getZoom(v);
+        if(!Double.isNaN(z)) {
             return z;
         }
         // zoom is undefined, so check resolution
@@ -559,14 +557,12 @@ public final class OLUtil {
                             double resolution = resolutions[i];
                             if(resolution <= zoomResolution) {
                                 if(i > 1) {
-                                    // check to which zoomlevel resolution is
-                                    // nearer and prefer the larger number by
-                                    // (75%:25%=3)
-                                    if((zoomResolution - resolution) / (dPreviousResolution - zoomResolution) < 3) {
-                                        return i;
-                                    } else {
-                                        return i - 1;
-                                    }
+                                    // calculate the delta of the resolution
+                                    // compared to the current and the previous
+                                    // zoomlevel
+                                    double delta = (resolution - zoomResolution) / (dPreviousResolution - resolution);
+                                    // adjust the integer zoomlevel to the delta
+                                    return i + delta;
                                 } else {
                                     return 0;
                                 }
@@ -577,7 +573,7 @@ public final class OLUtil {
                 }
             }
         }
-        return -1;
+        return Double.NaN;
     }
 
     /**
