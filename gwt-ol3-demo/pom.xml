@@ -18,11 +18,18 @@
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-dev</artifactId>
         </dependency>
+        <!-- gwt-ol3 normal dependency -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>gwt-ol3</artifactId>
             <version>${project.version}</version>
-            <type>gwt-lib</type>
+        </dependency>
+        <!-- gwt-ol3 sources dependency for devmode -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>gwt-ol3</artifactId>
+            <version>${project.version}</version>
+            <classifier>sources</classifier>
         </dependency>
     </dependencies>
 
