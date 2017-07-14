@@ -136,14 +136,20 @@ public class Feature extends Object {
     public native void setId(String id);
 
     /**
-     * Set the style for the feature. This can be a single style object, an
-     * array of styles, or a function that takes a resolution and returns an
+     * Set the style for the feature. If it is `null` the feature has no
+     * style (a `null` style).
+     * 
+     * @param style Style for this feature.
+     */
+    public native void setStyle(Style style);
+    
+    /**
+     * Function that takes a feature and returns an
      * array of styles. If it is `null` the feature has no style (a `null`
      * style).
      * 
-     * @param style
-     *            Style for this feature.
+     * @param styleFunction
      */
-    public native void setStyle(Style style);
+    public native void setStyle(GenericFunction<Feature, Style[]> styleFunction);
 
 }

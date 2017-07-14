@@ -15,6 +15,8 @@
  *******************************************************************************/
 package ol;
 
+import ol.style.Style;
+
 /**
  * Test for {@link Feature}.
  *
@@ -44,6 +46,14 @@ public class FeatureTest extends GwtOL3BaseTestCase {
                 
                 feature.setGeometryName(GEOMETRY_NAME);
                 assertEquals(GEOMETRY_NAME, feature.getGeometryName());
+                
+                feature.setStyle(new Style());
+                
+                feature.setStyle(new GenericFunction<Feature, Style[]>() {
+                    public Style[] call(Feature object) {
+                        return null;
+                    }
+                });
 
             }
             
