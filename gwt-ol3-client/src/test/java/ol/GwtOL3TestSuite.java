@@ -51,6 +51,7 @@ import ol.interaction.SnapTest;
 import ol.interaction.TranslateTest;
 import ol.layer.LayerGroupTest;
 import ol.proj.ProjectionTest;
+import ol.source.BingMapsTest;
 import ol.source.ClusterTest;
 import ol.source.ImageArcGISRestTest;
 import ol.source.TileWMSTest;
@@ -130,6 +131,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(ol.layer.VectorTest.class);
 
         // source
+        suite.addTestSuite(BingMapsTest.class);
         suite.addTestSuite(ClusterTest.class);
         suite.addTestSuite(ImageArcGISRestTest.class);
         suite.addTestSuite(TileWMSTest.class);
