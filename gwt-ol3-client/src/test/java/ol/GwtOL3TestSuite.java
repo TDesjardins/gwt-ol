@@ -54,7 +54,7 @@ import ol.proj.ProjectionTest;
 import ol.source.BingMapsTest;
 import ol.source.ClusterTest;
 import ol.source.ImageArcGISRestTest;
-import ol.source.TileWMSTest;
+import ol.source.TileWmsTest;
 import ol.style.RegularShapeTest;
 
 /**
@@ -134,7 +134,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(BingMapsTest.class);
         suite.addTestSuite(ClusterTest.class);
         suite.addTestSuite(ImageArcGISRestTest.class);
-        suite.addTestSuite(TileWMSTest.class);
+        suite.addTestSuite(TileWmsTest.class);
 
         // projection
         suite.addTestSuite(ProjectionTest.class);
