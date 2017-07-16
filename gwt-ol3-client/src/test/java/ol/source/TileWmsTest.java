@@ -22,10 +22,9 @@ import ol.GwtOL3BaseTestCase;
  *
  * @author Peter Zanetti
  */
-public class TileWMSTest extends GwtOL3BaseTestCase {
+public class TileWmsTest extends GwtOL3BaseTestCase {
 
-    @SuppressWarnings({ "static-method", "javadoc" })
-    public void testTileWMS() {
+    public void testTileWms() {
 
         injectUrlAndTest(new TestWithInjection() {
 
