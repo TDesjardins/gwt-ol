@@ -24,8 +24,7 @@ import ol.GwtOL3BaseTestCase;
  */
 public class BingMapsTest extends GwtOL3BaseTestCase {
 
-    @SuppressWarnings({ "static-method", "javadoc" })
-    public void testTileWMS() {
+    public void testBingMaps() {
 
         injectUrlAndTest(new TestWithInjection() {
 
