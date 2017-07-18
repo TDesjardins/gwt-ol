@@ -54,10 +54,10 @@ public class DragZoomOptions implements Options {
      * @param duration Animation duration in milliseconds. Default is <code>200</code>.
      */
     @JsProperty
-    public native void setDuration(Integer duration);
+    public native void setDuration(int duration);
 
     @JsProperty
-    public native Integer getDuration();
+    public native int getDuration();
 
     /**
      * @param out Use interaction for zooming out. Default is <code>false</code>.

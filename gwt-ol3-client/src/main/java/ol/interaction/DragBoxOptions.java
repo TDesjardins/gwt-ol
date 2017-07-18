@@ -55,10 +55,10 @@ public class DragBoxOptions implements Options {
      * @param minArea The minimum area of the box in pixel, this value is used by the default {@link #getBoxEndCondition()} function. Default is <code>64</code>.
      */
     @JsProperty
-    public native void setMinArea(Integer minArea);
+    public native void setMinArea(int minArea);
 
     @JsProperty
-    public native Integer getMinArea();
+    public native int getMinArea();
 
     /**
      * @param boxEndCondition A function that takes a {@link ol.MapBrowserEvent} and two {@link ol.Pixel}s to indicate whether a <code>boxend</code> event should be fired. Default is <code>true</code> if the area of the box is bigger than the {@link #getMinArea()} option.
