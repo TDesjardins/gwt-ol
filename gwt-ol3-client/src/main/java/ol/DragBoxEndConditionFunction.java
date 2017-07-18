@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,20 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol.interaction;
+package ol;
 
-import jsinterop.annotations.JsType;
+import jsinterop.annotations.JsFunction;
 
 /**
- *
- * @author Tino Desjardins
- *
+ * @author gkresic
  */
-@JsType(isNative = true)
-public class DragZoom extends DragBox {
-
-    public DragZoom() {}
-    
-    public DragZoom(DragZoomOptions dragZoomOptions) {}
-
+@JsFunction
+public interface DragBoxEndConditionFunction {
+    boolean call(MapBrowserEvent event, Pixel pixel1, Pixel pixel2);
 }
