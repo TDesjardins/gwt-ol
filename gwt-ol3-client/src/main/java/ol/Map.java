@@ -235,13 +235,23 @@ public class Map extends Object {
 
 	/**
 	 * Detect features that intersect a pixel on the viewport, and execute a
-	 * callback with each intersecting feature. Layers included in the detection
-	 * can be configured through opt_layerFilter.
+	 * callback with each intersecting feature.
 	 *
 	 * @param pixel
 	 * @param callback
 	 */
 	public native Feature forEachFeatureAtPixel(Pixel pixel, GenericFunction<Feature, ?> callback);
+
+	/**
+	 * Detect features that intersect a pixel on the viewport, and execute a
+	 * callback with each intersecting feature. Layers included in the detection
+	 * can be configured through {@link FeatureAtPixelOptions#setLayerFilter(GenericFunction)}.
+	 *
+	 * @param pixel Pixel.
+	 * @param callback Feature callback. The callback will be called with feature or render feature at the pixel as argument. To stop detection, callback functions can return a truthy value.
+	 * @param options Optional options.
+	 */
+	public native Feature forEachFeatureAtPixel(Pixel pixel, GenericFunction<Feature, ?> callback, FeatureAtPixelOptions options);
 
     /**
      * Remove the given control from the map.
