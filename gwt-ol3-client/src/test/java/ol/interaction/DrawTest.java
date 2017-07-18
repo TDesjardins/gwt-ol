@@ -16,7 +16,6 @@
 package ol.interaction;
 
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.Observable;
 
 /**
@@ -33,7 +32,7 @@ public class DrawTest extends GwtOL3BaseTestCase {
             
             @Override
             public void test() {
-                DrawOptions drawOptions = OLFactory.createOptions();
+                DrawOptions drawOptions = new DrawOptions();
                 Draw draw = new Draw(drawOptions);
                 
                 assertNotNull(draw);

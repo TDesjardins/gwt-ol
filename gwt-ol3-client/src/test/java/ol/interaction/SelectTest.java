@@ -16,7 +16,6 @@
 package ol.interaction;
 
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.Observable;
 
 /**
@@ -33,7 +32,7 @@ public class SelectTest extends GwtOL3BaseTestCase {
             @Override
             public void test() {
                 
-                SelectOptions selectOptions = OLFactory.createOptions();
+                SelectOptions selectOptions = new SelectOptions();
                 Select select = new Select(selectOptions);
                 
                 assertNotNull(select);

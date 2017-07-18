@@ -16,7 +16,6 @@
 package ol.interaction;
 
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.Observable;
 
 /**
@@ -34,7 +33,7 @@ public class DragZoomTest extends GwtOL3BaseTestCase {
             @Override
             public void test() {
             	
-            	DragZoomOptions dragZoomOptions = OLFactory.createOptions();
+            	DragZoomOptions dragZoomOptions = new DragZoomOptions();
                 DragZoom dragZoom = new DragZoom(dragZoomOptions);
                 
                 assertNotNull(dragZoom);

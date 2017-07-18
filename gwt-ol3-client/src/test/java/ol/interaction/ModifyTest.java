@@ -18,7 +18,6 @@ package ol.interaction;
 import ol.Collection;
 import ol.Feature;
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.Observable;
 
 /**
@@ -30,7 +29,7 @@ public class ModifyTest extends GwtOL3BaseTestCase {
 
     public void testModify() {
 
-        ModifyOptions modifyOptions = OLFactory.createOptions();
+        ModifyOptions modifyOptions = new ModifyOptions();
         Collection<Feature> features = new Collection<Feature>();
 
         modifyOptions.setFeatures(features);

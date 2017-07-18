@@ -16,7 +16,6 @@
 package ol.interaction;
 
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.Observable;
 
 /**
@@ -33,7 +32,7 @@ public class TranslateTest extends GwtOL3BaseTestCase {
             @Override
             public void test() {
                 
-                TranslateOptions translateOptions = OLFactory.createOptions();
+                TranslateOptions translateOptions = new TranslateOptions();
                 Translate translate = new Translate(translateOptions);
                 
                 assertNotNull(translate);

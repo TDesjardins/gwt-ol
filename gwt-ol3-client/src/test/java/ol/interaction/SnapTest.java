@@ -16,7 +16,6 @@
 package ol.interaction;
 
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.Observable;
 
 /**
@@ -33,7 +32,7 @@ public class SnapTest extends GwtOL3BaseTestCase {
             @Override
             public void test() {
                 
-                SnapOptions snapOptions = OLFactory.createOptions();
+                SnapOptions snapOptions = new SnapOptions();
                 Snap snap = new Snap(snapOptions);
                 
                 assertNotNull(snap);

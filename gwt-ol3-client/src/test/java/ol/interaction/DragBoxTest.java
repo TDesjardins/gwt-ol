@@ -16,7 +16,6 @@
 package ol.interaction;
 
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.Observable;
 
 /**
@@ -34,7 +33,7 @@ public class DragBoxTest extends GwtOL3BaseTestCase {
             @Override
             public void test() {
 
-            	DragBoxOptions dragBoxOptions = OLFactory.createOptions();
+            	DragBoxOptions dragBoxOptions = new DragBoxOptions();
             	DragBox dragBox = new DragBox(dragBoxOptions);
                 
                 assertNotNull(dragBox);
