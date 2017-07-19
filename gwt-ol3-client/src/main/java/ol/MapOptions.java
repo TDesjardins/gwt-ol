@@ -63,8 +63,8 @@ public class MapOptions implements Options {
 	@JsProperty
 	public native void setInteractions(Collection<Interaction> interactions);
 
-    @JsProperty
-    public native void setInteractions(Interaction[] interactions);
+	@JsProperty
+	public native Collection<Interaction> getInteractions();
 
     /**
      * The element to listen to keyboard events on. This determines when the {@link ol.interaction.KeyboardPan} and {@link ol.interaction.KeyboardZoom} interactions trigger.
@@ -109,16 +109,10 @@ public class MapOptions implements Options {
      * @param layers Layers.
      */
     @JsProperty
-    public native void setLayers(Base[] layers);
-    
-    /**
-     * Layers. If this is not defined, a map with no layers will be rendered. Note that layers are rendered in the order supplied,
-     * so if you want, for example, a vector layer to appear on top of a tile layer, it must come after the tile layer.
-     * 
-     * @param layers Layers.
-     */
-    @JsProperty
     public native void setLayers(Collection<Base> layers);
+    
+    @JsProperty
+    public native Collection<Base> getLayers();
     
     /**
      * @param loadTilesWhileAnimating When set to <code>true</code>, tiles will be loaded during animations.
@@ -175,11 +169,8 @@ public class MapOptions implements Options {
     @JsProperty
     public native void setOverlays(Collection<Overlay> overlays);
 
-    /**
-     * Overlays initially added to the map. By default, no overlays are added.
-     */
     @JsProperty
-    public native void setOverlays(Overlay[] overlays);
+    public native Collection<Overlay> getOverlays();
 
     /**
      * Defines container element for the map.
