@@ -233,6 +233,22 @@ public class Map extends Object {
      */
     public native Element getViewport();
 
+    /**
+     * Detect if features intersect a pixel on the viewport.
+	 *
+	 * @param pixel Pixel.
+     */
+	public native boolean hasFeatureAtPixel(Pixel pixel);
+
+    /**
+     * Detect if features intersect a pixel on the viewport. Layers included in the detection
+	 * can be configured through {@link FeatureAtPixelOptions#setLayerFilter(GenericFunction)}.
+	 *
+	 * @param pixel Pixel.
+	 * @param options Optional options.
+     */
+	public native boolean hasFeatureAtPixel(Pixel pixel, FeatureAtPixelOptions options);
+
 	/**
 	 * Detect features that intersect a pixel on the viewport, and execute a
 	 * callback with each intersecting feature.
