@@ -15,7 +15,13 @@
  *******************************************************************************/
 package ol.source;
 
+import com.google.web.bindery.event.shared.HandlerRegistration;
+
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import ol.OLUtil;
+import ol.event.EventListener;
 import ol.tilegrid.TileGrid;
 
 /**
@@ -37,6 +43,30 @@ public class Tile extends Source {
     public native TileGrid getTileGrid();
     
     /**
+     * Triggered when a tile starts loading.
+     */
+    @JsOverlay
+    public final HandlerRegistration addTileLoadStartListener(final EventListener<Tile.Event> listener) {
+        return OLUtil.observe(this, "tileloadstart", listener);
+    }
+    
+    /**
+     * Triggered when a tile finishes loading.
+     */
+    @JsOverlay
+    public final HandlerRegistration addTileLoadEndListener(final EventListener<Tile.Event> listener) {
+        return OLUtil.observe(this, "tileloadend", listener);
+    }
+    
+    /**
+     * Triggered if tile loading results in an error.
+     */
+    @JsOverlay
+    public final HandlerRegistration addTileLoadErrorListener(final EventListener<Tile.Event> listener) {
+        return OLUtil.observe(this, "tileloaderror", listener);
+    }
+    
+    /**
      * Events emitted by {@link ol.source.Tile} instances are instances of this
      * type.
      * 
@@ -45,6 +75,12 @@ public class Tile extends Source {
      */
     @JsType(isNative = true)
     public interface Event extends ol.events.Event {
+
+        /**
+         * The tile related to the event.
+         */
+        @JsProperty
+        ol.Tile getTile();
 
     }
 

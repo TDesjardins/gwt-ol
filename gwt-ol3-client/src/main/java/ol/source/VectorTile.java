@@ -15,36 +15,22 @@
  *******************************************************************************/
 package ol.source;
 
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
-import ol.tilegrid.TileGrid;
-
 /**
- * Abstract tile options.
+ * Class for layer sources providing vector data divided into a tile grid, to be used with {@link ol.layer.VectorTile}.
+ * Although this source receives tiles with vector features from the server, it is not meant for feature editing.
+ * Features are optimized for rendering, their geometries are clipped at or near tile boundaries and simplified for a view resolution.
+ * See {@link ol.source.Vector} for vector sources that are suitable for feature editing.
+ * 
+ * @author gkresic
  *
- * @author Tino Desjardins
- *
- * @see https://openlayers.org/en/latest/apidoc/ol.source.Tile.html
  */
-@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class TileOptions extends SourceOptions {
+@JsType(isNative = true)
+public class VectorTile extends UrlTile {
 
-    /**
-     * Gets the {@link TileGrid}.
-     *
-     * @return tileGrid {@link TileGrid}
-     */
-    @JsProperty
-    public native TileGrid getTileGrid();
+    public VectorTile() {}
     
-    /**
-     * Set the {@link TileGrid}.
-     *
-     * @param tileGrid {@link TileGrid}
-     */
-    @JsProperty
-    public native void setTileGrid(TileGrid tileGrid);
-    
+    public VectorTile(VectorTileOptions vectorTileOptions) {}
+
 }

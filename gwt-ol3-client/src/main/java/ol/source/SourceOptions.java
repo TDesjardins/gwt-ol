@@ -28,6 +28,8 @@ import ol.proj.Projection;
  * Source options.
  *
  * @author Tino Desjardins
+ * 
+ * @see https://openlayers.org/en/latest/apidoc/ol.source.Source.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class SourceOptions implements Options {
@@ -59,5 +61,5 @@ public class SourceOptions implements Options {
 
     @JsProperty
     public native Projection getProjection();
-    
+
 }
