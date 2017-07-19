@@ -56,6 +56,7 @@ import ol.source.ClusterTest;
 import ol.source.ImageArcGISRestTest;
 import ol.source.ImageStaticTest;
 import ol.source.TileWmsTest;
+import ol.source.VectorTileTest;
 import ol.style.RegularShapeTest;
 
 /**
@@ -137,6 +138,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(ImageArcGISRestTest.class);
         suite.addTestSuite(ImageStaticTest.class);
         suite.addTestSuite(TileWmsTest.class);
+        suite.addTestSuite(VectorTileTest.class);
 
         // projection
         suite.addTestSuite(ProjectionTest.class);

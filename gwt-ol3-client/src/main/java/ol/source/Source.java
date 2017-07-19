@@ -28,6 +28,8 @@ import ol.proj.Projection;
  *
  * @author Tino Desjardins
  *
+ * @see https://openlayers.org/en/latest/apidoc/ol.source.Source.html
+ * 
  */
 @JsType(isNative = true)
 public class Source extends ol.Object {

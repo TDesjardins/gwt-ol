@@ -15,36 +15,32 @@
  *******************************************************************************/
 package ol.source;
 
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsProperty;
-import jsinterop.annotations.JsType;
-
-import ol.tilegrid.TileGrid;
+import ol.GwtOL3BaseTestCase;
 
 /**
- * Abstract tile options.
+ * A test case for {@link ol.source.VectorTile}.
  *
- * @author Tino Desjardins
- *
- * @see https://openlayers.org/en/latest/apidoc/ol.source.Tile.html
+ * @author gkresic
  */
-@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class TileOptions extends SourceOptions {
+public class VectorTileTest extends GwtOL3BaseTestCase {
 
-    /**
-     * Gets the {@link TileGrid}.
-     *
-     * @return tileGrid {@link TileGrid}
-     */
-    @JsProperty
-    public native TileGrid getTileGrid();
-    
-    /**
-     * Set the {@link TileGrid}.
-     *
-     * @param tileGrid {@link TileGrid}
-     */
-    @JsProperty
-    public native void setTileGrid(TileGrid tileGrid);
-    
+    public void testVectorTile() {
+
+        injectUrlAndTest(new TestWithInjection() {
+
+            @Override
+            public void test() {
+
+            	VectorTileOptions options = new VectorTileOptions();
+                assertNotNull(options);
+
+                VectorTile source = new VectorTile(options);
+                assertNotNull(source);
+
+            }
+
+        });
+
+    }
+
 }

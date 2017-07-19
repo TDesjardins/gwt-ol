@@ -20,33 +20,40 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
- * WMTS options.
+ * Options for {@link VectorTile}
+ * 
+ * @author gkresic
  *
- * @author Tino Desjardins
- *
+ * @see https://openlayers.org/en/latest/apidoc/ol.source.VectorTile.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class WmtsOptions extends TileImageOptions {
-    
+public class VectorTileOptions extends UrlTileOptions {
     
     /**
-     * Sets the layername.
-     *
-     * @param layer layername
+     * @param format Feature format for tiles. Used and required by the default {@link #setTileLoadFunction(TileLoadFunction)}.
      */
     @JsProperty
-    public native void setLayer(String layer);
-    
+    public native void setFormat(ol.format.Feature format);
+
     @JsProperty
-    public native void setStyle(String style);
-    
+    public native ol.format.Feature getFormat();
+
+    /**
+     * @param overlaps This source may have overlapping geometries. Default is <code>true</code>. Setting this to <code>false</code> (e.g. for sources with polygons that represent administrative boundaries or TopoJSON sources) allows the renderer to optimise fill and stroke operations.
+     */
     @JsProperty
-    public native void setFormat(String format);
-    
+    public native void setOverlaps(Boolean overlaps);
+
     @JsProperty
-    public native void setVersion(String version);
-    
+    public native Boolean getOverlaps();
+
+    /**
+     * @param tile Class used to instantiate image tiles. Default is {@link ol.VectorTile}.
+     */
     @JsProperty
-    public native void setMatrixSet(String matrixSet);
-    
+    public native void setTileClass(ol.Tile tile);
+
+    @JsProperty
+    public native ol.Tile getTileClass();
+
 }
