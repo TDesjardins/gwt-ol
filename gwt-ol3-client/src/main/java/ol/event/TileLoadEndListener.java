@@ -20,7 +20,9 @@ import ol.source.Tile;
 /**
  * A listener for tile finishes loading.
  * 
+ * @deprecated Use {@link ol.source.Tile#addTileLoadEndListener(EventListener)}
  */
+@Deprecated
 public interface TileLoadEndListener {
 
 	/**

@@ -16,6 +16,7 @@
 package ol;
 
 import javax.annotation.Nullable;
+
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -255,7 +256,10 @@ public final class OLUtil {
      * @param listener
      *            {@link TileLoadErrorListener}
      * @return {@link HandlerRegistration}
+     * 
+     * @deprecated Use {@link ol.source.Tile#addTileLoadErrorListener(EventListener)}
      */
+    @Deprecated
     public static HandlerRegistration addTileLoadErrorListener(UrlTile source, final TileLoadErrorListener listener) {
         return observe(source, "tileloaderror", new EventListener<Tile.Event>() {
 
@@ -275,7 +279,10 @@ public final class OLUtil {
      * @param listener
      *            {@link TileLoadStartListener}
      * @return {@link HandlerRegistration}
+     * 
+     * @deprecated Use {@link ol.source.Tile#addTileLoadStartListener(EventListener)}
      */
+    @Deprecated
     public static HandlerRegistration addTileLoadStartListener(UrlTile source, final TileLoadStartListener listener) {
         return observe(source, "tileloadstart", new EventListener<Tile.Event>() {
 
@@ -295,7 +302,10 @@ public final class OLUtil {
      * @param listener
      *            {@link TileLoadEndListener}
      * @return {@link HandlerRegistration}
+     * 
+     * @deprecated Use {@link ol.source.Tile#addTileLoadEndListener(EventListener)}
      */
+    @Deprecated
     public static HandlerRegistration addTileLoadEndListener(UrlTile source, final TileLoadEndListener listener) {
         return observe(source, "tileloadend", new EventListener<Tile.Event>() {
 
