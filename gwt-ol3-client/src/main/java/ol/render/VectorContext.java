@@ -15,31 +15,16 @@
  *******************************************************************************/
 package ol.render;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
-import jsinterop.annotations.JsProperty;
-
 import jsinterop.annotations.JsType;
 
 /**
- *
- * @author Tino Desjardins
- */
+* Context for drawing geometries. A vector context is available on render events and does not need to be constructed directly.
+* 
+* @author gkresic
+* 
+* @see https://openlayers.org/en/latest/apidoc/ol.render.VectorContext.html
+*/
 @JsType(isNative = true)
-public interface Event extends ol.events.Event {
+public class VectorContext {
 
-    /**
-     * Canvas context. Only available when a Canvas renderer is used, null otherwise.
-     *
-     * @return Canvas context
-     */
-    @JsProperty
-    JavaScriptObject getContext();
-    
-    /**
-     * For canvas, this is an instance of {@link ol.render.canvas.Immediate}.
-     */
-    @JsProperty
-    VectorContext getVectorContext();
-    
 }
