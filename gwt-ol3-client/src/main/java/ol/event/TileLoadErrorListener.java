@@ -22,7 +22,10 @@ import ol.source.Tile;
  * A listener for tile loading errors.
  * 
  * @author sbaumhekel
+ * 
+ * @deprecated Use {@link ol.source.Tile#addTileLoadErrorListener(EventListener)}
  */
+@Deprecated
 public interface TileLoadErrorListener {
 
     /**
