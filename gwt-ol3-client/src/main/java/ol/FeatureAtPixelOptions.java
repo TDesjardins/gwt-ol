@@ -48,9 +48,9 @@ public class FeatureAtPixelOptions implements Options {
      * @param hitTolerance Hit-detection tolerance in pixels.
      */
     @JsProperty
-    public native void setHitTolerance(Integer hitTolerance);
+    public native void setHitTolerance(int hitTolerance);
 
     @JsProperty
-    public native Integer getHitTolerance();
+    public native int getHitTolerance();
 
 }
