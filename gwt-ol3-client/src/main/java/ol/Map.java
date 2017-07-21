@@ -22,7 +22,6 @@ import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.control.Control;
-import ol.event.DoubleClickListener;
 import ol.event.EventListener;
 import ol.events.Event;
 import ol.interaction.Interaction;
