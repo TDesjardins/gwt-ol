@@ -21,12 +21,10 @@ import com.google.gwt.user.client.Window;
 
 import ol.Coordinate;
 import ol.Map;
-import ol.MapBrowserEvent;
 import ol.MapOptions;
 import ol.OLFactory;
 import ol.View;
 import ol.control.Attribution;
-import ol.event.DoubleClickListener;
 import ol.interaction.DragPan;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
@@ -97,14 +95,7 @@ public class MapEventsExample implements Example {
         map.addInteraction(new MouseWheelZoom());
 
         // add event handlers
-        map.addDoubleClickListener(new DoubleClickListener() {
-
-            @Override
-            public void onDoubleClick(MapBrowserEvent evt) {
-                Window.alert("double click at " + evt.getCoordinate().getX() + ", " + evt.getCoordinate().getX());
-            }
-
-        });
+        map.addDoubleClickListener(evt -> Window.alert("double click at " + evt.getCoordinate().getX() + ", " + evt.getCoordinate().getX()));
 
     }
 

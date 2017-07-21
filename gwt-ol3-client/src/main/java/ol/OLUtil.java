@@ -85,7 +85,10 @@ public final class OLUtil {
      * @param listener
      *            {@link ClickListener}
      * @return {@link HandlerRegistration}
+     * 
+     * @deprecated Use {@link Map#addClickListener(EventListener)} or {@link Map#addSingleClickListener(EventListener)}
      */
+    @Deprecated
     public static HandlerRegistration addClickListener(Map map, boolean singleClicksOnly,
             final ClickListener listener) {
         String type;
@@ -111,7 +114,10 @@ public final class OLUtil {
      * @param listener
      *            {@link DoubleClickListener}
      * @return {@link HandlerRegistration}
+     * 
+     * @deprecated Use {@link Map#addDoubleClickListener(EventListener)}
      */
+    @Deprecated
     public static HandlerRegistration addDoubleClickListener(Map map, final DoubleClickListener listener) {
         return observe(map, "dblclick", new EventListener<MapBrowserEvent>() {
 
@@ -130,7 +136,10 @@ public final class OLUtil {
      * @param listener
      *            {@link MapMoveListener}
      * @return {@link HandlerRegistration}
+     * 
+     * @deprecated Use {@link Map#addMapMoveListener(EventListener)}
      */
+    @Deprecated
     public static HandlerRegistration addMapMoveListener(final Map map, final MapMoveListener listener) {
         // listen to "moveend" events of map
         final HandlerRegistration handlerMap = observe(map, "moveend", new EventListener<MapEvent>() {
@@ -176,7 +185,10 @@ public final class OLUtil {
      * @param listener
      *            {@link MapZoomListener}
      * @return {@link HandlerRegistration}
+     * 
+     * @deprecated Use {@link Map#addMapZoomListener(EventListener)}
      */
+    @Deprecated
     public static HandlerRegistration addMapZoomListener(final Map map, final MapZoomListener listener) {
         return observe(map.getView(), "change:resolution", new EventListener<ObjectEvent>() {
 
@@ -197,7 +209,10 @@ public final class OLUtil {
      * @param listener
      *            {@link MapZoomListener}
      * @return {@link HandlerRegistration}
+     * 
+     * @deprecated Use {@link Map#addMapZoomEndListener(EventListener)}
      */
+    @Deprecated
     public static HandlerRegistration addMapZoomEndListener(final Map map, final MapZoomListener listener) {
         return observe(map, "moveend", new EventListener<ObjectEvent>() {
 
@@ -218,7 +233,6 @@ public final class OLUtil {
             }
         });
     }
-
 
     /**
      * Adds a {@link Style} to the given array of {@link Style}s.
