@@ -15,6 +15,9 @@
  *******************************************************************************/
 package ol;
 
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
+
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 
@@ -32,40 +35,24 @@ import ol.layer.Base;
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class MapOptions implements Options {
 
-    @JsProperty
-    public native double getPixelRatio();
-
-    @JsProperty
-    public native String getTarget();
-
-    @JsProperty
-    public native void setTarget(String target);
-
-    @JsProperty
-    public native void setLayers(Collection<Base> layers);
-
-    @JsProperty
-    public native View getView();
-
     /**
-     * Controls initially added to the map.
-     *
-     * @param controls controls
+     * @param controls Controls initially added to the map. If not specified, <code>ol.control.defaults()</code> is used.
      */
     @JsProperty
     public native void setControls(Collection<Control> controls);
 
-    /**
-     * Set the map's view. No layer sources will be fetched unless this is
-     * specified at construction time or through ol.Map#setView.
-     *
-     * @param view {@link View}
-     */
     @JsProperty
-    public native void setView(View view);
+    public native Collection<Control> getControls();
+
+	/**
+	 * @param pixelRatio The ratio between physical pixels and device-independent pixels (dips) on the device.
+	 * If <code>undefined</code> then it gets set by using <code>window.devicePixelRatio</code>.
+	 */
+    @JsProperty
+    public native void setPixelRatio(double pixelRatio);
 
     @JsProperty
-    public native void setInteractions(Interaction[] interactions);
+    public native double getPixelRatio();
 
 	/**
 	 * Interactions that are initially added to the map. If not specified,
@@ -75,6 +62,77 @@ public class MapOptions implements Options {
 	 */
 	@JsProperty
 	public native void setInteractions(Collection<Interaction> interactions);
+
+	@JsProperty
+	public native Collection<Interaction> getInteractions();
+
+    /**
+     * The element to listen to keyboard events on. This determines when the {@link ol.interaction.KeyboardPan} and {@link ol.interaction.KeyboardZoom} interactions trigger.
+     * For example, if this option is set to <code>document</code> the keyboard interactions will always trigger.
+     * If this option is not specified, the element the library listens to keyboard events on is the map target
+     * (i.e. the user-provided div for the map). If this is not <code>document</code> the target element needs to be focused for key events to be emitted,
+     * requiring that the target element has a <code>tabindex</code> attribute.
+     * 
+     * @param target The id of the element to listen keyboard events on.
+     */
+    @JsProperty
+    public native void setKeyboardEventTarget(String target);
+
+    /**
+     * The element to listen to keyboard events on. This determines when the {@link ol.interaction.KeyboardPan} and {@link ol.interaction.KeyboardZoom} interactions trigger.
+     * For example, if this option is set to <code>document</code> the keyboard interactions will always trigger.
+     * If this option is not specified, the element the library listens to keyboard events on is the map target
+     * (i.e. the user-provided div for the map). If this is not <code>document</code> the target element needs to be focused for key events to be emitted,
+     * requiring that the target element has a <code>tabindex</code> attribute.
+     * 
+     * @param target The element to listen keyboard events on.
+     */
+    @JsProperty
+    public native void setKeyboardEventTarget(Element target);
+
+    /**
+     * The element to listen to keyboard events on. This determines when the {@link ol.interaction.KeyboardPan} and {@link ol.interaction.KeyboardZoom} interactions trigger.
+     * For example, if this option is set to <code>document</code> the keyboard interactions will always trigger.
+     * If this option is not specified, the element the library listens to keyboard events on is the map target
+     * (i.e. the user-provided div for the map). If this is not <code>document</code> the target element needs to be focused for key events to be emitted,
+     * requiring that the target element has a <code>tabindex</code> attribute.
+     * 
+     * @param target The document to listen keyboard events on.
+     */
+    @JsProperty
+    public native void setKeyboardEventTarget(Document target);
+
+    /**
+     * Layers. If this is not defined, a map with no layers will be rendered. Note that layers are rendered in the order supplied,
+     * so if you want, for example, a vector layer to appear on top of a tile layer, it must come after the tile layer.
+     * 
+     * @param layers Layers.
+     */
+    @JsProperty
+    public native void setLayers(Collection<Base> layers);
+    
+    @JsProperty
+    public native Collection<Base> getLayers();
+    
+    /**
+     * @param loadTilesWhileAnimating When set to <code>true</code>, tiles will be loaded during animations.
+     * This may improve the user experience, but can also make animations stutter on devices with slow memory. Default is <code>false</code>.
+     */
+    @JsProperty
+    public native void setLoadTilesWhileAnimating(boolean loadTilesWhileAnimating);
+    
+    @JsProperty
+    public native boolean getLoadTilesWhileAnimating();
+
+    /**
+     * @param loadTilesWhileInteracting When set to <code>true</code>, tiles will be loaded while interacting with the map.
+     * This may improve the user experience, but can also make map panning and zooming choppy on devices with slow memory. Default is <code>false</code>.
+     */
+    @JsProperty
+    public native void setLoadTilesWhileInteracting(boolean loadTilesWhileInteracting);
+    
+    @JsProperty
+    public native boolean getLoadTilesWhileInteracting();
 
     /**
      * The map logo. A logo to be displayed on the map at all times.
@@ -94,5 +152,54 @@ public class MapOptions implements Options {
      */
     @JsProperty
     public native void setLogo(String value);
+
+    /**
+     * @param moveTolerance The minimum distance in pixels the cursor must move to be detected as a map move event instead of a click.
+     * Increasing this value can make it easier to click on the map. Default is <code>1</code>.
+     */
+    @JsProperty
+    public native void setMoveTolerance(int moveTolerance);
+
+    @JsProperty
+    public native int getMoveTolerance();
+
+    /**
+     * Overlays initially added to the map. By default, no overlays are added.
+     */
+    @JsProperty
+    public native void setOverlays(Collection<Overlay> overlays);
+
+    @JsProperty
+    public native Collection<Overlay> getOverlays();
+
+    /**
+     * Defines container element for the map.
+     * If not specified at construction time, {@link ol.Map#setTarget} must be called for the map to be rendered.
+     * 
+     * @param target The id of the container element for the map.
+     */
+    @JsProperty
+    public native void setTarget(String target);
+
+    /**
+     * Defines container element for the map.
+     * If not specified at construction time, {@link ol.Map#setTarget} must be called for the map to be rendered.
+     * 
+     * @param target The container element for the map.
+     */
+    @JsProperty
+    public native void setTarget(Element target);
+
+    @JsProperty
+    public native View getView();
+
+    /**
+     * Set the map's view. No layer sources will be fetched unless this is
+     * specified at construction time or through ol.Map#setView.
+     *
+     * @param view {@link View}
+     */
+    @JsProperty
+    public native void setView(View view);
 
 }
