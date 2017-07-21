@@ -448,7 +448,7 @@ public class Map extends Object {
 
         View view = getView();
         
-        if (view != null)
+        if (view == null)
         	return handlerMap;
 
     	// if we have a view, fire events while the map is moving
