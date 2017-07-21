@@ -49,10 +49,10 @@ public class MapOptions implements Options {
 	 * If <code>undefined</code> then it gets set by using <code>window.devicePixelRatio</code>.
 	 */
     @JsProperty
-    public native void setPixelRatio(Double pixelRatio);
+    public native void setPixelRatio(double pixelRatio);
 
     @JsProperty
-    public native Double getPixelRatio();
+    public native double getPixelRatio();
 
 	/**
 	 * Interactions that are initially added to the map. If not specified,
@@ -119,20 +119,20 @@ public class MapOptions implements Options {
      * This may improve the user experience, but can also make animations stutter on devices with slow memory. Default is <code>false</code>.
      */
     @JsProperty
-    public native void setLoadTilesWhileAnimating(Boolean loadTilesWhileAnimating);
+    public native void setLoadTilesWhileAnimating(boolean loadTilesWhileAnimating);
     
     @JsProperty
-    public native Boolean getLoadTilesWhileAnimating();
+    public native boolean getLoadTilesWhileAnimating();
 
     /**
      * @param loadTilesWhileInteracting When set to <code>true</code>, tiles will be loaded while interacting with the map.
      * This may improve the user experience, but can also make map panning and zooming choppy on devices with slow memory. Default is <code>false</code>.
      */
     @JsProperty
-    public native void setLoadTilesWhileInteracting(Boolean loadTilesWhileInteracting);
+    public native void setLoadTilesWhileInteracting(boolean loadTilesWhileInteracting);
     
     @JsProperty
-    public native Boolean getLoadTilesWhileInteracting();
+    public native boolean getLoadTilesWhileInteracting();
 
     /**
      * The map logo. A logo to be displayed on the map at all times.
