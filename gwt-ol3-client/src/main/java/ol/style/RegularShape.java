@@ -19,10 +19,55 @@ import jsinterop.annotations.JsType;
 
 /**
  * Set regular shape style for vector features.
+ *
+ * @see https://openlayers.org/en/latest/apidoc/ol.style.RegularShape.html
  * 
  * @author Tino Desjardins
  *
  */
 @JsType(isNative = true)
-public interface RegularShape extends Image {
+public class RegularShape implements Image {
+
+    /**
+     * Get the angle used in generating the shape.
+     *
+     * @return Shape's rotation in radians.
+     */
+    public native double getAngle();
+
+    /**
+     * Get the fill style for the shape.
+     *
+     * @return {@link Fill} style.
+     */
+    public native Fill getFill();
+
+    /**
+     * Get the number of points for generating the shape.
+     *
+     * @return Number of points for stars and regular polygons.
+     */
+    public native int getPoints();
+
+    /**
+     * Get the (primary) radius for the shape.
+     *
+     * @return Radius.
+     */
+    public native int getRadius();
+
+    /**
+     * Get the secondary radius for the shape.
+     *
+     * @return Radius2.
+     */
+    public native int getRadius2();
+
+    /**
+     * Get the stroke style for the shape.
+     *
+     * @return {@link Stroke} style.
+     */
+    public native Stroke getStroke();
+
 }
