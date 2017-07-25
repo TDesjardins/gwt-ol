@@ -62,6 +62,13 @@ public interface Stroke {
     int[] getLineDash();
 
     /**
+     * Get the line dash offset for the stroke.
+     *
+     * @return Line dash offset.
+     */
+    int getLineDashOffset();
+
+    /**
      * Get the line join type for the stroke.
      *
      * @return
@@ -98,6 +105,13 @@ public interface Stroke {
      * @param value
      */
     void setLineDash(int[] value);
+
+    /**
+     * Set the line dash offset.
+     *
+     * @param lineDashOffset Line dash offset.
+     */
+    void setLineDashOffset(int lineDashOffset);
 
     /**
      * Set the line join.

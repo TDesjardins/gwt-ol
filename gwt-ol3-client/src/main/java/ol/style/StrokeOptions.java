@@ -75,6 +75,14 @@ public class StrokeOptions implements Options {
     public native void setLineDash(int[] lineDash);
 
     /**
+     * Line dash offset. Default is <code>0</code>.
+     *
+     * @param lineDashOffset Offset.
+     */
+    @JsProperty
+    public native void setLineDashOffset(int lineDashOffset);
+
+    /**
      * Set the Miter limit. Default is 10.
      *
      * @param miterLimit
