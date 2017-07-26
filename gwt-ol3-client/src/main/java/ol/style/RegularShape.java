@@ -28,6 +28,10 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class RegularShape implements Image {
 
+    public RegularShape() {}
+    
+    public RegularShape(RegularShapeOptions regularShapeOptions) {}
+    
     /**
      * Get the angle used in generating the shape.
      *
