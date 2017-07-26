@@ -36,4 +36,10 @@ public interface Event extends ol.events.Event {
     @JsProperty
     JavaScriptObject getContext();
     
+    /**
+     * For canvas, this is an instance of {@link ol.render.canvas.Immediate}.
+     */
+    @JsProperty
+    VectorContext getVectorContext();
+    
 }
