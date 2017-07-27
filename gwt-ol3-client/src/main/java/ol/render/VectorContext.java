@@ -32,14 +32,14 @@ import ol.style.Style;
 * @see https://openlayers.org/en/latest/apidoc/ol.render.VectorContext.html
 */
 @JsType(isNative = true)
-public class VectorContext {
+public interface VectorContext {
 
 	/**
 	 * Render a circle geometry into the canvas. Rendering is immediate and uses the current fill and stroke styles.
 	 * 
 	 * @param circle Circle geometry.
 	 */
-	public native void drawCircle(Circle circle);
+	public void drawCircle(Circle circle);
 	
 	/**
 	 * Render a feature into the canvas. Note that any <code>zIndex</code> on the provided style will be ignored - features are rendered
@@ -48,27 +48,27 @@ public class VectorContext {
 	 * @param feature Feature.
 	 * @param style Style.
 	 */
-	public native void drawFeature(Feature feature, Style style);
+	public void drawFeature(Feature feature, Style style);
 
 	/**
 	 * Render a geometry into the canvas. Call {@link #setStyle} first to set the rendering style.
 	 * 
 	 * @param geometry The geometry to render.
 	 */
-	public native void drawGeometry(Geometry geometry);
+	public void drawGeometry(Geometry geometry);
 	
 	/**
 	 * Render a geometry into the canvas. Call {@link #setStyle} first to set the rendering style.
 	 * 
 	 * @param geometry The geometry to render.
 	 */
-	public native void drawGeometry(ol.render.Feature geometry);
+	public void drawGeometry(ol.render.Feature geometry);
 	
 	/**
 	 * Set the rendering style. Note that since this is an immediate rendering API, any <code>zIndex</code> on the provided style will be ignored.
 	 * 
 	 * @param style The rendering style.
 	 */
-	public native void setStyle(Style style);
+	public void setStyle(Style style);
 	
 }
