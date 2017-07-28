@@ -47,7 +47,7 @@ public class OLHandlerRegistration implements HandlerRegistration {
      * (non-Javadoc)
      * 
      * @see
-     * com.google.web.bindery.event.shared.HandlerRegistration#removeHandler()
+     * com.google.gwt.event.shared.HandlerRegistration#removeHandler()
      */
     @Override
     public void removeHandler() {
