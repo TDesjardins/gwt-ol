@@ -56,7 +56,7 @@ public class GeoJson extends JsonFeature {
 	public native Feature readFeature(java.lang.Object source, @Nullable Options readOptions);
 
 	public native Feature[] readFeatures(java.lang.Object source);
-
+	
 	/**
 	 * Read all features from a GeoJSON source. Works with both Feature and FeatureCollection sources.
 	 * @param source Document | Node | Object | string

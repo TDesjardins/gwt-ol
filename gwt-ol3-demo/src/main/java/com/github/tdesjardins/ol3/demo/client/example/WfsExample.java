@@ -34,7 +34,6 @@ import ol.format.GeoJson;
 import ol.format.Wfs;
 import ol.format.WfsWriteFeatureOptions;
 import ol.format.filter.IsLike;
-import ol.layer.Base;
 import ol.layer.VectorLayerOptions;
 import ol.source.Vector;
 

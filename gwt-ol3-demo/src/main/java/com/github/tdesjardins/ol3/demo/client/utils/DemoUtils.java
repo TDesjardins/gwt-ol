@@ -34,11 +34,11 @@ import ol.source.XyzOptions;
  *
  */
 public final class DemoUtils {
-
+    
     private DemoUtils() {
         throw new AssertionError();
     }
-
+    
     /**
      * Creates some default controls.
      * 
@@ -54,7 +54,7 @@ public final class DemoUtils {
         controls.push(OLFactory.createZoomToExtent());
 
     }
-
+    
     /**
      * Creates a test polygon geometry (triangle).
      * 
@@ -80,7 +80,7 @@ public final class DemoUtils {
     	return OLFactory.createPolygon(tranformedCoordinates);
 
     }
-
+    
     public static Base createOsmLayer() {
         XyzOptions osmSourceOptions = OLFactory.createOptions();
 
@@ -90,5 +90,5 @@ public final class DemoUtils {
 
         return new Tile(osmLayerOptions);
     }
-
+    
 }
