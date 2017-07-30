@@ -22,6 +22,11 @@ import ol.OLUtil;
 import ol.control.Control;
 import ol.control.MousePosition;
 import ol.geom.Polygon;
+import ol.layer.Base;
+import ol.layer.LayerOptions;
+import ol.layer.Tile;
+import ol.source.Osm;
+import ol.source.XyzOptions;
 
 /**
  * 
@@ -29,11 +34,11 @@ import ol.geom.Polygon;
  *
  */
 public final class DemoUtils {
-    
+
     private DemoUtils() {
         throw new AssertionError();
     }
-    
+
     /**
      * Creates some default controls.
      * 
@@ -49,7 +54,7 @@ public final class DemoUtils {
         controls.push(OLFactory.createZoomToExtent());
 
     }
-    
+
     /**
      * Creates a test polygon geometry (triangle).
      * 
@@ -75,5 +80,15 @@ public final class DemoUtils {
     	return OLFactory.createPolygon(tranformedCoordinates);
 
     }
-    
+
+    public static Base createOsmLayer() {
+        XyzOptions osmSourceOptions = OLFactory.createOptions();
+
+        Osm osmSource = new Osm(osmSourceOptions);
+        LayerOptions osmLayerOptions = OLFactory.createOptions();
+        osmLayerOptions.setSource(osmSource);
+
+        return new Tile(osmLayerOptions);
+    }
+
 }
