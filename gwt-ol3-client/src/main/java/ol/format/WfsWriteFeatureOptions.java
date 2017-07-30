@@ -19,6 +19,7 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.Options;
+import ol.format.filter.Filter;
 
 /**
  * The {@link WfsWriteFeatureOptions} class represents the options for
@@ -47,6 +48,15 @@ public class WfsWriteFeatureOptions implements Options {
      */
     @JsProperty
     public native void setFeatureTypes(String[] featureTypes);
+    
+    @JsProperty
+    public native void setFilter(Filter filter);
+    
+    @JsProperty
+    public native void setGeometryName(String geometryName);
+    
+    @JsProperty
+    public native void setOutputFormat(String outputFormat);
     
     /**
      * 
