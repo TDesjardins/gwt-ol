@@ -20,7 +20,7 @@ import ol.proj.Projection;
 import ol.Feature;
 import ol.Options;
 
-import com.google.gwt.xml.client.Node;
+import elemental2.dom.Node;
 
 import javax.annotation.Nullable;
 

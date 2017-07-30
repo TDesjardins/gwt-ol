@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.format;
 
-import com.google.gwt.xml.client.Node;
+import elemental2.dom.Node;
 
 import ol.GwtOL3BaseTestCase;
 
