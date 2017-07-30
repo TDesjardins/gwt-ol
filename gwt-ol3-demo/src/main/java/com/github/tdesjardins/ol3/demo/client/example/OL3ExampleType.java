@@ -39,6 +39,7 @@ public enum OL3ExampleType {
     SelectFeatureExample(new SelectFeaturesExample()),
     TileExample(new TileExample()),
     TileWmsExample(new TileWmsExample()),
+    WfsExample(new WfsExample()),
     WmsExample(new WmsExample()),
     WmtsExample(new WmtsExample()),
     XyzExample(new XyzExample());
