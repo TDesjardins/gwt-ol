@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package com.github.tdesjardins.ol3.demo.client.example;
 
 import com.github.tdesjardins.ol3.demo.client.constants.DemoConstants;
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 
 import ol.Coordinate;
@@ -97,6 +98,10 @@ public class MapEventsExample implements Example {
         // add event handlers
         map.addDoubleClickListener(evt -> Window.alert("double click at " + evt.getCoordinate().getX() + ", " + evt.getCoordinate().getX()));
 
+        map.addMapZoomListener(evt -> GWT.log("onZoom"));
+        
+        map.addMapZoomEndListener(evt -> GWT.log("onMapZoomEnd"));
+        
     }
 
 }
