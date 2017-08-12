@@ -49,8 +49,8 @@ public class FeatureTest extends GwtOL3BaseTestCase {
                 
                 feature.setStyle(new Style());
                 
-                feature.setStyle(new GenericFunction<Feature, Style[]>() {
-                    public Style[] call(Feature object) {
+                feature.setStyle(new GenericFunction<Double, Style[]>() {
+                    public Style[] call(Double resolution) {
                         return null;
                     }
                 });

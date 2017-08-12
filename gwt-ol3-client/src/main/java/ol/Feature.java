@@ -144,12 +144,12 @@ public class Feature extends Object {
     public native void setStyle(Style style);
     
     /**
-     * Function that takes a feature and returns an
+     * Function that takes a resolution and returns an
      * array of styles. If it is `null` the feature has no style (a `null`
      * style).
      * 
      * @param styleFunction
      */
-    public native void setStyle(GenericFunction<Feature, Style[]> styleFunction);
+    public native void setStyle(GenericFunction<Double, Style[]> styleFunction);
 
 }
