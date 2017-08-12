@@ -27,6 +27,7 @@ import ol.events.Event;
  * @param <E>
  *            event type
  */
+@FunctionalInterface
 @JsFunction
 public interface EventListener<E extends Event> {
 

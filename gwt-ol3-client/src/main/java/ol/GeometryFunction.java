@@ -23,6 +23,7 @@ import ol.geom.Geometry;
  * 
  * @author elena guandalini
  */
+@FunctionalInterface
 @JsFunction
 public interface GeometryFunction<R extends Geometry, C, G extends Geometry> {
 

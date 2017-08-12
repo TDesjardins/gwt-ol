@@ -20,6 +20,7 @@ import jsinterop.annotations.JsFunction;
 /**
  * @author gkresic
  */
+@FunctionalInterface
 @JsFunction
 public interface DragBoxEndConditionFunction {
     boolean call(MapBrowserEvent event, Pixel pixel1, Pixel pixel2);

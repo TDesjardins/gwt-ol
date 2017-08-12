@@ -26,8 +26,8 @@ import ol.proj.Projection;
  * 
  * @author Peter Zanetti
  */
-@JsFunction
 @FunctionalInterface
+@JsFunction
 public interface TileUrlFunction {
 
 	String getUrl(TileCoord tileCoord, double pixelRatio, Projection projection);

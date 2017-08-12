@@ -21,6 +21,7 @@ import jsinterop.annotations.JsFunction;
  * @author mribeiro
  *
  */
+@FunctionalInterface
 @JsFunction
 public interface GenericFunction<T, E> {
     E call(T object);

@@ -22,6 +22,7 @@ import ol.layer.Layer;
  * @author mribeiro
  *         25-11-2016.
  */
+@FunctionalInterface
 @JsFunction
 public interface SelectFilterFunction {
     boolean call(Feature feature, Layer layer);

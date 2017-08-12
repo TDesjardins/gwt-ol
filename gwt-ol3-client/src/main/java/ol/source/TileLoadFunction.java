@@ -25,8 +25,8 @@ import ol.ImageTile;
  * 
  * @author Peter Zanetti
  */
-@JsFunction
 @FunctionalInterface
+@JsFunction
 public interface TileLoadFunction {
 
 	void loadTile(ImageTile imageTile, String src);

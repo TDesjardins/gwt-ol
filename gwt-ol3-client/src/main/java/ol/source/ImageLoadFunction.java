@@ -24,8 +24,8 @@ import ol.Image;
  * 
  * @author Peter Zanetti
  */
-@JsFunction
 @FunctionalInterface
+@JsFunction
 public interface ImageLoadFunction {
 
     public void loadImage(Image image, String src);
