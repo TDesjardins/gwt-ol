@@ -64,7 +64,7 @@ public class GeoJsonExample implements Example {
         LineString lineString = new LineString(coordinates);
 
         // create feature
-        FeatureOptions featureOptions = OLFactory.createOptions();
+        FeatureOptions featureOptions = new FeatureOptions();
         featureOptions.setGeometry(lineString);
         Feature feature = new Feature(featureOptions);
 
@@ -79,19 +79,19 @@ public class GeoJsonExample implements Example {
         Collection<Feature> lstFeatures = new Collection<Feature>();
         lstFeatures.push(featureGeoJson);
 
-        VectorOptions vectorSourceOptions = OLFactory.createOptions();
+        VectorOptions vectorSourceOptions = new VectorOptions();
         vectorSourceOptions.setFeatures(lstFeatures);
         Vector vectorSource = new Vector(vectorSourceOptions);
 
-        VectorLayerOptions vectorLayerOptions = OLFactory.createOptions();
+        VectorLayerOptions vectorLayerOptions = new VectorLayerOptions();
         vectorLayerOptions.setSource(vectorSource);
         ol.layer.Vector vectorLayer = new ol.layer.Vector(vectorLayerOptions);
 
         // create a OSM-layer
-        XyzOptions osmSourceOptions = OLFactory.createOptions();
+        XyzOptions osmSourceOptions = new XyzOptions();
         Osm osmSource = new Osm(osmSourceOptions);
 
-        LayerOptions osmLayerOptions = OLFactory.createOptions();
+        LayerOptions osmLayerOptions = new LayerOptions();
         osmLayerOptions.setSource(osmSource);
 
         Tile osmLayer = new Tile(osmLayerOptions);
