@@ -142,9 +142,9 @@ public class Coordinate extends JavaScriptObject {
 	}
 
     /**
-     * Gets the Y-coordinate (latitude).
+     * Gets the Z-coordinate  (height).
      *
-     * @return Y-coordinate (latitude)
+     * @return Z-coordinate  (height)
      */
     public final double getZ() {
         if (this.getDimension() > 2) {
