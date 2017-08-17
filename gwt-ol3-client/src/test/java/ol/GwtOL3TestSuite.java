@@ -73,6 +73,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
 
         suite.addTestSuite(AttributionTest.class);
         suite.addTestSuite(CollectionTest.class);
+        suite.addTestSuite(CoordinateTest.class);
         suite.addTestSuite(FeatureTest.class);
         suite.addTestSuite(GraticuleTest.class);
         suite.addTestSuite(MapTest.class);

@@ -142,13 +142,25 @@ public class Coordinate extends JavaScriptObject {
 	}
 
     /**
-     * Gets the Z-coordinate  (height).
+     * Gets the Z-coordinate (height).
      *
-     * @return Z-coordinate  (height)
+     * @return Z-coordinate (height)
      */
     public final double getZ() {
         if (this.getDimension() > 2) {
             return this.get(2);
+        }
+        return Double.NaN;
+    }
+    
+    /**
+     * Sets the Z-coordinate (height).
+     *
+     * @param z Z-coordinate (height)
+     */
+    public final double setZ(double z) {
+        if (this.getDimension() > 1) {
+            return this.set(2, z);
         }
         return Double.NaN;
     }
