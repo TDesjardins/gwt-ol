@@ -28,18 +28,13 @@ public class TileTest extends GwtOL3BaseTestCase {
     @SuppressWarnings({ "static-method", "javadoc" })
     public void testTileLayer() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
 
-            @Override
-            public void test() {
-
-                TileLayerOptions tileLayerOptions = new TileLayerOptions();
-                assertNotNull(tileLayerOptions);
-                Tile tile = new Tile(tileLayerOptions);
-                assertTrue(tile instanceof Base);
-                assertTrue(tile instanceof Tile);
-
-            }
+            TileLayerOptions tileLayerOptions = new TileLayerOptions();
+            assertNotNull(tileLayerOptions);
+            Tile tile = new Tile(tileLayerOptions);
+            assertTrue(tile instanceof Base);
+            assertTrue(tile instanceof Tile);
 
         });
 

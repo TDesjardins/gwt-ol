@@ -27,19 +27,14 @@ public class TranslateTest extends GwtOL3BaseTestCase {
 
     public void testTranslate() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
             
-            @Override
-            public void test() {
-                
-                TranslateOptions translateOptions = new TranslateOptions();
-                Translate translate = new Translate(translateOptions);
-                
-                assertNotNull(translate);
-                assertTrue(translate instanceof Observable);
-                assertTrue(translate instanceof Interaction);
-            }
+            TranslateOptions translateOptions = new TranslateOptions();
+            Translate translate = new Translate(translateOptions);
             
+            assertNotNull(translate);
+            assertTrue(translate instanceof Observable);
+            assertTrue(translate instanceof Interaction);
         });
  
     }

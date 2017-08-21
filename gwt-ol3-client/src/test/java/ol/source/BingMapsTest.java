@@ -26,20 +26,15 @@ public class BingMapsTest extends GwtOL3BaseTestCase {
 
     public void testBingMaps() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
 
-            @Override
-            public void test() {
+        	BingMapsOptions options = new BingMapsOptions();
+            assertNotNull(options);
+            options.setImagerySet("Aerial");
 
-            	BingMapsOptions options = new BingMapsOptions();
-                assertNotNull(options);
-                options.setImagerySet("Aerial");
+            BingMaps source = new BingMaps(options);
 
-                BingMaps source = new BingMaps(options);
-
-                assertEquals("Aerial", source.getImagerySet());
-
-            }
+            assertEquals("Aerial", source.getImagerySet());
 
         });
 

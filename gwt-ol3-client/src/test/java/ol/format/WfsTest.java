@@ -31,32 +31,21 @@ public class WfsTest extends GwtOL3BaseTestCase {
 
 	@Override
 	protected void gwtSetUp() throws Exception {
-	    injectUrlAndTest(new TestWithInjection() {
-
-            @Override
-            public void test() {
-                wfsFormat = new Wfs();
-            }	        
-	    });
+	    injectUrlAndTest(() -> wfsFormat = new Wfs());
 	}
     
     public void testWriteGetFeature() {        
-        injectUrlAndTest(new TestWithInjection() {
-
-            @Override
-            public void test() {
-                assertNotNull(wfsFormat);
-                
-                WfsWriteFeatureOptions wfsWriteFeatureOptions = new WfsWriteFeatureOptions();
-                wfsWriteFeatureOptions.setFeatureNS("http://openstreemap.org");
-                wfsWriteFeatureOptions.setFeaturePrefix("osm");
-                wfsWriteFeatureOptions.setFeatureTypes(new String[] {"water_areas"});
-                
-                Node node = wfsFormat.writeGetFeature(wfsWriteFeatureOptions);
-                
-                assertNotNull(node);
-            }
+        injectUrlAndTest(() -> {
+            assertNotNull(wfsFormat);
             
+            WfsWriteFeatureOptions wfsWriteFeatureOptions = new WfsWriteFeatureOptions();
+            wfsWriteFeatureOptions.setFeatureNS("http://openstreemap.org");
+            wfsWriteFeatureOptions.setFeaturePrefix("osm");
+            wfsWriteFeatureOptions.setFeatureTypes(new String[] {"water_areas"});
+            
+            Node node = wfsFormat.writeGetFeature(wfsWriteFeatureOptions);
+            
+            assertNotNull(node);
         });
     }
     

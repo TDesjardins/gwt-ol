@@ -30,24 +30,14 @@ public class OsmXmlTest extends GwtOL3BaseTestCase {
 	
 	@Override
 	protected void gwtSetUp() throws Exception {
-	    injectUrlAndTest(new TestWithInjection() {
-
-            @Override
-            public void test() {
-                osmXmlFormat = new OsmXml();
-            }	        
-	    });
+	    injectUrlAndTest(() -> osmXmlFormat = new OsmXml());
 	}
     
     public void testReadFeatureCollectionFromOsmXml() {        
-        injectUrlAndTest(new TestWithInjection() {
-
-            @Override
-            public void test() {
-                Feature[] features = osmXmlFormat.readFeatures(osmXmlString, null);
-                assertNotNull(features);
-                assertTrue(features.length > 0);
-            }
+        injectUrlAndTest(() -> {
+            Feature[] features = osmXmlFormat.readFeatures(osmXmlString, null);
+            assertNotNull(features);
+            assertTrue(features.length > 0);
         });
     }
 }

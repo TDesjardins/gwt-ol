@@ -24,19 +24,14 @@ public class AttributionTest extends GwtOL3BaseTestCase {
 
     public void testAttribution() {
 
-        injectUrlAndTest(new TestWithInjection() {
-            
-            @Override
-            public void test() {
-                
-                AttributionOptions attributionOptions = new AttributionOptions();
-                assertNotNull(attributionOptions);
-                
-                Attribution attribution = new Attribution(attributionOptions);
-                assertNotNull(attribution);
-                
-            }
-            
+        injectUrlAndTest(() -> {
+
+            AttributionOptions attributionOptions = new AttributionOptions();
+            assertNotNull(attributionOptions);
+
+            Attribution attribution = new Attribution(attributionOptions);
+            assertNotNull(attribution);
+
         });
 
     }

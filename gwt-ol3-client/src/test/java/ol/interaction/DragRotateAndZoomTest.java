@@ -28,18 +28,13 @@ public class DragRotateAndZoomTest extends GwtOL3BaseTestCase {
     public void testDragRotateAndZoom() {
 
         
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            DragRotateAndZoom dragRotateAndZoom = new DragRotateAndZoom();
             
-            @Override
-            public void test() {
-                DragRotateAndZoom dragRotateAndZoom = new DragRotateAndZoom();
-                
-                assertNotNull(dragRotateAndZoom);
-                assertTrue(dragRotateAndZoom instanceof Observable);
-                assertTrue(dragRotateAndZoom instanceof Interaction);
-                assertTrue(dragRotateAndZoom instanceof Pointer);
-            }
-            
+            assertNotNull(dragRotateAndZoom);
+            assertTrue(dragRotateAndZoom instanceof Observable);
+            assertTrue(dragRotateAndZoom instanceof Interaction);
+            assertTrue(dragRotateAndZoom instanceof Pointer);
         });
 
     }

@@ -27,17 +27,12 @@ public class MouseWheelZoomTest extends GwtOL3BaseTestCase {
 
     public void testMouseWheelZoom() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            MouseWheelZoom mouseWheelZoom = new MouseWheelZoom();
             
-            @Override
-            public void test() {
-                MouseWheelZoom mouseWheelZoom = new MouseWheelZoom();
-                
-                assertNotNull(mouseWheelZoom);
-                assertTrue(mouseWheelZoom instanceof Observable);
-                assertTrue(mouseWheelZoom instanceof Interaction);
-            }
-            
+            assertNotNull(mouseWheelZoom);
+            assertTrue(mouseWheelZoom instanceof Observable);
+            assertTrue(mouseWheelZoom instanceof Interaction);
         });
  
     }

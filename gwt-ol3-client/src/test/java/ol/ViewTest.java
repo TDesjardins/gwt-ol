@@ -30,34 +30,29 @@ public class ViewTest extends GwtOL3BaseTestCase {
 
     public void testView() {
         
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
             
-            @Override
-            public void test() {
-                
-                ProjectionOptions projectionOptions = new ProjectionOptions();
-                projectionOptions.setCode("EPSG:21781");
-                projectionOptions.setUnits("m");
-                
-                assertNotNull(projectionOptions);
-                
-                Projection projection = new Projection(projectionOptions);
-                
-                assertNotNull(projection);
-                
-                ViewOptions viewOptions = new ViewOptions();
-                viewOptions.setProjection(projection);
-                View view = new View(viewOptions);
+            ProjectionOptions projectionOptions = new ProjectionOptions();
+            projectionOptions.setCode("EPSG:21781");
+            projectionOptions.setUnits("m");
+            
+            assertNotNull(projectionOptions);
+            
+            Projection projection = new Projection(projectionOptions);
+            
+            assertNotNull(projection);
+            
+            ViewOptions viewOptions = new ViewOptions();
+            viewOptions.setProjection(projection);
+            View view = new View(viewOptions);
 
-                Coordinate centerCoordinate = OLFactory.createCoordinate(660000, 190000);
-                
-                view.setCenter(centerCoordinate);
-                view.setZoom(9);
-                
-                assertNotNull(view);
-                assertTrue(view instanceof Object);
-                
-            }
+            Coordinate centerCoordinate = OLFactory.createCoordinate(660000, 190000);
+            
+            view.setCenter(centerCoordinate);
+            view.setZoom(9);
+            
+            assertNotNull(view);
+            assertTrue(view instanceof Object);
             
         });
         

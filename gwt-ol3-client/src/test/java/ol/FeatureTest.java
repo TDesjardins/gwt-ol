@@ -18,7 +18,7 @@ package ol;
 import ol.style.Style;
 
 /**
- * Test for {@link Feature}.
+ * Test for {@link ol.Feature}.
  *
  * @author Tino Desjardins
  *
@@ -27,36 +27,29 @@ public class FeatureTest extends GwtOL3BaseTestCase {
 
     private static final String FEATURE_ID = "#1";
     private static final String GEOMETRY_NAME = "geometry";
-    
+
     public void testFeature() {
 
-        injectUrlAndTest(new TestWithInjection() {
-            
-            @Override
-            public void test() {
-                
-                Feature feature = new Feature();
-                
-                assertNotNull(feature);
-                assertTrue(feature instanceof Object);
-                assertTrue(feature instanceof Observable);
-                
-                feature.setId(FEATURE_ID);
-                assertEquals(FEATURE_ID, feature.getId());
-                
-                feature.setGeometryName(GEOMETRY_NAME);
-                assertEquals(GEOMETRY_NAME, feature.getGeometryName());
-                
-                feature.setStyle(new Style());
-                
-                feature.setStyle(new GenericFunction<Double, Style[]>() {
-                    public Style[] call(Double resolution) {
-                        return null;
-                    }
-                });
+        injectUrlAndTest(() -> {
 
-            }
-            
+            Feature feature = new Feature();
+
+            assertNotNull(feature);
+            assertTrue(feature instanceof Object);
+            assertTrue(feature instanceof Observable);
+
+            feature.setId(FEATURE_ID);
+            assertEquals(FEATURE_ID, feature.getId());
+
+            feature.setGeometryName(GEOMETRY_NAME);
+            assertEquals(GEOMETRY_NAME, feature.getGeometryName());
+
+            feature.setStyle(new Style());
+
+            feature.setStyle((Double resolution) -> {
+                return null;
+            });
+
         });
 
     }

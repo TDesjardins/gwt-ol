@@ -29,16 +29,18 @@ public class ModifyTest extends GwtOL3BaseTestCase {
 
     public void testModify() {
 
-        ModifyOptions modifyOptions = new ModifyOptions();
-        Collection<Feature> features = new Collection<Feature>();
+        injectUrlAndTest(() -> {
 
-        modifyOptions.setFeatures(features);
-        Modify modify = new Modify(modifyOptions);
-        
-        assertNotNull(modify);
-        assertTrue(modify instanceof Observable);
-        assertTrue(modify instanceof Interaction);
-        
+            ModifyOptions modifyOptions = new ModifyOptions();
+            Collection<Feature> features = new Collection<Feature>();
+
+            modifyOptions.setFeatures(features);
+            Modify modify = new Modify(modifyOptions);
+
+            assertNotNull(modify);
+            assertTrue(modify instanceof Observable);
+            assertTrue(modify instanceof Interaction);
+        });
     }
 
 }

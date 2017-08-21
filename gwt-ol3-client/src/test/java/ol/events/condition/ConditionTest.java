@@ -29,33 +29,28 @@ public class ConditionTest extends GwtOL3BaseTestCase {
 
     public void testConditions() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
             
-            @Override
-            public void test() {
-                
-                assertNotNull(Condition.getAltKeyOnly());
-                assertNotNull(Condition.getAltShiftKeysOnly());
-                assertNotNull(Condition.getAlways());
-                assertNotNull(Condition.getClick());
-                assertNotNull(Condition.getDoubleClick());
-                assertNotNull(Condition.getMouseOnly());
-                assertNotNull(Condition.getNever());
-                assertNotNull(Condition.getNoModifierKeys());
-                assertNotNull(Condition.getPlatformModifierKeyOnly());
-                assertNotNull(Condition.getPointerMove());
-                assertNotNull(Condition.getPrimaryAction());
-                assertNotNull(Condition.getShiftKeyOnly());
-                assertNotNull(Condition.getSingleClick());
-                assertNotNull(Condition.getTargetNotEditable());
-                
-                GenericFunction<MapBrowserEvent, Boolean> alwaysFunction = Condition.getAlways();
-                assertTrue(alwaysFunction.call(null));
-                
-                GenericFunction<MapBrowserEvent, Boolean> neverFunction = Condition.getNever();
-                assertFalse(neverFunction.call(null));
-                
-            }
+            assertNotNull(Condition.getAltKeyOnly());
+            assertNotNull(Condition.getAltShiftKeysOnly());
+            assertNotNull(Condition.getAlways());
+            assertNotNull(Condition.getClick());
+            assertNotNull(Condition.getDoubleClick());
+            assertNotNull(Condition.getMouseOnly());
+            assertNotNull(Condition.getNever());
+            assertNotNull(Condition.getNoModifierKeys());
+            assertNotNull(Condition.getPlatformModifierKeyOnly());
+            assertNotNull(Condition.getPointerMove());
+            assertNotNull(Condition.getPrimaryAction());
+            assertNotNull(Condition.getShiftKeyOnly());
+            assertNotNull(Condition.getSingleClick());
+            assertNotNull(Condition.getTargetNotEditable());
+            
+            GenericFunction<MapBrowserEvent, Boolean> alwaysFunction = Condition.getAlways();
+            assertTrue(alwaysFunction.call(null));
+            
+            GenericFunction<MapBrowserEvent, Boolean> neverFunction = Condition.getNever();
+            assertFalse(neverFunction.call(null));
             
         });
 

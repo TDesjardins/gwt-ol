@@ -26,18 +26,13 @@ public class VectorTileTest extends GwtOL3BaseTestCase {
 
     public void testVectorTile() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
 
-            @Override
-            public void test() {
+        	VectorTileOptions options = new VectorTileOptions();
+            assertNotNull(options);
 
-            	VectorTileOptions options = new VectorTileOptions();
-                assertNotNull(options);
-
-                VectorTile source = new VectorTile(options);
-                assertNotNull(source);
-
-            }
+            VectorTile source = new VectorTile(options);
+            assertNotNull(source);
 
         });
 

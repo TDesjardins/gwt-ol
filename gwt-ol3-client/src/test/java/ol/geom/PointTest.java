@@ -28,21 +28,15 @@ public class PointTest extends GwtOL3BaseTestCase {
 
     public void testPoint() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            Point point = OLFactory.createPoint(1, 2);
+            assertNotNull(point);
+            assertTrue(point instanceof Geometry);
 
-
-            @Override
-            public void test() {
-                Point point = OLFactory.createPoint(1, 2);
-                assertNotNull(point);
-                assertTrue(point instanceof Geometry);
-
-                Coordinate coordinate = point.getCoordinates();
-                assertNotNull(coordinate);
-                assert(1 == coordinate.getX());
-                assert(2 == coordinate.getY());
-            }
-
+            Coordinate coordinate = point.getCoordinates();
+            assertNotNull(coordinate);
+            assert(1 == coordinate.getX());
+            assert(2 == coordinate.getY());
         });
 
     }

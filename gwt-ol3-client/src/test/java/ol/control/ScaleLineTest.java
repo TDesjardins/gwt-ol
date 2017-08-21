@@ -27,16 +27,12 @@ public class ScaleLineTest extends GwtOL3BaseTestCase {
 
     public void testScaleLine() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            ScaleLine scaleLine = new ScaleLine();
             
-            @Override
-            public void test() {
-                ScaleLine scaleLine = new ScaleLine();
-                
-                assertNotNull(scaleLine);
-                assertTrue(scaleLine instanceof Object);
-                assertTrue(scaleLine instanceof Control);
-            }
+            assertNotNull(scaleLine);
+            assertTrue(scaleLine instanceof Object);
+            assertTrue(scaleLine instanceof Control);
         });
         
     }

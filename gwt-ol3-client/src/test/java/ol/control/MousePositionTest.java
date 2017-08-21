@@ -30,47 +30,39 @@ public class MousePositionTest extends GwtOL3BaseTestCase {
 
     public void testMousePosition() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            MousePosition mousePosition = new MousePosition();
             
-            @Override
-            public void test() {
-                MousePosition mousePosition = new MousePosition();
-                
-                assertNotNull(mousePosition);
-                assertTrue(mousePosition instanceof Object);
-                assertTrue(mousePosition instanceof Control);
-            }
+            assertNotNull(mousePosition);
+            assertTrue(mousePosition instanceof Object);
+            assertTrue(mousePosition instanceof Control);
         });
   
     }
     
 	public void testMousePositionWithOptions() {
 
-		injectUrlAndTest(new TestWithInjection() {
+		injectUrlAndTest(() -> {
 
-			@Override
-			public void test() {
+        	Projection projection = Projection.get("EPSG:4326");
+        	String undefinedHtml = "no coordinates";
 
-				Projection projection = Projection.get("EPSG:4326");
-				String undefinedHtml = "no coordinates";
+        	MousePositionOptions mousePositionOptions = OLFactory
+        			.createOptions();
+        	mousePositionOptions.setCoordinateFormat(Coordinate
+        			.createStringXY(5));
+        	mousePositionOptions.setProjection(projection);
+        	mousePositionOptions.setUndefinedHTML(undefinedHtml);
 
-				MousePositionOptions mousePositionOptions = OLFactory
-						.createOptions();
-				mousePositionOptions.setCoordinateFormat(Coordinate
-						.createStringXY(5));
-				mousePositionOptions.setProjection(projection);
-				mousePositionOptions.setUndefinedHTML(undefinedHtml);
+        	MousePosition mousePosition = new MousePosition(mousePositionOptions);
 
-				MousePosition mousePosition = new MousePosition(mousePositionOptions);
+        	assertNotNull(mousePosition);
+        	assertTrue(mousePosition instanceof Object);
+        	assertTrue(mousePosition instanceof Control);
 
-				assertNotNull(mousePosition);
-				assertTrue(mousePosition instanceof Object);
-				assertTrue(mousePosition instanceof Control);
-
-				assertNotNull(mousePosition.getProjection());
-				assertEquals(projection, mousePosition.getProjection());
-			}
-		});
+        	assertNotNull(mousePosition.getProjection());
+        	assertEquals(projection, mousePosition.getProjection());
+        });
 
 	}
 

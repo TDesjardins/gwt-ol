@@ -28,18 +28,13 @@ public class VectorTest extends GwtOL3BaseTestCase {
     @SuppressWarnings({ "static-method", "javadoc" })
     public void testVectorLayer() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
 
-            @Override
-            public void test() {
-
-                VectorLayerOptions vectorLayerOptions = new VectorLayerOptions();
-                assertNotNull(vectorLayerOptions);
-                Vector tile = new Vector(vectorLayerOptions);
-                assertTrue(tile instanceof Base);
-                assertTrue(tile instanceof Vector);
-
-            }
+            VectorLayerOptions vectorLayerOptions = new VectorLayerOptions();
+            assertNotNull(vectorLayerOptions);
+            Vector tile = new Vector(vectorLayerOptions);
+            assertTrue(tile instanceof Base);
+            assertTrue(tile instanceof Vector);
 
         });
 

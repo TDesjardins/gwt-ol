@@ -27,19 +27,14 @@ public class SelectTest extends GwtOL3BaseTestCase {
 
     public void testSelect() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
             
-            @Override
-            public void test() {
-                
-                SelectOptions selectOptions = new SelectOptions();
-                Select select = new Select(selectOptions);
-                
-                assertNotNull(select);
-                assertTrue(select instanceof Observable);
-                assertTrue(select instanceof Interaction);
-            }
+            SelectOptions selectOptions = new SelectOptions();
+            Select select = new Select(selectOptions);
             
+            assertNotNull(select);
+            assertTrue(select instanceof Observable);
+            assertTrue(select instanceof Interaction);
         });
  
     }

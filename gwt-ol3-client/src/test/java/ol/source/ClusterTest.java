@@ -26,24 +26,19 @@ public class ClusterTest extends GwtOL3BaseTestCase {
 
     public void testCluster() {
 
-        injectUrlAndTest(new TestWithInjection() {
-
-            @Override
-            public void test() {
-                
-                ClusterOptions clusterOptions = new ClusterOptions();
-                assertNotNull(clusterOptions);
-                
-                clusterOptions.setDistance(10);
-                assertEquals(10, clusterOptions.getDistance());
-                
-                Vector vectorSource = new Vector();
-                clusterOptions.setSource(vectorSource);
-                
-                Cluster cluster = new Cluster(clusterOptions);
-                assertNotNull(cluster);
-
-            }
+        injectUrlAndTest(() -> {
+            
+            ClusterOptions clusterOptions = new ClusterOptions();
+            assertNotNull(clusterOptions);
+            
+            clusterOptions.setDistance(10);
+            assertEquals(10, clusterOptions.getDistance());
+            
+            Vector vectorSource = new Vector();
+            clusterOptions.setSource(vectorSource);
+            
+            Cluster cluster = new Cluster(clusterOptions);
+            assertNotNull(cluster);
 
         });
 

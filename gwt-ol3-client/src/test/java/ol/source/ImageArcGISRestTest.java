@@ -27,29 +27,24 @@ public class ImageArcGISRestTest extends GwtOL3BaseTestCase {
     @SuppressWarnings({ "static-method", "javadoc" })
     public void testImageArcGISRest() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
 
-            @Override
-            public void test() {
+            ImageArcGisRestParams params = new ImageArcGisRestParams();
+            params.showLayers("1");
+            assertEquals("show:1", params.getLayers());
 
-                ImageArcGisRestParams params = new ImageArcGisRestParams();
-                params.showLayers("1");
-                assertEquals("show:1", params.getLayers());
+            ImageArcGisRestOptions options = new ImageArcGisRestOptions();
+            options.setUrl(
+                    "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StateCityHighway_USA/MapServer");
+            options.setParams(params);
+            options.setRatio(1.5f);
 
-                ImageArcGisRestOptions options = new ImageArcGisRestOptions();
-                options.setUrl(
-                        "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StateCityHighway_USA/MapServer");
-                options.setParams(params);
-                options.setRatio(1.5f);
+            assertEquals(1.5f, options.getRatio());
+            assertNotNull(options.getParams());
+            assertEquals("show:1", options.getParams().getLayers());
 
-                assertEquals(1.5f, options.getRatio());
-                assertNotNull(options.getParams());
-                assertEquals("show:1", options.getParams().getLayers());
-
-                ImageArcGisRest source = new ImageArcGisRest(options);
-                assertNotNull(source.getImageLoadFunction());
-            }
-
+            ImageArcGisRest source = new ImageArcGisRest(options);
+            assertNotNull(source.getImageLoadFunction());
         });
 
     }

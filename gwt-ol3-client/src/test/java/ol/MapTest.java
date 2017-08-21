@@ -31,36 +31,31 @@ public class MapTest extends GwtOL3BaseTestCase {
 
     public void testMapCreation() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
 
-            @Override
-            public void test() {
+            ProjectionOptions projectionOptions = new ProjectionOptions();
+            projectionOptions.setCode("EPSG:21781");
+            projectionOptions.setUnits("m");
 
-                ProjectionOptions projectionOptions = new ProjectionOptions();
-                projectionOptions.setCode("EPSG:21781");
-                projectionOptions.setUnits("m");
+            Projection projection = new Projection(projectionOptions);
 
-                Projection projection = new Projection(projectionOptions);
+            ViewOptions viewOptions = new ViewOptions();
+            viewOptions.setProjection(projection);
+            View view = new View(viewOptions);
 
-                ViewOptions viewOptions = new ViewOptions();
-                viewOptions.setProjection(projection);
-                View view = new View(viewOptions);
+            Coordinate centerCoordinate = OLFactory.createCoordinate(660000, 190000);
 
-                Coordinate centerCoordinate = OLFactory.createCoordinate(660000, 190000);
+            view.setCenter(centerCoordinate);
+            view.setZoom(9);
 
-                view.setCenter(centerCoordinate);
-                view.setZoom(9);
+            final MapOptions mapOptions = new MapOptions();
+            mapOptions.setTarget("map");
+            mapOptions.setView(view);
+            mapOptions.setLoadTilesWhileAnimating(true);
+            mapOptions.setLoadTilesWhileInteracting(true);
 
-                final MapOptions mapOptions = new MapOptions();
-                mapOptions.setTarget("map");
-                mapOptions.setView(view);
-                mapOptions.setLoadTilesWhileAnimating(true);
-                mapOptions.setLoadTilesWhileInteracting(true);
-
-                Map map = new Map(mapOptions);
-                assertNotNull(map);
-
-            }
+            Map map = new Map(mapOptions);
+            assertNotNull(map);
 
         });
 

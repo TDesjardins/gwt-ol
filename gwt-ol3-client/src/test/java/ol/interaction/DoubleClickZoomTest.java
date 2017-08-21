@@ -28,17 +28,12 @@ public class DoubleClickZoomTest extends GwtOL3BaseTestCase {
     public void testDoubleClickZoom() {
 
         
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            DoubleClickZoom doubleClickZoom = new DoubleClickZoom();
             
-            @Override
-            public void test() {
-                DoubleClickZoom doubleClickZoom = new DoubleClickZoom();
-                
-                assertNotNull(doubleClickZoom);
-                assertTrue(doubleClickZoom instanceof Observable);
-                assertTrue(doubleClickZoom instanceof Interaction);
-            }
-            
+            assertNotNull(doubleClickZoom);
+            assertTrue(doubleClickZoom instanceof Observable);
+            assertTrue(doubleClickZoom instanceof Interaction);
         });
 
     }

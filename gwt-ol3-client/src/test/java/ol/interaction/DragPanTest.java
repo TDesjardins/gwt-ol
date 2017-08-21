@@ -28,17 +28,12 @@ public class DragPanTest extends GwtOL3BaseTestCase {
     public void testDragPan() {
 
         
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            DragPan dragPan = new DragPan();
             
-            @Override
-            public void test() {
-                DragPan dragPan = new DragPan();
-                
-                assertNotNull(dragPan);
-                assertTrue(dragPan instanceof Observable);
-                assertTrue(dragPan instanceof Interaction);
-            }
-            
+            assertNotNull(dragPan);
+            assertTrue(dragPan instanceof Observable);
+            assertTrue(dragPan instanceof Interaction);
         });
 
     }

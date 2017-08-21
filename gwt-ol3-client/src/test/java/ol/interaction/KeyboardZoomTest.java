@@ -27,16 +27,12 @@ public class KeyboardZoomTest extends GwtOL3BaseTestCase {
 
     public void testKeyboardZoom() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            KeyboardZoom keyboardZoom = new KeyboardZoom();
             
-            @Override
-            public void test() {
-                KeyboardZoom keyboardZoom = new KeyboardZoom();
-                
-                assertNotNull(keyboardZoom);
-                assertTrue(keyboardZoom instanceof Observable);
-                assertTrue(keyboardZoom instanceof Interaction);
-            }
+            assertNotNull(keyboardZoom);
+            assertTrue(keyboardZoom instanceof Observable);
+            assertTrue(keyboardZoom instanceof Interaction);
         });
  
     }

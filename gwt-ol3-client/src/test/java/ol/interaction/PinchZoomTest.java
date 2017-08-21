@@ -27,17 +27,12 @@ public class PinchZoomTest extends GwtOL3BaseTestCase {
 
     public void testPinchZoom() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            PinchZoom pinchZoom = new PinchZoom();
             
-            @Override
-            public void test() {
-                PinchZoom pinchZoom = new PinchZoom();
-                
-                assertNotNull(pinchZoom);
-                assertTrue(pinchZoom instanceof Observable);
-                assertTrue(pinchZoom instanceof Interaction);
-            }
-            
+            assertNotNull(pinchZoom);
+            assertTrue(pinchZoom instanceof Observable);
+            assertTrue(pinchZoom instanceof Interaction);
         });
  
     }

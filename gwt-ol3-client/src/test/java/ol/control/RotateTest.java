@@ -27,17 +27,12 @@ public class RotateTest extends GwtOL3BaseTestCase {
 
     public void testRotate() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            Rotate rotate = new Rotate();
             
-            @Override
-            public void test() {
-                Rotate rotate = new Rotate();
-                
-                assertNotNull(rotate);
-                assertTrue(rotate instanceof Object);
-                assertTrue(rotate instanceof Control);
-            }
-            
+            assertNotNull(rotate);
+            assertTrue(rotate instanceof Object);
+            assertTrue(rotate instanceof Control);
         });
  
     }

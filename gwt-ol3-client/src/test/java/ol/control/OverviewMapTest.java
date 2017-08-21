@@ -27,14 +27,10 @@ public class OverviewMapTest extends GwtOL3BaseTestCase {
 
     public void testOverviewMap() {
 
-        this.injectUrlAndTest(new TestWithInjection() {
-            
-            @Override
-            public void test() {
-                OverviewMapOptions overviewMapOptions = new OverviewMapOptions();
-                OverviewMap overviewMap = new OverviewMap(overviewMapOptions);
-                assertTrue(overviewMap instanceof OverviewMap);
-            }
+        this.injectUrlAndTest(() -> {
+            OverviewMapOptions overviewMapOptions = new OverviewMapOptions();
+            OverviewMap overviewMap = new OverviewMap(overviewMapOptions);
+            assertTrue(overviewMap instanceof OverviewMap);
         });
 
     }

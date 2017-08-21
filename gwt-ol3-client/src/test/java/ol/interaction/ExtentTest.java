@@ -28,17 +28,12 @@ public class ExtentTest extends GwtOL3BaseTestCase {
     public void testExtent() {
 
         
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            Extent extent = new Extent();
             
-            @Override
-            public void test() {
-                Extent extent = new Extent();
-                
-                assertNotNull(extent);
-                assertTrue(extent instanceof Observable);
-                assertTrue(extent instanceof Interaction);
-            }
-            
+            assertNotNull(extent);
+            assertTrue(extent instanceof Observable);
+            assertTrue(extent instanceof Interaction);
         });
 
     }

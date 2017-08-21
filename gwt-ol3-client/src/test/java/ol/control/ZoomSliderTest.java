@@ -27,16 +27,12 @@ public class ZoomSliderTest extends GwtOL3BaseTestCase {
 
     public void testZoomSlider() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            ZoomSlider zoomSlider = new ZoomSlider();
             
-            @Override
-            public void test() {
-                ZoomSlider zoomSlider = new ZoomSlider();
-                
-                assertNotNull(zoomSlider);
-                assertTrue(zoomSlider instanceof Object);
-                assertTrue(zoomSlider instanceof Control);
-            }
+            assertNotNull(zoomSlider);
+            assertTrue(zoomSlider instanceof Object);
+            assertTrue(zoomSlider instanceof Control);
         });
 
     }

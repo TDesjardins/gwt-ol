@@ -28,17 +28,12 @@ public class ImageTest extends GwtOL3BaseTestCase {
     @SuppressWarnings({ "static-method", "javadoc" })
     public void testImageLayer() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
 
-            @Override
-            public void test() {
-
-                ImageLayerOptions imageLayerOptions = new ImageLayerOptions();
-                assertNotNull(imageLayerOptions);
-                Image imageLayer = new Image(imageLayerOptions);
-                assertTrue(imageLayer instanceof Image);
-
-            }
+            ImageLayerOptions imageLayerOptions = new ImageLayerOptions();
+            assertNotNull(imageLayerOptions);
+            Image imageLayer = new Image(imageLayerOptions);
+            assertTrue(imageLayer instanceof Image);
 
         });
 

@@ -28,24 +28,19 @@ public class RegularShapeTest extends GwtOL3BaseTestCase {
 
     public void testPoint() {
 
-        injectUrlAndTest(new TestWithInjection() {
-
-            @Override
-            public void test() {
-                RegularShapeOptions regularShapeOptions = new RegularShapeOptions();
-                regularShapeOptions.setAngle(Math.PI / 4);
-                regularShapeOptions.setRadius1(4);
-                regularShapeOptions.setRadius2(3);
-                regularShapeOptions.setRotation(Math.PI / 3);
-                regularShapeOptions.setRotateWithView(false);
-                assertNotNull(regularShapeOptions);
-                
-                RegularShape regularShape = new RegularShape(regularShapeOptions);
-                assertNotNull(regularShape);
-                assertEquals(regularShape.getRadius(), 4);
-                assertEquals(regularShape.getRadius2(), 3);
-            }
-
+        injectUrlAndTest(() -> {
+            RegularShapeOptions regularShapeOptions = new RegularShapeOptions();
+            regularShapeOptions.setAngle(Math.PI / 4);
+            regularShapeOptions.setRadius1(4);
+            regularShapeOptions.setRadius2(3);
+            regularShapeOptions.setRotation(Math.PI / 3);
+            regularShapeOptions.setRotateWithView(false);
+            assertNotNull(regularShapeOptions);
+            
+            RegularShape regularShape = new RegularShape(regularShapeOptions);
+            assertNotNull(regularShape);
+            assertEquals(regularShape.getRadius(), 4);
+            assertEquals(regularShape.getRadius2(), 3);
         });
 
     }

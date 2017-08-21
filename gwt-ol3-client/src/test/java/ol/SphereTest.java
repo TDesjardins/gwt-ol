@@ -25,17 +25,12 @@ public class SphereTest extends GwtOL3BaseTestCase {
     
     public void testAttribution() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
             
-            @Override
-            public void test() {
-                
-                Sphere sphere = new Sphere(OLUtil.EARTH_RADIUS_NORMAL);
-                
-                assertNotNull(sphere);
+            Sphere sphere = new Sphere(OLUtil.EARTH_RADIUS_NORMAL);
+            
+            assertNotNull(sphere);
 
-            }
-            
         });
 
     }

@@ -27,17 +27,12 @@ public class PinchRotateTest extends GwtOL3BaseTestCase {
 
     public void testPinchRotate() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            PinchRotate pinchRotate = new PinchRotate();
             
-            @Override
-            public void test() {
-                PinchRotate pinchRotate = new PinchRotate();
-                
-                assertNotNull(pinchRotate);
-                assertTrue(pinchRotate instanceof Observable);
-                assertTrue(pinchRotate instanceof Interaction);
-            }
-            
+            assertNotNull(pinchRotate);
+            assertTrue(pinchRotate instanceof Observable);
+            assertTrue(pinchRotate instanceof Interaction);
         });
  
     }

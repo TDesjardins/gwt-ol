@@ -24,23 +24,18 @@ public class OverlayTest extends GwtOL3BaseTestCase {
 
     public void testOverlay() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            
+            OverlayOptions overlayOptions = new OverlayOptions();
 
-            @Override
-            public void test() {
-                
-                OverlayOptions overlayOptions = new OverlayOptions();
+            assertNotNull(overlayOptions);
 
-                assertNotNull(overlayOptions);
+            Overlay overlay = new Overlay(overlayOptions);
 
-                Overlay overlay = new Overlay(overlayOptions);
-
-                assertNotNull(overlay);
-                
-                assertTrue(overlay instanceof Observable);
-                assertTrue(overlay instanceof Object);
-                
-            }
+            assertNotNull(overlay);
+            
+            assertTrue(overlay instanceof Observable);
+            assertTrue(overlay instanceof Object);
             
         });
 

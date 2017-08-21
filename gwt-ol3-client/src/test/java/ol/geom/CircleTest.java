@@ -28,25 +28,22 @@ public class CircleTest extends GwtOL3BaseTestCase {
 
     public void testCircle() {
 
-    	injectUrlAndTest(new TestWithInjection() {
+    	injectUrlAndTest(() -> {
+        	
+        	double radius = 5;
+            
+            Circle circle = OLFactory.createCircle(OLFactory.createCoordinate(10, 10), radius);
+            assertNotNull(circle);
+            assertTrue(circle instanceof Geometry);
 
-			@Override
-			public void test() {
-				
-				double radius = 5;
-		        
-		        Circle circle = OLFactory.createCircle(OLFactory.createCoordinate(10, 10), radius);
-		        assertNotNull(circle);
-		        assertTrue(circle instanceof Geometry);
+            Coordinate coordinate = circle.getCenter();
+            assertNotNull(coordinate);
+            assert(10 == coordinate.getX());
+            assert(10 == coordinate.getY());
+            
+            assert(radius == circle.getRadius());
 
-		        Coordinate coordinate = circle.getCenter();
-		        assertNotNull(coordinate);
-		        assert(10 == coordinate.getX());
-		        assert(10 == coordinate.getY());
-		        
-		        assert(radius == circle.getRadius());
-
-			}});  	
+        });  	
                 
     }
 

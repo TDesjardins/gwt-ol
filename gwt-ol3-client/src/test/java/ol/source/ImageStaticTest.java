@@ -26,19 +26,14 @@ public class ImageStaticTest extends GwtOL3BaseTestCase {
 
     public void testImageStatic() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
 
-            @Override
-            public void test() {
+            ImageStaticOptions imageStaticOptions = new ImageStaticOptions();
+            imageStaticOptions.setUrl("http://imgs.xkcd.com/comics/online_communities.png");
+            ImageStatic imageStatic = new ImageStatic(imageStaticOptions);
 
-                ImageStaticOptions imageStaticOptions = new ImageStaticOptions();
-                imageStaticOptions.setUrl("http://imgs.xkcd.com/comics/online_communities.png");
-                ImageStatic imageStatic = new ImageStatic(imageStaticOptions);
-
-                assertNotNull(imageStatic);
-                assertTrue(imageStatic instanceof Source);
-            }
-
+            assertNotNull(imageStatic);
+            assertTrue(imageStatic instanceof Source);
         });
 
     }

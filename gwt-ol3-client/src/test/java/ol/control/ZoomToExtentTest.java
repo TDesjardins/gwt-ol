@@ -27,16 +27,12 @@ public class ZoomToExtentTest extends GwtOL3BaseTestCase {
 
     public void testZoomToExtent() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            ZoomToExtent zoomToExtent = new ZoomToExtent();
             
-            @Override
-            public void test() {
-                ZoomToExtent zoomToExtent = new ZoomToExtent();
-                
-                assertNotNull(zoomToExtent);
-                assertTrue(zoomToExtent instanceof Object);
-                assertTrue(zoomToExtent instanceof Control);
-            }
+            assertNotNull(zoomToExtent);
+            assertTrue(zoomToExtent instanceof Object);
+            assertTrue(zoomToExtent instanceof Control);
         });
 
     }

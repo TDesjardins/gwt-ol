@@ -26,30 +26,25 @@ public class TileWmsTest extends GwtOL3BaseTestCase {
 
     public void testTileWms() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
 
-            @Override
-            public void test() {
+            TileWmsParams params = new TileWmsParams();
+            params.setLayers("topp:states");
+            params.setTiled(true);
 
-                TileWmsParams params = new TileWmsParams();
-                params.setLayers("topp:states");
-                params.setTiled(true);
+            TileWmsOptions options = new TileWmsOptions();
+            options.setUrl("https://ahocevar.com/geoserver/wms");
+            options.setParams(params);
+            options.setServerType(WmsServerType.GEOSERVER);
 
-                TileWmsOptions options = new TileWmsOptions();
-                options.setUrl("https://ahocevar.com/geoserver/wms");
-                options.setParams(params);
-                options.setServerType(WmsServerType.GEOSERVER);
+            TileWms source = new TileWms(options);
 
-                TileWms source = new TileWms(options);
+            assertEquals("topp:states", source.getParams().getLayers());
 
-                assertEquals("topp:states", source.getParams().getLayers());
+            params.setLayers("topp");
 
-                params.setLayers("topp");
-
-                source.updateParams(params);
-                assertEquals("topp", source.getParams().getLayers());
-            }
-
+            source.updateParams(params);
+            assertEquals("topp", source.getParams().getLayers());
         });
 
     }

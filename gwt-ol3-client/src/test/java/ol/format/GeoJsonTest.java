@@ -37,29 +37,17 @@ public class GeoJsonTest extends GwtOL3BaseTestCase {
 	
 	@Override
 	protected void gwtSetUp() throws Exception {
-	    injectUrlAndTest(new TestWithInjection() {
-
-            @Override
-            public void test() {
-                geoJsonFormat = new GeoJson();
-            }
-	        
-	    });
+	    injectUrlAndTest(() -> geoJsonFormat = new GeoJson());
 	}
 	
 	public void testFeatureToGeoJson() {
 
-	    injectUrlAndTest(new TestWithInjection() {
+	    injectUrlAndTest(() -> {
             
-            @Override
-            public void test() {
-                
-                assertNotNull(geoJsonFormat);
+            assertNotNull(geoJsonFormat);
 
-                JavaScriptObject geoJSON = geoJsonFormat.writeFeatureObject(createTestFeature(), null);
-                assertNotNull(geoJSON);
-                
-            }
+            JavaScriptObject geoJSON = geoJsonFormat.writeFeatureObject(createTestFeature(), null);
+            assertNotNull(geoJSON);
             
         });
 
@@ -67,66 +55,49 @@ public class GeoJsonTest extends GwtOL3BaseTestCase {
 
     public void testGeoJsonToFeature() {
         
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            JavaScriptObject geoJson = geoJsonFormat.writeFeatureObject(createTestFeature(), null);
 
-            @Override
-            public void test() {
-                JavaScriptObject geoJson = geoJsonFormat.writeFeatureObject(createTestFeature(), null);
-
-                // Convert Features from GeoJSON
-                Feature featureGeoJson = geoJsonFormat.readFeature(geoJson, null);
-                assertNotNull(featureGeoJson);
-            }
-
+            // Convert Features from GeoJSON
+            Feature featureGeoJson = geoJsonFormat.readFeature(geoJson, null);
+            assertNotNull(featureGeoJson);
         });
 
     }
 	
     public void testWriteGeoJSON() {
         
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            String geoJson = geoJsonFormat.writeFeatures(createTestFeature(), null);
+            assertNotNull(geoJson);
 
-            @Override
-            public void test() {
-                String geoJson = geoJsonFormat.writeFeatures(createTestFeature(), null);
-                assertNotNull(geoJson);
-
-                JavaScriptObject javaScriptObject = JsonUtils.safeEval(geoJson);
-                assertNotNull(javaScriptObject);
-            }
+            JavaScriptObject javaScriptObject = JsonUtils.safeEval(geoJson);
+            assertNotNull(javaScriptObject);
         });
 
     }
 	
     public void testReadFeatureFromGeoJson() {
         
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            String geoJson = geoJsonFormat.writeFeature(createTestFeature(), null);
+            assertNotNull(geoJson);
+            Feature feature = geoJsonFormat.readFeature(geoJson, null);
 
-            @Override
-            public void test() {
-                String geoJson = geoJsonFormat.writeFeature(createTestFeature(), null);
-                assertNotNull(geoJson);
-                Feature feature = geoJsonFormat.readFeature(geoJson, null);
-
-                assertNotNull(feature);
-            }
+            assertNotNull(feature);
         });
 
     }
     
     public void testReadFeatureCollectionFromGeoJson() {
         
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            String geoJson = geoJsonFormat.writeFeatures(createTestFeature(), null);
+            assertNotNull(geoJson);
+            Feature[] features = geoJsonFormat.readFeatures(geoJson, null);
 
-            @Override
-            public void test() {
-                String geoJson = geoJsonFormat.writeFeatures(createTestFeature(), null);
-                assertNotNull(geoJson);
-                Feature[] features = geoJsonFormat.readFeatures(geoJson, null);
-
-                assertNotNull(features);
-                //assertTrue(features.length > 0);
-            }
+            assertNotNull(features);
+            //assertTrue(features.length > 0);
         });
 
     }

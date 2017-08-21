@@ -27,19 +27,14 @@ public class SnapTest extends GwtOL3BaseTestCase {
 
     public void testSnap() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
             
-            @Override
-            public void test() {
-                
-                SnapOptions snapOptions = new SnapOptions();
-                Snap snap = new Snap(snapOptions);
-                
-                assertNotNull(snap);
-                assertTrue(snap instanceof Observable);
-                assertTrue(snap instanceof Interaction);
-            }
+            SnapOptions snapOptions = new SnapOptions();
+            Snap snap = new Snap(snapOptions);
             
+            assertNotNull(snap);
+            assertTrue(snap instanceof Observable);
+            assertTrue(snap instanceof Interaction);
         });
  
     }

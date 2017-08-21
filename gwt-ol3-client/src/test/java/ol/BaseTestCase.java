@@ -72,6 +72,7 @@ public class BaseTestCase extends GWTTestCase {
       
     }
     
+    @FunctionalInterface
     public interface TestWithInjection {
         
         public void test();

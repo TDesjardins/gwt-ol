@@ -25,34 +25,29 @@ public class CoordinateTest extends GwtOL3BaseTestCase {
 
     public void testCoordinate() {
 
-        injectUrlAndTest(new TestWithInjection() {
-            
-            @Override
-            public void test() {
-                
-                Coordinate coordinate = Coordinate.create(5.333, 12.25);
-                assertNotNull(coordinate);
-                assertEquals(2, coordinate.getDimension());
-                
-                assertEquals(coordinate.getX(), 5.333);
-                assertEquals(coordinate.getY(), 12.25);
+        injectUrlAndTest(() -> {
 
-                assertEquals(coordinate.toStringXY(2), "5.33, 12.25");
-                
-                Coordinate shiftedCoordinate = coordinate.add(Coordinate.create(2, -3));
-                assertEquals(7.333, shiftedCoordinate.getX());
-                assertEquals(9.25, shiftedCoordinate.getY());
-                
-                coordinate.setZ(15.5);
-                assertEquals(15.5, shiftedCoordinate.getZ());
-                assertEquals(3, coordinate.getDimension());
-                
-                Coordinate coordinate2 = Coordinate.create(1.5, 2.5, 3.45);
-                assertEquals(3, coordinate2.getDimension());
-                assertEquals(3.45, coordinate2.getZ());
-                
-            }
-            
+            Coordinate coordinate = Coordinate.create(5.333, 12.25);
+            assertNotNull(coordinate);
+            assertEquals(2, coordinate.getDimension());
+
+            assertEquals(coordinate.getX(), 5.333);
+            assertEquals(coordinate.getY(), 12.25);
+
+            assertEquals(coordinate.toStringXY(2), "5.33, 12.25");
+
+            Coordinate shiftedCoordinate = coordinate.add(Coordinate.create(2, -3));
+            assertEquals(7.333, shiftedCoordinate.getX());
+            assertEquals(9.25, shiftedCoordinate.getY());
+
+            coordinate.setZ(15.5);
+            assertEquals(15.5, shiftedCoordinate.getZ());
+            assertEquals(3, coordinate.getDimension());
+
+            Coordinate coordinate2 = Coordinate.create(1.5, 2.5, 3.45);
+            assertEquals(3, coordinate2.getDimension());
+            assertEquals(3.45, coordinate2.getZ());
+
         });
 
     }

@@ -38,21 +38,16 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
 
     public void testProjection() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            ProjectionOptions projectionOptions = new ProjectionOptions();
+            projectionOptions.setCode(EPSG_CODE_21781);
+            projectionOptions.setUnits(UNIT_METRE);
 
-            @Override
-            public void test() {
-                ProjectionOptions projectionOptions = new ProjectionOptions();
-                projectionOptions.setCode(EPSG_CODE_21781);
-                projectionOptions.setUnits(UNIT_METRE);
+            Projection projection = new Projection(projectionOptions);
 
-                Projection projection = new Projection(projectionOptions);
-
-                assertNotNull(projection);
-                assertEquals(EPSG_CODE_21781, projection.getCode());
-                assertEquals(UNIT_METRE, projection.getUnits());
-            }
-
+            assertNotNull(projection);
+            assertEquals(EPSG_CODE_21781, projection.getCode());
+            assertEquals(UNIT_METRE, projection.getUnits());
         });
 
     }

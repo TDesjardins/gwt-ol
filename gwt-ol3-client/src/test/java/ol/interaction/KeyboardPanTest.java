@@ -27,17 +27,12 @@ public class KeyboardPanTest extends GwtOL3BaseTestCase {
 
     public void testKeyboardPan() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            KeyboardPan keyboardPan = new KeyboardPan();
             
-            @Override
-            public void test() {
-                KeyboardPan keyboardPan = new KeyboardPan();
-                
-                assertNotNull(keyboardPan);
-                assertTrue(keyboardPan instanceof Observable);
-                assertTrue(keyboardPan instanceof Interaction);
-            }
-            
+            assertNotNull(keyboardPan);
+            assertTrue(keyboardPan instanceof Observable);
+            assertTrue(keyboardPan instanceof Interaction);
         });
  
     }

@@ -27,16 +27,12 @@ public class FullScreenTest extends GwtOL3BaseTestCase {
 
     public void testFullScreen() {
 
-        injectUrlAndTest(new TestWithInjection() {
+        injectUrlAndTest(() -> {
+            FullScreen fullScreen = new FullScreen();
 
-            @Override
-            public void test() {
-                FullScreen fullScreen = new FullScreen();
-
-                assertNotNull(fullScreen);
-                assertTrue(fullScreen instanceof Object);
-                assertTrue(fullScreen instanceof Control);
-            }
+            assertNotNull(fullScreen);
+            assertTrue(fullScreen instanceof Object);
+            assertTrue(fullScreen instanceof Control);
         });
 
     }

@@ -28,19 +28,14 @@ public class DragBoxTest extends GwtOL3BaseTestCase {
     public void testDragBox() {
 
         
-        injectUrlAndTest(new TestWithInjection() {
-            
-            @Override
-            public void test() {
+        injectUrlAndTest(() -> {
 
-            	DragBoxOptions dragBoxOptions = new DragBoxOptions();
-            	DragBox dragBox = new DragBox(dragBoxOptions);
-                
-                assertNotNull(dragBox);
-                assertTrue(dragBox instanceof Observable);
-                assertTrue(dragBox instanceof Interaction);
-            }
+        	DragBoxOptions dragBoxOptions = new DragBoxOptions();
+        	DragBox dragBox = new DragBox(dragBoxOptions);
             
+            assertNotNull(dragBox);
+            assertTrue(dragBox instanceof Observable);
+            assertTrue(dragBox instanceof Interaction);
         });
 
     }
