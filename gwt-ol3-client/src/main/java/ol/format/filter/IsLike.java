@@ -18,7 +18,7 @@ package ol.format.filter;
 import jsinterop.annotations.JsType;
 
 /**
- * Represents a <PropertyIsBetween> comparison operator.
+ * Represents a <PropertyIsLike> comparison operator.
  * 
  * @author hmgn
  *
