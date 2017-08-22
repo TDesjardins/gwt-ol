@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,12 @@ public abstract class SimpleGeometryCoordinates extends SimpleGeometry {
      */
     public native Coordinate[] getCoordinates();
 
+    /**
+     * Set the coordinates of this geometry.
+     * @param coordinates Coordinates.
+     */
+    public native void setCoordinates(Coordinate[] coordinates);
+    
     /**
      * Set the coordinates of this geometry.
      *

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,10 @@
  *******************************************************************************/
 package ol.geom;
 
+import javax.annotation.Nullable;
+
 import jsinterop.annotations.JsType;
+import ol.Coordinate;
 
 /**
  * MultiPolygon geometry.
@@ -23,8 +26,15 @@ import jsinterop.annotations.JsType;
  * @author sbaumhekel
  */
 @JsType(isNative = true)
-public class MultiPolygon extends SimpleGeometryMultiCoordinates {
+public class MultiPolygon extends SimpleGeometry {
     
+    /**
+     * Return the coordinates of this geometry.
+     *
+     * @return Coordinates.
+     */
+    public native Coordinate[][][] getCoordinates();
+
     /**
      * Append the passed polygon to this multipolygon.
      * 
@@ -51,5 +61,20 @@ public class MultiPolygon extends SimpleGeometryMultiCoordinates {
      * @api stable
      */
     public native Polygon[] getPolygons();
+    
+    /**
+     * Set the coordinates of the polygon.
+     *
+     * @param coordinates
+     */
+    public native void setCoordinates(Coordinate[][][] coordinates);
+
+    /**
+     * Set the coordinates of this geometry.
+     *
+     * @param coordinates Coordinates.
+     * @param geometryLayout opt_layout Layout.
+     */
+    public native void setCoordinates(Coordinate[][][] coordinates, @Nullable String geometryLayout);
     
 }
