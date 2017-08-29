@@ -25,6 +25,18 @@ import ol.GwtOL3BaseTestCase;
  */
 public class FilterTest extends GwtOL3BaseTestCase {
    
+    public void testAnd() {        
+        injectUrlAndTest(() -> {
+            
+            EqualTo equalTo = new EqualTo("attribute", "value");
+            EqualTo equalTo2 = new EqualTo("attribute2", 1);
+            
+            And andFilter = new And(equalTo, equalTo2);
+            assertNotNull(andFilter);
+
+        });
+    }
+    
     public void testEqualTo() {        
         injectUrlAndTest(() -> {
             

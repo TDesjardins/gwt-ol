@@ -27,6 +27,12 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public abstract class Filter {
 	
+    /**
+     * @deprecated This constructor is only to satisfy JsInterop.
+     * Do not use this!
+     */
+    public Filter() {}
+    
 	/**
 	 * Constructor
 	 * 

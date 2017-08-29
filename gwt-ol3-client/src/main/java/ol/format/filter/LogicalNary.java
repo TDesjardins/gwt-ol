@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,23 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
- package ol.format.filter;
+package ol.format.filter;
 
 import jsinterop.annotations.JsType;
 
 /**
- * Abstract class; normally only used for creating 
- * subclasses and not instantiated in apps. 
- * Base class for WFS GetFeature logical filters.
+ * Base class for WFS GetFeature n-ary logical filters.
  * 
- * @author hmgn
+ * @author Tino Desjardins
  *
  */
 @JsType(isNative = true)
-public abstract class Logical extends Filter {
+public abstract class LogicalNary extends Filter {
 
-	public Logical(String tagName) {
-		super(tagName);
-	}
+    /**
+     * @deprecated This constructor is only to satisfy JsInterop.
+     * Do not use this!
+     */
+    public LogicalNary() {}
+    
+    
+    public LogicalNary(String tagName, Filter... filters) {
+        //super(tagName);
+    }
 
 }

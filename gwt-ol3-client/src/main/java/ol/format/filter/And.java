@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,16 +19,16 @@ import jsinterop.annotations.JsType;
 
 /**
  * Represents a logical <And> operator 
- * between two filter conditions.
+ * between two or more filter conditions.
  * 
  * @author hmgn
  *
  */
 @JsType(isNative = true)
-public class And extends LogicalBinary {
+public class And extends LogicalNary {
 
-	public And(Filter conditionA, Filter conditionB) {
-		super("And", conditionA, conditionB);
+	public And(Filter... conditions) {
+	    //super("And", conditions);
 	}
 
 }
