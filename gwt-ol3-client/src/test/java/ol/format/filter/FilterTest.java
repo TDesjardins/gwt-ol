@@ -16,6 +16,7 @@
 package ol.format.filter;
 
 import ol.GwtOL3BaseTestCase;
+import ol.OLFactory;
 
 /**
  * Test for filters.
@@ -33,6 +34,19 @@ public class FilterTest extends GwtOL3BaseTestCase {
             
             And andFilter = new And(equalTo, equalTo2);
             assertNotNull(andFilter);
+
+        });
+    }
+    
+    public void testBbox() {        
+        injectUrlAndTest(() -> {
+            
+            Bbox bboxFilter = new Bbox("geometryName", OLFactory.createExtent(0, 0, 1, 1), "EPSG:3857");
+            assertNotNull(bboxFilter);
+            
+            bboxFilter.setExtent(OLFactory.createExtent(1, 1, 2, 2));
+            bboxFilter.setGeometryName("geometryAttribute");
+            bboxFilter.setSrsName("EPSG:4326");
 
         });
     }
