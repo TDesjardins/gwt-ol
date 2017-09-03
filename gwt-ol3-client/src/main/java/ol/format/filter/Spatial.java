@@ -33,7 +33,7 @@ public class Spatial extends Filter {
 	 * Constructor
 	 * 
 	 * @param tagName The XML tag name for this filter.
-	 * @param geometry Name Geometry name to use.
+	 * @param geometryName Geometry name to use.
 	 * @param geometry Geometry.
 	 * @param srsName SRS name. No srsName attribute will be set on geometries when this is not provided.
 	 */
