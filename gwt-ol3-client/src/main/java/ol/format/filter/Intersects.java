@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,10 +29,8 @@ import ol.geom.Geometry;
 public class Intersects extends Spatial {
 
 	/**
-	 * Constructor
-	 * 
-	 * @param tagName The XML tag name for this filter.
-	 * @param geometry Name Geometry name to use.
+	 *
+	 * @param geometryName Geometry name to use.
 	 * @param geometry Geometry.
 	 * @param srsName SRS name. No srsName attribute will be set on geometries when this is not provided.
 	 */
