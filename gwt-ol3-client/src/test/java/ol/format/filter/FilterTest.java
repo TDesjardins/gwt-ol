@@ -15,8 +15,10 @@
  *******************************************************************************/
 package ol.format.filter;
 
+import ol.Coordinate;
 import ol.GwtOL3BaseTestCase;
 import ol.OLFactory;
+import ol.geom.Circle;
 
 /**
  * Test for filters.
@@ -77,9 +79,18 @@ public class FilterTest extends GwtOL3BaseTestCase {
     
     public void testGreaterThanOrEqualTo() {        
         injectUrlAndTest(() -> {
-            
+
             GreaterThanOrEqualTo greaterThanOrEqualTo = new GreaterThanOrEqualTo("attribute", 5);
             assertNotNull(greaterThanOrEqualTo);
+
+        });
+    }
+
+    public void testIntersects() {
+        injectUrlAndTest(() -> {
+
+            Intersects intersectsFilter = new Intersects("geometryName", new Circle(Coordinate.create(0, 0), 2), "EPSG:3857");
+            assertNotNull(intersectsFilter);
 
         });
     }
@@ -143,5 +154,14 @@ public class FilterTest extends GwtOL3BaseTestCase {
 
         });
     }
-    
+
+    public void testWithin() {        
+        injectUrlAndTest(() -> {
+            
+            Within within = new Within("geometryName", new Circle(Coordinate.create(5, 5), 5), "EPSG:3857");
+            assertNotNull(within);
+
+        });
+    }
+
 }
