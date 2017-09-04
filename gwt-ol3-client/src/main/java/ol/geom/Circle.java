@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,12 @@
  *******************************************************************************/
 package ol.geom;
 
+import javax.annotation.Nullable;
+
 import jsinterop.annotations.JsType;
 
 import ol.Coordinate;
+import ol.Extent;
 
 /**
  * Circle geometry.
@@ -26,7 +29,22 @@ import ol.Coordinate;
  */
 @JsType(isNative = true)
 public class Circle extends SimpleGeometry {
-    
+
+   /**
+    *
+    * @param center Center
+    * @param radius Radius
+    */
+   public Circle(Coordinate center, double radius) {}
+
+   /**
+    *
+    * @param center Center
+    * @param radius Radius
+    * @param geometryLayout Layout
+    */
+   public Circle(Coordinate center, double radius, @Nullable String geometryLayout) {}
+
     /**
      * Return the center of the circle as {@link ol.Coordinate coordinate}.
      * 
@@ -40,6 +58,14 @@ public class Circle extends SimpleGeometry {
      * @return {number} Radius.
      */
     public native double getRadius();
+
+    /**
+     * Test if the geometry and the passed extent intersect.
+     *
+     * @param extent Extent.
+     * @return if the geometry and the extent intersect.
+     */
+    public native boolean intersectsExtent(Extent extent);
 
     /**
      * Set the center of the circle as {@link ol.Coordinate coordinate}.
