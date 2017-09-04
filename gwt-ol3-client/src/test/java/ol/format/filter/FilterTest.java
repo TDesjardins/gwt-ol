@@ -22,62 +22,71 @@ import ol.geom.Circle;
 
 /**
  * Test for filters.
- * 
+ *
  * @author Tino Desjardins
  *
  */
 public class FilterTest extends GwtOL3BaseTestCase {
-   
-    public void testAnd() {        
+
+    public void testAnd() {
         injectUrlAndTest(() -> {
-            
+
             EqualTo equalTo = new EqualTo("attribute", "value");
             EqualTo equalTo2 = new EqualTo("attribute2", 1);
-            
+
             And andFilter = new And(equalTo, equalTo2);
             assertNotNull(andFilter);
 
         });
     }
-    
-    public void testBbox() {        
+
+    public void testBbox() {
         injectUrlAndTest(() -> {
-            
+
             Bbox bboxFilter = new Bbox("geometryName", OLFactory.createExtent(0, 0, 1, 1), "EPSG:3857");
             assertNotNull(bboxFilter);
-            
+
             bboxFilter.setExtent(OLFactory.createExtent(1, 1, 2, 2));
             bboxFilter.setGeometryName("geometryAttribute");
             bboxFilter.setSrsName("EPSG:4326");
 
         });
     }
-    
+
+    public void testDuring() {
+        injectUrlAndTest(() -> {
+
+            During during = new During("dateAttribute", "2017-07-10", "2017-07-12");
+            assertNotNull(during);
+
+        });
+    }
+
     public void testEqualTo() {        
         injectUrlAndTest(() -> {
-            
+
             EqualTo equalTo = new EqualTo("attribute", "value");
             assertNotNull(equalTo);
-            
+
             EqualTo equalToInteger = new EqualTo("attribute", 1);
             assertNotNull(equalToInteger);
-            
+
             EqualTo equalToDouble = new EqualTo("attribute", 1.25);
             assertNotNull(equalToDouble);
 
         });
     }
-    
-    public void testGreaterThan() {        
+
+    public void testGreaterThan() {
         injectUrlAndTest(() -> {
-            
+
             GreaterThan greaterThan = new GreaterThan("attribute", 5);
             assertNotNull(greaterThan);
 
         });
     }
-    
-    public void testGreaterThanOrEqualTo() {        
+
+    public void testGreaterThanOrEqualTo() {
         injectUrlAndTest(() -> {
 
             GreaterThanOrEqualTo greaterThanOrEqualTo = new GreaterThanOrEqualTo("attribute", 5);
@@ -94,70 +103,82 @@ public class FilterTest extends GwtOL3BaseTestCase {
 
         });
     }
-    
-    public void testIsBetween() {        
+
+    public void testIsBetween() {
         injectUrlAndTest(() -> {
-            
+
             IsBetween isBetween = new IsBetween("attribute", 5, 10);
             assertNotNull(isBetween);
 
         });
     }
-    
-    public void testIsLike() {        
+
+    public void testIsLike() {
         injectUrlAndTest(() -> {
-            
+
             IsLike isLike = new IsLike("attribute", "value");
             assertNotNull(isLike);
 
         });
     }
-    
-    public void testIsNull() {        
+
+    public void testIsNull() {
         injectUrlAndTest(() -> {
-            
+
             IsNull isNull = new IsNull("attribute");
             assertNotNull(isNull);
 
         });
     }
-    
-    public void testLessThan() {        
+
+    public void testLessThan() {
         injectUrlAndTest(() -> {
-            
+
             LessThan lessThan = new LessThan("attribute", 5);
             assertNotNull(lessThan);
 
         });
     }
-    
-    public void testLessThanOrEqualTo() {        
+
+    public void testLessThanOrEqualTo() {
         injectUrlAndTest(() -> {
-            
+
             LessThanOrEqualTo lessThanOrEqualTo = new LessThanOrEqualTo("attribute", 5);
             assertNotNull(lessThanOrEqualTo);
 
         });
     }
-    
-    public void testNotEqualTo() {        
+
+    public void testNotEqualTo() {
         injectUrlAndTest(() -> {
-            
+
             NotEqualTo notEqualTo = new NotEqualTo("attribute", "value");
             assertNotNull(notEqualTo);
-            
+
             NotEqualTo notEqualToInteger = new NotEqualTo("attribute", 1);
             assertNotNull(notEqualToInteger);
-            
+
             NotEqualTo notEqualToDouble = new NotEqualTo("attribute", 1.25);
             assertNotNull(notEqualToDouble);
 
         });
     }
 
-    public void testWithin() {        
+    public void testOr() {
         injectUrlAndTest(() -> {
-            
+
+            EqualTo equalTo = new EqualTo("attribute", "value");
+            EqualTo equalTo2 = new EqualTo("attribute2", 1);
+
+            Or orFilter = new Or(equalTo, equalTo2);
+            assertNotNull(orFilter);
+
+        });
+    }
+
+    public void testWithin() {
+        injectUrlAndTest(() -> {
+
             Within within = new Within("geometryName", new Circle(Coordinate.create(5, 5), 5), "EPSG:3857");
             assertNotNull(within);
 
