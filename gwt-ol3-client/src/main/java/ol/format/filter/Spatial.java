@@ -27,7 +27,7 @@ import ol.geom.Geometry;
  *
  */
 @JsType(isNative = true)
-public class Spatial extends Filter {
+public abstract class Spatial extends Filter {
 
 	/**
 	 * Constructor
