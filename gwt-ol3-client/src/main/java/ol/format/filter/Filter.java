@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,9 @@
  *******************************************************************************/
 package ol.format.filter;
 
+import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsType;
+import ol.Extent;
 
 /**
  * Abstract class; normally only used for creating subclasses 
@@ -39,5 +41,13 @@ public abstract class Filter {
 	 * @param tagName The XML tag name for this filter.
 	 */
 	public Filter(String tagName) {}
+	
+	@JsMethod(name = "and", namespace = "ol.format.filter")
+    public static native And and(Filter... conditions);
 
+	@JsMethod(name = "bbox", namespace = "ol.format.filter")
+    public static native And bbox(String geometryName, Extent extent);
+
+	@JsMethod(name = "bbox", namespace = "ol.format.filter")
+    public static native And bbox(String geometryName, Extent extent, String srsName);
 }

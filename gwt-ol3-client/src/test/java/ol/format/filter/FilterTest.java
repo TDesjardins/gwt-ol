@@ -16,8 +16,8 @@
 package ol.format.filter;
 
 import ol.Coordinate;
+import ol.Extent;
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.geom.Circle;
 
 /**
@@ -37,19 +37,22 @@ public class FilterTest extends GwtOL3BaseTestCase {
             And andFilter = new And(equalTo, equalTo2);
             assertNotNull(andFilter);
 
+            assertNotNull(Filter.and(equalTo, equalTo2));
+
         });
     }
 
     public void testBbox() {
         injectUrlAndTest(() -> {
 
-            Bbox bboxFilter = new Bbox("geometryName", OLFactory.createExtent(0, 0, 1, 1), "EPSG:3857");
+            Bbox bboxFilter = new Bbox("geometryName", Extent.create(0, 0, 1, 1), "EPSG:3857");
             assertNotNull(bboxFilter);
 
-            bboxFilter.setExtent(OLFactory.createExtent(1, 1, 2, 2));
+            bboxFilter.setExtent(Extent.create(1, 1, 2, 2));
             bboxFilter.setGeometryName("geometryAttribute");
             bboxFilter.setSrsName("EPSG:4326");
 
+            Filter.bbox("geometryName", Extent.create(0, 0, 100, 100), "EPSG:3857");
         });
     }
 
