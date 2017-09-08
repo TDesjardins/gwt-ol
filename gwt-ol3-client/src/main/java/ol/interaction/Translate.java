@@ -15,7 +15,16 @@
  *******************************************************************************/
 package ol.interaction;
 
+import com.google.gwt.event.shared.HandlerRegistration;
+
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import ol.Collection;
+import ol.Coordinate;
+import ol.Feature;
+import ol.OLUtil;
+import ol.event.EventListener;
 
 /**
  *
@@ -26,5 +35,43 @@ import jsinterop.annotations.JsType;
 public class Translate extends Pointer {
 
     public Translate(TranslateOptions translateOptions) {}
-    
+ 
+    /** Triggered upon feature translation start. */
+    @JsOverlay
+    public final HandlerRegistration addTranslateStartListener(final EventListener<Translate.Event> listener) {
+        return OLUtil.observe(this, "translatestart", listener);
+    }
+
+    /** Triggered upon feature translation. */
+    @JsOverlay
+    public final HandlerRegistration addTranslatingListener(final EventListener<Translate.Event> listener) {
+        return OLUtil.observe(this, "translating", listener);
+    }
+
+    /** Triggered upon feature translation end. */
+    @JsOverlay
+    public final HandlerRegistration addTranslateEndListener(final EventListener<Translate.Event> listener) {
+        return OLUtil.observe(this, "translateend", listener);
+    }
+
+	/**
+	 * Events emitted by {@link Translate} instances are instances of this type.
+	 * 
+	 * @author gkresic
+	 *
+	 */
+	@JsType(isNative = true)
+	public interface Event extends ol.events.Event {
+	    
+		/** The coordinate of the drag event */
+	    @JsProperty
+	    public Coordinate getCoordinate();
+	    
+	    /** The features being translated. */
+	    @JsProperty
+	    public Collection<Feature> getFeatures();
+
+	}
+
+
 }
