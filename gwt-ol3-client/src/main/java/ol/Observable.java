@@ -38,6 +38,21 @@ public abstract class Observable implements EventTarget {
     public native void changed();
 
     /**
+     * Dispatches an event and calls all listeners listening for events of this type.
+     *
+     * @param eventType type of the event to dispatch
+     */
+    public native void dispatch(String eventType);
+
+    /**
+     * Get the version number for this object. Each time the object is modified,
+     * its version number will be incremented.
+     *
+     * @return Revision.
+     */
+    public native int getRevision();
+
+    /**
      * Listen for a certain type of event.
      *
      * @param type
