@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 
 import jsinterop.annotations.JsType;
 import ol.Feature;
+import ol.geom.Geometry;
 
 /**
  * Geometry format for reading and writing data in the WellKnownText (WKT)
@@ -38,19 +39,18 @@ import ol.Feature;
 public class Wkt extends TextFeature {
 
 	/**
-	 * 
 	 * Constructs a(n) {@link Wkt} object.
-	 * 
 	 */
 	public Wkt() {};
 
+    public Wkt(WktOptions wktOptions) {}
+
 	/**
-	 * 
 	 * Read a feature from a WKT source.
 	 * 
 	 * @param source
 	 * @param readOptions
-	 * @return features
+	 * @return feature
 	 */
 	public native Feature readFeature(java.lang.Object source, @Nullable WktReadOptions readOptions);
 	
@@ -62,4 +62,40 @@ public class Wkt extends TextFeature {
 	 * @return features
 	 */
 	public native Feature[] readFeatures(java.lang.Object source, @Nullable WktReadOptions readOptions);
+
+	/**
+	 * Read a single geometry from a WKT source.
+	 * 
+	 * @param source
+	 * @param readOptions
+	 * @return geometry
+	 */
+	public native Geometry readGeometry(java.lang.Object source, @Nullable WktReadOptions readOptions);
+	
+	/**
+	 * Encode a feature as a WKT string.
+	 * 
+	 * @param feature Feature.
+	 * @param writeOptions Write options.
+	 * @return WKT string.
+	 */
+	public native String writeFeature(Feature feature, @Nullable WktWriteOptions writeOptions);
+
+	/**
+	 * Encode an array of features as a WKT string.
+	 * 
+	 * @param features Features.
+	 * @param writeOptions Write options.
+	 * @return WKT string.
+	 */
+	public native String writeFeatures(Feature[] features, @Nullable WktWriteOptions writeOptions);
+
+	/**
+	 * Write a single geometry as a WKT string.
+	 * 
+	 * @param geometry Geometry.
+	 * @return WKT string.
+	 */
+	public native String writeGeometry(Geometry geometry);
+
 }
