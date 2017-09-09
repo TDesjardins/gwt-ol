@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,14 @@
  *******************************************************************************/
 package ol;
 
+import com.google.gwt.event.shared.HandlerRegistration;
+
 import javax.annotation.Nullable;
 
 import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import ol.event.EventListener;
 
 /**
  *
@@ -28,6 +32,22 @@ import jsinterop.annotations.JsType;
  */
 @JsType(isNative = true)
 public class Collection<T> extends Object {
+
+    /**
+     * Triggered when an item is added to the collection.
+     */
+    @JsOverlay
+    public final HandlerRegistration addElementAddedListener(final EventListener<Event<T>> listener) {
+        return OLUtil.observe(this, "add", listener);
+    }
+
+    /**
+     * Triggered when an item is removed from the collection.
+     */
+    @JsOverlay
+    public final HandlerRegistration addElementRemovedListener(final EventListener<Event<T>> listener) {
+        return OLUtil.observe(this, "remove", listener);
+    }
 
     public native void clear();
 
@@ -93,5 +113,20 @@ public class Collection<T> extends Object {
     public native T removeAt(int index);
 
     public native void setAt(int index, T element);
+
+    /**
+     * Events emitted by {@link ol.Collection} instances are instances of this type.
+     * 
+     * @author Tino Desjardins
+     *
+     */
+    @JsType(isNative = true)
+    public interface Event<T> extends ol.events.Event {
+
+        @Nullable
+        @JsProperty
+        public T getElement();
+
+    }
 
 }

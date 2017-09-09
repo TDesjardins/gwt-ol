@@ -13,32 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol;
+package ol.format;
 
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import ol.Options;
 
 /**
- * Object parameter of the {@link ol.Collection} features event listener.
+ * WKT options.
  *
- * e.g.
- * Select select = ...
- * select.getFeatures().on("<event_name>"), function (SelectObjectEvent){...});
- * 
- * @author mribeiro
- * 
- * @deprecated Use {@link ol.Collection.Event} instead.
+ * @author gkresic
+ *
+ * @see https://openlayers.org/en/latest/apidoc/ol.format.WKT.html
  */
-@Deprecated
-@JsType(isNative = true)
-public interface FeatureObjectEvent extends ObjectEvent {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class WktOptions implements Options {
 
-    /**
-     * The name feature involved in the event.
-     *
-     * @return {@link Feature}
-     *          feature.
-     */
-    @JsProperty
-    Feature getElement();
+	/**
+	 * @param splitCollection Whether to split GeometryCollections into multiple features on reading. Default is <code>false</code>.
+	 */
+	@JsProperty
+	public native void setSplitCollection(boolean splitCollection);
+
+	@JsProperty
+	public native boolean getSplitCollection();
+
 }
