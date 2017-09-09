@@ -15,16 +15,10 @@
  *******************************************************************************/
 package ol.geom;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-
-import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import ol.Coordinate;
 import ol.Extent;
-import ol.OLUtil;
 import ol.Observable;
-import ol.event.EventListener;
-import ol.events.Event;
 import ol.proj.Projection;
 
 /**
@@ -137,13 +131,5 @@ public abstract class Geometry extends Observable {
      *          true if intersects otherwise false
      */
     public native boolean intersectsCoordinate(Coordinate coordinate);
-    
-    /**
-     * Generic change event. Triggered when the revision counter is increased.
-     */
-    @JsOverlay
-    public final HandlerRegistration addChangeListener(final EventListener<Event> listener) {
-        return OLUtil.observe(this, "change", listener);
-    }
     
 }
