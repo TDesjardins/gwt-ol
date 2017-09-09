@@ -42,7 +42,7 @@ public abstract class Observable implements EventTarget {
      *
      * @param eventType type of the event to dispatch
      */
-    public native void dispatch(String eventType);
+    public native void dispatchEvent(String eventType);
 
     /**
      * Get the version number for this object. Each time the object is modified,
