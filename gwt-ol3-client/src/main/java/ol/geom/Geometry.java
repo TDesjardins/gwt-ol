@@ -138,12 +138,4 @@ public abstract class Geometry extends Observable {
      */
     public native boolean intersectsCoordinate(Coordinate coordinate);
     
-    /**
-     * Generic change event. Triggered when the revision counter is increased.
-     */
-    @JsOverlay
-    public final HandlerRegistration addChangeListener(final EventListener<Event> listener) {
-        return OLUtil.observe(this, "change", listener);
-    }
-    
 }
