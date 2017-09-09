@@ -15,10 +15,16 @@
  *******************************************************************************/
 package ol.geom;
 
+import com.google.gwt.event.shared.HandlerRegistration;
+
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import ol.Coordinate;
 import ol.Extent;
+import ol.OLUtil;
 import ol.Observable;
+import ol.event.EventListener;
+import ol.events.Event;
 import ol.proj.Projection;
 
 /**
