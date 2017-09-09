@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,9 +27,11 @@ import jsinterop.annotations.JsType;
  * 
  * @author mribeiro
  * 
+ * @deprecated Use {@link ol.Collection.Event} instead.
  */
+@Deprecated
 @JsType(isNative = true)
-public interface FeatureObjectEvent extends ObjectEvent{
+public interface FeatureObjectEvent extends ObjectEvent {
 
     /**
      * The name feature involved in the event.

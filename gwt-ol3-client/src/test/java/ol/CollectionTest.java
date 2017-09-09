@@ -15,8 +15,10 @@
  *******************************************************************************/
 package ol;
 
+import ol.Collection.Event;
 import ol.control.Attribution;
 import ol.control.Control;
+import ol.event.EventListener;
 
 /**
  *
@@ -24,6 +26,9 @@ import ol.control.Control;
  *
  */
 public class CollectionTest extends GwtOL3BaseTestCase {
+
+    private boolean elementAddedEventFired = false;
+    private boolean elementRemovedEventFired = false;
 
     public void testCollection() {
 
@@ -56,6 +61,45 @@ public class CollectionTest extends GwtOL3BaseTestCase {
             controls.push(attribution);
             assertTrue(controls.contains(attribution));
             assertFalse(controls.contains(new Attribution()));
+
+        });
+
+    }
+
+    public void testCollectionEvents() {
+
+        this.injectUrlAndTest(() -> {
+
+            Collection<Control> controls = new Collection<Control>();
+
+            assertFalse(this.elementAddedEventFired);
+            assertFalse(this.elementRemovedEventFired);
+
+            controls.addElementAddedListener(new EventListener<Collection.Event<Control>>() {
+                
+                @Override
+                public void onEvent(Event<Control> event) {
+                    elementAddedEventFired = true;
+                }
+            });
+
+            controls.addElementRemovedListener(new EventListener<Collection.Event<Control>>() {
+                
+                @Override
+                public void onEvent(Event<Control> event) {
+                    elementRemovedEventFired = true;
+                }
+            });
+
+            controls.push(new Attribution());
+
+            assertTrue(this.elementAddedEventFired);
+            assertFalse(this.elementRemovedEventFired);
+
+            controls.removeAt(0);
+
+            assertTrue(this.elementAddedEventFired);
+            assertTrue(this.elementRemovedEventFired);
 
         });
 
