@@ -17,8 +17,9 @@ package ol;
 
 import ol.View;
 import ol.ViewOptions;
+import ol.Object.Event;
+import ol.event.EventListener;
 import ol.proj.Projection;
-import ol.OLFactory;
 import ol.proj.ProjectionOptions;
 
 /**
@@ -28,34 +29,98 @@ import ol.proj.ProjectionOptions;
  */
 public class ViewTest extends GwtOL3BaseTestCase {
 
+    private boolean centerChanged = false;
+    private boolean resolutionChanged = false;
+    private boolean rotationChanged = false;
+    
     public void testView() {
-        
-        injectUrlAndTest(() -> {
-            
-            ProjectionOptions projectionOptions = new ProjectionOptions();
-            projectionOptions.setCode("EPSG:21781");
-            projectionOptions.setUnits("m");
-            
-            assertNotNull(projectionOptions);
-            
-            Projection projection = new Projection(projectionOptions);
-            
-            assertNotNull(projection);
-            
-            ViewOptions viewOptions = new ViewOptions();
-            viewOptions.setProjection(projection);
-            View view = new View(viewOptions);
 
-            Coordinate centerCoordinate = OLFactory.createCoordinate(660000, 190000);
-            
-            view.setCenter(centerCoordinate);
-            view.setZoom(9);
-            
+        injectUrlAndTest(() -> {
+
+            View view = getTestView();
+
             assertNotNull(view);
             assertTrue(view instanceof Object);
-            
+
         });
-        
+
+    }
+
+    public void testViewEvents() {
+
+        injectUrlAndTest(() -> {
+
+            View view = getTestView();
+
+            view.addCenterChangeListener(new EventListener<Object.Event>() {
+
+                @Override
+                public void onEvent(Event event) {
+                    centerChanged = true;
+                }
+            });
+
+            view.addResolutionChangeListener(new EventListener<Object.Event>() {
+
+                @Override
+                public void onEvent(Event event) {
+                    resolutionChanged = true;
+                    
+                }
+            });
+            
+            view.addRotationChangeListener(new EventListener<Object.Event>() {
+
+                @Override
+                public void onEvent(Event event) {
+                    rotationChanged = true;
+
+                }
+            });
+
+            assertFalse(this.centerChanged);
+            assertFalse(this.resolutionChanged);
+            assertFalse(this.rotationChanged);
+
+            view.setCenter(Coordinate.create(660000, 190001));
+
+            assertTrue(this.centerChanged);
+            assertFalse(this.resolutionChanged);
+            assertFalse(this.rotationChanged);
+
+            view.setZoom(8);
+
+            assertTrue(this.resolutionChanged);
+            assertFalse(this.rotationChanged);
+            
+            view.setRotation(Math.PI);
+
+            assertTrue(this.rotationChanged);
+        });
+
+    }
+
+    private View getTestView() {
+
+        ProjectionOptions projectionOptions = new ProjectionOptions();
+        projectionOptions.setCode("EPSG:21781");
+        projectionOptions.setUnits("m");
+
+        assertNotNull(projectionOptions);
+
+        Projection projection = new Projection(projectionOptions);
+
+        assertNotNull(projection);
+
+        ViewOptions viewOptions = new ViewOptions();
+        viewOptions.setProjection(projection);
+        View view = new View(viewOptions);
+
+        Coordinate centerCoordinate = Coordinate.create(660000, 190000);
+
+        view.setCenter(centerCoordinate);
+        view.setZoom(9);
+        return view;
     }
 
 }

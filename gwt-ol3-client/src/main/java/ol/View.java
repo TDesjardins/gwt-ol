@@ -15,10 +15,14 @@
  *******************************************************************************/
 package ol;
 
+import com.google.gwt.event.shared.HandlerRegistration;
+
 import javax.annotation.Nullable;
 
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import ol.animation.AnimationOptions;
+import ol.event.EventListener;
 import ol.proj.Projection;
 
 /**
@@ -78,6 +82,21 @@ public class View extends Object {
     public View() {}
     
     public View(ViewOptions viewOptions) {}
+
+    @JsOverlay
+    public final HandlerRegistration addCenterChangeListener(final EventListener<Event> listener) {
+        return OLUtil.observe(this, "change:center", listener);
+    }
+
+    @JsOverlay
+    public final HandlerRegistration addResolutionChangeListener(final EventListener<Event> listener) {
+        return OLUtil.observe(this, "change:resolution", listener);
+    }
+
+    @JsOverlay
+    public final HandlerRegistration addRotationChangeListener(final EventListener<Event> listener) {
+        return OLUtil.observe(this, "change:rotation", listener);
+    }
 
     /**
      * Animates the view.
