@@ -19,7 +19,6 @@ import ol.Coordinate;
 import ol.Feature;
 import ol.FeatureOptions;
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 import ol.geom.Geometry;
 import ol.geom.LineString;
 
@@ -149,13 +148,13 @@ public class WktTest extends GwtOL3BaseTestCase {
 	
 	private Feature createTestFeature() {
 		
-		Coordinate coordinate1 = OLFactory.createCoordinate(1, 1);
-		Coordinate coordinate2 = OLFactory.createCoordinate(5, 5);
+		Coordinate coordinate1 = Coordinate.create(1, 1);
+		Coordinate coordinate2 = Coordinate.create(5, 5);
 		Coordinate[] coordinates = { coordinate1, coordinate2 };
 		LineString lineString = new LineString(coordinates);
 
 		// Create feature
-		FeatureOptions featureOptions = OLFactory.createOptions();
+		FeatureOptions featureOptions = new FeatureOptions();
 		featureOptions.setGeometry(lineString);
 		return new Feature(featureOptions);
 		

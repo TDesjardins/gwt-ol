@@ -154,9 +154,9 @@ public final class OLUtil {
         View view = map.getView();
         if(view != null) {
             final HandlerRegistration handlerView = OLUtil.observe(view, "change:center",
-                    new EventListener<ObjectEvent>() {
+                    new EventListener<Object.Event>() {
                         @Override
-                        public void onEvent(ObjectEvent event) {
+                        public void onEvent(Object.Event event) {
                             // create an artificial move event
                             Event e2 = createLinkedEvent(event, "move", map);
                             MapEvent me = initMapEvent(e2, map);
@@ -190,10 +190,10 @@ public final class OLUtil {
      */
     @Deprecated
     public static HandlerRegistration addMapZoomListener(final Map map, final MapZoomListener listener) {
-        return observe(map.getView(), "change:resolution", new EventListener<ObjectEvent>() {
+        return observe(map.getView(), "change:resolution", new EventListener<Object.Event>() {
 
             @Override
-            public void onEvent(ObjectEvent event) {
+            public void onEvent(Object.Event event) {
                 Event zoomEvent = createLinkedEvent(event, "zoom", map);
                 MapEvent mapEvent = initMapEvent(zoomEvent, map);
                 listener.onMapZoom(mapEvent);
@@ -214,12 +214,12 @@ public final class OLUtil {
      */
     @Deprecated
     public static HandlerRegistration addMapZoomEndListener(final Map map, final MapZoomListener listener) {
-        return observe(map, "moveend", new EventListener<ObjectEvent>() {
+        return observe(map, "moveend", new EventListener<Object.Event>() {
 
         private double zoomLevel = map.getView().getZoom();
         
             @Override
-            public void onEvent(ObjectEvent event) {
+            public void onEvent(Object.Event event) {
                 
                 double newZoomLevel = map.getView().getZoom();
                 

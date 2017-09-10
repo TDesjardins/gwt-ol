@@ -26,7 +26,10 @@ import ol.events.Event;
  * Events emitted by {@link ol.Object} instances are instances of this type.
  *
  * @author sbaumhekel
+ *
+ * @deprecated Use {@link ol.Object.Event} instead.
  */
+@Deprecated
 @JsType(isNative = true)
 public interface ObjectEvent extends Event {
 

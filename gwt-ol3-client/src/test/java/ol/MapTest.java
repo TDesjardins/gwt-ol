@@ -19,7 +19,6 @@ import ol.View;
 import ol.MapOptions;
 import ol.ViewOptions;
 import ol.proj.Projection;
-import ol.OLFactory;
 import ol.proj.ProjectionOptions;
 
 /**
@@ -43,7 +42,7 @@ public class MapTest extends GwtOL3BaseTestCase {
             viewOptions.setProjection(projection);
             View view = new View(viewOptions);
 
-            Coordinate centerCoordinate = OLFactory.createCoordinate(660000, 190000);
+            Coordinate centerCoordinate = Coordinate.create(660000, 190000);
 
             view.setCenter(centerCoordinate);
             view.setZoom(9);

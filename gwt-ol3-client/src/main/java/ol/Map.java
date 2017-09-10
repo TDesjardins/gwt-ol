@@ -457,7 +457,7 @@ public class Map extends Object {
 
     	final HandlerRegistration handlerView = OLUtil.observe(view, "change:center", event -> {
             // create an artificial move event
-            Event e2 = OLUtil.createLinkedEvent(event, "move", Map.this);
+    	    ol.events.Event e2 = OLUtil.createLinkedEvent(event, "move", Map.this);
             MapEvent mapEvent = OLUtil.initMapEvent(e2, Map.this);
             listener.onEvent(mapEvent);
         });
@@ -476,7 +476,7 @@ public class Map extends Object {
     @JsOverlay
     public final HandlerRegistration addMapZoomListener(final EventListener<MapEvent> listener) {
         return OLUtil.observe(getView(), "change:resolution", event -> {
-            Event zoomEvent = OLUtil.createLinkedEvent(event, "zoom", Map.this);
+            ol.events.Event zoomEvent = OLUtil.createLinkedEvent(event, "zoom", Map.this);
             MapEvent mapEvent = OLUtil.initMapEvent(zoomEvent, Map.this);
             listener.onEvent(mapEvent);
         });
@@ -494,7 +494,7 @@ public class Map extends Object {
                 double newZoomLevel = Map.this.getView().getZoom();
                 if(newZoomLevel != this.zoomLevel) {
                     this.zoomLevel = newZoomLevel;
-                    Event zoomEndEvent = OLUtil.createLinkedEvent(event, "zoomend", Map.this);
+                    ol.events.Event zoomEndEvent = OLUtil.createLinkedEvent(event, "zoomend", Map.this);
                     MapEvent mapEvent = OLUtil.initMapEvent(zoomEndEvent, Map.this);
                     listener.onEvent(mapEvent);
                 }

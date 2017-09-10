@@ -20,7 +20,6 @@ import com.google.gwt.core.client.JsArrayNumber;
 import ol.Coordinate;
 import ol.Extent;
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 
 /**
  *
@@ -111,7 +110,7 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
                 double x = -121.1;
                 double y = 47.5;
 
-                Coordinate centerCoordinate = OLFactory.createCoordinate(x, y);
+                Coordinate centerCoordinate = Coordinate.create(x, y);
                 Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, EPSG_CODE_4326, EPSG_CODE_3857);
 
                 assertTrue(transformedCenterCoordinate.length() == 2);
