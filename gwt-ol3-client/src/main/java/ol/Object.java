@@ -15,6 +15,9 @@
  *******************************************************************************/
 package ol;
 
+import com.google.gwt.core.client.JavaScriptObject;
+
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
@@ -86,5 +89,34 @@ public abstract class Object extends Observable {
      *            Key name.
      */
     public native void unset(String key);
+
+    /**
+     * Events emitted by {@link ol.Object} instances are instances of this type.
+     *
+     * @author sbaumhekel
+     *
+     *
+     */
+    @JsType(isNative = true)
+    public interface Event extends ol.events.Event {
+
+        /**
+         * The name of the property whose value is changing.
+         *
+         * @return key
+         */
+        @JsProperty
+        String getKey();
+
+        /**
+         * The old value. To get the new value use e.target.get(e.key) where e is
+         * the event object.
+         *
+         * @return old value
+         */
+        @JsProperty
+        JavaScriptObject getOldValue();
+
+    }
 
 }
