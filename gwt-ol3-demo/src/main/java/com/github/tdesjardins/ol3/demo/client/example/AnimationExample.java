@@ -75,6 +75,7 @@ public class AnimationExample implements Example {
 
         // create the map
         MapOptions mapOptions = new MapOptions();
+        mapOptions.setLoadTilesWhileAnimating(true);
         mapOptions.setTarget(exampleId);
         mapOptions.setView(view);
         
