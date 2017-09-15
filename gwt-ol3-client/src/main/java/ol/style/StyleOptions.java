@@ -19,6 +19,7 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.Options;
+import ol.geom.Geometry;
 
 /**
  * Options for the {@link Style}.
@@ -28,6 +29,14 @@ import ol.Options;
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class StyleOptions implements Options {
+
+	/**
+     * Feature property or geometry or function returning a geometry to render for this style.
+     *
+     * @param geometry
+     */
+    @JsProperty
+    public native void setGeometry(Geometry geometry);
 
     /**
      * {@link Fill} style.
