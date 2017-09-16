@@ -49,11 +49,27 @@ public class Wkt extends TextFeature {
 	 * Read a feature from a WKT source.
 	 * 
 	 * @param source
+	 * @return feature
+	 */
+	public native Feature readFeature(java.lang.Object source);
+	
+	/**
+	 * Read a feature from a WKT source.
+	 * 
+	 * @param source
 	 * @param readOptions
 	 * @return feature
 	 */
 	public native Feature readFeature(java.lang.Object source, @Nullable WktReadOptions readOptions);
-	
+
+	/**
+	 * Read all features from a WKT source.
+	 * 
+	 * @param source
+	 * @return features
+	 */
+	public native Feature[] readFeatures(java.lang.Object source);
+
 	/**
 	 * Read all features from a WKT source.
 	 * 
@@ -67,6 +83,14 @@ public class Wkt extends TextFeature {
 	 * Read a single geometry from a WKT source.
 	 * 
 	 * @param source
+	 * @return geometry
+	 */
+	public native Geometry readGeometry(java.lang.Object source);
+	
+	/**
+	 * Read a single geometry from a WKT source.
+	 * 
+	 * @param source
 	 * @param readOptions
 	 * @return geometry
 	 */
@@ -76,10 +100,26 @@ public class Wkt extends TextFeature {
 	 * Encode a feature as a WKT string.
 	 * 
 	 * @param feature Feature.
+	 * @return WKT string.
+	 */
+	public native String writeFeature(Feature feature);
+
+	/**
+	 * Encode a feature as a WKT string.
+	 * 
+	 * @param feature Feature.
 	 * @param writeOptions Write options.
 	 * @return WKT string.
 	 */
 	public native String writeFeature(Feature feature, @Nullable WktWriteOptions writeOptions);
+
+	/**
+	 * Encode an array of features as a WKT string.
+	 * 
+	 * @param features Features.
+	 * @return WKT string.
+	 */
+	public native String writeFeatures(Feature[] features);
 
 	/**
 	 * Encode an array of features as a WKT string.
@@ -97,5 +137,14 @@ public class Wkt extends TextFeature {
 	 * @return WKT string.
 	 */
 	public native String writeGeometry(Geometry geometry);
+
+	/**
+	 * Write a single geometry as a WKT string.
+	 * 
+	 * @param geometry Geometry.
+	 * @param writeOptions Write options.
+	 * @return WKT string.
+	 */
+	public native String writeGeometry(Geometry geometry, @Nullable WktWriteOptions writeOptions);
 
 }
