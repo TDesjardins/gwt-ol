@@ -20,6 +20,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
+import ol.FrameState;
 
 /**
  *
@@ -35,7 +36,15 @@ public interface Event extends ol.events.Event {
      */
     @JsProperty
     JavaScriptObject getContext();
-    
+
+    /**
+     * An object representing the current render frame state.
+     *
+     * @return current render frame state
+     */
+    @JsProperty
+    FrameState getFrameState();
+
     /**
      * For canvas, this is an instance of {@link ol.render.canvas.Immediate}.
      */
