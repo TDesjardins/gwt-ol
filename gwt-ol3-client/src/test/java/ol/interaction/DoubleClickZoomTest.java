@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,13 +27,15 @@ public class DoubleClickZoomTest extends GwtOL3BaseTestCase {
 
     public void testDoubleClickZoom() {
 
-        
+
         injectUrlAndTest(() -> {
             DoubleClickZoom doubleClickZoom = new DoubleClickZoom();
-            
+
             assertNotNull(doubleClickZoom);
             assertTrue(doubleClickZoom instanceof Observable);
             assertTrue(doubleClickZoom instanceof Interaction);
+
+            assertNull(doubleClickZoom.getMap());
         });
 
     }
