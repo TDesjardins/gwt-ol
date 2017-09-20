@@ -47,9 +47,9 @@ public class TileWmsExample implements Example {
 	 */
 	@Override
 	public void show(String exampleId) {
-		TileWmsParams.DELIMITER = ":";
+
 		TileWmsParams params = new TileWmsParams();
-		params.setLayers("topp", "states");
+		params.setLayers("topp:states");
 		params.setTiled(true);
 
 		TileWmsOptions options = new TileWmsOptions();
