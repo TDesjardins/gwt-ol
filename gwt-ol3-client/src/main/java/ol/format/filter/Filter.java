@@ -16,6 +16,7 @@
 package ol.format.filter;
 
 import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import ol.Extent;
 
@@ -29,6 +30,9 @@ import ol.Extent;
 @JsType(isNative = true)
 public abstract class Filter {
 	
+    @JsOverlay
+    private static final String PACKAGE_FILTER = "ol.format.filter";
+
     /**
      * @deprecated This constructor is only to satisfy JsInterop.
      * Do not use this!
@@ -42,12 +46,12 @@ public abstract class Filter {
 	 */
 	public Filter(String tagName) {}
 	
-	@JsMethod(name = "and", namespace = "ol.format.filter")
+	@JsMethod(name = "and", namespace = PACKAGE_FILTER)
     public static native And and(Filter... conditions);
 
-	@JsMethod(name = "bbox", namespace = "ol.format.filter")
+	@JsMethod(name = "bbox", namespace = PACKAGE_FILTER)
     public static native And bbox(String geometryName, Extent extent);
 
-	@JsMethod(name = "bbox", namespace = "ol.format.filter")
+	@JsMethod(name = "bbox", namespace = PACKAGE_FILTER)
     public static native And bbox(String geometryName, Extent extent, String srsName);
 }
