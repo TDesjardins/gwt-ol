@@ -1,0 +1,42 @@
+buildscript {
+	repositories {
+		jcenter()
+	}
+	
+	dependencies {
+		classpath 'org.wisepersist:gwt-gradle-plugin:1.0.0'
+		classpath 'com.google.code.findbugs:jsr305:3.0.0'
+		classpath 'com.google.elemental2:elemental2-core:1.0.0-beta-1'
+		classpath 'com.google.elemental2:elemental2-dom:1.0.0-beta-1'
+	}
+}
+ 
+apply plugin: 'java'
+apply plugin: 'gwt-base'
+ 
+repositories {
+	jcenter()
+}
+ 
+repositories { mavenCentral() }
+ 
+dependencies {
+	implementation('com.google.code.findbugs:jsr305:3.0.0');
+	implementation 'com.google.elemental2:elemental2-core:1.0.0-beta-1'
+	implementation 'com.google.elemental2:elemental2-dom:1.0.0-beta-1' 
+	testCompile('junit:junit:4.12')
+}
+gwt {
+	gwtVersion='2.8.1'
+ 
+	modules 'ol.GwtOL3'
+ 
+	maxHeapSize = "1024M"
+ 
+	superDev {
+		noPrecompile=true
+	}
+	test {
+        hasGwtTests = true
+	}
+}
