@@ -62,6 +62,9 @@ public class FilterTest extends GwtOL3BaseTestCase {
             During during = new During("dateAttribute", "2017-07-10", "2017-07-12");
             assertNotNull(during);
 
+            During during2 = Filter.during("dateAttribute", "2017-07-10", "2017-07-12");
+            assertTrue(during2 instanceof During);
+
         });
     }
 
@@ -77,6 +80,15 @@ public class FilterTest extends GwtOL3BaseTestCase {
             EqualTo equalToDouble = new EqualTo("attribute", 1.25);
             assertNotNull(equalToDouble);
 
+            EqualTo equalTo2 = Filter.equalTo("attribute", "value");
+            assertTrue(equalTo2 instanceof EqualTo);
+
+            EqualTo equalToInteger2 = Filter.equalTo("attribute", 1);
+            assertTrue(equalToInteger2 instanceof EqualTo);
+
+            EqualTo equalToDouble2 = Filter.equalTo("attribute", 1.25);
+            assertTrue(equalToDouble2 instanceof EqualTo);
+
         });
     }
 
@@ -85,6 +97,9 @@ public class FilterTest extends GwtOL3BaseTestCase {
 
             GreaterThan greaterThan = new GreaterThan("attribute", 5);
             assertNotNull(greaterThan);
+
+            GreaterThan greaterThan2 = Filter.greaterThan("attribute", 5);
+            assertTrue(greaterThan2 instanceof GreaterThan);
 
         });
     }
@@ -95,6 +110,9 @@ public class FilterTest extends GwtOL3BaseTestCase {
             GreaterThanOrEqualTo greaterThanOrEqualTo = new GreaterThanOrEqualTo("attribute", 5);
             assertNotNull(greaterThanOrEqualTo);
 
+            GreaterThanOrEqualTo greaterThanOrEqualTo2 = Filter.greaterThanOrEqualTo("attribute", 5);
+            assertTrue(greaterThanOrEqualTo2 instanceof GreaterThanOrEqualTo);
+
         });
     }
 
@@ -103,6 +121,9 @@ public class FilterTest extends GwtOL3BaseTestCase {
 
             Intersects intersectsFilter = new Intersects("geometryName", new Circle(Coordinate.create(0, 0), 2), "EPSG:3857");
             assertNotNull(intersectsFilter);
+
+            Intersects intersectsFilter2 = Filter.intersects("geometryName", new Circle(Coordinate.create(0, 0), 2), "EPSG:3857");
+            assertTrue(intersectsFilter2 instanceof Intersects);
 
         });
     }
@@ -113,6 +134,9 @@ public class FilterTest extends GwtOL3BaseTestCase {
             IsBetween isBetween = new IsBetween("attribute", 5, 10);
             assertNotNull(isBetween);
 
+            IsBetween isBetween2 = Filter.between("attribute", 5, 10);
+            assertTrue(isBetween2 instanceof IsBetween);
+ 
         });
     }
 
@@ -122,6 +146,8 @@ public class FilterTest extends GwtOL3BaseTestCase {
             IsLike isLike = new IsLike("attribute", "value");
             assertNotNull(isLike);
 
+            IsLike isLike2 = Filter.like("attribute", "value");
+            assertTrue(isLike2 instanceof IsLike);
         });
     }
 
@@ -131,6 +157,8 @@ public class FilterTest extends GwtOL3BaseTestCase {
             IsNull isNull = new IsNull("attribute");
             assertNotNull(isNull);
 
+            IsNull isNull2 = Filter.isNull("attribute");
+            assertTrue(isNull2 instanceof IsNull);
         });
     }
 
@@ -139,6 +167,9 @@ public class FilterTest extends GwtOL3BaseTestCase {
 
             LessThan lessThan = new LessThan("attribute", 5);
             assertNotNull(lessThan);
+
+            LessThan lessThan2 = Filter.lessThan("attribute", 5);
+            assertTrue(lessThan2 instanceof LessThan);
 
         });
     }
@@ -149,6 +180,8 @@ public class FilterTest extends GwtOL3BaseTestCase {
             LessThanOrEqualTo lessThanOrEqualTo = new LessThanOrEqualTo("attribute", 5);
             assertNotNull(lessThanOrEqualTo);
 
+            LessThanOrEqualTo lessThanOrEqualTo2 = Filter.lessThanOrEqualTo("attribute", 5);
+            assertTrue(lessThanOrEqualTo2 instanceof LessThanOrEqualTo);
         });
     }
 
@@ -160,6 +193,9 @@ public class FilterTest extends GwtOL3BaseTestCase {
             Not not = new Not(equalTo);
             assertNotNull(not);
 
+            Not not2 = Filter.not(equalTo);
+            assertTrue(not2 instanceof Not);
+ 
         });
     }
 
@@ -175,6 +211,15 @@ public class FilterTest extends GwtOL3BaseTestCase {
             NotEqualTo notEqualToDouble = new NotEqualTo("attribute", 1.25);
             assertNotNull(notEqualToDouble);
 
+            NotEqualTo notEqualTo2 = Filter.notEqualTo("attribute", "value");
+            assertTrue(notEqualTo2 instanceof NotEqualTo);
+
+            NotEqualTo notEqualToInteger2 = Filter.notEqualTo("attribute", 1);
+            assertTrue(notEqualToInteger2 instanceof NotEqualTo);
+
+            NotEqualTo notEqualToDouble2 = Filter.notEqualTo("attribute", 1.25);
+            assertTrue(notEqualToDouble2 instanceof NotEqualTo);
+
         });
     }
 
@@ -187,6 +232,8 @@ public class FilterTest extends GwtOL3BaseTestCase {
             Or orFilter = new Or(equalTo, equalTo2);
             assertNotNull(orFilter);
 
+            Or orFilter2 = Filter.or(equalTo, equalTo2);
+            assertTrue(orFilter2 instanceof Or);
         });
     }
 
@@ -195,6 +242,12 @@ public class FilterTest extends GwtOL3BaseTestCase {
 
             Within within = new Within("geometryName", new Circle(Coordinate.create(5, 5), 5), "EPSG:3857");
             assertNotNull(within);
+
+            Within within2 = Filter.within("geometryName", new Circle(Coordinate.create(5, 5), 5));
+            assertTrue(within2 instanceof Within);
+
+            Within within3 = Filter.within("geometryName", new Circle(Coordinate.create(5, 5), 5), "EPSG:3857");
+            assertTrue(within3 instanceof Within);
 
         });
     }
