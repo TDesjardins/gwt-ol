@@ -152,6 +152,17 @@ public class FilterTest extends GwtOL3BaseTestCase {
         });
     }
 
+    public void testNot() {
+        injectUrlAndTest(() -> {
+
+            EqualTo equalTo = new EqualTo("attribute", "value");
+            
+            Not not = new Not(equalTo);
+            assertNotNull(not);
+
+        });
+    }
+
     public void testNotEqualTo() {
         injectUrlAndTest(() -> {
 
