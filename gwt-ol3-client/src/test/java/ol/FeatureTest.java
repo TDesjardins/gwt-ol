@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,11 +45,26 @@ public class FeatureTest extends GwtOL3BaseTestCase {
             assertEquals(GEOMETRY_NAME, feature.getGeometryName());
 
             feature.setStyle(new Style());
+            assertTrue(feature.getStyle() instanceof Style);
+            assertTrue(feature.getStyles() instanceof Style[]);
 
-            feature.setStyle((Double resolution) -> {
+            Style[] styles = new Style[2];
+            styles[0] = new Style();
+            styles[1] = new Style();
+
+            feature.setStyles(styles);
+            
+            assertTrue(feature.getStyle() instanceof Style);
+            assertTrue(feature.getStyles() instanceof Style[]);
+            assertTrue(feature.getStyles().length == 2);
+
+            feature.setStyleFunction((Double resolution) -> {
                 return null;
             });
 
+            assertTrue(feature.getStyle() == null);
+            assertTrue(feature.getStyleFunction() instanceof GenericFunction);
+            
         });
 
     }
