@@ -4,6 +4,10 @@ jdk:
   - oraclejdk8
   - oraclejdk9
 
+matrix:
+  allow_failures:
+    - jdk: oraclejdk9
+
 after_success:
   - ci/deploy-snapshot.sh
 
