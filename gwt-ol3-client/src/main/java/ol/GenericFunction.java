@@ -20,6 +20,8 @@ import jsinterop.annotations.JsFunction;
 /**
  * @author mribeiro
  *
+ * @param <T> type of the functions input parameter
+ * @param <E> return type of the function
  */
 @FunctionalInterface
 @JsFunction
