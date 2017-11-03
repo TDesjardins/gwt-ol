@@ -27,7 +27,7 @@ public class CoordinateTest extends GwtOL3BaseTestCase {
 
         injectUrlAndTest(() -> {
 
-            Coordinate coordinate = Coordinate.create(5.333, 12.25);
+            Coordinate coordinate = new Coordinate(5.333, 12.25);
             assertNotNull(coordinate);
             assertEquals(2, coordinate.getDimension());
 
@@ -36,7 +36,7 @@ public class CoordinateTest extends GwtOL3BaseTestCase {
 
             assertEquals(coordinate.toStringXY(2), "5.33, 12.25");
 
-            Coordinate shiftedCoordinate = coordinate.add(Coordinate.create(2, -3));
+            Coordinate shiftedCoordinate = coordinate.add(new Coordinate(2, -3));
             assertEquals(7.333, shiftedCoordinate.getX());
             assertEquals(9.25, shiftedCoordinate.getY());
 
