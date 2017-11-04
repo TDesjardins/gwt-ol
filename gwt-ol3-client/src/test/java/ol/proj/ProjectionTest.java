@@ -113,13 +113,13 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
                 Coordinate centerCoordinate = Coordinate.create(x, y);
                 Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, EPSG_CODE_4326, EPSG_CODE_3857);
 
-                assertTrue(transformedCenterCoordinate.length() == 2);
+                assertTrue(transformedCenterCoordinate.getDimension() == 2);
                 assertTrue(transformedCenterCoordinate.getX() != x);
                 assertTrue(transformedCenterCoordinate.getY() != y);
                 
                 Coordinate sameTransformedCenterCoordinate = Projection.transform(centerCoordinate, Projection.get(EPSG_CODE_4326), Projection.get(EPSG_CODE_3857));
 
-                assertTrue(sameTransformedCenterCoordinate.length() == 2);
+                assertTrue(sameTransformedCenterCoordinate.getDimension() == 2);
                 assertEquals(transformedCenterCoordinate.getX(), sameTransformedCenterCoordinate.getX());
                 assertEquals(transformedCenterCoordinate.getY(), transformedCenterCoordinate.getY());
                 
