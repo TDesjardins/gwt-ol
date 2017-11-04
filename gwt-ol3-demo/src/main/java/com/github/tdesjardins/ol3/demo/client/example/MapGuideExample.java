@@ -44,19 +44,21 @@ public class MapGuideExample implements Example {
         // create a MapGuide params
     	ImageMapGuideParams imageMapGuideParams = OLFactory.createOptions();
     	imageMapGuideParams.setFormat("PNG");
-    	imageMapGuideParams.setMapDefinition("Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition");
+    	imageMapGuideParams.setMapDefinition("Library://Public/Samples/Sheboygan/Maps/Sheboygan.MapDefinition");
+    	imageMapGuideParams.setUserName("OpenLayers");
+    	imageMapGuideParams.setPassword("OpenLayers");
 
     	// create a MapGuide image
         ImageMapGuideOptions imageMapGuideOptions = OLFactory.createOptions();
         imageMapGuideOptions.setParams(imageMapGuideParams);
-        imageMapGuideOptions.setUrl("http://data.mapguide.com/mapguide/mapagent/mapagent.fcgi?USERNAME=Anonymous");
+        imageMapGuideOptions.setUrl("http://www.buoyshark.com/mapguide/mapagent/mapagent.fcgi?");
         imageMapGuideOptions.setUseOverlay(false);
         imageMapGuideOptions.setMetersPerUnit(111319.4908d);
         imageMapGuideOptions.setRatio(2.0f);
 
         ImageMapGuide imageMapGuideSource = OLFactory.createImageMapGuideSource(imageMapGuideOptions);
         LayerOptions layerOptions = OLFactory.createOptions();
-        Extent bounds =Extent.create(-87.865114442365922d,43.665065564837931d,-87.595394059497067d,43.823852564430069d);
+        Extent bounds = Extent.create(-87.865114442365922d,43.665065564837931d,-87.595394059497067d,43.823852564430069d);
         layerOptions.setExtent(bounds);
         layerOptions.setSource(imageMapGuideSource);
         Image MapGuideLayer = OLFactory.createImageLayer(layerOptions);
@@ -74,7 +76,7 @@ public class MapGuideExample implements Example {
         MapOptions mapOptions = OLFactory.createOptions();
         mapOptions.setTarget(exampleId);
         mapOptions.setView(view);
-        Collection<Base> lstLayer= OLFactory.createCollection();
+        Collection<Base> lstLayer = OLFactory.createCollection();
         lstLayer.push(MapGuideLayer);
         mapOptions.setLayers(lstLayer);
         Map map = OLFactory.createMap(mapOptions);
