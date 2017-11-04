@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,7 +74,7 @@ public final class DemoUtils {
     	coordinates[0][2] = point3;
     	coordinates[0][3] = point4;
      	
-    	Coordinate[][] tranformedCoordinates = new Coordinate[coordinates.length][coordinates[0].length];
+    	Coordinate[][] tranformedCoordinates = new Coordinate[coordinates.length][];
     	
     	tranformedCoordinates[0] = OLUtil.transform(coordinates[0], "EPSG:4326", "EPSG:3857");
     	return OLFactory.createPolygon(tranformedCoordinates);
