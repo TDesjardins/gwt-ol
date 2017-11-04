@@ -23,8 +23,6 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 import jsinterop.base.JsArrayLike;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * An array of numbers representing an xy coordinate. Example: [16, 48].
  *
@@ -224,7 +222,7 @@ public class Coordinate implements JsArrayLike<Double> {
      * @return format function
      */
     @JsMethod(name = "createStringXY", namespace = PACKAGE_COORDINATE)
-    public final static native JavaScriptObject createStringXY(int fractionDigits);
+    public final static native GenericFunction<Coordinate, String> createStringXY(int fractionDigits);
 
     /**
      * Format a coordinate as a comma delimited string. Example without

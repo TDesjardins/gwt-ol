@@ -15,11 +15,11 @@
  *******************************************************************************/
 package ol.control;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import ol.Coordinate;
+import ol.GenericFunction;
 import ol.proj.Projection;
 
 /**
@@ -44,7 +44,7 @@ public class MousePositionOptions extends ControlOptions {
      * @param coordinateFormat Coordinate format function.
      */
     @JsProperty
-    public native void setCoordinateFormat(JavaScriptObject coordinateFormat);
+    public native void setCoordinateFormat(GenericFunction<Coordinate, String> coordinateFormat);
     
     /**
      * Projection.

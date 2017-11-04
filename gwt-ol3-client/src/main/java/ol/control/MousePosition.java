@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,9 @@
  *******************************************************************************/
 package ol.control;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import jsinterop.annotations.JsType;
+import ol.Coordinate;
+import ol.GenericFunction;
 import ol.proj.Projection;
 
 /**
@@ -38,7 +39,7 @@ public class MousePosition extends Control {
      * 
      * @param coordinateFormat Coordinate format function.
      */
-    public native void setCoordinateFormat(JavaScriptObject coordinateFormat);
+    public native void setCoordinateFormat(GenericFunction<Coordinate, String> coordinateFormat);
 
     /**
      * Return the projection that is used to report the mouse position.
