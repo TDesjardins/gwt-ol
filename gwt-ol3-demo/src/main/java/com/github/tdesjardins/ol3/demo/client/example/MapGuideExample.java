@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,13 +17,22 @@ package com.github.tdesjardins.ol3.demo.client.example;
 
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
 
-import ol.*;
 import ol.Collection;
+import ol.Coordinate;
+import ol.Extent;
 import ol.Map;
-import ol.layer.*;
+import ol.MapOptions;
+import ol.OLFactory;
+import ol.View;
+import ol.ViewOptions;
+import ol.layer.Base;
 import ol.layer.Image;
+import ol.layer.LayerOptions;
 import ol.proj.Projection;
-import ol.source.*;
+import ol.source.ImageMapGuide;
+import ol.source.ImageMapGuideOptions;
+import ol.source.ImageMapGuideParams;
+
 /**
  * Example with MapGuide layers.
  *
@@ -42,11 +51,11 @@ public class MapGuideExample implements Example {
         Projection projection = Projection.get("EPSG:4326");
 
         // create a MapGuide params
-    	ImageMapGuideParams imageMapGuideParams = OLFactory.createOptions();
-    	imageMapGuideParams.setFormat("PNG");
-    	imageMapGuideParams.setMapDefinition("Library://Public/Samples/Sheboygan/Maps/Sheboygan.MapDefinition");
-    	imageMapGuideParams.setUserName("OpenLayers");
-    	imageMapGuideParams.setPassword("OpenLayers");
+        ImageMapGuideParams imageMapGuideParams = OLFactory.createOptions();
+        imageMapGuideParams.setFormat("PNG");
+        imageMapGuideParams.setMapDefinition("Library://Public/Samples/Sheboygan/Maps/Sheboygan.MapDefinition");
+        imageMapGuideParams.setUserName("OpenLayers");
+        imageMapGuideParams.setPassword("OpenLayers");
 
     	// create a MapGuide image
         ImageMapGuideOptions imageMapGuideOptions = OLFactory.createOptions();
