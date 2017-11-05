@@ -913,12 +913,12 @@ public final class OLFactory {
 	/**
 	 * Creates a {@link TileCoord}.
 	 *
-	 * @param z
-	 *            z
 	 * @param x
 	 *            x
 	 * @param y
 	 *            y
+	 * @param z
+	 *            z
 	 * @return {@link TileCoord}
 	 */
 	public static native TileCoord createTileCoord(double x, double y, double z) /*-{
