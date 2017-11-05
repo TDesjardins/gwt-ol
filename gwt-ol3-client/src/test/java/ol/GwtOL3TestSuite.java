@@ -81,12 +81,13 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(MapTest.class);
         suite.addTestSuite(ObservableTest.class);
         suite.addTestSuite(OverlayTest.class);
+        suite.addTestSuite(PixelTest.class);
         suite.addTestSuite(SphereTest.class);
         suite.addTestSuite(ViewTest.class);
 
         // color
         suite.addTestSuite(ol.color.ColorTest.class);
-        
+
         // controls
         suite.addTestSuite(ol.control.AttributionTest.class);
         suite.addTestSuite(FullScreenTest.class);
@@ -99,7 +100,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
 
         // events
         suite.addTestSuite(ConditionTest.class);
-        
+
         // formats
         suite.addTestSuite(FilterTest.class);
         suite.addTestSuite(GeoJsonTest.class);
