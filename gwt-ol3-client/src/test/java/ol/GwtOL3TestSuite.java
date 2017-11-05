@@ -85,6 +85,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(PixelTest.class);
         suite.addTestSuite(SizeTest.class);
         suite.addTestSuite(SphereTest.class);
+        suite.addTestSuite(TileCoordTest.class);
         suite.addTestSuite(ViewTest.class);
 
         // color
