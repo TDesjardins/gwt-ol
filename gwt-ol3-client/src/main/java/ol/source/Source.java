@@ -33,7 +33,7 @@ import ol.proj.Projection;
  */
 @JsType(isNative = true)
 public class Source extends ol.Object {
-    
+
     /**
      * Get the attributions of the source.
      * 
@@ -41,13 +41,13 @@ public class Source extends ol.Object {
      */
     public native Attribution[] getAttributions();
 
-  	/**
-  	 * Get the logo of the source.
-  	 *
-  	 * @return {@link LogoOptions}
-  	 */
-  	public native LogoOptions getLogo();
-  	
+    /**
+     * Get the logo of the source.
+     *
+     * @return {@link LogoOptions}
+     */
+    public native LogoOptions getLogo();
+
     /**
      * Get the projection of the source.
      * 
@@ -88,5 +88,5 @@ public class Source extends ol.Object {
      *            Projection.
      */
     public native void setProjection(Projection projection);
-    
+
 }
