@@ -25,8 +25,6 @@ import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
 
-import ol.Attribution;
-import ol.AttributionOptions;
 import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
@@ -59,14 +57,7 @@ public class MapboxExample implements Example {
     	mapboxOptions.setTileSize(OLFactory.createSize(512, 512));
     	mapboxOptions.setUrl("https://api.mapbox.com/styles/v1/mapbox/dark-v8/tiles/{z}/{x}/{y}?access_token=" + ACCESS_TOKEN);
     	
-    	AttributionOptions attributionOptions = new AttributionOptions();
-    	attributionOptions.setHtml("© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>");
-        
-        Attribution attribution = new Attribution(attributionOptions);
-        Attribution[] attributions = new Attribution[1];
-        attributions[0] = attribution;
-        
-        mapboxOptions.setAttributions(attributions);
+        mapboxOptions.setAttributions("© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>");
     	
     	Xyz mapboxSource =  new Xyz(mapboxOptions);
     	LayerOptions xyzLayerOptions = OLFactory.createOptions();

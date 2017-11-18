@@ -115,29 +115,6 @@ public final class OLFactory {
     }
 
     /**
-     * Creates an {@link Attribution}.
-     *
-     * @param attributionOptions
-     *            {@link AttributionOptions}
-     * @return {@link Attribution}
-     */
-    public static native Attribution createAttribution(AttributionOptions attributionOptions) /*-{
-        return new $wnd.ol.Attribution(attributionOptions);
-    }-*/;
-
-    /**
-     * Creates an {@link Attribution}.
-     *
-     * @param html HTML markup for this attribution. Required.
-     * @return {@link Attribution}
-     */
-    public static Attribution createAttribution(String html) {
-        AttributionOptions attributionOptions = OLFactory.<AttributionOptions> createOptions();
-        attributionOptions.setHtml(html);
-        return createAttribution(attributionOptions);
-    }
-
-    /**
      * Creates an {@link ol.control.Attribution}.
      *
      * @return {@link ol.control.Attribution}
