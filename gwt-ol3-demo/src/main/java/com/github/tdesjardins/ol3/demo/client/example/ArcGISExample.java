@@ -51,7 +51,7 @@ public class ArcGISExample implements Example {
         options.setUrl(
                 "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StateCityHighway_USA/MapServer");
         options.setParams(params);
-        options.setRatio(1.5f);
+        options.setRatio(1f);
 
         ImageArcGisRest source = new ImageArcGisRest(options);
 
