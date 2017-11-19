@@ -104,10 +104,13 @@ public final class OLUtil {
      *            Optional number of vertices for the resulting polygon. Default
      *            is `32`.
      * @return {ol.geom.Polygon} The "circular" polygon.
+     *
+     * @deprecated Use {@link ol.geom.Polygon#circular(Sphere, Coordinate, double, int)} instead.
      */
-    public static native Polygon circular(Sphere sphere, ol.Coordinate center, double radius, int opt_n) /*-{
-        return $wnd.ol.geom.Polygon.circular(sphere, center, radius, opt_n);
-    }-*/;
+    @Deprecated
+    public static Polygon circular(Sphere sphere, ol.Coordinate center, double radius, int opt_n) {
+        return Polygon.circular(sphere, center, radius, opt_n);
+    };
 
     /**
      * Combines two {@link Style}s into an array of {@link Style}s.
