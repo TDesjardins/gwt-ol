@@ -22,7 +22,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 
-import ol.event.ClickListener;
 import ol.event.EventListener;
 import ol.event.OLHandlerRegistration;
 import ol.events.Event;
@@ -63,39 +62,6 @@ public final class OLUtil {
     @Deprecated
     private OLUtil() {
         throw new AssertionError();
-    }
-
-    /**
-     * Adds a click listener for the given map.
-     *
-     * @param map
-     *            {@link Map}
-     * @param singleClicksOnly
-     *            wait fortrue single click with no dragging and no double
-     *            click? Note that this event is delayed by 250 ms to ensure
-     *            that it is not a double click.
-     * @param listener
-     *            {@link ClickListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link Map#addClickListener(EventListener)} or {@link Map#addSingleClickListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addClickListener(Map map, boolean singleClicksOnly,
-            final ClickListener listener) {
-        String type;
-        if(singleClicksOnly) {
-            type = "singleclick";
-        } else {
-            type = "click";
-        }
-        return observe(map, type, new EventListener<MapBrowserEvent>() {
-
-            @Override
-            public void onEvent(MapBrowserEvent event) {
-                listener.onClick(event);
-            }
-        });
     }
 
     /**
