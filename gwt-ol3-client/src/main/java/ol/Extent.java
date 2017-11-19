@@ -121,6 +121,17 @@ public class Extent implements JsArrayLike<Double> {
     };
 
     /**
+     * @return the top left coordinate of extent.
+     */
+    @JsOverlay
+    public final Coordinate getTopLeft() {
+        return Extent.getTopLeft(this);
+    }
+
+    @JsMethod(name = "getTopLeft", namespace = PACKAGE_EXTENT)
+    private static native Coordinate getTopLeft(Extent extent);
+
+    /**
      * @return the width of extent.
      */
     @JsOverlay

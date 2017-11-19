@@ -299,10 +299,13 @@ public final class OLUtil {
     *
     * @param extent
     * @return top left coordinate of the extent
+    * 
+    * @deprecated Use {@link ol.Extent#getTopLeft()} instead.
     */
-   public static native Coordinate getTopLeft(Extent extent) /*-{
-       return $wnd.ol.extent.getTopLeft(extent);
-   }-*/;
+    @Deprecated
+    public static Coordinate getTopLeft(Extent extent) {
+        return extent.getTopLeft();
+    };
 
     /**
      * Gets the current zoom level of the given {@link View}.
