@@ -29,9 +29,15 @@ public class TileCoordTest extends GwtOL3BaseTestCase {
 
             TileCoord tileCoord = OLFactory.createTileCoord(100, 50, 5);
             assertNotNull(tileCoord);
-            assertEquals(100, tileCoord.getX());
-            assertEquals(50, tileCoord.getY());
-            assertEquals(5, tileCoord.getZ());
+            assertTrue(100 == tileCoord.getX());
+            assertTrue(50 == tileCoord.getY());
+            assertTrue(5 == tileCoord.getZ());
+
+            TileCoord clonedTileCoord = tileCoord.cloneObject();
+            assertNotNull(tileCoord);
+            assertTrue(tileCoord.getX() == clonedTileCoord.getX());
+            assertTrue(tileCoord.getY() == clonedTileCoord.getY());
+            assertTrue(tileCoord.getZ() == clonedTileCoord.getZ());
 
         });
 
