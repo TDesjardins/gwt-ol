@@ -164,7 +164,7 @@ public final class OLUtil {
      * @return {@link Sphere}
      */
     public static Sphere createSphereWGS84() {
-        return OLFactory.createSphere(EARTH_RADIUS_WGS84);
+        return new Sphere(EARTH_RADIUS_WGS84);
     }
 
     /**
@@ -173,7 +173,7 @@ public final class OLUtil {
      * @return {@link Sphere}
      */
     public static Sphere createSphereNormal() {
-        return OLFactory.createSphere(EARTH_RADIUS_NORMAL);
+        return new Sphere(EARTH_RADIUS_NORMAL);
     }
 
     /**
