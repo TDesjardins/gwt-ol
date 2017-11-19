@@ -541,14 +541,17 @@ public final class OLUtil {
      * array of styles. If it is `null` the feature has no style (a `null`
      * style).
      *
-     * @param f
+     * @param feature
      *            {@link ol.Feature}
      * @param style
      *            Style for this feature.
+     *
+     * @deprecated Use {@link ol.Feature#setStyles(Style[])} instead.
      */
-    public static native void setStyle(ol.Feature f, @Nullable ol.style.Style[] style) /*-{
-        f.setStyle(style);
-    }-*/;
+    @Deprecated
+    public static void setStyle(ol.Feature feature, @Nullable ol.style.Style[] style) {
+        feature.setStyles(style);
+    };
 
     /**
      * Set the style for features. This can be a single style object, an array
