@@ -15,7 +15,6 @@
  *******************************************************************************/
 package ol.format;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsonUtils;
 import ol.Coordinate;
 import ol.Feature;
@@ -45,7 +44,7 @@ public class GeoJsonTest extends GwtOL3BaseTestCase {
             
             assertNotNull(geoJsonFormat);
 
-            JavaScriptObject geoJSON = geoJsonFormat.writeFeatureObject(createTestFeature(), null);
+            java.lang.Object geoJSON = geoJsonFormat.writeFeatureObject(createTestFeature(), null);
             assertNotNull(geoJSON);
             
         });
@@ -55,7 +54,7 @@ public class GeoJsonTest extends GwtOL3BaseTestCase {
     public void testGeoJsonToFeature() {
         
         injectUrlAndTest(() -> {
-            JavaScriptObject geoJson = geoJsonFormat.writeFeatureObject(createTestFeature(), null);
+            java.lang.Object geoJson = geoJsonFormat.writeFeatureObject(createTestFeature(), null);
 
             // Convert Features from GeoJSON
             Feature featureGeoJson = geoJsonFormat.readFeature(geoJson, null);
@@ -70,8 +69,8 @@ public class GeoJsonTest extends GwtOL3BaseTestCase {
             String geoJson = geoJsonFormat.writeFeatures(createTestFeature(), null);
             assertNotNull(geoJson);
 
-            JavaScriptObject javaScriptObject = JsonUtils.safeEval(geoJson);
-            assertNotNull(javaScriptObject);
+            java.lang.Object geoJsonObject = JsonUtils.safeEval(geoJson);
+            assertNotNull(geoJsonObject);
         });
 
     }

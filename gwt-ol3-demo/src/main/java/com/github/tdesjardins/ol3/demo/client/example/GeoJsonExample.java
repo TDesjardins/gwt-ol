@@ -19,7 +19,6 @@
 package com.github.tdesjardins.ol3.demo.client.example;
 
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
-import com.google.gwt.core.client.JavaScriptObject;
 
 import ol.Collection;
 import ol.Coordinate;
@@ -70,7 +69,7 @@ public class GeoJsonExample implements Example {
 
         // convert feature to GeoJSON
         GeoJson geoJsonFormat = new GeoJson();
-        JavaScriptObject geoJson = geoJsonFormat.writeFeatureObject(feature, null);
+        java.lang.Object geoJson = geoJsonFormat.writeFeatureObject(feature, null);
 
         // convert features from GeoJSON
         Feature featureGeoJson = geoJsonFormat.readFeature(geoJson, null);
