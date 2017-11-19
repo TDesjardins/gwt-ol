@@ -15,8 +15,6 @@
  *******************************************************************************/
 package ol.proj;
 
-import com.google.gwt.core.client.JsArrayNumber;
-
 import ol.Coordinate;
 import ol.Extent;
 import ol.GwtOL3BaseTestCase;
@@ -90,7 +88,7 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
                 assertNotNull(projection);
                 assertEquals(EPSG_CODE_4326, projection.getCode());
                 assertTrue(projection.isGlobal());
-                assertTrue(projection.getExtent().<JsArrayNumber>cast().length() == 4);
+                assertTrue(projection.getExtent().getLength() == 4);
                 assertEquals(projection.getUnits(), UNIT_DEGREES);
             }
         });
@@ -141,7 +139,7 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
 
                 Extent transformedExtent = Projection.transformExtent(extent, EPSG_CODE_4326, EPSG_CODE_3857);
 
-                assertTrue(transformedExtent.<JsArrayNumber>cast().length() == 4);
+                assertTrue(transformedExtent.getLength() == 4);
                 assertNotSame(extent.getLowerLeftX(), transformedExtent.getLowerLeftX());
                 assertNotSame(extent.getLowerLeftY(), transformedExtent.getLowerLeftY());
                 assertNotSame(extent.getUpperRightX(), transformedExtent.getUpperRightX());

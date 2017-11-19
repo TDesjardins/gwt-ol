@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2015 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,26 @@
  *******************************************************************************/
 package ol;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
+import jsinterop.base.JsArrayLike;
 
 /**
  * An array of numbers representing an extent: `[minx, miny, maxx, maxy]`.
  *
  * @author sbaumhekel
  */
-public class Extent extends JavaScriptObject {
+@JsType(isNative = true, name = "Array", namespace = JsPackage.GLOBAL)
+public class Extent implements JsArrayLike<Double> {
 
-    @Deprecated
-    protected Extent() {
-    }
+    /**
+     * @param minX minimum coordinate X
+     * @param minY minimum coordinate Y
+     * @param maxX maximum coordinate X
+     * @param maxY maximum coordinate Y
+     */
+    public Extent(double minX, double minY, double maxX, double maxY) {}
 
     /**
      * Constructs an instance.
@@ -36,54 +44,76 @@ public class Extent extends JavaScriptObject {
      * @param maxX maximum coordinate X
      * @param maxY maximum coordinate Y
      * @return {@link Extent}
+     * @deprecated Use {@link #Extent(double, double, double, double)} instead.
      */
-    public static native Extent create(double minX, double minY, double maxX, double maxY) /*-{
-    	return [ minX, minY, maxX, maxY ];
-    }-*/;
+    @Deprecated
+    @JsOverlay
+    public final static Extent create(double minX, double minY, double maxX, double maxY) {
+        return new Extent(minX, minY, maxX, maxY);
+    };
 
     /**
      * Clones this object.
      *
      * @return {ol.Extent} clone
      */
-    public final native Extent cloneObject() /*-{
-    	return this.slice(0);
-    }-*/;
+    @JsOverlay
+    public final Extent cloneObject() {
+        return this.slice(0);
+    };
+
+    private native Extent slice(int begin);
 
     /**
      * Gets the minimum X coordinate.
      *
      * @return minimum X coordinate.
      */
-    public final native double getLowerLeftX() /*-{
-    	return this[0];
-    }-*/;
+    @JsOverlay
+    public final double getLowerLeftX() {
+        if (this.getLength() > 0) {
+            return this.getAt(0);
+        }
+        return Double.NaN;
+    };
 
     /**
      * Gets the minimum Y coordinate.
      *
      * @return minimum Y coordinate.
      */
-    public final native double getLowerLeftY() /*-{
-    	return this[1];
-    }-*/;
+    @JsOverlay
+    public final double getLowerLeftY() {
+        if (this.getLength() > 1) {
+            return this.getAt(1);
+        }
+        return Double.NaN;
+    };
 
     /**
      * Gets the maximum X coordinate.
      *
      * @return maximum X coordinate.
      */
-    public final native double getUpperRightX() /*-{
-    	return this[2];
-    }-*/;
+    @JsOverlay
+    public final double getUpperRightX() {
+        if (this.getLength() > 2) {
+            return this.getAt(2);
+        }
+        return Double.NaN;
+    };
 
     /**
      * Gets the maximum Y coordinate.
      *
      * @return maximum Y coordinate.
      */
-    public final native double getUpperRightY() /*-{
-    	return this[3];
-    }-*/;
+    @JsOverlay
+    public final double getUpperRightY() {
+        if (this.getLength() > 3) {
+            return this.getAt(3);
+        }
+        return Double.NaN;
+    };
 
 }
