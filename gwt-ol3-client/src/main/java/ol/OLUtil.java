@@ -23,14 +23,8 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 
 import ol.event.ClickListener;
-import ol.event.DoubleClickListener;
 import ol.event.EventListener;
-import ol.event.MapMoveListener;
-import ol.event.MapZoomListener;
 import ol.event.OLHandlerRegistration;
-import ol.event.TileLoadEndListener;
-import ol.event.TileLoadErrorListener;
-import ol.event.TileLoadStartListener;
 import ol.events.Event;
 import ol.geom.Polygon;
 import ol.geom.SimpleGeometryCoordinates;
@@ -39,8 +33,6 @@ import ol.layer.Base;
 import ol.layer.Layer;
 import ol.proj.Projection;
 import ol.source.Source;
-import ol.source.Tile;
-import ol.source.UrlTile;
 import ol.source.Xyz;
 import ol.source.XyzOptions;
 import ol.style.Style;
@@ -107,134 +99,6 @@ public final class OLUtil {
     }
 
     /**
-     * Adds a click listener for the given map.
-     *
-     * @param map
-     *            {@link Map}
-     * @param listener
-     *            {@link DoubleClickListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link Map#addDoubleClickListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addDoubleClickListener(Map map, final DoubleClickListener listener) {
-        return observe(map, "dblclick", new EventListener<MapBrowserEvent>() {
-
-            @Override
-            public void onEvent(MapBrowserEvent event) {
-                listener.onDoubleClick(event);
-            }
-        });
-    }
-
-    /**
-     * Adds a map move listener for the given map.
-     *
-     * @param map
-     *            {@link Map}
-     * @param listener
-     *            {@link MapMoveListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link Map#addMapMoveListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addMapMoveListener(final Map map, final MapMoveListener listener) {
-        // listen to "moveend" events of map
-        final HandlerRegistration handlerMap = observe(map, "moveend", new EventListener<MapEvent>() {
-            @Override
-            public void onEvent(MapEvent event) {
-                listener.onMapMove(event);
-            }
-        });
-        // fire events while the map is moving
-        // try to set up an event handler for the change of the view center
-        // as "moveend" will be only fired when the map stops moving
-        View view = map.getView();
-        if(view != null) {
-            final HandlerRegistration handlerView = OLUtil.observe(view, "change:center",
-                    new EventListener<Object.Event>() {
-                        @Override
-                        public void onEvent(Object.Event event) {
-                            // create an artificial move event
-                            Event e2 = createLinkedEvent(event, "move", map);
-                            MapEvent me = initMapEvent(e2, map);
-                            listener.onMapMove(me);
-                        }
-                    });
-            // return a handler registration, which detaches both event
-            // handlers
-            return new HandlerRegistration() {
-                @Override
-                public void removeHandler() {
-                    handlerMap.removeHandler();
-                    handlerView.removeHandler();
-                }
-            };
-        }
-        // just return the map handler
-        return handlerMap;
-    }
-
-    /**
-     * Adds a map zoom listener for the given map.
-     *
-     * @param map
-     *            {@link Map}
-     * @param listener
-     *            {@link MapZoomListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link Map#addMapZoomListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addMapZoomListener(final Map map, final MapZoomListener listener) {
-        return observe(map.getView(), "change:resolution", new EventListener<Object.Event>() {
-
-            @Override
-            public void onEvent(Object.Event event) {
-                Event zoomEvent = createLinkedEvent(event, "zoom", map);
-                MapEvent mapEvent = initMapEvent(zoomEvent, map);
-                listener.onMapZoom(mapEvent);
-            }
-        });
-    }
-    
-    /**
-     * Adds a map zoom end listener for the given map.
-     *
-     * @param map
-     *            {@link Map}
-     * @param listener
-     *            {@link MapZoomListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link Map#addMapZoomEndListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addMapZoomEndListener(final Map map, final MapZoomListener listener) {
-        return observe(map, "moveend", new EventListener<Object.Event>() {
-
-        private double zoomLevel = map.getView().getZoom();
-        
-            @Override
-            public void onEvent(Object.Event event) {
-                
-                double newZoomLevel = map.getView().getZoom();
-                
-                if(newZoomLevel != this.zoomLevel) {
-                    this.zoomLevel = newZoomLevel;
-                    Event zoomEndEvent = createLinkedEvent(event, "zoomend", map);
-                    MapEvent mapEvent = initMapEvent(zoomEndEvent, map);
-                    listener.onMapZoom(mapEvent);
-                }
-                
-            }
-        });
-    }
-
-    /**
      * Adds a {@link Style} to the given array of {@link Style}s.
      *
      * @param s
@@ -260,75 +124,6 @@ public final class OLUtil {
     public static native ol.style.Style[] addStyles(ol.style.Style[] s, ol.style.Style[] s2) /*-{
 		return s.concat(s2);
     }-*/;
-
-    /**
-     * Adds a listener for tile loading errors.
-     *
-     * @param source
-     *            source
-     *
-     * @param listener
-     *            {@link TileLoadErrorListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link ol.source.Tile#addTileLoadErrorListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addTileLoadErrorListener(UrlTile source, final TileLoadErrorListener listener) {
-        return observe(source, "tileloaderror", new EventListener<Tile.Event>() {
-
-            @Override
-            public void onEvent(Tile.Event event) {
-                listener.onTileLoadError(event);
-            }
-        });
-    }
-
-    /**
-     * Adds a listener for tile start loading.
-     *
-     * @param source
-     *            source
-     *
-     * @param listener
-     *            {@link TileLoadStartListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link ol.source.Tile#addTileLoadStartListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addTileLoadStartListener(UrlTile source, final TileLoadStartListener listener) {
-        return observe(source, "tileloadstart", new EventListener<Tile.Event>() {
-
-            @Override
-            public void onEvent(Tile.Event event) {
-                listener.onTileLoadStart(event);
-            }
-        });
-    }
-
-    /**
-     * Adds a listener for tile end loading.
-     *
-     * @param source
-     *            source
-     *
-     * @param listener
-     *            {@link TileLoadEndListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link ol.source.Tile#addTileLoadEndListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addTileLoadEndListener(UrlTile source, final TileLoadEndListener listener) {
-        return observe(source, "tileloadend", new EventListener<Tile.Event>() {
-
-            @Override
-            public void onEvent(Tile.Event event) {
-                listener.onTileLoadEnd(event);
-            }
-        });
-    }
 
     /**
      * Create an approximation of a circle on the surface of a sphere.
