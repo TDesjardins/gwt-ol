@@ -32,6 +32,11 @@ public class SizeTest extends GwtOL3BaseTestCase {
             assertEquals(100, size.getWidth());
             assertEquals(50, size.getHeight());
 
+            Size clonedSize = size.cloneObject();
+            assertNotNull(clonedSize);
+            assertEquals(size.getWidth(), clonedSize.getWidth());
+            assertEquals(size.getHeight(), clonedSize.getHeight());
+
         });
 
     }
