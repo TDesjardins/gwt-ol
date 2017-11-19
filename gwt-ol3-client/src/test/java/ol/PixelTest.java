@@ -27,10 +27,15 @@ public class PixelTest extends GwtOL3BaseTestCase {
 
         injectUrlAndTest(() -> {
 
-            Pixel pixel = OLFactory.createPixel(100, 50);
+            Pixel pixel = new Pixel(100, 50);
             assertNotNull(pixel);
             assertEquals(100, pixel.getX());
             assertEquals(50, pixel.getY());
+
+            Pixel clonedPixel = pixel.cloneObject();
+            assertNotNull(clonedPixel);
+            assertEquals(pixel.getX(), clonedPixel.getX());
+            assertEquals(pixel.getY(), clonedPixel.getY());
 
         });
 
