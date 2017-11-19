@@ -15,7 +15,6 @@
  *******************************************************************************/
 package ol;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import ol.color.Color;
 import ol.control.Control;
 import ol.control.FullScreen;
@@ -1223,13 +1222,13 @@ public final class OLFactory {
         return new $wnd.ol.source.TileWMS(tileWmsOptions);
     }-*/;
 
-    public static native JavaScriptObject createEventFunction(Executor t) /*-{
+    public static native java.lang.Object createEventFunction(Executor t) /*-{
         return function (selectevent) {
             t.action(selectevent);
         };
     }-*/;
 
-    public static JavaScriptObject createEventFunction(GenericFunction<JavaScriptObject, Void> genericFunction){
+    public static java.lang.Object createEventFunction(GenericFunction<java.lang.Object, Void> genericFunction){
         Executor executor = new Executor(genericFunction);
         return createEventFunction(executor);
     }
