@@ -15,6 +15,7 @@
  *******************************************************************************/
 package ol;
 
+import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
@@ -27,6 +28,9 @@ import jsinterop.base.JsArrayLike;
  */
 @JsType(isNative = true, name = "Array", namespace = JsPackage.GLOBAL)
 public class Extent implements JsArrayLike<Double> {
+
+    @JsOverlay
+    private static final String PACKAGE_EXTENT = "ol.extent";
 
     /**
      * @param minX minimum coordinate X
@@ -115,5 +119,16 @@ public class Extent implements JsArrayLike<Double> {
         }
         return Double.NaN;
     };
+
+    /**
+     * @return the width of extent.
+     */
+    @JsOverlay
+    public final double getWidth() {
+        return Extent.getWidth(this);
+    }
+
+    @JsMethod(name = "getWidth", namespace = PACKAGE_EXTENT)
+    private static native double getWidth(Extent extent);
 
 }

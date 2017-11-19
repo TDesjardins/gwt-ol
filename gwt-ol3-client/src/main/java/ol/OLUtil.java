@@ -287,10 +287,13 @@ public final class OLUtil {
      *
      * @param extent
      * @return width of extent
+     * 
+     * @deprecated Use {@link ol.Extent#getWidth()} instead.
      */
-    public static native double getWidth(Extent extent) /*-{
-        return $wnd.ol.extent.getWidth(extent);
-    }-*/;
+    @Deprecated
+    public static double getWidth(Extent extent) {
+        return extent.getWidth();
+    };
 
     /**
     *
