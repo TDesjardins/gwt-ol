@@ -16,7 +16,6 @@
 package ol.color;
 
 import ol.GwtOL3BaseTestCase;
-import ol.OLFactory;
 
 /**
  * Test for {@link ol.color.Color}.
@@ -29,16 +28,17 @@ public class ColorTest extends GwtOL3BaseTestCase {
     public void testColor() {
 
         this.injectUrlAndTest(() -> {
-            Color color = OLFactory.createColor(255, 0, 0, 1);
+            Color color = new Color(255, 0, 0, 1);
             assertNotNull(color);
             
-            Color color2 = OLFactory.createColor("#FF0000");
+            Color color2 = Color.getColorFromString("#FF0000");
             assertNotNull(color2);
             
             assertEquals(color2.getRed(), 255);
             assertEquals(color2.getGreen(), 0);
             assertEquals(color2.getBlue(), 0);
             assertEquals(color2.getAlpha(), 1f);
+
         });
 
     }

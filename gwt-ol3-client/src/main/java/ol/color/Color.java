@@ -15,6 +15,7 @@
  *******************************************************************************/
 package ol.color;
 
+import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
@@ -30,6 +31,9 @@ import jsinterop.base.JsArrayLike;
 @JsType(isNative = true, name = "Array", namespace = JsPackage.GLOBAL)
 public class Color implements JsArrayLike<Double> {
 
+    @JsOverlay
+    private static final String PACKAGE_COLOR = "ol.color";
+
     /**
      * @param red red (0-255)
      * @param green green (0-255)
@@ -37,6 +41,40 @@ public class Color implements JsArrayLike<Double> {
      * @param alpha alpha (0-1), 1 is solid
      */
     public Color(int red, int green, int blue, float alpha) {}
+
+    /**
+     * This method maintains a cache of calculated arrays which means the result
+     * should not be modified.
+     *
+     * @param colorString colorString color in rgb(r,g,b) or rgba(r,g,b,a) format,
+     * or in hex #rrggbb or #rgb format
+     * @return cached color
+     */
+    @JsMethod(name = "asArray", namespace = PACKAGE_COLOR)
+    private static native Color asArray(String colorString);
+
+    /**
+     * Clones this object.
+     *
+     * @return clone
+     */
+    @JsOverlay
+    public final Color cloneObject() {
+        return this.slice(0);
+    };
+
+    /**
+     * 
+     * @param colorString color in rgb(r,g,b) or rgba(r,g,b,a) format, or in hex #rrggbb
+     * or #rgb format
+     *
+     * @return color
+     */
+    @JsOverlay
+    public static final Color getColorFromString(String colorString) {
+        // clone because original color is cached
+        return asArray(colorString).cloneObject();
+    };
 
     /**
      * Gets the alpha value.
@@ -77,5 +115,7 @@ public class Color implements JsArrayLike<Double> {
     public final int getRed() {
         return this.getAt(0).intValue();
     };
+
+    private native Color slice(int begin);
 
 }
