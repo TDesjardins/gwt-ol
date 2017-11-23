@@ -52,6 +52,8 @@ public class ColorTest extends GwtOL3BaseTestCase {
             assertEquals(color3.getBlue(), 11);
             assertEquals(color3.getAlpha(), 1f);
 
+            assertEquals("rgba(255,77,11,1)", color3.asString());
+
         });
 
     }

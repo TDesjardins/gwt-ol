@@ -54,6 +54,25 @@ public class Color implements JsArrayLike<Double> {
     private static native Color asArray(String colorString);
 
     /**
+     * Return the color as an rgba string.
+     *
+     * @return rgba string
+     */
+    @JsOverlay
+    public final String asString() {
+        return Color.asString(this);
+    }
+
+    /**
+     * Return the color as an rgba string.
+     *
+     * @param color
+     * @return rgba string
+     */
+    @JsMethod(namespace = PACKAGE_COLOR)
+    private static native String asString(Color color);
+
+    /**
      * Clones this object.
      *
      * @return clone
