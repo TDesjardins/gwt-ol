@@ -16,6 +16,7 @@
 package ol;
 
 import ol.color.Color;
+import ol.control.Attribution;
 import ol.control.Control;
 import ol.control.FullScreen;
 import ol.control.FullScreenOptions;
@@ -118,9 +119,9 @@ public final class OLFactory {
      *
      * @return {@link ol.control.Attribution}
      */
-    public static native ol.control.Attribution createAttributionControl() /*-{
-    	return new $wnd.ol.control.Attribution();
-    }-*/;
+    public static Attribution createAttributionControl() {
+        return new Attribution();
+    };
 
     /**
      * Creates an {@link ol.control.Attribution}.
@@ -129,9 +130,9 @@ public final class OLFactory {
      *
      * @return {@link ol.control.Attribution}
      */
-    public static native ol.control.Attribution createAttributionControl(ol.control.AttributionOptions options) /*-{
-        return new $wnd.ol.control.Attribution(options);
-    }-*/;
+    public static ol.control.Attribution createAttributionControl(ol.control.AttributionOptions options) {
+        return new Attribution(options);
+    };
 
     /**
      * Creates a {@link Circle}.
