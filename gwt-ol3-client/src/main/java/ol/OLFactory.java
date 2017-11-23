@@ -143,9 +143,9 @@ public final class OLFactory {
      *            radius
      * @return {@link Circle}
      */
-    public static native Circle createCircle(Coordinate center, double radius) /*-{
-        return new $wnd.ol.geom.Circle(center, radius);
-    }-*/;
+    public static Circle createCircle(Coordinate center, double radius) {
+        return new Circle(center, radius);
+    };
 
     /**
      * Creates a {@link ol.style.Circle} style.
