@@ -198,9 +198,9 @@ public final class OLFactory {
      *            alpha (0-1), 1 is solid
      * @return {@link Color}
      */
-    public static native Color createColor(int red, int green, int blue, double alpha) /*-{
-    	return [ red, green, blue, alpha ];
-    }-*/;
+    public static Color createColor(int red, int green, int blue, double alpha) {
+        return new Color(red, green, blue, (float)alpha);
+    };
 
     /**
      * Creates a {@link Color} from the given String.
@@ -210,10 +210,9 @@ public final class OLFactory {
      *            or #rgb format
      * @return {@link Color}
      */
-    public static native Color createColor(String color) /*-{
-        // clone because original color is cached
-        return $wnd.ol.color.asArray(color).slice(0);
-    }-*/;
+    public static Color createColor(String colorString) {
+        return Color.getColorFromString(colorString);
+    };
 
     /**
      * Creates an instance.
