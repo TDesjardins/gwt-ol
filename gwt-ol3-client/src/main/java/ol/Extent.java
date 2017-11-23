@@ -69,6 +69,28 @@ public class Extent implements JsArrayLike<Double> {
     private native Extent slice(int begin);
 
     /**
+     * @return the area of the extent.
+     */
+    @JsOverlay
+    public final double getArea() {
+        return Extent.getArea(this);
+    }
+
+    @JsMethod(name = "getArea", namespace = PACKAGE_EXTENT)
+    private static native double getArea(Extent extent);
+
+    /**
+     * @return the height of the extent.
+     */
+    @JsOverlay
+    public final double getHeight() {
+        return Extent.getHeight(this);
+    }
+
+    @JsMethod(name = "getHeight", namespace = PACKAGE_EXTENT)
+    private static native double getHeight(Extent extent);
+
+    /**
      * Gets the minimum X coordinate.
      *
      * @return minimum X coordinate.
@@ -132,7 +154,7 @@ public class Extent implements JsArrayLike<Double> {
     private static native Coordinate getTopLeft(Extent extent);
 
     /**
-     * @return the width of extent.
+     * @return the width of the extent.
      */
     @JsOverlay
     public final double getWidth() {
