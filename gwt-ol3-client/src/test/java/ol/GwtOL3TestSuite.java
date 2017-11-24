@@ -153,6 +153,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(ProjectionTest.class);
 
         // style
+        suite.addTestSuite(ol.style.CircleTest.class);
         suite.addTestSuite(RegularShapeTest.class);
 
         return suite;
