@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,58 @@ import jsinterop.annotations.JsType;
  * A base class used for creating subclasses and not instantiated in
  * apps. Base class for {@link ol.style.Icon}, {@link ol.style.Circle} and
  * {@link ol.style.RegularShape}.
+ *
  * @author sbaumhekel
  */
 @JsType(isNative = true)
-public interface Image {
+public abstract class Image {
+
+    /**
+     * @return Opacity of the image. Default is 1.
+     */
+    public native double getOpacity();
+
+    /**
+     * @return Whether to rotate the icon with the view. Default is false.
+     */
+    public native boolean getRotateWithView();
+
+    /**
+     * @return Rotation in radians (positive rotation clockwise). Default is 0.
+     */
+    public native double getRotation();
+
+    /**
+     * @return Scale. Default is 1.
+     */
+    public native double getScale();
+
+    /**
+     * If true integral numbers of pixels are used as the X and Y pixel coordinate
+     * when drawing the icon in the output canvas. If false fractional numbers may
+     * be used. Using true allows for "sharp" rendering (no blur), while using false
+     * allows for "accurate" rendering. Note that accuracy is important if the icon's
+     * position is animated. Without it, the icon may jitter noticeably.
+     * Default value is true.
+     *
+     * @return integral numbers of pixels are used as the X and Y pixel coordinate
+     */
+    public native boolean getSnapToPixel();
+
+    /**
+     * @param opacity Opacity of the image. Default is 1.
+     */
+    public native void setOpacity(double opacity);
+
+    /**
+     * @param rotation Rotation in radians (positive rotation clockwise).
+     * Default is 0.
+     */
+    public native void setRotation(double rotation);
+
+    /**
+     * @param scale Scale. Default is 1.
+     */
+    public native void setScale(double scale);
 
 }
