@@ -17,6 +17,7 @@ package ol;
 
 import com.google.gwt.junit.tools.GWTTestSuite;
 import junit.framework.TestSuite;
+import ol.control.ControlTest;
 import ol.control.FullScreenTest;
 import ol.control.MousePositionTest;
 import ol.control.OverviewMapTest;
@@ -93,6 +94,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
 
         // controls
         suite.addTestSuite(ol.control.AttributionTest.class);
+        suite.addTestSuite(ControlTest.class);
         suite.addTestSuite(FullScreenTest.class);
         suite.addTestSuite(MousePositionTest.class);
         suite.addTestSuite(OverviewMapTest.class);
