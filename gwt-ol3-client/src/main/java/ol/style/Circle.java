@@ -25,4 +25,7 @@ import jsinterop.annotations.JsType;
  */
 @JsType(isNative = true)
 public class Circle extends RegularShape {
+
+    public Circle(CircleOptions circleOptions) {}
+
 }
