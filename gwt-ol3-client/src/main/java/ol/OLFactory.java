@@ -154,9 +154,9 @@ public final class OLFactory {
      *            {@link CircleOptions}
      * @return {@link ol.style.Circle}
      */
-    public static native ol.style.Circle createCircleStyle(CircleOptions circleOptions) /*-{
-        return new $wnd.ol.style.Circle(circleOptions);
-    }-*/;
+    public static ol.style.Circle createCircleStyle(CircleOptions circleOptions) {
+        return new ol.style.Circle(circleOptions);
+    };
 
     /**
      * Creates a {@link ol.style.Circle} style.
