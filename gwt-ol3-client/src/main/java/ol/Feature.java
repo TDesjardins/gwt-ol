@@ -57,11 +57,12 @@ import ol.style.Style;
 @JsType(isNative = true)
 public class Feature extends Object {
 
-    
     public Feature() {}
-    
+
     public Feature(FeatureOptions featureOptions) {}
-    
+
+    public Feature(Geometry geometry) {}
+
     /**
      * Clone this feature. If the original feature has a geometry it is also
      * cloned. The feature id is not set in the clone.
