@@ -59,6 +59,7 @@ import ol.source.ImageArcGISRestTest;
 import ol.source.ImageStaticTest;
 import ol.source.TileWmsTest;
 import ol.source.VectorTileTest;
+import ol.style.AtlasManagerTest;
 import ol.style.RegularShapeTest;
 
 /**
@@ -153,6 +154,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(ProjectionTest.class);
 
         // style
+        suite.addTestSuite(AtlasManagerTest.class);
         suite.addTestSuite(ol.style.CircleTest.class);
         suite.addTestSuite(RegularShapeTest.class);
 
