@@ -45,14 +45,14 @@ public class FilterTest extends GwtOL3BaseTestCase {
     public void testBbox() {
         injectUrlAndTest(() -> {
 
-            Bbox bboxFilter = new Bbox("geometryName", Extent.create(0, 0, 1, 1), "EPSG:3857");
+            Bbox bboxFilter = new Bbox("geometryName", new Extent(0, 0, 1, 1), "EPSG:3857");
             assertNotNull(bboxFilter);
 
-            bboxFilter.setExtent(Extent.create(1, 1, 2, 2));
+            bboxFilter.setExtent(new Extent(1, 1, 2, 2));
             bboxFilter.setGeometryName("geometryAttribute");
             bboxFilter.setSrsName("EPSG:4326");
 
-            Filter.bbox("geometryName", Extent.create(0, 0, 100, 100), "EPSG:3857");
+            Filter.bbox("geometryName", new Extent(0, 0, 100, 100), "EPSG:3857");
         });
     }
 
