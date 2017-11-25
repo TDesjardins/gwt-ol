@@ -182,9 +182,9 @@ public final class OLFactory {
      *
      * @return {@link Collection}
      */
-    public static native <T> Collection<T> createCollection() /*-{
-    	return new $wnd.ol.Collection();
-    }-*/;
+    public static <T> Collection<T> createCollection() {
+        return new Collection<T>();
+    };
 
     /**
      * Creates a {@link Color} from the given values.
@@ -224,9 +224,9 @@ public final class OLFactory {
      *            Y-coordinate (latitude)
      * @return {@link Coordinate}
      */
-    public static native Coordinate createCoordinate(double x, double y) /*-{
-    	return [ x, y ];
-    }-*/;
+    public static Coordinate createCoordinate(double x, double y) {
+        return new Coordinate(x, y);
+    };
 
     /**
      * Creates an instance.
@@ -239,9 +239,9 @@ public final class OLFactory {
      *            Z-coordinate
      * @return {@link Coordinate}
      */
-    public static native Coordinate createCoordinate(double x, double y, double z) /*-{
-    	return [ x, y, z ];
-    }-*/;
+    public static Coordinate createCoordinate(double x, double y, double z) {
+        return new Coordinate(x, y, z);
+    };
 
     /**
      * Creates an instance.
