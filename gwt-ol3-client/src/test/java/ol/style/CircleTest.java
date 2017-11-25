@@ -25,7 +25,7 @@ import ol.OLFactory;
  */
 public class CircleTest extends GwtOL3BaseTestCase {
 
-    public void testPoint() {
+    public void testCircle() {
 
         injectUrlAndTest(() -> {
 
