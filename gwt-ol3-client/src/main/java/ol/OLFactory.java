@@ -272,9 +272,9 @@ public final class OLFactory {
 
     /** Interactions **/
 
-    public static native DragAndDrop createDragAndDrop() /*-{
-    	return new $wnd.ol.interaction.DragAndDrop();
-    }-*/;
+    public static DragAndDrop createDragAndDrop() {
+        return new DragAndDrop();
+    };
 
     /**
      * Creates a {@link Draw}.
@@ -284,9 +284,9 @@ public final class OLFactory {
      *
      * @return {@link Draw}
      */
-    public static native Draw createDraw(DrawOptions options) /*-{
-    	return new $wnd.ol.interaction.Draw(options);
-    }-*/;
+    public static Draw createDraw(DrawOptions options) {
+        return new Draw(options);
+    };
 
     /**
      * Creates an {@link Extent}.
@@ -297,18 +297,18 @@ public final class OLFactory {
      * @param maxY
      * @return {@link Extent}
      */
-    public static native Extent createExtent(double minX, double minY, double maxX, double maxY) /*-{
-    	return [ minX, minY, maxX, maxY ];
-    }-*/;
+    public static Extent createExtent(double minX, double minY, double maxX, double maxY) {
+        return new Extent(minX, minY, maxX, maxY);
+    };
 
     /**
      * Creates a {@link Feature}.
      *
      * @return {@link Feature}
      */
-    public static native Feature createFeature() /*-{
-    	return new $wnd.ol.Feature();
-    }-*/;
+    public static Feature createFeature() {
+        return new Feature();
+    };
 
     /**
      * Creates a {@link Feature}.
@@ -318,9 +318,9 @@ public final class OLFactory {
      *
      * @return {@link Feature}
      */
-    public static native Feature createFeature(FeatureOptions options) /*-{
-    	return new $wnd.ol.Feature(options);
-    }-*/;
+    public static Feature createFeature(FeatureOptions options) {
+        return new Feature(options);
+    };
 
     /**
      * Creates a {@link Feature}.
@@ -330,9 +330,9 @@ public final class OLFactory {
      *
      * @return {@link Feature}
      */
-    public static native Feature createFeature(Geometry geom) /*-{
-    	return new $wnd.ol.Feature(geom);
-    }-*/;
+    public static Feature createFeature(Geometry geom) {
+        return new ol.Feature(geom);
+    };
 
     /**
      * Creates a {@link Feature}.
