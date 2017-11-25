@@ -35,6 +35,8 @@ public class CircleTest extends GwtOL3BaseTestCase {
 
             Circle circleStyle = OLFactory.createCircleStyle(circleOptions);
             assertNotNull(circleStyle);
+            assertEquals(5, circleStyle.getRadius());
+            assertTrue(circleStyle.getSnapToPixel());
 
         });
 
