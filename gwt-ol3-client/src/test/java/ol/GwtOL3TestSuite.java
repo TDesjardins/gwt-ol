@@ -43,6 +43,7 @@ import ol.interaction.DragRotateTest;
 import ol.interaction.DragZoomTest;
 import ol.interaction.DrawTest;
 import ol.interaction.ExtentTest;
+import ol.interaction.InteractionTest;
 import ol.interaction.KeyboardPanTest;
 import ol.interaction.KeyboardZoomTest;
 import ol.interaction.ModifyTest;
@@ -128,6 +129,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(DragZoomTest.class);
         suite.addTestSuite(DrawTest.class);
         suite.addTestSuite(ExtentTest.class);
+        suite.addTestSuite(InteractionTest.class);
         suite.addTestSuite(KeyboardPanTest.class);
         suite.addTestSuite(KeyboardZoomTest.class);
         suite.addTestSuite(ModifyTest.class);

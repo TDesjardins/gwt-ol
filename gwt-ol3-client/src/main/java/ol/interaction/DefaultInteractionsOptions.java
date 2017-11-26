@@ -10,7 +10,7 @@ import ol.Options;
  * @author sbaumhekel
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class InteractionOptions implements Options {
+public class DefaultInteractionsOptions implements Options {
 
     /**
      * Whether Alt-Shift-drag rotate is desired. Default is true.

@@ -16,6 +16,7 @@
 package ol.interaction;
 
 import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import ol.Map;
 
@@ -34,6 +35,12 @@ import ol.Map;
 @JsType(isNative = true)
 public abstract class Interaction extends ol.Object {
 
+    @JsOverlay
+    private static final String PACKAGE_INTERACTION = "ol.interaction";
+
+    @JsMethod(name = "defaults", namespace = PACKAGE_INTERACTION)
+    public static native ol.Collection<ol.interaction.Interaction> defaults();
+
     /**
      * Set of interactions included in maps by default. Specific interactions
      * can be excluded by setting the appropriate option to false in the
@@ -47,8 +54,8 @@ public abstract class Interaction extends ol.Object {
      *            options.
      * @return interactions
      */
-    @JsMethod(name = "defaults", namespace = "ol.interaction")
-    public static native ol.Collection<ol.interaction.Interaction> defaults(InteractionOptions options);
+    @JsMethod(name = "defaults", namespace = PACKAGE_INTERACTION)
+    public static native ol.Collection<ol.interaction.Interaction> defaults(DefaultInteractionsOptions options);
 
     /**
      * Return whether the interaction is currently active.
