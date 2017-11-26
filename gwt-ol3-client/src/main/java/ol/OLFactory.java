@@ -18,6 +18,7 @@ package ol;
 import ol.color.Color;
 import ol.control.Attribution;
 import ol.control.Control;
+import ol.control.DefaultControlsOptions;
 import ol.control.FullScreen;
 import ol.control.FullScreenOptions;
 import ol.control.MousePosition;
@@ -266,9 +267,9 @@ public final class OLFactory {
      *            options
      * @return default map controls
      */
-    public static native Collection<Control> createDefaultControls(@Nullable Options options) /*-{
-        return new $wnd.ol.control.defaults(options);
-    }-*/;
+    public static Collection<Control> createDefaultControls(@Nullable DefaultControlsOptions options) {
+        return Control.defaults(options);
+    };
 
     /** Interactions **/
 
@@ -345,9 +346,9 @@ public final class OLFactory {
      * @return {@link Feature}
      */
     public static Feature createFeature(Geometry geom, Style style) {
-        Feature f = createFeature(geom);
-        f.setStyle(style);
-        return f;
+        Feature feature = createFeature(geom);
+        feature.setStyle(style);
+        return feature;
     }
 
     /**
@@ -370,9 +371,9 @@ public final class OLFactory {
      *            {@link FillOptions}
      * @return {@link Fill}
      */
-    public static native Fill createFill(FillOptions fillOptions) /*-{
-    	return new $wnd.ol.style.Fill(fillOptions);
-    }-*/;
+    public static Fill createFill(FillOptions fillOptions) {
+        return new Fill(fillOptions);
+    };
 
     /** Controls **/
 
@@ -380,9 +381,9 @@ public final class OLFactory {
      * Creates a {@link FullScreen} control.
      * @return {@link FullScreen}
      */
-    public static native FullScreen createFullScreen() /*-{
-    	return new $wnd.ol.control.FullScreen();
-    }-*/;
+    public static FullScreen createFullScreen() {
+        return new FullScreen();
+    };
 
     /**
      * Creates a {@link FullScreen} control.
@@ -390,9 +391,9 @@ public final class OLFactory {
      *            options
      * @return {@link FullScreen}
      */
-    public static native FullScreen createFullScreen(FullScreenOptions options) /*-{
-        return new $wnd.ol.control.FullScreen(options);
-    }-*/;
+    public static FullScreen createFullScreen(FullScreenOptions options) {
+        return new FullScreen(options);
+    };
 
     /**
      * Creates a {@link GeometryCollection}.
@@ -400,9 +401,9 @@ public final class OLFactory {
      *
      * @return {@link GeometryCollection}
      */
-    public static native GeometryCollection createGeometryCollection(@Nullable Geometry[] geoms) /*-{
-	return new $wnd.ol.geom.GeometryCollection(geoms);
-    }-*/;
+    public static GeometryCollection createGeometryCollection(@Nullable Geometry[] geoms) {
+        return new GeometryCollection(geoms);
+    };
 
     /**
      * Creates a {@link GeoJson}.
@@ -412,47 +413,49 @@ public final class OLFactory {
      *
      * @return {@link GeoJson}
      */
-    public static native GeoJson createGeoJSON(GeoJsonOptions options) /*-{
-    	return new $wnd.ol.format.GeoJSON(options);
-    }-*/;
+    public static GeoJson createGeoJSON(GeoJsonOptions options) {
+        return new GeoJson(options);
+    };
 
     /**
      * Creates a {@link GeoJson}.
        *
      * @return {@link GeoJson}
      */
-    public static native GeoJson createGeoJSON() /*-{
-    	return new $wnd.ol.format.GeoJSON();
-    }-*/;
+    public static GeoJson createGeoJSON() {
+        return new GeoJson();
+    };
+
     /**
      * Creates an {@link Graticule}.
      *
      * @return {@link Graticule}
      */
-    public static native Graticule createGraticule() /*-{
-    	return new $wnd.ol.Graticule();
-    }-*/;
+    public static Graticule createGraticule() {
+        return new Graticule();
+    };
 
     /** Layers **/
 
-    public static native Image createImageLayer(LayerOptions layerOptions) /*-{
-    	return new $wnd.ol.layer.Image(layerOptions);
-    }-*/;
+    public static Image createImageLayer(LayerOptions layerOptions) {
+        return new Image(layerOptions);
+    };
 
     /** Sources **/
 
     /**
-     * create a MapGuide image
+     * Creates a MapGuide image.
+     *
      * @param imageMapGuideOptions
      * @return {@link ImageMapGuide}
      * **/
-    public static native ImageMapGuide createImageMapGuideSource(ImageMapGuideOptions imageMapGuideOptions) /*-{
-	    return new $wnd.ol.source.ImageMapGuide(imageMapGuideOptions);
-	}-*/;
+    public static ImageMapGuide createImageMapGuideSource(ImageMapGuideOptions imageMapGuideOptions) {
+        return new ImageMapGuide(imageMapGuideOptions);
+    };
 
-    public static native ImageStatic createImageStaticSource(ImageStaticOptions imageStaticOptions) /*-{
-    	return new $wnd.ol.source.ImageStatic(imageStaticOptions);
-    }-*/;
+    public static ImageStatic createImageStaticSource(ImageStaticOptions imageStaticOptions) {
+        return new ImageStatic(imageStaticOptions);
+    };
 
     public static native ImageWms createImageWMSSource(ImageWmsOptions imageWMSOptions) /*-{
     	return new $wnd.ol.source.ImageWMS(imageWMSOptions);
