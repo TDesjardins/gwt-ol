@@ -54,7 +54,10 @@ public class Coordinate implements JsArrayLike<Double> {
      * @param x X-coordinate (longitude)
      * @param y Y-coordinate (latitude)
      * @return {@link Coordinate}
+     * 
+     * @deprecated Use {@link #Coordinate(double, double)} instead.
      */
+    @Deprecated
     @JsOverlay
     public static Coordinate create(@NotNull double x, @NotNull double y) {
         return new Coordinate(x, y);
@@ -67,7 +70,10 @@ public class Coordinate implements JsArrayLike<Double> {
      * @param y Y-coordinate (latitude)
      * @param z Z-coordinate (height)
      * @return {@link Coordinate}
+     *
+     * @deprecated Use {@link #Coordinate(double, double, double)} instead.
      */
+    @Deprecated
     @JsOverlay
     public static Coordinate create(@NotNull double x, @NotNull double y, @NotNull double z) {
         return new Coordinate(x, y, z);
