@@ -160,6 +160,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         // style
         suite.addTestSuite(AtlasManagerTest.class);
         suite.addTestSuite(ol.style.CircleTest.class);
+        suite.addTestSuite(ol.style.FillTest.class);
         suite.addTestSuite(RegularShapeTest.class);
 
         return suite;
