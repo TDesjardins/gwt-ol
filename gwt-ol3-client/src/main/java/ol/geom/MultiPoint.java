@@ -16,6 +16,7 @@
 package ol.geom;
 
 import jsinterop.annotations.JsType;
+import ol.Coordinate;
 
 /**
  * MultiPoint geometry.
@@ -24,6 +25,11 @@ import jsinterop.annotations.JsType;
  */
 @JsType(isNative = true)
 public class MultiPoint extends SimpleGeometryCoordinates {
+
+    public MultiPoint(Coordinate[] coordinates) {}
+
+    public MultiPoint(Coordinate[] coordinates, String geometryLayout) {}
+
     /**
      * Append the passed point to this multipoint.
      * 

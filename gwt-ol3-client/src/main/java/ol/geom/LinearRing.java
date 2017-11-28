@@ -16,6 +16,7 @@
 package ol.geom;
 
 import jsinterop.annotations.JsType;
+import ol.Coordinate;
 
 /**
  * LinearRing geometry.
@@ -24,7 +25,11 @@ import jsinterop.annotations.JsType;
  */
 @JsType(isNative = true)
 public class LinearRing extends SimpleGeometryCoordinates {
-    
+
+    public LinearRing(Coordinate[] coordinates) {}
+
+    public LinearRing(Coordinate[] coordinates, String geometryLayout) {}
+
     /**
      * Return the area of the linear ring on projected plane.
      * 
