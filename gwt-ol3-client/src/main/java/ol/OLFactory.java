@@ -457,17 +457,17 @@ public final class OLFactory {
         return new ImageStatic(imageStaticOptions);
     };
 
-    public static native ImageWms createImageWMSSource(ImageWmsOptions imageWMSOptions) /*-{
-    	return new $wnd.ol.source.ImageWMS(imageWMSOptions);
-    }-*/;
+    public static ImageWms createImageWMSSource(ImageWmsOptions imageWMSOptions) {
+        return new ImageWms(imageWMSOptions);
+    };
 
-    public static native KeyboardPan createKeyboardPan() /*-{
-    	return new $wnd.ol.interaction.KeyboardPan();
-    }-*/;
+    public static KeyboardPan createKeyboardPan() {
+        return new KeyboardPan();
+    };
 
-    public static native KeyboardZoom createKeyboardZoom() /*-{
-    	return new $wnd.ol.interaction.KeyboardZoom();
-    }-*/;
+    public static KeyboardZoom createKeyboardZoom() {
+        return new KeyboardZoom();
+    };
 
     /**
      * Creates a {@link ol.layer.Group}.
@@ -476,9 +476,9 @@ public final class OLFactory {
      *            {@link ol.layer.LayerGroupOptions}
      * @return {@link ol.layer.Group}
      */
-    public static native ol.layer.Group createLayerGroup(LayerGroupOptions options) /*-{
-        return new $wnd.ol.layer.Group(options);
-    }-*/;
+    public static ol.layer.Group createLayerGroup(LayerGroupOptions options) {
+        return new ol.layer.Group(options);
+    };
 
     /**
      * Creates {@link LayerOptions} using the given {@link Source}.
@@ -540,9 +540,9 @@ public final class OLFactory {
      *            coordinates
      * @return {@link LinearRing}
      */
-    public static native LinearRing createLinearRing(Coordinate[] coordinates) /*-{
-    	return new $wnd.ol.geom.LinearRing(coordinates);
-    }-*/;
+    public static LinearRing createLinearRing(Coordinate[] coordinates) {
+        return new LinearRing(coordinates);
+    };
 
     /**
      * Creates a {@link LinearRing}.
@@ -553,10 +553,10 @@ public final class OLFactory {
      *            geometry layout
      * @return {@link LinearRing}
      */
-    public static native LinearRing createLinearRing(@Nullable Coordinate[] coordinates,
-	    @Nullable String geometryLayout) /*-{
-	    return new $wnd.ol.geom.LinearRing(coordinates, geometryLayout);
-	}-*/;
+    public static LinearRing createLinearRing(@Nullable Coordinate[] coordinates,
+        @Nullable String geometryLayout) {
+        return new LinearRing(coordinates, geometryLayout);
+    };
 
     /**
      * Creates a {@link LineString}.
@@ -565,9 +565,9 @@ public final class OLFactory {
      *            coordinates
      * @return {@link LineString}
      */
-    public static native LineString createLineString(Coordinate[] coordinates) /*-{
-    	return new $wnd.ol.geom.LineString(coordinates);
-    }-*/;
+    public static LineString createLineString(Coordinate[] coordinates) {
+        return new LineString(coordinates);
+    };
 
     /**
      * Creates a {@link LineString}.
@@ -578,10 +578,10 @@ public final class OLFactory {
      *            geometry layout
      * @return {@link LineString}
      */
-    public static native LineString createLineString(@Nullable Coordinate[] coordinates,
-	    @Nullable String geometryLayout) /*-{
-	    return new $wnd.ol.geom.LineString(coordinates, geometryLayout);
-	}-*/;
+    public static LineString createLineString(@Nullable Coordinate[] coordinates,
+        @Nullable String geometryLayout) {
+        return new LineString(coordinates, geometryLayout);
+    };
 
     /**
      * Creates a {@link Map}.
@@ -590,28 +590,28 @@ public final class OLFactory {
      *            {@link MapOptions}
      * @return {@link Map}
      */
-    public static native Map createMap(MapOptions mapOptions) /*-{
-    	return new $wnd.ol.Map(mapOptions);
-    }-*/;
+    public static Map createMap(MapOptions mapOptions) {
+        return new Map(mapOptions);
+    };
 
-	/**
-	 * 
-	 * Creates a {@link ol.interaction.Modify}
-	 *
-	 * @param modifyOptions {@link ol.interaction.ModifyOptions}
-	 * @return {@link ol.interaction.Modify}
-	 */
-	public static native Modify createModify(ModifyOptions modifyOptions) /*-{
-		return new $wnd.ol.interaction.Modify(modifyOptions);
-	}-*/;
+    /**
+     * 
+     * Creates a {@link ol.interaction.Modify}
+     *
+     * @param modifyOptions {@link ol.interaction.ModifyOptions}
+     * @return {@link ol.interaction.Modify}
+     */
+    public static Modify createModify(ModifyOptions modifyOptions) {
+        return new Modify(modifyOptions);
+    };
 
     /**
      * Creates a {@link MousePosition} control.
      * @return {@link MousePosition}
      */
-    public static native MousePosition createMousePosition() /*-{
-    	return new $wnd.ol.control.MousePosition();
-    }-*/;
+    public static MousePosition createMousePosition() {
+        return new MousePosition();
+    };
 
     /**
      * Creates a {@link MousePosition} control.
@@ -619,9 +619,9 @@ public final class OLFactory {
      *            options
      * @return {@link MousePosition}
      */
-    public static native MousePosition createMousePosition(MousePositionOptions options) /*-{
-        return new $wnd.ol.control.MousePosition(options);
-    }-*/;
+    public static MousePosition createMousePosition(MousePositionOptions options) {
+        return new MousePosition(options);
+    };
 
     /**
      * Creates a {@link MultiLineString}.
@@ -630,9 +630,9 @@ public final class OLFactory {
      *            coordinates
      * @return {@link MultiLineString}
      */
-    public static native MultiLineString createMultiLineString(Coordinate[] coordinates) /*-{
-    	return new $wnd.ol.geom.MultiLineString(coordinates);
-    }-*/;
+    public static MultiLineString createMultiLineString(Coordinate[] coordinates) {
+        return new MultiLineString(coordinates);
+    };
 
     /**
      * Creates a {@link MultiLineString}.
@@ -643,10 +643,10 @@ public final class OLFactory {
      *            geometry layout
      * @return {@link MultiLineString}
      */
-    public static native MultiLineString createMultiLineString(@Nullable Coordinate[] coordinates,
-	    @Nullable String geometryLayout) /*-{
-	    return new $wnd.ol.geom.MultiLineString(coordinates, geometryLayout);
-	}-*/;
+    public static MultiLineString createMultiLineString(@Nullable Coordinate[] coordinates,
+        @Nullable String geometryLayout) {
+        return new MultiLineString(coordinates, geometryLayout);
+    };
 
     /**
      * Creates a {@link MultiPoint}.
@@ -655,9 +655,9 @@ public final class OLFactory {
      *            coordinates
      * @return {@link MultiPoint}
      */
-    public static native MultiPoint createMultiPoint(Coordinate[] coordinates) /*-{
-    	return new $wnd.ol.geom.MultiPoint(coordinates);
-    }-*/;
+    public static MultiPoint createMultiPoint(Coordinate[] coordinates) {
+        return new MultiPoint(coordinates);
+    };
 
     /**
      * Creates a {@link MultiPoint}.
@@ -668,10 +668,10 @@ public final class OLFactory {
      *            geometry layout
      * @return {@link MultiPoint}
      */
-    public static native MultiPoint createMultiPoint(@Nullable Coordinate[] coordinates,
-	    @Nullable String geometryLayout) /*-{
-	    return new $wnd.ol.geom.MultiPoint(coordinates, geometryLayout);
-	}-*/;
+    public static MultiPoint createMultiPoint(@Nullable Coordinate[] coordinates,
+        @Nullable String geometryLayout) {
+        return new MultiPoint(coordinates, geometryLayout);
+    };
 
     /**
      * Creates a {@link MultiPolygon}.
@@ -680,9 +680,9 @@ public final class OLFactory {
      *            coordinates
      * @return {@link MultiPolygon}
      */
-    public static native MultiPolygon createMultiPolygon(Coordinate[] coordinates) /*-{
-	    return new $wnd.ol.geom.MultiPolygon(coordinates);
-    }-*/;
+    public static MultiPolygon createMultiPolygon(Coordinate[] coordinates) {
+        return new MultiPolygon(coordinates);
+    };
 
     /**
      * Creates a {@link MultiPolygon}.
@@ -693,10 +693,10 @@ public final class OLFactory {
      *            geometry layout
      * @return {@link MultiPolygon}
      */
-    public static native MultiPolygon createMultiPolygon(@Nullable Coordinate[] coordinates,
-	    @Nullable String geometryLayout) /*-{
-	    return new $wnd.ol.geom.MultiPolygon(coordinates, geometryLayout);
-	}-*/;
+    public static MultiPolygon createMultiPolygon(@Nullable Coordinate[] coordinates,
+        @Nullable String geometryLayout) {
+        return new MultiPolygon(coordinates, geometryLayout);
+    };
 
     /**
      * Create generic options.
