@@ -32,6 +32,8 @@ public class Point extends SimpleGeometry {
 
     public Point(Coordinate coordinate) {}
 
+    public Point(Coordinate coordinate, String geometryLayout) {}
+
     /**
      * Return the coordinates of this geometry.
      *
