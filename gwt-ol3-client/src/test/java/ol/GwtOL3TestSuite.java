@@ -63,6 +63,7 @@ import ol.source.TileWmsTest;
 import ol.source.VectorTileTest;
 import ol.style.AtlasManagerTest;
 import ol.style.RegularShapeTest;
+import ol.style.StrokeTest;
 
 /**
  * Testsuite for GwtOL3.
@@ -162,6 +163,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(ol.style.CircleTest.class);
         suite.addTestSuite(ol.style.FillTest.class);
         suite.addTestSuite(RegularShapeTest.class);
+        suite.addTestSuite(StrokeTest.class);
 
         return suite;
 
