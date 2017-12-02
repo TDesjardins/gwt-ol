@@ -359,7 +359,7 @@ public final class OLFactory {
      * @return {@link Fill}
      */
     public static Fill createFill(Color color) {
-        FillOptions fillOptions = OLFactory.<FillOptions> createOptions();
+        FillOptions fillOptions = createOptions();
         fillOptions.setColor(color);
         return createFill(fillOptions);
     }
@@ -931,7 +931,7 @@ public final class OLFactory {
      * @return {@link Stroke}
      */
     public static Stroke createStroke(Color color, int width) {
-        StrokeOptions strokeOptions = OLFactory.<StrokeOptions> createOptions();
+        StrokeOptions strokeOptions = createOptions();
         strokeOptions.setColor(color);
         strokeOptions.setWidth(width);
         return createStroke(strokeOptions);
@@ -956,7 +956,7 @@ public final class OLFactory {
      * @return {@link Style}
      */
     public static Style createStyle(Fill fill) {
-        StyleOptions styleOptions = OLFactory.<StyleOptions> createOptions();
+        StyleOptions styleOptions = createOptions();
         styleOptions.setFill(fill);
         return createStyle(styleOptions);
     }
@@ -969,7 +969,7 @@ public final class OLFactory {
      * @return {@link Style}
      */
     public static Style createStyle(Stroke stroke) {
-        StyleOptions styleOptions = OLFactory.<StyleOptions> createOptions();
+        StyleOptions styleOptions = createOptions();
         styleOptions.setStroke(stroke);
         return createStyle(styleOptions);
     }
@@ -980,7 +980,7 @@ public final class OLFactory {
      * @return {@link Style}
      */
     public static Style createStyle(Text text){
-        StyleOptions styleOptions = OLFactory.<StyleOptions> createOptions();
+        StyleOptions styleOptions = createOptions();
         styleOptions.setText(text);
         return createStyle(styleOptions);
     }    
