@@ -23,17 +23,22 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Text {
+public class Text {
+
+    public Text() {}
+
+    public Text(TextOptions textOptions) {}
 
     /**
      * Set the text.
      *
      * @param text
      */
-    void setText(String text);
+    public native void setText(String text);
 
     /**
      * Clones the Text.
      */
-    Text clone();
+    public native Text clone();
+
 }
