@@ -73,7 +73,7 @@ public final class OLUtil {
      *            {@link Style}
      * @return the changed array
      */
-    public static native ol.style.Style[] addStyle(ol.style.Style[] s, ol.style.Style s2) /*-{
+    public static native ol.style.Style[] addStyle(Style[] s, Style s2) /*-{
 		s.push(s2);
 		return s;
     }-*/;
@@ -87,7 +87,7 @@ public final class OLUtil {
      *            array of {@link Style}s 2
      * @return the combined array
      */
-    public static native ol.style.Style[] addStyles(ol.style.Style[] s, ol.style.Style[] s2) /*-{
+    public static native ol.style.Style[] addStyles(Style[] s, Style[] s2) /*-{
 		return s.concat(s2);
     }-*/;
 
@@ -121,9 +121,9 @@ public final class OLUtil {
      *            {@link Style} 2
      * @return array of {@link Style}s
      */
-    public static native ol.style.Style[] combineStyles(ol.style.Style s1, ol.style.Style s2) /*-{
-		return [ s1, s2 ];
-    }-*/;
+    public static Style[] combineStyles(Style s1, Style s2) {
+        return new Style[] {s1, s2};
+    };
 
 
     /**
@@ -239,9 +239,9 @@ public final class OLUtil {
     @Nullable
     public static Base getLayerByName(Map map, String name) {
         CollectionWrapper<Base> layers = new CollectionWrapper<Base>(map.getLayers());
-        for(Base l : layers) {
-            if(name.equals(getName(l))) {
-                return l;
+        for(Base layer : layers) {
+            if(name.equals(getName(layer))) {
+                return layer;
             }
         }
         return null;
@@ -275,12 +275,12 @@ public final class OLUtil {
     /**
      * Gets a {@link TileGrid} from the given object, if the property is set
      *
-     * @param o
+     * @param source
      *            {@link ol.source.Source}
      * @return {@link TileGrid} on success, else null
      */
-    private static native TileGrid getTileGrid(ol.source.Source o) /*-{
-		return o.tileGrid || null;
+    private static native TileGrid getTileGrid(ol.source.Source source) /*-{
+		return source.tileGrid || null;
     }-*/;
 
     /**
@@ -309,12 +309,12 @@ public final class OLUtil {
 
     /**
      * Gets the current zoom level of the given {@link View}.
-     * @param v
+     * @param view
      *            {@link View}
      * @return Zoom on success, else {@link Double#NaN}
      */
-    private static native double getZoom(View v) /*-{
-	return v.getZoom() || NaN;
+    private static native double getZoom(View view) /*-{
+	return view.getZoom() || NaN;
     }-*/;
 
     /**
@@ -549,7 +549,7 @@ public final class OLUtil {
      * @deprecated Use {@link ol.Feature#setStyles(Style[])} instead.
      */
     @Deprecated
-    public static void setStyle(ol.Feature feature, @Nullable ol.style.Style[] style) {
+    public static void setStyle(ol.Feature feature, @Nullable Style[] style) {
         feature.setStyles(style);
     };
 
@@ -566,7 +566,7 @@ public final class OLUtil {
      * @param style
      *            Layer style.
      */
-    public static native void setStyle(ol.layer.Vector l, @Nullable ol.style.Style[] style) /*-{
+    public static native void setStyle(ol.layer.Vector l, @Nullable Style[] style) /*-{
         l.setStyle(style);
     }-*/;
 
