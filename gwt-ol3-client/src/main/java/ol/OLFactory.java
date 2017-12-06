@@ -45,6 +45,7 @@ import ol.geom.MultiPoint;
 import ol.geom.MultiPolygon;
 import ol.geom.Point;
 import ol.geom.Polygon;
+import ol.interaction.DefaultInteractionsOptions;
 import ol.interaction.DragAndDrop;
 import ol.interaction.Draw;
 import ol.interaction.DrawOptions;
@@ -1092,9 +1093,9 @@ public final class OLFactory {
     	return $wnd.ol.tilegrid.createXYZ(tileGridOptions);
     }-*/;
 
-    public static native Tile createTileLayer(LayerOptions layerOptions) /*-{
-    	return new $wnd.ol.layer.Tile(layerOptions);
-    }-*/;
+    public static Tile createTileLayer(LayerOptions layerOptions) {
+        return new Tile(layerOptions);
+    };
 
     /**
      * Creates a new {@link ol.layer.Vector} source.
@@ -1103,18 +1104,18 @@ public final class OLFactory {
      *            {@link LayerOptions}
      * @return {@link ol.layer.Vector}
      */
-    public static native ol.layer.Vector createVector(LayerOptions options) /*-{
-    	return new $wnd.ol.layer.Vector(options);
-    }-*/;
+    public static ol.layer.Vector createVector(VectorLayerOptions vectorLayerOptions) {
+        return new ol.layer.Vector(vectorLayerOptions);
+    };
 
     /**
      * Creates a new {@link ol.source.Vector} source.
      *
      * @return {@link ol.source.Vector}
      */
-    public static native ol.source.Vector createVectorSource() /*-{
-    	return new $wnd.ol.source.Vector();
-    }-*/;
+    public static ol.source.Vector createVectorSource() {
+        return new ol.source.Vector();
+    };
 
     /**
      * Creates a new {@link ol.source.Vector} source.
@@ -1123,32 +1124,32 @@ public final class OLFactory {
      *            {@link VectorOptions}
      * @return {@link ol.source.Vector}
      */
-    public static native ol.source.Vector createVectorSource(VectorOptions options) /*-{
-    	return new $wnd.ol.source.Vector(options);
-    }-*/;
+    public static ol.source.Vector createVectorSource(VectorOptions options) {
+        return new ol.source.Vector(options);
+    };
 
     /** View **/
 
-    public static native View createView() /*-{
-    	return new $wnd.ol.View();
-    }-*/;
+    public static View createView() {
+        return new View();
+    };
 
-    public static native View createView(ViewOptions viewOptions) /*-{
-    	return new $wnd.ol.View(viewOptions);
-    }-*/;
+    public static View createView(ViewOptions viewOptions) {
+        return new ol.View(viewOptions);
+    };
 
-    public static native Xyz createXyz(XyzOptions xyzOptions) /*-{
-    	return new $wnd.ol.source.XYZ(xyzOptions);
-    }-*/;
+    public static Xyz createXyz(XyzOptions xyzOptions) {
+        return new Xyz(xyzOptions);
+    };
 
     /**
      * Creates a zoom control.
      *
      * @return {@link Zoom}
      */
-    public static native Zoom createZoom() /*-{
-    	return new $wnd.ol.control.Zoom();
-    }-*/;
+    public static Zoom createZoom() {
+        return new Zoom();
+    };
 
     /**
      * Creates a zoom control.
@@ -1157,17 +1158,17 @@ public final class OLFactory {
      *
      * @return {@link Zoom}
      */
-    public static native Zoom createZoom(ol.control.ZoomOptions options) /*-{
-        return new $wnd.ol.control.Zoom(options);
-    }-*/;
+    public static Zoom createZoom(ol.control.ZoomOptions options) {
+        return new Zoom(options);
+    };
 
     /**
      * Creates a zoom silder control.
      * @return {@link ZoomSlider}
      */
-    public static native ZoomSlider createZoomSlider() /*-{
-    	return new $wnd.ol.control.ZoomSlider();
-    }-*/;
+    public static ZoomSlider createZoomSlider() {
+        return new ZoomSlider();
+    };
 
     /**
      * Creates a zoom control.
@@ -1176,17 +1177,17 @@ public final class OLFactory {
      *
      * @return {@link Zoom}
      */
-    public static native ZoomSlider createZoomSlider(ol.control.ZoomSliderOptions options) /*-{
-        return new $wnd.ol.control.ZoomSlider(options);
-    }-*/;
+    public static ZoomSlider createZoomSlider(ol.control.ZoomSliderOptions options) {
+        return new ZoomSlider(options);
+    };
 
     /**
      * Creates a {@link ZoomToExtent} control.
      * @return {@link ZoomToExtent}
      */
-    public static native ZoomToExtent createZoomToExtent() /*-{
-    	return new $wnd.ol.control.ZoomToExtent();
-    }-*/;
+    public static ZoomToExtent createZoomToExtent() {
+        return new ZoomToExtent();
+    };
 
     /**
      * Creates a {@link ZoomToExtent} control.
@@ -1194,9 +1195,9 @@ public final class OLFactory {
      *            options
      * @return {@link ZoomToExtent}
      */
-    public static native ZoomToExtent createZoomToExtent(ZoomToExtentOptions options) /*-{
-        return new $wnd.ol.control.ZoomToExtent(options);
-    }-*/;
+    public static ZoomToExtent createZoomToExtent(ZoomToExtentOptions options) {
+        return new ZoomToExtent(options);
+    };
 
 
     /**
@@ -1205,9 +1206,9 @@ public final class OLFactory {
      *          options
      * @return {@link Select}
      */
-    public static native Select createSelect(SelectOptions options) /*-{
-        return new $wnd.ol.interaction.Select(options);
-    }-*/;
+    public static Select createSelect(SelectOptions options) {
+        return new Select(options);
+    };
 
     /**
      * Creates a {@link ol.style.RegularShape} style.
@@ -1216,13 +1217,13 @@ public final class OLFactory {
      *            {@link RegularShapeOptions}
      * @return {@link ol.style.RegularShape}
      */
-    public static native RegularShape createRegularShape(RegularShapeOptions regularShapeOptions) /*-{
-        return new $wnd.ol.style.RegularShape(regularShapeOptions);
-    }-*/;
+    public static RegularShape createRegularShape(RegularShapeOptions regularShapeOptions) {
+        return new RegularShape(regularShapeOptions);
+    };
 
-    public static native TileWms createTileWMSSource(TileWmsOptions tileWmsOptions) /*-{
-        return new $wnd.ol.source.TileWMS(tileWmsOptions);
-    }-*/;
+    public static TileWms createTileWMSSource(TileWmsOptions tileWmsOptions) {
+        return new TileWms(tileWmsOptions);
+    };
 
     public static native java.lang.Object createEventFunction(Executor t) /*-{
         return function (selectevent) {
@@ -1255,15 +1256,19 @@ public final class OLFactory {
 		$wnd.proj4.defs(srid, proj4text);
 	}-*/;
 
-	/**
-	 * Get the default map interactions.
-	 *
-	 * @param doubleClickToZoom
-	 * @return default map interactions
-	 */
-	public static final native Collection<Interaction> getDefaultInteractions(boolean doubleClickToZoom)/*-{
-		return $wnd.ol.interaction.defaults({
-			doubleClickZoom : doubleClickToZoom
-		});
-	}-*/;
+    /**
+     * Get the default map interactions.
+     *
+     * @param doubleClickToZoom
+     * @return default map interactions
+     */
+    public static final Collection<Interaction> getDefaultInteractions(boolean doubleClickToZoom) {
+
+        DefaultInteractionsOptions interactionsOptions = new DefaultInteractionsOptions();
+        interactionsOptions.setDoubleClickZoom(doubleClickToZoom);
+
+        return Interaction.defaults(interactionsOptions);
+
+        };
+
 }
