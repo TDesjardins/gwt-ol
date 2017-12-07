@@ -24,6 +24,8 @@ import ol.GwtOL3BaseTestCase;
  */
 public class TextTest extends GwtOL3BaseTestCase {
 
+    private static final String FONT = "12px sans-serif";
+
     public void testText() {
 
         injectUrlAndTest(() -> {
@@ -32,10 +34,12 @@ public class TextTest extends GwtOL3BaseTestCase {
             assertNotNull(text);
 
             TextOptions textOptions = new TextOptions();
+            textOptions.setFont(FONT);
             textOptions.setRotation(0);
 
             Text text2 = new Text(textOptions);
             assertNotNull(text2);
+            assertEquals(FONT, text2.getFont());
 
         });
 
