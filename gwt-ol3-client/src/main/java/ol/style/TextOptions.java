@@ -52,17 +52,17 @@ public class TextOptions implements Options {
 
 	/**
 	 * Rotation in radians (positive rotation clockwise). Default is 0.
-	 * @param rotation int
+	 * @param rotation Rotation in radians
 	 */
 	@JsProperty
-	public native void setRotation(int rotation);
+	public native void setRotation(double rotation);
 
 	/**
 	 * Scale.
-	 * @param scale int
+	 * @param scale Scale. Default is 1.
 	 */
 	@JsProperty
-	public native void setScale(int scale);
+	public native void setScale(double scale);
 
 	/**
 	 * Fill style. If none is provided, we'll use a dark fill-style (#333).
