@@ -22,7 +22,6 @@ import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
-import ol.OLUtil;
 import ol.View;
 import ol.ViewOptions;
 import ol.control.Rotate;
@@ -132,7 +131,7 @@ public class WmtsExample implements Example {
         double[] resolutions = new double[14];
         String[] matrixIds = new String[14];
         
-        double width = OLUtil.getWidth(projection.getExtent());
+        double width = projection.getExtent().getWidth();
         double matrixWidth = width / 256;
         
         for (int i = 0; i < 14; i++) {
@@ -140,7 +139,7 @@ public class WmtsExample implements Example {
             matrixIds[i] = String.valueOf(i);
         }
         
-        Coordinate tileGridOrigin = OLUtil.getTopLeft(projection.getExtent());
+        Coordinate tileGridOrigin = projection.getExtent().getTopLeft();
         wmtsTileGridOptions.setOrigin(tileGridOrigin);
         wmtsTileGridOptions.setResolutions(resolutions);
         wmtsTileGridOptions.setMatrixIds(matrixIds);

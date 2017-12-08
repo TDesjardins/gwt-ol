@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ public class CoordinateTest extends GwtOL3BaseTestCase {
             assertEquals(15.5, shiftedCoordinate.getZ());
             assertEquals(3, coordinate.getDimension());
 
-            Coordinate coordinate2 = Coordinate.create(1.5, 2.5, 3.45);
+            Coordinate coordinate2 = new Coordinate(1.5, 2.5, 3.45);
             assertEquals(3, coordinate2.getDimension());
             assertEquals(3.45, coordinate2.getZ());
 

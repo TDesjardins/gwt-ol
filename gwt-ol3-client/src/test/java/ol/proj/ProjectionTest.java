@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -108,7 +108,7 @@ public class ProjectionTest extends GwtOL3BaseTestCase {
                 double x = -121.1;
                 double y = 47.5;
 
-                Coordinate centerCoordinate = Coordinate.create(x, y);
+                Coordinate centerCoordinate = new Coordinate(x, y);
                 Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, EPSG_CODE_4326, EPSG_CODE_3857);
 
                 assertTrue(transformedCenterCoordinate.getDimension() == 2);

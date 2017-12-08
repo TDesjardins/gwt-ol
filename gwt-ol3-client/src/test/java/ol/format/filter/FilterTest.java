@@ -119,10 +119,10 @@ public class FilterTest extends GwtOL3BaseTestCase {
     public void testIntersects() {
         injectUrlAndTest(() -> {
 
-            Intersects intersectsFilter = new Intersects("geometryName", new Circle(Coordinate.create(0, 0), 2), "EPSG:3857");
+            Intersects intersectsFilter = new Intersects("geometryName", new Circle(new Coordinate(0, 0), 2), "EPSG:3857");
             assertNotNull(intersectsFilter);
 
-            Intersects intersectsFilter2 = Filter.intersects("geometryName", new Circle(Coordinate.create(0, 0), 2), "EPSG:3857");
+            Intersects intersectsFilter2 = Filter.intersects("geometryName", new Circle(new Coordinate(0, 0), 2), "EPSG:3857");
             assertTrue(intersectsFilter2 instanceof Intersects);
 
         });
@@ -240,13 +240,13 @@ public class FilterTest extends GwtOL3BaseTestCase {
     public void testWithin() {
         injectUrlAndTest(() -> {
 
-            Within within = new Within("geometryName", new Circle(Coordinate.create(5, 5), 5), "EPSG:3857");
+            Within within = new Within("geometryName", new Circle(new Coordinate(5, 5), 5), "EPSG:3857");
             assertNotNull(within);
 
-            Within within2 = Filter.within("geometryName", new Circle(Coordinate.create(5, 5), 5));
+            Within within2 = Filter.within("geometryName", new Circle(new Coordinate(5, 5), 5));
             assertTrue(within2 instanceof Within);
 
-            Within within3 = Filter.within("geometryName", new Circle(Coordinate.create(5, 5), 5), "EPSG:3857");
+            Within within3 = Filter.within("geometryName", new Circle(new Coordinate(5, 5), 5), "EPSG:3857");
             assertTrue(within3 instanceof Within);
 
         });
