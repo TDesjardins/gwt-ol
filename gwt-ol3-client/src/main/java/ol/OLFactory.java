@@ -104,9 +104,9 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import elemental2.core.JsObject;
 
 /**
- * Factory to create GWT-OL3 instances from JavaScript based on OL3-Interfaces.
- * Can be also done with GIN. When GWT supports Java 8 (hopefully in GWT 3.0)
- * factory methods can directly created in the interfaces.
+ * Factory to create GWT-OL3 instances. Originally this factory was necessary
+ * to create JavaScript instances via JSNI code. Now you can use constructors
+ * of the specific JsTypes for this purpose.
  *
  * @author Tino Desjardins
  */
