@@ -15,6 +15,7 @@
  *******************************************************************************/
 package ol.tilegrid;
 
+import ol.Extent;
 import ol.GwtOL3BaseTestCase;
 import ol.OLFactory;
 
@@ -30,13 +31,25 @@ public class TileGridTest extends GwtOL3BaseTestCase {
         injectUrlAndTest(() -> {
 
             TileGridOptions tileGridOptions = new TileGridOptions();
+            tileGridOptions.setExtent(new Extent(1, 1, 50000, 50000));
             tileGridOptions.setMinZoom(0);
-            tileGridOptions.setMaxZoom(12);
+            tileGridOptions.setResolutions(new double[] {4, 3, 2, 1});
             assertNotNull(tileGridOptions);
-            TileGrid tileGrid = OLFactory.createTileGridXYZ(tileGridOptions);
+
+            TileGrid tileGrid = new TileGrid(tileGridOptions);
             assertNotNull(tileGrid);
             assertEquals(0, tileGrid.getMinZoom());
-            assertEquals(12, tileGrid.getMaxZoom());
+            assertEquals(3, tileGrid.getMaxZoom());
+
+            TileGridOptions tileGridXyzOptions = new TileGridOptions();
+            tileGridXyzOptions.setMinZoom(0);
+            tileGridXyzOptions.setMaxZoom(12);
+            assertNotNull(tileGridXyzOptions);
+
+            TileGrid tileGridXyz = OLFactory.createTileGridXYZ(tileGridXyzOptions);
+            assertNotNull(tileGridXyz);
+            assertEquals(0, tileGridXyz.getMinZoom());
+            assertEquals(12, tileGridXyz.getMaxZoom());
 
         });
 
