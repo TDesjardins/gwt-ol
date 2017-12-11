@@ -101,6 +101,8 @@ import ol.tilegrid.TileGridOptions;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import elemental2.core.JsObject;
+
 /**
  * Factory to create GWT-OL3 instances from JavaScript based on OL3-Interfaces.
  * Can be also done with GIN. When GWT supports Java 8 (hopefully in GWT 3.0)
@@ -704,9 +706,10 @@ public final class OLFactory {
      *
      * @return options instance
      */
-    public static native <T extends Options> T createOptions() /*-{
-    	return {};
-    }-*/;
+    @SuppressWarnings("unchecked")
+    public static <T extends Options> T createOptions() {
+        return (T)new JsObject();
+    };
 
     public static Osm createOsm(XyzOptions osmOptions) {
         return new Osm(osmOptions);
@@ -1269,6 +1272,6 @@ public final class OLFactory {
 
         return Interaction.defaults(interactionsOptions);
 
-        };
+    };
 
 }
