@@ -15,6 +15,8 @@
  *******************************************************************************/
 package ol.tilegrid;
 
+import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 
 import ol.Coordinate;
@@ -31,9 +33,15 @@ import ol.Size;
 @JsType(isNative = true)
 public class TileGrid {
 
+    @JsOverlay
+    private static final String PACKAGE_TILEGRID = "ol.tilegrid";
+
     public TileGrid() {}
 
     public TileGrid(TileGridOptions tileGridOptions) {}
+
+    @JsMethod(name = "createXYZ", namespace = PACKAGE_TILEGRID)
+    public static native TileGrid createXyz(TileGridOptions tileGridOptions);
 
     /**
      * Get the extent for this tile grid, if it was configured.
