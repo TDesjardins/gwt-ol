@@ -1089,9 +1089,9 @@ public final class OLFactory {
      *            {@link TileGridOptions}
      * @return {@link TileGrid}
      */
-    public static native TileGrid createTileGridXYZ(TileGridOptions tileGridOptions) /*-{
-    	return $wnd.ol.tilegrid.createXYZ(tileGridOptions);
-    }-*/;
+    public static TileGrid createTileGridXYZ(TileGridOptions tileGridOptions) {
+        return TileGrid.createXyz(tileGridOptions);
+    };
 
     public static Tile createTileLayer(LayerOptions layerOptions) {
         return new Tile(layerOptions);
