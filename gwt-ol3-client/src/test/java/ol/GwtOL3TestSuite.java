@@ -65,6 +65,7 @@ import ol.style.AtlasManagerTest;
 import ol.style.RegularShapeTest;
 import ol.style.StrokeTest;
 import ol.style.TextTest;
+import ol.tilegrid.TileGridTest;
 
 /**
  * Testsuite for GwtOL3.
@@ -166,6 +167,9 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(RegularShapeTest.class);
         suite.addTestSuite(StrokeTest.class);
         suite.addTestSuite(TextTest.class);
+
+        // tilegrid
+        suite.addTestSuite(TileGridTest.class);
 
         return suite;
 
