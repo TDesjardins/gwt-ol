@@ -47,7 +47,7 @@ public class TileGrid {
      * @return grid with a standard XYZ tiling scheme
      */
     @JsMethod(name = "createXYZ", namespace = PACKAGE_TILEGRID)
-    public static native TileGrid createXyz(TileGridOptions tileGridOptions);
+    public static native TileGrid createXyz(XyzTileGridOptions tileGridOptions);
 
     /**
      * Get the extent for this tile grid, if it was configured.

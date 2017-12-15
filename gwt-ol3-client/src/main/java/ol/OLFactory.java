@@ -97,6 +97,7 @@ import ol.style.Text;
 import ol.style.TextOptions;
 import ol.tilegrid.TileGrid;
 import ol.tilegrid.TileGridOptions;
+import ol.tilegrid.XyzTileGridOptions;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -1092,7 +1093,7 @@ public final class OLFactory {
      *            {@link TileGridOptions}
      * @return {@link TileGrid}
      */
-    public static TileGrid createTileGridXYZ(TileGridOptions tileGridOptions) {
+    public static TileGrid createTileGridXYZ(XyzTileGridOptions tileGridOptions) {
         return TileGrid.createXyz(tileGridOptions);
     };
 

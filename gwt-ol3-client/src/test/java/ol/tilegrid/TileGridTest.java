@@ -41,12 +41,12 @@ public class TileGridTest extends GwtOL3BaseTestCase {
             assertEquals(0, tileGrid.getMinZoom());
             assertEquals(3, tileGrid.getMaxZoom());
 
-            TileGridOptions tileGridXyzOptions = new TileGridOptions();
-            tileGridXyzOptions.setMinZoom(0);
-            tileGridXyzOptions.setMaxZoom(12);
-            assertNotNull(tileGridXyzOptions);
+            XyzTileGridOptions xyzTileGridOptions = new XyzTileGridOptions();
+            xyzTileGridOptions.setMinZoom(0);
+            xyzTileGridOptions.setMaxZoom(12);
+            assertNotNull(xyzTileGridOptions);
 
-            TileGrid tileGridXyz = OLFactory.createTileGridXYZ(tileGridXyzOptions);
+            TileGrid tileGridXyz = OLFactory.createTileGridXYZ(xyzTileGridOptions);
             assertNotNull(tileGridXyz);
             assertEquals(0, tileGridXyz.getMinZoom());
             assertEquals(12, tileGridXyz.getMaxZoom());

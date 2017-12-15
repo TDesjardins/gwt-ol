@@ -36,7 +36,7 @@ import ol.source.Xyz;
 import ol.source.XyzOptions;
 import ol.style.Style;
 import ol.tilegrid.TileGrid;
-import ol.tilegrid.TileGridOptions;
+import ol.tilegrid.XyzTileGridOptions;
 
 /**
  * Utility functions.
@@ -469,7 +469,7 @@ public final class OLUtil {
      *            maximum zoomlevel (0-28)
      */
     public static void limitZoomLevels(XyzOptions options, int minZoomLevel, int maxZoomLevel) {
-        TileGridOptions tileGridOptions = OLFactory.<TileGridOptions> createOptions();
+        XyzTileGridOptions tileGridOptions = OLFactory.createOptions();
         tileGridOptions.setMinZoom(minZoomLevel);
         tileGridOptions.setMaxZoom(maxZoomLevel);
         options.setTileGrid(OLFactory.createTileGridXYZ(tileGridOptions));
