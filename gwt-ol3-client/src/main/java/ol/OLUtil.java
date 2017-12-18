@@ -561,15 +561,17 @@ public final class OLUtil {
      * have their own styles will be rendered in the layer. See {@link ol.style}
      * for information on the default style.
      *
-     * @param l
+     * @param vectorLayer
      *            Layer
      * @param style
      *            Layer style.
+     *
+     * @deprecated Use {@link ol.layer.Vector#setStyles(Style[])} instead.
      */
-    public static native void setStyle(ol.layer.Vector l, @Nullable Style[] style) /*-{
-        l.setStyle(style);
-    }-*/;
-
+    @Deprecated
+    public static void setStyle(ol.layer.Vector vectorLayer, @Nullable Style[] style) {
+        vectorLayer.setStyles(style);
+    };
 
     /**
      * Transforms coordinates from source projection to destination projection.
