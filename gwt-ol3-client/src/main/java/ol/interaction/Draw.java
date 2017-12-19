@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ import ol.Feature;
 public class Draw extends Interaction {
 
     public Draw(DrawOptions drawOptions) {}
-    
+
     /**
      * Extend an existing geometry by adding additional points. This only works
      * on features with `LineString` geometries, where the interaction will
@@ -54,7 +54,7 @@ public class Draw extends Interaction {
      * Remove last point of the feature currently being drawn.
      */
     public native void removeLastPoint();
-    
+
     /**
      * Events emitted by {@link ol.interaction.Draw} instances are instances of this
      * type.
@@ -74,5 +74,5 @@ public class Draw extends Interaction {
         Feature getFeature();
 
     }
-    
+
 }

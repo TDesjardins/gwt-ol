@@ -19,14 +19,14 @@
             <artifactId>gwt-dev</artifactId>
         </dependency>
         <dependency>
-        	<groupId>com.google.elemental2</groupId>
-        	<artifactId>elemental2-core</artifactId>
-        	<version>1.0.0-beta-1</version>
+            <groupId>com.google.elemental2</groupId>
+            <artifactId>elemental2-core</artifactId>
+            <version>1.0.0-RC1</version>
         </dependency>
         <dependency>
-        	<groupId>com.google.elemental2</groupId>
-        	<artifactId>elemental2-dom</artifactId>
-        	<version>1.0.0-beta-1</version>
+            <groupId>com.google.elemental2</groupId>
+            <artifactId>elemental2-dom</artifactId>
+            <version>1.0.0-RC1</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
@@ -51,7 +51,7 @@
             <plugin>
                 <groupId>net.ltgt.gwt.maven</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>1.0-rc-8</version>
+                <version>1.0-rc-9</version>
                 <configuration>
                     <moduleName>ol.GwtOL3</moduleName>
                 </configuration>

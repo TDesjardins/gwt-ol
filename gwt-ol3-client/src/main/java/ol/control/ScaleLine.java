@@ -30,4 +30,8 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class ScaleLine extends Control {
 
+    public ScaleLine() {}
+
+    public ScaleLine(ScaleLineOptions scaleLineOptions) {}
+
 }

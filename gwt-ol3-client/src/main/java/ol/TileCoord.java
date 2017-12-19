@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,54 +15,74 @@
  *******************************************************************************/
 package ol;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
+import jsinterop.base.JsArrayLike;
 
 /**
- *
  * An array of three numbers representing the location of a tile in a tile grid.
  * The order is z, x, and y. z is the zoom level.
- *
  */
-public class TileCoord extends JavaScriptObject {
+@JsType(isNative = true, name = "Array", namespace = JsPackage.GLOBAL)
+public class TileCoord implements JsArrayLike<Double> {
 
-	@Deprecated
-	protected TileCoord() {
-	}
+    /**
+     * @param z zoom
+     * @param x X-coordinate
+     * @param y Y-coordinate
+     */
+    public TileCoord(double z, double x, double y) {}
 
-	/**
-	 * Clones this object.
-	 *
-	 * @return {ol.TileCoord} clone
-	 */
-	public final native Size cloneObject() /*-{
-											return this.slice(0);
-											}-*/;
+    /**
+     * Clones this object.
+     *
+     * @return {ol.TileCoord} clone
+     */
+    @JsOverlay
+    public final TileCoord cloneObject() {
+    	return this.slice(0);
+    };
 
-	/**
-	 * Gets the zoom.
-	 *
-	 * @return zoom
-	 */
-	public final native int getZ() /*-{
-										return this[0];
-										}-*/;
+    private native TileCoord slice(int begin);
 
-	/**
-	 * Gets the x.
-	 *
-	 * @return x
-	 */
-	public final native int getX() /*-{
-										return this[1];
-										}-*/;
+    /**
+     * Gets the zoom.
+     *
+     * @return zoom
+     */
+    @JsOverlay
+    public final double getZ() {
+        if (this.getLength() > 0) {
+            return this.getAt(0);
+        }
+        return Double.NaN;
+    };
 
-	/**
-	 * Gets the y.
-	 *
-	 * @return y
-	 */
-	public final native int getY() /*-{
-										return this[2];
-										}-*/;
+    /**
+     * Gets the x.
+     *
+     * @return x
+     */
+    @JsOverlay
+    public final double getX() {
+        if (this.getLength() > 1) {
+            return this.getAt(1);
+        }
+        return Double.NaN;
+    };
+
+    /**
+     * Gets the y.
+     *
+     * @return y
+     */
+    @JsOverlay
+    public final double getY() {
+        if (this.getLength() > 2) {
+            return this.getAt(2);
+        }
+        return Double.NaN;
+    };
 
 }

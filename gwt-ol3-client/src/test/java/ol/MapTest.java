@@ -42,7 +42,7 @@ public class MapTest extends GwtOL3BaseTestCase {
             viewOptions.setProjection(projection);
             View view = new View(viewOptions);
 
-            Coordinate centerCoordinate = Coordinate.create(660000, 190000);
+            Coordinate centerCoordinate = new Coordinate(660000, 190000);
 
             view.setCenter(centerCoordinate);
             view.setZoom(9);

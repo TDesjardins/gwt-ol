@@ -26,7 +26,7 @@ import ol.style.RegularShapeOptions;
  */
 public class RegularShapeTest extends GwtOL3BaseTestCase {
 
-    public void testPoint() {
+    public void testRegularShape() {
 
         injectUrlAndTest(() -> {
             RegularShapeOptions regularShapeOptions = new RegularShapeOptions();
@@ -36,11 +36,19 @@ public class RegularShapeTest extends GwtOL3BaseTestCase {
             regularShapeOptions.setRotation(Math.PI / 3);
             regularShapeOptions.setRotateWithView(false);
             assertNotNull(regularShapeOptions);
-            
+
             RegularShape regularShape = new RegularShape(regularShapeOptions);
             assertNotNull(regularShape);
             assertEquals(regularShape.getRadius(), 4);
             assertEquals(regularShape.getRadius2(), 3);
+
+            regularShape.setOpacity(0.5);
+            regularShape.setRotation(Math.PI);
+            regularShape.setScale(1.2);
+
+            assertEquals(0.5, regularShape.getOpacity());
+            assertEquals(Math.PI, regularShape.getRotation());
+            assertEquals(1.2, regularShape.getScale());
         });
 
     }

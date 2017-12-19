@@ -19,18 +19,14 @@ import javax.annotation.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import elemental2.core.JsArray;
+import jsinterop.base.Js;
+
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 
-import ol.event.ClickListener;
-import ol.event.DoubleClickListener;
 import ol.event.EventListener;
-import ol.event.MapMoveListener;
-import ol.event.MapZoomListener;
 import ol.event.OLHandlerRegistration;
-import ol.event.TileLoadEndListener;
-import ol.event.TileLoadErrorListener;
-import ol.event.TileLoadStartListener;
 import ol.events.Event;
 import ol.geom.Polygon;
 import ol.geom.SimpleGeometryCoordinates;
@@ -39,13 +35,11 @@ import ol.layer.Base;
 import ol.layer.Layer;
 import ol.proj.Projection;
 import ol.source.Source;
-import ol.source.Tile;
-import ol.source.UrlTile;
 import ol.source.Xyz;
 import ol.source.XyzOptions;
 import ol.style.Style;
 import ol.tilegrid.TileGrid;
-import ol.tilegrid.TileGridOptions;
+import ol.tilegrid.XyzTileGridOptions;
 
 /**
  * Utility functions.
@@ -74,179 +68,34 @@ public final class OLUtil {
     }
 
     /**
-     * Adds a click listener for the given map.
-     *
-     * @param map
-     *            {@link Map}
-     * @param singleClicksOnly
-     *            wait fortrue single click with no dragging and no double
-     *            click? Note that this event is delayed by 250 ms to ensure
-     *            that it is not a double click.
-     * @param listener
-     *            {@link ClickListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link Map#addClickListener(EventListener)} or {@link Map#addSingleClickListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addClickListener(Map map, boolean singleClicksOnly,
-            final ClickListener listener) {
-        String type;
-        if(singleClicksOnly) {
-            type = "singleclick";
-        } else {
-            type = "click";
-        }
-        return observe(map, type, new EventListener<MapBrowserEvent>() {
-
-            @Override
-            public void onEvent(MapBrowserEvent event) {
-                listener.onClick(event);
-            }
-        });
-    }
-
-    /**
-     * Adds a click listener for the given map.
-     *
-     * @param map
-     *            {@link Map}
-     * @param listener
-     *            {@link DoubleClickListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link Map#addDoubleClickListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addDoubleClickListener(Map map, final DoubleClickListener listener) {
-        return observe(map, "dblclick", new EventListener<MapBrowserEvent>() {
-
-            @Override
-            public void onEvent(MapBrowserEvent event) {
-                listener.onDoubleClick(event);
-            }
-        });
-    }
-
-    /**
-     * Adds a map move listener for the given map.
-     *
-     * @param map
-     *            {@link Map}
-     * @param listener
-     *            {@link MapMoveListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link Map#addMapMoveListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addMapMoveListener(final Map map, final MapMoveListener listener) {
-        // listen to "moveend" events of map
-        final HandlerRegistration handlerMap = observe(map, "moveend", new EventListener<MapEvent>() {
-            @Override
-            public void onEvent(MapEvent event) {
-                listener.onMapMove(event);
-            }
-        });
-        // fire events while the map is moving
-        // try to set up an event handler for the change of the view center
-        // as "moveend" will be only fired when the map stops moving
-        View view = map.getView();
-        if(view != null) {
-            final HandlerRegistration handlerView = OLUtil.observe(view, "change:center",
-                    new EventListener<Object.Event>() {
-                        @Override
-                        public void onEvent(Object.Event event) {
-                            // create an artificial move event
-                            Event e2 = createLinkedEvent(event, "move", map);
-                            MapEvent me = initMapEvent(e2, map);
-                            listener.onMapMove(me);
-                        }
-                    });
-            // return a handler registration, which detaches both event
-            // handlers
-            return new HandlerRegistration() {
-                @Override
-                public void removeHandler() {
-                    handlerMap.removeHandler();
-                    handlerView.removeHandler();
-                }
-            };
-        }
-        // just return the map handler
-        return handlerMap;
-    }
-
-    /**
-     * Adds a map zoom listener for the given map.
-     *
-     * @param map
-     *            {@link Map}
-     * @param listener
-     *            {@link MapZoomListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link Map#addMapZoomListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addMapZoomListener(final Map map, final MapZoomListener listener) {
-        return observe(map.getView(), "change:resolution", new EventListener<Object.Event>() {
-
-            @Override
-            public void onEvent(Object.Event event) {
-                Event zoomEvent = createLinkedEvent(event, "zoom", map);
-                MapEvent mapEvent = initMapEvent(zoomEvent, map);
-                listener.onMapZoom(mapEvent);
-            }
-        });
-    }
-    
-    /**
-     * Adds a map zoom end listener for the given map.
-     *
-     * @param map
-     *            {@link Map}
-     * @param listener
-     *            {@link MapZoomListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link Map#addMapZoomEndListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addMapZoomEndListener(final Map map, final MapZoomListener listener) {
-        return observe(map, "moveend", new EventListener<Object.Event>() {
-
-        private double zoomLevel = map.getView().getZoom();
-        
-            @Override
-            public void onEvent(Object.Event event) {
-                
-                double newZoomLevel = map.getView().getZoom();
-                
-                if(newZoomLevel != this.zoomLevel) {
-                    this.zoomLevel = newZoomLevel;
-                    Event zoomEndEvent = createLinkedEvent(event, "zoomend", map);
-                    MapEvent mapEvent = initMapEvent(zoomEndEvent, map);
-                    listener.onMapZoom(mapEvent);
-                }
-                
-            }
-        });
-    }
-
-    /**
      * Adds a {@link Style} to the given array of {@link Style}s.
      *
-     * @param s
+     * @param styles
      *            array of {@link Style}s (will be changed)
-     * @param s2
+     * @param style
      *            {@link Style}
      * @return the changed array
+     *
+     * @deprecated Use {@link OLUtil#addItem(T[], T)} instead
      */
-    public static native ol.style.Style[] addStyle(ol.style.Style[] s, ol.style.Style s2) /*-{
-		s.push(s2);
-		return s;
-    }-*/;
+    @Deprecated
+    public static ol.style.Style[] addStyle(Style[] styles, Style style) {
+        return addItem(styles, style);
+    };
+
+    /**
+     * Adds an item to the array.
+     *
+     * @param array array (will be changed)
+     * @param item item to add
+     * @return array including the item
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T[] addItem(T[] array, T item) {
+        JsArray<T> jsArray = Js.cast(array);
+        jsArray.push(item);
+        return array;
+    }
 
     /**
      * Combines two arrays of {@link Style}s.
@@ -257,78 +106,9 @@ public final class OLUtil {
      *            array of {@link Style}s 2
      * @return the combined array
      */
-    public static native ol.style.Style[] addStyles(ol.style.Style[] s, ol.style.Style[] s2) /*-{
+    public static native ol.style.Style[] addStyles(Style[] s, Style[] s2) /*-{
 		return s.concat(s2);
     }-*/;
-
-    /**
-     * Adds a listener for tile loading errors.
-     *
-     * @param source
-     *            source
-     *
-     * @param listener
-     *            {@link TileLoadErrorListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link ol.source.Tile#addTileLoadErrorListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addTileLoadErrorListener(UrlTile source, final TileLoadErrorListener listener) {
-        return observe(source, "tileloaderror", new EventListener<Tile.Event>() {
-
-            @Override
-            public void onEvent(Tile.Event event) {
-                listener.onTileLoadError(event);
-            }
-        });
-    }
-
-    /**
-     * Adds a listener for tile start loading.
-     *
-     * @param source
-     *            source
-     *
-     * @param listener
-     *            {@link TileLoadStartListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link ol.source.Tile#addTileLoadStartListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addTileLoadStartListener(UrlTile source, final TileLoadStartListener listener) {
-        return observe(source, "tileloadstart", new EventListener<Tile.Event>() {
-
-            @Override
-            public void onEvent(Tile.Event event) {
-                listener.onTileLoadStart(event);
-            }
-        });
-    }
-
-    /**
-     * Adds a listener for tile end loading.
-     *
-     * @param source
-     *            source
-     *
-     * @param listener
-     *            {@link TileLoadEndListener}
-     * @return {@link HandlerRegistration}
-     * 
-     * @deprecated Use {@link ol.source.Tile#addTileLoadEndListener(EventListener)}
-     */
-    @Deprecated
-    public static HandlerRegistration addTileLoadEndListener(UrlTile source, final TileLoadEndListener listener) {
-        return observe(source, "tileloadend", new EventListener<Tile.Event>() {
-
-            @Override
-            public void onEvent(Tile.Event event) {
-                listener.onTileLoadEnd(event);
-            }
-        });
-    }
 
     /**
      * Create an approximation of a circle on the surface of a sphere.
@@ -343,10 +123,13 @@ public final class OLUtil {
      *            Optional number of vertices for the resulting polygon. Default
      *            is `32`.
      * @return {ol.geom.Polygon} The "circular" polygon.
+     *
+     * @deprecated Use {@link ol.geom.Polygon#circular(Sphere, Coordinate, double, int)} instead.
      */
-    public static native Polygon circular(Sphere sphere, ol.Coordinate center, double radius, int opt_n) /*-{
-        return $wnd.ol.geom.Polygon.circular(sphere, center, radius, opt_n);
-    }-*/;
+    @Deprecated
+    public static Polygon circular(Sphere sphere, ol.Coordinate center, double radius, int opt_n) {
+        return Polygon.circular(sphere, center, radius, opt_n);
+    };
 
     /**
      * Combines two {@link Style}s into an array of {@link Style}s.
@@ -357,9 +140,9 @@ public final class OLUtil {
      *            {@link Style} 2
      * @return array of {@link Style}s
      */
-    public static native ol.style.Style[] combineStyles(ol.style.Style s1, ol.style.Style s2) /*-{
-		return [ s1, s2 ];
-    }-*/;
+    public static Style[] combineStyles(Style s1, Style s2) {
+        return new Style[] {s1, s2};
+    };
 
 
     /**
@@ -400,7 +183,7 @@ public final class OLUtil {
      * @return {@link Sphere}
      */
     public static Sphere createSphereWGS84() {
-        return OLFactory.createSphere(EARTH_RADIUS_WGS84);
+        return new Sphere(EARTH_RADIUS_WGS84);
     }
 
     /**
@@ -409,7 +192,7 @@ public final class OLUtil {
      * @return {@link Sphere}
      */
     public static Sphere createSphereNormal() {
-        return OLFactory.createSphere(EARTH_RADIUS_NORMAL);
+        return new Sphere(EARTH_RADIUS_NORMAL);
     }
 
     /**
@@ -475,9 +258,9 @@ public final class OLUtil {
     @Nullable
     public static Base getLayerByName(Map map, String name) {
         CollectionWrapper<Base> layers = new CollectionWrapper<Base>(map.getLayers());
-        for(Base l : layers) {
-            if(name.equals(getName(l))) {
-                return l;
+        for(Base layer : layers) {
+            if(name.equals(getName(layer))) {
+                return layer;
             }
         }
         return null;
@@ -511,40 +294,46 @@ public final class OLUtil {
     /**
      * Gets a {@link TileGrid} from the given object, if the property is set
      *
-     * @param o
+     * @param source
      *            {@link ol.source.Source}
      * @return {@link TileGrid} on success, else null
      */
-    private static native TileGrid getTileGrid(ol.source.Source o) /*-{
-		return o.tileGrid || null;
+    private static native TileGrid getTileGrid(ol.source.Source source) /*-{
+		return source.tileGrid || null;
     }-*/;
 
     /**
      *
      * @param extent
      * @return width of extent
+     * 
+     * @deprecated Use {@link ol.Extent#getWidth()} instead.
      */
-    public static native double getWidth(Extent extent) /*-{
-        return $wnd.ol.extent.getWidth(extent);
-    }-*/;
+    @Deprecated
+    public static double getWidth(Extent extent) {
+        return extent.getWidth();
+    };
 
     /**
     *
     * @param extent
     * @return top left coordinate of the extent
+    * 
+    * @deprecated Use {@link ol.Extent#getTopLeft()} instead.
     */
-   public static native Coordinate getTopLeft(Extent extent) /*-{
-       return $wnd.ol.extent.getTopLeft(extent);
-   }-*/;
+    @Deprecated
+    public static Coordinate getTopLeft(Extent extent) {
+        return extent.getTopLeft();
+    };
 
     /**
      * Gets the current zoom level of the given {@link View}.
-     * @param v
+     * @param view
      *            {@link View}
      * @return Zoom on success, else {@link Double#NaN}
      */
-    private static native double getZoom(View v) /*-{
-	return v.getZoom() || NaN;
+    private static native double getZoom(View view) /*-{
+	return view.getZoom() || NaN;
     }-*/;
 
     /**
@@ -699,7 +488,7 @@ public final class OLUtil {
      *            maximum zoomlevel (0-28)
      */
     public static void limitZoomLevels(XyzOptions options, int minZoomLevel, int maxZoomLevel) {
-        TileGridOptions tileGridOptions = OLFactory.<TileGridOptions> createOptions();
+        XyzTileGridOptions tileGridOptions = OLFactory.createOptions();
         tileGridOptions.setMinZoom(minZoomLevel);
         tileGridOptions.setMaxZoom(maxZoomLevel);
         options.setTileGrid(OLFactory.createTileGridXYZ(tileGridOptions));
@@ -771,14 +560,17 @@ public final class OLUtil {
      * array of styles. If it is `null` the feature has no style (a `null`
      * style).
      *
-     * @param f
+     * @param feature
      *            {@link ol.Feature}
      * @param style
      *            Style for this feature.
+     *
+     * @deprecated Use {@link ol.Feature#setStyles(Style[])} instead.
      */
-    public static native void setStyle(ol.Feature f, @Nullable ol.style.Style[] style) /*-{
-        f.setStyle(style);
-    }-*/;
+    @Deprecated
+    public static void setStyle(ol.Feature feature, @Nullable Style[] style) {
+        feature.setStyles(style);
+    };
 
     /**
      * Set the style for features. This can be a single style object, an array
@@ -788,15 +580,17 @@ public final class OLUtil {
      * have their own styles will be rendered in the layer. See {@link ol.style}
      * for information on the default style.
      *
-     * @param l
+     * @param vectorLayer
      *            Layer
      * @param style
      *            Layer style.
+     *
+     * @deprecated Use {@link ol.layer.Vector#setStyles(Style[])} instead.
      */
-    public static native void setStyle(ol.layer.Vector l, @Nullable ol.style.Style[] style) /*-{
-        l.setStyle(style);
-    }-*/;
-
+    @Deprecated
+    public static void setStyle(ol.layer.Vector vectorLayer, @Nullable Style[] style) {
+        vectorLayer.setStyles(style);
+    };
 
     /**
      * Transforms coordinates from source projection to destination projection.

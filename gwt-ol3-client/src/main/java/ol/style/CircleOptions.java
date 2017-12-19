@@ -19,8 +19,6 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
-import ol.Options;
-
 /**
  * Options for the circle style.
  *
@@ -28,7 +26,7 @@ import ol.Options;
  *
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class CircleOptions implements Options {
+public class CircleOptions extends RegularShapeOptions {
 
     /**
      * Fill style.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,5 +24,6 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class ImageMapGuide extends Image {
 
+    public ImageMapGuide(ImageMapGuideOptions imageMapGuideOptions) {}
 
 }

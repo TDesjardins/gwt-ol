@@ -24,5 +24,9 @@ import jsinterop.annotations.JsType;
  */
 @JsType(isNative = true)
 public class FullScreen extends Control {
+    
+    public FullScreen() {}
+
+    public FullScreen(FullScreenOptions fullScreenOptions) {}
 
 }

@@ -15,7 +15,10 @@
  *******************************************************************************/
 package ol.layer;
 
+import ol.Feature;
+import ol.GenericFunction;
 import ol.GwtOL3BaseTestCase;
+import ol.style.Style;
 
 /**
  * A test case for {@link ol.layer.Vector}.
@@ -32,9 +35,28 @@ public class VectorTest extends GwtOL3BaseTestCase {
 
             VectorLayerOptions vectorLayerOptions = new VectorLayerOptions();
             assertNotNull(vectorLayerOptions);
-            Vector tile = new Vector(vectorLayerOptions);
-            assertTrue(tile instanceof Base);
-            assertTrue(tile instanceof Vector);
+            Vector vectorLayer = new Vector(vectorLayerOptions);
+            assertTrue(vectorLayer instanceof Base);
+            assertTrue(vectorLayer instanceof Vector);
+            
+            vectorLayer.setStyle(new Style());
+            assertTrue(vectorLayer.getStyle() instanceof Style);
+            assertTrue(vectorLayer.getStyles() instanceof Style[]);
+
+            Style[] styles = {new Style(), new Style()};
+
+            vectorLayer.setStyles(styles);
+            
+            assertTrue(vectorLayer.getStyle() instanceof Style);
+            assertTrue(vectorLayer.getStyles() instanceof Style[]);
+            assertTrue(vectorLayer.getStyles().length == 2);
+
+            vectorLayer.setStyleFunction((Feature feature) -> {
+                return null;
+            });
+
+            assertTrue(vectorLayer.getStyle() == null);
+            assertTrue(vectorLayer.getStyleFunction() instanceof GenericFunction);
 
         });
 

@@ -28,6 +28,14 @@ import ol.geom.Geometry;
 @JsType(isNative = true)
 public class Within extends Spatial {
 
+    /**
+     * @param geometryName Geometry name to use.
+     * @param geometry Geometry.
+     */
+    public Within(String geometryName, Geometry geometry) {
+        super("Within", geometryName, geometry, null);
+    }
+
 	/**
 	 *
 	 * @param geometryName Geometry name to use.

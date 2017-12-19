@@ -29,16 +29,31 @@ public class ColorTest extends GwtOL3BaseTestCase {
     public void testColor() {
 
         this.injectUrlAndTest(() -> {
-            Color color = OLFactory.createColor(255, 0, 0, 1);
+
+            Color color = OLFactory.createColor(255, 50, 100, .5);
             assertNotNull(color);
-            
-            Color color2 = OLFactory.createColor("#FF0000");
+            assertEquals(color.getRed(), 255);
+            assertEquals(color.getGreen(), 50);
+            assertEquals(color.getBlue(), 100);
+            assertEquals(color.getAlpha(), .5f);
+
+            Color color2 = new Color(255, 50, 100, .5f);
             assertNotNull(color2);
-            
             assertEquals(color2.getRed(), 255);
-            assertEquals(color2.getGreen(), 0);
-            assertEquals(color2.getBlue(), 0);
-            assertEquals(color2.getAlpha(), 1f);
+            assertEquals(color2.getGreen(), 50);
+            assertEquals(color2.getBlue(), 100);
+            assertEquals(color2.getAlpha(), .5f);
+
+            Color color3 = Color.getColorFromString("#FF4D0B");
+            assertNotNull(color3);
+
+            assertEquals(color3.getRed(), 255);
+            assertEquals(color3.getGreen(), 77);
+            assertEquals(color3.getBlue(), 11);
+            assertEquals(color3.getAlpha(), 1f);
+
+            assertEquals("rgba(255,77,11,1)", color3.asString());
+
         });
 
     }

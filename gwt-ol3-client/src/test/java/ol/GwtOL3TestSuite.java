@@ -17,6 +17,7 @@ package ol;
 
 import com.google.gwt.junit.tools.GWTTestSuite;
 import junit.framework.TestSuite;
+import ol.control.ControlTest;
 import ol.control.FullScreenTest;
 import ol.control.MousePositionTest;
 import ol.control.OverviewMapTest;
@@ -42,6 +43,7 @@ import ol.interaction.DragRotateTest;
 import ol.interaction.DragZoomTest;
 import ol.interaction.DrawTest;
 import ol.interaction.ExtentTest;
+import ol.interaction.InteractionTest;
 import ol.interaction.KeyboardPanTest;
 import ol.interaction.KeyboardZoomTest;
 import ol.interaction.ModifyTest;
@@ -59,7 +61,11 @@ import ol.source.ImageArcGISRestTest;
 import ol.source.ImageStaticTest;
 import ol.source.TileWmsTest;
 import ol.source.VectorTileTest;
+import ol.style.AtlasManagerTest;
 import ol.style.RegularShapeTest;
+import ol.style.StrokeTest;
+import ol.style.TextTest;
+import ol.tilegrid.TileGridTest;
 
 /**
  * Testsuite for GwtOL3.
@@ -73,22 +79,26 @@ public class GwtOL3TestSuite extends GWTTestSuite {
 
         TestSuite suite = new TestSuite("Tests for GwtOL3-Wrapper");
 
-        suite.addTestSuite(AttributionTest.class);
         suite.addTestSuite(CollectionTest.class);
         suite.addTestSuite(CoordinateTest.class);
+        suite.addTestSuite(ExtentTest.class);
         suite.addTestSuite(FeatureTest.class);
         suite.addTestSuite(GraticuleTest.class);
         suite.addTestSuite(MapTest.class);
         suite.addTestSuite(ObservableTest.class);
         suite.addTestSuite(OverlayTest.class);
+        suite.addTestSuite(PixelTest.class);
+        suite.addTestSuite(SizeTest.class);
         suite.addTestSuite(SphereTest.class);
+        suite.addTestSuite(TileCoordTest.class);
         suite.addTestSuite(ViewTest.class);
 
         // color
         suite.addTestSuite(ol.color.ColorTest.class);
-        
+
         // controls
         suite.addTestSuite(ol.control.AttributionTest.class);
+        suite.addTestSuite(ControlTest.class);
         suite.addTestSuite(FullScreenTest.class);
         suite.addTestSuite(MousePositionTest.class);
         suite.addTestSuite(OverviewMapTest.class);
@@ -99,7 +109,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
 
         // events
         suite.addTestSuite(ConditionTest.class);
-        
+
         // formats
         suite.addTestSuite(FilterTest.class);
         suite.addTestSuite(GeoJsonTest.class);
@@ -122,6 +132,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(DragZoomTest.class);
         suite.addTestSuite(DrawTest.class);
         suite.addTestSuite(ExtentTest.class);
+        suite.addTestSuite(InteractionTest.class);
         suite.addTestSuite(KeyboardPanTest.class);
         suite.addTestSuite(KeyboardZoomTest.class);
         suite.addTestSuite(ModifyTest.class);
@@ -150,7 +161,18 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(ProjectionTest.class);
 
         // style
+        suite.addTestSuite(AtlasManagerTest.class);
+        suite.addTestSuite(ol.style.CircleTest.class);
+        suite.addTestSuite(ol.style.FillTest.class);
         suite.addTestSuite(RegularShapeTest.class);
+        suite.addTestSuite(StrokeTest.class);
+        suite.addTestSuite(TextTest.class);
+
+        // tilegrid
+        suite.addTestSuite(TileGridTest.class);
+
+        // utilities
+        suite.addTestSuite(OLUtilTest.class);
 
         return suite;
 

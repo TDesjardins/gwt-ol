@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -82,7 +82,7 @@ public class ViewTest extends GwtOL3BaseTestCase {
             assertFalse(this.resolutionChanged);
             assertFalse(this.rotationChanged);
 
-            view.setCenter(Coordinate.create(660000, 190001));
+            view.setCenter(new Coordinate(660000, 190001));
 
             assertTrue(this.centerChanged);
             assertFalse(this.resolutionChanged);
@@ -116,7 +116,7 @@ public class ViewTest extends GwtOL3BaseTestCase {
         viewOptions.setProjection(projection);
         View view = new View(viewOptions);
 
-        Coordinate centerCoordinate = Coordinate.create(660000, 190000);
+        Coordinate centerCoordinate = new Coordinate(660000, 190000);
 
         view.setCenter(centerCoordinate);
         view.setZoom(9);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,17 +23,27 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public interface Text {
+public class Text {
+
+    public Text() {}
+
+    public Text(TextOptions textOptions) {}
+
+    /**
+     * @return the font name
+     */
+    public native String getFont();
 
     /**
      * Set the text.
      *
      * @param text
      */
-    void setText(String text);
+    public native void setText(String text);
 
     /**
      * Clones the Text.
      */
-    Text clone();
+    public native Text clone();
+
 }

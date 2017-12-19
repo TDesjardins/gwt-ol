@@ -15,8 +15,7 @@
  *******************************************************************************/
 package ol.render;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
+import elemental2.dom.CanvasRenderingContext2D;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
@@ -35,7 +34,7 @@ public interface Event extends ol.events.Event {
      * @return Canvas context
      */
     @JsProperty
-    JavaScriptObject getContext();
+    CanvasRenderingContext2D getContext();
 
     /**
      * An object representing the current render frame state.
@@ -50,5 +49,5 @@ public interface Event extends ol.events.Event {
      */
     @JsProperty
     VectorContext getVectorContext();
-    
+
 }

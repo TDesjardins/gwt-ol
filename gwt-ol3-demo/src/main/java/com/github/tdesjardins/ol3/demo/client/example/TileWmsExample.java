@@ -47,9 +47,9 @@ public class TileWmsExample implements Example {
 	 */
 	@Override
 	public void show(String exampleId) {
-		TileWmsParams.DELIMITER = ":";
+
 		TileWmsParams params = new TileWmsParams();
-		params.setLayers("topp", "states");
+		params.setLayers("topp:states");
 		params.setTiled(true);
 
 		TileWmsOptions options = new TileWmsOptions();
@@ -59,12 +59,12 @@ public class TileWmsExample implements Example {
 
 		TileWms source = new TileWms(options);
 
-		Extent extent = Extent.create(-13884991, 2870341, -7455066, 6338219);
+		Extent extent = new Extent(-13884991, 2870341, -7455066, 6338219);
 		Tile layer = new Tile();
 		layer.setExtent(extent);
 		layer.setSource(source);
 
-		Coordinate centerCoordinate = Coordinate.create(-10997148, 4569099);
+		Coordinate centerCoordinate = new Coordinate(-10997148, 4569099);
 		View view = new View();
 		view.setCenter(centerCoordinate);
 		view.setZoom(4);

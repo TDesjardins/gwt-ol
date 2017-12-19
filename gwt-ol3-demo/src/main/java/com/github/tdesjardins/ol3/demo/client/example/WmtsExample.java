@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,10 @@ package com.github.tdesjardins.ol3.demo.client.example;
 import com.github.tdesjardins.ol3.demo.client.constants.DemoConstants;
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
 
-import ol.Attribution;
-import ol.AttributionOptions;
 import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
-import ol.OLUtil;
 import ol.View;
 import ol.ViewOptions;
 import ol.control.Rotate;
@@ -79,14 +76,7 @@ public class WmtsExample implements Example {
         wmtsOptions.setTileGrid(this.createWmtsTileGrid(projection));
         
         // create attribution
-        AttributionOptions attributionOptions = OLFactory.<AttributionOptions>createOptions();
-        attributionOptions.setHtml("Tiles &copy; <a href=\"http://services.arcgisonline.com/arcgis/rest/services/Demographics/USA_Population_Density/MapServer/\">ArcGIS</a>");
-
-        Attribution attribution = new Attribution(attributionOptions);
-        Attribution[] attributions = new Attribution[1];
-        attributions[0] = attribution;
-        
-        wmtsOptions.setAttributions(attributions);
+        wmtsOptions.setAttributions("Tiles &copy; <a href=\"http://services.arcgisonline.com/arcgis/rest/services/Demographics/USA_Population_Density/MapServer/\">ArcGIS</a>");
         
         Wmts wmtsSource = new Wmts(wmtsOptions);
 
@@ -141,7 +131,7 @@ public class WmtsExample implements Example {
         double[] resolutions = new double[14];
         String[] matrixIds = new String[14];
         
-        double width = OLUtil.getWidth(projection.getExtent());
+        double width = projection.getExtent().getWidth();
         double matrixWidth = width / 256;
         
         for (int i = 0; i < 14; i++) {
@@ -149,7 +139,7 @@ public class WmtsExample implements Example {
             matrixIds[i] = String.valueOf(i);
         }
         
-        Coordinate tileGridOrigin = OLUtil.getTopLeft(projection.getExtent());
+        Coordinate tileGridOrigin = projection.getExtent().getTopLeft();
         wmtsTileGridOptions.setOrigin(tileGridOrigin);
         wmtsTileGridOptions.setResolutions(resolutions);
         wmtsTileGridOptions.setMatrixIds(matrixIds);

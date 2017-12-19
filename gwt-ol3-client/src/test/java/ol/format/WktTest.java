@@ -148,8 +148,8 @@ public class WktTest extends GwtOL3BaseTestCase {
 	
 	private Feature createTestFeature() {
 		
-		Coordinate coordinate1 = Coordinate.create(1, 1);
-		Coordinate coordinate2 = Coordinate.create(5, 5);
+		Coordinate coordinate1 = new Coordinate(1, 1);
+		Coordinate coordinate2 = new Coordinate(5, 5);
 		Coordinate[] coordinates = { coordinate1, coordinate2 };
 		LineString lineString = new LineString(coordinates);
 

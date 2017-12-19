@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,6 @@ package ol.events;
 import javax.annotation.Nullable;
 
 import jsinterop.annotations.JsProperty;
-
-import com.google.gwt.core.client.JavaScriptObject;
 
 import jsinterop.annotations.JsType;
 
@@ -43,12 +41,13 @@ public interface Event {
 
     /**
      * Object that had the listener attached.
+     * @param <T>
      * 
      * @return {Object|undefined}
      */
     @Nullable
     @JsProperty
-    JavaScriptObject getCurrentTarget();
+    <T extends EventTarget> T getCurrentTarget();
 
     /**
      * Target of the event.
@@ -57,7 +56,7 @@ public interface Event {
      */
     @Nullable
     @JsProperty
-    JavaScriptObject getTarget();
+    <T extends EventTarget> T  getTarget();
 
     /**
      * Event type.

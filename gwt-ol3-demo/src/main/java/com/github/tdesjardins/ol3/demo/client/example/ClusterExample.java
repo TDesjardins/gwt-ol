@@ -29,6 +29,7 @@ import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
 import ol.View;
+import ol.color.Color;
 import ol.control.Rotate;
 import ol.control.ScaleLine;
 import ol.geom.Point;
@@ -44,9 +45,11 @@ import ol.source.Osm;
 import ol.source.Vector;
 import ol.source.VectorOptions;
 import ol.source.XyzOptions;
+import ol.style.Circle;
 import ol.style.CircleOptions;
 import ol.style.Style;
 import ol.style.StyleOptions;
+import ol.style.Text;
 import ol.style.TextOptions;
 
 /**
@@ -63,14 +66,14 @@ public class ClusterExample implements Example {
 
         Collection<Feature> features = new Collection<Feature>();
         int e = 450000;
-        
+
         for (int i = 0; i < 20000; ++i) {
             // create a point
-            Coordinate coordinate = OLFactory.createCoordinate(2 * e * Math.random() - e, 2 * e * Math.random() - e);
+            Coordinate coordinate = new Coordinate(2 * e * Math.random() - e, 2 * e * Math.random() - e);
             Point point = new Point(coordinate);
 
             // create feature
-            FeatureOptions featureOptions = OLFactory.createOptions();
+            FeatureOptions featureOptions = new FeatureOptions();
             featureOptions.setGeometry(point);
             Feature feature = new Feature(featureOptions);
 
@@ -78,7 +81,7 @@ public class ClusterExample implements Example {
         }
 
         // create source
-        VectorOptions vectorSourceOptions = OLFactory.createOptions();
+        VectorOptions vectorSourceOptions = new VectorOptions();
         vectorSourceOptions.setFeatures(features);
         Vector vectorSource = new Vector(vectorSourceOptions);
 
@@ -89,7 +92,7 @@ public class ClusterExample implements Example {
         Cluster clusterSource = new Cluster(clusterOptions);
 
         // create vector layer
-        VectorLayerOptions vectorLayerOptions = OLFactory.createOptions();
+        VectorLayerOptions vectorLayerOptions = new VectorLayerOptions();
         vectorLayerOptions.setSource(clusterSource);
         vectorLayerOptions.setStyle(new GenericFunction<Feature, Style[]>() {
 
@@ -103,14 +106,15 @@ public class ClusterExample implements Example {
 
                 StyleOptions styleOptions = new StyleOptions();
 
-                TextOptions textOptions = OLFactory.createTextOptions();
+                TextOptions textOptions = new TextOptions();
                 textOptions.setText(String.valueOf(clusterSize));
-                styleOptions.setText(OLFactory.createText(textOptions));
+                styleOptions.setText(new Text(textOptions));
 
                 CircleOptions circleOptions = new CircleOptions();
                 circleOptions.setRadius(10);
-                circleOptions.setFill(OLFactory.createFill(OLFactory.createColor("#3399CC")));
-                styleOptions.setImage(OLFactory.createCircleStyle(circleOptions));
+                Color color = Color.getColorFromString("#3399CC");
+                circleOptions.setFill(OLFactory.createFill(color));
+                styleOptions.setImage(new Circle(circleOptions));
                 style.add(new Style(styleOptions));
 
                 return style.toArray(new Style[0]);
@@ -120,17 +124,17 @@ public class ClusterExample implements Example {
         ol.layer.Vector vectorLayer = new ol.layer.Vector(vectorLayerOptions);
 
         // create a OSM-layer
-        XyzOptions osmSourceOptions = OLFactory.createOptions();
+        XyzOptions osmSourceOptions = new XyzOptions();
         Osm osmSource = new Osm(osmSourceOptions);
 
-        LayerOptions osmLayerOptions = OLFactory.createOptions();
+        LayerOptions osmLayerOptions = new LayerOptions();
         osmLayerOptions.setSource(osmSource);
 
         Tile osmLayer = new Tile(osmLayerOptions);
 
         // create a view
         View view = new View();
-        Coordinate centerCoordinate = OLFactory.createCoordinate(0, 0);
+        Coordinate centerCoordinate = new Coordinate(0, 0);
         view.setCenter(centerCoordinate);
         view.setZoom(2);
 
@@ -153,5 +157,5 @@ public class ClusterExample implements Example {
         map.addInteraction(new KeyboardZoom());
         map.addControl(new Rotate());
     }
-    
+
 }

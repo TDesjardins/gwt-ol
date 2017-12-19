@@ -15,11 +15,11 @@
  *******************************************************************************/
 package ol.source;
 
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
-import ol.Attribution;
 import ol.LogoOptions;
 import ol.Options;
 import ol.proj.Projection;
@@ -39,17 +39,27 @@ public class SourceOptions implements Options {
      *
      * @param attributions attributions
      */
-    @JsProperty
-    public native void setAttributions(Attribution[] attributions);
+    @JsOverlay
+    public final void setAttributions(String... attributions) {
+        setAttributionValues(attributions);
+    }
 
+    @JsProperty(name = "attributions")
+    private native void setAttributionValues(String[] attributions);
+
+    /**
+     * Get the attributions of the source.
+     * 
+     * @return Attributions.
+     */
     @JsProperty
-    public native Attribution[] getAttributions();
+    public native String[] getAttributions();
 
     @JsProperty
     public native void setLogo(LogoOptions logo);
 
-  	@JsProperty
-  	public native LogoOptions getLogo();
+    @JsProperty
+    public native LogoOptions getLogo();
 
     /**
      * Set the Projection. Default is EPSG:3857.

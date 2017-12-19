@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package ol.proj;
 
 import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import ol.Coordinate;
 import ol.Extent;
@@ -46,7 +47,10 @@ import ol.Extent;
  */
 @JsType(isNative = true)
 public class Projection {
-    
+
+    @JsOverlay
+    private static final String PACKAGE_PROJECTION = "ol.proj";
+
     public Projection(ProjectionOptions projectionOptions) {}
     
     /**
@@ -141,7 +145,7 @@ public class Projection {
      *
      * @param projections Projections.
      */
-    @JsMethod(name = "addEquivalentProjections", namespace = "ol.proj")
+    @JsMethod(name = "addEquivalentProjections", namespace = PACKAGE_PROJECTION)
     public static native void addEquivalentProjections(Projection[] projections);
     
     /**
@@ -151,7 +155,7 @@ public class Projection {
      * @param projection
      *            Projection instance.
      */
-    @JsMethod(name = "addProjection", namespace = "ol.proj")
+    @JsMethod(name = "addProjection", namespace = PACKAGE_PROJECTION)
     public static native void addProjection(Projection projection);
     
     /**
@@ -165,7 +169,7 @@ public class Projection {
      *            Projection 2.
      * @return {boolean} Equivalent.
      */
-    @JsMethod(name = "equivalent", namespace = "ol.proj")
+    @JsMethod(name = "equivalent", namespace = PACKAGE_PROJECTION)
     public static native boolean equivalent(ol.proj.Projection projection1, ol.proj.Projection projection2);
     
     
@@ -176,7 +180,7 @@ public class Projection {
 	 * @param coordinate
 	 * @return transformed coordinate
 	 */
-	@JsMethod(name = "fromLonLat", namespace = "ol.proj")
+	@JsMethod(name = "fromLonLat", namespace = PACKAGE_PROJECTION)
 	public static native Coordinate fromLonLat(Coordinate coordinate);
 	
 	/**
@@ -186,7 +190,7 @@ public class Projection {
      * @param projectionCode combination of authority and identifier such as "EPSG:4326"
      * @return projection
      */
-    @JsMethod(name = "get", namespace = "ol.proj")
+    @JsMethod(name = "get", namespace = PACKAGE_PROJECTION)
     public static native Projection get(String projectionCode);
 
 	/**
@@ -199,7 +203,7 @@ public class Projection {
 	 * @param target
 	 * @return transformed coordinate
 	 */
-	@JsMethod(name = "transform", namespace = "ol.proj")
+	@JsMethod(name = "transform", namespace = PACKAGE_PROJECTION)
 	public static native Coordinate transform(Coordinate coordinate, String source, String target);
 	
 	/**
@@ -218,7 +222,7 @@ public class Projection {
      *            Destination projection-like.
      * @return {ol.Coordinate} Coordinate.
      */
-	@JsMethod(name = "transform", namespace = "ol.proj")
+	@JsMethod(name = "transform", namespace = PACKAGE_PROJECTION)
     public static native Coordinate transform(Coordinate coordinate, Projection source, Projection destination);
 	
 	/**
@@ -233,7 +237,7 @@ public class Projection {
      *            Destination projection-like.
      * @return {ol.Extent} The transformed extent.
      */
-	@JsMethod(name = "transformExtent", namespace = "ol.proj")
+	@JsMethod(name = "transformExtent", namespace = PACKAGE_PROJECTION)
     public static native Extent transformExtent(Extent extent, Projection source, Projection destination);
 
     /**
@@ -248,7 +252,7 @@ public class Projection {
      *            Destination projection-like.
      * @return {ol.Extent} The transformed extent.
      */
-	@JsMethod(name = "transformExtent", namespace = "ol.proj")
+	@JsMethod(name = "transformExtent", namespace = PACKAGE_PROJECTION)
     public static native Extent transformExtent(Extent extent, String source, String destination);
 
 }

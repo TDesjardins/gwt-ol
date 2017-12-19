@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2015 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,10 @@
  *******************************************************************************/
 package ol;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
+import jsinterop.base.JsArrayLike;
 
 /**
  * An array with two elements, representing a pixel. The first element is the
@@ -23,37 +26,51 @@ import com.google.gwt.core.client.JavaScriptObject;
  *
  * @author sbaumhekel
  */
-public class Pixel extends JavaScriptObject {
+@JsType(isNative = true, name = "Array", namespace = JsPackage.GLOBAL)
+public class Pixel implements JsArrayLike<Double> {
 
-    @Deprecated
-    protected Pixel() {
-    }
+    /**
+     * @param x X-coordinate
+     * @param y Y-coordinate
+     */
+    public Pixel(int x, int y) {}
 
     /**
      * Clones this object.
      *
      * @return {ol.Pixel} clone
      */
-    public final native Pixel cloneObject() /*-{
-    	return this.slice(0);
-    }-*/;
+    @JsOverlay
+    public final Pixel cloneObject() {
+        return this.slice(0);
+    };
+
+    private native Pixel slice(int begin);
 
     /**
      * Gets the X-coordinate.
      *
      * @return X-coordinate
      */
-    public final native int getX() /*-{
-    	return this[0];
-    }-*/;
+    @JsOverlay
+    public final int getX() {
+        if (this.getLength() > 0) {
+            return this.getAt(0).intValue();
+        }
+        return -1;
+    }
 
     /**
      * Gets the Y-coordinate.
      *
      * @return Y-coordinate
      */
-    public final native int getY() /*-{
-    	return this[1];
-    }-*/;
+    @JsOverlay
+    public final int getY() {
+        if (this.getLength() > 1) {
+            return this.getAt(1).intValue();
+        }
+        return -1;
+    }
 
 }

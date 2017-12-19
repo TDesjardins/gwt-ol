@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
  *******************************************************************************/
 package ol;
 
+import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 
 import ol.geom.Geometry;
@@ -55,11 +57,12 @@ import ol.style.Style;
 @JsType(isNative = true)
 public class Feature extends Object {
 
-    
     public Feature() {}
-    
+
     public Feature(FeatureOptions featureOptions) {}
-    
+
+    public Feature(Geometry geometry) {}
+
     /**
      * Clone this feature. If the original feature has a geometry it is also
      * cloned. The feature id is not set in the clone.
@@ -103,7 +106,55 @@ public class Feature extends Object {
      * @return {ol.style.Style|Array.<ol.style.Style>| ol.FeatureStyleFunction}
      *         The feature style.
      */
-    public native Style getStyle();
+    @JsMethod(name = "getStyle")
+    private native java.lang.Object getNativeStyle();
+
+    /**
+     * @return The feature style.
+     */
+    @JsOverlay
+    public final Style getStyle() {
+        
+        java.lang.Object nativeStyle = this.getNativeStyle();
+        
+        if (nativeStyle instanceof Style[]) {
+            Style[] styles = (Style[])nativeStyle;
+
+            if (styles.length > 0) {
+                return styles[0];
+            }
+
+        } else if (nativeStyle instanceof Style) {
+            return (Style)nativeStyle;
+        }
+        
+        return null;
+    }
+
+    /**
+     * @return The feature styles.
+     */
+    @JsOverlay
+    public final Style[] getStyles() {
+
+        java.lang.Object nativeStyle = this.getNativeStyle();
+
+        if (nativeStyle instanceof Style[]) {
+            return (Style[])this.getNativeStyle();
+        } else if (nativeStyle instanceof Style) {
+            Style[] styles = new Style[1];
+            styles[0] = (Style)nativeStyle;
+            return styles;
+        }
+
+        return null;
+
+    }
+
+    /**
+     * @return The feature's style function.
+     */
+    public native GenericFunction<Double, Style[]> getStyleFunction();
 
     /**
      * Set the default geometry for the feature. This will update the property
@@ -135,6 +186,9 @@ public class Feature extends Object {
      */
     public native void setId(String id);
 
+    @JsMethod(name = "setStyle")
+    private native void setNativeStyle(java.lang.Object style);
+
     /**
      * Set the style for the feature. If it is `null` the feature has no
      * style (a `null` style).
@@ -142,14 +196,33 @@ public class Feature extends Object {
      * @param style Style for this feature.
      */
     public native void setStyle(Style style);
-    
+
+    @JsOverlay
+    public final void setStyles(Style[] styles) {
+        setNativeStyle(styles);
+    }
+
+    /**
+     * Function that takes a resolution and returns an
+     * array of styles. If it is `null` the feature has no style (a `null`
+     * style).
+     *
+     * @param styleFunction
+     */
+    @JsOverlay
+    public final void setStyleFunction(GenericFunction<Double, Style[]> styleFunction) {
+        setNativeStyle(styleFunction);
+    }
+
     /**
      * Function that takes a resolution and returns an
      * array of styles. If it is `null` the feature has no style (a `null`
      * style).
      * 
      * @param styleFunction
+     * @deprecated Use {@link ol.Feature#setStyleFunction(GenericFunction)} instead.
      */
+    @Deprecated
     public native void setStyle(GenericFunction<Double, Style[]> styleFunction);
 
 }

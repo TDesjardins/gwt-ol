@@ -28,7 +28,7 @@ import ol.Size;
 public class ImageWmsParams {
 
     @JsOverlay
-    public static String DELIMITER = ",";
+    public static final String DELIMITER = ",";
 
     @JsProperty(name = "LAYERS")
     public native void setLayers(String layers);

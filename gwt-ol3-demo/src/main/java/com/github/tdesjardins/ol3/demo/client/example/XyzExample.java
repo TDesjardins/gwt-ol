@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,6 @@ package com.github.tdesjardins.ol3.demo.client.example;
 import ol.Coordinate;
 import ol.source.Xyz;
 import ol.source.XyzOptions;
-import ol.Attribution;
-import ol.AttributionOptions;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
@@ -46,14 +44,7 @@ public class XyzExample implements Example {
     	XyzOptions xyzOptions = OLFactory.createOptions();
     	xyzOptions.setUrl("http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}");
 
-    	AttributionOptions attributionOptions = OLFactory.<AttributionOptions>createOptions();
-    	attributionOptions.setHtml("Tiles &copy; <a href=\"http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer\">ArcGIS</a>");
-
-        Attribution attribution = new Attribution(attributionOptions);
-        Attribution[] attributions = new Attribution[1];
-        attributions[0] = attribution;
-
-        xyzOptions.setAttributions(attributions);
+        xyzOptions.setAttributions("Tiles &copy; <a href=\"http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer\">ArcGIS</a>");
 
     	Xyz xyzSource =  new Xyz(xyzOptions);
     	LayerOptions xyzLayerOptions = OLFactory.createOptions();

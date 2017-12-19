@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,9 @@
 package ol.interaction;
 
 import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
+import ol.Map;
 
 /**
  * Abstract base class; normally only used for creating subclasses and not
@@ -33,6 +35,12 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public abstract class Interaction extends ol.Object {
 
+    @JsOverlay
+    private static final String PACKAGE_INTERACTION = "ol.interaction";
+
+    @JsMethod(name = "defaults", namespace = PACKAGE_INTERACTION)
+    public static native ol.Collection<ol.interaction.Interaction> defaults();
+
     /**
      * Set of interactions included in maps by default. Specific interactions
      * can be excluded by setting the appropriate option to false in the
@@ -46,8 +54,8 @@ public abstract class Interaction extends ol.Object {
      *            options.
      * @return interactions
      */
-    @JsMethod(name = "defaults", namespace = "ol.interaction")
-    public static native ol.Collection<ol.interaction.Interaction> defaults(InteractionOptions options);
+    @JsMethod(name = "defaults", namespace = PACKAGE_INTERACTION)
+    public static native ol.Collection<ol.interaction.Interaction> defaults(DefaultInteractionsOptions options);
 
     /**
      * Return whether the interaction is currently active.
@@ -55,6 +63,13 @@ public abstract class Interaction extends ol.Object {
      * @return {boolean} `true` if the interaction is active, `false` otherwise.
      */
     public native boolean getActive();
+
+    /**
+     * Get the map associated with this interaction.
+     *
+     * @return associated with this interaction
+     */
+    public native Map getMap();
 
     /**
      * Activate or deactivate the interaction.

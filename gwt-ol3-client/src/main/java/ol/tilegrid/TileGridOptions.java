@@ -43,14 +43,6 @@ public class TileGridOptions implements Options {
     public native void setExtent(Extent extent);
 
     /**
-     * Set the Maximum zoom. Default is based on resolutions array.
-     *
-     * @param maxZoom maximum zoom
-     */
-    @JsProperty
-    public native void setMaxZoom(int maxZoom);
-
-    /**
      * Set the Minimum zoom. Default is 0.
      *
      * @param minZoom minimum zoom

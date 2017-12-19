@@ -18,7 +18,6 @@
  */
 package ol.format;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import jsinterop.annotations.JsType;
 import ol.Collection;
 import ol.Feature;
@@ -85,9 +84,9 @@ public class GeoJson extends JsonFeature {
 	 * Encode a feature as a GeoJSON Feature object.
 	 * @param feature ol.Feature
 	 * @param writeOptions Write options.
-	 * @return {@link JavaScriptObject}
+	 * @return {@link java.lang.Object}
 	 */
-	public native JavaScriptObject writeFeatureObject(Feature feature, @Nullable Options writeOptions);
+	public native java.lang.Object writeFeatureObject(Feature feature, @Nullable Options writeOptions);
 
 	/**
 	 * Encode an array of features as GeoJSON.
@@ -101,9 +100,9 @@ public class GeoJson extends JsonFeature {
 	 * Encode an array of features as GeoJSON.
 	 * @param feature ol.Feature
 	 * @param writeOptions Write options.
-	 * @return Collection<{@link JavaScriptObject}>
+	 * @return Collection<{@link java.lang.Object}>
 	 */
-	public native Collection<JavaScriptObject> writeFeaturesObject(Feature feature, @Nullable Options writeOptions);
+	public native Collection<java.lang.Object> writeFeaturesObject(Feature feature, @Nullable Options writeOptions);
 
 	/**
 	 * Encode a geometry as a GeoJSON string.

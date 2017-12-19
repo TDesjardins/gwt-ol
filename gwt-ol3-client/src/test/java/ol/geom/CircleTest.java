@@ -28,11 +28,11 @@ public class CircleTest extends GwtOL3BaseTestCase {
 
     public void testCircle() {
 
-    	injectUrlAndTest(() -> {
+        injectUrlAndTest(() -> {
 
-        	double radius = 5;
+            double radius = 5;
 
-            Circle circle = new Circle(Coordinate.create(10, 10), radius);
+            Circle circle = new Circle(new Coordinate(10, 10), radius);
             assertNotNull(circle);
             assertTrue(circle instanceof Geometry);
 
@@ -43,10 +43,10 @@ public class CircleTest extends GwtOL3BaseTestCase {
 
             assert(radius == circle.getRadius());
 
-            assertTrue(circle.intersectsExtent(Extent.create(0, 0, 15, 15)));
-            assertFalse(circle.intersectsExtent(Extent.create(0, 0, 5, 5)));
+            assertTrue(circle.intersectsExtent(new Extent(0, 0, 15, 15)));
+            assertFalse(circle.intersectsExtent(new Extent(0, 0, 5, 5)));
 
-        });  	
+        });
 
     }
 

@@ -45,5 +45,6 @@ public class LogoOptions implements Options {
     public native void setSrc(String src);
 
     @JsProperty
-    public native String getScr();
+    public native String getSrc();
+
 }

@@ -16,6 +16,7 @@
 package ol.geom;
 
 import jsinterop.annotations.JsType;
+import ol.Coordinate;
 
 /**
  * Polygon geometry.
@@ -24,6 +25,10 @@ import jsinterop.annotations.JsType;
  */
 @JsType(isNative = true)
 public class Polygon extends SimpleGeometryMultiCoordinates {
+
+    public Polygon(Coordinate[][] coordinates) {}
+
+    public Polygon(Coordinate[][] coordinates, String geometryLayout) {}
 
     /**
      * Create an approximation of a circle on the surface of a sphere.

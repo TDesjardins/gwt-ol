@@ -17,18 +17,36 @@ package ol;
 
 import javax.validation.constraints.NotNull;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
+import jsinterop.base.JsArrayLike;
 
 /**
  * An array of numbers representing an xy coordinate. Example: [16, 48].
  *
  * @author sbaumhekel
+ * @author TDesjardins
  */
-public class Coordinate extends JavaScriptObject {
+@JsType(isNative = true, name = "Array", namespace = JsPackage.GLOBAL)
+public class Coordinate implements JsArrayLike<Double> {
 
-    @Deprecated
-    protected Coordinate() {
-    }
+    @JsOverlay
+    private static final String PACKAGE_COORDINATE = "ol.coordinate";
+
+    /**
+     * @param x X-coordinate
+     * @param y Y-coordinate
+     */
+    public Coordinate(double x, double y) {}
+
+    /**
+     * @param x X-coordinate
+     * @param y Y-coordinate
+     * @param z Z-coordinate
+     */
+    public Coordinate(double x, double y, double z) {}
 
     /**
      * Creates an instance.
@@ -36,11 +54,15 @@ public class Coordinate extends JavaScriptObject {
      * @param x X-coordinate (longitude)
      * @param y Y-coordinate (latitude)
      * @return {@link Coordinate}
+     * 
+     * @deprecated Use {@link #Coordinate(double, double)} instead.
      */
-    public static native Coordinate create(@NotNull double x, @NotNull double y) /*-{
-        return [x, y];
-    }-*/;
-    
+    @Deprecated
+    @JsOverlay
+    public static Coordinate create(@NotNull double x, @NotNull double y) {
+        return new Coordinate(x, y);
+    };
+
     /**
      * Creates an instance.
      *
@@ -48,10 +70,14 @@ public class Coordinate extends JavaScriptObject {
      * @param y Y-coordinate (latitude)
      * @param z Z-coordinate (height)
      * @return {@link Coordinate}
+     *
+     * @deprecated Use {@link #Coordinate(double, double, double)} instead.
      */
-    public static native Coordinate create(@NotNull double x, @NotNull double y, @NotNull double z) /*-{
-        return [x, y, z];
-    }-*/;
+    @Deprecated
+    @JsOverlay
+    public static Coordinate create(@NotNull double x, @NotNull double y, @NotNull double z) {
+        return new Coordinate(x, y, z);
+    };
 
     /**
      * Add `delta` to `coordinate`. `coordinate` is modified in place and
@@ -62,47 +88,34 @@ public class Coordinate extends JavaScriptObject {
      *            {ol.Coordinate} delta Delta.
      * @return {ol.Coordinate} The input coordinate adjusted by the given delta.
      */
-    public final native Coordinate add(Coordinate delta) /*-{
-    	return $wnd.ol.coordinate.add(this, delta);
-    }-*/;
+    @JsOverlay
+    public final Coordinate add(Coordinate delta) {
+        return add(this, delta);
+    }
+
+    @JsMethod(name = "add", namespace = PACKAGE_COORDINATE)
+    private static native Coordinate add(Coordinate coordinate, Coordinate delta);
 
     /**
      * Clones this object.
      *
      * @return {ol.Coordinate} clone
      */
-    public final native Coordinate cloneObject() /*-{
-    	return this.slice(0);
-    }-*/;
+    @JsOverlay
+    public final Coordinate cloneObject() {
+        return this.slice(0);
+    };
 
-    /**
-     * Gets the value at a given index.
-     *
-     * @param index
-     *            the index to be retrieved
-     * @return the value at the given index
-     */
-    private final native double get(int index) /*-{
-    	return this[index];
-    }-*/;
-
-	/**
-	 * Sets the value at a given index.
-	 *
-	 * @param index the index to be retrieved
-	 * @param value to set
-	 */
-	private final native double set(int index, double value) /*-{
-		this[index] = value;
-	}-*/;
+    private native Coordinate slice(int begin);
 
     /**
      * Gets the dimension of this coordinate.
      *
      * @return dimension
      */
+    @JsOverlay
     public final int getDimension() {
-        return this.length();
+        return this.getLength();
     }
 
     /**
@@ -110,62 +123,68 @@ public class Coordinate extends JavaScriptObject {
      *
      * @return X-coordinate (longitude)
      */
+    @JsOverlay
     public final double getX() {
-        if (this.getDimension() > 0) {
-            return this.get(0);
+        if (this.getLength() > 0) {
+            return this.getAt(0);
         }
         return Double.NaN;
     }
 
-	/**
-	 * Sets the X-coordinate (longitude).
-	 *
-	 * @param x X-coordinate (longitude)
-	 */
-	public final void setX(double x) {
-	    this.set(0, x);
-	}
+    /**
+     * Sets the X-coordinate (longitude).
+     *
+     * @param x X-coordinate (longitude)
+     */
+    @JsOverlay
+    public final void setX(double x) {
+        this.setAt(0, x);
+    }
 
     /**
      * Gets the Y-coordinate (latitude).
      *
      * @return Y-coordinate (latitude)
      */
+    @JsOverlay
     public final double getY() {
-        if (this.getDimension() > 1) {
-            return this.get(1);
+        if (this.getLength() > 1) {
+            return this.getAt(1);
         }
         return Double.NaN;
     }
 
-	/**
-	 * Sets the Y-coordinate (latitude).
-	 *
-	 * @param y Y-coordinate (latitude)
-	 */
-	public final void setY(double y) {
-		this.set(1, y);
-	}
+    /**
+     * Sets the Y-coordinate (latitude).
+     *
+     * @param y Y-coordinate (latitude)
+     */
+    @JsOverlay
+    public final void setY(double y) {
+        this.setAt(1, y);
+    }
 
     /**
      * Gets the Z-coordinate (height).
      *
      * @return Z-coordinate (height)
      */
+    @JsOverlay
     public final double getZ() {
-        if (this.getDimension() > 2) {
-            return this.get(2);
+        if (this.getLength() > 2) {
+            return this.getAt(2);
         }
         return Double.NaN;
     }
-    
+
     /**
      * Sets the Z-coordinate (height).
      *
      * @param z Z-coordinate (height)
      */
+    @JsOverlay
     public final void setZ(double z) {
-        this.set(2, z);
+        this.setAt(2, z);
     }
 
     /**
@@ -173,6 +192,7 @@ public class Coordinate extends JavaScriptObject {
      *
      * @return latitude
      */
+    @JsOverlay
     public final double lat() {
         return this.getY();
     }
@@ -181,16 +201,20 @@ public class Coordinate extends JavaScriptObject {
      * Gets the length of the array.
      *
      * @return the array length
+     * @deprecated Use {@link ol.Coordinate#getLength()}
      */
-    public final native int length() /*-{
-    	return this.length;
-    }-*/;
+    @Deprecated
+    @JsOverlay
+    public final int length() {
+        return this.getLength();
+    }
 
     /**
      * Gets the longitude.
      *
      * @return longitude
      */
+    @JsOverlay
     public final double lon() {
         return this.getX();
     }
@@ -203,9 +227,8 @@ public class Coordinate extends JavaScriptObject {
      * Default is `0`
      * @return format function
      */
-    public final static native JavaScriptObject createStringXY(int fractionDigits) /*-{
-    	return $wnd.ol.coordinate.createStringXY(fractionDigits);
-    }-*/;
+    @JsMethod(name = "createStringXY", namespace = PACKAGE_COORDINATE)
+    public final static native GenericFunction<Coordinate, String> createStringXY(int fractionDigits);
 
     /**
      * Format a coordinate as a comma delimited string. Example without
@@ -220,8 +243,12 @@ public class Coordinate extends JavaScriptObject {
      * @return {string} XY.
      * @api stable
      */
-    public final native String toStringXY(int fractionDigits) /*-{
-    	return $wnd.ol.coordinate.toStringXY(this, fractionDigits);
-    }-*/;
+    @JsOverlay
+    public final String toStringXY(int fractionDigits) {
+        return toStringXY(this, fractionDigits);
+    }
+
+    @JsMethod(name = "toStringXY", namespace = PACKAGE_COORDINATE)
+    private final static native String toStringXY(Coordinate coordinate, int fractionDigits);
 
 }

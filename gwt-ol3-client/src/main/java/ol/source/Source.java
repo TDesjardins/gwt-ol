@@ -15,8 +15,9 @@
  *******************************************************************************/
 package ol.source;
 
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-import ol.Attribution;
 import ol.LogoOptions;
 import ol.proj.Projection;
 
@@ -33,21 +34,22 @@ import ol.proj.Projection;
  */
 @JsType(isNative = true)
 public class Source extends ol.Object {
-    
+
     /**
      * Get the attributions of the source.
      * 
-     * @return {Array.<ol.Attribution>} Attributions.
+     * @return Attributions.
      */
-    public native Attribution[] getAttributions();
+    @JsProperty
+    private native String[] getAttributions();
 
-  	/**
-  	 * Get the logo of the source.
-  	 *
-  	 * @return {@link LogoOptions}
-  	 */
-  	public native LogoOptions getLogo();
-  	
+    /**
+     * Get the logo of the source.
+     *
+     * @return {@link LogoOptions}
+     */
+    public native LogoOptions getLogo();
+
     /**
      * Get the projection of the source.
      * 
@@ -72,14 +74,19 @@ public class Source extends ol.Object {
      * Refreshes the source and finally dispatches a 'change' event.
      */
     public native void refresh();
-    
+
     /**
-     * Set the attributions of the source.
-     * 
-     * @param attributions
-     *            Attributions.
+     * Set the attributions.
+     *
+     * @param attributions attributions
      */
-    public native void setAttributions(Attribution[] attributions);
+    @JsOverlay
+    public final void setAttributions(String... attributions) {
+        setAttributionValues(attributions);
+    }
+
+    @JsProperty(name = "attributions")
+    private native void setAttributionValues(String[] attributions);
 
     /**
      * Set the projection of the source.
@@ -88,5 +95,5 @@ public class Source extends ol.Object {
      *            Projection.
      */
     public native void setProjection(Projection projection);
-    
+
 }

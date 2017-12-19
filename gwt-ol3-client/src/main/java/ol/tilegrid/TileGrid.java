@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
  *******************************************************************************/
 package ol.tilegrid;
 
+import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 
 import ol.Coordinate;
@@ -31,34 +33,46 @@ import ol.Size;
 @JsType(isNative = true)
 public class TileGrid {
 
+    @JsOverlay
+    private static final String PACKAGE_TILEGRID = "ol.tilegrid";
+
     public TileGrid() {}
-    
+
     public TileGrid(TileGridOptions tileGridOptions) {}
-    
+
+    /**
+     * Creates a tile grid with a standard XYZ tiling scheme.
+     *
+     * @param tileGridOptions
+     * @return grid with a standard XYZ tiling scheme
+     */
+    @JsMethod(name = "createXYZ", namespace = PACKAGE_TILEGRID)
+    public static native TileGrid createXyz(XyzTileGridOptions tileGridOptions);
+
     /**
      * Get the extent for this tile grid, if it was configured.
-     * 
+     *
      * @return {ol.Extent} Extent.
      */
     public native Extent getExtent();
 
     /**
      * Get the maximum zoom level for the grid.
-     * 
+     *
      * @return {number} Max zoom.
      */
     public native int getMaxZoom();
 
     /**
      * Get the minimum zoom level for the grid.
-     * 
+     *
      * @return {number} Min zoom.
      */
     public native int getMinZoom();
 
     /**
      * Get the origin for the grid at the given zoom level.
-     * 
+     *
      * @param z
      *            Z.
      * @return {ol.Coordinate} Origin.
@@ -67,7 +81,7 @@ public class TileGrid {
 
     /**
      * Get the resolution for the given zoom level.
-     * 
+     *
      * @param z
      *            Z.
      * @return {number} Resolution.
@@ -76,7 +90,7 @@ public class TileGrid {
 
     /**
      * Get the list of resolutions for the tile grid.
-     * 
+     *
      * @return {Array.<number>} Resolutions.
      */
     public native double[] getResolutions();
@@ -85,7 +99,7 @@ public class TileGrid {
      * Get the tile size for a zoom level. The type of the return value matches
      * the `tileSize` or `tileSizes` that the tile grid was configured with. To
      * always get an `ol.Size`, run the result through `ol.size.toSize()`.
-     * 
+     *
      * @param z
      *            Z.
      * @return {number|ol.Size} Tile size.

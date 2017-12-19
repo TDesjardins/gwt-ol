@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,77 +24,81 @@ import ol.color.Color;
  * @author Tino Desjardins
  */
 @JsType(isNative = true)
-public interface Stroke {
+public class Stroke {
+
+    public Stroke() {}
+
+    public Stroke(StrokeOptions strokeOptions) {}
 
     /**
      * Set the color.
      *
      * @param color color.
      */
-    void setColor(Color color);
+    public native void setColor(Color color);
 
     /**
      * Get the stroke color.
      *
      * @return
      */
-    Color getColor();
+    public native Color getColor();
 
     /**
      * Clones the Stroke
      *
      * @return
      */
-    Stroke clone();
+    public native Stroke clone();
 
     /**
      * Get the line cap type for the stroke.
      *
      * @return
      */
-    String getLineCap();
+    public native String getLineCap();
 
     /**
      * Get the line dash style for the stroke.
      *
      * @return
      */
-    int[] getLineDash();
+    public native int[] getLineDash();
 
     /**
      * Get the line dash offset for the stroke.
      *
      * @return Line dash offset.
      */
-    int getLineDashOffset();
+    public native int getLineDashOffset();
 
     /**
      * Get the line join type for the stroke.
      *
      * @return
      */
-    String getLineJoin();
+    public native String getLineJoin();
 
     /**
      * Get the miter limit for the stroke.
      *
      * @return
      */
-    int getMiterLimit();
+    public native int getMiterLimit();
 
     /**
      * Get the stroke width.
      *
      * @return
      */
-    int getWidth();
+    public native int getWidth();
 
     /**
      * Set the line cap.
      *
      * @param value
      */
-    void setLineCap(String value);
+    public native void setLineCap(String value);
 
     /**
      * Set the line dash.
@@ -104,34 +108,34 @@ public interface Stroke {
      *
      * @param value
      */
-    void setLineDash(int[] value);
+    public native void setLineDash(int[] value);
 
     /**
      * Set the line dash offset.
      *
      * @param lineDashOffset Line dash offset.
      */
-    void setLineDashOffset(int lineDashOffset);
+    public native void setLineDashOffset(int lineDashOffset);
 
     /**
      * Set the line join.
      *
      * @param value
      */
-    void setLineJoin(String value);
+    public native void setLineJoin(String value);
 
     /**
      * Set the miter limit.
      *
      * @param value
      */
-    void setMiterLimit(int value);
+    public native void setMiterLimit(int value);
 
     /**
      * Set the width.
      *
      * @param value
      */
-    void setWidth(int value);
+    public native void setWidth(int value);
 
 }

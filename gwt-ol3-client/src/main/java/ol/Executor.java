@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@
  */
 package ol;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import jsinterop.annotations.JsType;
 
 /**
@@ -30,13 +29,13 @@ import jsinterop.annotations.JsType;
 @JsType
 public class Executor {
 
-    private final GenericFunction<JavaScriptObject, Void> function;
+    private final GenericFunction<java.lang.Object, Void> function;
 
-    public Executor(GenericFunction<JavaScriptObject, Void> function) {
+    public Executor(GenericFunction<java.lang.Object, Void> function) {
         this.function = function;
     }
 
-    public void action(JavaScriptObject object){
+    public void action(java.lang.Object object){
         function.call(object);
     }
 }

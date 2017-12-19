@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +14,6 @@
  * limitations under the License.
  *******************************************************************************/
 package ol;
-
-import com.google.gwt.core.client.JavaScriptObject;
 
 import jsinterop.annotations.JsProperty;
 
@@ -44,10 +42,11 @@ public interface ObjectEvent extends Event {
     /**
      * The old value. To get the new value use e.target.get(e.key) where e is
      * the event object.
+     * @param <T>
      *
      * @return old value
      */
     @JsProperty
-    JavaScriptObject getOldValue();
+    <T> T getOldValue();
 
 }

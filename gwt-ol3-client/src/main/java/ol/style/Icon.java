@@ -24,7 +24,7 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public class Icon implements Image {
+public class Icon extends Image {
 
     public Icon() {}
 
