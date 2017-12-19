@@ -28,18 +28,18 @@ import ol.Observable;
 public class OLHandlerRegistration implements HandlerRegistration {
 
     private EventsKey key;
-    private Observable o;
+    private Observable observable;
 
     /**
      * Constructs an instance.
      * 
-     * @param o
+     * @param observable
      *            {@link Observable}
      * @param key
      *            key
      */
-    public OLHandlerRegistration(Observable o, EventsKey key) {
-        this.o = o;
+    public OLHandlerRegistration(Observable observable, EventsKey key) {
+        this.observable = observable;
         this.key = key;
     }
 
@@ -52,9 +52,9 @@ public class OLHandlerRegistration implements HandlerRegistration {
     @Override
     public void removeHandler() {
         // unregister handler and remove all references
-        if(o != null) {
+        if(observable != null) {
             Observable.unByKey(key);
-            o = null;
+            observable = null;
             key = null;
         }
     }
