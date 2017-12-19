@@ -50,4 +50,13 @@ public abstract class SimpleGeometry extends Geometry {
      */
     public native String getLayout();
 
+    /**
+     * Translate the geometry. This modifies the geometry coordinates in place.
+     * If instead you want a new geometry, first {@link clone()} this geometry.
+     * 
+     * @param deltaX Delta X.
+     * @param deltaY Delta Y.
+     */
+    public native void translate(double deltaX, double deltaY);
+    
 }
