@@ -19,6 +19,9 @@ import javax.annotation.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import elemental2.core.JsArray;
+import jsinterop.base.Js;
+
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -67,16 +70,32 @@ public final class OLUtil {
     /**
      * Adds a {@link Style} to the given array of {@link Style}s.
      *
-     * @param s
+     * @param styles
      *            array of {@link Style}s (will be changed)
-     * @param s2
+     * @param style
      *            {@link Style}
      * @return the changed array
+     *
+     * @deprecated Use {@link OLUtil#addItem(T[], T)} instead
      */
-    public static native ol.style.Style[] addStyle(Style[] s, Style s2) /*-{
-		s.push(s2);
-		return s;
-    }-*/;
+    @Deprecated
+    public static ol.style.Style[] addStyle(Style[] styles, Style style) {
+        return addItem(styles, style);
+    };
+
+    /**
+     * Adds an item to the array.
+     *
+     * @param array array (will be changed)
+     * @param item item to add
+     * @return array including the item
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T[] addItem(T[] array, T item) {
+        JsArray<T> jsArray = Js.cast(array);
+        jsArray.push(item);
+        return array;
+    }
 
     /**
      * Combines two arrays of {@link Style}s.

@@ -171,6 +171,9 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         // tilegrid
         suite.addTestSuite(TileGridTest.class);
 
+        // utilities
+        suite.addTestSuite(OLUtilTest.class);
+
         return suite;
 
     }
