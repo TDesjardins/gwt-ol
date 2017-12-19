@@ -43,9 +43,7 @@ public class VectorTest extends GwtOL3BaseTestCase {
             assertTrue(vectorLayer.getStyle() instanceof Style);
             assertTrue(vectorLayer.getStyles() instanceof Style[]);
 
-            Style[] styles = new Style[2];
-            styles[0] = new Style();
-            styles[1] = new Style();
+            Style[] styles = {new Style(), new Style()};
 
             vectorLayer.setStyles(styles);
             
