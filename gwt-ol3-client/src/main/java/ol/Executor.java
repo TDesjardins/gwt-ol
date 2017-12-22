@@ -24,8 +24,9 @@ package ol;
 import jsinterop.annotations.JsType;
 
 /**
- *
+ * @deprecated not needed
  */
+@Deprecated
 @JsType
 public class Executor {
 

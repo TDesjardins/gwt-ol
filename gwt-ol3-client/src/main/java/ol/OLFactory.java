@@ -33,6 +33,7 @@ import ol.control.Zoom;
 import ol.control.ZoomSlider;
 import ol.control.ZoomToExtent;
 import ol.control.ZoomToExtentOptions;
+import ol.events.Event;
 import ol.format.GeoJson;
 import ol.format.GeoJsonOptions;
 import ol.geom.Circle;
@@ -1229,12 +1230,26 @@ public final class OLFactory {
         return new TileWms(tileWmsOptions);
     };
 
-    public static native java.lang.Object createEventFunction(Executor t) /*-{
-        return function (selectevent) {
-            t.action(selectevent);
-        };
-    }-*/;
+    /**
+     * @deprecated not needed
+     */
+    @Deprecated
+    public static java.lang.Object createEventFunction(Executor executor) {
 
+        return new GenericFunction<Event, Void>() {
+
+            @Override
+            public Void call(Event object) {
+                executor.action(object);
+                return null;
+            }};
+
+    };
+
+    /**
+     * @deprecated not needed
+     */
+    @Deprecated
     public static java.lang.Object createEventFunction(GenericFunction<java.lang.Object, Void> genericFunction){
         Executor executor = new Executor(genericFunction);
         return createEventFunction(executor);
