@@ -76,11 +76,11 @@ public final class OLUtil {
      *            {@link Style}
      * @return the changed array
      *
-     * @deprecated Use {@link OLUtil#addItem(T[], T)} instead
+     * @deprecated Use {@link OLUtil#pushItem(T[], T)} instead
      */
     @Deprecated
     public static ol.style.Style[] addStyle(Style[] styles, Style style) {
-        return addItem(styles, style);
+        return pushItem(styles, style);
     };
 
     /**
@@ -91,7 +91,7 @@ public final class OLUtil {
      * @return array including the item
      */
     @SuppressWarnings("unchecked")
-    public static <T> T[] addItem(T[] array, T item) {
+    public static <T> T[] pushItem(T[] array, T item) {
         JsArray<T> jsArray = Js.cast(array);
         jsArray.push(item);
         return array;
@@ -100,15 +100,30 @@ public final class OLUtil {
     /**
      * Combines two arrays of {@link Style}s.
      *
-     * @param s
-     *            array of {@link Style}s 1
-     * @param s2
-     *            array of {@link Style}s 2
+     * @param array1
+     *            first array of {@link Style}s
+     * @param array2
+     *            second array of {@link Style}s
      * @return the combined array
+     *
+     * @deprecated Use {@link OLUtil#concatArrays(T[], T[])} instead
      */
-    public static native ol.style.Style[] addStyles(Style[] s, Style[] s2) /*-{
-		return s.concat(s2);
-    }-*/;
+    @Deprecated
+    public static ol.style.Style[] addStyles(Style[] array1, Style[] array2) {
+        return concatArrays(array1, array2);
+    };
+
+    /**
+     * Combines two arrays.
+     *
+     * @param array1 first array
+     * @param array2 second array
+     * @return combined array
+     */
+    public static <T> T[] concatArrays(T[] array1, T[] array2) {
+        JsArray<T> jsArray = Js.cast(array1);
+        return jsArray.concat(array2);
+    }
 
     /**
      * Create an approximation of a circle on the surface of a sphere.
