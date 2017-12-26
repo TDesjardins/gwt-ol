@@ -99,6 +99,7 @@ import ol.style.TextOptions;
 import ol.tilegrid.TileGrid;
 import ol.tilegrid.TileGridOptions;
 import ol.tilegrid.XyzTileGridOptions;
+import proj4.Proj4;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -1255,25 +1256,31 @@ public final class OLFactory {
         return createEventFunction(executor);
     }
 
-	/**
-	 * Registers a proj4 definition by its spatial reference id.
-	 *
-	 * @param srid
-	 * @param proj4text
-	 */
-	public static final native void registerSpatialReference(int srid, String proj4text) /*-{
-		$wnd.proj4.defs('EPSG:' + srid, proj4text);
-	}-*/;
-	
-	/**
-	 * Registers a proj4 definition by its spatial reference id.
-	 *
-	 * @param srid
-	 * @param proj4text
-	 */
-	public static final native void registerSpatialReference(String srid, String proj4text) /*-{
-		$wnd.proj4.defs(srid, proj4text);
-	}-*/;
+    /**
+     * Registers a proj4 definition by its spatial reference id.
+     *
+     * @param srid
+     * @param proj4Text
+     * 
+     * @deprecated Use {@link proj4.Proj4#defs(int, String)} instead.
+     */
+    @Deprecated
+    public static final void registerSpatialReference(int srid, String proj4Text) {
+        Proj4.defs(srid, proj4Text);
+    };
+
+    /**
+     * Registers a proj4 definition by its spatial reference id.
+     *
+     * @param srid
+     * @param proj4text
+     * 
+     * @deprecated Use {@link proj4.Proj4#defs(String, String)} instead.
+     */
+    @Deprecated
+    public static final void registerSpatialReference(String srid, String proj4Text) {
+        Proj4.defs(srid, proj4Text);
+    };
 
     /**
      * Get the default map interactions.

@@ -3,6 +3,8 @@
     <inherits name="com.google.gwt.user.User"/>
     <inherits name="elemental2.dom.Dom" />
     <inherits name="com.github.desjardins.elemental.ElementalExtension" />
+    <!-- This module will be optional in future when deprecated methods for proj4js usage will be removed. -->
+    <inherits name="proj4.GwtProj4"/>
 
-    <source path=''/>
+    <source path=""/>
 </module>
