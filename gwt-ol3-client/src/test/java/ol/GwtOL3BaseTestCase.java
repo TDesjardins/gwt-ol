@@ -15,6 +15,8 @@
  *******************************************************************************/
 package ol;
 
+import com.github.desjardins.gwt.junit.client.BaseTestCase;
+
 /**
  *
  * @author Tino Desjardins
