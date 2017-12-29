@@ -19,12 +19,17 @@ import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.junit.client.GWTTestCase;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 
  * @author Tino Desjardins
  *
  */
 public abstract class BaseTestCase extends GWTTestCase {
+
+    private static Set<String> loadedScriptUrls = new HashSet<>();
 
     private String scriptUrl;
     private String moduleName;
@@ -52,24 +57,40 @@ public abstract class BaseTestCase extends GWTTestCase {
      */
     protected void injectUrlAndTest(final TestWithInjection testWithInjection) {
 
-      delayTestFinish(testDelay);
-
-      ScriptInjector.fromUrl(this.scriptUrl).setWindow(ScriptInjector.TOP_WINDOW).setCallback(new Callback<Void, Exception>() {
-
-        @Override
-        public void onFailure(Exception reason) {
-          assertNotNull(reason);
-          fail("Injection failed: " + reason.toString());
-        }
-
-        @Override
-        public void onSuccess(Void result) {
+        if (scriptAlreadyLoaded()) {
             testWithInjection.test();
-            finishTest();
+        } else {
+
+            this.delayTestFinish(this.testDelay);
+
+            ScriptInjector.fromUrl(this.scriptUrl).setWindow(ScriptInjector.TOP_WINDOW).setCallback(new Callback<Void, Exception>() {
+
+                @Override
+                public void onFailure(Exception reason) {
+                    assertNotNull(reason);
+                    fail("Injection failed: " + reason.toString());
+                }
+
+                @Override
+                public void onSuccess(Void result) {
+                    loadedScriptUrls.add(scriptUrl);
+                    testWithInjection.test();
+                    finishTest();
+                }
+
+            }).inject();
+
         }
 
-      }).inject();
+    }
 
+    /**
+     * Checks if the script was already loaded by this class.
+     *
+     * @return true if script was already loaded
+     */
+    private boolean scriptAlreadyLoaded() {
+        return loadedScriptUrls.contains(this.scriptUrl);
     }
 
     @FunctionalInterface
