@@ -29,7 +29,7 @@ import ol.Map;
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class TileLayerOptions extends LayerOptions {
-    
+
     /**
      *
      * Sets the layer as overlay on a map. The map will not manage this layer in
@@ -58,5 +58,5 @@ public class TileLayerOptions extends LayerOptions {
      */
     @JsProperty
     public native void setUseInterimTilesOnError(boolean useInterimTilesOnError);
-    
+
 }
