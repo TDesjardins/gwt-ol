@@ -34,6 +34,7 @@ public enum OL3ExampleType {
     MapGuideExample(new MapGuideExample()),
     MarkerExample(new MarkerExample()),
     MeasureExample(new MeasureExample()),
+    MvtExample(new MvtExample()),
     OsmExample(new OsmExample()),
     OverlayExample(new OverlayExample()),
     SelectFeatureExample(new SelectFeaturesExample()),

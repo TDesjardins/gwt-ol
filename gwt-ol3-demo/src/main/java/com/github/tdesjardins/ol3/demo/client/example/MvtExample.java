@@ -15,28 +15,26 @@
  *******************************************************************************/
 package com.github.tdesjardins.ol3.demo.client.example;
 
-import ol.source.Xyz;
-import ol.source.XyzOptions;
+import ol.source.VectorTile;
+import ol.source.VectorTileOptions;
 
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
 
 import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
-import ol.OLFactory;
-import ol.Size;
 import ol.View;
 import ol.control.MousePosition;
-import ol.layer.LayerOptions;
-import ol.layer.Tile;
+import ol.format.Mvt;
+import ol.layer.VectorTileLayerOptions;
 
 /**
- * Mapbox example using XYZ-Source.
+ * Mapbox vector tiles example.
  * 
  * @author Tino Desjardins
  *
  */
-public class MapboxExample implements Example {
+public class MvtExample implements Example {
 
     /** This is the Mapbox access token of gwt-ol3. Please replace it with your own token if you want to integrate Mapbox in your application! */
     private static final String ACCESS_TOKEN = "pk.eyJ1IjoiZ3d0LW9sMyIsImEiOiJjaW0yMDM5aTgwMGxsdnVtNXNiNDg2b2VvIn0.qqoJgK-09q7UeOwh-hNtCA";
@@ -47,24 +45,24 @@ public class MapboxExample implements Example {
     @Override
     public void show(String exampleId) {
 
-        XyzOptions mapboxOptions = new XyzOptions();
-        mapboxOptions.setTileSize(new Size(512, 512));
-        mapboxOptions.setUrl("https://api.mapbox.com/styles/v1/mapbox/dark-v8/tiles/{z}/{x}/{y}?access_token=" + ACCESS_TOKEN);
+        VectorTileOptions vectorTileOptions = new VectorTileOptions();
+        vectorTileOptions.setFormat(new Mvt());
+        vectorTileOptions.setUrl("https://{a-d}.tiles.mapbox.com/v4/mapbox.mapbox-streets-v6/{z}/{x}/{y}.vector.pbf?access_token=" + ACCESS_TOKEN);
+        vectorTileOptions.setAttributions("© <a href=\"https://www.mapbox.com/map-feedback/\">Mapbox</a> © <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap contributors</a>'");
 
-        mapboxOptions.setAttributions("© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>");
+        VectorTile vectorTile = new VectorTile(vectorTileOptions);
 
-        Xyz mapboxSource =  new Xyz(mapboxOptions);
-        LayerOptions xyzLayerOptions = OLFactory.createOptions();
-        xyzLayerOptions.setSource(mapboxSource);
+        VectorTileLayerOptions tileLayerOptions = new VectorTileLayerOptions();
+        tileLayerOptions.setSource(vectorTile);
 
-        Tile mapboxLayer = new Tile(xyzLayerOptions);
+        ol.layer.VectorTile mvtLayer = new ol.layer.VectorTile(tileLayerOptions);
 
         // create a view
         View view = new View();
 
-        Coordinate centerCoordinate = new Coordinate(1490463, 6894388);
+        Coordinate centerCoordinate = new Coordinate(0, 0);
         view.setCenter(centerCoordinate);
-        view.setZoom(10);
+        view.setZoom(2);
 
         // create the map
         MapOptions mapOptions = new MapOptions();
@@ -80,9 +78,8 @@ public class MapboxExample implements Example {
         map.addControl(new MousePosition());
         map.addControl(DemoUtils.createMapboxLogo());
 
-        map.addLayer(mapboxLayer);
+        map.addLayer(mvtLayer);
 
     }
 
 }
-
