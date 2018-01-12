@@ -20,7 +20,10 @@ import ol.Coordinate;
 import ol.OLFactory;
 import ol.OLUtil;
 import ol.control.Control;
+import ol.control.FullScreen;
 import ol.control.MousePosition;
+import ol.control.ZoomSlider;
+import ol.control.ZoomToExtent;
 import ol.geom.Polygon;
 import ol.layer.Base;
 import ol.layer.LayerOptions;
@@ -46,15 +49,15 @@ public final class DemoUtils {
      */
     public static void addDefaultControls(final Collection<Control> controls) {
 
-        controls.push(OLFactory.createFullScreen());
-        controls.push(OLFactory.createZoomSlider());
+        controls.push(new FullScreen());
+        controls.push(new ZoomSlider());
         MousePosition mousePosition = new MousePosition();
         mousePosition.setCoordinateFormat(Coordinate.createStringXY(5));
         controls.push(mousePosition);
-        controls.push(OLFactory.createZoomToExtent());
+        controls.push(new ZoomToExtent());
 
     }
-    
+
     /**
      * Creates a test polygon geometry (triangle).
      * 
@@ -64,10 +67,10 @@ public final class DemoUtils {
 
         Coordinate[][] coordinates = new Coordinate[1][4];
 
-        Coordinate point1 = OLFactory.createCoordinate(13.36, 52.53);
-        Coordinate point2 = OLFactory.createCoordinate(13.36, 52.51);
-        Coordinate point3 = OLFactory.createCoordinate(13.37, 52.52);
-        Coordinate point4 = OLFactory.createCoordinate(13.36, 52.53);
+        Coordinate point1 = new Coordinate(13.36, 52.53);
+        Coordinate point2 = new Coordinate(13.36, 52.51);
+        Coordinate point3 = new Coordinate(13.37, 52.52);
+        Coordinate point4 = new Coordinate(13.36, 52.53);
 
         coordinates[0][0] = point1;
         coordinates[0][1] = point2;
