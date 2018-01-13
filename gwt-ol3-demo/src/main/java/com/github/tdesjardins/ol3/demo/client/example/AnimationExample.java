@@ -29,7 +29,6 @@ import ol.Collection;
 import ol.Coordinate;
 import ol.Map;
 import ol.MapOptions;
-import ol.OLFactory;
 import ol.View;
 import ol.animation.AnimationOptions;
 import ol.control.MousePosition;
@@ -51,13 +50,13 @@ import ol.source.XyzOptions;
 public class AnimationExample implements Example {
 
     private int currentLocationIndex = 0;
-    
+
     /* (non-Javadoc)
      * @see de.desjardins.ol3.demo.client.example.Example#show() */
     @Override
     public void show(String exampleId) {
 
-    	Coordinate centerCoordinate = OLFactory.createCoordinate(13.37, 52.52);
+        Coordinate centerCoordinate = new Coordinate(13.37, 52.52);
         Coordinate transformedMidPoint = Projection.transform(centerCoordinate, DemoConstants.EPSG_4326, DemoConstants.EPSG_3857);
 
         // create an OSM-layer
@@ -78,12 +77,12 @@ public class AnimationExample implements Example {
         mapOptions.setLoadTilesWhileAnimating(true);
         mapOptions.setTarget(exampleId);
         mapOptions.setView(view);
-        
+
         Collection<Base> lstLayer = new Collection<Base>();
         lstLayer.push(osmLayer);
         mapOptions.setLayers(lstLayer);
         Map map = new Map(mapOptions);
-        
+
         // add some controls
         map.addControl(new ScaleLine());
 
@@ -95,18 +94,18 @@ public class AnimationExample implements Example {
         MousePosition mousePosition = new MousePosition(mousePositionOptions);
         mousePosition.setCoordinateFormat(Coordinate.createStringXY(5));
         map.addControl(mousePosition);
-        
-        Coordinate tvTowerCoordinate = Projection.transform(OLFactory.createCoordinate(13.409, 52.52), DemoConstants.EPSG_4326, DemoConstants.EPSG_3857);
-        Coordinate pplaceCoordinate = Projection.transform(OLFactory.createCoordinate(13.377, 52.509), DemoConstants.EPSG_4326, DemoConstants.EPSG_3857);
-        Coordinate zooCoordinate = Projection.transform(OLFactory.createCoordinate(13.338, 52.508), DemoConstants.EPSG_4326, DemoConstants.EPSG_3857);
-        
+
+        Coordinate tvTowerCoordinate = Projection.transform(new Coordinate(13.409, 52.52), DemoConstants.EPSG_4326, DemoConstants.EPSG_3857);
+        Coordinate pplaceCoordinate = Projection.transform(new Coordinate(13.377, 52.509), DemoConstants.EPSG_4326, DemoConstants.EPSG_3857);
+        Coordinate zooCoordinate = Projection.transform(new Coordinate(13.338, 52.508), DemoConstants.EPSG_4326, DemoConstants.EPSG_3857);
+
         final List<Coordinate> coordinates = Arrays.asList(transformedMidPoint, tvTowerCoordinate, pplaceCoordinate, zooCoordinate);
 
         Scheduler.get().scheduleFixedPeriod(new RepeatingCommand() {
-            
+
             @Override
             public boolean execute() {
-                
+
                 int index = getNextIndex(coordinates.size());
 
                 AnimationOptions panAnimationOptions = new AnimationOptions();
@@ -114,35 +113,35 @@ public class AnimationExample implements Example {
                 // Switch this to rotate the animation while animating.
                 // panAnimationOptions.setRotation(view.getRotation() + 2 * Math.PI);
                 panAnimationOptions.setCenter(coordinates.get(index));
-                
+
                 view.animate(panAnimationOptions);
-                
+
                 AnimationOptions zoomOutAnimationOptions = new AnimationOptions();
                 zoomOutAnimationOptions.setDuration(1000);
                 zoomOutAnimationOptions.setResolution(view.getResolution() + 4);
-                
+
                 AnimationOptions zoomInAnimationOptions = new AnimationOptions();
                 zoomInAnimationOptions.setDuration(1000);
                 zoomInAnimationOptions.setResolution(view.getResolution());
-                
+
                 view.animate(zoomOutAnimationOptions, zoomInAnimationOptions);
 
                 return true;
-               
+
             }
-            
+
         }, 6000);
 
     }
-    
+
     private int getNextIndex(int range) {
         int index = (int)(Math.random() * range);
         if (this.currentLocationIndex == index) {
             index = this.getNextIndex(range);
         }
-        
+
         this.currentLocationIndex = index;
-        
+
         return index;
     }
 
