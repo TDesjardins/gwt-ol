@@ -26,6 +26,7 @@ import ol.MapOptions;
 import ol.OLFactory;
 import ol.View;
 import ol.control.Attribution;
+import ol.control.ScaleLine;
 import ol.interaction.DragPan;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
@@ -62,7 +63,7 @@ public class MapEventsExample implements Example {
         // create a view
         View view = new View();
 
-        Coordinate centerCoordinate = OLFactory.createCoordinate(-0.1275, 51.507222);
+        Coordinate centerCoordinate = new Coordinate(-0.1275, 51.507222);
         Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, DemoConstants.EPSG_4326, DemoConstants.EPSG_3857);
 
         view.setCenter(transformedCenterCoordinate);
@@ -78,7 +79,7 @@ public class MapEventsExample implements Example {
         map.addLayer(osmLayer);
 
         // add some controls
-        map.addControl(OLFactory.createScaleLine());
+        map.addControl(new ScaleLine());
         DemoUtils.addDefaultControls(map.getControls());
 
         Attribution attribution = new Attribution();
@@ -99,9 +100,9 @@ public class MapEventsExample implements Example {
         map.addDoubleClickListener(evt -> Window.alert("double click at " + evt.getCoordinate().getX() + ", " + evt.getCoordinate().getX()));
 
         map.addMapZoomListener(evt -> GWT.log("onZoom"));
-        
+
         map.addMapZoomEndListener(evt -> GWT.log("onMapZoomEnd"));
-        
+
     }
 
 }
