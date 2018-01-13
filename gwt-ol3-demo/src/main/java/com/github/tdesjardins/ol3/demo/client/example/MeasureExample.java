@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,12 @@ import ol.MapOptions;
 import ol.OLFactory;
 import ol.View;
 import ol.control.Attribution;
+import ol.control.ScaleLine;
 import ol.event.MeasureEvent;
 import ol.event.MeasureListener;
 import ol.gwt.Measure;
+import ol.interaction.KeyboardPan;
+import ol.interaction.KeyboardZoom;
 
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
 import com.google.gwt.core.client.GWT;
@@ -51,16 +54,16 @@ public class MeasureExample implements Example {
         // create a OSM-layer
         XyzOptions osmSourceOptions = OLFactory.createOptions();
 
-        Osm osmSource = OLFactory.createOsm(osmSourceOptions);
+        Osm osmSource = new Osm(osmSourceOptions);
         LayerOptions osmLayerOptions = OLFactory.createOptions();
         osmLayerOptions.setSource(osmSource);
 
-        Tile osmLayer = OLFactory.createTileLayer(osmLayerOptions);
+        Tile osmLayer = new Tile(osmLayerOptions);
 
         // create a view
         View view = OLFactory.createView();
 
-        Coordinate centerCoordinate = OLFactory.createCoordinate(-0.1275, 51.507222);
+        Coordinate centerCoordinate = new Coordinate(-0.1275, 51.507222);
         Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857");
 
         view.setCenter(transformedCenterCoordinate);
@@ -71,35 +74,35 @@ public class MeasureExample implements Example {
         mapOptions.setTarget(exampleId);
         mapOptions.setView(view);
 
-        Map map = OLFactory.createMap(mapOptions);
+        Map map = new Map(mapOptions);
 
         map.addLayer(osmLayer);
 
         // add some controls
-        map.addControl(OLFactory.createScaleLine());
+        map.addControl(new ScaleLine());
         DemoUtils.addDefaultControls(map.getControls());
 
-        Attribution attribution = OLFactory.createAttributionControl();
+        Attribution attribution = new Attribution();
         attribution.setCollapsed(true);
 
         map.addControl(attribution);
 
         // add some interactions
-        map.addInteraction(OLFactory.createKeyboardPan());
-        map.addInteraction(OLFactory.createKeyboardZoom());
+        map.addInteraction(new KeyboardPan());
+        map.addInteraction(new KeyboardZoom());
 
-		// add measurement functionality to the map
-		final Measure measure = new Measure(map);
-		// start measuring immediately
-		measure.startMeasureLength(new MeasureListener() {
+        // add measurement functionality to the map
+        final Measure measure = new Measure(map);
+        // start measuring immediately
+        measure.startMeasureLength(new MeasureListener() {
 
-			@Override
-			public void onMeasure(MeasureEvent evt) {
-				// log the measured length
-				GWT.log("measure: " + evt.getMeasure());
-			}
+            @Override
+            public void onMeasure(MeasureEvent evt) {
+                // log the measured length
+                GWT.log("measure: " + evt.getMeasure());
+            }
 
-		}, true, true);
+        }, true, true);
 
     }
 
