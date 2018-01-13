@@ -26,7 +26,6 @@ import ol.Feature;
 import ol.FeatureOptions;
 import ol.Map;
 import ol.MapOptions;
-import ol.OLFactory;
 import ol.View;
 import ol.control.Rotate;
 import ol.control.ScaleLine;
@@ -56,8 +55,8 @@ public class GeoJsonExample implements Example {
     public void show(String exampleId) {
 
         // create linestring
-        Coordinate coordinate1 = OLFactory.createCoordinate(4e6, 2e6);
-        Coordinate coordinate2 = OLFactory.createCoordinate(8e6, -2e6);
+        Coordinate coordinate1 = new Coordinate(4e6, 2e6);
+        Coordinate coordinate2 = new Coordinate(8e6, -2e6);
         Coordinate[] coordinates = { coordinate1, coordinate2 };
 
         LineString lineString = new LineString(coordinates);
@@ -97,7 +96,7 @@ public class GeoJsonExample implements Example {
 
         // create a view
         View view = new View();
-        Coordinate centerCoordinate = OLFactory.createCoordinate(0, 0);
+        Coordinate centerCoordinate = new Coordinate(0, 0);
         view.setCenter(centerCoordinate);
         view.setZoom(2);
 
