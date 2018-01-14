@@ -18,10 +18,12 @@ package com.github.tdesjardins.ol3.demo.client.example;
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
 
 import ol.Collection;
+import ol.Coordinate;
 import ol.Extent;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
+import ol.Size;
 import ol.View;
 import ol.ViewOptions;
 import ol.layer.Base;
@@ -48,7 +50,7 @@ public class StaticImageExample implements Example {
 
         ProjectionOptions projectionOptions = OLFactory.createOptions();
 
-        Extent imageExtent = OLFactory.createExtent(0, 0, 1024, 968);
+        Extent imageExtent = new Extent(0, 0, 1024, 968);
 
         projectionOptions.setCode("pixel");
         projectionOptions.setExtent(imageExtent);
@@ -58,7 +60,7 @@ public class StaticImageExample implements Example {
 
         ImageStaticOptions imageStaticOptions = OLFactory.createOptions();
         imageStaticOptions.setUrl("http://imgs.xkcd.com/comics/online_communities.png");
-        imageStaticOptions.setImageSize(OLFactory.createSize(1024, 968));
+        imageStaticOptions.setImageSize(new Size(1024, 968));
         imageStaticOptions.setImageExtent(imageExtent);
         imageStaticOptions.setProjection(projection);
 
@@ -75,7 +77,7 @@ public class StaticImageExample implements Example {
         layers.push(image);
 
         ViewOptions viewOptions = OLFactory.createOptions();
-        viewOptions.setCenter(OLFactory.createCoordinate(500, 500));
+        viewOptions.setCenter(new Coordinate(500, 500));
         viewOptions.setProjection(projection);
         viewOptions.setZoom(2);
 
