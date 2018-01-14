@@ -32,6 +32,7 @@ import ol.OLFactory;
 import ol.View;
 import ol.control.MousePosition;
 import ol.control.MousePositionOptions;
+import ol.control.ScaleLine;
 import ol.event.EventListener;
 import ol.events.condition.Condition;
 import ol.geom.Polygon;
@@ -60,7 +61,7 @@ public class SelectFeaturesExample implements Example {
     @Override
     public void show(String exampleId) {
 
-    	Coordinate centerCoordinate = OLFactory.createCoordinate(13.37, 52.52);
+        Coordinate centerCoordinate = new Coordinate(13.37, 52.52);
         Coordinate transformedMidPoint = Projection.transform(centerCoordinate, DemoConstants.EPSG_4326, DemoConstants.EPSG_3857);
 
         // create a polygon
@@ -117,12 +118,12 @@ public class SelectFeaturesExample implements Example {
         Map map = new Map(mapOptions);
 
         // add some controls
-        map.addControl(OLFactory.createScaleLine());
+        map.addControl(new ScaleLine());
 
         MousePositionOptions mousePositionOptions = OLFactory.createOptions();
         ProjectionOptions projectionOptions = OLFactory.createOptions();
         projectionOptions.setCode(DemoConstants.EPSG_4326);
-        mousePositionOptions.setProjection(OLFactory.createProjection(projectionOptions));
+        mousePositionOptions.setProjection(new Projection(projectionOptions));
 
         MousePosition mousePosition = new MousePosition(mousePositionOptions);
         mousePosition.setCoordinateFormat(Coordinate.createStringXY(5));
@@ -130,7 +131,7 @@ public class SelectFeaturesExample implements Example {
 
         SelectOptions selectOptions = new SelectOptions();
         selectOptions.setCondition(Condition.getClick());
-        
+
         // create a select interaction
         final Select selectFeature = new Select(selectOptions);
         map.addInteraction(selectFeature);
@@ -140,16 +141,16 @@ public class SelectFeaturesExample implements Example {
             @Override
             public void onEvent(Select.Event event) {
 
-            	Collection<Feature> selectedFeatures = selectFeature.getFeatures();
+                Collection<Feature> selectedFeatures = selectFeature.getFeatures();
 
-            	if (selectedFeatures.getLength() > 0) {
-            		Feature feature = selectedFeatures.item(0);
-            		String output = "You selected feature with id '" + feature.getId() + "'"
-            				+ " and name '" + feature.get("name") + "'"
-            				+ " and geometry name '" + feature.getGeometryName() + "'"
-            				+ ".";
-            		Window.alert(output);
-            	}
+                if (selectedFeatures.getLength() > 0) {
+                    Feature feature = selectedFeatures.item(0);
+                    String output = "You selected feature with id '" + feature.getId() + "'"
+                            + " and name '" + feature.get("name") + "'"
+                            + " and geometry name '" + feature.getGeometryName() + "'"
+                            + ".";
+                    Window.alert(output);
+                }
 
             }
 
