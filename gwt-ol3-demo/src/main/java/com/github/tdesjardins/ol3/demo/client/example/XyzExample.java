@@ -41,21 +41,21 @@ public class XyzExample implements Example {
     @Override
     public void show(String exampleId) {
 
-    	XyzOptions xyzOptions = OLFactory.createOptions();
-    	xyzOptions.setUrl("http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}");
+        XyzOptions xyzOptions = OLFactory.createOptions();
+        xyzOptions.setUrl("http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}");
 
         xyzOptions.setAttributions("Tiles &copy; <a href=\"http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer\">ArcGIS</a>");
 
-    	Xyz xyzSource =  new Xyz(xyzOptions);
-    	LayerOptions xyzLayerOptions = OLFactory.createOptions();
-    	xyzLayerOptions.setSource(xyzSource);
+        Xyz xyzSource =  new Xyz(xyzOptions);
+        LayerOptions xyzLayerOptions = OLFactory.createOptions();
+        xyzLayerOptions.setSource(xyzSource);
 
-    	Tile xyzLayer = new Tile(xyzLayerOptions);
+        Tile xyzLayer = new Tile(xyzLayerOptions);
 
-    	// create a view
+        // create a view
         View view = new View();
 
-        Coordinate centerCoordinate = OLFactory.createCoordinate(-121.1, 47.5);
+        Coordinate centerCoordinate = new Coordinate(-121.1, 47.5);
         Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857");
 
         view.setCenter(transformedCenterCoordinate);
