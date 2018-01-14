@@ -55,7 +55,7 @@ public class WmtsExample implements Example {
 
         // create a projection       
         Projection projection = Projection.get(DemoConstants.EPSG_3857);
-        
+
         // create a OSM-layer
         XyzOptions osmSourceOptions = OLFactory.createOptions();
 
@@ -64,7 +64,7 @@ public class WmtsExample implements Example {
         osmLayerOptions.setSource(osmSource);
 
         Tile osmLayer = new Tile(osmLayerOptions);
-        
+
         WmtsOptions wmtsOptions = OLFactory.createOptions();
         wmtsOptions.setUrl("https://services.arcgisonline.com/arcgis/rest/services/Demographics/USA_Population_Density/MapServer/WMTS/");
         wmtsOptions.setLayer("0");
@@ -74,10 +74,10 @@ public class WmtsExample implements Example {
         wmtsOptions.setProjection(projection);
         wmtsOptions.setWrapX(true);
         wmtsOptions.setTileGrid(this.createWmtsTileGrid(projection));
-        
+
         // create attribution
         wmtsOptions.setAttributions("Tiles &copy; <a href=\"http://services.arcgisonline.com/arcgis/rest/services/Demographics/USA_Population_Density/MapServer/\">ArcGIS</a>");
-        
+
         Wmts wmtsSource = new Wmts(wmtsOptions);
 
         LayerOptions wmtsLayerOptions = OLFactory.createOptions();
@@ -91,7 +91,7 @@ public class WmtsExample implements Example {
         viewOptions.setProjection(projection);
         View view = new View(viewOptions);
 
-        Coordinate centerCoordinate = OLFactory.createCoordinate(-11158582, 4813697);
+        Coordinate centerCoordinate = new Coordinate(-11158582, 4813697);
 
         view.setCenter(centerCoordinate);
         view.setZoom(4);
@@ -117,7 +117,7 @@ public class WmtsExample implements Example {
         map.addControl(new Rotate());
 
     }
-    
+
     /**
      * Creates a WMTS tilegrid.
      * 
@@ -125,27 +125,27 @@ public class WmtsExample implements Example {
      * @return WMTS tilegrid
      */
     private TileGrid createWmtsTileGrid(Projection projection) {
-        
+
         WmtsTileGridOptions wmtsTileGridOptions = OLFactory.createOptions();
 
         double[] resolutions = new double[14];
         String[] matrixIds = new String[14];
-        
+
         double width = projection.getExtent().getWidth();
         double matrixWidth = width / 256;
-        
+
         for (int i = 0; i < 14; i++) {
             resolutions[i] = matrixWidth / Math.pow(2, i);
             matrixIds[i] = String.valueOf(i);
         }
-        
+
         Coordinate tileGridOrigin = projection.getExtent().getTopLeft();
         wmtsTileGridOptions.setOrigin(tileGridOrigin);
         wmtsTileGridOptions.setResolutions(resolutions);
         wmtsTileGridOptions.setMatrixIds(matrixIds);
-        
+
         return new WmtsTileGrid(wmtsTileGridOptions);
-        
+
     }
 
 }
