@@ -41,6 +41,12 @@ public class ImageWmsParams {
     @JsProperty(name = "LAYERS")
     public native String getLayers();
 
+    @JsProperty(name = "CQL_FILTER")
+    public native void setCqlFilter(String cql_filter);
+    
+    @JsProperty(name = "CQL_FILTER")
+    public native String getCqlFilter();
+    
     @JsProperty(name = "WIDTH")
     public native void setWidth(int width);
 
