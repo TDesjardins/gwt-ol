@@ -91,5 +91,11 @@ public class IconOptions implements Options {
      */
     @JsProperty
     public native void setSrc(String imageUri);
+    
+    /**
+     * @param anchor set Anchor. Default value is [0.5, 0.5] (icon center).
+     */
+    @JsProperty
+    public native void setAnchor(Double[] anchor);
 
 }
