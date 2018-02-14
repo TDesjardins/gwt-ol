@@ -13,25 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol.source;
+package ol;
 
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-import ol.Params;
+import jsinterop.base.JsPropertyMap;
 
 /**
- * 
- * @author Peter Zanetti
+ * Interface for parameters.
  *
+ * @author Tino Desjardins
+ * 
  */
-@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class WmsFeatureInfoParams implements Params {
-
-    @JsProperty(name = "QUERY_LAYERS")
-    public native void setQueryLayers(String layers);
-
-    @JsProperty(name = "INFO_FORMAT")
-    public native void setInfoFormat(String version);
+@JsType(isNative = true)
+public interface Params extends JsPropertyMap<String> {
 
 }
