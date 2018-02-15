@@ -96,6 +96,6 @@ public class IconOptions implements Options {
      * @param anchor set Anchor. Default value is [0.5, 0.5] (icon center).
      */
     @JsProperty
-    public native void setAnchor(Double[] anchor);
+    public native void setAnchor(double[] anchor);
 
 }
