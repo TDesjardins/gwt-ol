@@ -41,7 +41,7 @@ public class ImageWmsParams implements Params {
 
     @JsProperty(name = "LAYERS")
     public native String getLayers();
-    
+
     @JsProperty(name = "WIDTH")
     public native void setWidth(int width);
 
