@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.tdesjardins</groupId>
     <artifactId>gwt-ol3-parent</artifactId>
-    <version>HEAD-SNAPSHOT</version>
+    <version>5.0.0</version>
     <packaging>pom</packaging>
     <name>GWT OpenLayers 3</name>
     <description>GWT JsInterop API for OpenLayers 3</description>
@@ -31,7 +31,7 @@
         <connection>scm:git:https://github.com/TDesjardins/gwt-ol3.git</connection>
         <developerConnection>scm:git:git@github.com:TDesjardins/gwt-ol3.git</developerConnection>
         <url>https://github.com/TDesjardins/gwt-ol3</url>
-        <tag>HEAD</tag>
+        <tag>v5.0.0</tag>
     </scm>
 
     <issueManagement>

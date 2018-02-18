@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.github.tdesjardins</groupId>
         <artifactId>gwt-ol3-parent</artifactId>
-        <version>HEAD-SNAPSHOT</version>
+        <version>5.0.0</version>
     </parent>
     <artifactId>gwt-ol3-demo</artifactId>
     <packaging>gwt-app</packaging>
