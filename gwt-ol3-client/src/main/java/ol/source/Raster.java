@@ -15,41 +15,64 @@
  *******************************************************************************/
 package ol.source;
 
+import com.google.gwt.event.shared.HandlerRegistration;
+
 import javax.annotation.Nullable;
 
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import jsinterop.base.JsPropertyMap;
+
 import ol.Extent;
+import ol.OLUtil;
+import ol.event.EventListener;
 
 /**
  * @author Daniel Eggert (daniel.eggert@gfz-potsdam.de)
  *
  */
 @JsType(isNative = true)
-public class Raster<L> extends Image {
+public class Raster<T> extends Image {
 
-	public Raster() {
-	}
+    public Raster() {
+    }
 
-	public Raster(RasterOptions<L> rasterOtions) {
-	}
+    public Raster(RasterOptions<T> rasterOptions) {
+    }
 
-	/**
-	 * Events emitted by ol.source.Raster instances are instances of this type.
-	 *
-	 */
-	@JsType(isNative = true)
-	public interface Event<L> extends ol.events.Event {
+    /**
+     * Triggered after operations are run.
+     */
+    @JsOverlay
+    public final HandlerRegistration addAfterOperationsListener(final EventListener<Raster.Event<T>> listener) {
+        return OLUtil.observe(this, "afteroperations", listener);
+    }
 
-		@Nullable
-		@JsProperty
-		public L getData();
+    /**
+     * Triggered before operations are run.
+     */
+    @JsOverlay
+    public final HandlerRegistration addBeforeOperationsListener(final EventListener<Raster.Event<T>> listener) {
+        return OLUtil.observe(this, "beforeoperations", listener);
+    }
 
-		@JsProperty
-		public Extent getExtent();
+    /**
+     * Events emitted by ol.source.Raster instances are instances of this type.
+     */
+    @JsType(isNative = true)
+    public interface Event<T> extends ol.events.Event {
 
-		@JsProperty
-		public int getResolution();
+        @Nullable
+        @JsProperty
+        public JsPropertyMap<T> getData();
 
-	}
+        @JsProperty
+        public Extent getExtent();
+
+        @JsProperty
+        public int getResolution();
+
+    }
+
 }

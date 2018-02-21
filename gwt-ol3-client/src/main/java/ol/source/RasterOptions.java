@@ -26,51 +26,45 @@ import ol.RasterOperation;
  *
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class RasterOptions<L> extends SourceOptions {
+public class RasterOptions<T> extends SourceOptions {
 
-	@JsProperty
-	public native void setSources(Source[] sources);
+    @JsProperty
+    public native void setSources(Source[] sources);
 
-	@JsOverlay
-	public final void setSource(Source source) {
-		setSources(new Source[] { source });
-	}
+    @JsOverlay
+    public final void setSource(Source source) {
+        setSources(new Source[] { source });
+    }
 
-	@JsProperty
-	public native Source[] getSources();
+    @JsProperty
+    public native Source[] getSources();
 
-	@JsProperty
-	public native void setOperation(RasterOperation<?, L> operation);
+    @JsProperty
+    public native void setOperation(RasterOperation<?, T> operation);
 
-	@JsProperty
-	public native RasterOperation<?, L> getOperation();
+    @JsProperty
+    public native RasterOperation<?, T> getOperation();
 
-	@JsProperty
-	public native void setLib(L o);
+    @JsProperty
+    public native void setThreads(int number);
 
-	@JsProperty
-	public native L getLib();
+    @JsProperty
+    public native int getThreads();
 
-	@JsProperty
-	public native void setThreads(int number);
+    @JsProperty(name = "operationType")
+    public native String getOperationTypeString();
 
-	@JsProperty
-	public native int getThreads();
+    @JsProperty(name = "operationType")
+    public native void setOperationTypeString(String operationType);
 
-	@JsProperty(name = "operationType")
-	public native String getOperationTypeString();
+    @JsOverlay
+    public final RasterOperationType getOperationType() {
+        return RasterOperationType.fromString(getOperationTypeString());
+    }
 
-	@JsProperty(name = "operationType")
-	public native void setOperationTypeString(String operationType);
-
-	@JsOverlay
-	public final RasterOperationType getOperationType() {
-		return RasterOperationType.fromString(getOperationTypeString());
-	}
-
-	@JsOverlay
-	public final void setOperationType(RasterOperationType operationType) {
-		setOperationTypeString(operationType.getValue());
-	}
+    @JsOverlay
+    public final void setOperationType(RasterOperationType operationType) {
+        setOperationTypeString(operationType.getValue());
+    }
 
 }

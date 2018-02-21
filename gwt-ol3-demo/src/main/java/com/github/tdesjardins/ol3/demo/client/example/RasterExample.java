@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,128 +17,127 @@ package com.github.tdesjardins.ol3.demo.client.example;
 
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
 
+import jsinterop.base.JsPropertyMap;
 import ol.Collection;
 import ol.Coordinate;
-import ol.Extent;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
 import ol.PixelColor;
 import ol.RasterOperation;
-import ol.Size;
 import ol.View;
-import ol.ViewOptions;
+import ol.event.EventListener;
 import ol.layer.Base;
 import ol.layer.Image;
 import ol.layer.LayerOptions;
+import ol.layer.Tile;
 import ol.proj.Projection;
-import ol.proj.ProjectionOptions;
-import ol.source.ImageStatic;
-import ol.source.ImageStaticOptions;
+import ol.source.Osm;
 import ol.source.Raster;
 import ol.source.RasterOperationType;
 import ol.source.RasterOptions;
+import ol.source.XyzOptions;
+import ol.source.Raster.Event;
 
 /**
- * Example with a StaticImage layer.
+ * Example with a Raster source.
  *
  * @author Tino Desjardins
  *
  */
 public class RasterExample implements Example {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.desjardins.ol3.demo.client.example.Example#show()
-	 */
-	@Override
-	public void show(String exampleId) {
+    /*
+     * (non-Javadoc)
+     * 
+     * @see de.desjardins.ol3.demo.client.example.Example#show()
+     */
+    @Override
+    public void show(String exampleId) {
 
-		ProjectionOptions projectionOptions = OLFactory.createOptions();
+        XyzOptions osmSourceOptions = OLFactory.createOptions();
+        osmSourceOptions.setCrossOrigin("Anonymous");
 
-		Extent imageExtent = new Extent(0, 0, 1024, 968);
+        Osm osmSource = new Osm(osmSourceOptions);
+        LayerOptions osmLayerOptions = OLFactory.createOptions();
+        osmLayerOptions.setSource(osmSource);
 
-		projectionOptions.setCode("pixel");
-		projectionOptions.setExtent(imageExtent);
-		projectionOptions.setUnits("pixels");
+        // create OSM layer only for background and attribution
+        Tile osmLayer = new Tile(osmLayerOptions);
 
-		Projection projection = new Projection(projectionOptions);
+        // wrap OSM with raster source layer
+        RasterOptions<String> rasterOptions = OLFactory.createOptions();
 
-		ImageStaticOptions imageStaticOptions = OLFactory.createOptions();
-		imageStaticOptions.setUrl("http://imgs.xkcd.com/comics/online_communities.png");
-		imageStaticOptions.setImageSize(new Size(1024, 968));
-		imageStaticOptions.setImageExtent(imageExtent);
-		imageStaticOptions.setProjection(projection);
+        rasterOptions.setOperationType(RasterOperationType.PIXEL);
+        rasterOptions.setSource(osmSource);
+        rasterOptions.setThreads(0);
 
-		// create attribution
-		imageStaticOptions.setAttributions("&copy; <a href=\"http://xkcd.com/license.html\">xkcd</a>");
+        // define per pixel operation
+        rasterOptions.setOperation(new RasterOperation<PixelColor, String>() {
 
-		ImageStatic imageStatic = new ImageStatic(imageStaticOptions);
+            @Override
+            public PixelColor call(PixelColor[] pixels, JsPropertyMap<String> data) {
 
-		// wrap image static with raster source layer
-		RasterOptions<String> rasterOptions = OLFactory.createOptions();
-		rasterOptions.setLib("red");
-		rasterOptions.setOperationType(RasterOperationType.PIXEL);
-		rasterOptions.setSource(imageStatic);
-		// define per pixel operation
-		rasterOptions.setOperation(new RasterOperation<PixelColor, String>() {
+                PixelColor pix = pixels[0];
 
-			@Override
-			public PixelColor call(PixelColor[] pixels, String userdata) {
-				PixelColor pix = pixels[0];
+                // eliminate channel defined by userdata
+                switch(data.get("color")) {
+                    case "red":
+                        pix.setRed(0);
+                        break;
+                    case "green":
+                        pix.setGreen(0);
+                        break;
+                    case "blue":
+                        pix.setBlue(0);
+                        break;
+                    default:
+                        pix.setRed(0);
+                        break;
+                }
 
-				// eliminate channel defined by userdata
-				switch (userdata) {
-				case "red":
-					pix.setRed(0);
-					break;
-				case "green":
-					pix.setGreen(0);
-					break;
-				case "blue":
-					pix.setBlue(0);
-					break;
-				default:
-					pix.setRed(0);
-					break;
-				}
+                return pix;
+            }
 
-				return pix;
-			}
-		});
+        });
 
-		Raster<String> raster = new Raster<>(rasterOptions);
+        Raster<String> raster = new Raster<>(rasterOptions);
 
-		LayerOptions layerOptions = OLFactory.createOptions();
-		layerOptions.setSource(raster);
-		Image image = new Image(layerOptions);
+        raster.addBeforeOperationsListener(new EventListener<Raster.Event<String>>() {
 
-		Collection<Base> layers = new Collection<>();
-		layers.push(image);
+            @Override
+            public void onEvent(Event<String> event) {
+                event.getData().set("color", "red");
+            }
 
-		ViewOptions viewOptions = OLFactory.createOptions();
-		viewOptions.setCenter(new Coordinate(500, 500));
-		viewOptions.setProjection(projection);
-		viewOptions.setZoom(2);
+        });
 
-		View view = new View(viewOptions);
+        LayerOptions layerOptions = OLFactory.createOptions();
+        layerOptions.setSource(raster);
+        Image image = new Image(layerOptions);
 
-		MapOptions mapOptions = OLFactory.createOptions();
-		mapOptions.setTarget(exampleId);
-		mapOptions.setView(view);
-		mapOptions.setLayers(layers);
+        Collection<Base> layers = new Collection<>();
+        layers.push(osmLayer);
+        layers.push(image);
 
-		Map map = new Map(mapOptions);
+        View view = new View();
 
-		// add some controls
-		DemoUtils.addDefaultControls(map.getControls());
+        Coordinate centerCoordinate = new Coordinate(-0.1275, 51.507222);
+        Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857");
 
-		ol.control.Attribution attributionControl = new ol.control.Attribution();
-		attributionControl.setCollapsed(false);
+        view.setCenter(transformedCenterCoordinate);
+        view.setZoom(10);
 
-		map.addControl(attributionControl);
+        MapOptions mapOptions = OLFactory.createOptions();
+        mapOptions.setTarget(exampleId);
+        mapOptions.setView(view);
+        mapOptions.setLayers(layers);
 
-	}
+        Map map = new Map(mapOptions);
+
+        // add some controls
+        DemoUtils.addDefaultControls(map.getControls());
+
+    }
 
 }
