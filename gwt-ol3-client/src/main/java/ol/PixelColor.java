@@ -149,4 +149,40 @@ public class PixelColor implements JsArrayLike<Double> {
         }
     }
 
+    /**
+     * Returns the value of the given channel.
+     * 
+     * @param index
+     */
+    @JsOverlay
+    public final int getChannel(int index) {
+        if (this.getLength() > index) {
+            return this.getAt(index).intValue();
+        }
+        return -1;
+    }
+
+    /**
+     * Sets the value of the given channel.
+     * 
+     * @param index
+     * @param value
+     */
+    @JsOverlay
+    public final void setChannel(int index, int value) {
+        if (this.getLength() > index) {
+            this.setAt(index, Math.min(255.0, Math.max(0.0, value)));
+        }
+    }
+
+    /**
+     * Clears the pixel's color by setting all channels to 0
+     */
+    @JsOverlay
+    public final void clear() {
+        for (int i = 0; i < this.getLength(); ++i) {
+            this.setAt(i, 0.0);
+        }
+    }
+
 }
