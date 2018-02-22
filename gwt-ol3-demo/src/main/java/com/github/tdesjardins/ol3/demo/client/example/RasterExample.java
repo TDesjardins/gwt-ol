@@ -34,22 +34,20 @@ import ol.layer.Tile;
 import ol.proj.Projection;
 import ol.source.Osm;
 import ol.source.Raster;
+import ol.source.Raster.Event;
 import ol.source.RasterOperationType;
 import ol.source.RasterOptions;
 import ol.source.XyzOptions;
-import ol.source.Raster.Event;
 
 /**
  * Example with a Raster source.
  *
  * @author Tino Desjardins
- *
  */
 public class RasterExample implements Example {
 
     /*
      * (non-Javadoc)
-     * 
      * @see de.desjardins.ol3.demo.client.example.Example#show()
      */
     @Override
@@ -66,34 +64,30 @@ public class RasterExample implements Example {
         Tile osmLayer = new Tile(osmLayerOptions);
 
         // wrap OSM with raster source layer
-        RasterOptions<String> rasterOptions = OLFactory.createOptions();
+        RasterOptions<Number> rasterOptions = OLFactory.createOptions();
 
         rasterOptions.setOperationType(RasterOperationType.PIXEL);
         rasterOptions.setSource(osmSource);
         rasterOptions.setThreads(0);
 
         // define per pixel operation
-        rasterOptions.setOperation(new RasterOperation<PixelColor, String>() {
+        rasterOptions.setOperation(new RasterOperation<PixelColor, Number>() {
 
             @Override
-            public PixelColor call(PixelColor[] pixels, JsPropertyMap<String> data) {
+            public PixelColor call(PixelColor[] pixels, JsPropertyMap<Number> data) {
 
+                // get pixel of first source
                 PixelColor pix = pixels[0];
 
-                // eliminate channel defined by userdata
-                switch(data.get("color")) {
-                    case "red":
-                        pix.setRed(0);
-                        break;
-                    case "green":
-                        pix.setGreen(0);
-                        break;
-                    case "blue":
-                        pix.setBlue(0);
-                        break;
-                    default:
-                        pix.setRed(0);
-                        break;
+                // extract pixel value and apply operation
+                int channel = data.get("channel").intValue();
+                int value = pix.getChannel(channel);
+                int threshold = data.get("threshold").intValue();
+                pix.clear();
+
+                if (value > threshold) {
+                    pix.setChannel(channel, 255);
+                    pix.setAlpha(128);
                 }
 
                 return pix;
@@ -101,13 +95,15 @@ public class RasterExample implements Example {
 
         });
 
-        Raster<String> raster = new Raster<>(rasterOptions);
+        Raster<Number> raster = new Raster<>(rasterOptions);
 
-        raster.addBeforeOperationsListener(new EventListener<Raster.Event<String>>() {
+        raster.addBeforeOperationsListener(new EventListener<Raster.Event<Number>>() {
 
             @Override
-            public void onEvent(Event<String> event) {
-                event.getData().set("color", "red");
+            public void onEvent(Event<Number> event) {
+                JsPropertyMap<Number> data = event.getData();
+                data.set("channel", 0);
+                data.set("threshold", 242);
             }
 
         });
