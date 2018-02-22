@@ -15,37 +15,35 @@
  *******************************************************************************/
 package ol.source;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-
 import javax.annotation.Nullable;
+
+import com.google.gwt.event.shared.HandlerRegistration;
 
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import jsinterop.base.JsPropertyMap;
-
 import ol.Extent;
 import ol.OLUtil;
 import ol.event.EventListener;
 
 /**
  * @author Daniel Eggert (daniel.eggert@gfz-potsdam.de)
- *
  */
 @JsType(isNative = true)
-public class Raster<T> extends Image {
+public class Raster extends Image {
 
     public Raster() {
     }
 
-    public Raster(RasterOptions<T> rasterOptions) {
+    public Raster(RasterOptions rasterOptions) {
     }
 
     /**
      * Triggered after operations are run.
      */
     @JsOverlay
-    public final HandlerRegistration addAfterOperationsListener(final EventListener<Raster.Event<T>> listener) {
+    public final HandlerRegistration addAfterOperationsListener(final EventListener<Raster.Event> listener) {
         return OLUtil.observe(this, "afteroperations", listener);
     }
 
@@ -53,7 +51,7 @@ public class Raster<T> extends Image {
      * Triggered before operations are run.
      */
     @JsOverlay
-    public final HandlerRegistration addBeforeOperationsListener(final EventListener<Raster.Event<T>> listener) {
+    public final HandlerRegistration addBeforeOperationsListener(final EventListener<Raster.Event> listener) {
         return OLUtil.observe(this, "beforeoperations", listener);
     }
 
@@ -61,11 +59,11 @@ public class Raster<T> extends Image {
      * Events emitted by ol.source.Raster instances are instances of this type.
      */
     @JsType(isNative = true)
-    public interface Event<T> extends ol.events.Event {
+    public interface Event extends ol.events.Event {
 
         @Nullable
         @JsProperty
-        public JsPropertyMap<T> getData();
+        public JsPropertyMap<?> getData();
 
         @JsProperty
         public Extent getExtent();

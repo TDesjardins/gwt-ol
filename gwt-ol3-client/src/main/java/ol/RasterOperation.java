@@ -16,16 +16,14 @@
 package ol;
 
 import jsinterop.annotations.JsFunction;
-import jsinterop.base.JsPropertyMap;
 
 /**
  * @author Daniel Eggert (daniel.eggert@gfz-potsdam.de)
- *
  */
 @FunctionalInterface
 @JsFunction
-public interface RasterOperation<R, T> {
+public interface RasterOperation<R> {
 
-    R call(R[] values, JsPropertyMap<T> data);
+    R call(R[] values);
 
 }

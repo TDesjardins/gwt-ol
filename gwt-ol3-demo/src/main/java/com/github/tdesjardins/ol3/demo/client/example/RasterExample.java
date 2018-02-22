@@ -16,8 +16,8 @@
 package com.github.tdesjardins.ol3.demo.client.example;
 
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
+import com.google.gwt.canvas.dom.client.ImageData;
 
-import jsinterop.base.JsPropertyMap;
 import ol.Collection;
 import ol.Coordinate;
 import ol.Map;
@@ -26,7 +26,6 @@ import ol.OLFactory;
 import ol.PixelColor;
 import ol.RasterOperation;
 import ol.View;
-import ol.event.EventListener;
 import ol.layer.Base;
 import ol.layer.Image;
 import ol.layer.LayerOptions;
@@ -34,9 +33,9 @@ import ol.layer.Tile;
 import ol.proj.Projection;
 import ol.source.Osm;
 import ol.source.Raster;
-import ol.source.Raster.Event;
 import ol.source.RasterOperationType;
 import ol.source.RasterOptions;
+import ol.source.Source;
 import ol.source.XyzOptions;
 
 /**
@@ -63,50 +62,8 @@ public class RasterExample implements Example {
         // create OSM layer only for background and attribution
         Tile osmLayer = new Tile(osmLayerOptions);
 
-        // wrap OSM with raster source layer
-        RasterOptions<Number> rasterOptions = OLFactory.createOptions();
-
-        rasterOptions.setOperationType(RasterOperationType.PIXEL);
-        rasterOptions.setSource(osmSource);
-        rasterOptions.setThreads(0);
-
-        // define per pixel operation
-        rasterOptions.setOperation(new RasterOperation<PixelColor, Number>() {
-
-            @Override
-            public PixelColor call(PixelColor[] pixels, JsPropertyMap<Number> data) {
-
-                // get pixel of first source
-                PixelColor pix = pixels[0];
-
-                // extract pixel value and apply operation
-                int channel = data.get("channel").intValue();
-                int value = pix.getChannel(channel);
-                int threshold = data.get("threshold").intValue();
-                pix.clear();
-
-                if (value > threshold) {
-                    pix.setChannel(channel, 255);
-                    pix.setAlpha(128);
-                }
-
-                return pix;
-            }
-
-        });
-
-        Raster<Number> raster = new Raster<>(rasterOptions);
-
-        raster.addBeforeOperationsListener(new EventListener<Raster.Event<Number>>() {
-
-            @Override
-            public void onEvent(Event<Number> event) {
-                JsPropertyMap<Number> data = event.getData();
-                data.set("channel", 0);
-                data.set("threshold", 242);
-            }
-
-        });
+        // create raster source
+        Raster raster = getRasterSource(osmSource, RasterOperationType.PIXEL);
 
         LayerOptions layerOptions = OLFactory.createOptions();
         layerOptions.setSource(raster);
@@ -134,6 +91,78 @@ public class RasterExample implements Example {
         // add some controls
         DemoUtils.addDefaultControls(map.getControls());
 
+    }
+
+    private static Raster getRasterSource(Source source, RasterOperationType type) {
+        // wrap source with raster source layer
+        RasterOptions rasterOptions = OLFactory.createOptions();
+
+        rasterOptions.setOperationType(type);
+        rasterOptions.setSource(source);
+        rasterOptions.setThreads(0);
+
+        RasterOperation<?> op = null;
+        switch (type) {
+        case PIXEL:
+            op = new RasterOperation<PixelColor>() {
+
+                private static final int channel   = 0;
+                private static final int threshold = 245;
+
+                @Override
+                public PixelColor call(PixelColor[] pixels) {
+
+                    // get pixel of first source
+                    PixelColor pix = pixels[0];
+
+                    // extract pixel value and apply operation
+                    int value = pix.getChannel(channel);
+                    pix.clear();
+
+                    if (value > threshold) {
+                        pix.setChannel(channel, 255);
+                        pix.setAlpha(128);
+                    }
+
+                    return pix;
+                }
+
+            };
+
+            break;
+        case IMAGE:
+            op = new RasterOperation<ImageData>() {
+
+                @Override
+                public ImageData call(ImageData[] sourceImages) {
+
+                    // get image of first source
+                    ImageData img = sourceImages[0];
+
+                    // apply image wide operation, make the lower part of the image darker
+                    final int w = img.getWidth();
+                    final int h = img.getHeight();
+
+                    for (int y = h / 2; y < h; ++y) {
+                        for (int x = 0; x < w; ++x) {
+                            img.setRedAt(0, x, y);
+                            img.setGreenAt(0, x, y);
+                            img.setBlueAt(0, x, y);
+                            img.setAlphaAt(128, x, y);
+                        }
+                    }
+
+                    return img;
+                }
+
+            };
+            break;
+        }
+
+        rasterOptions.setOperation(op);
+        Raster raster = new Raster(rasterOptions);
+
+        return raster;
     }
 
 }

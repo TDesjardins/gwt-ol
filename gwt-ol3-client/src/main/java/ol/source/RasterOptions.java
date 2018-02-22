@@ -23,10 +23,9 @@ import ol.RasterOperation;
 
 /**
  * @author Daniel Eggert (daniel.eggert@gfz-potsdam.de)
- *
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class RasterOptions<T> extends SourceOptions {
+public class RasterOptions extends SourceOptions {
 
     @JsProperty
     public native void setSources(Source[] sources);
@@ -40,16 +39,22 @@ public class RasterOptions<T> extends SourceOptions {
     public native Source[] getSources();
 
     @JsProperty
-    public native void setOperation(RasterOperation<?, T> operation);
+    public native void setOperation(RasterOperation<?> operation);
 
     @JsProperty
-    public native RasterOperation<?, T> getOperation();
+    public native RasterOperation<?> getOperation();
 
     @JsProperty
     public native void setThreads(int number);
 
     @JsProperty
     public native int getThreads();
+
+    @JsProperty
+    public native Object getLib();
+
+    @JsProperty
+    public native void setLib(Object lib);
 
     @JsProperty(name = "operationType")
     public native String getOperationTypeString();
