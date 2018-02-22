@@ -16,10 +16,10 @@
 package com.github.tdesjardins.ol3.demo.client.example;
 
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
-import com.google.gwt.canvas.dom.client.ImageData;
 
 import ol.Collection;
 import ol.Coordinate;
+import ol.ImageData;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
@@ -140,15 +140,14 @@ public class RasterExample implements Example {
                     ImageData img = sourceImages[0];
 
                     // apply image wide operation, make the lower part of the image darker
-                    final int w = img.getWidth();
-                    final int h = img.getHeight();
+                    final int w = img.width;
+                    final int h = img.height;
+
+                    PixelColor pix = new PixelColor(0, 0, 0, 128);
 
                     for (int y = h / 2; y < h; ++y) {
                         for (int x = 0; x < w; ++x) {
-                            img.setRedAt(0, x, y);
-                            img.setGreenAt(0, x, y);
-                            img.setBlueAt(0, x, y);
-                            img.setAlphaAt(128, x, y);
+                            img.putPixel(x, y, pix);
                         }
                     }
 
