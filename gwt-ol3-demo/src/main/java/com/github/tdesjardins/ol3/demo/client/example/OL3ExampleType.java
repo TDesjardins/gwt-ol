@@ -37,6 +37,7 @@ public enum OL3ExampleType {
     MvtExample(new MvtExample()),
     OsmExample(new OsmExample()),
     OverlayExample(new OverlayExample()),
+    RasterExample(new RasterExample()),
     SelectFeatureExample(new SelectFeaturesExample()),
     TileExample(new TileExample()),
     TileWmsExample(new TileWmsExample()),

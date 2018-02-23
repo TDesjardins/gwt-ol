@@ -75,6 +75,7 @@ import ol.source.ImageStaticOptions;
 import ol.source.ImageWms;
 import ol.source.ImageWmsOptions;
 import ol.source.Osm;
+import ol.source.RasterOptions;
 import ol.source.Source;
 import ol.source.Stamen;
 import ol.source.StamenOptions;
@@ -844,6 +845,29 @@ public final class OLFactory {
     public static Projection createProjection(ProjectionOptions projectionOptions) {
         return new Projection(projectionOptions);
     };
+
+    /**
+     * Creates {@link RasterOptions}.
+     * 
+     * @return
+     */
+    public static RasterOptions createRasterOptions() {
+        RasterOptions options = createOptions();
+        options.disableWorkerSupport();
+        return options;
+    }
+
+    /**
+     * Creates {@link RasterOptions} with the given source.
+     * 
+     * @param source
+     * @return
+     */
+    public static RasterOptions createRasterOptionsWithSource(Source source) {
+        RasterOptions options = createRasterOptions();
+        options.setSource(source);
+        return options;
+    }
 
     /**
      * Create a {@link Rotate} control.
