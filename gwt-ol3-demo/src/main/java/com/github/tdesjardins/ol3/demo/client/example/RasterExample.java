@@ -15,6 +15,7 @@
  *******************************************************************************/
 package com.github.tdesjardins.ol3.demo.client.example;
 
+import com.github.tdesjardins.ol3.demo.client.constants.DemoConstants;
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
 
 import ol.Collection;
@@ -76,7 +77,7 @@ public class RasterExample implements Example {
         View view = new View();
 
         Coordinate centerCoordinate = new Coordinate(-0.1275, 51.507222);
-        Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857");
+        Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, DemoConstants.EPSG_4326, DemoConstants.EPSG_3857);
 
         view.setCenter(transformedCenterCoordinate);
         view.setZoom(10);
@@ -94,70 +95,63 @@ public class RasterExample implements Example {
     }
 
     private static Raster getRasterSource(Source source, RasterOperationType type) {
+
         // wrap source with raster source layer
         RasterOptions rasterOptions = OLFactory.createRasterOptionsWithSource(source);
         rasterOptions.setOperationType(type);
 
-        RasterOperation<?> op = null;
-        switch (type) {
-        case PIXEL:
-            op = new RasterOperation<PixelColor>() {
+        RasterOperation<?> rasterOperation = null;
+        switch(type) {
+            case PIXEL:
+                rasterOperation = (PixelColor[] pixels) -> {
 
-                private static final int channel   = 0;
-                private static final int threshold = 245;
-
-                @Override
-                public PixelColor call(PixelColor[] pixels) {
+                    final int channel = 0;
+                    final int threshold = 245;
 
                     // get pixel of first source
-                    PixelColor pix = pixels[0];
+                    PixelColor pixel = pixels[0];
 
                     // extract pixel value and apply operation
-                    int value = pix.getChannel(channel);
-                    pix.clear();
+                    int value = pixel.getChannel(channel);
+                    pixel.clear();
 
                     if (value > threshold) {
-                        pix.setChannel(channel, 255);
-                        pix.setAlpha(128);
+                        pixel.setChannel(channel, 255);
+                        pixel.setAlpha(128);
                     }
 
-                    return pix;
-                }
+                    return pixel;
+                };
 
-            };
-
-            break;
-        case IMAGE:
-            op = new RasterOperation<ImageData>() {
-
-                @Override
-                public ImageData call(ImageData[] sourceImages) {
+                break;
+            case IMAGE:
+                rasterOperation = (ImageData[] sourceImages) -> {
 
                     // get image of first source
-                    ImageData img = sourceImages[0];
+                    ImageData image = sourceImages[0];
 
                     // apply image wide operation, make the lower part of the image darker
-                    final int w = img.width;
-                    final int h = img.height;
+                    final int width = image.width;
+                    final int height = image.height;
 
-                    PixelColor pix = new PixelColor(0, 0, 0, 128);
+                    PixelColor pixel = new PixelColor(0, 0, 0, 128);
 
-                    for (int y = h / 2; y < h; ++y) {
-                        for (int x = 0; x < w; ++x) {
-                            img.putPixel(x, y, pix);
+                    for (int y = height / 2; y < height; ++y) {
+                        for (int x = 0; x < width; ++x) {
+                            image.putPixel(x, y, pixel);
                         }
                     }
 
-                    return img;
-                }
+                    return image;
 
-            };
-            break;
+                };
+                break;
         }
 
         // set raster operation and return raster
-        rasterOptions.setOperation(op);
+        rasterOptions.setOperation(rasterOperation);
         return new Raster(rasterOptions);
+
     }
 
 }
