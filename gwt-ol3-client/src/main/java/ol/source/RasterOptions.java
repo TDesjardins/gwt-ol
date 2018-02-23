@@ -44,11 +44,16 @@ public class RasterOptions extends SourceOptions {
     @JsProperty
     public native RasterOperation<?> getOperation();
 
-    @JsProperty
-    public native void setThreads(int number);
+    @JsOverlay
+    public final void disableWorkerSupport() {
+        setThreads(0);
+    }
 
     @JsProperty
-    public native int getThreads();
+    native void setThreads(int number);
+
+    @JsProperty
+    native int getThreads();
 
     @JsProperty
     public native Object getLib();

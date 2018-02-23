@@ -41,7 +41,7 @@ import ol.source.XyzOptions;
 /**
  * Example with a Raster source.
  *
- * @author Tino Desjardins
+ * @author Daniel Eggert (daniel.eggert@gfz-potsdam.de)
  */
 public class RasterExample implements Example {
 
@@ -95,11 +95,8 @@ public class RasterExample implements Example {
 
     private static Raster getRasterSource(Source source, RasterOperationType type) {
         // wrap source with raster source layer
-        RasterOptions rasterOptions = OLFactory.createOptions();
-
+        RasterOptions rasterOptions = OLFactory.createRasterOptionsWithSource(source);
         rasterOptions.setOperationType(type);
-        rasterOptions.setSource(source);
-        rasterOptions.setThreads(0);
 
         RasterOperation<?> op = null;
         switch (type) {
@@ -158,10 +155,9 @@ public class RasterExample implements Example {
             break;
         }
 
+        // set raster operation and return raster
         rasterOptions.setOperation(op);
-        Raster raster = new Raster(rasterOptions);
-
-        return raster;
+        return new Raster(rasterOptions);
     }
 
 }

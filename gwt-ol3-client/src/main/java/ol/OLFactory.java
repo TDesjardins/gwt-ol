@@ -15,6 +15,10 @@
  *******************************************************************************/
 package ol;
 
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+import elemental2.core.JsObject;
 import ol.color.Color;
 import ol.control.Attribution;
 import ol.control.Control;
@@ -75,6 +79,7 @@ import ol.source.ImageStaticOptions;
 import ol.source.ImageWms;
 import ol.source.ImageWmsOptions;
 import ol.source.Osm;
+import ol.source.RasterOptions;
 import ol.source.Source;
 import ol.source.Stamen;
 import ol.source.StamenOptions;
@@ -100,11 +105,6 @@ import ol.tilegrid.TileGrid;
 import ol.tilegrid.TileGridOptions;
 import ol.tilegrid.XyzTileGridOptions;
 import proj4.Proj4;
-
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
-
-import elemental2.core.JsObject;
 
 /**
  * Factory to create GWT-OL3 instances. Originally this factory was necessary
@@ -132,9 +132,9 @@ public final class OLFactory {
 
     /**
      * Creates an {@link ol.control.Attribution}.
+     * 
      * @param options
-     *            options
-     *
+     *        options
      * @return {@link ol.control.Attribution}
      */
     public static ol.control.Attribution createAttributionControl(ol.control.AttributionOptions options) {
@@ -145,9 +145,9 @@ public final class OLFactory {
      * Creates a {@link Circle}.
      *
      * @param center
-     *            center
+     *        center
      * @param radius
-     *            radius
+     *        radius
      * @return {@link Circle}
      */
     public static Circle createCircle(Coordinate center, double radius) {
@@ -158,7 +158,7 @@ public final class OLFactory {
      * Creates a {@link ol.style.Circle} style.
      *
      * @param circleOptions
-     *            {@link CircleOptions}
+     *        {@link CircleOptions}
      * @return {@link ol.style.Circle}
      */
     public static ol.style.Circle createCircleStyle(CircleOptions circleOptions) {
@@ -169,11 +169,11 @@ public final class OLFactory {
      * Creates a {@link ol.style.Circle} style.
      *
      * @param fill
-     *            {@link Fill}
+     *        {@link Fill}
      * @param stroke
-     *            {@link Stroke}
+     *        {@link Stroke}
      * @param radius
-     *            radius of the circle
+     *        radius of the circle
      * @return {@link ol.style.Circle}
      */
     public static ol.style.Circle createCircleStyle(Fill fill, Stroke stroke, double radius) {
@@ -190,32 +190,32 @@ public final class OLFactory {
      * @return {@link Collection}
      */
     public static <T> Collection<T> createCollection() {
-        return new Collection<T>();
+        return new Collection<>();
     };
 
     /**
      * Creates a {@link Color} from the given values.
      *
      * @param red
-     *            red (0-255)
+     *        red (0-255)
      * @param green
-     *            green (0-255)
+     *        green (0-255)
      * @param blue
-     *            blue (0-255)
+     *        blue (0-255)
      * @param alpha
-     *            alpha (0-1), 1 is solid
+     *        alpha (0-1), 1 is solid
      * @return {@link Color}
      */
     public static Color createColor(int red, int green, int blue, double alpha) {
-        return new Color(red, green, blue, (float)alpha);
+        return new Color(red, green, blue, (float) alpha);
     };
 
     /**
      * Creates a {@link Color} from the given String.
      *
      * @param color
-     *            color in rgb(r,g,b) or rgba(r,g,b,a) format, or in hex #rrggbb
-     *            or #rgb format
+     *        color in rgb(r,g,b) or rgba(r,g,b,a) format, or in hex #rrggbb
+     *        or #rgb format
      * @return {@link Color}
      */
     public static Color createColor(String colorString) {
@@ -226,9 +226,9 @@ public final class OLFactory {
      * Creates an instance.
      *
      * @param x
-     *            X-coordinate (longitude)
+     *        X-coordinate (longitude)
      * @param y
-     *            Y-coordinate (latitude)
+     *        Y-coordinate (latitude)
      * @return {@link Coordinate}
      */
     public static Coordinate createCoordinate(double x, double y) {
@@ -239,11 +239,11 @@ public final class OLFactory {
      * Creates an instance.
      *
      * @param x
-     *            X-coordinate (longitude)
+     *        X-coordinate (longitude)
      * @param y
-     *            Y-coordinate (latitude)
+     *        Y-coordinate (latitude)
      * @param z
-     *            Z-coordinate
+     *        Z-coordinate
      * @return {@link Coordinate}
      */
     public static Coordinate createCoordinate(double x, double y, double z) {
@@ -254,11 +254,11 @@ public final class OLFactory {
      * Creates an instance.
      *
      * @param coords
-     *            coordinate array
+     *        coordinate array
      * @return {@link Coordinate}
      */
     public static Coordinate createCoordinate(double[] coords) {
-        if(coords.length > 2) {
+        if (coords.length > 2) {
             return createCoordinate(coords[0], coords[1], coords[2]);
         } else {
             return createCoordinate(coords[0], coords[1]);
@@ -270,7 +270,7 @@ public final class OLFactory {
      * {@link ol.control.Rotate}, {@link ol.control.Attribution}
      *
      * @param options
-     *            options
+     *        options
      * @return default map controls
      */
     public static Collection<Control> createDefaultControls(@Nullable DefaultControlsOptions options) {
@@ -287,8 +287,7 @@ public final class OLFactory {
      * Creates a {@link Draw}.
      *
      * @param options
-     *            {@link DrawOptions}
-     *
+     *        {@link DrawOptions}
      * @return {@link Draw}
      */
     public static Draw createDraw(DrawOptions options) {
@@ -321,8 +320,7 @@ public final class OLFactory {
      * Creates a {@link Feature}.
      *
      * @param options
-     *            {@link FeatureOptions}
-     *
+     *        {@link FeatureOptions}
      * @return {@link Feature}
      */
     public static Feature createFeature(FeatureOptions options) {
@@ -333,8 +331,7 @@ public final class OLFactory {
      * Creates a {@link Feature}.
      *
      * @param geom
-     *            {@link Geometry}
-     *
+     *        {@link Geometry}
      * @return {@link Feature}
      */
     public static Feature createFeature(Geometry geom) {
@@ -345,10 +342,9 @@ public final class OLFactory {
      * Creates a {@link Feature}.
      *
      * @param geom
-     *            {@link Geometry}
+     *        {@link Geometry}
      * @param style
-     *            {@link Style}
-     *
+     *        {@link Style}
      * @return {@link Feature}
      */
     public static Feature createFeature(Geometry geom, Style style) {
@@ -361,7 +357,7 @@ public final class OLFactory {
      * Creates a new {@link Fill} style.
      *
      * @param color
-     *            fill color
+     *        fill color
      * @return {@link Fill}
      */
     public static Fill createFill(Color color) {
@@ -374,7 +370,7 @@ public final class OLFactory {
      * Creates a new {@link Fill} style.
      *
      * @param fillOptions
-     *            {@link FillOptions}
+     *        {@link FillOptions}
      * @return {@link Fill}
      */
     public static Fill createFill(FillOptions fillOptions) {
@@ -385,6 +381,7 @@ public final class OLFactory {
 
     /**
      * Creates a {@link FullScreen} control.
+     * 
      * @return {@link FullScreen}
      */
     public static FullScreen createFullScreen() {
@@ -393,8 +390,9 @@ public final class OLFactory {
 
     /**
      * Creates a {@link FullScreen} control.
+     * 
      * @param options
-     *            options
+     *        options
      * @return {@link FullScreen}
      */
     public static FullScreen createFullScreen(FullScreenOptions options) {
@@ -403,8 +401,8 @@ public final class OLFactory {
 
     /**
      * Creates a {@link GeometryCollection}.
+     * 
      * @param geoms An array of {@link ol.geom.Geometry} objects. (optional)
-     *
      * @return {@link GeometryCollection}
      */
     public static GeometryCollection createGeometryCollection(@Nullable Geometry[] geoms) {
@@ -415,8 +413,7 @@ public final class OLFactory {
      * Creates a {@link GeoJson}.
      *
      * @param options
-     *            {@link GeoJsonOptions}
-     *
+     *        {@link GeoJsonOptions}
      * @return {@link GeoJson}
      */
     public static GeoJson createGeoJSON(GeoJsonOptions options) {
@@ -425,7 +422,7 @@ public final class OLFactory {
 
     /**
      * Creates a {@link GeoJson}.
-       *
+     *
      * @return {@link GeoJson}
      */
     public static GeoJson createGeoJSON() {
@@ -454,7 +451,7 @@ public final class OLFactory {
      *
      * @param imageMapGuideOptions
      * @return {@link ImageMapGuide}
-     * **/
+     **/
     public static ImageMapGuide createImageMapGuideSource(ImageMapGuideOptions imageMapGuideOptions) {
         return new ImageMapGuide(imageMapGuideOptions);
     };
@@ -479,7 +476,7 @@ public final class OLFactory {
      * Creates a {@link ol.layer.Group}.
      *
      * @param options
-     *            {@link ol.layer.LayerGroupOptions}
+     *        {@link ol.layer.LayerGroupOptions}
      * @return {@link ol.layer.Group}
      */
     public static ol.layer.Group createLayerGroup(LayerGroupOptions options) {
@@ -490,7 +487,7 @@ public final class OLFactory {
      * Creates {@link LayerOptions} using the given {@link Source}.
      *
      * @param source
-     *            {@link Source}
+     *        {@link Source}
      * @return {@link LayerOptions}
      */
     public static LayerOptions createLayerOptionsWithSource(Source source) {
@@ -504,7 +501,7 @@ public final class OLFactory {
      * {@link ol.source.Vector}.
      *
      * @param source
-     *            {@link ol.source.Vector}
+     *        {@link ol.source.Vector}
      * @return {@link VectorLayerOptions}
      */
     public static VectorLayerOptions createLayerOptionsWithSource(ol.source.Vector source) {
@@ -517,7 +514,7 @@ public final class OLFactory {
      * Creates {@link TileLayerOptions} using the given {@link Tile}.
      *
      * @param source
-     *            {@link Tile}
+     *        {@link Tile}
      * @return {@link TileLayerOptions}
      */
     public static TileLayerOptions createLayerOptionsWithSource(ol.source.Tile source) {
@@ -530,7 +527,7 @@ public final class OLFactory {
      * Creates {@link ImageLayerOptions} using the given {@link Image}.
      *
      * @param source
-     *            {@link Image}
+     *        {@link Image}
      * @return {@link ImageLayerOptions}
      */
     public static ImageLayerOptions createLayerOptionsWithSource(ol.source.Image source) {
@@ -543,7 +540,7 @@ public final class OLFactory {
      * Creates a {@link LinearRing}.
      *
      * @param coordinates
-     *            coordinates
+     *        coordinates
      * @return {@link LinearRing}
      */
     public static LinearRing createLinearRing(Coordinate[] coordinates) {
@@ -554,13 +551,12 @@ public final class OLFactory {
      * Creates a {@link LinearRing}.
      *
      * @param coordinates
-     *            coordinates
+     *        coordinates
      * @param geometryLayout
-     *            geometry layout
+     *        geometry layout
      * @return {@link LinearRing}
      */
-    public static LinearRing createLinearRing(@Nullable Coordinate[] coordinates,
-        @Nullable String geometryLayout) {
+    public static LinearRing createLinearRing(@Nullable Coordinate[] coordinates, @Nullable String geometryLayout) {
         return new LinearRing(coordinates, geometryLayout);
     };
 
@@ -568,7 +564,7 @@ public final class OLFactory {
      * Creates a {@link LineString}.
      *
      * @param coordinates
-     *            coordinates
+     *        coordinates
      * @return {@link LineString}
      */
     public static LineString createLineString(Coordinate[] coordinates) {
@@ -579,13 +575,12 @@ public final class OLFactory {
      * Creates a {@link LineString}.
      *
      * @param coordinates
-     *            coordinates
+     *        coordinates
      * @param geometryLayout
-     *            geometry layout
+     *        geometry layout
      * @return {@link LineString}
      */
-    public static LineString createLineString(@Nullable Coordinate[] coordinates,
-        @Nullable String geometryLayout) {
+    public static LineString createLineString(@Nullable Coordinate[] coordinates, @Nullable String geometryLayout) {
         return new LineString(coordinates, geometryLayout);
     };
 
@@ -593,7 +588,7 @@ public final class OLFactory {
      * Creates a {@link Map}.
      *
      * @param mapOptions
-     *            {@link MapOptions}
+     *        {@link MapOptions}
      * @return {@link Map}
      */
     public static Map createMap(MapOptions mapOptions) {
@@ -601,7 +596,6 @@ public final class OLFactory {
     };
 
     /**
-     * 
      * Creates a {@link ol.interaction.Modify}
      *
      * @param modifyOptions {@link ol.interaction.ModifyOptions}
@@ -613,6 +607,7 @@ public final class OLFactory {
 
     /**
      * Creates a {@link MousePosition} control.
+     * 
      * @return {@link MousePosition}
      */
     public static MousePosition createMousePosition() {
@@ -621,8 +616,9 @@ public final class OLFactory {
 
     /**
      * Creates a {@link MousePosition} control.
+     * 
      * @param options
-     *            options
+     *        options
      * @return {@link MousePosition}
      */
     public static MousePosition createMousePosition(MousePositionOptions options) {
@@ -633,7 +629,7 @@ public final class OLFactory {
      * Creates a {@link MultiLineString}.
      *
      * @param coordinates
-     *            coordinates
+     *        coordinates
      * @return {@link MultiLineString}
      */
     public static MultiLineString createMultiLineString(Coordinate[] coordinates) {
@@ -644,13 +640,12 @@ public final class OLFactory {
      * Creates a {@link MultiLineString}.
      *
      * @param coordinates
-     *            coordinates
+     *        coordinates
      * @param geometryLayout
-     *            geometry layout
+     *        geometry layout
      * @return {@link MultiLineString}
      */
-    public static MultiLineString createMultiLineString(@Nullable Coordinate[] coordinates,
-        @Nullable String geometryLayout) {
+    public static MultiLineString createMultiLineString(@Nullable Coordinate[] coordinates, @Nullable String geometryLayout) {
         return new MultiLineString(coordinates, geometryLayout);
     };
 
@@ -658,7 +653,7 @@ public final class OLFactory {
      * Creates a {@link MultiPoint}.
      *
      * @param coordinates
-     *            coordinates
+     *        coordinates
      * @return {@link MultiPoint}
      */
     public static MultiPoint createMultiPoint(Coordinate[] coordinates) {
@@ -669,13 +664,12 @@ public final class OLFactory {
      * Creates a {@link MultiPoint}.
      *
      * @param coordinates
-     *            coordinates
+     *        coordinates
      * @param geometryLayout
-     *            geometry layout
+     *        geometry layout
      * @return {@link MultiPoint}
      */
-    public static MultiPoint createMultiPoint(@Nullable Coordinate[] coordinates,
-        @Nullable String geometryLayout) {
+    public static MultiPoint createMultiPoint(@Nullable Coordinate[] coordinates, @Nullable String geometryLayout) {
         return new MultiPoint(coordinates, geometryLayout);
     };
 
@@ -683,7 +677,7 @@ public final class OLFactory {
      * Creates a {@link MultiPolygon}.
      *
      * @param coordinates
-     *            coordinates
+     *        coordinates
      * @return {@link MultiPolygon}
      */
     public static MultiPolygon createMultiPolygon(Coordinate[] coordinates) {
@@ -694,13 +688,12 @@ public final class OLFactory {
      * Creates a {@link MultiPolygon}.
      *
      * @param coordinates
-     *            coordinates
+     *        coordinates
      * @param geometryLayout
-     *            geometry layout
+     *        geometry layout
      * @return {@link MultiPolygon}
      */
-    public static MultiPolygon createMultiPolygon(@Nullable Coordinate[] coordinates,
-        @Nullable String geometryLayout) {
+    public static MultiPolygon createMultiPolygon(@Nullable Coordinate[] coordinates, @Nullable String geometryLayout) {
         return new MultiPolygon(coordinates, geometryLayout);
     };
 
@@ -711,7 +704,7 @@ public final class OLFactory {
      */
     @SuppressWarnings("unchecked")
     public static <T extends Options> T createOptions() {
-        return (T)new JsObject();
+        return (T) new JsObject();
     };
 
     public static Osm createOsm(XyzOptions osmOptions) {
@@ -722,7 +715,7 @@ public final class OLFactory {
      * Creates an {@link Overlay}.
      *
      * @param options
-     *            {@link OverlayOptions}
+     *        {@link OverlayOptions}
      * @return {@link Overlay}
      */
     public static Overlay createOverlay(OverlayOptions options) {
@@ -731,6 +724,7 @@ public final class OLFactory {
 
     /**
      * Creates an {@link OverviewMap} control.
+     * 
      * @return {@link OverviewMap}
      */
     public static OverviewMap createOverviewMap() {
@@ -739,8 +733,9 @@ public final class OLFactory {
 
     /**
      * Creates an {@link OverviewMap} control.
+     * 
      * @param options
-     *            options
+     *        options
      * @return {@link OverviewMap}
      */
     public static OverviewMap createOverviewMap(OverviewMapOptions options) {
@@ -762,7 +757,7 @@ public final class OLFactory {
      * Creates an instance.
      *
      * @param coordinates
-     *            coordinates
+     *        coordinates
      * @return {@link Point}
      */
     public static Point createPoint(Coordinate coordinates) {
@@ -795,11 +790,11 @@ public final class OLFactory {
      * Creates an instance.
      *
      * @param x
-     *            X-coordinate (longitude)
+     *        X-coordinate (longitude)
      * @param y
-     *            Y-coordinate (latitude)
+     *        Y-coordinate (latitude)
      * @param z
-     *            Z-coordinate
+     *        Z-coordinate
      * @return {@link Coordinate}
      */
     public static Point createPoint(double x, double y, double z) {
@@ -819,7 +814,7 @@ public final class OLFactory {
      * Creates a {@link Polygon}.
      *
      * @param coordinates
-     *            coordinates
+     *        coordinates
      * @return {@link Polygon}
      */
     public static Polygon createPolygon(Coordinate[][] coordinates) {
@@ -830,9 +825,9 @@ public final class OLFactory {
      * Creates a {@link Polygon}.
      *
      * @param coordinates
-     *            coordinates
+     *        coordinates
      * @param geometryLayout
-     *            geometry layout
+     *        geometry layout
      * @return {@link Polygon}
      */
     public static Polygon createPolygon(@Nullable Coordinate[][] coordinates, @Nullable String geometryLayout) {
@@ -846,7 +841,31 @@ public final class OLFactory {
     };
 
     /**
+     * Creates {@link RasterOptions}.
+     * 
+     * @return
+     */
+    public static RasterOptions createRasterOptions() {
+        RasterOptions options = createOptions();
+        options.disableWorkerSupport();
+        return options;
+    }
+
+    /**
+     * Creates {@link RasterOptions} with the given source.
+     * 
+     * @param source
+     * @return
+     */
+    public static RasterOptions createRasterOptionsWithSource(Source source) {
+        RasterOptions options = createRasterOptions();
+        options.setSource(source);
+        return options;
+    }
+
+    /**
      * Create a {@link Rotate} control.
+     * 
      * @return {@link Rotate}
      */
     public static Rotate createRotate() {
@@ -855,8 +874,9 @@ public final class OLFactory {
 
     /**
      * Create a {@link Rotate} control.
+     * 
      * @param options
-     *            options
+     *        options
      * @return {@link Rotate}
      */
     public static Rotate createRotate(RotateOptions options) {
@@ -874,9 +894,9 @@ public final class OLFactory {
 
     /**
      * Creates a {@link ScaleLine}.
+     * 
      * @param options
-     *            options
-     *
+     *        options
      * @return {@link ScaleLine}
      */
     public static ScaleLine createScaleLine(ScaleLineOptions options) {
@@ -887,9 +907,9 @@ public final class OLFactory {
      * Creates a {@link Size}.
      *
      * @param width
-     *            width
+     *        width
      * @param height
-     *            height
+     *        height
      * @return {@link Size}
      */
     public static Size createSize(int width, int height) {
@@ -900,11 +920,11 @@ public final class OLFactory {
      * Creates a {@link TileCoord}.
      *
      * @param x
-     *            x
+     *        x
      * @param y
-     *            y
+     *        y
      * @param z
-     *            z
+     *        z
      * @return {@link TileCoord}
      */
     public static TileCoord createTileCoord(double x, double y, double z) {
@@ -913,9 +933,9 @@ public final class OLFactory {
 
     /**
      * Creates a {@link Sphere}.
+     * 
      * @param radius
-     *            Radius.
-     *
+     *        Radius.
      * @return {@link Sphere}
      */
     public static Sphere createSphere(double radius) {
@@ -932,9 +952,9 @@ public final class OLFactory {
      * Creates a new {@link Stroke} style.
      *
      * @param color
-     *            stroke color
+     *        stroke color
      * @param width
-     *            stroke width
+     *        stroke width
      * @return {@link Stroke}
      */
     public static Stroke createStroke(Color color, int width) {
@@ -948,7 +968,7 @@ public final class OLFactory {
      * Creates a new {@link Stroke} style.
      *
      * @param strokeOptions
-     *            {@link StrokeOptions}
+     *        {@link StrokeOptions}
      * @return {@link Stroke}
      */
     public static Stroke createStroke(StrokeOptions strokeOptions) {
@@ -959,7 +979,7 @@ public final class OLFactory {
      * Creates a new {@link Style} style.
      *
      * @param fill
-     *            {@link Fill}
+     *        {@link Fill}
      * @return {@link Style}
      */
     public static Style createStyle(Fill fill) {
@@ -972,7 +992,7 @@ public final class OLFactory {
      * Creates a new {@link Style} style.
      *
      * @param stroke
-     *            {@link Stroke}
+     *        {@link Stroke}
      * @return {@link Style}
      */
     public static Style createStyle(Stroke stroke) {
@@ -983,22 +1003,23 @@ public final class OLFactory {
 
     /**
      * Creates a new {@link Style} style.
+     * 
      * @param text {@link Text}
      * @return {@link Style}
      */
-    public static Style createStyle(Text text){
+    public static Style createStyle(Text text) {
         StyleOptions styleOptions = createOptions();
         styleOptions.setText(text);
         return createStyle(styleOptions);
-    }    
-    
-   /**
+    }
+
+    /**
      * Creates a new {@link Style} style.
      *
      * @param fill
-     *            {@link Fill}
+     *        {@link Fill}
      * @param stroke
-     *            {@link Stroke}
+     *        {@link Stroke}
      * @return {@link Style}
      */
     public static Style createStyle(Fill fill, Stroke stroke) {
@@ -1010,6 +1031,7 @@ public final class OLFactory {
 
     /**
      * Creates a new {@link Style} style.
+     * 
      * @param fill {@link Fill}
      * @param stroke {@link Stroke}
      * @param text {@link Text}
@@ -1027,7 +1049,7 @@ public final class OLFactory {
      * Creates a new {@link Style} style.
      *
      * @param image
-     *            {@link ol.style.Image}
+     *        {@link ol.style.Image}
      * @return {@link Style}
      */
     public static Style createStyle(ol.style.Image image) {
@@ -1040,7 +1062,7 @@ public final class OLFactory {
      * Creates a new {@link Style}.
      *
      * @param styleOptions
-     *            {@link StyleOptions}
+     *        {@link StyleOptions}
      * @return {@link Style}
      */
     public static Style createStyle(StyleOptions styleOptions) {
@@ -1073,7 +1095,7 @@ public final class OLFactory {
      * Creates a tile grid.
      *
      * @param tileGridOptions
-     *            {@link TileGridOptions}
+     *        {@link TileGridOptions}
      * @return {@link TileGrid}
      */
     public static TileGrid createTileGrid(TileGridOptions tileGridOptions) {
@@ -1082,7 +1104,6 @@ public final class OLFactory {
 
     /**
      * Creates a tile grid with a standard XYZ tiling scheme.
-     *
      * Tile grid options: extent: Extent for the tile grid. The origin for an
      * XYZ tile grid is the top-left corner of the extent. The zero level of the
      * grid is defined by the resolution at which one tile fits in the provided
@@ -1092,7 +1113,7 @@ public final class OLFactory {
      * of 21 means there are 22 levels in the grid set.
      *
      * @param tileGridOptions
-     *            {@link TileGridOptions}
+     *        {@link TileGridOptions}
      * @return {@link TileGrid}
      */
     public static TileGrid createTileGridXYZ(XyzTileGridOptions tileGridOptions) {
@@ -1107,7 +1128,7 @@ public final class OLFactory {
      * Creates a new {@link ol.layer.Vector} source.
      *
      * @param options
-     *            {@link LayerOptions}
+     *        {@link LayerOptions}
      * @return {@link ol.layer.Vector}
      */
     public static ol.layer.Vector createVector(VectorLayerOptions vectorLayerOptions) {
@@ -1127,7 +1148,7 @@ public final class OLFactory {
      * Creates a new {@link ol.source.Vector} source.
      *
      * @param options
-     *            {@link VectorOptions}
+     *        {@link VectorOptions}
      * @return {@link ol.source.Vector}
      */
     public static ol.source.Vector createVectorSource(VectorOptions options) {
@@ -1159,9 +1180,9 @@ public final class OLFactory {
 
     /**
      * Creates a zoom control.
+     * 
      * @param options
-     *            options
-     *
+     *        options
      * @return {@link Zoom}
      */
     public static Zoom createZoom(ol.control.ZoomOptions options) {
@@ -1170,6 +1191,7 @@ public final class OLFactory {
 
     /**
      * Creates a zoom silder control.
+     * 
      * @return {@link ZoomSlider}
      */
     public static ZoomSlider createZoomSlider() {
@@ -1178,9 +1200,9 @@ public final class OLFactory {
 
     /**
      * Creates a zoom control.
+     * 
      * @param options
-     *            options
-     *
+     *        options
      * @return {@link Zoom}
      */
     public static ZoomSlider createZoomSlider(ol.control.ZoomSliderOptions options) {
@@ -1189,6 +1211,7 @@ public final class OLFactory {
 
     /**
      * Creates a {@link ZoomToExtent} control.
+     * 
      * @return {@link ZoomToExtent}
      */
     public static ZoomToExtent createZoomToExtent() {
@@ -1197,19 +1220,20 @@ public final class OLFactory {
 
     /**
      * Creates a {@link ZoomToExtent} control.
+     * 
      * @param options
-     *            options
+     *        options
      * @return {@link ZoomToExtent}
      */
     public static ZoomToExtent createZoomToExtent(ZoomToExtentOptions options) {
         return new ZoomToExtent(options);
     };
 
-
     /**
      * Creates a {@link Select} interaction.
+     * 
      * @param options
-     *          options
+     *        options
      * @return {@link Select}
      */
     public static Select createSelect(SelectOptions options) {
@@ -1220,7 +1244,7 @@ public final class OLFactory {
      * Creates a {@link ol.style.RegularShape} style.
      *
      * @param regularShapeOptions
-     *            {@link RegularShapeOptions}
+     *        {@link RegularShapeOptions}
      * @return {@link ol.style.RegularShape}
      */
     public static RegularShape createRegularShape(RegularShapeOptions regularShapeOptions) {
@@ -1243,7 +1267,8 @@ public final class OLFactory {
             public Void call(Event object) {
                 executor.action(object);
                 return null;
-            }};
+            }
+        };
 
     };
 
@@ -1251,7 +1276,7 @@ public final class OLFactory {
      * @deprecated not needed
      */
     @Deprecated
-    public static java.lang.Object createEventFunction(GenericFunction<java.lang.Object, Void> genericFunction){
+    public static java.lang.Object createEventFunction(GenericFunction<java.lang.Object, Void> genericFunction) {
         Executor executor = new Executor(genericFunction);
         return createEventFunction(executor);
     }
@@ -1261,7 +1286,6 @@ public final class OLFactory {
      *
      * @param srid
      * @param proj4Text
-     * 
      * @deprecated Use {@link proj4.Proj4#defs(int, String)} instead.
      */
     @Deprecated
@@ -1274,7 +1298,6 @@ public final class OLFactory {
      *
      * @param srid
      * @param proj4text
-     * 
      * @deprecated Use {@link proj4.Proj4#defs(String, String)} instead.
      */
     @Deprecated
