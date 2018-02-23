@@ -55,12 +55,6 @@ public class RasterOptions extends SourceOptions {
     @JsProperty
     native int getThreads();
 
-    @JsProperty
-    public native Object getLib();
-
-    @JsProperty
-    public native void setLib(Object lib);
-
     @JsProperty(name = "operationType")
     public native String getOperationTypeString();
 
