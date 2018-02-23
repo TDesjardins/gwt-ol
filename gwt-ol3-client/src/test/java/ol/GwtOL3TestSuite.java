@@ -60,6 +60,7 @@ import ol.source.BingMapsTest;
 import ol.source.ClusterTest;
 import ol.source.ImageArcGISRestTest;
 import ol.source.ImageStaticTest;
+import ol.source.RasterTest;
 import ol.source.TileWmsTest;
 import ol.source.VectorTileTest;
 import ol.style.AtlasManagerTest;
@@ -157,6 +158,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         suite.addTestSuite(ClusterTest.class);
         suite.addTestSuite(ImageArcGISRestTest.class);
         suite.addTestSuite(ImageStaticTest.class);
+        suite.addTestSuite(RasterTest.class);
         suite.addTestSuite(TileWmsTest.class);
         suite.addTestSuite(VectorTileTest.class);
 
