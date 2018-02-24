@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,30 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/**
- *
- * @author mribeiro
- * @date 08/06/16 10:30
- *
- */
 package ol;
 
-import jsinterop.annotations.JsType;
+import jsinterop.annotations.JsFunction;
 
 /**
- * @deprecated not needed
+ * @author Daniel Eggert (daniel.eggert@gfz-potsdam.de)
  */
-@Deprecated
-@JsType
-public class Executor {
+@FunctionalInterface
+@JsFunction
+public interface RasterOperation<R> {
 
-    private final GenericFunction<java.lang.Object, Void> function;
+    R call(R[] values);
 
-    public Executor(GenericFunction<java.lang.Object, Void> function) {
-        this.function = function;
-    }
-
-    public void action(java.lang.Object object){
-        function.call(object);
-    }
 }

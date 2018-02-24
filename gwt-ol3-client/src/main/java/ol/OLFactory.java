@@ -33,7 +33,6 @@ import ol.control.Zoom;
 import ol.control.ZoomSlider;
 import ol.control.ZoomToExtent;
 import ol.control.ZoomToExtentOptions;
-import ol.events.Event;
 import ol.format.GeoJson;
 import ol.format.GeoJsonOptions;
 import ol.geom.Circle;
@@ -75,6 +74,7 @@ import ol.source.ImageStaticOptions;
 import ol.source.ImageWms;
 import ol.source.ImageWmsOptions;
 import ol.source.Osm;
+import ol.source.RasterOptions;
 import ol.source.Source;
 import ol.source.Stamen;
 import ol.source.StamenOptions;
@@ -99,7 +99,6 @@ import ol.style.TextOptions;
 import ol.tilegrid.TileGrid;
 import ol.tilegrid.TileGridOptions;
 import ol.tilegrid.XyzTileGridOptions;
-import proj4.Proj4;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -846,6 +845,29 @@ public final class OLFactory {
     };
 
     /**
+     * Creates {@link RasterOptions}.
+     * 
+     * @return
+     */
+    public static RasterOptions createRasterOptions() {
+        RasterOptions options = createOptions();
+        options.disableWorkerSupport();
+        return options;
+    }
+
+    /**
+     * Creates {@link RasterOptions} with the given source.
+     * 
+     * @param source
+     * @return
+     */
+    public static RasterOptions createRasterOptionsWithSource(Source source) {
+        RasterOptions options = createRasterOptions();
+        options.setSource(source);
+        return options;
+    }
+
+    /**
      * Create a {@link Rotate} control.
      * @return {@link Rotate}
      */
@@ -986,12 +1008,12 @@ public final class OLFactory {
      * @param text {@link Text}
      * @return {@link Style}
      */
-    public static Style createStyle(Text text){
+    public static Style createStyle(Text text) {
         StyleOptions styleOptions = createOptions();
         styleOptions.setText(text);
         return createStyle(styleOptions);
-    }    
-    
+    }
+
    /**
      * Creates a new {@link Style} style.
      *
@@ -1229,57 +1251,6 @@ public final class OLFactory {
 
     public static TileWms createTileWMSSource(TileWmsOptions tileWmsOptions) {
         return new TileWms(tileWmsOptions);
-    };
-
-    /**
-     * @deprecated not needed
-     */
-    @Deprecated
-    public static java.lang.Object createEventFunction(Executor executor) {
-
-        return new GenericFunction<Event, Void>() {
-
-            @Override
-            public Void call(Event object) {
-                executor.action(object);
-                return null;
-            }};
-
-    };
-
-    /**
-     * @deprecated not needed
-     */
-    @Deprecated
-    public static java.lang.Object createEventFunction(GenericFunction<java.lang.Object, Void> genericFunction){
-        Executor executor = new Executor(genericFunction);
-        return createEventFunction(executor);
-    }
-
-    /**
-     * Registers a proj4 definition by its spatial reference id.
-     *
-     * @param srid
-     * @param proj4Text
-     * 
-     * @deprecated Use {@link proj4.Proj4#defs(int, String)} instead.
-     */
-    @Deprecated
-    public static final void registerSpatialReference(int srid, String proj4Text) {
-        Proj4.defs(srid, proj4Text);
-    };
-
-    /**
-     * Registers a proj4 definition by its spatial reference id.
-     *
-     * @param srid
-     * @param proj4text
-     * 
-     * @deprecated Use {@link proj4.Proj4#defs(String, String)} instead.
-     */
-    @Deprecated
-    public static final void registerSpatialReference(String srid, String proj4Text) {
-        Proj4.defs(srid, proj4Text);
     };
 
     /**
