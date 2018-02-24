@@ -22,7 +22,7 @@ import ol.proj.Projection;
 import javax.annotation.Nullable;
 
 /**
- * XML feature format.
+ * GPX feature format.
  *
  * @author Tino Desjardins
  *
