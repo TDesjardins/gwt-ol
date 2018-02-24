@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ import ol.OLFactory;
 import ol.View;
 import ol.control.Attribution;
 import ol.control.ScaleLine;
-import ol.format.GeoJson;
 import ol.format.Gpx;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
@@ -33,10 +32,9 @@ import ol.layer.Tile;
 import ol.layer.VectorLayerOptions;
 import ol.source.Osm;
 import ol.source.VectorOptions;
-import ol.source.XyzOptions;
 
 /**
- * Example with Gpx Layers.
+ * Example with GPX Layers.
  *
  * @author Eric Smets
  *
@@ -48,32 +46,28 @@ public class GpxExample implements Example{
      */
     @Override
     public void show(String exampleId) {
-        // create a OSM-layer
-        XyzOptions osmSourceOptions = OLFactory.createOptions();
 
-        Osm osmSource = new Osm(osmSourceOptions);
+        // create a OSM-layer
+        Osm osmSource = new Osm();
         LayerOptions osmLayerOptions = OLFactory.createOptions();
         osmLayerOptions.setSource(osmSource);
 
         Tile osmLayer = new Tile(osmLayerOptions);
 
-        
         // create a GPX vector layer
         VectorOptions vectorOptions = new VectorOptions();
         vectorOptions.setUrl("https://openlayers.org/en/v4.6.4/examples/data/gpx/fells_loop.gpx");
-        Gpx gpx = new Gpx();
-        vectorOptions.setFormat(gpx);
-                      
+        vectorOptions.setFormat(new Gpx());
+
         ol.source.Vector vectorSource = new ol.source.Vector(vectorOptions);
         VectorLayerOptions vectorLayerOptions = new VectorLayerOptions();
         vectorLayerOptions.setSource(vectorSource);
-        ol.layer.Vector gpxLayer = new ol.layer.Vector(vectorLayerOptions);   
-        
+        ol.layer.Vector gpxLayer = new ol.layer.Vector(vectorLayerOptions);
 
         // create a view
         View view = new View();
 
-        Coordinate center = OLFactory.createCoordinate(-7916041.528716288, 5228379.045749711);
+        Coordinate center = new Coordinate(-7916041.528716288, 5228379.045749711);
 
         view.setCenter(center);
         view.setZoom(12);
@@ -89,7 +83,7 @@ public class GpxExample implements Example{
         map.addLayer(gpxLayer);
 
         // add some controls
-        map.addControl(OLFactory.createScaleLine());
+        map.addControl(new ScaleLine());
         DemoUtils.addDefaultControls(map.getControls());
 
         Attribution attribution = new Attribution();
@@ -100,7 +94,7 @@ public class GpxExample implements Example{
         // add some interactions
         map.addInteraction(new KeyboardPan());
         map.addInteraction(new KeyboardZoom());     
-     
+
     }
 
 }

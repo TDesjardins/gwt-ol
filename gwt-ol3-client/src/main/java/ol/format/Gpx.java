@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,20 +29,18 @@ import javax.annotation.Nullable;
  */
 @JsType(isNative = true, name = "GPX")
 public class Gpx extends XmlFeature {
-    
+
     public Gpx() {}
-    
-    public Gpx(Options gpxOptions) {}   
-    
+
     /**
-     * Read the projection from a Gpx source.
+     * Read the projection from a GPX source.
      * @param source Document | Node | Object | string
      * @return {@link Geometry}
      */
     public native Projection readProjection(java.lang.Object source);
 
     /**
-     * Read a feature from a Gpx Feature source. Only works for Feature, use readFeatures to read FeatureCollection
+     * Read a feature from a GPX Feature source. Only works for Feature, use readFeatures to read FeatureCollection
      * source.
      * @param source Document | Node | Object | string
      * @param readOptions Read options.
@@ -51,13 +49,13 @@ public class Gpx extends XmlFeature {
     public native Feature readFeature(java.lang.Object source, @Nullable Options readOptions);
 
     public native Feature[] readFeatures(java.lang.Object source);
-    
+
     /**
-     * Read all features from a Gpx source. Works with both Feature and FeatureCollection sources.
+     * Read all features from a GPX source. Works with both Feature and FeatureCollection sources.
      * @param source Document | Node | Object | string
      * @param readOptions Read options.
      * @return [] {@link Feature}
      */
     public native Feature[] readFeatures(java.lang.Object source, @Nullable Options readOptions);
-    
+
 }
