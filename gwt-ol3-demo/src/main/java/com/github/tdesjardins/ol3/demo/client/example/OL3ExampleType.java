@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ public enum OL3ExampleType {
     ArcGISExample(new ArcGISExample()),
     ClusterExample(new ClusterExample()),
     GeoJSONExample(new GeoJsonExample()),
+    GpxExample(new GpxExample()),
     GraticuleExample(new GraticuleExample()),
     ImageExample(new StaticImageExample()),
     MapBoxExample(new MapboxExample()),

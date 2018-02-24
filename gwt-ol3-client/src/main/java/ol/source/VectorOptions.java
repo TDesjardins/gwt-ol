@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,6 +40,12 @@ public class VectorOptions extends SourceOptions {
     public native void setFeatures(Feature[] features);
     
     @JsProperty
+    public native void setUrl(String url);
+    
+    @JsProperty
+    public native void setFormat(ol.format.Feature format);
+
+    @JsProperty
     public native void setFeatures(Collection<Feature> features);
   	
     /**
@@ -70,5 +76,4 @@ public class VectorOptions extends SourceOptions {
      */
     @JsProperty
     public native void setWrapX(boolean wrapX);
-
 }
