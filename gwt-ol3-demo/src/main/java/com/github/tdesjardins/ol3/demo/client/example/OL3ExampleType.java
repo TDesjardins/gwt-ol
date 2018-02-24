@@ -24,6 +24,7 @@ package com.github.tdesjardins.ol3.demo.client.example;
 public enum OL3ExampleType {
 
     AnimationExample(new AnimationExample()),
+    GpxExample(new GpxExample()),
     ArcGISExample(new ArcGISExample()),
     ClusterExample(new ClusterExample()),
     GeoJSONExample(new GeoJsonExample()),
@@ -44,6 +45,8 @@ public enum OL3ExampleType {
     WmsExample(new WmsExample()),
     WmtsExample(new WmtsExample()),
     XyzExample(new XyzExample());
+   
+    
 
     private transient Example example;
 

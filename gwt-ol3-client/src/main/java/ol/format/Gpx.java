@@ -16,12 +16,48 @@
 package ol.format;
 
 import jsinterop.annotations.JsType;
+import ol.Options;
+import ol.Feature;
+import ol.proj.Projection;
+import javax.annotation.Nullable;
 
 /**
- * GPX format.
+ * XML feature format.
  *
  * @author Tino Desjardins
  *
  */
 @JsType(isNative = true, name = "GPX")
-public class Gpx extends XmlFeature {}
+public class Gpx extends XmlFeature {
+    
+    public Gpx() {}
+    
+    public Gpx(Options gpxOptions) {}   
+    
+    /**
+     * Read the projection from a Gpx source.
+     * @param source Document | Node | Object | string
+     * @return {@link Geometry}
+     */
+    public native Projection readProjection(java.lang.Object source);
+
+    /**
+     * Read a feature from a Gpx Feature source. Only works for Feature, use readFeatures to read FeatureCollection
+     * source.
+     * @param source Document | Node | Object | string
+     * @param readOptions Read options.
+     * @return {@link Feature}
+     */
+    public native Feature readFeature(java.lang.Object source, @Nullable Options readOptions);
+
+    public native Feature[] readFeatures(java.lang.Object source);
+    
+    /**
+     * Read all features from a Gpx source. Works with both Feature and FeatureCollection sources.
+     * @param source Document | Node | Object | string
+     * @param readOptions Read options.
+     * @return [] {@link Feature}
+     */
+    public native Feature[] readFeatures(java.lang.Object source, @Nullable Options readOptions);
+    
+}

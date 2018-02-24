@@ -21,6 +21,7 @@ import jsinterop.annotations.JsType;
 
 import ol.Collection;
 import ol.Feature;
+import ol.format.Gpx;
 
 /**
  * Vector source options.
@@ -38,6 +39,14 @@ public class VectorOptions extends SourceOptions {
      */
     @JsProperty
     public native void setFeatures(Feature[] features);
+    
+    
+    @JsProperty
+    public native void setUrl(String url);
+    
+    @JsProperty
+    public native void setFormat(Gpx gpx);
+    
     
     @JsProperty
     public native void setFeatures(Collection<Feature> features);
@@ -70,5 +79,4 @@ public class VectorOptions extends SourceOptions {
      */
     @JsProperty
     public native void setWrapX(boolean wrapX);
-
 }
