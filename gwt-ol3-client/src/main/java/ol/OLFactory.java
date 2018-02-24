@@ -1010,7 +1010,7 @@ public final class OLFactory {
      * @param text {@link Text}
      * @return {@link Style}
      */
-    public static Style createStyle(Text text){
+    public static Style createStyle(Text text) {
         StyleOptions styleOptions = createOptions();
         styleOptions.setText(text);
         return createStyle(styleOptions);
@@ -1275,7 +1275,7 @@ public final class OLFactory {
      * @deprecated not needed
      */
     @Deprecated
-    public static java.lang.Object createEventFunction(GenericFunction<java.lang.Object, Void> genericFunction){
+    public static java.lang.Object createEventFunction(GenericFunction<java.lang.Object, Void> genericFunction) {
         Executor executor = new Executor(genericFunction);
         return createEventFunction(executor);
     }
