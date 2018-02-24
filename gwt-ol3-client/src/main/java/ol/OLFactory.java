@@ -1014,8 +1014,8 @@ public final class OLFactory {
         StyleOptions styleOptions = createOptions();
         styleOptions.setText(text);
         return createStyle(styleOptions);
-    }    
-    
+    }
+
    /**
      * Creates a new {@link Style} style.
      *
