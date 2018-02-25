@@ -38,16 +38,16 @@ public class VectorOptions extends SourceOptions {
      */
     @JsProperty
     public native void setFeatures(Feature[] features);
-    
+
     @JsProperty
     public native void setUrl(String url);
-    
+
     @JsProperty
     public native void setFormat(ol.format.Feature format);
 
     @JsProperty
     public native void setFeatures(Collection<Feature> features);
-  	
+
     /**
      *
      * By default, an RTree is used as spatial index. When features are removed
@@ -76,4 +76,5 @@ public class VectorOptions extends SourceOptions {
      */
     @JsProperty
     public native void setWrapX(boolean wrapX);
+
 }
