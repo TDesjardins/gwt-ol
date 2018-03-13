@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/**
- *
- */
 package ol.format;
 
 import jsinterop.annotations.JsType;
@@ -38,86 +35,86 @@ public class GeoJson extends JsonFeature {
 
     public GeoJson(GeoJsonOptions geoJsonOptions) {}
 
-	/**
-	 * Read the projection from a GeoJSON source.
-	 * @param source Document | Node | Object | string
-	 * @return {@link Geometry}
-	 */
-	public native Projection readProjection(java.lang.Object source);
+    /**
+     * Read the projection from a GeoJSON source.
+     * @param source Document | Node | Object | string
+     * @return {@link Geometry}
+     */
+    public native Projection readProjection(java.lang.Object source);
 
-	/**
-	 * Read a feature from a GeoJSON Feature source. Only works for Feature, use readFeatures to read FeatureCollection
-	 * source.
-	 * @param source Document | Node | Object | string
-	 * @param readOptions Read options.
-	 * @return {@link Feature}
-	 */
-	public native Feature readFeature(java.lang.Object source, @Nullable Options readOptions);
+    /**
+     * Read a feature from a GeoJSON Feature source. Only works for Feature, use readFeatures to read FeatureCollection
+     * source.
+     * @param source Document | Node | Object | string
+     * @param readOptions Read options.
+     * @return {@link Feature}
+     */
+    public native Feature readFeature(java.lang.Object source, @Nullable Options readOptions);
 
-	public native Feature[] readFeatures(java.lang.Object source);
-	
-	/**
-	 * Read all features from a GeoJSON source. Works with both Feature and FeatureCollection sources.
-	 * @param source Document | Node | Object | string
-	 * @param readOptions Read options.
-	 * @return [] {@link Feature}
-	 */
-	public native Feature[] readFeatures(java.lang.Object source, @Nullable Options readOptions);
+    public native Feature[] readFeatures(java.lang.Object source);
 
-	/**
-	 * Read a geometry from a GeoJSON source.
-	 * @param source Document | Node | Object | string
-	 * @param readOptions Read options.
-	 * @return {@link Geometry}
-	 */
-	public native Geometry readGeometry(java.lang.Object source, @Nullable Options readOptions);
+    /**
+     * Read all features from a GeoJSON source. Works with both Feature and FeatureCollection sources.
+     * @param source Document | Node | Object | string
+     * @param readOptions Read options.
+     * @return [] {@link Feature}
+     */
+    public native Feature[] readFeatures(java.lang.Object source, @Nullable Options readOptions);
 
-	/**
-	 * Encode a feature as a GeoJSON Feature string.
-	 * @param feature ol.Feature
-	 * @param writeOptions Write options.
-	 * @return {@link String}
-	 */
-	public native String writeFeature(Feature feature, @Nullable Options writeOptions);
+    /**
+     * Read a geometry from a GeoJSON source.
+     * @param source Document | Node | Object | string
+     * @param readOptions Read options.
+     * @return {@link Geometry}
+     */
+    public native Geometry readGeometry(java.lang.Object source, @Nullable Options readOptions);
 
-	/**
-	 * Encode a feature as a GeoJSON Feature object.
-	 * @param feature ol.Feature
-	 * @param writeOptions Write options.
-	 * @return {@link java.lang.Object}
-	 */
-	public native java.lang.Object writeFeatureObject(Feature feature, @Nullable Options writeOptions);
+    /**
+     * Encode a feature as a GeoJSON Feature string.
+     * @param feature ol.Feature
+     * @param writeOptions Write options.
+     * @return {@link String}
+     */
+    public native String writeFeature(Feature feature, @Nullable Options writeOptions);
 
-	/**
-	 * Encode an array of features as GeoJSON.
-	 * @param feature ol.Feature
-	 * @param writeOptions Write options.
-	 * @return {@link String}
-	 */
-	public native String writeFeatures(Feature feature, @Nullable Options writeOptions);
+    /**
+     * Encode a feature as a GeoJSON Feature object.
+     * @param feature ol.Feature
+     * @param writeOptions Write options.
+     * @return {@link java.lang.Object}
+     */
+    public native java.lang.Object writeFeatureObject(Feature feature, @Nullable Options writeOptions);
 
-	/**
-	 * Encode an array of features as GeoJSON.
-	 * @param feature ol.Feature
-	 * @param writeOptions Write options.
-	 * @return Collection<{@link java.lang.Object}>
-	 */
-	public native Collection<java.lang.Object> writeFeaturesObject(Feature feature, @Nullable Options writeOptions);
+    /**
+     * Encode an array of features as GeoJSON.
+     * @param feature ol.Feature
+     * @param writeOptions Write options.
+     * @return {@link String}
+     */
+    public native String writeFeatures(Feature feature, @Nullable Options writeOptions);
 
-	/**
-	 * Encode a geometry as a GeoJSON string.
-	 * @param geometry {@link Geometry }
-	 * @param writeOptions Write options.
-	 * @return {@link String}
-	 */
-	public native String writeGeometry(Geometry geometry, @Nullable Options writeOptions);
+    /**
+     * Encode an array of features as GeoJSON.
+     * @param feature ol.Feature
+     * @param writeOptions Write options.
+     * @return Collection<{@link java.lang.Object}>
+     */
+    public native Collection<java.lang.Object> writeFeaturesObject(Feature feature, @Nullable Options writeOptions);
 
-	/**
-	 * Encode a geometry as a GeoJSON object.
-	 * @param geometry {@link Geometry }
-	 * @param writeOptions Write options.
-	 * @return Collection<{@link GeoJson}>
-	 */
-	public native Collection<GeoJson> writeGeometryObject(Geometry geometry, @Nullable Options writeOptions);
+    /**
+     * Encode a geometry as a GeoJSON string.
+     * @param geometry {@link Geometry }
+     * @param writeOptions Write options.
+     * @return {@link String}
+     */
+    public native String writeGeometry(Geometry geometry, @Nullable Options writeOptions);
+
+    /**
+     * Encode a geometry as a GeoJSON object.
+     * @param geometry {@link Geometry }
+     * @param writeOptions Write options.
+     * @return Collection<{@link GeoJson}>
+     */
+    public native Collection<GeoJson> writeGeometryObject(Geometry geometry, @Nullable Options writeOptions);
 
 }
