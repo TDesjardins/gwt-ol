@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import ol.Feature;
 import ol.Options;
 
 import javax.annotation.Nullable;
+
 /**
  * OSM-XML format
  *
@@ -31,24 +32,24 @@ import javax.annotation.Nullable;
 @JsType(isNative = true, name = "OSMXML")
 public class OsmXml extends XmlFeature {
 
-	public OsmXml() {}
-    
+    public OsmXml() {}
+
     public OsmXml(Options osmXmlOptions) {}
 
 
-	/**
-	 * Read all features from a OpenStreetMaps.org OSMXML source. Works with both Feature and FeatureCollection sources.
-	 * @param source Document | Node | Object | string
-	 * @param readOptions Read options.
-	 * @return [] {@link Feature}
-	 */
-	public native Feature[] readFeatures(java.lang.Object source, @Nullable Options readOptions);
+    /**
+     * Read all features from a OpenStreetMaps.org OSM-XML source. Works with both Feature and FeatureCollection sources.
+     * @param source Document | Node | Object | string
+     * @param readOptions Read options.
+     * @return [] {@link Feature}
+     */
+    public native Feature[] readFeatures(java.lang.Object source, @Nullable Options readOptions);
 
-	/**
-	 * Read the projection from an OSM source.
-	 * @param source Document | Node | Object | string
-	 * @return {@link Geometry}
-	 */
-	public native Projection readProjection(java.lang.Object source);
-    
+    /**
+     * Read the projection from an OSM source.
+     * @param source Document | Node | Object | string
+     * @return {@link Geometry}
+     */
+    public native Projection readProjection(java.lang.Object source);
+
 }
