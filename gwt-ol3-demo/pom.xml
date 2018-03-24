@@ -43,7 +43,7 @@
                 <groupId>net.ltgt.gwt.maven</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
                 <configuration>
-                    <moduleName>com.github.tdesjardins.ol3.demo.GwtOL3Playground</moduleName>
+                    <moduleName>com.github.tdesjardins.ol3.demo.GwtOLPlayground</moduleName>
                 </configuration>
             </plugin>
             <plugin>
