@@ -26,6 +26,7 @@ public enum OLExampleType {
     AnimationExample(new AnimationExample()),
     ArcGISExample(new ArcGISExample()),
     ClusterExample(new ClusterExample()),
+    ConstrainedExample(new ConstrainedViewExample()),
     GeoJSONExample(new GeoJsonExample()),
     GpxExample(new GpxExample()),
     GraticuleExample(new GraticuleExample()),
