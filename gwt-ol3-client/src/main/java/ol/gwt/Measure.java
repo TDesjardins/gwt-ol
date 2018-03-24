@@ -154,7 +154,7 @@ public class Measure {
                 Style sLine1 = OLFactory.createStyle(OLFactory.createStroke(OLFactory.createColor(255, 255, 255, 1), 5));
                 Style sLine2 = OLFactory.createStyle(OLFactory.createStroke(OLFactory.createColor(0, 153, 255, 1), 3));
                 // combine all styles
-                Style[] s = OLUtil.addStyle(OLUtil.combineStyles(sPoly, sLine1), sLine2);
+                Style[] s = OLUtil.pushItem(OLUtil.combineStyles(sPoly, sLine1), sLine2);
                 voptions.setStyle(s);
             }
             // create an overlay and attach it to the map
