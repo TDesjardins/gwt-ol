@@ -21,7 +21,7 @@ package com.github.tdesjardins.ol3.demo.client.example;
  * @author Tino Desjardins
  *
  */
-public enum OL3ExampleType {
+public enum OLExampleType {
 
     AnimationExample(new AnimationExample()),
     ArcGISExample(new ArcGISExample()),
@@ -49,7 +49,7 @@ public enum OL3ExampleType {
 
     private transient Example example;
 
-    OL3ExampleType(Example example) {
+    OLExampleType(Example example) {
         this.example = example;
     }
 
