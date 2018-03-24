@@ -48,6 +48,8 @@ public class ExtentTest extends GwtOL3BaseTestCase {
             assertEquals(extent.getUpperRightX(), clonedExtent.getUpperRightX());
             assertEquals(extent.getUpperRightY(), clonedExtent.getUpperRightY());
 
+            assertTrue(extent.equals(clonedExtent));
+
         });
 
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,6 +67,18 @@ public class Extent implements JsArrayLike<Double> {
     };
 
     private native Extent slice(int begin);
+
+    /**
+     * @param extent extent to check
+     * @return if extents are equivalent.
+     */
+    @JsOverlay
+    public final boolean equals(Extent extent) {
+        return equals(this, extent);
+    }
+
+    @JsMethod(name = "equals", namespace = PACKAGE_EXTENT)
+    private static native boolean equals(Extent extent1, Extent extent2);
 
     /**
      * @return the area of the extent.
