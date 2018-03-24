@@ -71,12 +71,12 @@ import ol.style.TextTest;
 import ol.tilegrid.TileGridTest;
 
 /**
- * Testsuite for GwtOL3.
+ * Testsuite for GwtOL.
  *
  * @author Tino Desjardins
  *
  */
-public class GwtOL3TestSuite extends GWTTestSuite {
+public class GwtOLTestSuite extends GWTTestSuite {
 
     public static TestSuite suite() {
 
