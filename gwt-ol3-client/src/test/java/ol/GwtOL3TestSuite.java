@@ -80,7 +80,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
 
     public static TestSuite suite() {
 
-        TestSuite suite = new TestSuite("Tests for GwtOL3-Wrapper");
+        TestSuite suite = new TestSuite("Tests for GwtOL-Wrapper");
 
         suite.addTestSuite(CollectionTest.class);
         suite.addTestSuite(CoordinateTest.class);
