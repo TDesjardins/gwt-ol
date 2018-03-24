@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * EntryPoint for playing with GwtOL3-Features.
+ * EntryPoint for playing with GwtOL-Features.
  *
  * @author Tino Desjardins
  */
