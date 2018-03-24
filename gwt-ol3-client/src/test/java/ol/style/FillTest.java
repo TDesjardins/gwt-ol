@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.style;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.color.Color;
 
 /**
@@ -23,7 +23,7 @@ import ol.color.Color;
  * 
  * @author Tino Desjardins
  */
-public class FillTest extends GwtOL3BaseTestCase {
+public class FillTest extends GwtOLBaseTestCase {
 
     public void testFill() {
 

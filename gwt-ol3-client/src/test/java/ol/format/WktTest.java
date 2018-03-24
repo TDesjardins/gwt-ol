@@ -18,7 +18,7 @@ package ol.format;
 import ol.Coordinate;
 import ol.Feature;
 import ol.FeatureOptions;
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.geom.Geometry;
 import ol.geom.LineString;
 
@@ -28,7 +28,7 @@ import ol.geom.LineString;
  * @author gkresic
  *
  */
-public class WktTest extends GwtOL3BaseTestCase {
+public class WktTest extends GwtOLBaseTestCase {
 
 	private Wkt wktFormat;
 	private Wkt splittingWktFormat;

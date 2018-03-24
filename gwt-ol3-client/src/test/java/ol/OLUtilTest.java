@@ -23,7 +23,7 @@ import ol.style.Style;
  * @author Tino Desjardins
  *
  */
-public class OLUtilTest extends GwtOL3BaseTestCase {
+public class OLUtilTest extends GwtOLBaseTestCase {
 
     public void testOLUtil() {
 

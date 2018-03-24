@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.color;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.OLFactory;
 
 /**
@@ -24,7 +24,7 @@ import ol.OLFactory;
  * @author Tino Desjardins
  *
  */
-public class ColorTest extends GwtOL3BaseTestCase {
+public class ColorTest extends GwtOLBaseTestCase {
 
     public void testColor() {
 

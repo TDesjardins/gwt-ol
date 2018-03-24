@@ -17,7 +17,7 @@ package ol.format.filter;
 
 import ol.Coordinate;
 import ol.Extent;
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.geom.Circle;
 
 /**
@@ -26,7 +26,7 @@ import ol.geom.Circle;
  * @author Tino Desjardins
  *
  */
-public class FilterTest extends GwtOL3BaseTestCase {
+public class FilterTest extends GwtOLBaseTestCase {
 
     public void testAnd() {
         injectUrlAndTest(() -> {

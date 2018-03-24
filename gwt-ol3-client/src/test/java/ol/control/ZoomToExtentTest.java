@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.control;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.Object;
 
 /**
@@ -23,13 +23,13 @@ import ol.Object;
  * @author Tino Desjardins
  *
  */
-public class ZoomToExtentTest extends GwtOL3BaseTestCase {
+public class ZoomToExtentTest extends GwtOLBaseTestCase {
 
     public void testZoomToExtent() {
 
         injectUrlAndTest(() -> {
             ZoomToExtent zoomToExtent = new ZoomToExtent();
-            
+
             assertNotNull(zoomToExtent);
             assertTrue(zoomToExtent instanceof Object);
             assertTrue(zoomToExtent instanceof Control);

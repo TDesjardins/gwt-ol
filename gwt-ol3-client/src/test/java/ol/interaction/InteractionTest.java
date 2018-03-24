@@ -16,14 +16,14 @@
 package ol.interaction;
 
 import ol.Collection;
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 
 /**
  * 
  * @author Tino Desjardins
  *
  */
-public class InteractionTest extends GwtOL3BaseTestCase {
+public class InteractionTest extends GwtOLBaseTestCase {
 
     public void testInteraction() {
 

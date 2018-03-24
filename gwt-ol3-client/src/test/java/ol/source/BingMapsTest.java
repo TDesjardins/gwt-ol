@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,20 +15,20 @@
  *******************************************************************************/
 package ol.source;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 
 /**
  * A test case for {@link ol.source.BingMaps}.
  *
  * @author gkresic
  */
-public class BingMapsTest extends GwtOL3BaseTestCase {
+public class BingMapsTest extends GwtOLBaseTestCase {
 
     public void testBingMaps() {
 
         injectUrlAndTest(() -> {
 
-        	BingMapsOptions options = new BingMapsOptions();
+            BingMapsOptions options = new BingMapsOptions();
             assertNotNull(options);
             options.setImagerySet("Aerial");
 

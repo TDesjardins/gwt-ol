@@ -23,7 +23,7 @@ import ol.style.Style;
  * @author Tino Desjardins
  *
  */
-public class FeatureTest extends GwtOL3BaseTestCase {
+public class FeatureTest extends GwtOLBaseTestCase {
 
     private static final String FEATURE_ID = "#1";
     private static final String GEOMETRY_NAME = "geometry";

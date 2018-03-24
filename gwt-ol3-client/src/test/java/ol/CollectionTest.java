@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import ol.event.EventListener;
  * @author Tino Desjardins
  *
  */
-public class CollectionTest extends GwtOL3BaseTestCase {
+public class CollectionTest extends GwtOLBaseTestCase {
 
     private boolean elementAddedEventFired = false;
     private boolean elementRemovedEventFired = false;

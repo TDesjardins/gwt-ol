@@ -22,9 +22,9 @@ import com.github.desjardins.gwt.junit.client.BaseTestCase;
  * @author Tino Desjardins
  *
  */
-public abstract class GwtOL3BaseTestCase extends BaseTestCase {
+public abstract class GwtOLBaseTestCase extends BaseTestCase {
 
-    public GwtOL3BaseTestCase() {
+    public GwtOLBaseTestCase() {
         super("http://openlayers.org/en/v4.6.5/build/ol.js", "ol.GwtOLTest", 10000);
     }
 

@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.source;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.PixelColor;
 
 /**
@@ -23,7 +23,7 @@ import ol.PixelColor;
  *
  * @author Tino desjardins
  */
-public class RasterTest extends GwtOL3BaseTestCase {
+public class RasterTest extends GwtOLBaseTestCase {
 
     public void testRaster() {
 

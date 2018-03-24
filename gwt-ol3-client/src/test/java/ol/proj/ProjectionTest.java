@@ -17,14 +17,14 @@ package ol.proj;
 
 import ol.Coordinate;
 import ol.Extent;
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 
 /**
  *
  * @author Tino Desjardins
  *
  */
-public class ProjectionTest extends GwtOL3BaseTestCase {
+public class ProjectionTest extends GwtOLBaseTestCase {
 
 	private static final String EPSG_CODE_4326 = "EPSG:4326";
 	private static final String EPSG_CODE_3068 = "EPSG:3068";

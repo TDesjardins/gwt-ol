@@ -21,7 +21,7 @@ package ol;
  * @author Tino Desjardins
  *
  */
-public class ExtentTest extends GwtOL3BaseTestCase {
+public class ExtentTest extends GwtOLBaseTestCase {
 
     public void testExtent() {
 

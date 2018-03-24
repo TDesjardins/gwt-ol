@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,14 +21,14 @@ package ol;
  * @author Tino Desjardins
  *
  */
-public class SphereTest extends GwtOL3BaseTestCase {
-    
+public class SphereTest extends GwtOLBaseTestCase {
+
     public void testAttribution() {
 
         injectUrlAndTest(() -> {
-            
+
             Sphere sphere = new Sphere(OLUtil.EARTH_RADIUS_NORMAL);
-            
+
             assertNotNull(sphere);
 
         });

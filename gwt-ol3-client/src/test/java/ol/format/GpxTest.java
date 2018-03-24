@@ -15,14 +15,14 @@
  *******************************************************************************/
 package ol.format;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 
 /**
  *
  * A test case for {@link ol.format.Gpx}.
  *
  */
-public class GpxTest extends GwtOL3BaseTestCase {
+public class GpxTest extends GwtOLBaseTestCase {
 
     public void testReadFeatureCollectionFromOsmXml() {
 

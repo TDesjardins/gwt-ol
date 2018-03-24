@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package ol.control;
 
 import ol.Coordinate;
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.OLFactory;
 import ol.Object;
 import ol.proj.Projection;
@@ -26,7 +26,7 @@ import ol.proj.Projection;
  * @author Tino Desjardins
  *
  */
-public class MousePositionTest extends GwtOL3BaseTestCase {
+public class MousePositionTest extends GwtOLBaseTestCase {
 
     public void testMousePosition() {
 

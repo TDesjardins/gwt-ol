@@ -21,7 +21,7 @@ package ol;
  * @author Tino Desjardins
  *
  */
-public class PixelTest extends GwtOL3BaseTestCase {
+public class PixelTest extends GwtOLBaseTestCase {
 
     public void testPixel() {
 

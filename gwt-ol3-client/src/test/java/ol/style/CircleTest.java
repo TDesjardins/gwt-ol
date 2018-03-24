@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.style;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.OLFactory;
 
 /**
@@ -23,7 +23,7 @@ import ol.OLFactory;
  * 
  * @author Tino Desjardins
  */
-public class CircleTest extends GwtOL3BaseTestCase {
+public class CircleTest extends GwtOLBaseTestCase {
 
     public void testCircle() {
 
