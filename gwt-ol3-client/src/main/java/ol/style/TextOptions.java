@@ -99,5 +99,13 @@ public class TextOptions implements Options {
 	 */
 	@JsProperty
 	public native void setTextBaseline(String textBaseline);
+	
+	/**
+	 * Test placement. Possible values: 'point', 'line'. The default value is point
+	 * @param placement String
+	 */
+	@JsProperty
+	public native void setPlacement(String placement);
+
 
 }
