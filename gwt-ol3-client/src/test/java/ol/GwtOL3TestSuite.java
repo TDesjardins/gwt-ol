@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import ol.control.ZoomSliderTest;
 import ol.control.ZoomToExtentTest;
 import ol.events.condition.ConditionTest;
 import ol.format.GeoJsonTest;
+import ol.format.GpxTest;
 import ol.format.MvtTest;
 import ol.format.OsmXmlTest;
 import ol.format.WfsTest;
@@ -115,6 +116,7 @@ public class GwtOL3TestSuite extends GWTTestSuite {
         // formats
         suite.addTestSuite(FilterTest.class);
         suite.addTestSuite(GeoJsonTest.class);
+        suite.addTestSuite(GpxTest.class);
         suite.addTestSuite(MvtTest.class);
         suite.addTestSuite(OsmXmlTest.class);
         suite.addTestSuite(WfsTest.class);
