@@ -109,6 +109,12 @@ public class Extent implements JsArrayLike<Double> {
     };
 
     /**
+     * @return an empty extent
+     */
+    @JsMethod(name = "createEmpty", namespace = PACKAGE_EXTENT)
+    public static native Extent createEmpty();
+
+    /**
      * Clones this object.
      *
      * @return {ol.Extent} clone
@@ -227,5 +233,16 @@ public class Extent implements JsArrayLike<Double> {
 
     @JsMethod(name = "getWidth", namespace = PACKAGE_EXTENT)
     private static native double getWidth(Extent extent);
+
+    /**
+     * @return true if the extent is empty
+     */
+    @JsOverlay
+    public final boolean isEmpty() {
+        return Extent.isEmpty(this);
+    }
+
+    @JsMethod(name = "isEmpty", namespace = PACKAGE_EXTENT)
+    private static native boolean isEmpty(Extent extent);
 
 }

@@ -123,4 +123,18 @@ public class ExtentTest extends GwtOLBaseTestCase {
 
     }
 
+    public void testCreateEmpty() {
+
+        injectUrlAndTest(() -> {
+
+            Extent emptyExtent = Extent.createEmpty();
+            assertTrue(emptyExtent.isEmpty());
+
+            Extent extent = new Extent(100, 50, 150, 110);
+            assertFalse(extent.isEmpty());
+
+        });
+
+    }
+
 }
