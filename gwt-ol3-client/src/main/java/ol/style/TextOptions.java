@@ -107,5 +107,4 @@ public class TextOptions implements Options {
 	@JsProperty
 	public native void setPlacement(String placement);
 
-
 }
