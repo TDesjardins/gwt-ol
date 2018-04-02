@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.interaction;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.Observable;
 
 /**
@@ -23,16 +23,15 @@ import ol.Observable;
  * @author Tino Desjardins
  *
  */
-public class DragZoomTest extends GwtOL3BaseTestCase {
+public class DragZoomTest extends GwtOLBaseTestCase {
 
     public void testDragZoom() {
 
-        
         injectUrlAndTest(() -> {
-        	
-        	DragZoomOptions dragZoomOptions = new DragZoomOptions();
+
+            DragZoomOptions dragZoomOptions = new DragZoomOptions();
             DragZoom dragZoom = new DragZoom(dragZoomOptions);
-            
+
             assertNotNull(dragZoom);
             assertTrue(dragZoom instanceof Observable);
             assertTrue(dragZoom instanceof Interaction);

@@ -71,16 +71,16 @@ import ol.style.TextTest;
 import ol.tilegrid.TileGridTest;
 
 /**
- * Testsuite for GwtOL3.
+ * Testsuite for GwtOL.
  *
  * @author Tino Desjardins
  *
  */
-public class GwtOL3TestSuite extends GWTTestSuite {
+public class GwtOLTestSuite extends GWTTestSuite {
 
     public static TestSuite suite() {
 
-        TestSuite suite = new TestSuite("Tests for GwtOL3-Wrapper");
+        TestSuite suite = new TestSuite("Tests for GwtOL-Wrapper");
 
         suite.addTestSuite(CollectionTest.class);
         suite.addTestSuite(CoordinateTest.class);

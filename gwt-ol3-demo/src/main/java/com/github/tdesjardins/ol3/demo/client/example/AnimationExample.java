@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ package com.github.tdesjardins.ol3.demo.client.example;
 
 import com.github.tdesjardins.ol3.demo.client.constants.DemoConstants;
 import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.core.client.Scheduler.RepeatingCommand;
 
 import java.util.Arrays;
 import java.util.List;
@@ -101,34 +100,29 @@ public class AnimationExample implements Example {
 
         final List<Coordinate> coordinates = Arrays.asList(transformedMidPoint, tvTowerCoordinate, pplaceCoordinate, zooCoordinate);
 
-        Scheduler.get().scheduleFixedPeriod(new RepeatingCommand() {
+        Scheduler.get().scheduleFixedPeriod(() -> {
 
-            @Override
-            public boolean execute() {
+            int index = getNextIndex(coordinates.size());
 
-                int index = getNextIndex(coordinates.size());
+            AnimationOptions panAnimationOptions = new AnimationOptions();
+            panAnimationOptions.setDuration(2000);
+            // Switch this to rotate the animation while animating.
+            // panAnimationOptions.setRotation(view.getRotation() + 2 * Math.PI);
+            panAnimationOptions.setCenter(coordinates.get(index));
 
-                AnimationOptions panAnimationOptions = new AnimationOptions();
-                panAnimationOptions.setDuration(2000);
-                // Switch this to rotate the animation while animating.
-                // panAnimationOptions.setRotation(view.getRotation() + 2 * Math.PI);
-                panAnimationOptions.setCenter(coordinates.get(index));
+            view.animate(panAnimationOptions);
 
-                view.animate(panAnimationOptions);
+            AnimationOptions zoomOutAnimationOptions = new AnimationOptions();
+            zoomOutAnimationOptions.setDuration(1000);
+            zoomOutAnimationOptions.setResolution(view.getResolution() + 4);
 
-                AnimationOptions zoomOutAnimationOptions = new AnimationOptions();
-                zoomOutAnimationOptions.setDuration(1000);
-                zoomOutAnimationOptions.setResolution(view.getResolution() + 4);
+            AnimationOptions zoomInAnimationOptions = new AnimationOptions();
+            zoomInAnimationOptions.setDuration(1000);
+            zoomInAnimationOptions.setResolution(view.getResolution());
 
-                AnimationOptions zoomInAnimationOptions = new AnimationOptions();
-                zoomInAnimationOptions.setDuration(1000);
-                zoomInAnimationOptions.setResolution(view.getResolution());
+            view.animate(zoomOutAnimationOptions, zoomInAnimationOptions);
 
-                view.animate(zoomOutAnimationOptions, zoomInAnimationOptions);
-
-                return true;
-
-            }
+            return true;
 
         }, 6000);
 

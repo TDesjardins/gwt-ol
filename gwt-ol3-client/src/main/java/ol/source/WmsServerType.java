@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import java.util.Objects;
  * @author Peter Zanetti
  */
 public enum WmsServerType {
-    
+
     CARMENTA_SERVER("carmentaserver"),
     GEOSERVER("geoserver"),
     MAPSERVER("mapserver"),
@@ -46,15 +46,15 @@ public enum WmsServerType {
     }
 
     public static final WmsServerType getInstance(String value) {
-        
+
         for (WmsServerType wmsServerType : WmsServerType.class.getEnumConstants()) {
             if (Objects.equals(wmsServerType.getValue(), value)) {
                 return wmsServerType;
             }
         }
-        
+
         return null;
-        
+
     }
-    
+
 }

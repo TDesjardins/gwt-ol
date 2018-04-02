@@ -16,7 +16,7 @@
 package ol.geom;
 
 import ol.Coordinate;
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.Extent;
 
 /**
@@ -24,7 +24,7 @@ import ol.Extent;
  *
  * @author Tino Desjardins
  */
-public class CircleTest extends GwtOL3BaseTestCase {
+public class CircleTest extends GwtOLBaseTestCase {
 
     public void testCircle() {
 

@@ -15,14 +15,14 @@
  *******************************************************************************/
 package ol.style;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 
 /**
  * Test for {@link ol.style.AtlasManager}.
  * 
  * @author Tino Desjardins
  */
-public class AtlasManagerTest extends GwtOL3BaseTestCase {
+public class AtlasManagerTest extends GwtOLBaseTestCase {
 
     public void testAtlasManager() {
 

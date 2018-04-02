@@ -27,7 +27,7 @@ import ol.proj.ProjectionOptions;
  * @author Tino Desjardins
  *
  */
-public class ViewTest extends GwtOL3BaseTestCase {
+public class ViewTest extends GwtOLBaseTestCase {
 
     private boolean centerChanged = false;
     private boolean resolutionChanged = false;

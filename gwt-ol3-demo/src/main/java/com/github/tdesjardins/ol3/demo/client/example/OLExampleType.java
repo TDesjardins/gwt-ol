@@ -21,11 +21,12 @@ package com.github.tdesjardins.ol3.demo.client.example;
  * @author Tino Desjardins
  *
  */
-public enum OL3ExampleType {
+public enum OLExampleType {
 
     AnimationExample(new AnimationExample()),
     ArcGISExample(new ArcGISExample()),
     ClusterExample(new ClusterExample()),
+    ConstrainedExample(new ConstrainedViewExample()),
     GeoJSONExample(new GeoJsonExample()),
     GpxExample(new GpxExample()),
     GraticuleExample(new GraticuleExample()),
@@ -49,7 +50,7 @@ public enum OL3ExampleType {
 
     private transient Example example;
 
-    OL3ExampleType(Example example) {
+    OLExampleType(Example example) {
         this.example = example;
     }
 

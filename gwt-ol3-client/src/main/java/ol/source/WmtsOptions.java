@@ -27,8 +27,7 @@ import jsinterop.annotations.JsType;
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class WmtsOptions extends TileImageOptions {
-    
-    
+
     /**
      * Sets the layername.
      *
@@ -36,17 +35,17 @@ public class WmtsOptions extends TileImageOptions {
      */
     @JsProperty
     public native void setLayer(String layer);
-    
+
     @JsProperty
     public native void setStyle(String style);
-    
+
     @JsProperty
     public native void setFormat(String format);
-    
+
     @JsProperty
     public native void setVersion(String version);
-    
+
     @JsProperty
     public native void setMatrixSet(String matrixSet);
-    
+
 }

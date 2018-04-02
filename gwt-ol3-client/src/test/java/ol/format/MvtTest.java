@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.format;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 
 /**
  * Test for Mapbox Vector Tile (MVT) format.
@@ -23,7 +23,7 @@ import ol.GwtOL3BaseTestCase;
  * @author Tino Desjardins
  *
  */
-public class MvtTest extends GwtOL3BaseTestCase {
+public class MvtTest extends GwtOLBaseTestCase {
 
     public void testMvt() {
 

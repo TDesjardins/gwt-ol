@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.interaction;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.Observable;
 
 /**
@@ -23,15 +23,15 @@ import ol.Observable;
  * @author Tino Desjardins
  *
  */
-public class SnapTest extends GwtOL3BaseTestCase {
+public class SnapTest extends GwtOLBaseTestCase {
 
     public void testSnap() {
 
         injectUrlAndTest(() -> {
-            
+
             SnapOptions snapOptions = new SnapOptions();
             Snap snap = new Snap(snapOptions);
-            
+
             assertNotNull(snap);
             assertTrue(snap instanceof Observable);
             assertTrue(snap instanceof Interaction);

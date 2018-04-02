@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  *******************************************************************************/
 package com.github.tdesjardins.ol3.demo.client;
 
-import com.github.tdesjardins.ol3.demo.client.example.OL3ExampleType;
+import com.github.tdesjardins.ol3.demo.client.example.OLExampleType;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Style;
@@ -28,11 +28,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * EntryPoint for playing with GwtOL3-Features.
+ * EntryPoint for playing with GwtOL-Features.
  *
  * @author Tino Desjardins
  */
-public class GwtOL3Playground implements EntryPoint {
+public class GwtOLPlayground implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
@@ -44,7 +44,7 @@ public class GwtOL3Playground implements EntryPoint {
 
         int index = 0;
 
-        for (OL3ExampleType example : OL3ExampleType.values()) {
+        for (OLExampleType example : OLExampleType.values()) {
             tabs.add(new LazyExampleWidget(example), example.name().replace("Example", ""));
             exampleIndexMap.put(example.name(), index);
             index++;
@@ -60,10 +60,10 @@ public class GwtOL3Playground implements EntryPoint {
 
     private static class LazyExampleWidget extends SimplePanel {
 
-        private final OL3ExampleType example;
+        private final OLExampleType example;
         private boolean initialized = false;
 
-        private LazyExampleWidget(OL3ExampleType example) {
+        private LazyExampleWidget(OLExampleType example) {
             this.example = example;
             this.setSize("100%", "100%");
             this.getElement().setId(example.getExample().toString());

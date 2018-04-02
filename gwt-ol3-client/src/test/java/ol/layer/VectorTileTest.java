@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.layer;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 
 /**
  * A test case for {@link ol.layer.VectorTile}.
@@ -23,7 +23,7 @@ import ol.GwtOL3BaseTestCase;
  * @author Tino Desjardins
  *
  */
-public class VectorTileTest extends GwtOL3BaseTestCase {
+public class VectorTileTest extends GwtOLBaseTestCase {
 
     public void testVectorTileLayer() {
 

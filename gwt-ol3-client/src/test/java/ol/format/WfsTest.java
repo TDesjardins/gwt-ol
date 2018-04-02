@@ -17,7 +17,7 @@ package ol.format;
 
 import elemental2.dom.Node;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 
 /**
  * Test for WFS format.
@@ -25,7 +25,7 @@ import ol.GwtOL3BaseTestCase;
  * @author Tino Desjardins
  *
  */
-public class WfsTest extends GwtOL3BaseTestCase {
+public class WfsTest extends GwtOLBaseTestCase {
 
 	private Wfs wfsFormat;
 

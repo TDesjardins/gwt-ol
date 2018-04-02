@@ -1,9 +1,0 @@
-<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.8.0//EN" "http://gwtproject.org/doctype/2.8.0/gwt-module.dtd">
-<module rename-to='demo'>
-    <inherits name='com.google.gwt.user.User'/>
-    <inherits name='ol.GwtOL3'/>
-
-    <entry-point class='com.github.tdesjardins.ol3.demo.client.GwtOL3Playground'/>
-
-    <collapse-all-properties/><!-- this generates 1-100k instead of 5-90k permutations -->
-</module>

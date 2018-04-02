@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ package ol;
  * @author Tino Desjardins
  *
  */
-public class ExtentTest extends GwtOL3BaseTestCase {
+public class ExtentTest extends GwtOLBaseTestCase {
 
     public void testExtent() {
 
@@ -47,6 +47,77 @@ public class ExtentTest extends GwtOL3BaseTestCase {
             assertEquals(extent.getLowerLeftY(), clonedExtent.getLowerLeftY());
             assertEquals(extent.getUpperRightX(), clonedExtent.getUpperRightX());
             assertEquals(extent.getUpperRightY(), clonedExtent.getUpperRightY());
+
+            assertTrue(extent.equals(clonedExtent));
+
+        });
+
+    }
+
+    public void testBuffer() {
+
+        injectUrlAndTest(() -> {
+
+            Extent extent = new Extent(100, 50, 150, 110);
+            assertNotNull(extent);
+
+            Extent bufferedExtent = extent.buffer(5);
+            assertTrue(extent.getArea() < bufferedExtent.getArea());
+
+            bufferedExtent = bufferedExtent.buffer(-5);
+            assertTrue(extent.getArea() == bufferedExtent.getArea());
+
+        });
+
+    }
+
+    public void testContainsCoordinate() {
+
+        injectUrlAndTest(() -> {
+
+            Extent extent = new Extent(100, 50, 150, 110);
+            assertNotNull(extent);
+
+            assertTrue(extent.containsCoordinate(new Coordinate(110, 60)));
+            assertTrue(extent.containsCoordinate(new Coordinate(100, 150)));
+            assertTrue(extent.containsCoordinate(new Coordinate(100, 110)));
+
+            assertFalse(extent.containsCoordinate(new Coordinate(50, 50)));
+            assertFalse(extent.containsCoordinate(new Coordinate(10, 10)));
+
+        });
+
+    }
+
+    public void testContainsExtent() {
+
+        injectUrlAndTest(() -> {
+
+            Extent extent = new Extent(100, 50, 150, 110);
+            assertNotNull(extent);
+
+            assertTrue(extent.containsExtent(new Extent(100, 50, 150, 110)));
+            assertTrue(extent.containsExtent(new Extent(110, 60, 140, 100)));
+
+            assertFalse(extent.containsExtent(new Extent(10, 50, 150, 110)));
+            assertFalse(extent.containsExtent(new Extent(10, 10, 20, 20)));
+
+        });
+
+    }
+
+    public void testContainsXY() {
+
+        injectUrlAndTest(() -> {
+
+            Extent extent = new Extent(100, 50, 150, 110);
+            assertNotNull(extent);
+
+            assertTrue(extent.containsXY(100, 50));
+            assertTrue(extent.containsXY(110, 60));
+
+            assertFalse(extent.containsXY(10, 50));
+            assertFalse(extent.containsXY(200, 20));
 
         });
 

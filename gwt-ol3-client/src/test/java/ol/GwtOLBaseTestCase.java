@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,10 +22,10 @@ import com.github.desjardins.gwt.junit.client.BaseTestCase;
  * @author Tino Desjardins
  *
  */
-public abstract class GwtOL3BaseTestCase extends BaseTestCase {
+public abstract class GwtOLBaseTestCase extends BaseTestCase {
 
-    public GwtOL3BaseTestCase() {
-        super("http://openlayers.org/en/v4.6.4/build/ol.js", "ol.GwtOL3Test", 10000);
+    public GwtOLBaseTestCase() {
+        super("http://openlayers.org/en/v4.6.5/build/ol.js", "ol.GwtOLTest", 10000);
     }
 
 }

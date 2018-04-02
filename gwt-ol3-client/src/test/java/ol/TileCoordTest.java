@@ -21,7 +21,7 @@ package ol;
  * @author Tino Desjardins
  *
  */
-public class TileCoordTest extends GwtOL3BaseTestCase {
+public class TileCoordTest extends GwtOLBaseTestCase {
 
     public void testTileCoord() {
 

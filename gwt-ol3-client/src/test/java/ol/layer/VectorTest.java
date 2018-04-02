@@ -17,7 +17,7 @@ package ol.layer;
 
 import ol.Feature;
 import ol.GenericFunction;
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.style.Style;
 
 /**
@@ -26,7 +26,7 @@ import ol.style.Style;
  * @author Tino Desjardins
  *
  */
-public class VectorTest extends GwtOL3BaseTestCase {
+public class VectorTest extends GwtOLBaseTestCase {
 
     @SuppressWarnings({ "static-method", "javadoc" })
     public void testVectorLayer() {

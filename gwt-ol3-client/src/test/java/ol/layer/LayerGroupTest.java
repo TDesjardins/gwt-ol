@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package ol.layer;
 
 import ol.Collection;
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.OLFactory;
 import ol.source.Vector;
 
@@ -27,7 +27,7 @@ import ol.source.Vector;
  * @author Tino Desjardins
  *
  */
-public class LayerGroupTest extends GwtOL3BaseTestCase {
+public class LayerGroupTest extends GwtOLBaseTestCase {
 
     @SuppressWarnings({ "static-method", "javadoc" })
     public void testLayerGroup() {

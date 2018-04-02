@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.interaction;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.Observable;
 
 /**
@@ -23,14 +23,13 @@ import ol.Observable;
  * @author Tino Desjardins
  *
  */
-public class ExtentTest extends GwtOL3BaseTestCase {
+public class ExtentTest extends GwtOLBaseTestCase {
 
     public void testExtent() {
 
-        
         injectUrlAndTest(() -> {
             Extent extent = new Extent();
-            
+
             assertNotNull(extent);
             assertTrue(extent instanceof Observable);
             assertTrue(extent instanceof Interaction);

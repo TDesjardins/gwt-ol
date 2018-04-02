@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,12 +32,11 @@ import ol.Feature;
  */
 @JsType(isNative = true)
 public class Vector extends Source {
-    
-    
+
     public Vector() {}
-    
+
     public Vector(VectorOptions vectorOptions) {}
-    
+
     /**
      * Add a single feature to the source. If you want to add a batch of
      * features at once, call {@link ol.source.Vector#addFeatures
@@ -146,7 +145,7 @@ public class Vector extends Source {
      *            Feature to remove.
      */
     public native void removeFeature(Feature feature);
-    
+
     /**
      * Events emitted by {@link ol.source.Vector} instances are instances of this
      * type.
@@ -155,6 +154,7 @@ public class Vector extends Source {
      */
     @JsType(isNative = true)
     public interface Event extends ol.events.Event {
+
         /**
          * The feature being added or removed.
          *
@@ -164,5 +164,5 @@ public class Vector extends Source {
         Feature getFeature();
 
     }
-    
+
 }

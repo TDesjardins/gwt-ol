@@ -19,7 +19,7 @@ import com.google.gwt.core.client.JsonUtils;
 import ol.Coordinate;
 import ol.Feature;
 import ol.FeatureOptions;
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.geom.LineString;
 
 /**
@@ -27,7 +27,7 @@ import ol.geom.LineString;
  * @author Tino Desjardins
  *
  */
-public class GeoJsonTest extends GwtOL3BaseTestCase {
+public class GeoJsonTest extends GwtOLBaseTestCase {
 
     private GeoJson geoJsonFormat;
 

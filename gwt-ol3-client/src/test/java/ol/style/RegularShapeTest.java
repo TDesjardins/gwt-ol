@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.style;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.style.RegularShape;
 import ol.style.RegularShapeOptions;
 
@@ -24,7 +24,7 @@ import ol.style.RegularShapeOptions;
  * @author mribeiro
  * @date 22/11/16.
  */
-public class RegularShapeTest extends GwtOL3BaseTestCase {
+public class RegularShapeTest extends GwtOLBaseTestCase {
 
     public void testRegularShape() {
 

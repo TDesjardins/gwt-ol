@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ import jsinterop.annotations.JsType;
 public class UrlTileOptions extends TileOptions {
 
     /**
-     * @param cacheSize	Cache size. Default is <code>2048</code>.
+     * @param cacheSize Cache size. Default is <code>2048</code>.
      */
     @JsProperty
     public native void setCacheSize(int cacheSize);
@@ -39,7 +39,7 @@ public class UrlTileOptions extends TileOptions {
     public native int getCacheSize();
 
     /**
-     * @param state	Source state.
+     * @param state Source state.
      */
     @JsProperty
     public native void setState(String state);
@@ -76,7 +76,7 @@ public class UrlTileOptions extends TileOptions {
 
     @JsProperty
     public native TileUrlFunction getTileUrlFunction();
-    
+
     /**
      * Return the URLs used for this source. When a tileUrlFunction is used
      * instead of url or urls, null will be returned.
@@ -86,8 +86,8 @@ public class UrlTileOptions extends TileOptions {
     @JsProperty
     public native String[] getUrls();
 
-    @JsProperty	
-  	public native String getUrl();
+    @JsProperty 
+    public native String getUrl();
 
     /**
      * Set the URL to use for requests.
