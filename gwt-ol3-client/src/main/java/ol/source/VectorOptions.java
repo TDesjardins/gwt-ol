@@ -44,13 +44,7 @@ public class VectorOptions extends SourceOptions {
 
     @JsProperty
     public native void setFormat(ol.format.Feature format);
-
-    @JsProperty
-    public native void setUrl(String url);
-    
-    @JsProperty
-    public native void setFormat(ol.format.Feature format);
-
+  
     @JsProperty
     public native void setFeatures(Collection<Feature> features);
 
