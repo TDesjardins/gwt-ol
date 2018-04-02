@@ -41,6 +41,58 @@ public class Extent implements JsArrayLike<Double> {
     public Extent(double minX, double minY, double maxX, double maxY) {}
 
     /**
+     * @param buffer the amount by which the extent should be buffered.
+     * @return extent increased by the provided value.
+     */
+    @JsOverlay
+    public final Extent buffer(double buffer) {
+        return buffer(this, buffer);
+    }
+
+    @JsMethod(name = "buffer", namespace = PACKAGE_EXTENT)
+    private static native Extent buffer(Extent extent, double buffer);
+
+    /**
+     * @param coordinate coordinate to check.
+     * @return true if the passed coordinate is contained or on the edge of the extent.
+     */
+    @JsOverlay
+    public final boolean containsCoordinate(Coordinate coordinate) {
+        return containsCoordinate(this, coordinate);
+    }
+
+    @JsMethod(name = "containsCoordinate", namespace = PACKAGE_EXTENT)
+    private static native boolean containsCoordinate(Extent extent, Coordinate coordinater);
+
+    /**
+     * Check if this extent contains another.
+     *
+     * @param extent extent to check.
+     * @return true if it lies completely within this extent, including if they share one or more edges.
+     */
+    @JsOverlay
+    public final boolean containsExtent(Extent extent) {
+        return containsExtent(this, extent);
+    }
+
+    @JsMethod(name = "containsExtent", namespace = PACKAGE_EXTENT)
+    private static native boolean containsExtent(Extent extent1, Extent extent2);
+
+    
+    /**
+     * @param x X coordinate.
+     * @param y Y coordinate.
+     * @return true if the passed coordinate is contained or on the edge of the extent.
+     */
+    @JsOverlay
+    public final boolean containsXY(double x, double y) {
+        return containsXY(this, x, y);
+    }
+
+    @JsMethod(name = "containsXY", namespace = PACKAGE_EXTENT)
+    private static native boolean containsXY(Extent extent, double x, double y);
+
+    /**
      * Constructs an instance.
      *
      * @param minX minimum coordinate X
