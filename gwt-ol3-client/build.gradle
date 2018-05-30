@@ -40,3 +40,8 @@ gwt {
         hasGwtTests = true
     }
 }
+
+test {
+     include '**/*Suite.class'
+     scanForTestClasses = false
+}
