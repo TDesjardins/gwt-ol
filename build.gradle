@@ -1,0 +1,65 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.wisepersist:gwt-gradle-plugin:1.0.6'
+        classpath 'com.google.code.findbugs:jsr305:3.0.0'
+        classpath 'com.google.elemental2:elemental2-core:1.0.0-RC1'
+        classpath 'com.google.elemental2:elemental2-dom:1.0.0-RC1'
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'gwt-base'
+    group = 'com.github.tdesjardins'
+    version = 'HEAD-SNAPSHOT'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        implementation 'com.google.elemental2:elemental2-core:1.0.0-RC1'
+        implementation 'com.google.elemental2:elemental2-dom:1.0.0-RC1'
+        testCompile "junit:junit:4.12"
+    }
+    
+    gwt {
+        gwtVersion='2.8.2'
+        maxHeapSize = "1024M"
+    }
+}
+
+project(':gwt-ol3-client') {
+
+    gwt {
+        test {
+            hasGwtTests = true
+        }
+    }
+
+    test {
+        include '**/*Suite.class'
+        scanForTestClasses = false
+    }
+
+    jar {
+        from sourceSets.main.allSource
+    }
+}
+
+project(':gwt-ol3-demo') {
+    apply plugin: 'gwt'
+
+    dependencies {
+        compile project(':gwt-ol3-client')
+    }
+
+    gwt {
+        modules 'com.github.tdesjardins.ol3.demo.GwtOLPlayground'
+        superDev {
+            //noPrecompile=true
+        }
+    }
+}
