@@ -135,12 +135,12 @@ public class SelectFeaturesExample implements Example {
         final Select selectFeature = new Select(selectOptions);
         map.addInteraction(selectFeature);
 
-        selectFeature.on("select", (event) -> {
+        selectFeature.on("select", (Select.Event event) -> {
 
-            Collection<Feature> selectedFeatures = selectFeature.getFeatures();
+            Feature[] selectedFeatures = event.getSelected();
 
-            if (selectedFeatures.getLength() > 0) {
-                Feature selectedFeature = selectedFeatures.item(0);
+            if (selectedFeatures.length > 0) {
+                Feature selectedFeature = selectedFeatures[0];
                 String output = "You selected feature with id '" + selectedFeature.getId() + "'"
                         + " and name '" + selectedFeature.get("name") + "'"
                         + " and geometry name '" + selectedFeature.getGeometryName() + "'"
