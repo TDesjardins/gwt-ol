@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,33 +41,33 @@ import ol.MapBrowserEvent;
 public class Select extends Interaction {
 
     public Select() {}
-    
+
     public Select(SelectOptions selectOptions) {}
-    
+
     @JsProperty
     public native void setOptions(SelectOptions options);
 
-	public native Collection<Feature> getFeatures();
-	
-	/**
-	 * Events emitted by {@link Select} instances are instances of this type.
-	 * 
-	 * @author Tino Desjardins
-	 *
-	 */
-	@JsType(isNative = true)
-	public interface Event extends ol.events.Event {
-	    
-	    @Nullable
-	    @JsProperty
-	    public Feature[] getSelected();
-	    
-	    @Nullable
-	    @JsProperty
-	    public Feature[] getDeselected();
-	    
-	    @JsProperty	    
-	    public MapBrowserEvent getMapBrowserEvent();
-	}
+    public native Collection<Feature> getFeatures();
+
+    /**
+     * Events emitted by {@link Select} instances are instances of this type.
+     *
+     * @author Tino Desjardins
+     *
+     */
+    @JsType(isNative = true)
+    public interface Event extends ol.events.Event {
+
+        @Nullable
+        @JsProperty
+        public Feature[] getSelected();
+
+        @Nullable
+        @JsProperty
+        public Feature[] getDeselected();
+
+        @JsProperty
+        public MapBrowserEvent getMapBrowserEvent();
+    }
 
 }
