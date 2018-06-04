@@ -53,7 +53,7 @@
                 <artifactId>gwt-maven-plugin</artifactId>
                 <version>1.0-rc-9</version>
                 <configuration>
-                    <moduleName>ol.GwtOL3</moduleName>
+                    <moduleName>ol.GwtOL</moduleName>
                 </configuration>
             </plugin>
         </plugins>
