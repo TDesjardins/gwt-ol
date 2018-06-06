@@ -5,8 +5,8 @@
     <artifactId>gwt-ol3-parent</artifactId>
     <version>HEAD-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>GWT OpenLayers 3</name>
-    <description>GWT JsInterop API for OpenLayers 3</description>
+    <name>GWT OpenLayers 3+</name>
+    <description>GWT JsInterop API for OpenLayers 3+</description>
     <url>https://github.com/TDesjardins/gwt-ol3</url>
 
     <inceptionYear>2014</inceptionYear>
