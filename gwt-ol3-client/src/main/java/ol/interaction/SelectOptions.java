@@ -138,4 +138,12 @@ public class SelectOptions implements Options {
     @JsProperty
     public native void setCondition(GenericFunction<MapBrowserEvent, Boolean> function);
 
+    /**
+     * Wrap the world horizontally on the selection overlay. Default is true.
+     *
+     * @param wrapX
+     */
+    @JsProperty
+    public native void setWrapX(boolean wrapX);
+
 }

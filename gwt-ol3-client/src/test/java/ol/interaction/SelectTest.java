@@ -19,7 +19,7 @@ import ol.GwtOLBaseTestCase;
 import ol.Observable;
 
 /**
- * 
+ *
  * @author Tino Desjardins
  *
  */
@@ -30,13 +30,14 @@ public class SelectTest extends GwtOLBaseTestCase {
         injectUrlAndTest(() -> {
 
             SelectOptions selectOptions = new SelectOptions();
+            selectOptions.setWrapX(true);
             Select select = new Select(selectOptions);
 
             assertNotNull(select);
             assertTrue(select instanceof Observable);
             assertTrue(select instanceof Interaction);
         });
- 
+
     }
 
 }
