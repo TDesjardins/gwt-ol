@@ -30,12 +30,18 @@ public class SelectTest extends GwtOLBaseTestCase {
         injectUrlAndTest(() -> {
 
             SelectOptions selectOptions = new SelectOptions();
+            selectOptions.setHitTolerance(2);
             selectOptions.setWrapX(true);
             Select select = new Select(selectOptions);
 
             assertNotNull(select);
             assertTrue(select instanceof Observable);
             assertTrue(select instanceof Interaction);
+            assertEquals(2, select.getHitTolerance());
+
+            select.setHitTolerance(0);
+            assertEquals(0, select.getHitTolerance());
+
         });
 
     }

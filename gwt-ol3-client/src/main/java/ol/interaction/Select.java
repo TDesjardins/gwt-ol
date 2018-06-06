@@ -50,6 +50,20 @@ public class Select extends Interaction {
     public native Collection<Feature> getFeatures();
 
     /**
+     * @return hit-detection tolerance
+     */
+    public native int getHitTolerance();
+
+    /**
+     * Hit-detection tolerance. Pixels inside the radius around the given position
+     * will be checked for features. This only works for the canvas renderer and
+     * not for WebGL. Default is 0.
+     *
+     * @param hitTolerance hit-detection tolerance
+     */
+    public native void setHitTolerance(int hitTolerance);
+
+    /**
      * Events emitted by {@link Select} instances are instances of this type.
      *
      * @author Tino Desjardins
