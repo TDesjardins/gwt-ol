@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,25 +25,25 @@ import ol.proj.Projection;
  * are in the view projection, but can be in any supported projection. By
  * default the control is shown in the top right corner of the map, but this can
  * be changed by using the css selector `.ol-mouse-position`.
- * 
+ *
  * @author Tino Desjardins
  */
 @JsType(isNative = true)
 public class MousePosition extends Control {
 
     public MousePosition() {}
-    
+
     public MousePosition(MousePositionOptions mousePositionOptions) {}
-    
-	/**
-     * 
+
+    /**
+     *
      * @param coordinateFormat Coordinate format function.
      */
     public native void setCoordinateFormat(GenericFunction<Coordinate, String> coordinateFormat);
 
     /**
      * Return the projection that is used to report the mouse position.
-     * 
+     *
      * @return {ol.proj.Projection|undefined} The projection to report mouse
      *         position in.
      * @observable
@@ -53,7 +53,7 @@ public class MousePosition extends Control {
 
     /**
      * Set the projection that is used to report the mouse position.
-     * 
+     *
      * @param projection
      *            The projection to report mouse position in.
      * @observable
