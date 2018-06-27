@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol;
+package ol.sphere;
 
+import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
+import ol.Coordinate;
 
 /**
  * Class to create objects that can be used with
@@ -31,19 +34,11 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class Sphere {
 
+    @JsOverlay
+    private static final String PACKAGE_SPHERE = "ol.sphere";
+
     /**
-     * @param radius
-     *            Radius.
-     */
-    public Sphere(double radius) {}
-    
-    /**
-     * Returns the geodesic area for a list of coordinates.
-     *
-     * [Reference](http://trs-new.jpl.nasa.gov/dspace/handle/2014/40409) Robert.
-     * G. Chamberlain and William H. Duquette, "Some Algorithms for Polygons on
-     * a Sphere", JPL Publication 07-03, Jet Propulsion Laboratory, Pasadena,
-     * CA, June 2007
+     * Get the spherical area of a geometry. This is the area (in meters) assuming that polygon edges are segments of great circles on a sphere.
      *
      * @param coordinates
      *            List of coordinates of a linear ring. If the ring is oriented
@@ -51,10 +46,14 @@ public class Sphere {
      *            negative.
      * @return {number} Area.
      */
-    public native double geodesicArea(ol.Coordinate[] coordinates);
+    @JsMethod(name = "getArea", namespace = PACKAGE_SPHERE)
+    public static native double getArea(ol.geom.Geometry geometry);
+
+    @JsMethod(name = "getArea", namespace = PACKAGE_SPHERE)
+    public static native double getArea(ol.geom.Geometry geometry, SphereMetricOptions sphereMetricOptions);
 
     /**
-     * Returns the distance from c1 to c2 using the haversine formula.
+     * Get the great circle distance (in meters) between two geographic coordinates
      *
      * @param coordinate1
      *            Coordinate 1.
@@ -62,5 +61,10 @@ public class Sphere {
      *            Coordinate 2.
      * @return {number} Haversine distance.
      */
-    public native double haversineDistance(ol.Coordinate coordinate1, ol.Coordinate coordinate2);
+    @JsMethod(name = "getDistance", namespace = PACKAGE_SPHERE)
+    public static native double getDistance(ol.Coordinate coordinate1, ol.Coordinate coordinate2);
+
+    @JsMethod(name = "getDistance", namespace = PACKAGE_SPHERE)
+    public static native double getDistance(ol.Coordinate coordinate1, ol.Coordinate coordinate2, SphereMetricOptions sphereMetricOptions);
+
 }

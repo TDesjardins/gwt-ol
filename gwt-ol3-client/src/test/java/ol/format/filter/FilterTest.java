@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,8 +34,8 @@ public class FilterTest extends GwtOLBaseTestCase {
             EqualTo equalTo = new EqualTo("attribute", "value");
             EqualTo equalTo2 = new EqualTo("attribute2", 1);
 
-            And andFilter = new And(equalTo, equalTo2);
-            assertNotNull(andFilter);
+            assertNotNull(equalTo);
+            assertNotNull(equalTo2);
 
             assertNotNull(Filter.and(equalTo, equalTo2));
 
@@ -68,7 +68,7 @@ public class FilterTest extends GwtOLBaseTestCase {
         });
     }
 
-    public void testEqualTo() {        
+    public void testEqualTo() {
         injectUrlAndTest(() -> {
 
             EqualTo equalTo = new EqualTo("attribute", "value");
@@ -136,7 +136,7 @@ public class FilterTest extends GwtOLBaseTestCase {
 
             IsBetween isBetween2 = Filter.between("attribute", 5, 10);
             assertTrue(isBetween2 instanceof IsBetween);
- 
+
         });
     }
 
@@ -189,13 +189,13 @@ public class FilterTest extends GwtOLBaseTestCase {
         injectUrlAndTest(() -> {
 
             EqualTo equalTo = new EqualTo("attribute", "value");
-            
+
             Not not = new Not(equalTo);
             assertNotNull(not);
 
             Not not2 = Filter.not(equalTo);
             assertTrue(not2 instanceof Not);
- 
+
         });
     }
 

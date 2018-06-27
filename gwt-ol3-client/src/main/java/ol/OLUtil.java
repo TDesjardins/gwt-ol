@@ -15,16 +15,14 @@
  *******************************************************************************/
 package ol;
 
-import javax.annotation.Nullable;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.ui.Widget;
 
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import elemental2.core.JsArray;
 import jsinterop.base.Js;
-
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.ui.Widget;
-
 import ol.event.EventListener;
 import ol.event.OLHandlerRegistration;
 import ol.events.Event;
@@ -37,6 +35,8 @@ import ol.proj.Projection;
 import ol.source.Source;
 import ol.source.Xyz;
 import ol.source.XyzOptions;
+import ol.sphere.Sphere;
+import ol.sphere.SphereMetricOptions;
 import ol.style.Style;
 import ol.tilegrid.TileGrid;
 import ol.tilegrid.XyzTileGridOptions;
@@ -193,21 +193,25 @@ public final class OLUtil {
     }-*/;
 
     /**
-     * Creates a sphere with radius equal to the semi-major axis of the WGS84
+     * Creates a sphere options with radius equal to the semi-major axis of the WGS84
      * ellipsoid.
-     * @return {@link Sphere}
+     * @return {@link SphereMetricOptions}
      */
-    public static Sphere createSphereWGS84() {
-        return new Sphere(EARTH_RADIUS_WGS84);
+    public static SphereMetricOptions createSphereOptionsWGS84() {
+        SphereMetricOptions sphereMetricOptions = new SphereMetricOptions();
+        sphereMetricOptions.setRadius(EARTH_RADIUS_WGS84);
+        return sphereMetricOptions;
     }
 
     /**
-     * Creates a sphere with radius equal to the semi-major axis of the normal
+     * Creates a sphere options with radius equal to the semi-major axis of the normal
      * ellipsoid.
-     * @return {@link Sphere}
+     * @return {@link SphereMetricOptions}
      */
-    public static Sphere createSphereNormal() {
-        return new Sphere(EARTH_RADIUS_NORMAL);
+    public static SphereMetricOptions createSphereOptionsNormal() {
+        SphereMetricOptions sphereMetricOptions = new SphereMetricOptions();
+        sphereMetricOptions.setRadius(EARTH_RADIUS_NORMAL);
+        return sphereMetricOptions;
     }
 
     /**
@@ -321,7 +325,7 @@ public final class OLUtil {
      *
      * @param extent
      * @return width of extent
-     * 
+     *
      * @deprecated Use {@link ol.Extent#getWidth()} instead.
      */
     @Deprecated
@@ -333,7 +337,7 @@ public final class OLUtil {
     *
     * @param extent
     * @return top left coordinate of the extent
-    * 
+    *
     * @deprecated Use {@link ol.Extent#getTopLeft()} instead.
     */
     @Deprecated
@@ -410,43 +414,11 @@ public final class OLUtil {
      *
      * @param geom
      *            geometry.
-     * @return geodesic area on success, else {@link Double#NaN}
+     * @return geodesic area
      */
     public static double geodesicArea(Polygon geom) {
-        // get coordinates and check that there are at least 2
-        Coordinate[][] coordinates = geom.getCoordinates();
-        if((coordinates != null) && (coordinates.length > 0)) {
-            // get area of outer ring
-            double area = geodesicArea(coordinates[0]);
-            // walk through inner rings
-            for(int i = 1; i < coordinates.length; i++) {
-                // if area is valid, subtract it from the outer ring's area
-                double holeArea = geodesicArea(coordinates[i]);
-                if(!Double.isNaN(holeArea)) {
-                    area -= holeArea;
-                }
-            }
-            return area;
-        }
-        return Double.NaN;
-    }
 
-    /**
-     * Returns the geodesic area in square meters of the given geometry using
-     * the haversine formula.
-     *
-     * @param coordinates
-     *            coordinates.
-     * @return geodesic area on success, else {@link Double#NaN}
-     */
-    private static double geodesicArea(Coordinate[] coordinates) {
-        // check that there are at least 2
-        if((coordinates != null) && (coordinates.length > 1)) {
-            Sphere sphere = createSphereNormal();
-            // only return positive area
-            return Math.abs(sphere.geodesicArea(coordinates));
-        }
-        return Double.NaN;
+        return Sphere.getArea(geom, createSphereOptionsNormal());
     }
 
     /**
@@ -462,12 +434,11 @@ public final class OLUtil {
         Coordinate[] coordinates = geom.getCoordinates();
         if((coordinates != null) && (coordinates.length > 1)) {
             // calculate the distance on every segment of the line and add it up
-            Sphere sphere = createSphereNormal();
             double distance = 0;
             for(int i = 0; i <= coordinates.length - 2; i++) {
-                Coordinate c1 = coordinates[i];
-                Coordinate c2 = coordinates[i + 1];
-                distance += sphere.haversineDistance(c1, c2);
+                Coordinate coordinate1 = coordinates[i];
+                Coordinate coordinate2 = coordinates[i + 1];
+                distance += Sphere.getDistance(coordinate1, coordinate2, createSphereOptionsNormal());
             }
             return distance;
         }

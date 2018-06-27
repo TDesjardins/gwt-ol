@@ -13,28 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol;
+package ol.sphere;
 
-import ol.sphere.Sphere;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+import ol.Options;
+import ol.proj.Projection;
 
 /**
- * Test for {@link Sphere}.
- *
- * @author Tino Desjardins
+ * Options for {@link ol.sphere.Sphere} methods.
  *
  */
-public class SphereTest extends GwtOLBaseTestCase {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class SphereMetricOptions implements Options {
 
-    public void testAttribution() {
+    /**
+     * @param projection Projection of the geometry. By default, the geometry is assumed to be in Web Mercator.
+     */
+    @JsProperty
+    public native void setProjection(Projection projection);
 
-        injectUrlAndTest(() -> {
-
-            //Sphere sphere = new Sphere(OLUtil.EARTH_RADIUS_NORMAL);
-
-            //assertNotNull(sphere);
-
-        });
-
-    }
+    /**
+     * @param radius Sphere radius. By default, the radius of the earth is used (Clarke 1866 Authalic Sphere).
+     */
+    @JsProperty
+    public native void setRadius(double radius);
 
 }
