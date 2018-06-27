@@ -130,7 +130,6 @@ public class Map extends Object {
      */
     public native Pixel getEventPixel(Event event);
 
-
     /**
      * Get the map interactions. Modifying this collection changes the interactions associated with the map.
      * Interactions are used for e.g. pan, zoom and rotate.
@@ -332,11 +331,11 @@ public class Map extends Object {
      * @param targetId id
      */
     public native void setTarget(String targetId);
-    
+
     /**
      * The the container element for the map. If not specified at construction time,
      * ol.Map#setTarget must be called for the map to be rendered.
-     * 
+     *
      * @param targetElement target element
      */
     public native void setTarget(Element targetElement);
@@ -446,7 +445,7 @@ public class Map extends Object {
     	final HandlerRegistration handlerMap = OLUtil.observe(this, "moveend", listener);
 
         View view = getView();
-        
+
         if (view == null)
         	return handlerMap;
 

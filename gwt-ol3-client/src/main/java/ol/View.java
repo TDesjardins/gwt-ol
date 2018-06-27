@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -80,7 +80,7 @@ import ol.proj.Projection;
 public class View extends Object {
 
     public View() {}
-    
+
     public View(ViewOptions viewOptions) {}
 
     @JsOverlay
@@ -100,31 +100,31 @@ public class View extends Object {
 
     /**
      * Animates the view.
-     * 
+     *
      * @param animationOptions
      */
     public native void animate(AnimationOptions... animationOptions);
-    
+
     /**
      * Fit the given extent based on the given map size and border.
      * The size is pixel dimensions of the box to fit the extent into. In most
      * cases you will want to use the map size, that is `map.getSize()`. Takes
      * care of the map angle.
-     * 
+     *
      * @param extent {ol.Extent} extent.
      */
     public native void fit(ol.Extent extent);
-    
+
     /**
      * Fit the given geometry based on the given map size and border.
      * The size is pixel dimensions of the box to fit the extent into. In most
      * cases you will want to use the map size, that is `map.getSize()`. Takes
      * care of the map angle.
-     * 
+     *
      * @param geometry {ol.geom.SimpleGeometry} geometry.
      */
     public native void fit(ol.geom.SimpleGeometry geometry);
-    
+
     /**
      * Fit the given extent on the given map size and border.
      * The size is pixel dimensions of the box to fit the extent into. In most
@@ -137,7 +137,7 @@ public class View extends Object {
      *            options
      */
     public native void fit(ol.Extent extent, ViewFitOptions opt_options);
-    
+
     /**
      * Fit the given geometry on the given map size and border.
      * The size is pixel dimensions of the box to fit the extent into. In most
@@ -163,25 +163,25 @@ public class View extends Object {
      * @return The maximum resolution of the view.
      */
     public native double getMaxResolution();
-    
+
     /**
      * Get the maximum zoom level for the view.
      * @return The maximum zoom level.
      */
     public native double getMaxZoom();
-    
+
     /**
      * Get the minimum resolution of the view.
      * @return The minimum resolution of the view.
      */
     public native double getMinResolution();
-    
+
     /**
      * Get the minimum zoom level for the view.
      * @return The minimum zoom level.
      */
     public native double getMinZoom();
-        
+
     /**
      * Get the view projection.
      *
@@ -209,7 +209,7 @@ public class View extends Object {
      * @return Zoom.
      */
     public native double getZoom();
-    
+
     /**
      * Get the zoom level for a resolution.
      * @param resolution
@@ -249,7 +249,7 @@ public class View extends Object {
      *            The maximum zoom level.
      */
     public native void setMaxZoom (double zoom);
-  
+
     /**
      * Set the resolution for this view.
      *
