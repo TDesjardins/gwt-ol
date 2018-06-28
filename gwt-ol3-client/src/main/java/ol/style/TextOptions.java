@@ -107,7 +107,7 @@ public class TextOptions implements Options {
 	@JsProperty
 	public native void setPlacement(String placement);
 
-		/**
+	/**
 	 * Allow text to exceed the width of the polygon at the label position or the length of the path that it follows. Default is false
 	 * @param overflow boolean
 	 */
