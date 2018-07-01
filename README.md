@@ -1,4 +1,4 @@
-GWT-OpenLayers 3
+GWT-OpenLayers 3+
 ==================
 
 [![Build Status](https://travis-ci.org/TDesjardins/gwt-ol3.svg?branch=gwt%2F2.8)](https://travis-ci.org/TDesjardins/gwt-ol3)
