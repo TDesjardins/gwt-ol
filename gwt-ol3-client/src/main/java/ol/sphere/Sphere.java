@@ -40,31 +40,44 @@ public class Sphere {
     /**
      * Get the spherical area of a geometry. This is the area (in meters) assuming that polygon edges are segments of great circles on a sphere.
      *
-     * @param coordinates
-     *            List of coordinates of a linear ring. If the ring is oriented
-     *            clockwise, the area will be positive, otherwise it will be
-     *            negative.
-     * @return {number} Area.
+     * @param geometry geometry
+     * @return area.
      */
     @JsMethod(name = "getArea", namespace = PACKAGE_SPHERE)
     public static native double getArea(ol.geom.Geometry geometry);
 
+    /**
+     * Get the spherical area of a geometry. This is the area (in meters) assuming that polygon edges are segments of great circles on a sphere.
+     *
+     * @param geometry geometry
+     * @param sphereMetricOptions Options for the area calculation. By default, geometries are assumed to be in 'EPSG:3857'. You can change this
+     * by providing a projection option.
+     * @return area
+     */
     @JsMethod(name = "getArea", namespace = PACKAGE_SPHERE)
     public static native double getArea(ol.geom.Geometry geometry, SphereMetricOptions sphereMetricOptions);
 
     /**
-     * Get the great circle distance (in meters) between two geographic coordinates
+     * Get the great circle distance (in meters) between two geographic coordinates.
      *
      * @param coordinate1
      *            Coordinate 1.
      * @param coordinate2
      *            Coordinate 2.
-     * @return {number} Haversine distance.
+     * @return {number} great circle distance (in meters).
      */
     @JsMethod(name = "getDistance", namespace = PACKAGE_SPHERE)
     public static native double getDistance(ol.Coordinate coordinate1, ol.Coordinate coordinate2);
 
+    /**
+     * Get the great circle distance (in meters) between two geographic coordinates.
+     *
+     * @param coordinate1 Coordinate 1
+     * @param coordinate2 Coordinate 2
+     * @param radius The sphere radius to use. Defaults to the Earth's mean radius using the WGS84 ellipsoid.
+     * @return great circle distance (in meters)
+     */
     @JsMethod(name = "getDistance", namespace = PACKAGE_SPHERE)
-    public static native double getDistance(ol.Coordinate coordinate1, ol.Coordinate coordinate2, SphereMetricOptions sphereMetricOptions);
+    public static native double getDistance(ol.Coordinate coordinate1, ol.Coordinate coordinate2, double radius);
 
 }

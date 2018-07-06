@@ -438,7 +438,7 @@ public final class OLUtil {
             for(int i = 0; i <= coordinates.length - 2; i++) {
                 Coordinate coordinate1 = coordinates[i];
                 Coordinate coordinate2 = coordinates[i + 1];
-                distance += Sphere.getDistance(coordinate1, coordinate2, createSphereOptionsNormal());
+                distance += Sphere.getDistance(coordinate1, coordinate2, EARTH_RADIUS_NORMAL);
             }
             return distance;
         }
