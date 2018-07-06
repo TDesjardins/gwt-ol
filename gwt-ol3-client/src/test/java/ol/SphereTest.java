@@ -15,7 +15,10 @@
  *******************************************************************************/
 package ol;
 
+import ol.geom.Polygon;
+import ol.proj.Projection;
 import ol.sphere.Sphere;
+import ol.sphere.SphereMetricOptions;
 
 /**
  * Test for {@link Sphere}.
@@ -25,13 +28,33 @@ import ol.sphere.Sphere;
  */
 public class SphereTest extends GwtOLBaseTestCase {
 
-    public void testAttribution() {
+    public void testSphere() {
 
         injectUrlAndTest(() -> {
 
-            //Sphere sphere = new Sphere(OLUtil.EARTH_RADIUS_NORMAL);
+            Coordinate[][] coordinates = new Coordinate[1][4];
 
-            //assertNotNull(sphere);
+            Coordinate point1 = new Coordinate(13.36, 52.53);
+            Coordinate point2 = new Coordinate(13.36, 52.51);
+            Coordinate point3 = new Coordinate(13.37, 52.52);
+            Coordinate point4 = new Coordinate(13.36, 52.53);
+
+            coordinates[0][0] = point1;
+            coordinates[0][1] = point2;
+            coordinates[0][2] = point3;
+            coordinates[0][3] = point4;
+
+            SphereMetricOptions sphereMetricOptions = new SphereMetricOptions();
+            sphereMetricOptions.setProjection(Projection.get("EPSG:4326"));
+            sphereMetricOptions.setRadius(OLUtil.EARTH_RADIUS_NORMAL);
+
+            double area = Sphere.getArea(new Polygon(coordinates), sphereMetricOptions);
+
+            assertTrue(area > 0);
+
+            double distance = Sphere.getDistance(point1, point2, OLUtil.EARTH_RADIUS_NORMAL);
+
+            assertTrue(distance > 0);
 
         });
 
