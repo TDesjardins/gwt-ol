@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -130,28 +130,9 @@ public class MapOptions implements Options {
      */
     @JsProperty
     public native void setLoadTilesWhileInteracting(boolean loadTilesWhileInteracting);
-    
+
     @JsProperty
     public native boolean getLoadTilesWhileInteracting();
-
-    /**
-     * The map logo. A logo to be displayed on the map at all times.
-     *  To disable the map logo, set the option to false. By default, the OpenLayers 3 logo is shown.
-     *
-     * @param value
-     *              boolean
-     */
-    @JsProperty
-    public native void setLogo(boolean value);
-
-    /**
-     * The map logo. A logo to be displayed on the map at all times.
-     * If a string is provided, it will be set as the image source of the logo.
-     * @param value
-     *              String
-     */
-    @JsProperty
-    public native void setLogo(String value);
 
     /**
      * @param moveTolerance The minimum distance in pixels the cursor must move to be detected as a map move event instead of a click.

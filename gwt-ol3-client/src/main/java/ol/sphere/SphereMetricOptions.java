@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,38 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol;
+package ol.sphere;
 
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import ol.Options;
+import ol.proj.Projection;
 
 /**
- * @author <a href="mailto:peter.zanetti@tol.bz.it">Peter Zanetti</a>.
+ * Options for {@link ol.sphere.Sphere} methods.
+ *
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class LogoOptions implements Options {
+public class SphereMetricOptions implements Options {
 
     /**
-     * {@link #setHref}
-     *
-     * @param href Link url for the logo. Will be followed when the logo is clicked
+     * @param projection Projection of the geometry. By default, the geometry is assumed to be in Web Mercator.
      */
     @JsProperty
-    public native void setHref(String href);
-
-    @JsProperty
-    public native String getHref();
+    public native void setProjection(Projection projection);
 
     /**
-     * {@link #setSrc}
-     *
-     * @param src Image src for the logo.
+     * @param radius Sphere radius. By default, the radius of the earth is used (Clarke 1866 Authalic Sphere).
      */
     @JsProperty
-    public native void setSrc(String src);
-
-    @JsProperty
-    public native String getSrc();
+    public native void setRadius(double radius);
 
 }

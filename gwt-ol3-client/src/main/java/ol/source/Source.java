@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package ol.source;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-import ol.LogoOptions;
 import ol.proj.Projection;
 
 /**
@@ -42,13 +41,6 @@ public class Source extends ol.Object {
      */
     @JsProperty
     private native String[] getAttributions();
-
-    /**
-     * Get the logo of the source.
-     *
-     * @return {@link LogoOptions}
-     */
-    public native LogoOptions getLogo();
 
     /**
      * Get the projection of the source.

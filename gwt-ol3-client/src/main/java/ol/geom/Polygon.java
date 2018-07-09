@@ -41,7 +41,7 @@ public class Polygon extends SimpleGeometryMultiCoordinates {
      *            vertices.
      * @return {ol.geom.Polygon} The "circular" polygon.
      */
-    public static native Polygon circular(ol.Sphere sphere, ol.Coordinate center, double radius);
+    public static native Polygon circular(ol.sphere.Sphere sphere, ol.Coordinate center, double radius);
 
     /**
      * Create an approximation of a circle on the surface of a sphere.
@@ -57,7 +57,7 @@ public class Polygon extends SimpleGeometryMultiCoordinates {
      *            is `32`.
      * @return {ol.geom.Polygon} The "circular" polygon.
      */
-    public static native Polygon circular(ol.Sphere sphere, ol.Coordinate center, double radius, int opt_n);
+    public static native Polygon circular(ol.sphere.Sphere sphere, ol.Coordinate center, double radius, int opt_n);
 
     /**
      * Create a regular polygon from a circle.

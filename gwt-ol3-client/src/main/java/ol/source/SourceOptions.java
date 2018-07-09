@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
-import ol.LogoOptions;
 import ol.Options;
 import ol.proj.Projection;
 
@@ -54,12 +53,6 @@ public class SourceOptions implements Options {
      */
     @JsProperty
     public native String[] getAttributions();
-
-    @JsProperty
-    public native void setLogo(LogoOptions logo);
-
-    @JsProperty
-    public native LogoOptions getLogo();
 
     /**
      * Set the Projection. Default is EPSG:3857.
