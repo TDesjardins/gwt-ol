@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,22 +68,6 @@ public final class OLUtil {
     }
 
     /**
-     * Adds a {@link Style} to the given array of {@link Style}s.
-     *
-     * @param styles
-     *            array of {@link Style}s (will be changed)
-     * @param style
-     *            {@link Style}
-     * @return the changed array
-     *
-     * @deprecated Use {@link OLUtil#pushItem(T[], T)} instead
-     */
-    @Deprecated
-    public static ol.style.Style[] addStyle(Style[] styles, Style style) {
-        return pushItem(styles, style);
-    };
-
-    /**
      * Adds an item to the array.
      *
      * @param array array (will be changed)
@@ -98,22 +82,6 @@ public final class OLUtil {
     }
 
     /**
-     * Combines two arrays of {@link Style}s.
-     *
-     * @param array1
-     *            first array of {@link Style}s
-     * @param array2
-     *            second array of {@link Style}s
-     * @return the combined array
-     *
-     * @deprecated Use {@link OLUtil#concatArrays(T[], T[])} instead
-     */
-    @Deprecated
-    public static ol.style.Style[] addStyles(Style[] array1, Style[] array2) {
-        return concatArrays(array1, array2);
-    };
-
-    /**
      * Combines two arrays.
      *
      * @param array1 first array
@@ -124,27 +92,6 @@ public final class OLUtil {
         JsArray<T> jsArray = Js.cast(array1);
         return jsArray.concat(array2);
     }
-
-    /**
-     * Create an approximation of a circle on the surface of a sphere.
-     * @param sphere
-     *            The sphere.
-     * @param center
-     *            Center (`[lon, lat]` in degrees).
-     * @param radius
-     *            The great-circle distance from the center to the polygon
-     *            vertices.
-     * @param opt_n
-     *            Optional number of vertices for the resulting polygon. Default
-     *            is `32`.
-     * @return {ol.geom.Polygon} The "circular" polygon.
-     *
-     * @deprecated Use {@link ol.geom.Polygon#circular(Sphere, Coordinate, double, int)} instead.
-     */
-    @Deprecated
-    public static Polygon circular(Sphere sphere, ol.Coordinate center, double radius, int opt_n) {
-        return Polygon.circular(sphere, center, radius, opt_n);
-    };
 
     /**
      * Combines two {@link Style}s into an array of {@link Style}s.
@@ -320,30 +267,6 @@ public final class OLUtil {
     private static native TileGrid getTileGrid(ol.source.Source source) /*-{
 		return source.tileGrid || null;
     }-*/;
-
-    /**
-     *
-     * @param extent
-     * @return width of extent
-     *
-     * @deprecated Use {@link ol.Extent#getWidth()} instead.
-     */
-    @Deprecated
-    public static double getWidth(Extent extent) {
-        return extent.getWidth();
-    };
-
-    /**
-    *
-    * @param extent
-    * @return top left coordinate of the extent
-    *
-    * @deprecated Use {@link ol.Extent#getTopLeft()} instead.
-    */
-    @Deprecated
-    public static Coordinate getTopLeft(Extent extent) {
-        return extent.getTopLeft();
-    };
 
     /**
      * Gets the current zoom level of the given {@link View}.
@@ -530,44 +453,6 @@ public final class OLUtil {
     public static void setName(Base layer, String name) {
         layer.set("name", name);
     }
-
-    /**
-     * Set the style for the feature. This can be a single style object, an
-     * array of styles, or a function that takes a resolution and returns an
-     * array of styles. If it is `null` the feature has no style (a `null`
-     * style).
-     *
-     * @param feature
-     *            {@link ol.Feature}
-     * @param style
-     *            Style for this feature.
-     *
-     * @deprecated Use {@link ol.Feature#setStyles(Style[])} instead.
-     */
-    @Deprecated
-    public static void setStyle(ol.Feature feature, @Nullable Style[] style) {
-        feature.setStyles(style);
-    };
-
-    /**
-     * Set the style for features. This can be a single style object, an array
-     * of styles, or a function that takes a feature and resolution and returns
-     * an array of styles. If it is `undefined` the default style is used. If it
-     * is `null` the layer has no style (a `null` style), so only features that
-     * have their own styles will be rendered in the layer. See {@link ol.style}
-     * for information on the default style.
-     *
-     * @param vectorLayer
-     *            Layer
-     * @param style
-     *            Layer style.
-     *
-     * @deprecated Use {@link ol.layer.Vector#setStyles(Style[])} instead.
-     */
-    @Deprecated
-    public static void setStyle(ol.layer.Vector vectorLayer, @Nullable Style[] style) {
-        vectorLayer.setStyles(style);
-    };
 
     /**
      * Transforms coordinates from source projection to destination projection.
