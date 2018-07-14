@@ -417,8 +417,9 @@ public final class OLUtil {
      * @return geodesic area
      */
     public static double geodesicArea(Polygon geom) {
-
-        return Sphere.getArea(geom, createSphereOptionsNormal());
+        SphereMetricOptions sphereMetricOptions =  OLUtil.createSphereOptionsNormal();
+        sphereMetricOptions.setProjection(Projection.get("EPSG:4326"));
+        return Sphere.getArea(geom, sphereMetricOptions);
     }
 
     /**
@@ -430,19 +431,9 @@ public final class OLUtil {
      * @return geodesic length on success, else {@link Double#NaN}
      */
     public static double geodesicLength(SimpleGeometryCoordinates geom) {
-        // get coordinates and check that there are at least 2
-        Coordinate[] coordinates = geom.getCoordinates();
-        if((coordinates != null) && (coordinates.length > 1)) {
-            // calculate the distance on every segment of the line and add it up
-            double distance = 0;
-            for(int i = 0; i <= coordinates.length - 2; i++) {
-                Coordinate coordinate1 = coordinates[i];
-                Coordinate coordinate2 = coordinates[i + 1];
-                distance += Sphere.getDistance(coordinate1, coordinate2, EARTH_RADIUS_NORMAL);
-            }
-            return distance;
-        }
-        return Double.NaN;
+        SphereMetricOptions sphereMetricOptions =  OLUtil.createSphereOptionsNormal();
+        sphereMetricOptions.setProjection(Projection.get("EPSG:4326"));
+        return Sphere.getLength(geom, sphereMetricOptions);
     }
 
     /**
