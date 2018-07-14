@@ -80,4 +80,26 @@ public class Sphere {
     @JsMethod(name = "getDistance", namespace = PACKAGE_SPHERE)
     public static native double getDistance(ol.Coordinate coordinate1, ol.Coordinate coordinate2, double radius);
 
+    /**
+     * Get the spherical length of a geometry. This length is the sum of the great circle distances between coordinates. For polygons, the length
+     * is the sum of all rings. For points, the length is zero. For multi-part geometries, the length is the sum of the length of each part.
+     *
+     * @param geometry geometry
+     * @return spherical length
+     */
+    @JsMethod(name = "getLength", namespace = PACKAGE_SPHERE)
+    public static native double getLength(ol.geom.Geometry geometry);
+
+    /**
+     * Get the spherical length of a geometry. This length is the sum of the great circle distances between coordinates. For polygons, the length
+     * is the sum of all rings. For points, the length is zero. For multi-part geometries, the length is the sum of the length of each part.
+     *
+     * @param geometry geometry
+     * @param sphereMetricOptions Options for the length calculation. By default, geometries are assumed to be in 'EPSG:3857'. You can change
+     * this by providing a projection option.
+     * @return spherical length
+     */
+    @JsMethod(name = "getLength", namespace = PACKAGE_SPHERE)
+    public static native double getLength(ol.geom.Geometry geometry, SphereMetricOptions sphereMetricOptions);
+
 }

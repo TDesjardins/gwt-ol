@@ -48,13 +48,19 @@ public class SphereTest extends GwtOLBaseTestCase {
             sphereMetricOptions.setProjection(Projection.get("EPSG:4326"));
             sphereMetricOptions.setRadius(OLUtil.EARTH_RADIUS_NORMAL);
 
-            double area = Sphere.getArea(new Polygon(coordinates), sphereMetricOptions);
+            Polygon polygon = new Polygon(coordinates);
+
+            double area = Sphere.getArea(polygon, sphereMetricOptions);
 
             assertTrue(area > 0);
 
             double distance = Sphere.getDistance(point1, point2, OLUtil.EARTH_RADIUS_NORMAL);
 
             assertTrue(distance > 0);
+
+            double length = Sphere.getLength(polygon, sphereMetricOptions);
+
+            assertTrue(length > 0);
 
         });
 
