@@ -18,6 +18,23 @@ If you want to build the application without Maven please consider the following
 
 Live example [here](https://tdesjardins.github.io/gwt-ol3/).
 
+## Project Setup
+
+### Maven dependency
+```xml
+<dependency>
+  <groupId>com.github.tdesjardins</groupId>
+  <artifactId>gwt-ol3</artifactId>
+  <version>6.0.0</version>
+</dependency>
+```
+
+### GWT module
+
+```xml
+  <inherits name='ol.GwtOL'/>
+```
+
 ## Download
 
 Releases are deployed to [the Central Repository][dl].
