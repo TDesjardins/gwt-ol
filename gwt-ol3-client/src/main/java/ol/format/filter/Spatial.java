@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,28 +20,28 @@ import jsinterop.annotations.JsType;
 import ol.geom.Geometry;
 
 /**
- * Represents a spatial operator to test whether a geometry-valued 
+ * Represents a spatial operator to test whether a geometry-valued
  * property relates to a given geometry.
- * 
+ *
  * @author hmgn
  *
  */
 @JsType(isNative = true)
 public abstract class Spatial extends Filter {
 
-	/**
-	 * Constructor
-	 * 
-	 * @param tagName The XML tag name for this filter.
-	 * @param geometryName Geometry name to use.
-	 * @param geometry Geometry.
-	 * @param srsName SRS name. No srsName attribute will be set on geometries when this is not provided.
-	 */
-	public Spatial(String tagName, String geometryName, Geometry geometry, String srsName){
-		super(tagName);
-	}
-	
-	@JsProperty
-	public native void setGeometry(Geometry geometry);
+    /**
+     * Constructor
+     *
+     * @param tagName The XML tag name for this filter.
+     * @param geometryName Geometry name to use.
+     * @param geometry Geometry.
+     * @param srsName SRS name. No srsName attribute will be set on geometries when this is not provided.
+     */
+    public Spatial(String tagName, String geometryName, Geometry geometry, String srsName) {
+        super(tagName);
+    }
+
+    @JsProperty
+    public native void setGeometry(Geometry geometry);
 
 }
