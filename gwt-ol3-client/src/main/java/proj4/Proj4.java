@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package proj4;
 import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
@@ -51,6 +52,12 @@ public class Proj4 {
      */
     @JsMethod(name = "defs", namespace = PACKAGE_PROJ4)
     public static native void defs(String srid, String proj4Text);
+
+    /**
+     * @return Proj4 instance
+     */
+    @JsProperty(name = "proj4", namespace = JsPackage.GLOBAL)
+    public static native Proj4 get();
 
     /**
      * Projects from WGS84 to first projection.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,8 @@ public class Proj4Test extends GwtProj4BaseTestCase {
     public void testProj4() {
 
         this.injectUrlAndTest(() -> {
+
+           assertNotNull(Proj4.get());
 
            Proj4.defs(EPSG_3068, "+proj=cass +lat_0=52.41864827777778 +lon_0=13.62720366666667 +x_0=40000 +y_0=10000 +ellps=bessel +datum=potsdam +units=m +no_defs");
 
