@@ -25,6 +25,7 @@ public enum OLExampleType {
 
     AnimationExample(new AnimationExample()),
     ArcGISExample(new ArcGISExample()),
+    BingMapsExample(new BingMapsExample()),
     ClusterExample(new ClusterExample()),
     ConstrainedExample(new ConstrainedViewExample()),
     GeoJSONExample(new GeoJsonExample()),
