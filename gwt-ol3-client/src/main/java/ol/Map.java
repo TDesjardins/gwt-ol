@@ -232,39 +232,39 @@ public class Map extends Object {
 
     /**
      * Detect if features intersect a pixel on the viewport.
-	 *
-	 * @param pixel Pixel.
+     *
+     * @param pixel Pixel.
      */
-	public native boolean hasFeatureAtPixel(Pixel pixel);
+    public native boolean hasFeatureAtPixel(Pixel pixel);
 
     /**
      * Detect if features intersect a pixel on the viewport. Layers included in the detection
-	 * can be configured through {@link FeatureAtPixelOptions#setLayerFilter(GenericFunction)}.
-	 *
-	 * @param pixel Pixel.
-	 * @param options Optional options.
+     * can be configured through {@link FeatureAtPixelOptions#setLayerFilter(GenericFunction)}.
+     *
+     * @param pixel Pixel.
+     * @param options Optional options.
      */
-	public native boolean hasFeatureAtPixel(Pixel pixel, FeatureAtPixelOptions options);
+    public native boolean hasFeatureAtPixel(Pixel pixel, FeatureAtPixelOptions options);
 
-	/**
-	 * Detect features that intersect a pixel on the viewport, and execute a
-	 * callback with each intersecting feature.
-	 *
-	 * @param pixel
-	 * @param callback
-	 */
-	public native Feature forEachFeatureAtPixel(Pixel pixel, GenericFunction<Feature, ?> callback);
+    /**
+     * Detect features that intersect a pixel on the viewport, and execute a
+     * callback with each intersecting feature.
+     *
+     * @param pixel
+     * @param callback
+     */
+    public native Feature forEachFeatureAtPixel(Pixel pixel, GenericFunction<Feature, ?> callback);
 
-	/**
-	 * Detect features that intersect a pixel on the viewport, and execute a
-	 * callback with each intersecting feature. Layers included in the detection
-	 * can be configured through {@link FeatureAtPixelOptions#setLayerFilter(GenericFunction)}.
-	 *
-	 * @param pixel Pixel.
-	 * @param callback Feature callback. The callback will be called with feature or render feature at the pixel as argument. To stop detection, callback functions can return a truthy value.
-	 * @param options Optional options.
-	 */
-	public native Feature forEachFeatureAtPixel(Pixel pixel, GenericFunction<Feature, ?> callback, FeatureAtPixelOptions options);
+    /**
+     * Detect features that intersect a pixel on the viewport, and execute a
+     * callback with each intersecting feature. Layers included in the detection
+     * can be configured through {@link FeatureAtPixelOptions#setLayerFilter(GenericFunction)}.
+     *
+     * @param pixel Pixel.
+     * @param callback Feature callback. The callback will be called with feature or render feature at the pixel as argument. To stop detection, callback functions can return a truthy value.
+     * @param options Optional options.
+     */
+    public native Feature forEachFeatureAtPixel(Pixel pixel, GenericFunction<Feature, ?> callback, FeatureAtPixelOptions options);
 
     /**
      * Remove the given control from the map.
@@ -442,25 +442,25 @@ public class Map extends Object {
     @JsOverlay
     public final HandlerRegistration addMapMoveListener(final EventListener<MapEvent> listener) {
 
-    	final HandlerRegistration handlerMap = OLUtil.observe(this, "moveend", listener);
+        final HandlerRegistration handlerMap = OLUtil.observe(this, "moveend", listener);
 
         View view = getView();
 
         if (view == null)
-        	return handlerMap;
+            return handlerMap;
 
-    	// if we have a view, fire events while the map is moving
+        // if we have a view, fire events while the map is moving
         // try to set up an event handler for the change of the view center
         // as "moveend" will be only fired when the map stops moving
 
-    	final HandlerRegistration handlerView = OLUtil.observe(view, "change:center", event -> {
+        final HandlerRegistration handlerView = OLUtil.observe(view, "change:center", event -> {
             // create an artificial move event
-    	    ol.events.Event e2 = OLUtil.createLinkedEvent(event, "move", Map.this);
+            ol.events.Event e2 = OLUtil.createLinkedEvent(event, "move", Map.this);
             MapEvent mapEvent = OLUtil.initMapEvent(e2, Map.this);
             listener.onEvent(mapEvent);
         });
 
-    	// return a handler registration, which detaches both event handlers
+        // return a handler registration, which detaches both event handlers
         return () -> {
             handlerMap.removeHandler();
             handlerView.removeHandler();

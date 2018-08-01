@@ -44,27 +44,27 @@ public class MapOptions implements Options {
     @JsProperty
     public native Collection<Control> getControls();
 
-	/**
-	 * @param pixelRatio The ratio between physical pixels and device-independent pixels (dips) on the device.
-	 * If <code>undefined</code> then it gets set by using <code>window.devicePixelRatio</code>.
-	 */
+    /**
+     * @param pixelRatio The ratio between physical pixels and device-independent pixels (dips) on the device.
+     * If <code>undefined</code> then it gets set by using <code>window.devicePixelRatio</code>.
+     */
     @JsProperty
     public native void setPixelRatio(double pixelRatio);
 
     @JsProperty
     public native double getPixelRatio();
 
-	/**
-	 * Interactions that are initially added to the map. If not specified,
-	 * ol.interaction.defaults() is used.
-	 *
-	 * @param interactions
-	 */
-	@JsProperty
-	public native void setInteractions(Collection<Interaction> interactions);
+    /**
+     * Interactions that are initially added to the map. If not specified,
+     * ol.interaction.defaults() is used.
+     *
+     * @param interactions
+     */
+    @JsProperty
+    public native void setInteractions(Collection<Interaction> interactions);
 
-	@JsProperty
-	public native Collection<Interaction> getInteractions();
+    @JsProperty
+    public native Collection<Interaction> getInteractions();
 
     /**
      * The element to listen to keyboard events on. This determines when the {@link ol.interaction.KeyboardPan} and {@link ol.interaction.KeyboardZoom} interactions trigger.
@@ -110,17 +110,17 @@ public class MapOptions implements Options {
      */
     @JsProperty
     public native void setLayers(Collection<Base> layers);
-    
+
     @JsProperty
     public native Collection<Base> getLayers();
-    
+
     /**
      * @param loadTilesWhileAnimating When set to <code>true</code>, tiles will be loaded during animations.
      * This may improve the user experience, but can also make animations stutter on devices with slow memory. Default is <code>false</code>.
      */
     @JsProperty
     public native void setLoadTilesWhileAnimating(boolean loadTilesWhileAnimating);
-    
+
     @JsProperty
     public native boolean getLoadTilesWhileAnimating();
 
