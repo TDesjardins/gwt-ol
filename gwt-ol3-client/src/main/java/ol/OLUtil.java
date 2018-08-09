@@ -370,7 +370,7 @@ public final class OLUtil {
      *            {@link Map}
      * @return {@link MapEvent}
      */
-    public static native MapEvent initMapEvent(Event e, Map map) /*-{
+    public static native MapEvent initMapEvent(Event e, PluggableMap map) /*-{
 		e.map = map;
 		e.framestate = null;
 		return e;
