@@ -15,6 +15,8 @@
  *******************************************************************************/
 package com.github.tdesjardins.ol3.demo.client.example;
 
+import com.github.tdesjardins.ol3.demo.client.constants.DemoConstants;
+
 import ol.Coordinate;
 import ol.source.Xyz;
 import ol.source.XyzOptions;
@@ -57,7 +59,7 @@ public class ConstrainedViewExample implements Example {
         View view = new View();
 
         Coordinate centerCoordinate = new Coordinate(-121.1, 47.5);
-        Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857");
+        Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, DemoConstants.EPSG_4326, DemoConstants.EPSG_3857);
 
         view.setCenter(transformedCenterCoordinate);
         view.setZoom(12);

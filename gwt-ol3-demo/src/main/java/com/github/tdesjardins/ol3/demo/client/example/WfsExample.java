@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package com.github.tdesjardins.ol3.demo.client.example;
 
 import com.github.desjardins.elemental.XMLSerializer;
+import com.github.tdesjardins.ol3.demo.client.constants.DemoConstants;
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -79,7 +80,7 @@ public class WfsExample implements Example {
         WfsWriteFeatureOptions wfsWriteFeatureOptions = new WfsWriteFeatureOptions();
 
         String[] featureTypes = {"water_areas"};
-        wfsWriteFeatureOptions.setSrsName("EPSG:3857");
+        wfsWriteFeatureOptions.setSrsName(DemoConstants.EPSG_3857);
         wfsWriteFeatureOptions.setFeaturePrefix("osm");
         wfsWriteFeatureOptions.setFeatureNS("http://openstreemap.org");
         wfsWriteFeatureOptions.setFeatureTypes(featureTypes);

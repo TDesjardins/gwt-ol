@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  *******************************************************************************/
 package com.github.tdesjardins.ol3.demo.client.example;
 
+import com.github.tdesjardins.ol3.demo.client.constants.DemoConstants;
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
 
 import ol.Collection;
@@ -51,7 +52,7 @@ public class MapGuideExample implements Example {
     public void show(String exampleId) {
 
         // create a projection
-        Projection projection = Projection.get("EPSG:4326");
+        Projection projection = Projection.get(DemoConstants.EPSG_4326);
 
         // create a MapGuide params
         ImageMapGuideParams imageMapGuideParams = new ImageMapGuideParams();
