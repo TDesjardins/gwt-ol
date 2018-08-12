@@ -34,6 +34,17 @@ Live example [here](https://tdesjardins.github.io/gwt-ol3/).
 ```xml
   <inherits name='ol.GwtOL'/>
 ```
+optional: add this line for proj4js support
+```xml
+  <inherits name="proj4.GwtProj4"/>
+```
+
+### Resources
+
+```html
+  <link href="//cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v[x.x.x]/css/ol.css" rel="stylesheet" type="text/css">
+  <script src="//cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v[x.x.x]/build/ol.js" type="text/javascript"></script>
+```
 
 ## Download
 
