@@ -216,13 +216,13 @@ public final class OLUtil {
      * Gets a layer by the given name.
      *
      * @param map
-     *            {@link Map}
+     *            {@link PluggableMap}
      * @param name
      *            name of the layer
      * @return {@link Layer} on success, else null
      */
     @Nullable
-    public static Base getLayerByName(Map map, String name) {
+    public static Base getLayerByName(PluggableMap map, String name) {
         CollectionWrapper<Base> layers = new CollectionWrapper<Base>(map.getLayers());
         for(Base layer : layers) {
             if(name.equals(getName(layer))) {
@@ -279,12 +279,12 @@ public final class OLUtil {
     }-*/;
 
     /**
-     * Gets the current zoomlevel of the given {@link Map}.
+     * Gets the current zoomlevel of the given {@link PluggableMap}.
      * @param map
-     *            {@link Map}
+     *            {@link PluggableMap}
      * @return zoomlevel on success, else {@link Double#NaN}
      */
-    public static double getZoomLevel(Map map) {
+    public static double getZoomLevel(PluggableMap map) {
         View v = map.getView();
         // try to get zoom
         double z = getZoom(v);
@@ -431,14 +431,14 @@ public final class OLUtil {
     }
 
     /**
-     * Sets the container for the given {@link Map} to the given {@link Widget}.
+     * Sets the container for the given {@link PluggableMap} to the given {@link Widget}.
      *
      * @param map
-     *            {@link Map}
+     *            {@link PluggableMap}
      * @param target
      *            {@link Widget}
      */
-    public static void setMapTarget(Map map, Widget target) {
+    public static void setMapTarget(PluggableMap map, Widget target) {
         map.setTarget(target.getElement());
     }
 
