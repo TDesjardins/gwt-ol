@@ -72,7 +72,7 @@ public class MapOptions implements Options {
      * If this option is not specified, the element the library listens to keyboard events on is the map target
      * (i.e. the user-provided div for the map). If this is not <code>document</code> the target element needs to be focused for key events to be emitted,
      * requiring that the target element has a <code>tabindex</code> attribute.
-     * 
+     *
      * @param target The id of the element to listen keyboard events on.
      */
     @JsProperty
@@ -84,7 +84,7 @@ public class MapOptions implements Options {
      * If this option is not specified, the element the library listens to keyboard events on is the map target
      * (i.e. the user-provided div for the map). If this is not <code>document</code> the target element needs to be focused for key events to be emitted,
      * requiring that the target element has a <code>tabindex</code> attribute.
-     * 
+     *
      * @param target The element to listen keyboard events on.
      */
     @JsProperty
@@ -96,7 +96,7 @@ public class MapOptions implements Options {
      * If this option is not specified, the element the library listens to keyboard events on is the map target
      * (i.e. the user-provided div for the map). If this is not <code>document</code> the target element needs to be focused for key events to be emitted,
      * requiring that the target element has a <code>tabindex</code> attribute.
-     * 
+     *
      * @param target The document to listen keyboard events on.
      */
     @JsProperty
@@ -105,7 +105,7 @@ public class MapOptions implements Options {
     /**
      * Layers. If this is not defined, a map with no layers will be rendered. Note that layers are rendered in the order supplied,
      * so if you want, for example, a vector layer to appear on top of a tile layer, it must come after the tile layer.
-     * 
+     *
      * @param layers Layers.
      */
     @JsProperty
@@ -155,8 +155,8 @@ public class MapOptions implements Options {
 
     /**
      * Defines container element for the map.
-     * If not specified at construction time, {@link ol.Map#setTarget} must be called for the map to be rendered.
-     * 
+     * If not specified at construction time, {@link ol.PluggableMap#setTarget} must be called for the map to be rendered.
+     *
      * @param target The id of the container element for the map.
      */
     @JsProperty
@@ -164,8 +164,8 @@ public class MapOptions implements Options {
 
     /**
      * Defines container element for the map.
-     * If not specified at construction time, {@link ol.Map#setTarget} must be called for the map to be rendered.
-     * 
+     * If not specified at construction time, {@link ol.PluggableMap#setTarget} must be called for the map to be rendered.
+     *
      * @param target The container element for the map.
      */
     @JsProperty

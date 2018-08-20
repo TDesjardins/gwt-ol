@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import ol.events.Event;
 
 /**
  * Events emitted as map browser events are instances of this type. See
- * {@link ol.Map} for which events trigger a map browser event.
+ * {@link ol.PluggableMap} for which events trigger a map browser event.
  *
  * @author sbaumhekel
  */
@@ -53,7 +53,7 @@ public interface MapBrowserEvent extends MapEvent {
      */
     @JsProperty
     Pixel getPixel();
-    
+
     /**
      * The original browser event.
      *
@@ -61,4 +61,5 @@ public interface MapBrowserEvent extends MapEvent {
      */
     @JsProperty
     Event getOriginalEvent();
+
 }
