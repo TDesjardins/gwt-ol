@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package ol.interaction;
 import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
-import ol.Map;
+import ol.PluggableMap;
 
 /**
  * Abstract base class; normally only used for creating subclasses and not
@@ -69,7 +69,7 @@ public abstract class Interaction extends ol.Object {
      *
      * @return associated with this interaction
      */
-    public native Map getMap();
+    public native PluggableMap getMap();
 
     /**
      * Activate or deactivate the interaction.
