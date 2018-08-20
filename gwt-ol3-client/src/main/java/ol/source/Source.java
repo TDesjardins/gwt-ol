@@ -80,12 +80,4 @@ public class Source extends ol.Object {
     @JsProperty(name = "attributions")
     private native void setAttributionValues(String[] attributions);
 
-    /**
-     * Set the projection of the source.
-     * 
-     * @param projection
-     *            Projection.
-     */
-    public native void setProjection(Projection projection);
-
 }
