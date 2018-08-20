@@ -367,7 +367,7 @@ public final class OLUtil {
      * @param e
      *            base {@link Event}
      * @param map
-     *            {@link Map}
+     *            {@link PluggableMap}
      * @return {@link MapEvent}
      */
     public static native MapEvent initMapEvent(Event e, PluggableMap map) /*-{
