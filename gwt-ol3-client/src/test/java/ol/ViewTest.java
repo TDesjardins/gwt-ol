@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ public class ViewTest extends GwtOLBaseTestCase {
     private boolean centerChanged = false;
     private boolean resolutionChanged = false;
     private boolean rotationChanged = false;
-    
+
     public void testView() {
 
         injectUrlAndTest(() -> {
@@ -41,6 +41,25 @@ public class ViewTest extends GwtOLBaseTestCase {
 
             assertNotNull(view);
             assertTrue(view instanceof Object);
+
+            Extent calculatedExtent = view.calculateExtent(new Size(100, 100));
+            assertNotNull(calculatedExtent);
+
+            view.fit(calculatedExtent);
+
+            view.cancelAnimations();
+
+            view.centerOn(new Coordinate(660000, 190000), new Size(100, 100), new Pixel(25, 25));
+
+            assertFalse(view.getAnimating());
+
+            assertFalse(view.getInteracting());
+
+            view.getResolutionForExtent(calculatedExtent);
+
+            view.getResolutionForExtent(calculatedExtent, new Size(100, 100));
+
+            view.getResolutionForZoom(5);
 
         });
 

@@ -106,6 +106,20 @@ public class View extends Object {
     public native void animate(AnimationOptions... animationOptions);
 
     /**
+     * Cancel any ongoing animations.
+     */
+    public native void cancelAnimations();
+
+    /**
+     * Center on coordinate and view position.
+     *
+     * @param coordinate Coordinate.
+     * @param size Box pixel size.
+     * @param position Position on the view to center on.
+     */
+    public native void centerOn(Coordinate coordinate, Size size, Pixel position);
+
+    /**
      * Fit the given extent based on the given map size and border.
      * The size is pixel dimensions of the box to fit the extent into. In most
      * cases you will want to use the map size, that is `map.getSize()`. Takes
@@ -152,11 +166,21 @@ public class View extends Object {
     public native void fit(ol.geom.SimpleGeometry geometry, ViewFitOptions opt_options);
 
     /**
+     * @return if the view is being animated.
+     */
+    public native boolean getAnimating();
+
+    /**
      * Get the view center.
      *
      * @return {ol.Coordinate|undefined} The center of the view.
      */
     public native Coordinate getCenter();
+
+    /**
+     * @return if the user is interacting with the view, such as panning or zooming.
+     */
+    public native boolean getInteracting();
 
     /**
      * Get the maximum resolution of the view.
@@ -195,6 +219,38 @@ public class View extends Object {
      * @return The resolution of the view.
      */
     public native double getResolution();
+
+    /**
+     * Get the resolution for a provided extent (in map units) and size (in pixels).
+     *
+     * @param extent Extent.
+     * @return the resolution at which the provided extent will render at the given size.
+     */
+
+    /**
+     * Get the resolution for a zoom level.
+     *
+     * @param zoom Zoom level.
+     * @return the view resolution for the provided zoom level.
+     */
+    public native double getResolutionForZoom(double zoom);
+
+    /**
+     * Get the resolution for a provided extent (in map units) and size (in pixels).
+     *
+     * @param extent Extent.
+     * @return the resolution at which the provided extent will render at the given size.
+     */
+    public native double getResolutionForExtent(Extent extent);
+
+    /**
+     * Get the resolution for a provided extent (in map units) and size (in pixels).
+     *
+     * @param extent Extent.
+     * @param size Box pixel size.
+     * @return the resolution at which the provided extent will render at the given size.
+     */
+    public native double getResolutionForExtent(Extent extent, Size size);
 
     /**
      * Get the view rotation.
