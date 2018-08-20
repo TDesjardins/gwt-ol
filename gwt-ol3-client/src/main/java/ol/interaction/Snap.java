@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package ol.interaction;
 
 import jsinterop.annotations.JsType;
 import ol.Feature;
-import ol.Map;
 
 /**
  *
@@ -35,7 +34,7 @@ import ol.Map;
 public class Snap extends Interaction {
 
     public Snap(SnapOptions snapOptions) {}
-    
+
     /**
      * Add a feature to the collection of features that we may snap to.
      *
@@ -49,12 +48,5 @@ public class Snap extends Interaction {
      * @param feature
      */
     public native void removeFeature(Feature feature);
-
-    /**
-     * Get the map associated with this interaction.
-     *
-     * @return map
-     */
-    public native Map getMap();
 
 }
