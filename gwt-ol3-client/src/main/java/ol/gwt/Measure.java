@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@ package ol.gwt;
 import com.google.gwt.dom.client.Element;
 
 import ol.Feature;
-import ol.Map;
 import ol.OLFactory;
 import ol.OLUtil;
+import ol.PluggableMap;
 import ol.event.EventListener;
 import ol.event.MeasureEvent;
 import ol.event.MeasureListener;
@@ -47,7 +47,7 @@ public class Measure {
     private boolean eventListenerNeedsCleanup;
     private boolean isActive;
     private MeasureListener listener;
-    private final Map map;
+    private final PluggableMap map;
     private ol.layer.Vector persistOverlay;
     private Projection proj;
     private Feature sketch;
@@ -57,9 +57,9 @@ public class Measure {
      * Constructs an instance.
      *
      * @param map
-     *            {@link Map} to measure on
+     *            {@link PluggableMap} to measure on
      */
-    public Measure(Map map) {
+    public Measure(PluggableMap map) {
         this.map = map;
     }
 
@@ -164,7 +164,7 @@ public class Measure {
 
         // set up projection to be used
         proj = map.getView().getProjection();
-        
+
         map.addInteraction(draw);
         // set up event handlers
         OLUtil.observe(draw, "drawstart", new EventListener<Draw.Event>() {
