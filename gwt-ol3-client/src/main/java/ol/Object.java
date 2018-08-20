@@ -28,7 +28,7 @@ import jsinterop.annotations.JsType;
  * Classes that inherit from this have pre-defined properties, to which you can
  * add your owns. The pre-defined properties are listed in this documentation as
  * 'Observable Properties', and have their own accessors; for example,
- * {@link ol.Map} has a `target` property, accessed with `getTarget()` and
+ * {@link ol.PluggableMap} has a `target` property, accessed with `getTarget()` and
  * changed with `setTarget()`. Not all properties are however settable. There
  * are also general-purpose accessors `get()` and `set()`. For example,
  * `get('target')` is equivalent to `getTarget()`.

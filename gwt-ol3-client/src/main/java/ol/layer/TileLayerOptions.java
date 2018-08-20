@@ -19,7 +19,6 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
-import ol.Map;
 import ol.PluggableMap;
 
 /**
@@ -38,7 +37,7 @@ public class TileLayerOptions extends LayerOptions {
      * useful for temporary layers. The standard way to add a layer to a map and
      * have it managed by the map is to use {@link ol.PluggableMap#addLayer(Base)}.
      *
-     * @param map {@link Map}
+     * @param map {@link ol.PluggableMap}
      */
     @JsProperty
     public native void setMap(PluggableMap map);
