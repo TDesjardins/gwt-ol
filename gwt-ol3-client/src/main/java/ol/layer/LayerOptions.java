@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import ol.source.Source;
 
 /**
  * Layer options
- * 
+ *
  * @author Tino Desjardins
  *
  */
@@ -35,7 +35,7 @@ public class LayerOptions implements Options {
     /**
      * The bounding extent for layer rendering. The layer will not be rendered
      * outside of this extent.
-     * 
+     *
      * @param extent extent
      */
     @JsProperty
@@ -44,7 +44,7 @@ public class LayerOptions implements Options {
     /**
      * The maximum resolution (exclusive) below which this layer will be
      * visible.
-     * 
+     *
      * @param maxResolution maximum resolution
      */
     @JsProperty
@@ -52,7 +52,7 @@ public class LayerOptions implements Options {
 
     /**
      * The minimum resolution (inclusive) at which this layer will be visible.
-     * 
+     *
      * @param minResolution minimum resolution
      */
     @JsProperty
@@ -60,7 +60,7 @@ public class LayerOptions implements Options {
 
     /**
      * Opacity (0, 1). Default is 1.
-     * 
+     *
      * @param opacity opacity
      */
     @JsProperty
@@ -68,7 +68,7 @@ public class LayerOptions implements Options {
 
     /**
      * Source for this layer. Required.
-     * 
+     *
      * @param source {@link Source}
      */
     @JsProperty
@@ -76,7 +76,7 @@ public class LayerOptions implements Options {
 
     /**
      * Visibility. Default is true (visible).
-     * 
+     *
      * @param visible visible?
      */
     @JsProperty
@@ -85,10 +85,10 @@ public class LayerOptions implements Options {
     /**
      * The z-index for layer rendering. At rendering time, the layers will be
      * ordered, first by Z-index and then by position. The default Z-index is 0.
-     * 
+     *
      * @param zIndex z-index
      */
     @JsProperty
     public native void setZIndex(int zIndex);
-    
+
 }
