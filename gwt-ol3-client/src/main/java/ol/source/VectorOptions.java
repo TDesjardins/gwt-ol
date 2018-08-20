@@ -66,15 +66,4 @@ public class VectorOptions extends SourceOptions {
     @JsProperty
     public native void setUseSpatialIndex(boolean useSpatialIndex);
 
-    /**
-     * Wrap the world horizontally. Default is true. For vector editing across
-     * the -180° and 180° meridians to work properly, this should be set to
-     * false. The resulting geometry coordinates will then exceed the world
-     * bounds.
-     * 
-     * @param wrapX wrap?
-     */
-    @JsProperty
-    public native void setWrapX(boolean wrapX);
-
 }

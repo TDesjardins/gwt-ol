@@ -27,7 +27,7 @@ import ol.proj.Projection;
  * Source options.
  *
  * @author Tino Desjardins
- * 
+ *
  * @see https://openlayers.org/en/latest/apidoc/ol.source.Source.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
@@ -48,7 +48,7 @@ public class SourceOptions implements Options {
 
     /**
      * Get the attributions of the source.
-     * 
+     *
      * @return Attributions.
      */
     @JsProperty
@@ -64,5 +64,16 @@ public class SourceOptions implements Options {
 
     @JsProperty
     public native Projection getProjection();
+
+    /**
+     * Wrap the world horizontally. Default is true. For vector editing across
+     * the -180° and 180° meridians to work properly, this should be set to
+     * false. The resulting geometry coordinates will then exceed the world
+     * bounds.
+     *
+     * @param wrapX wrap?  Default is true
+     */
+    @JsProperty
+    public native void setWrapX(boolean wrapX);
 
 }

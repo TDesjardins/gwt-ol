@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -28,7 +28,7 @@ public class ClusterOptions extends SourceOptions {
 
   /**
    * Minimum distance in pixels between clusters. Default is 20.
-   * 
+   *
    * @return number | undefined
    */
   @JsProperty
@@ -42,7 +42,7 @@ public class ClusterOptions extends SourceOptions {
 
   /**
    * Format.
-   * 
+   *
    * @return {@link ol.format.Feature}
    */
   @JsProperty
@@ -65,16 +65,5 @@ public class ClusterOptions extends SourceOptions {
    */
   @JsProperty
   public native void setSource(Vector source);
-
-  /**
-   * Wrap the world horizontally. Default is true. For vector editing across the -180° and 180°
-   * meridians to work properly, this should be set to false. The resulting geometry coordinates
-   * will then exceed the world bounds.
-   * 
-   * @param WrapX. Default is true
-   */
-  @JsProperty
-  public native void setWrapX(boolean wrapX);
-
 
 }
