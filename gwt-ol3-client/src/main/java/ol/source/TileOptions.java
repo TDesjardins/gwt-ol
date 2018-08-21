@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ public class TileOptions extends SourceOptions {
      */
     @JsProperty
     public native TileGrid getTileGrid();
-    
+
     /**
      * Set the {@link TileGrid}.
      *
@@ -46,5 +46,5 @@ public class TileOptions extends SourceOptions {
      */
     @JsProperty
     public native void setTileGrid(TileGrid tileGrid);
-    
+
 }
