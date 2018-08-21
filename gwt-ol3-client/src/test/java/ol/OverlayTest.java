@@ -25,7 +25,7 @@ public class OverlayTest extends GwtOLBaseTestCase {
     public void testOverlay() {
 
         injectUrlAndTest(() -> {
-            
+
             OverlayOptions overlayOptions = new OverlayOptions();
 
             assertNotNull(overlayOptions);
@@ -33,10 +33,10 @@ public class OverlayTest extends GwtOLBaseTestCase {
             Overlay overlay = new Overlay(overlayOptions);
 
             assertNotNull(overlay);
-            
+
             assertTrue(overlay instanceof Observable);
             assertTrue(overlay instanceof Object);
-            
+
         });
 
     }
