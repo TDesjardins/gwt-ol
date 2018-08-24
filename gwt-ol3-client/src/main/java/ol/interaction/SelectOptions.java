@@ -25,6 +25,7 @@ import ol.MapBrowserEvent;
 import ol.Options;
 import ol.SelectFilterFunction;
 import ol.layer.Layer;
+import ol.style.StyleFunction;
 
 /**
  * Options for interaction {@link Select}.
@@ -53,7 +54,7 @@ public class SelectOptions implements Options {
      * @param styleFunction
      */
     @JsProperty
-    public native void setStyle(GenericFunction<?, ?> styleFunction);
+    public native void setStyle(StyleFunction styleFunction);
 
     /**
      *

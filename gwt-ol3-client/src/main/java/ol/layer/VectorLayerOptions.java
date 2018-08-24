@@ -19,10 +19,9 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
-import ol.Feature;
-import ol.GenericFunction;
 import ol.PluggableMap;
 import ol.style.Style;
+import ol.style.StyleFunction;
 
 /**
  * Vector layer options.
@@ -69,7 +68,7 @@ public class VectorLayerOptions extends LayerOptions {
     public native void setStyle(Style[] style);
 
     @JsProperty
-    public native void setStyle(GenericFunction<Feature, Style[]> style);
+    public native void setStyle(StyleFunction style);
 
     /**
      * When set to true, feature batches will be recreated during animations.
