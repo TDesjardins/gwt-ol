@@ -16,8 +16,8 @@
 package ol.format;
 
 import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsType;
 import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 import ol.Options;
 import ol.proj.Projection;
 
@@ -35,6 +35,14 @@ public class GeoJsonOptions implements Options {
     @JsProperty
     public native void setDefaultDataProjection(Projection projection);
 
+    /**
+     * Projection for features read or written by the format. Options passed 
+     * to read or write methods will take precedence.
+     * @param projection
+     */
+    @JsProperty
+    public native void setFeatureProjection(Projection projection);
+    
     /**
      * @param geometryName
      */
