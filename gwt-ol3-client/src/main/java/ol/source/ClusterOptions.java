@@ -16,7 +16,9 @@ package ol.source;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import ol.GenericFunction;
 import ol.format.Feature;
+import ol.geom.Point;
 
 /**
  * Vector source options.
@@ -65,5 +67,15 @@ public class ClusterOptions extends SourceOptions {
    */
   @JsProperty
   public native void setSource(Vector source);
+  
+  /**
+   * Function that takes an module:ol/Feature as argument and returns an 
+   * module:ol/geom/Point as cluster calculation point for the feature.
+   * When a feature should not be considered for clustering, the function 
+   * should return null.
+   * @param geometryFunction 
+   */
+  @JsProperty
+  public native void setGeometryFunction(GenericFunction<ol.Feature, Point> geometryFunction);
 
 }
