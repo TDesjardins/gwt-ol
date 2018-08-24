@@ -16,9 +16,9 @@
 package ol.layer;
 
 import ol.Feature;
-import ol.GenericFunction;
 import ol.GwtOLBaseTestCase;
 import ol.style.Style;
+import ol.style.StyleFunction;
 
 /**
  * A test case for {@link ol.layer.Vector}.
@@ -51,12 +51,12 @@ public class VectorTest extends GwtOLBaseTestCase {
             assertTrue(vectorLayer.getStyles() instanceof Style[]);
             assertTrue(vectorLayer.getStyles().length == 2);
 
-            vectorLayer.setStyleFunction((Feature feature) -> {
+            vectorLayer.setStyleFunction((Feature feature, double resolution) -> {
                 return null;
             });
 
             assertTrue(vectorLayer.getStyle() == null);
-            assertTrue(vectorLayer.getStyleFunction() instanceof GenericFunction);
+            assertTrue(vectorLayer.getStyleFunction() instanceof StyleFunction);
 
         });
 

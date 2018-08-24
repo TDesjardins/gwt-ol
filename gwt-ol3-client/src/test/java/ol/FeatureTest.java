@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package ol;
 
 import ol.style.Style;
+import ol.style.StyleFunction;
 
 /**
  * Test for {@link ol.Feature}.
@@ -51,18 +52,18 @@ public class FeatureTest extends GwtOLBaseTestCase {
             Style[] styles = {new Style(), new Style()};
 
             feature.setStyles(styles);
-            
+
             assertTrue(feature.getStyle() instanceof Style);
             assertTrue(feature.getStyles() instanceof Style[]);
             assertTrue(feature.getStyles().length == 2);
 
-            feature.setStyleFunction((Double resolution) -> {
+            feature.setStyleFunction((Feature currentFeature, double resolution) -> {
                 return null;
             });
 
             assertTrue(feature.getStyle() == null);
-            assertTrue(feature.getStyleFunction() instanceof GenericFunction);
-            
+            assertTrue(feature.getStyleFunction() instanceof StyleFunction);
+
         });
 
     }

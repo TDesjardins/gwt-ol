@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import jsinterop.annotations.JsType;
 
 import ol.geom.Geometry;
 import ol.style.Style;
+import ol.style.StyleFunction;
 
 /**
  * A vector object for geographic features with a geometry and other attribute
@@ -66,16 +67,17 @@ public class Feature extends Object {
     /**
      * Clone this feature. If the original feature has a geometry it is also
      * cloned. The feature id is not set in the clone.
-     * 
+     *
      * @return {ol.Feature} The clone.
      */
+
     public native Feature clone();
 
     /**
      * Get the feature's default geometry. A feature may have any number of
      * named geometries. The "default" geometry (the one that is rendered by
      * default) is set when calling {@link ol.Feature#setGeometry}.
-     * 
+     *
      * @return {ol.geom.Geometry|undefined} The default geometry for the
      *         feature.
      */
@@ -84,7 +86,7 @@ public class Feature extends Object {
     /**
      * Get the name of the feature's default geometry. By default, the default
      * geometry is named `geometry`.
-     * 
+     *
      * @return {string} Get the property name associated with the default
      *         geometry for this feature.
      */
@@ -94,7 +96,7 @@ public class Feature extends Object {
      * Get the feature identifier. This is a stable identifier for the feature
      * and is either set when reading data from a remote source or set
      * explicitly by calling {@link ol.Feature#setId}.
-     * 
+     *
      * @return {number|string|undefined} Id.
      */
     public native String getId();
@@ -102,7 +104,7 @@ public class Feature extends Object {
     /**
      * Get the feature's style. This return for this method depends on what was
      * provided to the {@link ol.Feature#setStyle} method.
-     * 
+     *
      * @return {ol.style.Style|Array.<ol.style.Style>| ol.FeatureStyleFunction}
      *         The feature style.
      */
@@ -114,9 +116,9 @@ public class Feature extends Object {
      */
     @JsOverlay
     public final Style getStyle() {
-        
+
         java.lang.Object nativeStyle = this.getNativeStyle();
-        
+
         if (nativeStyle instanceof Style[]) {
             Style[] styles = (Style[])nativeStyle;
 
@@ -127,7 +129,7 @@ public class Feature extends Object {
         } else if (nativeStyle instanceof Style) {
             return (Style)nativeStyle;
         }
-        
+
         return null;
     }
 
@@ -154,12 +156,12 @@ public class Feature extends Object {
     /**
      * @return The feature's style function.
      */
-    public native GenericFunction<Double, Style[]> getStyleFunction();
+    public native StyleFunction getStyleFunction();
 
     /**
      * Set the default geometry for the feature. This will update the property
      * with the name returned by {@link ol.Feature#getGeometryName}.
-     * 
+     *
      * @param geometry
      *            The new geometry.
      */
@@ -169,7 +171,7 @@ public class Feature extends Object {
      * Set the property name to be used when getting the feature's default
      * geometry. When calling {@link ol.Feature#getGeometry}, the value of the
      * property with this name will be returned.
-     * 
+     *
      * @param name
      *            The property name of the default geometry.
      */
@@ -180,7 +182,7 @@ public class Feature extends Object {
      * when requesting features or comparing identifiers returned from a remote
      * source. The feature id can be used with the
      * {@link ol.source.Vector#getFeatureById} method.
-     * 
+     *
      * @param id
      *            The feature id.
      */
@@ -192,7 +194,7 @@ public class Feature extends Object {
     /**
      * Set the style for the feature. If it is `null` the feature has no
      * style (a `null` style).
-     * 
+     *
      * @param style Style for this feature.
      */
     public native void setStyle(Style style);
@@ -210,7 +212,7 @@ public class Feature extends Object {
      * @param styleFunction
      */
     @JsOverlay
-    public final void setStyleFunction(GenericFunction<Double, Style[]> styleFunction) {
+    public final void setStyleFunction(StyleFunction styleFunction) {
         setNativeStyle(styleFunction);
     }
 
@@ -218,11 +220,11 @@ public class Feature extends Object {
      * Function that takes a resolution and returns an
      * array of styles. If it is `null` the feature has no style (a `null`
      * style).
-     * 
+     *
      * @param styleFunction
-     * @deprecated Use {@link ol.Feature#setStyleFunction(GenericFunction)} instead.
+     * @deprecated Use {@link ol.Feature#setStyleFunction(StyleFunction)} instead.
      */
     @Deprecated
-    public native void setStyle(GenericFunction<Double, Style[]> styleFunction);
+    public native void setStyle(StyleFunction styleFunction);
 
 }
