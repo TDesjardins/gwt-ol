@@ -22,6 +22,7 @@ import ol.Collection;
 import ol.Feature;
 import ol.GenericFunction;
 import ol.Options;
+import ol.style.StyleFunction;
 
 /**
  * Interaction for modifying feature geometries.
@@ -68,7 +69,7 @@ public class ModifyOptions implements Options {
 	 * @param styleFunction
 	 */
 	@JsProperty
-	public native void setStyle(GenericFunction<?, ?> styleFunction);
+	public native void setStyle(StyleFunction styleFunction);
 
 	/**
 	 * The features the interaction works on. Required.
