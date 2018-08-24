@@ -139,14 +139,18 @@ public class Extent implements JsArrayLike<Double> {
     private static native boolean equals(Extent extent1, Extent extent2);
 
     /**
-     * Modify an extent to include another extent.
-     * 
-     * @param extent1
-     * @param extent2
-     * @return 
+     * Modify this extent to include another extent.
+     *
+     * @param extent the extent that will be included.
+     * @return a reference to this (extended) extent
      */
+    @JsOverlay
+    public final Extent extend(Extent extent) {
+        return extend(this, extent);
+    }
+
     @JsMethod(name = "extend", namespace = PACKAGE_EXTENT)
-    public static native Extent extend(Extent extent1, Extent extent2);
+    private static native Extent extend(Extent extent1, Extent extent2);
 
     /**
      * @return the area of the extent.

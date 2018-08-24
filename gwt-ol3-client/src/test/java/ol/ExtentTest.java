@@ -137,4 +137,27 @@ public class ExtentTest extends GwtOLBaseTestCase {
 
     }
 
+    public void testExtend() {
+
+        injectUrlAndTest(() -> {
+
+            Extent extent = new Extent(100, 50, 150, 110);
+            assertNotNull(extent);
+
+            Extent extentToInclude = new Extent(110, 50, 150, 120);
+            assertNotNull(extentToInclude);
+
+            double areaBefore = extent.getArea();
+
+            Extent referencedExtent = extent.extend(extentToInclude);
+
+            double areaAfter = extent.getArea();
+
+            assertTrue(areaAfter > areaBefore);
+            assertEquals(referencedExtent, extent);
+
+        });
+
+    }
+
 }
