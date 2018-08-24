@@ -24,7 +24,6 @@ import ol.Collection;
 import ol.Coordinate;
 import ol.Feature;
 import ol.FeatureOptions;
-import ol.GenericFunction;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
@@ -48,6 +47,7 @@ import ol.source.XyzOptions;
 import ol.style.Circle;
 import ol.style.CircleOptions;
 import ol.style.Style;
+import ol.style.StyleFunction;
 import ol.style.StyleOptions;
 import ol.style.Text;
 import ol.style.TextOptions;
@@ -94,10 +94,10 @@ public class ClusterExample implements Example {
         // create vector layer
         VectorLayerOptions vectorLayerOptions = new VectorLayerOptions();
         vectorLayerOptions.setSource(clusterSource);
-        vectorLayerOptions.setStyle(new GenericFunction<Feature, Style[]>() {
+        vectorLayerOptions.setStyle(new StyleFunction() {
 
             @Override
-            public Style[] call(Feature cluster) {
+            public Style[] createStyle(Feature cluster, double resolution) {
                 // create style
                 List<Style> style = new ArrayList<>();
 
