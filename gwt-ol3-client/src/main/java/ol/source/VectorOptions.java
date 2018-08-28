@@ -66,4 +66,12 @@ public class VectorOptions extends SourceOptions {
     @JsProperty
     public native void setUseSpatialIndex(boolean useSpatialIndex);
 
+    /**
+     * The loader function used to load features, from a remote source for example.
+     * If this is not set and url is set, the source will create and use an XHR feature loader.
+     * 
+     * @param featureLoader 
+     */
+    @JsProperty
+    public native void setLoader(FeatureLoader featureLoader);
 }
