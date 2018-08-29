@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ public class IconOptions implements Options {
      */
     @JsProperty
     public native void setColor(Color color);
-    
+
     /**
      * @param imgSize Image size in pixels. Only required if img is set and src is not, and
      * for SVG images in Internet Explorer 11. The provided imgSize needs to match the actual
@@ -56,13 +56,13 @@ public class IconOptions implements Options {
      */
     @JsProperty
     public native void setRotation(double rotation);
-    
+
     /**
      * @param rotateWithView Whether to rotate the icon with the view. Default is false.
      */
     @JsProperty
     public native void setRotateWithView(boolean rotateWithView);
-    
+
     /**
      * @param scale Scale.
      */
@@ -75,17 +75,8 @@ public class IconOptions implements Options {
      */
     @JsProperty
     public native void setSize(Size size);
-    
-    /**
-     * @param snapToPixel If true integral numbers of pixels are used as the X and Y pixel
-     * coordinate when drawing the icon in the output canvas. If false fractional numbers
-     * may be used. Using true allows for "sharp" rendering (no blur), while using false
-     * allows for "accurate" rendering. Note that accuracy is important if the icon's position
-     * is animated. Without it, the icon may jitter noticeably. Default value is true.
-     */
-    @JsProperty
-    public native void setSnapToPixel(boolean snapToPixel);
-    
+
+
     /**
      * @param imageUri Image source URI
      */
