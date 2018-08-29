@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol.source;
+package ol.featureloader;
 
 import jsinterop.annotations.JsFunction;
 import ol.Extent;

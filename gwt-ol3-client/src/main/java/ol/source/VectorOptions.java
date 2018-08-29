@@ -21,6 +21,7 @@ import jsinterop.annotations.JsType;
 
 import ol.Collection;
 import ol.Feature;
+import ol.featureloader.FeatureLoader;
 
 /**
  * Vector source options.
