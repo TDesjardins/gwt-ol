@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import com.github.desjardins.gwt.junit.client.BaseTestCase;
 public abstract class GwtProj4BaseTestCase extends BaseTestCase {
 
     public GwtProj4BaseTestCase() {
-        super("https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js", "proj4.GwtProj4Test", 10000);
+        super("https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.5.0/proj4.js", "proj4.GwtProj4Test", 10000);
     }
 
 }
