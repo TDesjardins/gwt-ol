@@ -16,7 +16,7 @@ If you want to build the application without Maven please consider the following
 
   * Building the application with older GWT-SDK than 2.8.0-beta1 will not work. You can download the latest SDK [here](http://www.gwtproject.org/versions.html).
 
-Live example [here](https://tdesjardins.github.io/gwt-ol3/).
+Live example [here](https://tdesjardins.github.io/gwt-ol/).
 
 ## Project Setup
 
