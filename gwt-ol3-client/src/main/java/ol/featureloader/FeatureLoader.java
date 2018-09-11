@@ -31,6 +31,6 @@ import ol.proj.Projection;
 @FunctionalInterface
 public interface FeatureLoader {
 
-    void loadFeatures(Extent extent, Number resolution, Projection projection);
+    void loadFeatures(Extent extent, double resolution, Projection projection);
 
 }
