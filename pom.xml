@@ -7,7 +7,7 @@
     <packaging>pom</packaging>
     <name>GWT OpenLayers 3+</name>
     <description>GWT JsInterop API for OpenLayers 3+</description>
-    <url>https://github.com/TDesjardins/gwt-ol3</url>
+    <url>https://github.com/TDesjardins/gwt-ol</url>
 
     <inceptionYear>2014</inceptionYear>
     <licenses>
@@ -28,15 +28,15 @@
     </developers>
 
     <scm>
-        <connection>scm:git:https://github.com/TDesjardins/gwt-ol3.git</connection>
-        <developerConnection>scm:git:git@github.com:TDesjardins/gwt-ol3.git</developerConnection>
-        <url>https://github.com/TDesjardins/gwt-ol3</url>
+        <connection>scm:git:https://github.com/TDesjardins/gwt-ol.git</connection>
+        <developerConnection>scm:git:git@github.com:TDesjardins/gwt-ol.git</developerConnection>
+        <url>https://github.com/TDesjardins/gwt-ol</url>
         <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/TDesjardins/gwt-ol3/issues</url>
+        <url>https://github.com/TDesjardins/gwt-ol/issues</url>
     </issueManagement>
 
     <prerequisites>
