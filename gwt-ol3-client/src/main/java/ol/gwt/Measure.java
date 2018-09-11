@@ -82,7 +82,7 @@ public class Measure {
     /**
      * Get the {@link Style} to be used for drawing the measured geometry.
      *
-     * @return {@link Style}
+     * @return style
      */
     public Style getStyle() {
         return this.style;

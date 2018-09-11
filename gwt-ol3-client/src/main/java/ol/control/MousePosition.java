@@ -44,10 +44,7 @@ public class MousePosition extends Control {
     /**
      * Return the projection that is used to report the mouse position.
      *
-     * @return {ol.proj.Projection|undefined} The projection to report mouse
-     *         position in.
-     * @observable
-     * @api stable
+     * @return The projection to report mouse position in.
      */
     public native Projection getProjection();
 
@@ -56,8 +53,6 @@ public class MousePosition extends Control {
      *
      * @param projection
      *            The projection to report mouse position in.
-     * @observable
-     * @api stable
      */
     public native void setProjection(Projection projection);
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,25 +32,25 @@ public class MultiLineString extends SimpleGeometryMultiCoordinates {
 
     /**
      * Append the passed linestring to the multilinestring.
-     * 
+     *
      * @param lineString LineString.
      */
     public native void appendLineString(LineString lineString);
 
     /**
      * Return the linestring at the specified index.
-     * 
+     *
      * @param index
      *            Index.
-     * @return {ol.geom.LineString} LineString.
+     * @return linestring.
      */
     public native LineString getLineString(int index);
 
     /**
      * Return the linestrings of this multilinestring.
-     * 
-     * @return {Array.<ol.geom.LineString>} LineStrings.
+     *
+     * @return linestrings.
      */
     public native LineString[] getLineStrings();
-    
+
 }

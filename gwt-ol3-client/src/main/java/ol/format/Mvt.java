@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ package ol.format;
 import jsinterop.annotations.JsType;
 import ol.Feature;
 import ol.Options;
-import ol.geom.Geometry;
 import ol.proj.Projection;
 
 import javax.annotation.Nullable;
@@ -40,9 +39,9 @@ public class Mvt extends ol.format.Feature {
 
     /**
      * Read the projection from a MVT source.
-     * 
+     *
      * @param source Document | Node | Object | string
-     * @return {@link Geometry}
+     * @return projection
      */
     public native Projection readProjection(java.lang.Object source);
 
@@ -50,7 +49,7 @@ public class Mvt extends ol.format.Feature {
 
     /**
      * Read all features from a MVT source.
-     * 
+     *
      * @param source Document | Node | Object | string
      * @param readOptions Read options.
      * @return [] {@link Feature}

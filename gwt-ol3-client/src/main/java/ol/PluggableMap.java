@@ -68,7 +68,7 @@ public abstract class PluggableMap extends Object {
      * Get the map controls. Modifying this collection changes the controls
      * associated with the map.
      *
-     * @return {ol.Collection.<ol.control.Control>} Controls.
+     * @return controls.
      */
     public native Collection<Control> getControls();
 
@@ -78,7 +78,7 @@ public abstract class PluggableMap extends Object {
      *
      * @param pixel
      *            Pixel position in the map viewport.
-     * @return {ol.Coordinate} The coordinate for the pixel position.
+     * @return The coordinate for the pixel position.
      */
     public native Coordinate getCoordinateFromPixel(Pixel pixel);
 
@@ -87,7 +87,7 @@ public abstract class PluggableMap extends Object {
      *
      * @param event
      *            Event.
-     * @return {ol.Coordinate} Coordinate.
+     * @return coordinate.
      */
     public native Coordinate getEventCoordinate(Event event);
 
@@ -97,7 +97,7 @@ public abstract class PluggableMap extends Object {
      *
      * @param event
      *            Event.
-     * @return {ol.Pixel} Pixel.
+     * @return map pixel position.
      */
     public native Pixel getEventPixel(Event event);
 
@@ -119,7 +119,7 @@ public abstract class PluggableMap extends Object {
     /**
      * Get the collection of layers associated with this map.
      *
-     * @return {!ol.Collection.<ol.layer.Base>} Layers.
+     * @return layers.
      */
     public native Collection<Base> getLayers();
 
@@ -129,14 +129,14 @@ public abstract class PluggableMap extends Object {
      * `map.getOverlayById(2)` will return an overlay with id `'2'` or `2`.
      * @param id
      *            Overlay identifier.
-     * @return {ol.Overlay} Overlay.
+     * @return overlay.
      */
     public native Overlay getOverlayById(String id);
 
     /**
      * Get the map overlays. Modifying this collection changes the overlays
      * associated with the map.
-     * @return {ol.Collection.<ol.Overlay>} Overlays.
+     * @return overlays.
      */
     public native Collection<Overlay> getOverlays();
 
@@ -146,7 +146,7 @@ public abstract class PluggableMap extends Object {
      *
      * @param coordinate
      *            A map coordinate.
-     * @return {ol.Pixel} A pixel position in the map viewport.
+     * @return A pixel position in the map viewport.
      */
     public native Pixel getPixelFromCoordinate(Coordinate coordinate);
 
@@ -163,7 +163,7 @@ public abstract class PluggableMap extends Object {
     /**
      * Get the size of this map.
      *
-     * @return {ol.Size|undefined} The size in pixels of the map in the DOM.
+     * @return The size in pixels of the map in the DOM.
      */
     public native Size getSize();
 
@@ -172,7 +172,7 @@ public abstract class PluggableMap extends Object {
      * is entered as an option or in setTarget: if that was an element, it
      * returns an element; if a string, it returns that.
      *
-     * @return {Element|string|undefined} The Element or id of the Element that
+     * @return The Element or id of the Element that
      *         the map is rendered in.
      */
     public native String getTarget();
@@ -182,7 +182,7 @@ public abstract class PluggableMap extends Object {
      * `getTarget` this method always return an `Element`, or `null` if the map
      * has no target.
      *
-     * @return {Element} The element that the map is rendered in.
+     * @return The element that the map is rendered in.
      */
     public native Element getTargetElement();
 
@@ -197,7 +197,7 @@ public abstract class PluggableMap extends Object {
     /**
      * Get the element that serves as the map viewport.
      *
-     * @return {Element} Viewport.
+     * @return Viewport.
      */
     public native Element getViewport();
 
@@ -242,7 +242,7 @@ public abstract class PluggableMap extends Object {
      *
      * @param control
      *            Control.
-     * @return {ol.control.Control|undefined} The removed control (or undefined
+     * @return The removed control (or undefined
      *         if the control was not found).
      */
     public native Control removeControl(Control control);
@@ -252,7 +252,7 @@ public abstract class PluggableMap extends Object {
      *
      * @param interaction
      *            Interaction to remove.
-     * @return {ol.interaction.Interaction|undefined} The removed interaction
+     * @return The removed interaction
      *         (or undefined if the interaction was not found).
      */
     public native Interaction removeInteraction(Interaction interaction);
@@ -262,7 +262,7 @@ public abstract class PluggableMap extends Object {
      *
      * @param layer
      *            Layer.
-     * @return {ol.layer.Base|undefined} The removed layer (or undefined if the
+     * @return The removed layer (or undefined if the
      *         layer was not found).
      */
     public native Base removeLayer(Base layer);
@@ -271,7 +271,7 @@ public abstract class PluggableMap extends Object {
      * Remove the given overlay from the map.
      * @param overlay
      *            Overlay.
-     * @return {ol.Overlay|undefined} The removed overlay (or undefined if the
+     * @return The removed overlay (or undefined if the
      *         overlay was not found).
      */
     public native Overlay removeOverlay(Overlay overlay);

@@ -28,7 +28,7 @@ import ol.proj.Projection;
  *
  * @author Tino Desjardins
  *
- * @see https://openlayers.org/en/latest/apidoc/ol.source.Source.html
+ * see https://openlayers.org/en/latest/apidoc/ol.source.Source.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class SourceOptions implements Options {

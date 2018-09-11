@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import ol.Extent;
  * Projection definition class. One of these is created for each projection
  * supported in the application and stored in the {@link ol.proj} namespace. You
  * can use these in applications, but this is not required, as API params and
- * options use {@link ol.proj.ProjectionLike} which means the simple string code
+ * options use ol.proj.ProjectionLike which means the simple string code
  * will suffice.
  *
  * You can use {@link ol.proj.Projection#get(String)} to retrieve the object for a particular
@@ -52,18 +52,18 @@ public class Projection {
     private static final String PACKAGE_PROJECTION = "ol.proj";
 
     public Projection(ProjectionOptions projectionOptions) {}
-    
+
     /**
      * Get the code for this projection, e.g. 'EPSG:4326'.
-     * 
-     * @return {string} Code.
+     *
+     * @return code.
      */
     public native String getCode();
 
     /**
      * Get the validity extent for this projection.
-     * 
-     * @return {ol.Extent} Extent.
+     *
+     * @return extent.
      */
     public native Extent getExtent();
 
@@ -71,8 +71,8 @@ public class Projection {
      * Get the amount of meters per unit of this projection. If the projection
      * is not configured with `metersPerUnit` or a units identifier, the return
      * is `undefined`.
-     * 
-     * @return {number|undefined} Meters.
+     *
+     * @return meters.
      */
     public native double getMetersPerUnit();
 
@@ -85,7 +85,7 @@ public class Projection {
      * width and height. An alternative implementation may be given when
      * constructing a projection. For many local projections, such a custom
      * function will return the resolution unchanged.
-     * 
+     *
      * @param resolution
      *            Resolution in projection units.
      * @param point
@@ -96,28 +96,28 @@ public class Projection {
 
     /**
      * Get the units of this projection.
-     * 
+     *
      * @return {ol.proj.Units} Units.
      */
     public native String getUnits();
 
     /**
      * Get the world extent for this projection.
-     * 
+     *
      * @return {ol.Extent} Extent.
      */
     public native Extent getWorldExtent();
 
     /**
      * Is this projection a global projection which spans the whole world?
-     * 
+     *
      * @return {boolean} Whether the projection is global.
      */
     public native boolean isGlobal();
 
     /**
      * Set if the projection is a global projection which spans the whole world
-     * 
+     *
      * @param global
      *            Whether the projection is global.
      */
@@ -125,7 +125,7 @@ public class Projection {
 
     /**
      * Set the validity extent for this projection.
-     * 
+     *
      * @param extent
      *            Extent.
      */
@@ -133,7 +133,7 @@ public class Projection {
 
     /**
      * Set the world extent for this projection.
-     * 
+     *
      * @param worldExtent
      *            World extent [minlon, minlat, maxlon, maxlat].
      */
@@ -147,7 +147,7 @@ public class Projection {
      */
     @JsMethod(name = "addEquivalentProjections", namespace = PACKAGE_PROJECTION)
     public static native void addEquivalentProjections(Projection[] projections);
-    
+
     /**
      * Add a Projection object to the list of supported projections that can be
      * looked up by their code.
@@ -157,7 +157,7 @@ public class Projection {
      */
     @JsMethod(name = "addProjection", namespace = PACKAGE_PROJECTION)
     public static native void addProjection(Projection projection);
-    
+
     /**
      * Checks if two projections are the same, that is every coordinate in one
      * projection does represent the same geographic point as the same
@@ -171,10 +171,10 @@ public class Projection {
      */
     @JsMethod(name = "equivalent", namespace = PACKAGE_PROJECTION)
     public static native boolean equivalent(ol.proj.Projection projection1, ol.proj.Projection projection2);
-    
-    
+
+
 	/**
-	 * 
+	 *
 	 * Transforms a coordinate from longitude/latitude to a different projection.
 	 *
 	 * @param coordinate
@@ -182,9 +182,9 @@ public class Projection {
 	 */
 	@JsMethod(name = "fromLonLat", namespace = PACKAGE_PROJECTION)
 	public static native Coordinate fromLonLat(Coordinate coordinate);
-	
+
 	/**
-     * 
+     *
      * Fetches a Projection object for the code specified.
      *
      * @param projectionCode combination of authority and identifier such as "EPSG:4326"
@@ -194,7 +194,7 @@ public class Projection {
     public static native Projection get(String projectionCode);
 
 	/**
-	 * 
+	 *
 	 * Transforms a coordinate from source projection to destination projection.
 	 * This returns a new coordinate (and does not modify the original).
 	 *
@@ -205,7 +205,7 @@ public class Projection {
 	 */
 	@JsMethod(name = "transform", namespace = PACKAGE_PROJECTION)
 	public static native Coordinate transform(Coordinate coordinate, String source, String target);
-	
+
 	/**
      * Transforms a coordinate from source projection to destination projection.
      * This returns a new coordinate (and does not modify the original).
@@ -224,7 +224,7 @@ public class Projection {
      */
 	@JsMethod(name = "transform", namespace = PACKAGE_PROJECTION)
     public static native Coordinate transform(Coordinate coordinate, Projection source, Projection destination);
-	
+
 	/**
      * Transforms an extent from source projection to destination projection.
      * This returns a new extent (and does not modify the original).

@@ -42,7 +42,7 @@ public abstract class Layer extends Base {
     /**
      * Gets the source for this layer.
      *
-     * @return {@link Source}
+     * @return source for this layer
      */
     public native <T extends Source> T getSource();
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +20,8 @@ import jsinterop.annotations.JsType;
 /**
  * Set regular shape style for vector features.
  *
- * @see https://openlayers.org/en/latest/apidoc/ol.style.RegularShape.html
- * 
+ * see https://openlayers.org/en/latest/apidoc/ol.style.RegularShape.html
+ *
  * @author Tino Desjardins
  *
  */
@@ -29,9 +29,9 @@ import jsinterop.annotations.JsType;
 public class RegularShape extends Image {
 
     public RegularShape() {}
-    
+
     public RegularShape(RegularShapeOptions regularShapeOptions) {}
-    
+
     /**
      * Get the angle used in generating the shape.
      *

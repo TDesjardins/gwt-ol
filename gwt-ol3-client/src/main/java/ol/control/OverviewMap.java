@@ -32,21 +32,19 @@ public class OverviewMap extends Control {
 
     /**
      * Determine if the overview map is collapsed.
-     * @return {boolean} The overview map is collapsed.
-     * @api stable
+     * @return The overview map is collapsed.
      */
     public native boolean getCollapsed();
 
     /**
      * Return `true` if the overview map is collapsible, `false` otherwise.
-     * @return {boolean} True if the widget is collapsible.
-     * @api stable
+     * @return True if the widget is collapsible.
      */
     public native boolean getCollapsible();
 
     /**
      * Return the overview map.
-     * @return {ol.PluggableMap} Overview map.
+     * @return overview map.
      */
     public native PluggableMap getOverviewMap();
 
@@ -56,7 +54,6 @@ public class OverviewMap extends Control {
      * current collapsed state is already the one requested.
      * @param collapsed
      *            True if the widget is collapsed.
-     * @api stable
      */
     public native void setCollapsed(boolean collapsed);
 
@@ -64,7 +61,6 @@ public class OverviewMap extends Control {
      * Set whether the overview map should be collapsible.
      * @param collapsible
      *            True if the widget is collapsible.
-     * @api stable
      */
     public native void setCollapsible(boolean collapsible);
 

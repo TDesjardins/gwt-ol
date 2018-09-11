@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -84,7 +84,6 @@ public abstract class Observable implements EventTarget {
      *            The event type or array of event types.
      * @param listener
      *            The listener function.
-     * @api stable
      */
     public native void un(String type, EventListener<? extends Event> listener);
 
@@ -98,10 +97,13 @@ public abstract class Observable implements EventTarget {
 
     /**
      * Generic change event. Triggered when the revision counter is increased.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addChangeListener(final EventListener<Event> listener) {
         return OLUtil.observe(this, "change", listener);
     }
-    
+
 }

@@ -28,15 +28,15 @@ import ol.proj.Projection;
  *
  * @author Tino Desjardins
  *
- * @see https://openlayers.org/en/latest/apidoc/ol.source.Source.html
- * 
+ * see https://openlayers.org/en/latest/apidoc/ol.source.Source.html
+ *
  */
 @JsType(isNative = true)
 public class Source extends ol.Object {
 
     /**
      * Get the attributions of the source.
-     * 
+     *
      * @return Attributions.
      */
     @JsProperty
@@ -44,21 +44,21 @@ public class Source extends ol.Object {
 
     /**
      * Get the projection of the source.
-     * 
-     * @return {ol.proj.Projection} Projection.
+     *
+     * @return projection.
      */
     public native Projection getProjection();
 
     /**
-     * @return {Array.<number>|undefined} Resolutions.
+     * @return resolutions.
      */
     public native double[] getResolutions();
 
     /**
      * Get the state of the source: one of 'undefined', 'loading', 'ready' or
      * 'error'.
-     * 
-     * @return {ol.source.State} State.
+     *
+     * @return state.
      */
     public native String getState();
 

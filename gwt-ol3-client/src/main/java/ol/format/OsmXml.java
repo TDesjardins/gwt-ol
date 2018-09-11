@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  *
  * @author mazlixek
  *
- * @see http://openlayers.org/en/latest/apidoc/ol.format.OSMXML.html
+ * see http://openlayers.org/en/latest/apidoc/ol.format.OSMXML.html
  */
 @JsType(isNative = true, name = "OSMXML")
 public class OsmXml extends XmlFeature {
@@ -48,7 +48,7 @@ public class OsmXml extends XmlFeature {
     /**
      * Read the projection from an OSM source.
      * @param source Document | Node | Object | string
-     * @return {@link Geometry}
+     * @return projection
      */
     public native Projection readProjection(java.lang.Object source);
 

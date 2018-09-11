@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ public class MultiPoint extends SimpleGeometryCoordinates {
 
     /**
      * Append the passed point to this multipoint.
-     * 
+     *
      * @param point
      *            Point.
      */
@@ -40,18 +40,18 @@ public class MultiPoint extends SimpleGeometryCoordinates {
 
     /**
      * Return the point at the specified index.
-     * 
+     *
      * @param index
      *            Index.
-     * @return {ol.geom.Point} Point.
+     * @return point.
      */
     public native Point getPoint(int index);
 
     /**
      * Return the points of this multipoint.
-     * 
-     * @return {Array.<ol.geom.Point>} Points.
+     *
+     * @return points.
      */
     public native Point[] getPoints();
-    
+
 }

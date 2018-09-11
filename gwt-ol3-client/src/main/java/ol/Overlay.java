@@ -63,7 +63,7 @@ public class Overlay extends Object {
 
     /**
      * Get the offset of this overlay.
-     * @return {Array.<number>} The offset.
+     * @return the offset.
      */
     public native Pixel getOffset();
 

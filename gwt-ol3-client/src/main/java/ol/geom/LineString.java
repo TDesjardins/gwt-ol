@@ -41,8 +41,7 @@ public class LineString extends SimpleGeometryCoordinates {
     /**
      * Return the length of the linestring on projected plane.
      *
-     * @return {number} Length (on projected plane).
-     * @api stable
+     * @return length (on projected plane).
      */
     public native double getLength();
 

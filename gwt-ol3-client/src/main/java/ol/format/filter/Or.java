@@ -18,7 +18,7 @@ package ol.format.filter;
 import jsinterop.annotations.JsType;
 
 /**
- * Represents a logical <Or> operator
+ * Represents a logical Or operator
  * between two or more filter conditions.
  *
  * @author Tino Desjardins
