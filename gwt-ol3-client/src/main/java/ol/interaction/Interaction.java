@@ -60,7 +60,7 @@ public abstract class Interaction extends ol.Object {
     /**
      * Return whether the interaction is currently active.
      *
-     * @return {boolean} `true` if the interaction is active, `false` otherwise.
+     * @return `true` if the interaction is active, `false` otherwise.
      */
     public native boolean getActive();
 

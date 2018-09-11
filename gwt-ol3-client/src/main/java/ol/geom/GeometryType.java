@@ -18,11 +18,11 @@ package ol.geom;
 import jsinterop.annotations.JsType;
 
 /**
- *  The geometry type enumeration representing ol.geom.GeometryType. 
+ *  The geometry type enumeration representing ol.geom.GeometryType.
  *
  * @author Peter Zanetti
- * 
- * @see https://github.com/openlayers/ol3/blob/master/src/ol/geom/geometry.js
+ *
+ * see https://github.com/openlayers/ol3/blob/master/src/ol/geom/geometry.js
  *
  */
 @JsType
@@ -36,5 +36,5 @@ public enum GeometryType {
 	MultiLineString,
 	MultiPolygon,
 	GeometryCollection,
-	Circle	
+	Circle
 }

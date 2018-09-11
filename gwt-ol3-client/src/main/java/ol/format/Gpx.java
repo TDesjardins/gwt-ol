@@ -35,7 +35,7 @@ public class Gpx extends XmlFeature {
     /**
      * Read the projection from a GPX source.
      * @param source Document | Node | Object | string
-     * @return {@link Geometry}
+     * @return projection
      */
     public native Projection readProjection(java.lang.Object source);
 
@@ -44,7 +44,7 @@ public class Gpx extends XmlFeature {
      * source.
      * @param source Document | Node | Object | string
      * @param readOptions Read options.
-     * @return {@link Feature}
+     * @return feature
      */
     public native Feature readFeature(java.lang.Object source, @Nullable Options readOptions);
 

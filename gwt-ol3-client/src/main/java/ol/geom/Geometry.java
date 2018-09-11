@@ -33,7 +33,7 @@ public abstract class Geometry extends Observable {
     /**
      * Make a complete copy of the geometry.
      *
-     * @return {@link Geometry} Clone.
+     * @return geometry clone.
      */
     public native Geometry clone();
 
@@ -44,14 +44,13 @@ public abstract class Geometry extends Observable {
      * @param point
      *            Point.
      * @return Closest point.
-     * @api stable
      */
     public native Coordinate getClosestPoint(Coordinate point);
 
     /**
      * Get the extent of the geometry.
      *
-     * @return {ol.Extent} extent Extent.
+     * @return extent.
      */
     public native Extent getExtent();
 
@@ -82,7 +81,7 @@ public abstract class Geometry extends Observable {
      * @function
      * @param tolerance
      *            The tolerance distance for simplification.
-     * @return {@link Geometry} A new, simplified version of the original
+     * @return A new, simplified version of the original
      *         geometry.
      */
     public native Geometry simplify(double tolerance);
@@ -98,7 +97,7 @@ public abstract class Geometry extends Observable {
      *            The current projection. Can be a string identifier.
      * @param destination
      *            The desired projection. Can be a string identifier.
-     * @return {@link Geometry} This geometry. Note that original geometry is
+     * @return This geometry. Note that original geometry is
      *         modified in place.
      */
     public native Geometry transform(String source, String destination);
@@ -116,7 +115,7 @@ public abstract class Geometry extends Observable {
      *            The current projection. Can be a {@link ol.proj.Projection} object.
      * @param destination
      *            The desired projection. Can be a {@link ol.proj.Projection} object.
-     * @return {@link Geometry} This geometry. Note that original geometry is
+     * @return This geometry. Note that original geometry is
      *         modified in place.
      */
     public native Geometry transform(Projection source, Projection destination);

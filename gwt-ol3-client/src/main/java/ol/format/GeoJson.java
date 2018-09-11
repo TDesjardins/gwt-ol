@@ -38,7 +38,7 @@ public class GeoJson extends JsonFeature {
     /**
      * Read the projection from a GeoJSON source.
      * @param source Document | Node | Object | string
-     * @return {@link Geometry}
+     * @return projection
      */
     public native Projection readProjection(java.lang.Object source);
 
@@ -47,7 +47,7 @@ public class GeoJson extends JsonFeature {
      * source.
      * @param source Document | Node | Object | string
      * @param readOptions Read options.
-     * @return {@link Feature}
+     * @return feature
      */
     public native Feature readFeature(java.lang.Object source, @Nullable Options readOptions);
 
@@ -57,7 +57,7 @@ public class GeoJson extends JsonFeature {
      * Read all features from a GeoJSON source. Works with both Feature and FeatureCollection sources.
      * @param source Document | Node | Object | string
      * @param readOptions Read options.
-     * @return [] {@link Feature}
+     * @return features
      */
     public native Feature[] readFeatures(java.lang.Object source, @Nullable Options readOptions);
 
@@ -65,7 +65,7 @@ public class GeoJson extends JsonFeature {
      * Read a geometry from a GeoJSON source.
      * @param source Document | Node | Object | string
      * @param readOptions Read options.
-     * @return {@link Geometry}
+     * @return geometry
      */
     public native Geometry readGeometry(java.lang.Object source, @Nullable Options readOptions);
 
@@ -73,7 +73,7 @@ public class GeoJson extends JsonFeature {
      * Encode a feature as a GeoJSON Feature string.
      * @param feature ol.Feature
      * @param writeOptions Write options.
-     * @return {@link String}
+     * @return GeoJSON Feature string
      */
     public native String writeFeature(Feature feature, @Nullable Options writeOptions);
 
@@ -81,7 +81,7 @@ public class GeoJson extends JsonFeature {
      * Encode a feature as a GeoJSON Feature object.
      * @param feature ol.Feature
      * @param writeOptions Write options.
-     * @return {@link java.lang.Object}
+     * @return GeoJSON feature object
      */
     public native java.lang.Object writeFeatureObject(Feature feature, @Nullable Options writeOptions);
 
@@ -89,7 +89,7 @@ public class GeoJson extends JsonFeature {
      * Encode an array of features as GeoJSON.
      * @param feature ol.Feature
      * @param writeOptions Write options.
-     * @return {@link String}
+     * @return GeoJSON string
      */
     public native String writeFeatures(Feature feature, @Nullable Options writeOptions);
 
@@ -97,7 +97,7 @@ public class GeoJson extends JsonFeature {
      * Encode an array of features as GeoJSON.
      * @param feature ol.Feature
      * @param writeOptions Write options.
-     * @return Collection<{@link java.lang.Object}>
+     * @return GeoJSON objects
      */
     public native Collection<java.lang.Object> writeFeaturesObject(Feature feature, @Nullable Options writeOptions);
 
@@ -105,7 +105,7 @@ public class GeoJson extends JsonFeature {
      * Encode a geometry as a GeoJSON string.
      * @param geometry {@link Geometry }
      * @param writeOptions Write options.
-     * @return {@link String}
+     * @return GeoJSON string
      */
     public native String writeGeometry(Geometry geometry, @Nullable Options writeOptions);
 
@@ -113,7 +113,7 @@ public class GeoJson extends JsonFeature {
      * Encode a geometry as a GeoJSON object.
      * @param geometry {@link Geometry }
      * @param writeOptions Write options.
-     * @return Collection<{@link GeoJson}>
+     * @return GeoJSON objects
      */
     public native Collection<GeoJson> writeGeometryObject(Geometry geometry, @Nullable Options writeOptions);
 
