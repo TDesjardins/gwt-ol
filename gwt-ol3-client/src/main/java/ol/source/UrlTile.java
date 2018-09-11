@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ public class UrlTile extends Tile {
 
     /**
      * Optional function to load a tile given a URL. The default is
-     * 
+     *
      * function(imageTile, src) { imageTile.getImage().src = src; };
      */
     public native void setTileLoadFunction(TileLoadFunction callback);
@@ -47,14 +47,14 @@ public class UrlTile extends Tile {
     /**
      * Return the URLs used for this source. When a tileUrlFunction is used
      * instead of url or urls, null will be returned.
-     * 
-     * @return {!Array.<string>|null} URLs.
+     *
+     * @return URLs.
      */
     public native String[] getUrls();
 
     /**
      * Set the URL to use for requests.
-     * 
+     *
      * @param url
      *            URL.
      */
@@ -62,7 +62,7 @@ public class UrlTile extends Tile {
 
     /**
      * Set the URLs to use for requests.
-     * 
+     *
      * @param urls
      *            URLs.
      */

@@ -21,10 +21,10 @@ import jsinterop.annotations.JsType;
 
 /**
  * Abstract options für URL based tiles.
- * 
+ *
  * @author Tino Desjardins
  *
- * @see https://openlayers.org/en/latest/apidoc/ol.source.UrlTile.html
+ * see https://openlayers.org/en/latest/apidoc/ol.source.UrlTile.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class UrlTileOptions extends TileOptions {
@@ -49,7 +49,7 @@ public class UrlTileOptions extends TileOptions {
 
     /**
      * Optional function to load a tile given a URL. The default is
-     * 
+     *
      * function(imageTile, src) { imageTile.getImage().src = src; };
      */
     @JsProperty
@@ -80,18 +80,18 @@ public class UrlTileOptions extends TileOptions {
     /**
      * Return the URLs used for this source. When a tileUrlFunction is used
      * instead of url or urls, null will be returned.
-     * 
-     * @return {!Array.<string>|null} URLs.
+     *
+     * @return URLs.
      */
     @JsProperty
     public native String[] getUrls();
 
-    @JsProperty 
+    @JsProperty
     public native String getUrl();
 
     /**
      * Set the URL to use for requests.
-     * 
+     *
      * @param url
      *            URL.
      */
@@ -100,7 +100,7 @@ public class UrlTileOptions extends TileOptions {
 
     /**
      * Set the URLs to use for requests.
-     * 
+     *
      * @param urls
      *            URLs.
      */

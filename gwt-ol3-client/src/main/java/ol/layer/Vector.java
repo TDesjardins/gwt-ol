@@ -42,8 +42,7 @@ public class Vector extends Layer {
      * Get the style for features. This returns whatever was passed to the
      * `style` option at construction or to the `setStyle` method.
      *
-     * @return {ol.style.Style|Array.<ol.style.Style>|ol.StyleFunction}
-     *         Layer style.
+     * @return style for features.
      */
     @JsMethod(name = "getStyle")
     private native Object getNativeStyle();

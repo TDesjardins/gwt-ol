@@ -25,7 +25,7 @@ import ol.Size;
  *
  * @author Tino Desjardins
  *
- * @see http://openlayers.org/en/latest/apidoc/ol.source.XYZ.html
+ * see http://openlayers.org/en/latest/apidoc/ol.source.XYZ.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class XyzOptions extends TileImageOptions {
@@ -43,7 +43,7 @@ public class XyzOptions extends TileImageOptions {
 
     /**
      * Set the tile size used by the tile service. Default is [256, 256] pixels.
-     * 
+     *
      * @param tileSize tile size
      */
     @JsProperty

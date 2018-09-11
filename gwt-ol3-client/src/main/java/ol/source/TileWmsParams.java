@@ -16,7 +16,6 @@
 /**
  *
  * @author mribeiro
- * @date 07/06/16 18:05
  *
  */
 package ol.source;

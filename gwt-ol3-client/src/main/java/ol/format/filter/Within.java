@@ -19,7 +19,7 @@ import jsinterop.annotations.JsType;
 import ol.geom.Geometry;
 
 /**
- * Represents a <Within> operator to test whether a
+ * Represents a Within operator to test whether a
  * geometry-valued property is within a given geometry.
  *
  * @author Tino Desjardins

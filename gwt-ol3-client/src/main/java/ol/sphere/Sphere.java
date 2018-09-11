@@ -22,7 +22,7 @@ import ol.Coordinate;
 
 /**
  * Class to create objects that can be used with
- * {@link ol.geom.Polygon#circular(Sphere, Coordinate, double, int)}.
+ * {@link ol.geom.Polygon#circular(Coordinate, double, int)}.
  *
  * For example to create a sphere whose radius is equal to the semi-major axis
  * of the WGS84 ellipsoid:

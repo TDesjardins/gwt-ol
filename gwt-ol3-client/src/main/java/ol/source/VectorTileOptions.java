@@ -21,10 +21,10 @@ import jsinterop.annotations.JsType;
 
 /**
  * Options for {@link VectorTile}
- * 
+ *
  * @author gkresic
  *
- * @see https://openlayers.org/en/latest/apidoc/ol.source.VectorTile.html
+ * see https://openlayers.org/en/latest/apidoc/ol.source.VectorTile.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class VectorTileOptions extends UrlTileOptions {

@@ -26,7 +26,7 @@ import ol.tilegrid.TileGrid;
  *
  * @author Tino Desjardins
  *
- * @see https://openlayers.org/en/latest/apidoc/ol.source.Tile.html
+ * see https://openlayers.org/en/latest/apidoc/ol.source.Tile.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class TileOptions extends SourceOptions {

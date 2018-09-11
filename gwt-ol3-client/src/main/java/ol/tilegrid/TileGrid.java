@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -91,7 +91,7 @@ public class TileGrid {
     /**
      * Get the list of resolutions for the tile grid.
      *
-     * @return {Array.<number>} Resolutions.
+     * @return resolutions.
      */
     public native double[] getResolutions();
 

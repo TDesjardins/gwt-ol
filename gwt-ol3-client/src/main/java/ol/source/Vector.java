@@ -99,7 +99,7 @@ public class Vector extends Source {
     /**
      * Get all features on the source.
      *
-     * @return {Array.<ol.Feature>} Features.
+     * @return features.
      */
     public native Feature[] getFeatures();
 
@@ -108,7 +108,7 @@ public class Vector extends Source {
      *
      * @param coordinate
      *            Coordinate.
-     * @return {Array.<ol.Feature>} Features.
+     * @return features.
      */
     public native Feature[] getFeaturesAtCoordinate(Coordinate coordinate);
 
@@ -117,7 +117,7 @@ public class Vector extends Source {
      * unless the source was configured with `useSpatialIndex` set to `false`,
      * or with an {@link ol.Collection} as `features`.
      *
-     * @return {ol.Collection.<ol.Feature>}
+     * @return features collection
      */
     public native Collection<Feature> getFeaturesCollection();
 
@@ -131,8 +131,7 @@ public class Vector extends Source {
      *
      * @param extent
      *            Extent.
-     * @return {Array.<ol.Feature>} Features.
-     * @api
+     * @return features.
      */
     public native Feature[] getFeaturesInExtent(Extent extent);
 

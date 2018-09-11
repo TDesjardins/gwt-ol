@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  *
  * @author Tino Desjardins
  *
- * @see https://openlayers.org/en/latest/apidoc/ol.format.WFS.html
+ * see https://openlayers.org/en/latest/apidoc/ol.format.WFS.html
  */
 @JsType(isNative = true, name = "WFS")
 public class Wfs extends XmlFeature {
@@ -54,7 +54,7 @@ public class Wfs extends XmlFeature {
      * Read the projection from a WFS source.
      *
      * @param source Document | Node | Object | string
-     * @return {@link Geometry}
+     * @return projection
      */
     public native Projection readProjection(java.lang.Object source);
 

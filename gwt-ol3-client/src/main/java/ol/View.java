@@ -173,7 +173,7 @@ public class View extends Object {
     /**
      * Get the view center.
      *
-     * @return {ol.Coordinate|undefined} The center of the view.
+     * @return the center of the view.
      */
     public native Coordinate getCenter();
 
@@ -209,7 +209,7 @@ public class View extends Object {
     /**
      * Get the view projection.
      *
-     * @return {ol.proj.Projection} The projection of the view.
+     * @return the projection of the view.
      */
     public native Projection getProjection();
 
@@ -270,7 +270,7 @@ public class View extends Object {
      * Get the zoom level for a resolution.
      * @param resolution
      *            The resolution.
-     * @return {number|undefined} The zoom level for the provided resolution.
+     * @return the zoom level for the provided resolution.
      */
     public native double getZoomForResolution(double resolution);
 
