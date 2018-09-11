@@ -22,7 +22,7 @@ import ol.Feature;
 
 /**
  * Interaction for drawing feature geometries.
- * 
+ *
  * @author sbaumhekel
  *
  */
@@ -35,7 +35,7 @@ public class Draw extends Interaction {
      * Extend an existing geometry by adding additional points. This only works
      * on features with `LineString` geometries, where the interaction will
      * extend lines by adding points to the end of the coordinates array.
-     * 
+     *
      * @param feature
      *            Feature to be extended.
      */
@@ -43,10 +43,8 @@ public class Draw extends Interaction {
 
     /**
      * Stop drawing and add the sketch feature to the target layer. The
-     * {@link ol.interaction.DrawEventType.DRAWEND} event is dispatched before
+     * DRAWEND event is dispatched before
      * inserting the feature.
-     * 
-     * @api
      */
     public native void finishDrawing();
 
@@ -68,7 +66,7 @@ public class Draw extends Interaction {
         /**
          * The feature being drawn.
          *
-         * @return {@link ol.Feature}
+         * @return feature being drawn
          */
         @JsProperty
         Feature getFeature();

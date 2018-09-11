@@ -45,7 +45,7 @@ public interface Event extends ol.events.Event {
     FrameState getFrameState();
 
     /**
-     * For canvas, this is an instance of {@link ol.render.canvas.Immediate}.
+     * For canvas, this is an instance of ol.render.canvas.Immediate.
      */
     @JsProperty
     VectorContext getVectorContext();

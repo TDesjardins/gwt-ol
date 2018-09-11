@@ -35,6 +35,9 @@ public class Collection<T> extends Object {
 
     /**
      * Triggered when an item is added to the collection.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addElementAddedListener(final EventListener<Event<T>> listener) {
@@ -43,6 +46,9 @@ public class Collection<T> extends Object {
 
     /**
      * Triggered when an item is removed from the collection.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addElementRemovedListener(final EventListener<Event<T>> listener) {
@@ -96,7 +102,6 @@ public class Collection<T> extends Object {
      *
      * @param element Element.
      * @return The removed element or undefined if none found.
-     * @api stable
      */
     @Nullable
     public native T remove(T element);
@@ -107,7 +112,6 @@ public class Collection<T> extends Object {
      *
      * @param index Index.
      * @return Value.
-     * @api stable
      */
     @Nullable
     public native T removeAt(int index);

@@ -54,7 +54,7 @@ public class Coordinate implements JsArrayLike<Double> {
      * @param x X-coordinate (longitude)
      * @param y Y-coordinate (latitude)
      * @return {@link Coordinate}
-     * 
+     *
      * @deprecated Use {@link #Coordinate(double, double)} instead.
      */
     @Deprecated
@@ -241,7 +241,6 @@ public class Coordinate implements JsArrayLike<Double> {
      *            The number of digits to include after the decimal point.
      *            Default is `0`.
      * @return {string} XY.
-     * @api stable
      */
     @JsOverlay
     public final String toStringXY(int fractionDigits) {

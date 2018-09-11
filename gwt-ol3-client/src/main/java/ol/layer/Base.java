@@ -34,31 +34,31 @@ public abstract class Base extends Object {
     /**
      * Return the {@link ol.Extent extent} of the layer or `undefined` if it
      * will be visible regardless of extent.
-     * @return {ol.Extent|undefined} The layer extent.
+     * @return the layer extent.
      */
     public native Extent getExtent();
 
     /**
      * Return the maximum resolution of the layer.
-     * @return {number} The maximum resolution of the layer.
+     * @return the maximum resolution of the layer.
      */
     public native double getMaxResolution();
 
     /**
      * Return the minimum resolution of the layer.
-     * @return {number} The minimum resolution of the layer.
+     * @return the minimum resolution of the layer.
      */
     public native double getMinResolution();
 
     /**
      * Return the opacity of the layer (between 0 and 1).
-     * @return {number} The opacity of the layer.
+     * @return the opacity of the layer.
      */
     public native double getOpacity();
 
     /**
      * Return the visibility of the layer (`true` or `false`).
-     * @return {boolean} The visibility of the layer.
+     * @return the visibility of the layer.
      */
     public native boolean getVisible();
 
@@ -66,7 +66,7 @@ public abstract class Base extends Object {
      * Return the Z-index of the layer, which is used to order layers before
      * rendering. The default Z-index is 0.
      *
-     * @return {number} The Z-index of the layer.
+     * @return the Z-index of the layer.
      */
     public native int getZIndex();
 

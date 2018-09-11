@@ -24,7 +24,7 @@ import jsinterop.annotations.JsType;
  *
  * @author gkresic
  *
- * @see https://openlayers.org/en/latest/apidoc/ol.source.BingMaps.html
+ * see https://openlayers.org/en/latest/apidoc/ol.source.BingMaps.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class BingMapsOptions extends TileImageOptions {

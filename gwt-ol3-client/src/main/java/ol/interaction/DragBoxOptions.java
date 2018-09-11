@@ -28,7 +28,7 @@ import ol.Options;
  *
  * @author gkresic
  *
- * @see https://openlayers.org/en/latest/apidoc/ol.interaction.DragBox.html
+ * see https://openlayers.org/en/latest/apidoc/ol.interaction.DragBox.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class DragBoxOptions implements Options {

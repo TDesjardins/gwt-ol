@@ -67,14 +67,14 @@ public class Control extends Object {
     /**
      * Get the control's container element.
      *
-     * @return {@link Element}
+     * @return control's container element
      */
     @JsProperty
     public native Element getElement();
 
     /**
      * Get the map associated with this control.
-     * @return {ol.PluggableMap} Map.
+     * @return map of this control.
      */
     public native PluggableMap getMap();
 

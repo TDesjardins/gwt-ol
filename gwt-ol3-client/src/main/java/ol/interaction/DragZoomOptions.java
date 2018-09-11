@@ -27,7 +27,7 @@ import ol.Options;
  *
  * @author gkresic
  *
- * @see https://openlayers.org/en/latest/apidoc/ol.interaction.DragZoom.html
+ * see https://openlayers.org/en/latest/apidoc/ol.interaction.DragZoom.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class DragZoomOptions implements Options {
