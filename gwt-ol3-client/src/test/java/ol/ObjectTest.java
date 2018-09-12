@@ -15,6 +15,8 @@
  *******************************************************************************/
 package ol;
 
+import jsinterop.base.JsPropertyMap;
+
 /**
  * Test for {@link ol.Object}.
  *
@@ -43,6 +45,15 @@ public class ObjectTest extends GwtOLBaseTestCase {
 
             assertNull(object.get(PARAM_CUSTOM_VALUE));
             assertNull(object.getProperties().get(PARAM_CUSTOM_VALUE));
+
+            JsPropertyMap<java.lang.Object> properties = JsPropertyMap.of();
+            properties.set(PARAM_CUSTOM_VALUE, "new value");
+
+            object.setProperties(properties);
+            assertEquals("new value", object.get(PARAM_CUSTOM_VALUE));
+            assertEquals("new value", object.getProperties().get(PARAM_CUSTOM_VALUE));
+
+            object.setProperties(properties, true);
 
         });
 

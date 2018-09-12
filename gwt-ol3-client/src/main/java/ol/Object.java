@@ -89,6 +89,23 @@ public abstract class Object extends Observable {
     public native <T> void set(String key, T value);
 
     /**
+     * Sets a collection of key-value pairs. Note that this changes any existing properties
+     * and adds new ones (it does not remove any existing properties).
+     *
+     * @param properties properties to set
+     */
+    public native <T> void setProperties(JsPropertyMap<T> properties);
+
+    /**
+     * Sets a collection of key-value pairs. Note that this changes any existing properties
+     * and adds new ones (it does not remove any existing properties).
+     *
+     * @param properties properties to set
+     * @param silent Update without triggering an event.
+     */
+    public native <T> void setProperties(JsPropertyMap<T> properties, boolean silent);
+
+    /**
      * Unsets a property.
      *
      * @param key
