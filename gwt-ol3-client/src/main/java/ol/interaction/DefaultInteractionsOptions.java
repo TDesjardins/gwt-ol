@@ -6,7 +6,7 @@ import jsinterop.annotations.JsType;
 import ol.Options;
 
 /**
- * Defaults options for {@link Interaction#defaults(InteractionOptions)}.
+ * Defaults options for {@link Interaction#defaults(DefaultInteractionsOptions)}.
  * @author sbaumhekel
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")

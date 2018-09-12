@@ -220,7 +220,7 @@ public class Coordinate implements JsArrayLike<Double> {
     }
 
     /**
-     * Returns a {@link ol.CoordinateFormatType} function that can be used to format
+     * Returns a coordinate function that can be used to format
      * a {ol.Coordinate} to a string.
      *
      * @param fractionDigits The number of digits to include after the decimal point.

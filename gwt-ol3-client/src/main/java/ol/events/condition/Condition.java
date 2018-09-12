@@ -112,7 +112,7 @@ public class Condition {
     public static native GenericFunction<MapBrowserEvent, Boolean> getSingleClick();
 
     /**
-     * @return function that returns true if the target element is not editable, i.e. not a <input>-, <select>- or <textarea>-element, false otherwise.
+     * @return function that returns true if the target element is not editable, i.e. not a {@literal <input>}-, {@literal <select>}- or {@literal <textarea>}-element, false otherwise.
      */
     @JsProperty(name = "targetNotEditable", namespace = PACKAGE_CONDITION)
     public static native GenericFunction<MapBrowserEvent, Boolean> getTargetNotEditable();
