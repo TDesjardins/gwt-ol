@@ -88,9 +88,9 @@ public abstract class Observable implements EventTarget {
     public native void un(String type, EventListener<? extends Event> listener);
 
     /**
-     * Removes an event listener using the key returned by on() or once(). *
-     * @param key
-     *            {ol.EventsKey|Array.<ol.EventsKey>} key The key returned by
+     * Removes an event listener using the key returned by on() or once().
+     *
+     * @param key key The key returned by
      *            `on()` or `once()` (or an array of keys).
      */
     public static native void unByKey(EventsKey key);

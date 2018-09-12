@@ -104,7 +104,7 @@ public class PixelColor implements JsArrayLike<Double> {
     /**
      * Sets the red value.
      *
-     * @return red
+     * @param value red value
      */
     @JsOverlay
     public final void setRed(int value) {
@@ -116,7 +116,7 @@ public class PixelColor implements JsArrayLike<Double> {
     /**
      * Sets the green value.
      *
-     * @return green
+     * @param value green value
      */
     @JsOverlay
     public final void setGreen(int value) {
@@ -128,7 +128,7 @@ public class PixelColor implements JsArrayLike<Double> {
     /**
      * Sets the blue value.
      *
-     * @return blue
+     * @param value blue value
      */
     @JsOverlay
     public final void setBlue(int value) {
@@ -140,7 +140,7 @@ public class PixelColor implements JsArrayLike<Double> {
     /**
      * Sets the alpha value.
      *
-     * @return alhpa
+     * @param value alpha value
      */
     @JsOverlay
     public final void setAlpha(int value) {
@@ -151,7 +151,7 @@ public class PixelColor implements JsArrayLike<Double> {
 
     /**
      * Returns the value of the given channel.
-     * 
+     *
      * @param index
      */
     @JsOverlay
@@ -164,7 +164,7 @@ public class PixelColor implements JsArrayLike<Double> {
 
     /**
      * Sets the value of the given channel.
-     * 
+     *
      * @param index
      * @param value
      */

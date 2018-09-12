@@ -44,7 +44,7 @@ public abstract class SimpleGeometry extends Geometry {
     public native Coordinate getLastCoordinate();
 
     /**
-     * Return the {@link ol.geom.GeometryLayout layout} of the geometry.
+     * Return the layout of the geometry.
      *
      * @return Layout.
      */

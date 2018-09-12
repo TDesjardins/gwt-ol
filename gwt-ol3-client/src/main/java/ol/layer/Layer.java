@@ -49,7 +49,7 @@ public abstract class Layer extends Base {
     /**
      * Sets the layer to be rendered on top of other layers on a map. The map
      * will not manage this layer in its layers collection, and the callback in
-     * {@link ol.PluggableMap#forEachLayerAtPixel} will receive `null` as layer. This is
+     * ol.PluggableMap#forEachLayerAtPixel will receive `null` as layer. This is
      * useful for temporary layers. To remove an unmanaged layer from the map,
      * use `#setMap(null)`.
      *

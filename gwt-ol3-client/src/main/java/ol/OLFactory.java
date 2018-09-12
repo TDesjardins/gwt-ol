@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -211,7 +211,7 @@ public final class OLFactory {
     /**
      * Creates a {@link Color} from the given String.
      *
-     * @param color
+     * @param colorString
      *            color in rgb(r,g,b) or rgba(r,g,b,a) format, or in hex #rrggbb
      *            or #rgb format
      * @return {@link Color}
@@ -1116,7 +1116,7 @@ public final class OLFactory {
     /**
      * Creates a new {@link ol.layer.Vector} source.
      *
-     * @param options
+     * @param vectorLayerOptions
      *            {@link LayerOptions}
      * @return {@link ol.layer.Vector}
      */

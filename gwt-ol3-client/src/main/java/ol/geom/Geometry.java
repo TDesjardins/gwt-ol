@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -78,7 +78,6 @@ public abstract class Geometry extends Observable {
      * Douglas Peucker</a> algorithm. For polygons, a quantization-based
      * simplification is used to preserve topology.
      *
-     * @function
      * @param tolerance
      *            The tolerance distance for simplification.
      * @return A new, simplified version of the original
@@ -108,8 +107,6 @@ public abstract class Geometry extends Observable {
      * will be transformed to a line and a circle to a circle. If you do not
      * want the geometry modified in place, first clone() it and then use this
      * function on the clone.
-     *
-     * @param geom {@link Geometry}
      *
      * @param source
      *            The current projection. Can be a {@link ol.proj.Projection} object.
