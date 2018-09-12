@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package ol;
 
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import jsinterop.base.JsPropertyMap;
 
 /**
  * Abstract base class; normally only used for creating subclasses and not
@@ -69,6 +70,13 @@ public abstract class Object extends Observable {
      * @return Value.
      */
     public native <T> T get(String key);
+
+    /**
+     * Get an object of all property names and values.
+     *
+     * @return object of all property names and values
+     */
+    public native <T> JsPropertyMap<T> getProperties();
 
     /**
      * Sets a value.
