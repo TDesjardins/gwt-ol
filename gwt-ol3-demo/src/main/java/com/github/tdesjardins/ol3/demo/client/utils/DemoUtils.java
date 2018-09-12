@@ -41,7 +41,7 @@ import ol.source.Osm;
 import ol.source.XyzOptions;
 
 /**
- * 
+ *
  * @author Tino Desjardins
  *
  */
@@ -52,9 +52,9 @@ public final class DemoUtils {
     }
 
     /**
-     * Creates some default controls.
-     * 
-     * @param controls
+     * Creates some default controls and adds it to the collection.
+     *
+     * @param controls collection with controls
      */
     public static void addDefaultControls(final Collection<Control> controls) {
 
@@ -97,7 +97,7 @@ public final class DemoUtils {
 
     /**
      * Creates a test polygon geometry (triangle).
-     * 
+     *
      * @return test polygon geometry (EPSG:3857)
      */
     public static Polygon createTestPolygon() {
