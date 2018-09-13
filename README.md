@@ -25,7 +25,7 @@ Live example [here](https://tdesjardins.github.io/gwt-ol/).
 <dependency>
   <groupId>com.github.tdesjardins</groupId>
   <artifactId>gwt-ol3</artifactId>
-  <version>6.0.0</version>
+  <version>[x.x.x]</version>
 </dependency>
 ```
 
