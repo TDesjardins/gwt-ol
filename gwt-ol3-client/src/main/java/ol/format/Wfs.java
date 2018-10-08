@@ -16,13 +16,10 @@
 package ol.format;
 
 import jsinterop.annotations.JsType;
-import ol.proj.Projection;
 import ol.Feature;
 import ol.Options;
 
 import elemental2.dom.Node;
-
-import javax.annotation.Nullable;
 
 /**
  * Feature format for reading and writing data in the WFS format. By default, supports
@@ -39,24 +36,6 @@ public class Wfs extends XmlFeature {
     public Wfs() {}
 
     public Wfs(Options wfsFormatOptions) {}
-
-
-    /**
-     * Read all features from a WFS FeatureCollection.
-     *
-     * @param source Document | Node | Object | string
-     * @param readOptions Read options.
-     * @return [] {@link Feature}
-     */
-    public native Feature[] readFeatures(java.lang.Object source, @Nullable Options readOptions);
-
-    /**
-     * Read the projection from a WFS source.
-     *
-     * @param source Document | Node | Object | string
-     * @return projection
-     */
-    public native Projection readProjection(java.lang.Object source);
 
     /**
      * Encode format as WFS GetFeature and return the Node.
