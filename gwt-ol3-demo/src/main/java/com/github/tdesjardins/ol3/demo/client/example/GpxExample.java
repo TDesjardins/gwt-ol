@@ -56,7 +56,7 @@ public class GpxExample implements Example{
 
         // create a GPX vector layer
         VectorOptions vectorOptions = new VectorOptions();
-        vectorOptions.setUrl("https://openlayers.org/en/v4.6.4/examples/data/gpx/fells_loop.gpx");
+        vectorOptions.setUrl("https://openlayers.org/en/v5.3.0/examples/data/gpx/fells_loop.gpx");
         vectorOptions.setFormat(new Gpx());
 
         ol.source.Vector vectorSource = new ol.source.Vector(vectorOptions);
@@ -93,7 +93,7 @@ public class GpxExample implements Example{
 
         // add some interactions
         map.addInteraction(new KeyboardPan());
-        map.addInteraction(new KeyboardZoom());     
+        map.addInteraction(new KeyboardZoom());
 
     }
 
