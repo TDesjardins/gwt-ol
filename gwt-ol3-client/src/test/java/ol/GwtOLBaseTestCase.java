@@ -25,7 +25,7 @@ import com.github.desjardins.gwt.junit.client.BaseTestCase;
 public abstract class GwtOLBaseTestCase extends BaseTestCase {
 
     public GwtOLBaseTestCase() {
-        super("//cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.2.0/build/ol.js", "ol.GwtOLTest", 10000);
+        super("//cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js", "ol.GwtOLTest", 10000);
     }
 
 }
