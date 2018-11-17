@@ -205,7 +205,7 @@ public final class OLFactory {
      * @return {@link Color}
      */
     public static Color createColor(int red, int green, int blue, double alpha) {
-        return new Color(red, green, blue, (float)alpha);
+        return new Color(red, green, blue, alpha);
     };
 
     /**

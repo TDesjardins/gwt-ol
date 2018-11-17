@@ -37,7 +37,7 @@ public class ColorTest extends GwtOLBaseTestCase {
             assertEquals(color.getBlue(), 100);
             assertEquals(color.getAlpha(), .5f);
 
-            Color color2 = new Color(255, 50, 100, .5f);
+            Color color2 = new Color(255, 50, 100, .5);
             assertNotNull(color2);
             assertEquals(color2.getRed(), 255);
             assertEquals(color2.getGreen(), 50);
