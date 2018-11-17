@@ -18,6 +18,7 @@ package ol.interaction;
 import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
+import ol.Options;
 import ol.PluggableMap;
 
 /**
@@ -34,6 +35,10 @@ import ol.PluggableMap;
  */
 @JsType(isNative = true)
 public abstract class Interaction extends ol.Object {
+
+    public Interaction() {}
+
+    public Interaction(Options options) {}
 
     @JsOverlay
     private static final String PACKAGE_INTERACTION = "ol.interaction";
@@ -78,5 +83,7 @@ public abstract class Interaction extends ol.Object {
      *            Active.
      */
     public native void setActive(boolean active);
+
+    public native void setMap(PluggableMap map);
 
 }
