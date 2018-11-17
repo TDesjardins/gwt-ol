@@ -23,8 +23,8 @@ import ol.View;
 import ol.control.Attribution;
 import ol.control.ScaleLine;
 import ol.event.MeasureEvent;
-import ol.event.MeasureListener;
 import ol.gwt.Measure;
+import ol.gwt.Measure.MeasureType;
 import ol.interaction.KeyboardPan;
 import ol.interaction.KeyboardZoom;
 
@@ -93,17 +93,14 @@ public class MeasureExample implements Example {
         map.addInteraction(new KeyboardZoom());
 
         // add measurement functionality to the map
-        final Measure measure = new Measure(map);
-        // start measuring immediately
-        measure.startMeasureLength(new MeasureListener() {
+        final Measure measure = new Measure(MeasureType.DISTANCE, (MeasureEvent evt) -> {
 
-            @Override
-            public void onMeasure(MeasureEvent evt) {
-                // log the measured length
-                GWT.log("measure: " + evt.getMeasure());
-            }
+            // log the measured length
+            GWT.log("measure: " + evt.getMeasure());
 
-        }, true, true);
+        });
+
+        map.addInteraction(measure);
 
     }
 
