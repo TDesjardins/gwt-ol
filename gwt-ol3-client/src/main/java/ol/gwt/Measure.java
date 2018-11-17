@@ -21,12 +21,14 @@ import ol.Feature;
 import ol.OLFactory;
 import ol.OLUtil;
 import ol.PluggableMap;
+import ol.color.Color;
 import ol.event.EventListener;
 import ol.event.MeasureEvent;
 import ol.event.MeasureListener;
 import ol.geom.Geometry;
 import ol.interaction.Draw;
 import ol.interaction.DrawOptions;
+import ol.layer.Vector;
 import ol.layer.VectorLayerOptions;
 import ol.proj.Projection;
 import ol.style.Style;
@@ -67,15 +69,18 @@ public class Measure {
      * Fires a measure event.
      */
     private void fireMeasureEvent() {
+
         // check if measuring is active and properly set up
-        if(isActive && (sketch != null) && (listener != null)) {
+        if (isActive && (sketch != null) && (listener != null)) {
+
             // get geometry in map projection
             Geometry geom = sketch.getGeometry();
-            if(geom != null) {
+            if (geom != null) {
                 // transform it to lat/lon and fire event
                 Geometry geomLatLon = geom.clone().transform(proj, PROJECTION_LATLON);
                 listener.onMeasure(new MeasureEvent(geomLatLon));
             }
+
         }
     }
 
@@ -134,32 +139,36 @@ public class Measure {
         DrawOptions drawOptions = OLFactory.createOptions();
         drawOptions.setType(type);
         // use a special style?
-        if(style != null) {
+        if (style != null) {
             drawOptions.setStyle(style);
         }
-        draw = OLFactory.createDraw(drawOptions);
+        draw = new Draw(drawOptions);
 
         // persist measured features?
-        if(persist) {
+        if (persist) {
+
             // set up overlay options
             VectorLayerOptions voptions = OLFactory.createLayerOptionsWithSource(OLFactory.createVectorSource());
-            if(style != null) {
+
+            if (style != null) {
                 Style[] styles = new Style[1];
                 styles[0] = style;
                 voptions.setStyle(styles);
             } else {
                 // create a default style resembling the default editing style,
                 // but adding a border to polygons
-                Style sPoly = OLFactory.createStyle(OLFactory.createFill(OLFactory.createColor(255, 255, 255, 0.5)));
-                Style sLine1 = OLFactory.createStyle(OLFactory.createStroke(OLFactory.createColor(255, 255, 255, 1), 5));
-                Style sLine2 = OLFactory.createStyle(OLFactory.createStroke(OLFactory.createColor(0, 153, 255, 1), 3));
+                Style sPoly = OLFactory.createStyle(OLFactory.createFill(new Color(255, 255, 255, 0.5)));
+                Style sLine1 = OLFactory.createStyle(OLFactory.createStroke(new Color(255, 255, 255, 1), 5));
+                Style sLine2 = OLFactory.createStyle(OLFactory.createStroke(new Color(0, 153, 255, 1), 3));
                 // combine all styles
-                Style[] s = OLUtil.pushItem(OLUtil.combineStyles(sPoly, sLine1), sLine2);
-                voptions.setStyle(s);
+                Style[] styles = OLUtil.pushItem(OLUtil.combineStyles(sPoly, sLine1), sLine2);
+                voptions.setStyle(styles);
             }
+
             // create an overlay and attach it to the map
-            persistOverlay = OLFactory.createVector(voptions);
+            persistOverlay = new Vector(voptions);
             persistOverlay.setMap(map);
+
         }
 
         // set up projection to be used
@@ -174,26 +183,30 @@ public class Measure {
                 // remember measure feature
                 sketch = event.getFeature();
                 // clean up overlay
-                if(persistOverlay != null) {
+                if (persistOverlay != null) {
                     persistOverlay.<ol.source.Vector> getSource().clear(false);
                 }
             }
         });
+
         OLUtil.observe(draw, "drawend", new EventListener<Draw.Event>() {
 
             @Override
             public void onEvent(Draw.Event event) {
+
                 // fire event and clean up
                 fireMeasureEvent();
                 // persist feature?
-                if(persistOverlay != null) {
+                if (persistOverlay != null) {
                     persistOverlay.<ol.source.Vector> getSource().addFeature(sketch);
                 }
                 sketch = null;
             }
+
         });
+
         // handle mouse move if immediate updates are requested
-        if(immediate) {
+        if (immediate) {
             // enable mouse move events on the viewport
             Element elem = map.getViewport();
             com.google.gwt.user.client.Event.sinkEvents(elem, com.google.gwt.user.client.Event.ONMOUSEMOVE);
@@ -204,17 +217,20 @@ public class Measure {
 
                 @Override
                 public void onBrowserEvent(com.google.gwt.user.client.Event event) {
+
                     // check for mouse move events only
-                    if(event.getType() == "mousemove") {
+                    if (event.getType() == "mousemove") {
                         // check if interaction is active and fire event
-                        if(draw.getActive()) {
+                        if (draw.getActive()) {
                             fireMeasureEvent();
                         }
                     }
+
                     // call chained handler
-                    if(chainedListener != null) {
+                    if (chainedListener != null) {
                         chainedListener.onBrowserEvent(event);
                     }
+
                 }
             });
             eventListenerNeedsCleanup = true;
@@ -283,33 +299,38 @@ public class Measure {
      * Stop measuring.
      */
     public void stop() {
+
         // reset flag
         isActive = false;
         // clean up
         listener = null;
         sketch = null;
         proj = null;
+
         // clean up interaction
-        if(draw != null) {
+        if (draw != null) {
             map.removeInteraction(draw);
             draw = null;
         }
+
         // clean up overlay
-        if(persistOverlay != null) {
+        if (persistOverlay != null) {
             persistOverlay.<ol.source.Vector> getSource().clear(false);
             persistOverlay.setMap(null);
             persistOverlay = null;
         }
+
         // clean up event listener?
-        if(eventListenerNeedsCleanup) {
+        if (eventListenerNeedsCleanup) {
             // try to remove chained event listener
             Element elem = map.getViewport();
-            if(elem != null) {
+            if (elem != null) {
                 com.google.gwt.user.client.Event.setEventListener(elem, chainedListener);
             }
             chainedListener = null;
             eventListenerNeedsCleanup = false;
         }
+
     }
 
 }
