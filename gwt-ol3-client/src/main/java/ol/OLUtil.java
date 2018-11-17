@@ -94,7 +94,7 @@ public final class OLUtil {
     }
 
     /**
-     * Combines two {@link Style}s into an array of {@link Style}s.
+     * Combines {@link Style}s into an array of {@link Style}s.
      *
      * @param s1
      *            {@link Style} 1
@@ -102,8 +102,8 @@ public final class OLUtil {
      *            {@link Style} 2
      * @return array of {@link Style}s
      */
-    public static Style[] combineStyles(Style s1, Style s2) {
-        return new Style[] {s1, s2};
+    public static Style[] combineStyles(Style... styles) {
+        return styles;
     };
 
 
