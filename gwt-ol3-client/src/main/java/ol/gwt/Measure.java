@@ -51,6 +51,8 @@ public class Measure extends Interaction {
 
     private Draw draw;
 
+    private HandlerRegistration clickListener;
+
     private MeasureListener listener;
 
     private HandlerRegistration pointerMoveListener;
@@ -235,7 +237,14 @@ public class Measure extends Interaction {
                 }
 
             });
+            // this handler is necessary to support mobile devices without a mouse
+            this.clickListener = this.getMap().addClickListener((MapBrowserEvent event) -> {
 
+                if (this.draw.getActive()) {
+                    this.fireMeasureEvent();
+                }
+
+            });
         }
 
     }
@@ -284,6 +293,9 @@ public class Measure extends Interaction {
             this.draw = null;
         }
 
+        if (this.clickListener != null) {
+            this.clickListener.removeHandler();
+        }
         if (this.pointerMoveListener != null) {
             this.pointerMoveListener.removeHandler();
         }
