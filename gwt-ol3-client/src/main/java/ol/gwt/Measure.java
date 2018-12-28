@@ -52,7 +52,7 @@ public class Measure extends Interaction {
     private Draw draw;
 
     private HandlerRegistration clickListener;
-    
+
     private MeasureListener listener;
 
     private HandlerRegistration pointerMoveListener;
