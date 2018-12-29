@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,26 +27,30 @@ import ol.GwtOLBaseTestCase;
  */
 public class WfsTest extends GwtOLBaseTestCase {
 
-	private Wfs wfsFormat;
+    private Wfs wfsFormat;
 
-	@Override
-	protected void gwtSetUp() throws Exception {
-	    injectUrlAndTest(() -> wfsFormat = new Wfs());
-	}
-    
-    public void testWriteGetFeature() {        
+    @Override
+    protected void gwtSetUp() throws Exception {
+        injectUrlAndTest(() -> wfsFormat = new Wfs());
+    }
+
+    public void testWriteGetFeature() {
+
         injectUrlAndTest(() -> {
+
             assertNotNull(wfsFormat);
-            
+
             WfsWriteFeatureOptions wfsWriteFeatureOptions = new WfsWriteFeatureOptions();
             wfsWriteFeatureOptions.setFeatureNS("http://openstreemap.org");
             wfsWriteFeatureOptions.setFeaturePrefix("osm");
             wfsWriteFeatureOptions.setFeatureTypes(new String[] {"water_areas"});
-            
+
             Node node = wfsFormat.writeGetFeature(wfsWriteFeatureOptions);
-            
+
             assertNotNull(node);
+
         });
+
     }
-    
+
 }
