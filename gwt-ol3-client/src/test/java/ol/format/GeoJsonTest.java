@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,9 @@
 package ol.format;
 
 import com.google.gwt.core.client.JsonUtils;
-import ol.Coordinate;
 import ol.Feature;
-import ol.FeatureOptions;
 import ol.GwtOLBaseTestCase;
-import ol.geom.LineString;
+import ol.utils.OLTestUtils;
 
 /**
  *
@@ -42,7 +40,7 @@ public class GeoJsonTest extends GwtOLBaseTestCase {
 
             assertNotNull(geoJsonFormat);
 
-            java.lang.Object geoJSON = geoJsonFormat.writeFeatureObject(createTestFeature(), null);
+            java.lang.Object geoJSON = geoJsonFormat.writeFeatureObject(OLTestUtils.createLineFeature(), null);
             assertNotNull(geoJSON);
 
         });
@@ -51,7 +49,7 @@ public class GeoJsonTest extends GwtOLBaseTestCase {
     public void testGeoJsonToFeature() {
 
         injectUrlAndTest(() -> {
-            java.lang.Object geoJson = geoJsonFormat.writeFeatureObject(createTestFeature(), null);
+            java.lang.Object geoJson = geoJsonFormat.writeFeatureObject(OLTestUtils.createLineFeature(), null);
 
             // Convert Features from GeoJSON
             Feature featureGeoJson = geoJsonFormat.readFeature(geoJson, null);
@@ -63,7 +61,7 @@ public class GeoJsonTest extends GwtOLBaseTestCase {
     public void testWriteGeoJSON() {
 
         injectUrlAndTest(() -> {
-            String geoJson = geoJsonFormat.writeFeatures(createTestFeature(), null);
+            String geoJson = geoJsonFormat.writeFeatures(OLTestUtils.createLineFeature(), null);
             assertNotNull(geoJson);
 
             java.lang.Object geoJsonObject = JsonUtils.safeEval(geoJson);
@@ -75,7 +73,7 @@ public class GeoJsonTest extends GwtOLBaseTestCase {
     public void testReadFeatureFromGeoJson() {
 
         injectUrlAndTest(() -> {
-            String geoJson = geoJsonFormat.writeFeature(createTestFeature(), null);
+            String geoJson = geoJsonFormat.writeFeature(OLTestUtils.createLineFeature(), null);
             assertNotNull(geoJson);
             Feature feature = geoJsonFormat.readFeature(geoJson, null);
 
@@ -87,27 +85,13 @@ public class GeoJsonTest extends GwtOLBaseTestCase {
     public void testReadFeatureCollectionFromGeoJson() {
 
         injectUrlAndTest(() -> {
-            String geoJson = geoJsonFormat.writeFeatures(createTestFeature(), null);
+            String geoJson = geoJsonFormat.writeFeatures(OLTestUtils.createLineFeature(), null);
             assertNotNull(geoJson);
             Feature[] features = geoJsonFormat.readFeatures(geoJson, null);
 
             assertNotNull(features);
             //assertTrue(features.length > 0);
         });
-
-    }
-
-    private Feature createTestFeature() {
-
-        Coordinate coordinate1 = new Coordinate(1, 1);
-        Coordinate coordinate2 = new Coordinate(5, 5);
-        Coordinate[] coordinates = { coordinate1, coordinate2 };
-        LineString lineString = new LineString(coordinates);
-
-        // Create feature
-        FeatureOptions featureOptions = new FeatureOptions();
-        featureOptions.setGeometry(lineString);
-        return new Feature(featureOptions);
 
     }
 

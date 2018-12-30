@@ -15,12 +15,10 @@
  *******************************************************************************/
 package ol.format;
 
-import ol.Coordinate;
 import ol.Feature;
-import ol.FeatureOptions;
 import ol.GwtOLBaseTestCase;
 import ol.geom.Geometry;
-import ol.geom.LineString;
+import ol.utils.OLTestUtils;
 
 /**
  * Test for WKT format.
@@ -61,7 +59,7 @@ public class WktTest extends GwtOLBaseTestCase {
             assertNotNull(writeOptions);
             writeOptions.setDecimals(3);
 
-            String wkt = wktFormat.writeFeature(createTestFeature(), writeOptions);
+            String wkt = wktFormat.writeFeature(OLTestUtils.createLineFeature(), writeOptions);
             assertNotNull(wkt);
 
         });
@@ -72,7 +70,7 @@ public class WktTest extends GwtOLBaseTestCase {
 
         injectUrlAndTest(() -> {
 
-            String wkt = wktFormat.writeFeatures(createTestFeatures(), null);
+            String wkt = wktFormat.writeFeatures(OLTestUtils.createLineFeatures(), null);
             assertNotNull(wkt);
 
         });
@@ -83,7 +81,7 @@ public class WktTest extends GwtOLBaseTestCase {
 
         injectUrlAndTest(() -> {
 
-            String wkt = wktFormat.writeGeometry(createTestFeature().getGeometry());
+            String wkt = wktFormat.writeGeometry(OLTestUtils.createLineFeature().getGeometry());
             assertNotNull(wkt);
 
         });
@@ -94,7 +92,7 @@ public class WktTest extends GwtOLBaseTestCase {
 
         injectUrlAndTest(() -> {
 
-            String wkt = wktFormat.writeFeature(createTestFeature(), null);
+            String wkt = wktFormat.writeFeature(OLTestUtils.createLineFeature(), null);
             assertNotNull(wkt);
 
             WktReadOptions readOptions = new WktReadOptions();
@@ -111,7 +109,7 @@ public class WktTest extends GwtOLBaseTestCase {
 
         injectUrlAndTest(() -> {
 
-            String wkt = wktFormat.writeFeatures(createTestFeatures(), null);
+            String wkt = wktFormat.writeFeatures(OLTestUtils.createLineFeatures(), null);
             assertNotNull(wkt);
 
             Feature[] features;
@@ -132,31 +130,13 @@ public class WktTest extends GwtOLBaseTestCase {
         
         injectUrlAndTest(() -> {
 
-            String wkt = wktFormat.writeGeometry(createTestFeature().getGeometry());
+            String wkt = wktFormat.writeGeometry(OLTestUtils.createLineFeature().getGeometry());
             assertNotNull(wkt);
 
             Geometry geometry = wktFormat.readGeometry(wkt, null);
             assertNotNull(geometry);
 
         });
-
-    }
-
-    private Feature[] createTestFeatures() {
-        return new Feature[] { createTestFeature(), createTestFeature() };
-    }
-
-    private Feature createTestFeature() {
-
-        Coordinate coordinate1 = new Coordinate(1, 1);
-        Coordinate coordinate2 = new Coordinate(5, 5);
-        Coordinate[] coordinates = { coordinate1, coordinate2 };
-        LineString lineString = new LineString(coordinates);
-
-        // Create feature
-        FeatureOptions featureOptions = new FeatureOptions();
-        featureOptions.setGeometry(lineString);
-        return new Feature(featureOptions);
 
     }
 
