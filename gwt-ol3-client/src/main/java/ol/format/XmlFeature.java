@@ -65,4 +65,21 @@ public abstract class XmlFeature extends ol.format.Feature {
      */
     public native Projection readProjection(java.lang.Object source);
 
+    /**
+     * Encode an array of features as string.
+     *
+     * @param features features to encode
+     * @return features as string
+     */
+    public native String writeFeatures(Feature[] features);
+
+    /**
+     * Encode an array of features as string.
+     *
+     * @param features features to encode
+     * @param options write options
+     * @return features as string
+     */
+    public native String writeFeatures(Feature[] features, Options options);
+
 }
