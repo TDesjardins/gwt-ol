@@ -28,6 +28,7 @@ import ol.control.ZoomToExtentTest;
 import ol.events.condition.ConditionTest;
 import ol.format.GeoJsonTest;
 import ol.format.GpxTest;
+import ol.format.KmlTest;
 import ol.format.MvtTest;
 import ol.format.OsmXmlTest;
 import ol.format.WfsTest;
@@ -120,6 +121,7 @@ public class GwtOLTestSuite extends GWTTestSuite {
         suite.addTestSuite(FilterTest.class);
         suite.addTestSuite(GeoJsonTest.class);
         suite.addTestSuite(GpxTest.class);
+        suite.addTestSuite(KmlTest.class);
         suite.addTestSuite(MvtTest.class);
         suite.addTestSuite(OsmXmlTest.class);
         suite.addTestSuite(WfsTest.class);
