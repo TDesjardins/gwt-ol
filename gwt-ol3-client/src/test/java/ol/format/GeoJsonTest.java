@@ -61,7 +61,7 @@ public class GeoJsonTest extends GwtOLBaseTestCase {
     public void testWriteGeoJSON() {
 
         injectUrlAndTest(() -> {
-            String geoJson = geoJsonFormat.writeFeatures(OLTestUtils.createLineFeature(), null);
+            String geoJson = geoJsonFormat.writeFeatures(OLTestUtils.createLineFeatures(), null);
             assertNotNull(geoJson);
 
             java.lang.Object geoJsonObject = JsonUtils.safeEval(geoJson);
@@ -85,7 +85,7 @@ public class GeoJsonTest extends GwtOLBaseTestCase {
     public void testReadFeatureCollectionFromGeoJson() {
 
         injectUrlAndTest(() -> {
-            String geoJson = geoJsonFormat.writeFeatures(OLTestUtils.createLineFeature(), null);
+            String geoJson = geoJsonFormat.writeFeatures(OLTestUtils.createLineFeatures(), null);
             assertNotNull(geoJson);
             Feature[] features = geoJsonFormat.readFeatures(geoJson, null);
 

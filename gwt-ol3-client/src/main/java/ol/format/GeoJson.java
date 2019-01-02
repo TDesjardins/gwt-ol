@@ -91,7 +91,7 @@ public class GeoJson extends JsonFeature {
      * @param writeOptions Write options.
      * @return GeoJSON string
      */
-    public native String writeFeatures(Feature feature, @Nullable Options writeOptions);
+    public native String writeFeatures(Feature[] feature, @Nullable Options writeOptions);
 
     /**
      * Encode an array of features as GeoJSON.
@@ -99,7 +99,7 @@ public class GeoJson extends JsonFeature {
      * @param writeOptions Write options.
      * @return GeoJSON objects
      */
-    public native Collection<java.lang.Object> writeFeaturesObject(Feature feature, @Nullable Options writeOptions);
+    public native Collection<java.lang.Object> writeFeaturesObject(Feature[] feature, @Nullable Options writeOptions);
 
     /**
      * Encode a geometry as a GeoJSON string.
