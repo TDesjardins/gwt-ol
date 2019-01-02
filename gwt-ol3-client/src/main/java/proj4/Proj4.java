@@ -66,7 +66,7 @@ public class Proj4 {
      * @param coordinate coordinate projected in WGS84
      * @return coordinate projected to first projection
      */
-    @JsMethod(name = "proj4", namespace = JsPackage.GLOBAL)
+    @JsMethod(namespace = JsPackage.GLOBAL)
     public static native Coordinate proj4(String firstProjection, Coordinate coordinate);
 
     /**
@@ -77,13 +77,13 @@ public class Proj4 {
      * @param coordinate
      * @return coordinate projected to second projection
      */
-    @JsMethod(name = "proj4", namespace = JsPackage.GLOBAL)
+    @JsMethod(namespace = JsPackage.GLOBAL)
     public static native Coordinate proj4(String firstProjection, String secondProjection, Coordinate coordinate);
 
-    @JsMethod(name = "proj4", namespace = JsPackage.GLOBAL)
+    @JsMethod(namespace = JsPackage.GLOBAL)
     public static native Proj4 proj4(String firstProjection);
 
-    @JsMethod(name = "proj4", namespace = JsPackage.GLOBAL)
+    @JsMethod(namespace = JsPackage.GLOBAL)
     public static native Proj4 proj4(String firstProjection, String secondProjection);
 
     /**
