@@ -28,7 +28,7 @@ Live example [here](https://tdesjardins.github.io/gwt-ol/).
   <version>[x.x.x]</version>
 </dependency>
 ```
-
+Replace `[x.x.x]` with the gwt-ol version you want to use.
 ### GWT module
 
 ```xml
@@ -45,6 +45,7 @@ optional: add this line for proj4js support
   <link href="//cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v[x.x.x]/css/ol.css" rel="stylesheet" type="text/css">
   <script src="//cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v[x.x.x]/build/ol.js" type="text/javascript"></script>
 ```
+Replace `[x.x.x]` with the OpenLayers version you want to use.
 
 ## Download
 
