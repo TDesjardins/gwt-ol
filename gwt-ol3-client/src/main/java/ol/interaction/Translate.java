@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ import ol.event.EventListener;
 public class Translate extends Pointer {
 
     public Translate(TranslateOptions translateOptions) {}
- 
+
     /** Triggered upon feature translation start. */
     @JsOverlay
     public final HandlerRegistration addTranslateStartListener(final EventListener<Translate.Event> listener) {
@@ -54,24 +54,22 @@ public class Translate extends Pointer {
         return OLUtil.observe(this, "translateend", listener);
     }
 
-	/**
-	 * Events emitted by {@link Translate} instances are instances of this type.
-	 * 
-	 * @author gkresic
-	 *
-	 */
-	@JsType(isNative = true)
-	public interface Event extends ol.events.Event {
-	    
-		/** The coordinate of the drag event */
-	    @JsProperty
-	    public Coordinate getCoordinate();
-	    
-	    /** The features being translated. */
-	    @JsProperty
-	    public Collection<Feature> getFeatures();
+    /**
+     * Events emitted by {@link Translate} instances are instances of this type.
+     *
+     * @author gkresic
+     */
+    @JsType(isNative = true)
+    public interface Event extends ol.events.Event {
 
-	}
+        /** The coordinate of the drag event */
+        @JsProperty
+        public Coordinate getCoordinate();
 
+        /** The features being translated. */
+        @JsProperty
+        public Collection<Feature> getFeatures();
+
+    }
 
 }

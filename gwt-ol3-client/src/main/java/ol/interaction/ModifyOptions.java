@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,65 +26,65 @@ import ol.style.StyleFunction;
 
 /**
  * Interaction for modifying feature geometries.
- * 
+ *
  * @author guandalini
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class ModifyOptions implements Options {
 
-	/**
-	 * A function that takes an ol.MapBrowserEvent and returns a boolean to
-	 * indicate whether that event will be considered to add or move a vertex to
-	 * the sketch. Default is ol.events.condition.primaryAction.
-	 * 
-	 * @param function
-	 */
-	@JsProperty
-	public native void setCondition(GenericFunction<?, ?> function);
+    /**
+     * A function that takes an ol.MapBrowserEvent and returns a boolean to
+     * indicate whether that event will be considered to add or move a vertex to
+     * the sketch. Default is ol.events.condition.primaryAction.
+     *
+     * @param function
+     */
+    @JsProperty
+    public native void setCondition(GenericFunction<?, ?> function);
 
-	/**
-	 * A function that takes an ol.MapBrowserEvent and returns a boolean to
-	 * indicate whether that event should be handled. By default,
-	 * ol.events.condition.singleClick with ol.events.condition.noModifierKeys
-	 * results in a vertex deletion.
-	 * 
-	 * @param function
-	 */
-	@JsProperty
-	public native void setDeleteCondition(GenericFunction<?, ?> function);
+    /**
+     * A function that takes an ol.MapBrowserEvent and returns a boolean to
+     * indicate whether that event should be handled. By default,
+     * ol.events.condition.singleClick with ol.events.condition.noModifierKeys
+     * results in a vertex deletion.
+     *
+     * @param function
+     */
+    @JsProperty
+    public native void setDeleteCondition(GenericFunction<?, ?> function);
 
-	/**
-	 * Pixel tolerance for considering the pointer close enough to a segment or
-	 * vertex for editing. Default is 10.
-	 * 
-	 * @param clickTolerance
-	 */
-	@JsProperty
-	public native void setPixelTolerance(int clickTolerance);
+    /**
+     * Pixel tolerance for considering the pointer close enough to a segment or
+     * vertex for editing. Default is 10.
+     *
+     * @param clickTolerance
+     */
+    @JsProperty
+    public native void setPixelTolerance(int clickTolerance);
 
-	/**
-	 * Style used for the features being modified. By default the default edit
-	 * style is used (see ol.style).
-	 * 
-	 * @param styleFunction
-	 */
-	@JsProperty
-	public native void setStyle(StyleFunction styleFunction);
+    /**
+     * Style used for the features being modified. By default the default edit
+     * style is used (see ol.style).
+     *
+     * @param styleFunction
+     */
+    @JsProperty
+    public native void setStyle(StyleFunction styleFunction);
 
-	/**
-	 * The features the interaction works on. Required.
-	 * 
-	 * @param features
-	 */
-	@JsProperty
-	public native void setFeatures(Collection<Feature> features);
+    /**
+     * The features the interaction works on. Required.
+     *
+     * @param features
+     */
+    @JsProperty
+    public native void setFeatures(Collection<Feature> features);
 
-	/**
-	 * Wrap the world horizontally on the sketch overlay. Default is false.
-	 * 
-	 * @param wrapX
-	 */
-	@JsProperty
-	public native void setWrapX(boolean wrapX);
+    /**
+     * Wrap the world horizontally on the sketch overlay. Default is false.
+     *
+     * @param wrapX
+     */
+    @JsProperty
+    public native void setWrapX(boolean wrapX);
 
 }

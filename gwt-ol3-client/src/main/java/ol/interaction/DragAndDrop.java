@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,10 +33,10 @@ public class DragAndDrop extends Interaction {
 
         @JsProperty
         public Feature[] getFeatures();
-        
+
         @JsProperty
         public Projection getProjection();
-        
+
     }
-    
+
 }
