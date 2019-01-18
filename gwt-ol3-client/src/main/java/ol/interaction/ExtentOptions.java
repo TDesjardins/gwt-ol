@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,7 +61,7 @@ public class ExtentOptions implements Options {
 
     @JsProperty
     public native int getPixelTolerance();
-    
+
     /**
      * @param style Style for the cursor used to draw the extent. Defaults to module:ol/style/Style~createEditing()['Point']
      */
