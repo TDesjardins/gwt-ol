@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ import ol.GwtOLBaseTestCase;
 import ol.Observable;
 
 /**
- * 
+ *
  * @author Tino Desjardins
  *
  */
@@ -28,11 +28,23 @@ public class ExtentTest extends GwtOLBaseTestCase {
     public void testExtent() {
 
         injectUrlAndTest(() -> {
-            Extent extent = new Extent();
+
+            ol.Extent initialExtent = new ol.Extent(1.0, 2.0, 3.0, 4.0);
+
+            ExtentOptions extentOptions = new ExtentOptions();
+            extentOptions.setExtent(initialExtent);
+            Extent extent = new Extent(extentOptions);
 
             assertNotNull(extent);
             assertTrue(extent instanceof Observable);
             assertTrue(extent instanceof Interaction);
+            assertEquals(4.0, extent.getExtent().getUpperRightY());
+
+            ol.Extent updatedExtent = new ol.Extent(11.0, 22.0, 33.0, 44.0);
+
+            extent.setExtent(updatedExtent);
+            assertEquals(44.0, extent.getExtent().getUpperRightY());
+
         });
 
     }
