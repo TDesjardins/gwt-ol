@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package ol.source;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import ol.Params;
 
 /**
  * 
@@ -25,12 +26,12 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class WmsFeatureInfoParams {
-    
-	@JsProperty(name = "QUERY_LAYERS")
-	public native void setQueryLayers(String layers);
+public class WmsFeatureInfoParams implements Params {
 
-	@JsProperty(name = "INFO_FORMAT")
-	public native void setInfoFormat(String version);
+    @JsProperty(name = "QUERY_LAYERS")
+    public native void setQueryLayers(String layers);
+
+    @JsProperty(name = "INFO_FORMAT")
+    public native void setInfoFormat(String version);
 
 }

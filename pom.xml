@@ -5,9 +5,9 @@
     <artifactId>gwt-ol3-parent</artifactId>
     <version>HEAD-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>GWT OpenLayers 3</name>
-    <description>GWT JsInterop API for OpenLayers 3</description>
-    <url>https://github.com/TDesjardins/gwt-ol3</url>
+    <name>GWT OpenLayers 3+</name>
+    <description>GWT JsInterop API for OpenLayers 3+</description>
+    <url>https://github.com/TDesjardins/gwt-ol</url>
 
     <inceptionYear>2014</inceptionYear>
     <licenses>
@@ -28,15 +28,15 @@
     </developers>
 
     <scm>
-        <connection>scm:git:https://github.com/TDesjardins/gwt-ol3.git</connection>
-        <developerConnection>scm:git:git@github.com:TDesjardins/gwt-ol3.git</developerConnection>
-        <url>https://github.com/TDesjardins/gwt-ol3</url>
+        <connection>scm:git:https://github.com/TDesjardins/gwt-ol.git</connection>
+        <developerConnection>scm:git:git@github.com:TDesjardins/gwt-ol.git</developerConnection>
+        <url>https://github.com/TDesjardins/gwt-ol</url>
         <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/TDesjardins/gwt-ol3/issues</url>
+        <url>https://github.com/TDesjardins/gwt-ol/issues</url>
     </issueManagement>
 
     <prerequisites>
@@ -91,11 +91,11 @@
             <plugins>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.6.1</version>
+                    <version>3.8.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.20</version>
+                    <version>2.22.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-deploy-plugin</artifactId>
@@ -104,7 +104,7 @@
                 <plugin>
                     <groupId>net.ltgt.gwt.maven</groupId>
                     <artifactId>gwt-maven-plugin</artifactId>
-                    <version>1.0-rc-9</version>
+                    <version>1.0-rc-10</version>
                     <extensions>true</extensions>
                     <configuration>
                         <skipModule>true</skipModule>
@@ -194,7 +194,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.7</version>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>

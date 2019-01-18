@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,10 @@
  *******************************************************************************/
 package ol;
 
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+import elemental2.core.JsObject;
 import ol.color.Color;
 import ol.control.Attribution;
 import ol.control.Control;
@@ -74,6 +78,7 @@ import ol.source.ImageStaticOptions;
 import ol.source.ImageWms;
 import ol.source.ImageWmsOptions;
 import ol.source.Osm;
+import ol.source.RasterOptions;
 import ol.source.Source;
 import ol.source.Stamen;
 import ol.source.StamenOptions;
@@ -98,11 +103,6 @@ import ol.style.TextOptions;
 import ol.tilegrid.TileGrid;
 import ol.tilegrid.TileGridOptions;
 import ol.tilegrid.XyzTileGridOptions;
-
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
-
-import elemental2.core.JsObject;
 
 /**
  * Factory to create GWT-OL3 instances. Originally this factory was necessary
@@ -205,13 +205,13 @@ public final class OLFactory {
      * @return {@link Color}
      */
     public static Color createColor(int red, int green, int blue, double alpha) {
-        return new Color(red, green, blue, (float)alpha);
+        return new Color(red, green, blue, alpha);
     };
 
     /**
      * Creates a {@link Color} from the given String.
      *
-     * @param color
+     * @param colorString
      *            color in rgb(r,g,b) or rgba(r,g,b,a) format, or in hex #rrggbb
      *            or #rgb format
      * @return {@link Color}
@@ -599,7 +599,7 @@ public final class OLFactory {
     };
 
     /**
-     * 
+     *
      * Creates a {@link ol.interaction.Modify}
      *
      * @param modifyOptions {@link ol.interaction.ModifyOptions}
@@ -844,6 +844,29 @@ public final class OLFactory {
     };
 
     /**
+     * Creates {@link RasterOptions}.
+     *
+     * @return
+     */
+    public static RasterOptions createRasterOptions() {
+        RasterOptions options = createOptions();
+        options.disableWorkerSupport();
+        return options;
+    }
+
+    /**
+     * Creates {@link RasterOptions} with the given source.
+     *
+     * @param source
+     * @return
+     */
+    public static RasterOptions createRasterOptionsWithSource(Source source) {
+        RasterOptions options = createRasterOptions();
+        options.setSource(source);
+        return options;
+    }
+
+    /**
      * Create a {@link Rotate} control.
      * @return {@link Rotate}
      */
@@ -907,17 +930,6 @@ public final class OLFactory {
      */
     public static TileCoord createTileCoord(double x, double y, double z) {
         return new TileCoord(z, x, y);
-    };
-
-    /**
-     * Creates a {@link Sphere}.
-     * @param radius
-     *            Radius.
-     *
-     * @return {@link Sphere}
-     */
-    public static Sphere createSphere(double radius) {
-        return new Sphere(radius);
     };
 
     /** Common **/
@@ -984,12 +996,12 @@ public final class OLFactory {
      * @param text {@link Text}
      * @return {@link Style}
      */
-    public static Style createStyle(Text text){
+    public static Style createStyle(Text text) {
         StyleOptions styleOptions = createOptions();
         styleOptions.setText(text);
         return createStyle(styleOptions);
-    }    
-    
+    }
+
    /**
      * Creates a new {@link Style} style.
      *
@@ -1104,7 +1116,7 @@ public final class OLFactory {
     /**
      * Creates a new {@link ol.layer.Vector} source.
      *
-     * @param options
+     * @param vectorLayerOptions
      *            {@link LayerOptions}
      * @return {@link ol.layer.Vector}
      */
@@ -1228,37 +1240,6 @@ public final class OLFactory {
     public static TileWms createTileWMSSource(TileWmsOptions tileWmsOptions) {
         return new TileWms(tileWmsOptions);
     };
-
-    public static native java.lang.Object createEventFunction(Executor t) /*-{
-        return function (selectevent) {
-            t.action(selectevent);
-        };
-    }-*/;
-
-    public static java.lang.Object createEventFunction(GenericFunction<java.lang.Object, Void> genericFunction){
-        Executor executor = new Executor(genericFunction);
-        return createEventFunction(executor);
-    }
-
-	/**
-	 * Registers a proj4 definition by its spatial reference id.
-	 *
-	 * @param srid
-	 * @param proj4text
-	 */
-	public static final native void registerSpatialReference(int srid, String proj4text) /*-{
-		$wnd.proj4.defs('EPSG:' + srid, proj4text);
-	}-*/;
-	
-	/**
-	 * Registers a proj4 definition by its spatial reference id.
-	 *
-	 * @param srid
-	 * @param proj4text
-	 */
-	public static final native void registerSpatialReference(String srid, String proj4text) /*-{
-		$wnd.proj4.defs(srid, proj4text);
-	}-*/;
 
     /**
      * Get the default map interactions.

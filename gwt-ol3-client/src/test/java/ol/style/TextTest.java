@@ -15,14 +15,14 @@
  *******************************************************************************/
 package ol.style;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 
 /**
  * Test for {@link ol.style.Text}.
  * 
  * @author Tino Desjardins
  */
-public class TextTest extends GwtOL3BaseTestCase {
+public class TextTest extends GwtOLBaseTestCase {
 
     private static final String FONT = "12px sans-serif";
 

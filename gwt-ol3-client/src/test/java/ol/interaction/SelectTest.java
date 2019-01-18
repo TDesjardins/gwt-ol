@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,28 +15,35 @@
  *******************************************************************************/
 package ol.interaction;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.Observable;
 
 /**
- * 
+ *
  * @author Tino Desjardins
  *
  */
-public class SelectTest extends GwtOL3BaseTestCase {
+public class SelectTest extends GwtOLBaseTestCase {
 
     public void testSelect() {
 
         injectUrlAndTest(() -> {
-            
+
             SelectOptions selectOptions = new SelectOptions();
+            selectOptions.setHitTolerance(2);
+            selectOptions.setWrapX(true);
             Select select = new Select(selectOptions);
-            
+
             assertNotNull(select);
             assertTrue(select instanceof Observable);
             assertTrue(select instanceof Interaction);
+            assertEquals(2, select.getHitTolerance());
+
+            select.setHitTolerance(0);
+            assertEquals(0, select.getHitTolerance());
+
         });
- 
+
     }
 
 }

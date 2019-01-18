@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package ol;
 
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import jsinterop.base.JsPropertyMap;
 
 /**
  * Abstract base class; normally only used for creating subclasses and not
@@ -28,7 +29,7 @@ import jsinterop.annotations.JsType;
  * Classes that inherit from this have pre-defined properties, to which you can
  * add your owns. The pre-defined properties are listed in this documentation as
  * 'Observable Properties', and have their own accessors; for example,
- * {@link ol.Map} has a `target` property, accessed with `getTarget()` and
+ * {@link ol.PluggableMap} has a `target` property, accessed with `getTarget()` and
  * changed with `setTarget()`. Not all properties are however settable. There
  * are also general-purpose accessors `get()` and `set()`. For example,
  * `get('target')` is equivalent to `getTarget()`.
@@ -71,6 +72,13 @@ public abstract class Object extends Observable {
     public native <T> T get(String key);
 
     /**
+     * Get an object of all property names and values.
+     *
+     * @return object of all property names and values
+     */
+    public native <T> JsPropertyMap<T> getProperties();
+
+    /**
      * Sets a value.
      *
      * @param key
@@ -79,6 +87,23 @@ public abstract class Object extends Observable {
      *            Value.
      */
     public native <T> void set(String key, T value);
+
+    /**
+     * Sets a collection of key-value pairs. Note that this changes any existing properties
+     * and adds new ones (it does not remove any existing properties).
+     *
+     * @param properties properties to set
+     */
+    public native <T> void setProperties(JsPropertyMap<T> properties);
+
+    /**
+     * Sets a collection of key-value pairs. Note that this changes any existing properties
+     * and adds new ones (it does not remove any existing properties).
+     *
+     * @param properties properties to set
+     * @param silent Update without triggering an event.
+     */
+    public native <T> void setProperties(JsPropertyMap<T> properties, boolean silent);
 
     /**
      * Unsets a property.

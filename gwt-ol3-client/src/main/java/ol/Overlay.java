@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,9 +40,9 @@ import jsinterop.annotations.JsType;
 public class Overlay extends Object {
 
     public Overlay() {}
-    
+
     public Overlay(OverlayOptions options) {}
-    
+
     /**
      * Get the DOM element of this overlay.
      * @return {Element|undefined} The Element containing the overlay.
@@ -57,13 +57,13 @@ public class Overlay extends Object {
 
     /**
      * Get the map associated with this overlay.
-     * @return {ol.Map|undefined} The map that the overlay is part of.
+     * @return {ol.PluggableMap|undefined} The map that the overlay is part of.
      */
-    public native Map getMap();
+    public native PluggableMap getMap();
 
     /**
      * Get the offset of this overlay.
-     * @return {Array.<number>} The offset.
+     * @return the offset.
      */
     public native Pixel getOffset();
 
@@ -93,7 +93,7 @@ public class Overlay extends Object {
      * @param map
      *            The map that the overlay is part of.
      */
-    public native void setMap(Map map);
+    public native void setMap(PluggableMap map);
 
     /**
      * Set the offset for this overlay.

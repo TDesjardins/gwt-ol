@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,10 @@
  *******************************************************************************/
 package ol.format;
 
-import ol.Coordinate;
 import ol.Feature;
-import ol.FeatureOptions;
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.geom.Geometry;
-import ol.geom.LineString;
+import ol.utils.OLTestUtils;
 
 /**
  * Test for WKT format.
@@ -28,76 +26,76 @@ import ol.geom.LineString;
  * @author gkresic
  *
  */
-public class WktTest extends GwtOL3BaseTestCase {
+public class WktTest extends GwtOLBaseTestCase {
 
-	private Wkt wktFormat;
-	private Wkt splittingWktFormat;
-	
-	@Override
-	protected void gwtSetUp() throws Exception {
+    private Wkt wktFormat;
+    private Wkt splittingWktFormat;
 
-		injectUrlAndTest(() -> {
-	    
-        	WktOptions wktOptions = new WktOptions();
+    @Override
+    protected void gwtSetUp() throws Exception {
+
+        injectUrlAndTest(() -> {
+
+            WktOptions wktOptions = new WktOptions();
             assertNotNull(wktOptions);
 
             wktOptions.setSplitCollection(false);
-			wktFormat = new Wkt(wktOptions);
+            wktFormat = new Wkt(wktOptions);
             assertNotNull(wktFormat);
 
             wktOptions.setSplitCollection(true);
             splittingWktFormat = new Wkt(wktOptions);
             assertNotNull(splittingWktFormat);
 
-	    });
-		
-	}
-	
-	public void testFeatureToWkt() {
+        });
 
-	    injectUrlAndTest(() -> {
+    }
 
-        	WktWriteOptions writeOptions = new WktWriteOptions();
+    public void testFeatureToWkt() {
+
+        injectUrlAndTest(() -> {
+
+            WktWriteOptions writeOptions = new WktWriteOptions();
             assertNotNull(writeOptions);
             writeOptions.setDecimals(3);
 
-            String wkt = wktFormat.writeFeature(createTestFeature(), writeOptions);
+            String wkt = wktFormat.writeFeature(OLTestUtils.createLineFeature(), writeOptions);
             assertNotNull(wkt);
-            
+
         });
 
-	}
+    }
 
-	public void testFeaturesToWkt() {
+    public void testFeaturesToWkt() {
 
-	    injectUrlAndTest(() -> {
+        injectUrlAndTest(() -> {
 
-            String wkt = wktFormat.writeFeatures(createTestFeatures(), null);
+            String wkt = wktFormat.writeFeatures(OLTestUtils.createLineFeatures(), null);
             assertNotNull(wkt);
-            
+
         });
 
-	}
+    }
 
-	public void testGeometryToWkt() {
+    public void testGeometryToWkt() {
 
-	    injectUrlAndTest(() -> {
+        injectUrlAndTest(() -> {
 
-            String wkt = wktFormat.writeGeometry(createTestFeature().getGeometry());
+            String wkt = wktFormat.writeGeometry(OLTestUtils.createLineFeature().getGeometry());
             assertNotNull(wkt);
-            
+
         });
 
-	}
+    }
 
     public void testWktToFeature() {
-        
+
         injectUrlAndTest(() -> {
-        	
-            String wkt = wktFormat.writeFeature(createTestFeature(), null);
+
+            String wkt = wktFormat.writeFeature(OLTestUtils.createLineFeature(), null);
             assertNotNull(wkt);
 
-        	WktReadOptions readOptions = new WktReadOptions();
+            WktReadOptions readOptions = new WktReadOptions();
             assertNotNull(readOptions);
 
             Feature feature = wktFormat.readFeature(wkt, readOptions);
@@ -106,12 +104,12 @@ public class WktTest extends GwtOL3BaseTestCase {
         });
 
     }
-	
+
     public void testWktToFeatures() {
-        
+
         injectUrlAndTest(() -> {
-        	
-            String wkt = wktFormat.writeFeatures(createTestFeatures(), null);
+
+            String wkt = wktFormat.writeFeatures(OLTestUtils.createLineFeatures(), null);
             assertNotNull(wkt);
 
             Feature[] features;
@@ -131,8 +129,8 @@ public class WktTest extends GwtOL3BaseTestCase {
     public void testWktToGeometry() {
         
         injectUrlAndTest(() -> {
-        	
-            String wkt = wktFormat.writeGeometry(createTestFeature().getGeometry());
+
+            String wkt = wktFormat.writeGeometry(OLTestUtils.createLineFeature().getGeometry());
             assertNotNull(wkt);
 
             Geometry geometry = wktFormat.readGeometry(wkt, null);
@@ -141,23 +139,5 @@ public class WktTest extends GwtOL3BaseTestCase {
         });
 
     }
-
-	private Feature[] createTestFeatures() {
-		return new Feature[] { createTestFeature(), createTestFeature() };
-	}
-	
-	private Feature createTestFeature() {
-		
-		Coordinate coordinate1 = new Coordinate(1, 1);
-		Coordinate coordinate2 = new Coordinate(5, 5);
-		Coordinate[] coordinates = { coordinate1, coordinate2 };
-		LineString lineString = new LineString(coordinates);
-
-		// Create feature
-		FeatureOptions featureOptions = new FeatureOptions();
-		featureOptions.setGeometry(lineString);
-		return new Feature(featureOptions);
-		
-	}
 
 }

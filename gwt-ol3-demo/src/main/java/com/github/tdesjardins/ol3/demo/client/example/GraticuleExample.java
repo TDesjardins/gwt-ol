@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2017 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,8 @@ import ol.OLFactory;
 import ol.View;
 import ol.control.MousePosition;
 import ol.control.OverviewMap;
+import ol.control.ZoomSlider;
+import ol.control.ZoomToExtent;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
 import ol.source.Osm;
@@ -52,9 +54,9 @@ public class GraticuleExample implements Example {
         Tile osmLayer = new Tile(osmLayerOptions);
 
         // create a view
-        View view = OLFactory.createView();
+        View view = new View();
 
-        Coordinate centerCoordinate = OLFactory.createCoordinate(1490463, 6894388);
+        Coordinate centerCoordinate = new Coordinate(1490463, 6894388);
 
         view.setCenter(centerCoordinate);
         view.setZoom(10);
@@ -64,21 +66,21 @@ public class GraticuleExample implements Example {
         mapOptions.setTarget(exampleId);
         mapOptions.setView(view);
 
-        Map map = OLFactory.createMap(mapOptions);
+        Map map = new Map(mapOptions);
 
         map.addLayer(osmLayer);
 
         // add some controls
-        map.addControl(OLFactory.createZoomSlider());
+        map.addControl(new ZoomSlider());
         MousePosition mousePosition = new MousePosition();
         mousePosition.setCoordinateFormat(Coordinate.createStringXY(2));
         map.addControl(mousePosition);
-        map.addControl(OLFactory.createZoomToExtent());
+        map.addControl(new ZoomToExtent());
         
         OverviewMap overviewMap = new OverviewMap();
         map.addControl(overviewMap);
 
-        Graticule graticule = OLFactory.createGraticule();
+        Graticule graticule = new Graticule();
         graticule.setMap(map);
 
     }

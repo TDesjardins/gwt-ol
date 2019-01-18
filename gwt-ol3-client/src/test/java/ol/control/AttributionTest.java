@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,14 @@
  *******************************************************************************/
 package ol.control;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 
 /**
  * 
  * @author Tino Desjardins
  *
  */
-public class AttributionTest extends GwtOL3BaseTestCase {
+public class AttributionTest extends GwtOLBaseTestCase {
 
     public void testAttribution() {
 

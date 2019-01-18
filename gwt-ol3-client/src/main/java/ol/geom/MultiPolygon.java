@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,31 +41,28 @@ public class MultiPolygon extends SimpleGeometry {
 
     /**
      * Append the passed polygon to this multipolygon.
-     * 
+     *
      * @param polygon
      *            Polygon.
-     * @api stable
      */
     public native void appendPolygon(Polygon polygon);
 
     /**
      * Return the polygon at the specified index.
-     * 
+     *
      * @param index
      *            Index.
-     * @return {ol.geom.Polygon} Polygon.
-     * @api stable
+     * @return polygon.
      */
     public native Polygon getPolygon(int index);
 
     /**
      * Return the polygons of this multipolygon.
-     * 
-     * @return {Array.<ol.geom.Polygon>} Polygons.
-     * @api stable
+     *
+     * @return polygons.
      */
     public native Polygon[] getPolygons();
-    
+
     /**
      * Set the coordinates of the polygon.
      *
@@ -80,5 +77,5 @@ public class MultiPolygon extends SimpleGeometry {
      * @param geometryLayout opt_layout Layout.
      */
     public native void setCoordinates(Coordinate[][][] coordinates, @Nullable String geometryLayout);
-    
+
 }

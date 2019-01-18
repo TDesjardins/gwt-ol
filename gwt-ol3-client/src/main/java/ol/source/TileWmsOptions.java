@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 /**
  *
  * @author mribeiro
- * @date 07/06/16 18:04
  *
  */
 package ol.source;
@@ -32,31 +31,32 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class TileWmsOptions extends TileImageOptions {
 
-	@JsProperty
-	public native void setCrossOrigin(String crossOrigin);
+    @JsProperty
+    public native void setCrossOrigin(String crossOrigin);
 
-	@JsProperty
-	public native String getCrossOrigin();
+    @JsProperty
+    public native String getCrossOrigin();
 
-	@JsProperty(name = "serverType")
-	public native String getServerTypeString();
+    @JsProperty(name = "serverType")
+    public native String getServerTypeString();
 
-	@JsProperty(name = "serverType")
-	public native void setServerTypeString(String serverType);
+    @JsProperty(name = "serverType")
+    public native void setServerTypeString(String serverType);
 
-	@JsOverlay
-	public final WmsServerType getServerType() {
-		return WmsServerType.getInstance(getServerTypeString());
-	}
+    @JsOverlay
+    public final WmsServerType getServerType() {
+        return WmsServerType.getInstance(getServerTypeString());
+    }
 
-	@JsOverlay
-	public final void setServerType(WmsServerType serverType) {
-		setServerTypeString(serverType.getValue());
-	}
-	
-	@JsProperty
-	public native void setParams(TileWmsParams params);
+    @JsOverlay
+    public final void setServerType(WmsServerType serverType) {
+        setServerTypeString(serverType.getValue());
+    }
 
-	@JsProperty
-	public native TileWmsParams getParams();
+    @JsProperty
+    public native void setParams(TileWmsParams params);
+
+    @JsProperty
+    public native TileWmsParams getParams();
+
 }

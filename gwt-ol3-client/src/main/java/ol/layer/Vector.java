@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,16 +18,15 @@ package ol.layer;
 import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
-import ol.Feature;
 import ol.style.Style;
-import ol.GenericFunction;
+import ol.style.StyleFunction;
 
 /**
  * Vector data that is rendered client-side. Note that any property set in the
  * options is set as a {@link ol.Object} property on the layer object; for
  * example, setting `title: 'My Title'` in the options means that `title` is
  * observable, and has get/set accessors.
- * 
+ *
  * @author Tino Desjardins
  *
  */
@@ -36,15 +35,14 @@ public class Vector extends Layer {
 
 
     public Vector() {}
-    
+
     public Vector(VectorLayerOptions vectorLayerOptions) {}
-    
+
     /**
      * Get the style for features. This returns whatever was passed to the
      * `style` option at construction or to the `setStyle` method.
-     * 
-     * @return {ol.style.Style|Array.<ol.style.Style>|ol.StyleFunction}
-     *         Layer style.
+     *
+     * @return style for features.
      */
     @JsMethod(name = "getStyle")
     private native Object getNativeStyle();
@@ -54,9 +52,9 @@ public class Vector extends Layer {
      */
     @JsOverlay
     public final Style getStyle() {
-        
+
         java.lang.Object nativeStyle = this.getNativeStyle();
-        
+
         if (nativeStyle instanceof Style[]) {
             Style[] styles = (Style[])nativeStyle;
 
@@ -67,7 +65,7 @@ public class Vector extends Layer {
         } else if (nativeStyle instanceof Style) {
             return (Style)nativeStyle;
         }
-        
+
         return null;
     }
 
@@ -94,7 +92,7 @@ public class Vector extends Layer {
     /**
      * @return The vector's style function.
      */
-    public native GenericFunction<Feature, Style[]> getStyleFunction();
+    public native StyleFunction getStyleFunction();
 
     @JsMethod(name = "setStyle")
     private native void setNativeStyle(java.lang.Object style);
@@ -106,7 +104,7 @@ public class Vector extends Layer {
      * is `null` the layer has no style (a `null` style), so only features that
      * have their own styles will be rendered in the layer. See {@link ol.style}
      * for information on the default style.
-     * 
+     *
      * @param style
      *            Layer style.
      */
@@ -118,13 +116,13 @@ public class Vector extends Layer {
     }
 
     /**
-     * @deprecated Use {@link ol.layer.Vector#setStyleFunction(GenericFunction)} instead.
+     * @deprecated Use {@link ol.layer.Vector#setStyleFunction(StyleFunction)} instead.
      */
     @Deprecated
-    public native void setStyle(GenericFunction<Feature, Style[]> style);
+    public native void setStyle(StyleFunction style);
 
     @JsOverlay
-    public final void setStyleFunction(GenericFunction<Feature, Style[]> styleFunction) {
+    public final void setStyleFunction(StyleFunction styleFunction) {
         setNativeStyle(styleFunction);
     }
 

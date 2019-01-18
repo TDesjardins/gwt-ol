@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import jsinterop.annotations.JsType;
 import ol.layer.Vector;
 
 /**
- * Options for customizing {@link Map#forEachFeatureAtPixel(Pixel, GenericFunction, FeatureAtPixelOptions)}
+ * Options for customizing {@link PluggableMap#forEachFeatureAtPixel(Pixel, GenericFunction, FeatureAtPixelOptions)}
  *
  * @author gkresic
  */
@@ -37,14 +37,14 @@ public class FeatureAtPixelOptions implements Options {
      */
     @JsProperty
     public native void setLayerFilter(GenericFunction<Vector, Boolean> layerFilter);
-    
+
     @JsProperty
     public native GenericFunction<Vector, Boolean> getLayerFilter();
 
     /**
      * Defines hit-detection tolerance in pixels. Pixels inside the radius around the given position will be checked for features.
      * This only works for the canvas renderer and not for WebGL. Default is <code>0</code>.
-     * 
+     *
      * @param hitTolerance Hit-detection tolerance in pixels.
      */
     @JsProperty

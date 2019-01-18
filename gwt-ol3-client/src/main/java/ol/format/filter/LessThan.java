@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,8 @@ package ol.format.filter;
 import jsinterop.annotations.JsType;
 
 /**
- * Represents a <PropertyIsLessThan> comparison operator.
- * 
+ * Represents a PropertyIsLessThan comparison operator.
+ *
  * @author Tino Desjardins
  *
  */
@@ -29,5 +29,5 @@ public class LessThan extends ComparisonBinary {
     public LessThan(String propertyName, Number expression) {
         super("PropertyIsLessThan", propertyName, expression);
     }
-	
+
 }

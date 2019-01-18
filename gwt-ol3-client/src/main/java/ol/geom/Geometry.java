@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@ public abstract class Geometry extends Observable {
     /**
      * Make a complete copy of the geometry.
      *
-     * @return {@link Geometry} Clone.
+     * @return geometry clone.
      */
     public native Geometry clone();
 
@@ -44,14 +44,13 @@ public abstract class Geometry extends Observable {
      * @param point
      *            Point.
      * @return Closest point.
-     * @api stable
      */
     public native Coordinate getClosestPoint(Coordinate point);
 
     /**
      * Get the extent of the geometry.
      *
-     * @return {ol.Extent} extent Extent.
+     * @return extent.
      */
     public native Extent getExtent();
 
@@ -79,10 +78,9 @@ public abstract class Geometry extends Observable {
      * Douglas Peucker</a> algorithm. For polygons, a quantization-based
      * simplification is used to preserve topology.
      *
-     * @function
      * @param tolerance
      *            The tolerance distance for simplification.
-     * @return {@link Geometry} A new, simplified version of the original
+     * @return A new, simplified version of the original
      *         geometry.
      */
     public native Geometry simplify(double tolerance);
@@ -98,7 +96,7 @@ public abstract class Geometry extends Observable {
      *            The current projection. Can be a string identifier.
      * @param destination
      *            The desired projection. Can be a string identifier.
-     * @return {@link Geometry} This geometry. Note that original geometry is
+     * @return This geometry. Note that original geometry is
      *         modified in place.
      */
     public native Geometry transform(String source, String destination);
@@ -110,13 +108,11 @@ public abstract class Geometry extends Observable {
      * want the geometry modified in place, first clone() it and then use this
      * function on the clone.
      *
-     * @param geom {@link Geometry}
-     *
      * @param source
      *            The current projection. Can be a {@link ol.proj.Projection} object.
      * @param destination
      *            The desired projection. Can be a {@link ol.proj.Projection} object.
-     * @return {@link Geometry} This geometry. Note that original geometry is
+     * @return This geometry. Note that original geometry is
      *         modified in place.
      */
     public native Geometry transform(Projection source, Projection destination);

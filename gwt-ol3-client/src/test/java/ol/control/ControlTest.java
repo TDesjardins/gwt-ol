@@ -16,14 +16,14 @@
 package ol.control;
 
 import ol.Collection;
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 
 /**
  * 
  * @author Tino Desjardins
  *
  */
-public class ControlTest extends GwtOL3BaseTestCase {
+public class ControlTest extends GwtOLBaseTestCase {
 
     public void testControl() {
 

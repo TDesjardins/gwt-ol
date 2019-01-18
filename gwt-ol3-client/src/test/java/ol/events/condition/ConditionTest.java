@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package ol.events.condition;
 
 import ol.GenericFunction;
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.MapBrowserEvent;
 
 /**
@@ -25,12 +25,12 @@ import ol.MapBrowserEvent;
  * @author Tino Desjardins
  *
  */
-public class ConditionTest extends GwtOL3BaseTestCase {
+public class ConditionTest extends GwtOLBaseTestCase {
 
     public void testConditions() {
 
         injectUrlAndTest(() -> {
-            
+
             assertNotNull(Condition.getAltKeyOnly());
             assertNotNull(Condition.getAltShiftKeysOnly());
             assertNotNull(Condition.getAlways());
@@ -45,13 +45,13 @@ public class ConditionTest extends GwtOL3BaseTestCase {
             assertNotNull(Condition.getShiftKeyOnly());
             assertNotNull(Condition.getSingleClick());
             assertNotNull(Condition.getTargetNotEditable());
-            
+
             GenericFunction<MapBrowserEvent, Boolean> alwaysFunction = Condition.getAlways();
             assertTrue(alwaysFunction.call(null));
-            
+
             GenericFunction<MapBrowserEvent, Boolean> neverFunction = Condition.getNever();
             assertFalse(neverFunction.call(null));
-            
+
         });
 
     }

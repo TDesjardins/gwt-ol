@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,6 +41,58 @@ public class Extent implements JsArrayLike<Double> {
     public Extent(double minX, double minY, double maxX, double maxY) {}
 
     /**
+     * @param buffer the amount by which the extent should be buffered.
+     * @return extent increased by the provided value.
+     */
+    @JsOverlay
+    public final Extent buffer(double buffer) {
+        return buffer(this, buffer);
+    }
+
+    @JsMethod(name = "buffer", namespace = PACKAGE_EXTENT)
+    private static native Extent buffer(Extent extent, double buffer);
+
+    /**
+     * @param coordinate coordinate to check.
+     * @return true if the passed coordinate is contained or on the edge of the extent.
+     */
+    @JsOverlay
+    public final boolean containsCoordinate(Coordinate coordinate) {
+        return containsCoordinate(this, coordinate);
+    }
+
+    @JsMethod(name = "containsCoordinate", namespace = PACKAGE_EXTENT)
+    private static native boolean containsCoordinate(Extent extent, Coordinate coordinater);
+
+    /**
+     * Check if this extent contains another.
+     *
+     * @param extent extent to check.
+     * @return true if it lies completely within this extent, including if they share one or more edges.
+     */
+    @JsOverlay
+    public final boolean containsExtent(Extent extent) {
+        return containsExtent(this, extent);
+    }
+
+    @JsMethod(name = "containsExtent", namespace = PACKAGE_EXTENT)
+    private static native boolean containsExtent(Extent extent1, Extent extent2);
+
+    
+    /**
+     * @param x X coordinate.
+     * @param y Y coordinate.
+     * @return true if the passed coordinate is contained or on the edge of the extent.
+     */
+    @JsOverlay
+    public final boolean containsXY(double x, double y) {
+        return containsXY(this, x, y);
+    }
+
+    @JsMethod(name = "containsXY", namespace = PACKAGE_EXTENT)
+    private static native boolean containsXY(Extent extent, double x, double y);
+
+    /**
      * Constructs an instance.
      *
      * @param minX minimum coordinate X
@@ -57,6 +109,12 @@ public class Extent implements JsArrayLike<Double> {
     };
 
     /**
+     * @return an empty extent
+     */
+    @JsMethod(name = "createEmpty", namespace = PACKAGE_EXTENT)
+    public static native Extent createEmpty();
+
+    /**
      * Clones this object.
      *
      * @return {ol.Extent} clone
@@ -67,6 +125,32 @@ public class Extent implements JsArrayLike<Double> {
     };
 
     private native Extent slice(int begin);
+
+    /**
+     * @param extent extent to check
+     * @return if extents are equivalent.
+     */
+    @JsOverlay
+    public final boolean equals(Extent extent) {
+        return equals(this, extent);
+    }
+
+    @JsMethod(name = "equals", namespace = PACKAGE_EXTENT)
+    private static native boolean equals(Extent extent1, Extent extent2);
+
+    /**
+     * Modify this extent to include another extent.
+     *
+     * @param extent the extent that will be included.
+     * @return a reference to this (extended) extent
+     */
+    @JsOverlay
+    public final Extent extend(Extent extent) {
+        return extend(this, extent);
+    }
+
+    @JsMethod(name = "extend", namespace = PACKAGE_EXTENT)
+    private static native Extent extend(Extent extent1, Extent extent2);
 
     /**
      * @return the area of the extent.
@@ -163,5 +247,16 @@ public class Extent implements JsArrayLike<Double> {
 
     @JsMethod(name = "getWidth", namespace = PACKAGE_EXTENT)
     private static native double getWidth(Extent extent);
+
+    /**
+     * @return true if the extent is empty
+     */
+    @JsOverlay
+    public final boolean isEmpty() {
+        return Extent.isEmpty(this);
+    }
+
+    @JsMethod(name = "isEmpty", namespace = PACKAGE_EXTENT)
+    private static native boolean isEmpty(Extent extent);
 
 }

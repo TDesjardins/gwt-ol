@@ -23,7 +23,7 @@ import ol.style.Style;
  * @author Tino Desjardins
  *
  */
-public class OLUtilTest extends GwtOL3BaseTestCase {
+public class OLUtilTest extends GwtOLBaseTestCase {
 
     public void testOLUtil() {
 
@@ -34,9 +34,19 @@ public class OLUtilTest extends GwtOL3BaseTestCase {
 
             assertTrue(styles.length == 2 );
 
-            OLUtil.addItem(styles, newStyle);
+            OLUtil.pushItem(styles, newStyle);
 
             assertTrue(styles.length == 3);
+
+            Style[] styles1 = {new Style(), new Style()};
+            Style[] styles2 = {new Style(), new Style(), new Style()};
+            assertTrue(styles1.length == 2);
+            assertTrue(styles2.length == 3);
+            
+            Style[] combinedStyles = OLUtil.concatArrays(styles1, styles2);
+
+            assertNotNull(combinedStyles);
+            assertTrue(combinedStyles.length == 5);
 
         });
 

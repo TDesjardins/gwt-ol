@@ -73,7 +73,7 @@ public class StyleOptions implements Options {
     /**
      * Text style.
      *
-     * @param text {@Text text}
+     * @param text {@link Text}
      */
     @JsProperty
     public native void setText(Text text);

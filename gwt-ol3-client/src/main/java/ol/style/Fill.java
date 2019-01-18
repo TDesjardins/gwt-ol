@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,13 @@ import ol.color.Color;
 
 /**
  * Set fill style for vector features.
- * 
+ *
  * @author Tino Desjardins
  */
 @JsType(isNative = true)
 public class Fill {
+
+    public Fill() {}
 
     public Fill(FillOptions fillOptions) {}
 

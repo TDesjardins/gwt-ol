@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,8 @@ package ol.interaction;
 import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
-import ol.Map;
+import ol.Options;
+import ol.PluggableMap;
 
 /**
  * Abstract base class; normally only used for creating subclasses and not
@@ -34,6 +35,10 @@ import ol.Map;
  */
 @JsType(isNative = true)
 public abstract class Interaction extends ol.Object {
+
+    public Interaction() {}
+
+    public Interaction(Options options) {}
 
     @JsOverlay
     private static final String PACKAGE_INTERACTION = "ol.interaction";
@@ -60,7 +65,7 @@ public abstract class Interaction extends ol.Object {
     /**
      * Return whether the interaction is currently active.
      *
-     * @return {boolean} `true` if the interaction is active, `false` otherwise.
+     * @return `true` if the interaction is active, `false` otherwise.
      */
     public native boolean getActive();
 
@@ -69,7 +74,7 @@ public abstract class Interaction extends ol.Object {
      *
      * @return associated with this interaction
      */
-    public native Map getMap();
+    public native PluggableMap getMap();
 
     /**
      * Activate or deactivate the interaction.
@@ -78,5 +83,7 @@ public abstract class Interaction extends ol.Object {
      *            Active.
      */
     public native void setActive(boolean active);
+
+    public native void setMap(PluggableMap map);
 
 }

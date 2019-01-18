@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  *******************************************************************************/
 package com.github.tdesjardins.ol3.demo.client.example;
 
+import com.github.tdesjardins.ol3.demo.client.constants.DemoConstants;
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
 
 import ol.Coordinate;
@@ -58,7 +59,7 @@ public class OsmExample implements Example {
 
         // create debug layer
         TileDebugOptions tileDebugOptions = OLFactory.createOptions();
-        tileDebugOptions.setProjection("EPSG:3857");
+        tileDebugOptions.setProjection(DemoConstants.EPSG_3857);
         tileDebugOptions.setTileGrid(osmSource.getTileGrid());
 
         TileDebug tileDebugSource = new TileDebug(tileDebugOptions);
@@ -74,7 +75,7 @@ public class OsmExample implements Example {
         View view = new View();
 
         Coordinate centerCoordinate = OLFactory.createCoordinate(-0.1275, 51.507222);
-        Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, "EPSG:4326", "EPSG:3857");
+        Coordinate transformedCenterCoordinate = Projection.transform(centerCoordinate, DemoConstants.EPSG_4326, DemoConstants.EPSG_3857);
 
         view.setCenter(transformedCenterCoordinate);
         view.setZoom(10);

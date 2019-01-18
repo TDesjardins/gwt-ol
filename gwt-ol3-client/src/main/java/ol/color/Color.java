@@ -40,7 +40,7 @@ public class Color implements JsArrayLike<Double> {
      * @param blue blue (0-255)
      * @param alpha alpha (0-1), 1 is solid
      */
-    public Color(int red, int green, int blue, float alpha) {}
+    public Color(int red, int green, int blue, double alpha) {}
 
     /**
      * This method maintains a cache of calculated arrays which means the result

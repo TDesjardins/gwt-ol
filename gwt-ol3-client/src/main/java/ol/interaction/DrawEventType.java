@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,22 +21,21 @@ import jsinterop.annotations.JsType;
  * The draw event type.
  *
  * @author Peter Zanetti
- * 
- * @see https://github.com/openlayers/ol3/blob/master/src/ol/interaction/draw.js
+ *
+ * see https://github.com/openlayers/ol3/blob/master/src/ol/interaction/draw.js
  *
  */
 @JsType
 public enum DrawEventType {
-  /**
-   * Triggered upon feature draw start
-   * 
-   * @see ol.interaction.Draw.Event#drawstart
-   */
-		drawstart,
-	  /**
-	   * Triggered upon feature draw end
-	   * 
-	   * @see ol.interaction.Draw.Event#drawend
-	   */
-		drawend
+
+    /**
+     * Triggered upon feature draw start see ol.interaction.Draw.Event#drawstart
+     */
+    drawstart,
+
+    /**
+     * Triggered upon feature draw end see ol.interaction.Draw.Event#drawend
+     */
+    drawend
+
 }

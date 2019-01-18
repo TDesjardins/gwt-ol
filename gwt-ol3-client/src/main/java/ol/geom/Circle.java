@@ -47,15 +47,15 @@ public class Circle extends SimpleGeometry {
 
     /**
      * Return the center of the circle as {@link ol.Coordinate coordinate}.
-     * 
-     * @return {ol.Coordinate} Center.
+     *
+     * @return center.
      */
     public native Coordinate getCenter();
 
     /**
      * Return the radius of the circle.
-     * 
-     * @return {number} Radius.
+     *
+     * @return radius.
      */
     public native double getRadius();
 
@@ -69,7 +69,7 @@ public class Circle extends SimpleGeometry {
 
     /**
      * Set the center of the circle as {@link ol.Coordinate coordinate}.
-     * 
+     *
      * @param center
      *            Center.
      */
@@ -78,7 +78,7 @@ public class Circle extends SimpleGeometry {
     /**
      * Set the center (as {@link ol.Coordinate coordinate}) and the radius (as
      * number) of the circle.
-     * 
+     *
      * @param center
      *            Center.
      * @param radius
@@ -89,10 +89,10 @@ public class Circle extends SimpleGeometry {
     /**
      * Set the radius of the circle. The radius is in the units of the
      * projection.
-     * 
+     *
      * @param radius
      *            Radius.
      */
     public native void setRadius(double radius);
-    
+
 }

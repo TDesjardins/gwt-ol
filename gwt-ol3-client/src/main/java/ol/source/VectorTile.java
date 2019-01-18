@@ -30,7 +30,7 @@ import jsinterop.annotations.JsType;
 public class VectorTile extends UrlTile {
 
     public VectorTile() {}
-    
+
     public VectorTile(VectorTileOptions vectorTileOptions) {}
 
 }

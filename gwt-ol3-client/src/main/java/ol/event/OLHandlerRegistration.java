@@ -22,7 +22,7 @@ import ol.Observable;
 
 /**
  * A {@link HandlerRegistration} for OpenLayers event handlers.
- * 
+ *
  * @author sbaumhekel
  */
 public class OLHandlerRegistration implements HandlerRegistration {
@@ -32,7 +32,7 @@ public class OLHandlerRegistration implements HandlerRegistration {
 
     /**
      * Constructs an instance.
-     * 
+     *
      * @param observable
      *            {@link Observable}
      * @param key
@@ -45,9 +45,8 @@ public class OLHandlerRegistration implements HandlerRegistration {
 
     /*
      * (non-Javadoc)
-     * 
-     * @see
-     * com.google.gwt.event.shared.HandlerRegistration#removeHandler()
+     *
+     * @see com.google.web.bindery.event.shared.HandlerRegistration#removeHandler()
      */
     @Override
     public void removeHandler() {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,9 @@ public class Collection<T> extends Object {
 
     /**
      * Triggered when an item is added to the collection.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addElementAddedListener(final EventListener<Event<T>> listener) {
@@ -43,6 +46,9 @@ public class Collection<T> extends Object {
 
     /**
      * Triggered when an item is removed from the collection.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addElementRemovedListener(final EventListener<Event<T>> listener) {
@@ -53,7 +59,7 @@ public class Collection<T> extends Object {
 
     /**
      * Returns <tt>true</tt> if this collection contains the specified element.
-     * 
+     *
      * @param item element whose presence in this collection is to be tested
      * @return <tt>true</tt> if this collection contains the specified element
      */
@@ -68,23 +74,23 @@ public class Collection<T> extends Object {
         }
         return false;
     }
-    
+
     public native T[] getArray();
 
     public native int getLength();
 
     public native void insertAt(int index, T element);
 
-  	/**
-  	 * Returns <tt>true</tt> if this collection contains no elements.
-  	 *
-  	 * @return <tt>true</tt> if this collection contains no elements
-  	 */
+    /**
+     * Returns <tt>true</tt> if this collection contains no elements.
+     *
+     * @return <tt>true</tt> if this collection contains no elements
+     */
     @JsOverlay
-  	public final boolean isEmpty() {
-  		return getLength() == 0;
-  	}
-    
+    public final boolean isEmpty() {
+        return getLength() == 0;
+    }
+
     public native T item(int index);
 
     public native T pop();
@@ -96,7 +102,6 @@ public class Collection<T> extends Object {
      *
      * @param element Element.
      * @return The removed element or undefined if none found.
-     * @api stable
      */
     @Nullable
     public native T remove(T element);
@@ -107,7 +112,6 @@ public class Collection<T> extends Object {
      *
      * @param index Index.
      * @return Value.
-     * @api stable
      */
     @Nullable
     public native T removeAt(int index);
@@ -116,7 +120,7 @@ public class Collection<T> extends Object {
 
     /**
      * Events emitted by {@link ol.Collection} instances are instances of this type.
-     * 
+     *
      * @author Tino Desjardins
      *
      */

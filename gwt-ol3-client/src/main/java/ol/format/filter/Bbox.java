@@ -20,9 +20,9 @@ import jsinterop.annotations.JsType;
 import ol.Extent;
 
 /**
- * Represents a <BBOX> operator to test whether a geometry-valued
+ * Represents a BBOX operator to test whether a geometry-valued
  * property intersects a fixed bounding box.
- * 
+ *
  * @author Tino Desjardins
  *
  */
@@ -38,13 +38,13 @@ public class Bbox extends Filter {
 	public Bbox(String geometryName, Extent extent, String srsName){
 		super("BBOX");
 	}
-	
+
 	@JsProperty
 	public native void setGeometryName(String geometryName);
-	
+
 	@JsProperty
     public native void setExtent(Extent extent);
-	
+
 	@JsProperty
     public native void setSrsName(String srsName);
 

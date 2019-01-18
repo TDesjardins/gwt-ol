@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,27 +44,27 @@ public class MapOptions implements Options {
     @JsProperty
     public native Collection<Control> getControls();
 
-	/**
-	 * @param pixelRatio The ratio between physical pixels and device-independent pixels (dips) on the device.
-	 * If <code>undefined</code> then it gets set by using <code>window.devicePixelRatio</code>.
-	 */
+    /**
+     * @param pixelRatio The ratio between physical pixels and device-independent pixels (dips) on the device.
+     * If <code>undefined</code> then it gets set by using <code>window.devicePixelRatio</code>.
+     */
     @JsProperty
     public native void setPixelRatio(double pixelRatio);
 
     @JsProperty
     public native double getPixelRatio();
 
-	/**
-	 * Interactions that are initially added to the map. If not specified,
-	 * ol.interaction.defaults() is used.
-	 *
-	 * @param interactions
-	 */
-	@JsProperty
-	public native void setInteractions(Collection<Interaction> interactions);
+    /**
+     * Interactions that are initially added to the map. If not specified,
+     * ol.interaction.defaults() is used.
+     *
+     * @param interactions
+     */
+    @JsProperty
+    public native void setInteractions(Collection<Interaction> interactions);
 
-	@JsProperty
-	public native Collection<Interaction> getInteractions();
+    @JsProperty
+    public native Collection<Interaction> getInteractions();
 
     /**
      * The element to listen to keyboard events on. This determines when the {@link ol.interaction.KeyboardPan} and {@link ol.interaction.KeyboardZoom} interactions trigger.
@@ -72,7 +72,7 @@ public class MapOptions implements Options {
      * If this option is not specified, the element the library listens to keyboard events on is the map target
      * (i.e. the user-provided div for the map). If this is not <code>document</code> the target element needs to be focused for key events to be emitted,
      * requiring that the target element has a <code>tabindex</code> attribute.
-     * 
+     *
      * @param target The id of the element to listen keyboard events on.
      */
     @JsProperty
@@ -84,7 +84,7 @@ public class MapOptions implements Options {
      * If this option is not specified, the element the library listens to keyboard events on is the map target
      * (i.e. the user-provided div for the map). If this is not <code>document</code> the target element needs to be focused for key events to be emitted,
      * requiring that the target element has a <code>tabindex</code> attribute.
-     * 
+     *
      * @param target The element to listen keyboard events on.
      */
     @JsProperty
@@ -96,7 +96,7 @@ public class MapOptions implements Options {
      * If this option is not specified, the element the library listens to keyboard events on is the map target
      * (i.e. the user-provided div for the map). If this is not <code>document</code> the target element needs to be focused for key events to be emitted,
      * requiring that the target element has a <code>tabindex</code> attribute.
-     * 
+     *
      * @param target The document to listen keyboard events on.
      */
     @JsProperty
@@ -105,22 +105,22 @@ public class MapOptions implements Options {
     /**
      * Layers. If this is not defined, a map with no layers will be rendered. Note that layers are rendered in the order supplied,
      * so if you want, for example, a vector layer to appear on top of a tile layer, it must come after the tile layer.
-     * 
+     *
      * @param layers Layers.
      */
     @JsProperty
     public native void setLayers(Collection<Base> layers);
-    
+
     @JsProperty
     public native Collection<Base> getLayers();
-    
+
     /**
      * @param loadTilesWhileAnimating When set to <code>true</code>, tiles will be loaded during animations.
      * This may improve the user experience, but can also make animations stutter on devices with slow memory. Default is <code>false</code>.
      */
     @JsProperty
     public native void setLoadTilesWhileAnimating(boolean loadTilesWhileAnimating);
-    
+
     @JsProperty
     public native boolean getLoadTilesWhileAnimating();
 
@@ -130,28 +130,9 @@ public class MapOptions implements Options {
      */
     @JsProperty
     public native void setLoadTilesWhileInteracting(boolean loadTilesWhileInteracting);
-    
+
     @JsProperty
     public native boolean getLoadTilesWhileInteracting();
-
-    /**
-     * The map logo. A logo to be displayed on the map at all times.
-     *  To disable the map logo, set the option to false. By default, the OpenLayers 3 logo is shown.
-     *
-     * @param value
-     *              boolean
-     */
-    @JsProperty
-    public native void setLogo(boolean value);
-
-    /**
-     * The map logo. A logo to be displayed on the map at all times.
-     * If a string is provided, it will be set as the image source of the logo.
-     * @param value
-     *              String
-     */
-    @JsProperty
-    public native void setLogo(String value);
 
     /**
      * @param moveTolerance The minimum distance in pixels the cursor must move to be detected as a map move event instead of a click.
@@ -174,8 +155,8 @@ public class MapOptions implements Options {
 
     /**
      * Defines container element for the map.
-     * If not specified at construction time, {@link ol.Map#setTarget} must be called for the map to be rendered.
-     * 
+     * If not specified at construction time, {@link ol.PluggableMap#setTarget} must be called for the map to be rendered.
+     *
      * @param target The id of the container element for the map.
      */
     @JsProperty
@@ -183,8 +164,8 @@ public class MapOptions implements Options {
 
     /**
      * Defines container element for the map.
-     * If not specified at construction time, {@link ol.Map#setTarget} must be called for the map to be rendered.
-     * 
+     * If not specified at construction time, {@link ol.PluggableMap#setTarget} must be called for the map to be rendered.
+     *
      * @param target The container element for the map.
      */
     @JsProperty

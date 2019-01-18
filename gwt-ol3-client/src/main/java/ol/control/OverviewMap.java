@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package ol.control;
 
 import jsinterop.annotations.JsType;
-import ol.Map;
+import ol.PluggableMap;
 
 /**
  * A control with a map acting as an overview map for an other defined map.
@@ -27,28 +27,26 @@ import ol.Map;
 public class OverviewMap extends Control {
 
     public OverviewMap() {}
-    
+
     public OverviewMap(OverviewMapOptions overviewMapOptions) {}
-    
+
     /**
      * Determine if the overview map is collapsed.
-     * @return {boolean} The overview map is collapsed.
-     * @api stable
+     * @return The overview map is collapsed.
      */
     public native boolean getCollapsed();
 
     /**
      * Return `true` if the overview map is collapsible, `false` otherwise.
-     * @return {boolean} True if the widget is collapsible.
-     * @api stable
+     * @return True if the widget is collapsible.
      */
     public native boolean getCollapsible();
 
     /**
      * Return the overview map.
-     * @return {ol.Map} Overview map.
+     * @return overview map.
      */
-    public native Map getOverviewMap();
+    public native PluggableMap getOverviewMap();
 
     /**
      * Collapse or expand the overview map according to the passed parameter.
@@ -56,7 +54,6 @@ public class OverviewMap extends Control {
      * current collapsed state is already the one requested.
      * @param collapsed
      *            True if the widget is collapsed.
-     * @api stable
      */
     public native void setCollapsed(boolean collapsed);
 
@@ -64,7 +61,6 @@ public class OverviewMap extends Control {
      * Set whether the overview map should be collapsible.
      * @param collapsible
      *            True if the widget is collapsible.
-     * @api stable
      */
     public native void setCollapsible(boolean collapsible);
 

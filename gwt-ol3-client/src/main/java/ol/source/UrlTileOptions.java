@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,16 +21,16 @@ import jsinterop.annotations.JsType;
 
 /**
  * Abstract options für URL based tiles.
- * 
+ *
  * @author Tino Desjardins
  *
- * @see https://openlayers.org/en/latest/apidoc/ol.source.UrlTile.html
+ * see https://openlayers.org/en/latest/apidoc/ol.source.UrlTile.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class UrlTileOptions extends TileOptions {
 
     /**
-     * @param cacheSize	Cache size. Default is <code>2048</code>.
+     * @param cacheSize Cache size. Default is <code>2048</code>.
      */
     @JsProperty
     public native void setCacheSize(int cacheSize);
@@ -39,7 +39,7 @@ public class UrlTileOptions extends TileOptions {
     public native int getCacheSize();
 
     /**
-     * @param state	Source state.
+     * @param state Source state.
      */
     @JsProperty
     public native void setState(String state);
@@ -49,7 +49,7 @@ public class UrlTileOptions extends TileOptions {
 
     /**
      * Optional function to load a tile given a URL. The default is
-     * 
+     *
      * function(imageTile, src) { imageTile.getImage().src = src; };
      */
     @JsProperty
@@ -76,22 +76,22 @@ public class UrlTileOptions extends TileOptions {
 
     @JsProperty
     public native TileUrlFunction getTileUrlFunction();
-    
+
     /**
      * Return the URLs used for this source. When a tileUrlFunction is used
      * instead of url or urls, null will be returned.
-     * 
-     * @return {!Array.<string>|null} URLs.
+     *
+     * @return URLs.
      */
     @JsProperty
     public native String[] getUrls();
 
-    @JsProperty	
-  	public native String getUrl();
+    @JsProperty
+    public native String getUrl();
 
     /**
      * Set the URL to use for requests.
-     * 
+     *
      * @param url
      *            URL.
      */
@@ -100,7 +100,7 @@ public class UrlTileOptions extends TileOptions {
 
     /**
      * Set the URLs to use for requests.
-     * 
+     *
      * @param urls
      *            URLs.
      */

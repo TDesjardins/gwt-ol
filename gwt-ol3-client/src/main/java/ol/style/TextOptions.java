@@ -99,5 +99,18 @@ public class TextOptions implements Options {
 	 */
 	@JsProperty
 	public native void setTextBaseline(String textBaseline);
+	
+	/**
+	 * Text placement. Possible values: 'point', 'line'. The default value is point
+	 * @param placement String
+	 */
+	@JsProperty
+	public native void setPlacement(String placement);
 
+	/**
+	 * Allow text to exceed the width of the polygon at the label position or the length of the path that it follows. Default is false
+	 * @param overflow boolean
+	 */
+	@JsProperty
+	public native void setOverflow(boolean overflow);
 }

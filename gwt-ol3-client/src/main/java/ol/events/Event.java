@@ -24,7 +24,7 @@ import jsinterop.annotations.JsType;
 /**
  * A base class for event objects, so that they can support preventDefault and
  * stopPropagation. Resembles goog.events.Event.
- * 
+ *
  * @author Tino Desjardins
  *
  */
@@ -33,7 +33,7 @@ public interface Event {
 
     /**
      * Whether the default action has been prevented.
-     * 
+     *
      * @return true on success, else false
      */
     @JsProperty
@@ -42,8 +42,8 @@ public interface Event {
     /**
      * Object that had the listener attached.
      * @param <T>
-     * 
-     * @return {Object|undefined}
+     *
+     * @return object that had the listener attached
      */
     @Nullable
     @JsProperty
@@ -51,8 +51,8 @@ public interface Event {
 
     /**
      * Target of the event.
-     * 
-     * @return {Object|undefined}
+     *
+     * @return target of the event
      */
     @Nullable
     @JsProperty
@@ -60,7 +60,7 @@ public interface Event {
 
     /**
      * Event type.
-     * 
+     *
      * @return type {string}
      */
     @JsProperty

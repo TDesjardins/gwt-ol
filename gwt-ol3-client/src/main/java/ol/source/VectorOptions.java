@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import jsinterop.annotations.JsType;
 
 import ol.Collection;
 import ol.Feature;
+import ol.featureloader.FeatureLoader;
 
 /**
  * Vector source options.
@@ -38,10 +39,16 @@ public class VectorOptions extends SourceOptions {
      */
     @JsProperty
     public native void setFeatures(Feature[] features);
-    
+
+    @JsProperty
+    public native void setUrl(String url);
+
+    @JsProperty
+    public native void setFormat(ol.format.Feature format);
+
     @JsProperty
     public native void setFeatures(Collection<Feature> features);
-  	
+
     /**
      *
      * By default, an RTree is used as spatial index. When features are removed
@@ -61,14 +68,11 @@ public class VectorOptions extends SourceOptions {
     public native void setUseSpatialIndex(boolean useSpatialIndex);
 
     /**
-     * Wrap the world horizontally. Default is true. For vector editing across
-     * the -180° and 180° meridians to work properly, this should be set to
-     * false. The resulting geometry coordinates will then exceed the world
-     * bounds.
+     * The loader function used to load features, from a remote source for example.
+     * If this is not set and url is set, the source will create and use an XHR feature loader.
      * 
-     * @param wrapX wrap?
+     * @param featureLoader 
      */
     @JsProperty
-    public native void setWrapX(boolean wrapX);
-
+    public native void setLoader(FeatureLoader featureLoader);
 }

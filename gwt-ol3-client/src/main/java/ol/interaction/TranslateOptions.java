@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,12 +29,12 @@ import ol.Options;
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class TranslateOptions implements Options {
 
-	/**
-	 * Only features contained in this collection will be able to be translated. If not specified, all features on the map will be able to be translated.
-	 * 
-	 * @param features
-	 */
-	@JsProperty
-	public native void setFeatures(Collection<Feature> features);
+    /**
+     * Only features contained in this collection will be able to be translated. If not specified, all features on the map will be able to be translated.
+     *
+     * @param features
+     */
+    @JsProperty
+    public native void setFeatures(Collection<Feature> features);
 
 }

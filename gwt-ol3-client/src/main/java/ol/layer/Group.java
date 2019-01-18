@@ -36,8 +36,7 @@ public class Group extends Base {
     /**
      * Returns the {@link ol.Collection collection} of {@link ol.layer.Layer
      * layers} in this group.
-     * @return {!ol.Collection.<ol.layer.Base>} Collection of
-     *         {@link ol.layer.Base layers} that are part of this group.
+     * @return collection of {@link ol.layer.Base} layers that are part of this group.
      */
     public native Collection<Base> getLayers();
 

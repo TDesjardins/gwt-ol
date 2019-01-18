@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
-import ol.Map;
+import ol.PluggableMap;
 
 /**
  * Image layer options.
@@ -29,17 +29,17 @@ import ol.Map;
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class ImageLayerOptions extends LayerOptions {
-    
+
     /**
      *
      * Sets the layer as overlay on a map. The map will not manage this layer in
      * its layers collection, and the layer will be rendered on top. This is
      * useful for temporary layers. The standard way to add a layer to a map and
-     * have it managed by the map is to use {@link ol.Map#addLayer(Base)}.
+     * have it managed by the map is to use {@link ol.PluggableMap#addLayer(Base)}.
      *
-     * @param map {@link Map}
+     * @param map {@link PluggableMap}
      */
     @JsProperty
-    public native void setMap(Map map);
-    
+    public native void setMap(PluggableMap map);
+
 }

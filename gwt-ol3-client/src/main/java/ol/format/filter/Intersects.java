@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ import jsinterop.annotations.JsType;
 import ol.geom.Geometry;
 
 /**
- * Represents a <Intersects> operator to test whether a 
+ * Represents a Intersects operator to test whether a
  * geometry-valued property intersects a given geometry.
- * 
+ *
  * @author hmgn
  *
  */
@@ -37,5 +37,5 @@ public class Intersects extends Spatial {
 	public Intersects(String geometryName, Geometry geometry, String srsName){
 		super("Intersects", geometryName, geometry, srsName);
 	}
-	
+
 }

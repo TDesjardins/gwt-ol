@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ import ol.geom.Polygon;
 public class DragBox extends Pointer {
 
     public DragBox() {}
-    
+
     public DragBox(DragBoxOptions dragBoxOptions) {}
 
     /**
@@ -67,25 +67,24 @@ public class DragBox extends Pointer {
         return OLUtil.observe(this, "boxend", listener);
     }
 
-	/**
-	 * Events emitted by {@link DragBox} instances are instances of this type.
-	 * 
-	 * @author gkresic
-	 *
-	 */
-	@JsType(isNative = true)
-	public interface Event extends ol.events.Event {
-	    
-		/**
-		 * The coordinate of the drag event.
-		 */
-	    @JsProperty
-	    public Coordinate getCoordinate();
-	    
-	    @JsProperty	    
-	    public MapBrowserEvent getMapBrowserEvent();
-	}
+    /**
+     * Events emitted by {@link DragBox} instances are instances of this type.
+     *
+     * @author gkresic
+     *
+     */
+    @JsType(isNative = true)
+    public interface Event extends ol.events.Event {
 
+        /**
+         * The coordinate of the drag event.
+         */
+        @JsProperty
+        public Coordinate getCoordinate();
+
+        @JsProperty
+        public MapBrowserEvent getMapBrowserEvent();
+    }
 
 }
 

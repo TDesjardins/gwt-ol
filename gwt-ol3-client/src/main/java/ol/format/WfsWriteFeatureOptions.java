@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,40 +29,40 @@ import ol.format.filter.Filter;
 public class WfsWriteFeatureOptions implements Options {
 
     /**
-     * 
+     *
      * @param featureNS
      */
-	@JsProperty(name = "featureNS")
-	public native void setFeatureNS(String featureNS);
+    @JsProperty(name = "featureNS")
+    public native void setFeatureNS(String featureNS);
 
-	/**
-     * 
+    /**
+     *
      * @param featurePrefix
      */
     @JsProperty
     public native void setFeaturePrefix(String featurePrefix);
-    
+
     /**
-     * 
+     *
      * @param featureTypes
      */
     @JsProperty
     public native void setFeatureTypes(String[] featureTypes);
-    
+
     @JsProperty
     public native void setFilter(Filter filter);
-    
+
     @JsProperty
     public native void setGeometryName(String geometryName);
-    
+
     @JsProperty
     public native void setOutputFormat(String outputFormat);
-    
+
     /**
-     * 
+     *
      * @param srsName
      */
     @JsProperty
     public native void setSrsName(String srsName);
-    
+
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,14 @@
  *******************************************************************************/
 package ol;
 
-import javax.annotation.Nullable;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.ui.Widget;
 
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import elemental2.core.JsArray;
 import jsinterop.base.Js;
-
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.ui.Widget;
-
 import ol.event.EventListener;
 import ol.event.OLHandlerRegistration;
 import ol.events.Event;
@@ -37,6 +35,8 @@ import ol.proj.Projection;
 import ol.source.Source;
 import ol.source.Xyz;
 import ol.source.XyzOptions;
+import ol.sphere.Sphere;
+import ol.sphere.SphereMetricOptions;
 import ol.style.Style;
 import ol.tilegrid.TileGrid;
 import ol.tilegrid.XyzTileGridOptions;
@@ -68,22 +68,6 @@ public final class OLUtil {
     }
 
     /**
-     * Adds a {@link Style} to the given array of {@link Style}s.
-     *
-     * @param styles
-     *            array of {@link Style}s (will be changed)
-     * @param style
-     *            {@link Style}
-     * @return the changed array
-     *
-     * @deprecated Use {@link OLUtil#addItem(T[], T)} instead
-     */
-    @Deprecated
-    public static ol.style.Style[] addStyle(Style[] styles, Style style) {
-        return addItem(styles, style);
-    };
-
-    /**
      * Adds an item to the array.
      *
      * @param array array (will be changed)
@@ -91,48 +75,26 @@ public final class OLUtil {
      * @return array including the item
      */
     @SuppressWarnings("unchecked")
-    public static <T> T[] addItem(T[] array, T item) {
+    public static <T> T[] pushItem(T[] array, T item) {
         JsArray<T> jsArray = Js.cast(array);
         jsArray.push(item);
         return array;
     }
 
     /**
-     * Combines two arrays of {@link Style}s.
+     * Combines two arrays.
      *
-     * @param s
-     *            array of {@link Style}s 1
-     * @param s2
-     *            array of {@link Style}s 2
-     * @return the combined array
+     * @param array1 first array
+     * @param array2 second array
+     * @return combined array
      */
-    public static native ol.style.Style[] addStyles(Style[] s, Style[] s2) /*-{
-		return s.concat(s2);
-    }-*/;
+    public static <T> T[] concatArrays(T[] array1, T[] array2) {
+        JsArray<T> jsArray = Js.cast(array1);
+        return jsArray.concat(array2);
+    }
 
     /**
-     * Create an approximation of a circle on the surface of a sphere.
-     * @param sphere
-     *            The sphere.
-     * @param center
-     *            Center (`[lon, lat]` in degrees).
-     * @param radius
-     *            The great-circle distance from the center to the polygon
-     *            vertices.
-     * @param opt_n
-     *            Optional number of vertices for the resulting polygon. Default
-     *            is `32`.
-     * @return {ol.geom.Polygon} The "circular" polygon.
-     *
-     * @deprecated Use {@link ol.geom.Polygon#circular(Sphere, Coordinate, double, int)} instead.
-     */
-    @Deprecated
-    public static Polygon circular(Sphere sphere, ol.Coordinate center, double radius, int opt_n) {
-        return Polygon.circular(sphere, center, radius, opt_n);
-    };
-
-    /**
-     * Combines two {@link Style}s into an array of {@link Style}s.
+     * Combines {@link Style}s into an array of {@link Style}s.
      *
      * @param s1
      *            {@link Style} 1
@@ -140,8 +102,8 @@ public final class OLUtil {
      *            {@link Style} 2
      * @return array of {@link Style}s
      */
-    public static Style[] combineStyles(Style s1, Style s2) {
-        return new Style[] {s1, s2};
+    public static Style[] combineStyles(Style... styles) {
+        return styles;
     };
 
 
@@ -178,21 +140,25 @@ public final class OLUtil {
     }-*/;
 
     /**
-     * Creates a sphere with radius equal to the semi-major axis of the WGS84
+     * Creates a sphere options with radius equal to the semi-major axis of the WGS84
      * ellipsoid.
-     * @return {@link Sphere}
+     * @return {@link SphereMetricOptions}
      */
-    public static Sphere createSphereWGS84() {
-        return new Sphere(EARTH_RADIUS_WGS84);
+    public static SphereMetricOptions createSphereOptionsWGS84() {
+        SphereMetricOptions sphereMetricOptions = new SphereMetricOptions();
+        sphereMetricOptions.setRadius(EARTH_RADIUS_WGS84);
+        return sphereMetricOptions;
     }
 
     /**
-     * Creates a sphere with radius equal to the semi-major axis of the normal
+     * Creates a sphere options with radius equal to the semi-major axis of the normal
      * ellipsoid.
-     * @return {@link Sphere}
+     * @return {@link SphereMetricOptions}
      */
-    public static Sphere createSphereNormal() {
-        return new Sphere(EARTH_RADIUS_NORMAL);
+    public static SphereMetricOptions createSphereOptionsNormal() {
+        SphereMetricOptions sphereMetricOptions = new SphereMetricOptions();
+        sphereMetricOptions.setRadius(EARTH_RADIUS_NORMAL);
+        return sphereMetricOptions;
     }
 
     /**
@@ -250,13 +216,13 @@ public final class OLUtil {
      * Gets a layer by the given name.
      *
      * @param map
-     *            {@link Map}
+     *            {@link PluggableMap}
      * @param name
      *            name of the layer
      * @return {@link Layer} on success, else null
      */
     @Nullable
-    public static Base getLayerByName(Map map, String name) {
+    public static Base getLayerByName(PluggableMap map, String name) {
         CollectionWrapper<Base> layers = new CollectionWrapper<Base>(map.getLayers());
         for(Base layer : layers) {
             if(name.equals(getName(layer))) {
@@ -303,30 +269,6 @@ public final class OLUtil {
     }-*/;
 
     /**
-     *
-     * @param extent
-     * @return width of extent
-     * 
-     * @deprecated Use {@link ol.Extent#getWidth()} instead.
-     */
-    @Deprecated
-    public static double getWidth(Extent extent) {
-        return extent.getWidth();
-    };
-
-    /**
-    *
-    * @param extent
-    * @return top left coordinate of the extent
-    * 
-    * @deprecated Use {@link ol.Extent#getTopLeft()} instead.
-    */
-    @Deprecated
-    public static Coordinate getTopLeft(Extent extent) {
-        return extent.getTopLeft();
-    };
-
-    /**
      * Gets the current zoom level of the given {@link View}.
      * @param view
      *            {@link View}
@@ -337,12 +279,12 @@ public final class OLUtil {
     }-*/;
 
     /**
-     * Gets the current zoomlevel of the given {@link Map}.
+     * Gets the current zoomlevel of the given {@link PluggableMap}.
      * @param map
-     *            {@link Map}
+     *            {@link PluggableMap}
      * @return zoomlevel on success, else {@link Double#NaN}
      */
-    public static double getZoomLevel(Map map) {
+    public static double getZoomLevel(PluggableMap map) {
         View v = map.getView();
         // try to get zoom
         double z = getZoom(v);
@@ -395,43 +337,12 @@ public final class OLUtil {
      *
      * @param geom
      *            geometry.
-     * @return geodesic area on success, else {@link Double#NaN}
+     * @return geodesic area
      */
     public static double geodesicArea(Polygon geom) {
-        // get coordinates and check that there are at least 2
-        Coordinate[][] coordinates = geom.getCoordinates();
-        if((coordinates != null) && (coordinates.length > 0)) {
-            // get area of outer ring
-            double area = geodesicArea(coordinates[0]);
-            // walk through inner rings
-            for(int i = 1; i < coordinates.length; i++) {
-                // if area is valid, subtract it from the outer ring's area
-                double holeArea = geodesicArea(coordinates[i]);
-                if(!Double.isNaN(holeArea)) {
-                    area -= holeArea;
-                }
-            }
-            return area;
-        }
-        return Double.NaN;
-    }
-
-    /**
-     * Returns the geodesic area in square meters of the given geometry using
-     * the haversine formula.
-     *
-     * @param coordinates
-     *            coordinates.
-     * @return geodesic area on success, else {@link Double#NaN}
-     */
-    private static double geodesicArea(Coordinate[] coordinates) {
-        // check that there are at least 2
-        if((coordinates != null) && (coordinates.length > 1)) {
-            Sphere sphere = createSphereNormal();
-            // only return positive area
-            return Math.abs(sphere.geodesicArea(coordinates));
-        }
-        return Double.NaN;
+        SphereMetricOptions sphereMetricOptions =  OLUtil.createSphereOptionsNormal();
+        sphereMetricOptions.setProjection(Projection.get("EPSG:4326"));
+        return Sphere.getArea(geom, sphereMetricOptions);
     }
 
     /**
@@ -443,20 +354,9 @@ public final class OLUtil {
      * @return geodesic length on success, else {@link Double#NaN}
      */
     public static double geodesicLength(SimpleGeometryCoordinates geom) {
-        // get coordinates and check that there are at least 2
-        Coordinate[] coordinates = geom.getCoordinates();
-        if((coordinates != null) && (coordinates.length > 1)) {
-            // calculate the distance on every segment of the line and add it up
-            Sphere sphere = createSphereNormal();
-            double distance = 0;
-            for(int i = 0; i <= coordinates.length - 2; i++) {
-                Coordinate c1 = coordinates[i];
-                Coordinate c2 = coordinates[i + 1];
-                distance += sphere.haversineDistance(c1, c2);
-            }
-            return distance;
-        }
-        return Double.NaN;
+        SphereMetricOptions sphereMetricOptions =  OLUtil.createSphereOptionsNormal();
+        sphereMetricOptions.setProjection(Projection.get("EPSG:4326"));
+        return Sphere.getLength(geom, sphereMetricOptions);
     }
 
     /**
@@ -467,10 +367,10 @@ public final class OLUtil {
      * @param e
      *            base {@link Event}
      * @param map
-     *            {@link Map}
+     *            {@link PluggableMap}
      * @return {@link MapEvent}
      */
-    public static native MapEvent initMapEvent(Event e, Map map) /*-{
+    public static native MapEvent initMapEvent(Event e, PluggableMap map) /*-{
 		e.map = map;
 		e.framestate = null;
 		return e;
@@ -531,14 +431,14 @@ public final class OLUtil {
     }
 
     /**
-     * Sets the container for the given {@link Map} to the given {@link Widget}.
+     * Sets the container for the given {@link PluggableMap} to the given {@link Widget}.
      *
      * @param map
-     *            {@link Map}
+     *            {@link PluggableMap}
      * @param target
      *            {@link Widget}
      */
-    public static void setMapTarget(Map map, Widget target) {
+    public static void setMapTarget(PluggableMap map, Widget target) {
         map.setTarget(target.getElement());
     }
 
@@ -553,44 +453,6 @@ public final class OLUtil {
     public static void setName(Base layer, String name) {
         layer.set("name", name);
     }
-
-    /**
-     * Set the style for the feature. This can be a single style object, an
-     * array of styles, or a function that takes a resolution and returns an
-     * array of styles. If it is `null` the feature has no style (a `null`
-     * style).
-     *
-     * @param feature
-     *            {@link ol.Feature}
-     * @param style
-     *            Style for this feature.
-     *
-     * @deprecated Use {@link ol.Feature#setStyles(Style[])} instead.
-     */
-    @Deprecated
-    public static void setStyle(ol.Feature feature, @Nullable Style[] style) {
-        feature.setStyles(style);
-    };
-
-    /**
-     * Set the style for features. This can be a single style object, an array
-     * of styles, or a function that takes a feature and resolution and returns
-     * an array of styles. If it is `undefined` the default style is used. If it
-     * is `null` the layer has no style (a `null` style), so only features that
-     * have their own styles will be rendered in the layer. See {@link ol.style}
-     * for information on the default style.
-     *
-     * @param vectorLayer
-     *            Layer
-     * @param style
-     *            Layer style.
-     *
-     * @deprecated Use {@link ol.layer.Vector#setStyles(Style[])} instead.
-     */
-    @Deprecated
-    public static void setStyle(ol.layer.Vector vectorLayer, @Nullable Style[] style) {
-        vectorLayer.setStyles(style);
-    };
 
     /**
      * Transforms coordinates from source projection to destination projection.

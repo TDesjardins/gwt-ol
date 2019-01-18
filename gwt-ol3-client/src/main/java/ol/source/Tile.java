@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import ol.tilegrid.TileGrid;
  * Abstract base class; normally only used for creating subclasses and not
  * instantiated in apps. Base class for sources providing images divided into a
  * tile grid.
- * 
+ *
  * @author Tino Desjardins
  *
  */
@@ -37,11 +37,11 @@ public class Tile extends Source {
 
     /**
      * Return the tile grid of the tile source.
-     * 
-     * @return {ol.tilegrid.TileGrid} Tile grid.
+     *
+     * @return tile grid.
      */
     public native TileGrid getTileGrid();
-    
+
     /**
      * Triggered when a tile starts loading.
      */
@@ -49,7 +49,7 @@ public class Tile extends Source {
     public final HandlerRegistration addTileLoadStartListener(final EventListener<Tile.Event> listener) {
         return OLUtil.observe(this, "tileloadstart", listener);
     }
-    
+
     /**
      * Triggered when a tile finishes loading.
      */
@@ -57,7 +57,7 @@ public class Tile extends Source {
     public final HandlerRegistration addTileLoadEndListener(final EventListener<Tile.Event> listener) {
         return OLUtil.observe(this, "tileloadend", listener);
     }
-    
+
     /**
      * Triggered if tile loading results in an error.
      */
@@ -65,11 +65,11 @@ public class Tile extends Source {
     public final HandlerRegistration addTileLoadErrorListener(final EventListener<Tile.Event> listener) {
         return OLUtil.observe(this, "tileloaderror", listener);
     }
-    
+
     /**
      * Events emitted by {@link ol.source.Tile} instances are instances of this
      * type.
-     * 
+     *
      * @author sbaumhekel
      *
      */

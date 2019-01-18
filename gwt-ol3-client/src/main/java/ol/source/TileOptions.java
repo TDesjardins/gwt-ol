@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import ol.tilegrid.TileGrid;
  *
  * @author Tino Desjardins
  *
- * @see https://openlayers.org/en/latest/apidoc/ol.source.Tile.html
+ * see https://openlayers.org/en/latest/apidoc/ol.source.Tile.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class TileOptions extends SourceOptions {
@@ -38,7 +38,7 @@ public class TileOptions extends SourceOptions {
      */
     @JsProperty
     public native TileGrid getTileGrid();
-    
+
     /**
      * Set the {@link TileGrid}.
      *
@@ -46,5 +46,5 @@ public class TileOptions extends SourceOptions {
      */
     @JsProperty
     public native void setTileGrid(TileGrid tileGrid);
-    
+
 }

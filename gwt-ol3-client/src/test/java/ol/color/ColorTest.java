@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.color;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.OLFactory;
 
 /**
@@ -24,7 +24,7 @@ import ol.OLFactory;
  * @author Tino Desjardins
  *
  */
-public class ColorTest extends GwtOL3BaseTestCase {
+public class ColorTest extends GwtOLBaseTestCase {
 
     public void testColor() {
 
@@ -37,7 +37,7 @@ public class ColorTest extends GwtOL3BaseTestCase {
             assertEquals(color.getBlue(), 100);
             assertEquals(color.getAlpha(), .5f);
 
-            Color color2 = new Color(255, 50, 100, .5f);
+            Color color2 = new Color(255, 50, 100, .5);
             assertNotNull(color2);
             assertEquals(color2.getRed(), 255);
             assertEquals(color2.getGreen(), 50);

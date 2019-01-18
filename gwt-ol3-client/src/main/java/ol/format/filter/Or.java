@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,17 +18,17 @@ package ol.format.filter;
 import jsinterop.annotations.JsType;
 
 /**
- * Represents a logical <Or> operator 
+ * Represents a logical Or operator
  * between two or more filter conditions.
- * 
+ *
  * @author Tino Desjardins
  *
  */
 @JsType(isNative = true)
 public class Or extends LogicalNary {
 
-	public Or(Filter... conditions) {
-	    //super("Or", conditions);
-	}
+    public Or(Filter... conditions) {
+        //super("Or", conditions);
+    }
 
 }

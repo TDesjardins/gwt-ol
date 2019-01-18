@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,10 @@ public abstract class Image {
      * Default value is true.
      *
      * @return integral numbers of pixels are used as the X and Y pixel coordinate
+     *
+     * @deprecated Will be removed in feature releases.
      */
+    @Deprecated
     public native boolean getSnapToPixel();
 
     /**

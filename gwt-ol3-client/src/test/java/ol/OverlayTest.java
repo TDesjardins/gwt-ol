@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,12 +20,12 @@ package ol;
  * @author Tino Desjardins
  *
  */
-public class OverlayTest extends GwtOL3BaseTestCase {
+public class OverlayTest extends GwtOLBaseTestCase {
 
     public void testOverlay() {
 
         injectUrlAndTest(() -> {
-            
+
             OverlayOptions overlayOptions = new OverlayOptions();
 
             assertNotNull(overlayOptions);
@@ -33,10 +33,10 @@ public class OverlayTest extends GwtOL3BaseTestCase {
             Overlay overlay = new Overlay(overlayOptions);
 
             assertNotNull(overlay);
-            
+
             assertTrue(overlay instanceof Observable);
             assertTrue(overlay instanceof Object);
-            
+
         });
 
     }

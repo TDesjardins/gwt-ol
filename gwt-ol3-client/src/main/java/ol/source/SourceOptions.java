@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
-import ol.LogoOptions;
 import ol.Options;
 import ol.proj.Projection;
 
@@ -28,8 +27,8 @@ import ol.proj.Projection;
  * Source options.
  *
  * @author Tino Desjardins
- * 
- * @see https://openlayers.org/en/latest/apidoc/ol.source.Source.html
+ *
+ * see https://openlayers.org/en/latest/apidoc/ol.source.Source.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class SourceOptions implements Options {
@@ -49,17 +48,11 @@ public class SourceOptions implements Options {
 
     /**
      * Get the attributions of the source.
-     * 
+     *
      * @return Attributions.
      */
     @JsProperty
     public native String[] getAttributions();
-
-    @JsProperty
-    public native void setLogo(LogoOptions logo);
-
-    @JsProperty
-    public native LogoOptions getLogo();
 
     /**
      * Set the Projection. Default is EPSG:3857.
@@ -71,5 +64,16 @@ public class SourceOptions implements Options {
 
     @JsProperty
     public native Projection getProjection();
+
+    /**
+     * Wrap the world horizontally. Default is true. For vector editing across
+     * the -180° and 180° meridians to work properly, this should be set to
+     * false. The resulting geometry coordinates will then exceed the world
+     * bounds.
+     *
+     * @param wrapX wrap?  Default is true
+     */
+    @JsProperty
+    public native void setWrapX(boolean wrapX);
 
 }

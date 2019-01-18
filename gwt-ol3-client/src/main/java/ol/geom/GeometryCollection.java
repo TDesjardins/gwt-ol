@@ -26,30 +26,30 @@ import jsinterop.annotations.JsType;
  */
 @JsType(isNative = true)
 public class GeometryCollection extends Geometry {
-    
+
     public GeometryCollection() {}
-    
+
     public GeometryCollection(@Nullable Geometry[] geometries) {}
-    
+
     /**
      * Return the geometries that make up this geometry collection.
-     * 
-     * @return {Array.<ol.geom.Geometry>} Geometries.
+     *
+     * @return geometries.
      */
     public native Geometry[] getGeometries();
 
     /**
      * Test if the geometry and the passed extent intersect.
-     * 
+     *
      * @param extent
      *            Extent.
-     * @return {boolean} `true` if the geometry and the extent intersect.
+     * @return `true` if the geometry and the extent intersect.
      */
     public native boolean intersectsExtent(ol.Extent extent);
 
     /**
      * Set the geometries that make up this geometry collection.
-     * 
+     *
      * @param geometries
      *            Geometries.
      */
@@ -58,7 +58,7 @@ public class GeometryCollection extends Geometry {
     /**
      * Translate the geometry. This modifies the geometry coordinates in place.
      * If instead you want a new geometry, first `clone()` this geometry.
-     * 
+     *
      * @param deltaX
      *            Delta X.
      * @param deltaY

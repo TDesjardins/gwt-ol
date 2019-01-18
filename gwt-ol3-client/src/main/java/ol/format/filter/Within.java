@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ import jsinterop.annotations.JsType;
 import ol.geom.Geometry;
 
 /**
- * Represents a <Within> operator to test whether a
+ * Represents a Within operator to test whether a
  * geometry-valued property is within a given geometry.
- * 
+ *
  * @author Tino Desjardins
  *
  */
@@ -36,14 +36,14 @@ public class Within extends Spatial {
         super("Within", geometryName, geometry, null);
     }
 
-	/**
-	 *
-	 * @param geometryName Geometry name to use.
-	 * @param geometry Geometry.
-	 * @param srsName SRS name. No srsName attribute will be set on geometries when this is not provided.
-	 */
-	public Within(String geometryName, Geometry geometry, String srsName){
-		super("Within", geometryName, geometry, srsName);
-	}
-	
+    /**
+     *
+     * @param geometryName Geometry name to use.
+     * @param geometry Geometry.
+     * @param srsName SRS name. No srsName attribute will be set on geometries when this is not provided.
+     */
+    public Within(String geometryName, Geometry geometry, String srsName) {
+        super("Within", geometryName, geometry, srsName);
+    }
+
 }

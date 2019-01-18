@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,30 +25,31 @@ import ol.Size;
  *
  * @author Tino Desjardins
  *
- * @see http://openlayers.org/en/latest/apidoc/ol.source.XYZ.html
+ * see http://openlayers.org/en/latest/apidoc/ol.source.XYZ.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class XyzOptions extends TileImageOptions {
 
-	/**
-	 * Set the optional max zoom level. Default is 18.
-	 *
-	 * @param maxZoom max zoom
-	 */
-	@JsProperty
-	public native void setMaxZoom(int maxZoom);
+    /**
+     * Set the optional max zoom level. Default is 18.
+     *
+     * @param maxZoom max zoom
+     */
+    @JsProperty
+    public native void setMaxZoom(int maxZoom);
 
-	@JsProperty
-	public native int getMaxZoom();
+    @JsProperty
+    public native int getMaxZoom();
 
-	/**
-	 * Set the tile size used by the tile service. Default is [256, 256] pixels.
-	 * 
-	 * @param tileSize tile size
-	 */
-	@JsProperty
-	public native void setTileSize(Size tileSize);
-	
+    /**
+     * Set the tile size used by the tile service. Default is [256, 256] pixels.
+     *
+     * @param tileSize tile size
+     */
+    @JsProperty
+    public native void setTileSize(Size tileSize);
+
     @JsProperty
     public native Size getTileSize();
+
 }

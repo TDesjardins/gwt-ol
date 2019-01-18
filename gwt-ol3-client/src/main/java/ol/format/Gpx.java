@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,10 +18,14 @@ package ol.format;
 import jsinterop.annotations.JsType;
 
 /**
- * GPX format.
+ * GPX feature format.
  *
  * @author Tino Desjardins
  *
  */
 @JsType(isNative = true, name = "GPX")
-public class Gpx extends XmlFeature {}
+public class Gpx extends XmlFeature {
+
+    public Gpx() {}
+
+}

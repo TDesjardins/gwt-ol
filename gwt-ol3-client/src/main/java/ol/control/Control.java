@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,8 @@ import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
 import ol.Collection;
-import ol.Map;
 import ol.Object;
+import ol.PluggableMap;
 
 /**
  * A control is a visible widget with a DOM element in a fixed position on the
@@ -55,7 +55,7 @@ public class Control extends Object {
     private static final String PACKAGE_CONTROL = "ol.control";
 
     public Control() {}
-    
+
     public Control(ControlOptions controlOptions) {}
 
     @JsMethod(name = "defaults", namespace = PACKAGE_CONTROL)
@@ -67,25 +67,25 @@ public class Control extends Object {
     /**
      * Get the control's container element.
      *
-     * @return {@link Element}
+     * @return control's container element
      */
     @JsProperty
     public native Element getElement();
 
     /**
      * Get the map associated with this control.
-     * @return {ol.Map} Map.
+     * @return map of this control.
      */
-    public native Map getMap();
+    public native PluggableMap getMap();
 
     /**
      * Remove the control from its current map and attach it to the new map.
      * Subclasses may set up event handlers to get notified about changes to the
      * map here.
      * @param map
-     *            {ol.Map} .
+     *            {ol.PluggableMap} .
      */
-    public native void setMap(Map map);
+    public native void setMap(PluggableMap map);
 
     /**
      * This function is used to set a target element for the control. It has no

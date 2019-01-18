@@ -32,8 +32,8 @@ public class LinearRing extends SimpleGeometryCoordinates {
 
     /**
      * Return the area of the linear ring on projected plane.
-     * 
-     * @return {number} Area (on projected plane).
+     *
+     * @return area (on projected plane).
      */
     public native double getArea();
 

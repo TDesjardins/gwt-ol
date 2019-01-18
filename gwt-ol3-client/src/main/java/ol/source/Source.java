@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package ol.source;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-import ol.LogoOptions;
 import ol.proj.Projection;
 
 /**
@@ -29,44 +28,37 @@ import ol.proj.Projection;
  *
  * @author Tino Desjardins
  *
- * @see https://openlayers.org/en/latest/apidoc/ol.source.Source.html
- * 
+ * see https://openlayers.org/en/latest/apidoc/ol.source.Source.html
+ *
  */
 @JsType(isNative = true)
 public class Source extends ol.Object {
 
     /**
      * Get the attributions of the source.
-     * 
+     *
      * @return Attributions.
      */
     @JsProperty
     private native String[] getAttributions();
 
     /**
-     * Get the logo of the source.
-     *
-     * @return {@link LogoOptions}
-     */
-    public native LogoOptions getLogo();
-
-    /**
      * Get the projection of the source.
-     * 
-     * @return {ol.proj.Projection} Projection.
+     *
+     * @return projection.
      */
     public native Projection getProjection();
 
     /**
-     * @return {Array.<number>|undefined} Resolutions.
+     * @return resolutions.
      */
     public native double[] getResolutions();
 
     /**
      * Get the state of the source: one of 'undefined', 'loading', 'ready' or
      * 'error'.
-     * 
-     * @return {ol.source.State} State.
+     *
+     * @return state.
      */
     public native String getState();
 
@@ -87,13 +79,5 @@ public class Source extends ol.Object {
 
     @JsProperty(name = "attributions")
     private native void setAttributionValues(String[] attributions);
-
-    /**
-     * Set the projection of the source.
-     * 
-     * @param projection
-     *            Projection.
-     */
-    public native void setProjection(Projection projection);
 
 }

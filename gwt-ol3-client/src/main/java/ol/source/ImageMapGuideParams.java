@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package ol.source;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import ol.Params;
 
 /**
  * params for MapGuide-requests.
@@ -25,7 +26,7 @@ import jsinterop.annotations.JsType;
  */
 
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class ImageMapGuideParams {
+public class ImageMapGuideParams implements Params {
 
     /**
      * @param format
@@ -34,16 +35,16 @@ public class ImageMapGuideParams {
      */
     @JsProperty(name = "FORMAT")
     public native void setFormat(String format);
-    
+
     /**
      * @param hideLayers List of layers to hide.
      */
     @JsProperty(name = "HIDELAYERS")
     public native void setHideLayers(String hideLayers);
-    
-	/**
+
+    /**
      * @param mapDefinition
-     * 			MapGuide mapDefinition e.g. "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition"
+     *          MapGuide mapDefinition e.g. "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition"
      */
     @JsProperty(name = "MAPDEFINITION")
     public native void setMapDefinition(String mapDefinition);
@@ -54,22 +55,22 @@ public class ImageMapGuideParams {
      */
     @JsProperty(name = "MAPNAME")
     public native void setMapName(String mapName);
-    
+
     @JsProperty(name = "PASSWORD")
     public native void setPassword(String password);
-    
+
     /**
      * @param showLayers List of layers to display.
      */
     @JsProperty(name = "SHOWLAYERS")
     public native void setShowLayers(String showLayers);
-    
+
     @JsProperty(name = "USERNAME")
     public native void setUserName(String userName);
-    
+
     /**
      * @param version
-     * 	MapGuide image version
+     *  MapGuide image version
      *
      */
     @JsProperty(name = "VERSION")

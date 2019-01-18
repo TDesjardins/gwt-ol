@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,15 @@
  *******************************************************************************/
 package ol.style;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.OLFactory;
 
 /**
  * Test for {@link ol.style.Circle}.
- * 
+ *
  * @author Tino Desjardins
  */
-public class CircleTest extends GwtOL3BaseTestCase {
+public class CircleTest extends GwtOLBaseTestCase {
 
     public void testCircle() {
 
@@ -31,12 +31,10 @@ public class CircleTest extends GwtOL3BaseTestCase {
 
             CircleOptions circleOptions = OLFactory.createOptions();
             circleOptions.setRadius(5);
-            circleOptions.setSnapToPixel(true);
 
             Circle circleStyle = OLFactory.createCircleStyle(circleOptions);
             assertNotNull(circleStyle);
             assertEquals(5, circleStyle.getRadius());
-            assertTrue(circleStyle.getSnapToPixel());
 
         });
 

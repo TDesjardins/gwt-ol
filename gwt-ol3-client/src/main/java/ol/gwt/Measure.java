@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,23 @@
  *******************************************************************************/
 package ol.gwt;
 
-import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.shared.HandlerRegistration;
 
+import jsinterop.annotations.JsIgnore;
+import jsinterop.annotations.JsType;
 import ol.Feature;
-import ol.Map;
+import ol.MapBrowserEvent;
 import ol.OLFactory;
 import ol.OLUtil;
-import ol.event.EventListener;
+import ol.PluggableMap;
+import ol.color.Color;
 import ol.event.MeasureEvent;
 import ol.event.MeasureListener;
 import ol.geom.Geometry;
 import ol.interaction.Draw;
 import ol.interaction.DrawOptions;
+import ol.interaction.Interaction;
+import ol.layer.Vector;
 import ol.layer.VectorLayerOptions;
 import ol.proj.Projection;
 import ol.style.Style;
@@ -36,65 +41,102 @@ import ol.style.Style;
  *
  * @author sbaumhekel
  */
-public class Measure {
+@JsType(isNative = false)
+public class Measure extends Interaction {
 
     /**
      * Projection for WGS84 geographic coordinates (EPSG:4326).
      */
     private static final Projection PROJECTION_LATLON = Projection.get("EPSG:4326");
-    private com.google.gwt.user.client.EventListener chainedListener;
+
     private Draw draw;
-    private boolean eventListenerNeedsCleanup;
-    private boolean isActive;
+
+    private HandlerRegistration clickListener;
+
     private MeasureListener listener;
-    private final Map map;
+
+    private HandlerRegistration pointerMoveListener;
+
     private ol.layer.Vector persistOverlay;
+
     private Projection proj;
+
     private Feature sketch;
+
     private Style style;
 
+    private MeasureType type;
+
+    private boolean immediate;
+
+    private boolean persist;
+
     /**
-     * Constructs an instance.
-     *
-     * @param map
-     *            {@link Map} to measure on
+     * @param type
+     * @param listener {@link MeasureListener}
      */
-    public Measure(Map map) {
-        this.map = map;
+    @JsIgnore
+    public Measure(MeasureType type, MeasureListener listener) {
+        this(type, listener, true, true);
+    }
+
+    /**
+     * @param type
+     * @param listener {@link MeasureListener}
+     * @param immediate
+     *            Fire events on every change to the measured geometry? If false
+     *            only one event after finishing is fired. (default is true)
+     * @param persist
+     *            Keep the temporary measurement sketch drawn after the
+     *            measurement is complete. The geometry will persist until a new
+     *            measurement is started, the control is deactivated, or
+     *            {@link #deactivate()} is called.
+     */
+    public Measure(MeasureType type, MeasureListener listener, boolean immediate, boolean persist) {
+        super(OLFactory.createOptions());
+        this.type = type;
+        this.listener = listener;
+        this.immediate = immediate;
+        this.persist = persist;
+    }
+
+    @Override
+    public void setMap(PluggableMap map) {
+
+        super.setMap(map);
+
+        if (this.getActive()) {
+            this.activate();
+        }
+
     }
 
     /**
      * Fires a measure event.
      */
     private void fireMeasureEvent() {
+
         // check if measuring is active and properly set up
-        if(isActive && (sketch != null) && (listener != null)) {
+        if (this.getActive() && (this.sketch != null) && (this.listener != null)) {
+
             // get geometry in map projection
-            Geometry geom = sketch.getGeometry();
-            if(geom != null) {
+            Geometry geom = this.sketch.getGeometry();
+            if (geom != null) {
                 // transform it to lat/lon and fire event
-                Geometry geomLatLon = geom.clone().transform(proj, PROJECTION_LATLON);
-                listener.onMeasure(new MeasureEvent(geomLatLon));
+                Geometry geomLatLon = geom.clone().transform(this.proj, PROJECTION_LATLON);
+                this.listener.onMeasure(new MeasureEvent(geomLatLon));
             }
+
         }
     }
 
     /**
      * Get the {@link Style} to be used for drawing the measured geometry.
      *
-     * @return {@link Style}
+     * @return style
      */
     public Style getStyle() {
         return this.style;
-    }
-
-    /**
-     * Is measuring active?
-     *
-     * @return true on success, else false
-     */
-    public boolean isActive() {
-        return this.isActive;
     }
 
     /**
@@ -122,194 +164,165 @@ public class Measure {
      *            Keep the temporary measurement sketch drawn after the
      *            measurement is complete. The geometry will persist until a new
      *            measurement is started, the control is deactivated, or
-     *            {@link #stop()} is called.
+     *            {@link #deactivate()} is called.
      */
-    private void start(String type, MeasureListener listener, boolean immediate, boolean persist) {
+    private void activate() {
 
-        // clean up old instance
-        stop();
-
-        this.listener = listener;
         // set up interaction
         DrawOptions drawOptions = OLFactory.createOptions();
-        drawOptions.setType(type);
+        drawOptions.setType(this.type.getValue());
+ 
         // use a special style?
-        if(style != null) {
-            drawOptions.setStyle(style);
+        if (this.style != null) {
+            drawOptions.setStyle(this.style);
         }
-        draw = OLFactory.createDraw(drawOptions);
+        this.draw = new Draw(drawOptions);
 
         // persist measured features?
-        if(persist) {
-            // set up overlay options
-            VectorLayerOptions voptions = OLFactory.createLayerOptionsWithSource(OLFactory.createVectorSource());
-            if(style != null) {
-                Style[] styles = new Style[1];
-                styles[0] = style;
-                voptions.setStyle(styles);
+        if (this.persist) {
+
+            this.persistOverlay = this.getPersistOverlay();
+            this.getMap().addLayer(this.persistOverlay);
+
+            if (style != null) {
+                this.persistOverlay.setStyle(style);
             } else {
                 // create a default style resembling the default editing style,
                 // but adding a border to polygons
-                Style sPoly = OLFactory.createStyle(OLFactory.createFill(OLFactory.createColor(255, 255, 255, 0.5)));
-                Style sLine1 = OLFactory.createStyle(OLFactory.createStroke(OLFactory.createColor(255, 255, 255, 1), 5));
-                Style sLine2 = OLFactory.createStyle(OLFactory.createStroke(OLFactory.createColor(0, 153, 255, 1), 3));
+                Style sPoly = OLFactory.createStyle(OLFactory.createFill(new Color(255, 255, 255, 0.5)));
+                Style sLine1 = OLFactory.createStyle(OLFactory.createStroke(new Color(255, 255, 255, 1), 5));
+                Style sLine2 = OLFactory.createStyle(OLFactory.createStroke(new Color(0, 153, 255, 1), 3));
                 // combine all styles
-                Style[] s = OLUtil.addStyle(OLUtil.combineStyles(sPoly, sLine1), sLine2);
-                voptions.setStyle(s);
+                Style[] styles = OLUtil.combineStyles(sPoly, sLine1, sLine2);
+                this.persistOverlay.setStyles(styles);
             }
-            // create an overlay and attach it to the map
-            persistOverlay = OLFactory.createVector(voptions);
-            persistOverlay.setMap(map);
+
         }
 
         // set up projection to be used
-        proj = map.getView().getProjection();
-        
-        map.addInteraction(draw);
+        this.proj = this.getMap().getView().getProjection();
+
+        this.getMap().addInteraction(this.draw);
         // set up event handlers
-        OLUtil.observe(draw, "drawstart", new EventListener<Draw.Event>() {
+        OLUtil.observe(this.draw, "drawstart", (Draw.Event event) -> {
 
-            @Override
-            public void onEvent(Draw.Event event) {
-                // remember measure feature
-                sketch = event.getFeature();
-                // clean up overlay
-                if(persistOverlay != null) {
-                    persistOverlay.<ol.source.Vector> getSource().clear(false);
-                }
+            // remember measure feature
+            this.sketch = event.getFeature();
+            // clean up overlay
+            if (this.persistOverlay != null) {
+                this.persistOverlay.<ol.source.Vector> getSource().clear(false);
             }
-        });
-        OLUtil.observe(draw, "drawend", new EventListener<Draw.Event>() {
 
-            @Override
-            public void onEvent(Draw.Event event) {
+        });
+
+        OLUtil.observe(draw, "drawend", (Draw.Event event) -> {
+
                 // fire event and clean up
-                fireMeasureEvent();
+                this.fireMeasureEvent();
                 // persist feature?
-                if(persistOverlay != null) {
-                    persistOverlay.<ol.source.Vector> getSource().addFeature(sketch);
+                if (this.persistOverlay != null) {
+                    this.persistOverlay.<ol.source.Vector> getSource().addFeature(this.sketch);
                 }
-                sketch = null;
-            }
+                this.sketch = null;
+
         });
+
         // handle mouse move if immediate updates are requested
-        if(immediate) {
-            // enable mouse move events on the viewport
-            Element elem = map.getViewport();
-            com.google.gwt.user.client.Event.sinkEvents(elem, com.google.gwt.user.client.Event.ONMOUSEMOVE);
-            // remember old event listener before chaining this listener
-            // in-between
-            chainedListener = com.google.gwt.user.client.Event.getEventListener(elem);
-            com.google.gwt.user.client.Event.setEventListener(elem, new com.google.gwt.user.client.EventListener() {
+        if (this.immediate) {
 
-                @Override
-                public void onBrowserEvent(com.google.gwt.user.client.Event event) {
-                    // check for mouse move events only
-                    if(event.getType() == "mousemove") {
-                        // check if interaction is active and fire event
-                        if(draw.getActive()) {
-                            fireMeasureEvent();
-                        }
-                    }
-                    // call chained handler
-                    if(chainedListener != null) {
-                        chainedListener.onBrowserEvent(event);
-                    }
+            this.pointerMoveListener = this.getMap().addPointerMoveListener((MapBrowserEvent event) -> {
+
+                if (this.draw.getActive()) {
+                    this.fireMeasureEvent();
                 }
+
             });
-            eventListenerNeedsCleanup = true;
+            // this handler is necessary to support mobile devices without a mouse
+            this.clickListener = this.getMap().addClickListener((MapBrowserEvent event) -> {
+
+                if (this.draw.getActive()) {
+                    this.fireMeasureEvent();
+                }
+
+            });
         }
-        // set flag
-        isActive = true;
+
     }
 
-    /**
-     * Start measuring an area.
-     *
-     * @param listener
-     *            {@link MeasureListener}
-     */
-    public void startMeasureArea(MeasureListener listener) {
-        start("Polygon", listener, true, true);
+    private ol.layer.Vector getPersistOverlay() {
+
+        if (this.persistOverlay == null) {
+            VectorLayerOptions voptions = OLFactory.createLayerOptionsWithSource(OLFactory.createVectorSource());
+            this.persistOverlay = new Vector(voptions);
+        }
+
+        return this.persistOverlay;
+
     }
 
-    /**
-     * Start measuring an area.
-     *
-     * @param listener
-     *            {@link MeasureListener}
-     * @param immediate
-     *            Fire events on every change to the measured geometry? If false
-     *            only one event after finishing is fired. (default is true)
-     * @param persist
-     *            Keep the temporary measurement sketch drawn after the
-     *            measurement is complete. The geometry will persist until a new
-     *            measurement is started, the control is deactivated, or
-     *            {@link #stop()} is called.
-     */
-    public void startMeasureArea(MeasureListener listener, boolean immediate, boolean persist) {
-        start("Polygon", listener, immediate, persist);
-    }
+    @Override
+    public void setActive(boolean active) {
 
-    /**
-     * Start measuring a length.
-     *
-     * @param listener
-     *            {@link MeasureListener}
-     */
-    public void startMeasureLength(MeasureListener listener) {
-        start("LineString", listener, true, true);
-    }
+        boolean alreadyActive = getActive();
+        super.setActive(active);
 
-    /**
-     * Start measuring a length.
-     *
-     * @param listener
-     *            {@link MeasureListener}
-     * @param immediate
-     *            Fire events on every change to the measured geometry? If false
-     *            only one event after finishing is fired. (default is true)
-     * @param persist
-     *            Keep the temporary measurement sketch drawn after the
-     *            measurement is complete. The geometry will persist until a new
-     *            measurement is started, the control is deactivated, or
-     *            {@link #stop()} is called.
-     */
-    public void startMeasureLength(MeasureListener listener, boolean immediate, boolean persist) {
-        start("LineString", listener, immediate, persist);
+        if (active) {
+
+            if (getMap() != null && !alreadyActive) {
+                this.activate();
+            }
+
+        } else {
+            this.deactivate();
+        }
+
     }
 
     /**
      * Stop measuring.
      */
-    public void stop() {
-        // reset flag
-        isActive = false;
+    private void deactivate() {
+
         // clean up
-        listener = null;
-        sketch = null;
-        proj = null;
+        this.sketch = null;
+        this.proj = null;
+
         // clean up interaction
-        if(draw != null) {
-            map.removeInteraction(draw);
-            draw = null;
+        if (this.draw != null) {
+            this.getMap().removeInteraction(this.draw);
+            this.draw = null;
         }
+
+        if (this.clickListener != null) {
+            this.clickListener.removeHandler();
+        }
+        if (this.pointerMoveListener != null) {
+            this.pointerMoveListener.removeHandler();
+        }
+
         // clean up overlay
-        if(persistOverlay != null) {
-            persistOverlay.<ol.source.Vector> getSource().clear(false);
-            persistOverlay.setMap(null);
-            persistOverlay = null;
+        if (this.persistOverlay != null) {
+            this.persistOverlay.<ol.source.Vector> getSource().clear(false);
+            this.getMap().removeLayer(this.persistOverlay);
         }
-        // clean up event listener?
-        if(eventListenerNeedsCleanup) {
-            // try to remove chained event listener
-            Element elem = map.getViewport();
-            if(elem != null) {
-                com.google.gwt.user.client.Event.setEventListener(elem, chainedListener);
-            }
-            chainedListener = null;
-            eventListenerNeedsCleanup = false;
+
+    }
+
+    public enum MeasureType {
+
+        AREA("Polygon"),
+        DISTANCE("LineString");
+
+        private String value;
+
+        private MeasureType(String value) {
+            this.value = value;
         }
+
+        public String getValue() {
+            return value;
+        }
+
     }
 
 }

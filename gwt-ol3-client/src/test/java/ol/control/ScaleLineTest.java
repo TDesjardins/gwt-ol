@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.control;
 
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.Object;
 
 /**
@@ -23,7 +23,7 @@ import ol.Object;
  * @author Tino Desjardins
  *
  */
-public class ScaleLineTest extends GwtOL3BaseTestCase {
+public class ScaleLineTest extends GwtOLBaseTestCase {
 
     public void testScaleLine() {
 

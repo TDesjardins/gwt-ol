@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -80,7 +80,7 @@ import ol.proj.Projection;
 public class View extends Object {
 
     public View() {}
-    
+
     public View(ViewOptions viewOptions) {}
 
     @JsOverlay
@@ -100,31 +100,45 @@ public class View extends Object {
 
     /**
      * Animates the view.
-     * 
+     *
      * @param animationOptions
      */
     public native void animate(AnimationOptions... animationOptions);
-    
+
+    /**
+     * Cancel any ongoing animations.
+     */
+    public native void cancelAnimations();
+
+    /**
+     * Center on coordinate and view position.
+     *
+     * @param coordinate Coordinate.
+     * @param size Box pixel size.
+     * @param position Position on the view to center on.
+     */
+    public native void centerOn(Coordinate coordinate, Size size, Pixel position);
+
     /**
      * Fit the given extent based on the given map size and border.
      * The size is pixel dimensions of the box to fit the extent into. In most
      * cases you will want to use the map size, that is `map.getSize()`. Takes
      * care of the map angle.
-     * 
+     *
      * @param extent {ol.Extent} extent.
      */
     public native void fit(ol.Extent extent);
-    
+
     /**
      * Fit the given geometry based on the given map size and border.
      * The size is pixel dimensions of the box to fit the extent into. In most
      * cases you will want to use the map size, that is `map.getSize()`. Takes
      * care of the map angle.
-     * 
+     *
      * @param geometry {ol.geom.SimpleGeometry} geometry.
      */
     public native void fit(ol.geom.SimpleGeometry geometry);
-    
+
     /**
      * Fit the given extent on the given map size and border.
      * The size is pixel dimensions of the box to fit the extent into. In most
@@ -137,7 +151,7 @@ public class View extends Object {
      *            options
      */
     public native void fit(ol.Extent extent, ViewFitOptions opt_options);
-    
+
     /**
      * Fit the given geometry on the given map size and border.
      * The size is pixel dimensions of the box to fit the extent into. In most
@@ -152,40 +166,50 @@ public class View extends Object {
     public native void fit(ol.geom.SimpleGeometry geometry, ViewFitOptions opt_options);
 
     /**
+     * @return if the view is being animated.
+     */
+    public native boolean getAnimating();
+
+    /**
      * Get the view center.
      *
-     * @return {ol.Coordinate|undefined} The center of the view.
+     * @return the center of the view.
      */
     public native Coordinate getCenter();
+
+    /**
+     * @return if the user is interacting with the view, such as panning or zooming.
+     */
+    public native boolean getInteracting();
 
     /**
      * Get the maximum resolution of the view.
      * @return The maximum resolution of the view.
      */
     public native double getMaxResolution();
-    
+
     /**
      * Get the maximum zoom level for the view.
      * @return The maximum zoom level.
      */
     public native double getMaxZoom();
-    
+
     /**
      * Get the minimum resolution of the view.
      * @return The minimum resolution of the view.
      */
     public native double getMinResolution();
-    
+
     /**
      * Get the minimum zoom level for the view.
      * @return The minimum zoom level.
      */
     public native double getMinZoom();
-        
+
     /**
      * Get the view projection.
      *
-     * @return {ol.proj.Projection} The projection of the view.
+     * @return the projection of the view.
      */
     public native Projection getProjection();
 
@@ -195,6 +219,38 @@ public class View extends Object {
      * @return The resolution of the view.
      */
     public native double getResolution();
+
+    /**
+     * Get the resolution for a provided extent (in map units) and size (in pixels).
+     *
+     * @param extent Extent.
+     * @return the resolution at which the provided extent will render at the given size.
+     */
+
+    /**
+     * Get the resolution for a zoom level.
+     *
+     * @param zoom Zoom level.
+     * @return the view resolution for the provided zoom level.
+     */
+    public native double getResolutionForZoom(double zoom);
+
+    /**
+     * Get the resolution for a provided extent (in map units) and size (in pixels).
+     *
+     * @param extent Extent.
+     * @return the resolution at which the provided extent will render at the given size.
+     */
+    public native double getResolutionForExtent(Extent extent);
+
+    /**
+     * Get the resolution for a provided extent (in map units) and size (in pixels).
+     *
+     * @param extent Extent.
+     * @param size Box pixel size.
+     * @return the resolution at which the provided extent will render at the given size.
+     */
+    public native double getResolutionForExtent(Extent extent, Size size);
 
     /**
      * Get the view rotation.
@@ -209,12 +265,12 @@ public class View extends Object {
      * @return Zoom.
      */
     public native double getZoom();
-    
+
     /**
      * Get the zoom level for a resolution.
      * @param resolution
      *            The resolution.
-     * @return {number|undefined} The zoom level for the provided resolution.
+     * @return the zoom level for the provided resolution.
      */
     public native double getZoomForResolution(double resolution);
 
@@ -249,7 +305,7 @@ public class View extends Object {
      *            The maximum zoom level.
      */
     public native void setMaxZoom (double zoom);
-  
+
     /**
      * Set the resolution for this view.
      *

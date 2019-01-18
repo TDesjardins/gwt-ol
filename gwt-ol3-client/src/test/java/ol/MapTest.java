@@ -26,7 +26,7 @@ import ol.proj.ProjectionOptions;
  * @author Tino Desjardins
  *
  */
-public class MapTest extends GwtOL3BaseTestCase {
+public class MapTest extends GwtOLBaseTestCase {
 
     public void testMapCreation() {
 

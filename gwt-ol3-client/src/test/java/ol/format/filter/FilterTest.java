@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@ package ol.format.filter;
 
 import ol.Coordinate;
 import ol.Extent;
-import ol.GwtOL3BaseTestCase;
+import ol.GwtOLBaseTestCase;
 import ol.geom.Circle;
 
 /**
@@ -26,7 +26,7 @@ import ol.geom.Circle;
  * @author Tino Desjardins
  *
  */
-public class FilterTest extends GwtOL3BaseTestCase {
+public class FilterTest extends GwtOLBaseTestCase {
 
     public void testAnd() {
         injectUrlAndTest(() -> {
@@ -34,8 +34,8 @@ public class FilterTest extends GwtOL3BaseTestCase {
             EqualTo equalTo = new EqualTo("attribute", "value");
             EqualTo equalTo2 = new EqualTo("attribute2", 1);
 
-            And andFilter = new And(equalTo, equalTo2);
-            assertNotNull(andFilter);
+            assertNotNull(equalTo);
+            assertNotNull(equalTo2);
 
             assertNotNull(Filter.and(equalTo, equalTo2));
 
@@ -68,7 +68,7 @@ public class FilterTest extends GwtOL3BaseTestCase {
         });
     }
 
-    public void testEqualTo() {        
+    public void testEqualTo() {
         injectUrlAndTest(() -> {
 
             EqualTo equalTo = new EqualTo("attribute", "value");
@@ -136,7 +136,7 @@ public class FilterTest extends GwtOL3BaseTestCase {
 
             IsBetween isBetween2 = Filter.between("attribute", 5, 10);
             assertTrue(isBetween2 instanceof IsBetween);
- 
+
         });
     }
 
@@ -189,13 +189,13 @@ public class FilterTest extends GwtOL3BaseTestCase {
         injectUrlAndTest(() -> {
 
             EqualTo equalTo = new EqualTo("attribute", "value");
-            
+
             Not not = new Not(equalTo);
             assertNotNull(not);
 
             Not not2 = Filter.not(equalTo);
             assertTrue(not2 instanceof Not);
- 
+
         });
     }
 

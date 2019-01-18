@@ -43,7 +43,7 @@ public class MeasureEvent {
      * Gets the measurement geometry: a {@link ol.geom.LineString} for length
      * measurements and a {@link ol.geom.Polygon} for area measurements.
      *
-     * @return {@link Geometry}
+     * @return measurement geometry
      */
     public Geometry getGeometry() {
         return this.geom;

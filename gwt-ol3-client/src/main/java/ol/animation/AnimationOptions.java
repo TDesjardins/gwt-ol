@@ -20,6 +20,7 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.Coordinate;
 import ol.Options;
+import ol.easing.EasingOperation;
 
 /**
  * Options for animation. See {@link ol.View#animate(AnimationOptions...)}
@@ -47,4 +48,6 @@ public class AnimationOptions implements Options {
     @JsProperty
     public native void setZoom(double zoom);
 
+    @JsProperty
+    public native void setEasing(EasingOperation easing);
 }

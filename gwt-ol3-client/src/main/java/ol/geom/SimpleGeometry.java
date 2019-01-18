@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2018 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,23 +28,23 @@ import ol.Coordinate;
  */
 @JsType(isNative = true)
 public abstract class SimpleGeometry extends Geometry {
-    
+
     /**
      * Return the first coordinate of the geometry.
      *
-     * @return {ol.Coordinate} First coordinate.
+     * @return first coordinate.
      */
     public native Coordinate getFirstCoordinate();
 
     /**
      * Return the last coordinate of the geometry.
      *
-     * @return {ol.Coordinate} Last point.
+     * @return last point.
      */
     public native Coordinate getLastCoordinate();
 
     /**
-     * Return the {@link ol.geom.GeometryLayout layout} of the geometry.
+     * Return the layout of the geometry.
      *
      * @return Layout.
      */
@@ -53,10 +53,10 @@ public abstract class SimpleGeometry extends Geometry {
     /**
      * Translate the geometry. This modifies the geometry coordinates in place.
      * If instead you want a new geometry, first {@link clone()} this geometry.
-     * 
+     *
      * @param deltaX Delta X.
      * @param deltaY Delta Y.
      */
     public native void translate(double deltaX, double deltaY);
-    
+
 }
