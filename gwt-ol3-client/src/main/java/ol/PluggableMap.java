@@ -205,6 +205,7 @@ public abstract class PluggableMap extends Object {
      * Detect if features intersect a pixel on the viewport.
      *
      * @param pixel Pixel.
+     * @return if features intersect a pixel
      */
     public native boolean hasFeatureAtPixel(Pixel pixel);
 
@@ -214,6 +215,7 @@ public abstract class PluggableMap extends Object {
      *
      * @param pixel Pixel.
      * @param options Optional options.
+     * @return if features intersect a pixel
      */
     public native boolean hasFeatureAtPixel(Pixel pixel, FeatureAtPixelOptions options);
 
@@ -327,6 +329,8 @@ public abstract class PluggableMap extends Object {
 
     /**
      * A click with no dragging. A double click will fire two of this.
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addClickListener(final EventListener<MapBrowserEvent> listener) {
@@ -335,6 +339,9 @@ public abstract class PluggableMap extends Object {
 
     /**
      * A true double click, with no dragging.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addDoubleClickListener(final EventListener<MapBrowserEvent> listener) {
@@ -343,6 +350,9 @@ public abstract class PluggableMap extends Object {
 
     /**
      * Triggered after the map is moved.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addMoveEndListener(final EventListener<MapEvent> listener) {
@@ -351,6 +361,9 @@ public abstract class PluggableMap extends Object {
 
     /**
      * Triggered when the map starts moving.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addMoveStartListener(final EventListener<MapEvent> listener) {
@@ -359,6 +372,9 @@ public abstract class PluggableMap extends Object {
 
     /**
      * Triggered when a pointer is dragged.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addPointerDragListener(final EventListener<MapBrowserEvent> listener) {
@@ -368,6 +384,9 @@ public abstract class PluggableMap extends Object {
     /**
      * Triggered when a pointer is moved.
      * Note that on touch devices this is triggered when the map is panned, so is not the same as <code>mousemove</code>.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addPointerMoveListener(final EventListener<MapBrowserEvent> listener) {
@@ -376,6 +395,9 @@ public abstract class PluggableMap extends Object {
 
     /**
      * postcompose
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addPostComposeListener(final EventListener<ol.render.Event> listener) {
@@ -384,6 +406,9 @@ public abstract class PluggableMap extends Object {
 
     /**
      * Triggered after a map frame is rendered.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addPostRenderListener(final EventListener<MapEvent> listener) {
@@ -392,6 +417,9 @@ public abstract class PluggableMap extends Object {
 
     /**
      * precompose
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addPreComposeListener(final EventListener<ol.render.Event> listener) {
@@ -399,8 +427,11 @@ public abstract class PluggableMap extends Object {
     }
 
     /**
-     *  A true single click with no dragging and no double click.
-     *  Note that this event is delayed by 250 ms to ensure that it is not a double click.
+     * A true single click with no dragging and no double click.
+     * Note that this event is delayed by 250 ms to ensure that it is not a double click.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addSingleClickListener(final EventListener<MapBrowserEvent> listener) {
@@ -409,6 +440,9 @@ public abstract class PluggableMap extends Object {
 
     /**
      * Adds a map move listener for the given map.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addMapMoveListener(final EventListener<MapEvent> listener) {
@@ -441,6 +475,9 @@ public abstract class PluggableMap extends Object {
 
     /**
      * Adds a map zoom listener for the given map.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addMapZoomListener(final EventListener<MapEvent> listener) {
@@ -453,6 +490,9 @@ public abstract class PluggableMap extends Object {
 
     /**
      * Adds a map zoom end listener for the given map.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addMapZoomEndListener(final EventListener<MapEvent> listener) {

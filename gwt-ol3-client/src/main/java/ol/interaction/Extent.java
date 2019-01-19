@@ -42,7 +42,7 @@ public class Extent extends Pointer {
     public Extent(ExtentOptions extentOptions) {}
 
     /**
-     * Returns the current drawn extent in the view projection.
+     * @return current drawn extent in the view projection
      */
     public native ol.Extent getExtent();
 
@@ -55,6 +55,9 @@ public class Extent extends Pointer {
 
     /**
      * Triggered when extent changes.
+     *
+     * @param listener listener
+     * @return handler registration
      */
     @JsOverlay
     public final HandlerRegistration addExtentChangedListener(final EventListener<Extent.Event> listener) {
@@ -71,7 +74,7 @@ public class Extent extends Pointer {
     public interface Event extends ol.events.Event {
 
         /**
-         * The current extent.
+         * @return current extent
          */
         @JsProperty
         public ol.Extent getExtent();
