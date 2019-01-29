@@ -17,6 +17,7 @@ package ol.geom;
 
 import jsinterop.annotations.JsType;
 import ol.Coordinate;
+import ol.Extent;
 
 /**
  * Polygon geometry.
@@ -133,5 +134,13 @@ public class Polygon extends SimpleGeometryMultiCoordinates {
      * @return linear rings.
      */
     public native LinearRing[] getLinearRings();
+    
+    /**
+     * Test if the geometry and the passed extent intersect.
+     * 
+     * @param extent Extent.
+     * @return true if the geometry and the extent intersect.
+     */
+    public native boolean intersectsExtent(Extent extent);
 
 }
