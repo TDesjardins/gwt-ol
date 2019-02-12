@@ -34,16 +34,16 @@ public class TileImageOptions extends UrlTileOptions {
     @JsProperty
     public native void setCrossOrigin(String crossOrigin);
 
-    @JsProperty
-    public native String getCrossOrigin();
+  @JsProperty
+  public native String getCrossOrigin();
 
-    /**
-     * @param opaque Whether the layer is opaque.
-     */
-    @JsProperty
-    public native void setOpaque(Boolean opaque);
+  /**
+   * @param opaque Whether the layer is opaque.
+   */
+  @JsProperty
+  public native void setOpaque(Boolean opaque);
 
-    @JsProperty
+  @JsProperty
     public native Boolean getOpaque();
 
     /**
@@ -52,16 +52,24 @@ public class TileImageOptions extends UrlTileOptions {
     @JsProperty
     public native void setReprojectionErrorThreshold(double reprojectionErrorThreshold);
 
-    @JsProperty
-    public native double getReprojectionErrorThreshold();
+  @JsProperty
+  public native double getReprojectionErrorThreshold();
 
-    /**
-     * @param tile Class used to instantiate image tiles. Default is {@link ol.ImageTile}.
-     */
-    @JsProperty
-    public native void setTileClass(ol.Tile tile);
+  /**
+   * @param tile Class used to instantiate image tiles. Default is {@link ol.ImageTile}.
+   */
+  @JsProperty
+  public native void setTileClass(ol.Tile tile);
 
-    @JsProperty
-    public native ol.Tile getTileClass();
+  @JsProperty
+  public native ol.Tile getTileClass();
 
+  /**
+   * Duration of the opacity transition for rendering. To disable the opacity transition, pass
+   * transition: 0, default 250.
+   * 
+   * @param duration in milliseconds.
+   */
+  @JsProperty
+  public native void setTransition(int duration);
 }
