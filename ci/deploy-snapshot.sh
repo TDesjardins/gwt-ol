@@ -1,6 +1,6 @@
 echo check deployment
 
-if [ "$TRAVIS_REPO_SLUG" == "TDesjardins/gwt-ol3" ] && \
+if [ "$TRAVIS_REPO_SLUG" == "TDesjardins/gwt-ol" ] && \
    [ "$TRAVIS_JDK_VERSION" == "oraclejdk8" ] && \
    [ "$TRAVIS_PULL_REQUEST" == "false" ] && \
    [ "$TRAVIS_BRANCH" == "master" ]; then
