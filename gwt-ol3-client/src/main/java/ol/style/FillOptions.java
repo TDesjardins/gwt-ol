@@ -35,7 +35,7 @@ public class FillOptions implements Options {
 
     /**
      * Set the fill color.
-     * 
+     *
      * @param color {@link Color}
      */
     @JsProperty
@@ -47,6 +47,7 @@ public class FillOptions implements Options {
      * @param canvasGradient
      *          canvasGradient.
      */
+    @JsProperty
     public native void setColor(CanvasGradient canvasGradient);
 
     /**
@@ -55,6 +56,7 @@ public class FillOptions implements Options {
      * @param canvasPattern
      *          canvasPattern.
      */
+    @JsProperty
     public native void setColor(CanvasPattern canvasPattern);
 
 }

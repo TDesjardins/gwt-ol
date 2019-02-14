@@ -47,6 +47,7 @@ public class StrokeOptions implements Options {
      * @param canvasGradient
      *          canvasGradient.
      */
+    @JsProperty
     public native void setColor(CanvasGradient canvasGradient);
 
     /**
@@ -55,6 +56,7 @@ public class StrokeOptions implements Options {
      * @param canvasPattern
      *          canvasPattern.
      */
+    @JsProperty
     public native void setColor(CanvasPattern canvasPattern);
 
     /**
