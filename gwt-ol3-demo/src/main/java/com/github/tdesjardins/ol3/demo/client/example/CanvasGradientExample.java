@@ -20,7 +20,6 @@ package com.github.tdesjardins.ol3.demo.client.example;
 
 import com.github.tdesjardins.ol3.demo.client.constants.DemoConstants;
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
-
 import elemental2.dom.CanvasGradient;
 import elemental2.dom.CanvasPattern;
 import elemental2.dom.CanvasRenderingContext2D;
@@ -39,6 +38,7 @@ import ol.control.MousePosition;
 import ol.control.MousePositionOptions;
 import ol.control.ScaleLine;
 import ol.geom.Polygon;
+import ol.has.Has;
 import ol.layer.Base;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
@@ -170,7 +170,7 @@ public class CanvasGradientExample implements Example {
         HTMLCanvasElement canvas = createCanvas();
         CanvasRenderingContext2D context = (CanvasRenderingContext2D) (Object) canvas.getContext("2d");
 
-        double pixelRatio = 1;
+        double pixelRatio = Has.getDevicePixelRatio();
 
         canvas.width = (int)(8 * pixelRatio);
         canvas.height = (int)(8 * pixelRatio);
