@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,5 +28,35 @@ public class Wmts extends TileImage {
     public Wmts() {}
 
     public Wmts(WmtsOptions wmtsOptions) {}
+
+    /**
+     * @return image format of the WMTS source.
+     */
+    public native String getFormat();
+
+    /**
+     * @return layer of the WMTS source.
+     */
+    public native String getLayer();
+
+    /**
+     * @return matrix set of the WMTS source.
+     */
+    public native String getMatrixSet();
+
+    /**
+     * @return request encoding, either "KVP" or "REST".
+     */
+    public native String getRequestEncoding();
+
+    /**
+     * @return style of the WMTS source.
+     */
+    public native String getStyle();
+
+    /**
+     * @return version of the WMTS source.
+     */
+    public native String getVersion();
 
 }
