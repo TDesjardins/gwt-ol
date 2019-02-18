@@ -32,6 +32,18 @@ import ol.tilegrid.TileGrid;
 public class TileOptions extends SourceOptions {
 
     /**
+     * @return Cache size.
+     */
+    @JsProperty
+    public native int getCacheSize();
+
+    /**
+     * @param cacheSize Cache size
+     */
+    @JsProperty
+    public native void setCacheSize(int cacheSize);
+
+    /**
      * Gets the {@link TileGrid}.
      *
      * @return tileGrid {@link TileGrid}
@@ -49,7 +61,7 @@ public class TileOptions extends SourceOptions {
 
     /**
      * Duration of the opacity transition for rendering. To disable the opacity transition, pass transition: 0, default 250.
-     * 
+     *
      * @param duration in milliseconds.
      */
     @JsProperty
