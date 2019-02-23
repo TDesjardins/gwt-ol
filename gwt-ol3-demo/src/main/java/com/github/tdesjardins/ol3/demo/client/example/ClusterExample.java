@@ -110,7 +110,7 @@ public class ClusterExample implements Example {
                 textOptions.setText(String.valueOf(clusterSize));
                 styleOptions.setText(new Text(textOptions));
 
-                double radius = getRadiusbyClusterSize(clusterSize);
+                double radius = getRadiusByClusterSize(clusterSize);
 
                 CircleOptions circleOptions = new CircleOptions();
                 circleOptions.setRadius(radius);
@@ -160,7 +160,7 @@ public class ClusterExample implements Example {
         map.addControl(new Rotate());
     }
 
-    private double getRadiusbyClusterSize(int clusterSize) {
+    private double getRadiusByClusterSize(int clusterSize) {
 
         if (clusterSize > 4999) {
             return 25;
