@@ -59,14 +59,14 @@ public class RegularShape extends Image {
      *
      * @return Radius.
      */
-    public native int getRadius();
+    public native double getRadius();
 
     /**
      * Get the secondary radius for the shape.
      *
      * @return Radius2.
      */
-    public native int getRadius2();
+    public native double getRadius2();
 
     /**
      * Get the size of the symbolizer (in pixels).

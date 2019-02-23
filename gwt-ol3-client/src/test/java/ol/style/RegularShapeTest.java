@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,8 +38,8 @@ public class RegularShapeTest extends GwtOLBaseTestCase {
 
             RegularShape regularShape = new RegularShape(regularShapeOptions);
             assertNotNull(regularShape);
-            assertEquals(regularShape.getRadius(), 4);
-            assertEquals(regularShape.getRadius2(), 3);
+            assertEquals(regularShape.getRadius(), 4d);
+            assertEquals(regularShape.getRadius2(), 3d);
 
             regularShape.setOpacity(0.5);
             regularShape.setRotation(Math.PI);

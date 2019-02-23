@@ -34,10 +34,10 @@ public class CircleTest extends GwtOLBaseTestCase {
 
             Circle circleStyle = OLFactory.createCircleStyle(circleOptions);
             assertNotNull(circleStyle);
-            assertEquals(5, circleStyle.getRadius());
+            assertEquals(5d, circleStyle.getRadius());
 
             circleStyle.setRadius(4);
-            assertEquals(4, circleStyle.getRadius());
+            assertEquals(4d, circleStyle.getRadius());
 
             assertNotNull(circleStyle.getSize());
 
