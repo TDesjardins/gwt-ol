@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -110,8 +110,10 @@ public class ClusterExample implements Example {
                 textOptions.setText(String.valueOf(clusterSize));
                 styleOptions.setText(new Text(textOptions));
 
+                double radius = getRadiusbyClusterSize(clusterSize);
+
                 CircleOptions circleOptions = new CircleOptions();
-                circleOptions.setRadius(10);
+                circleOptions.setRadius(radius);
                 Color color = Color.getColorFromString("#3399CC");
                 circleOptions.setFill(OLFactory.createFill(color));
                 styleOptions.setImage(new Circle(circleOptions));
@@ -156,6 +158,22 @@ public class ClusterExample implements Example {
         map.addInteraction(new KeyboardPan());
         map.addInteraction(new KeyboardZoom());
         map.addControl(new Rotate());
+    }
+
+    private double getRadiusbyClusterSize(int clusterSize) {
+
+        if (clusterSize > 4999) {
+            return 25;
+        } else if (clusterSize > 999) {
+            return 20;
+        } else if (clusterSize > 499) {
+            return 15;
+        } else if (clusterSize > 99) {
+            return 10;
+        } else {
+            return 8;
+        }
+
     }
 
 }
