@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,7 +49,7 @@ public class RegularShapeOptions implements Options {
      * @param radius radius
      */
     @JsProperty
-    public native void setRadius(int radius);
+    public native void setRadius(double radius);
 
     /**
      * Shape's angle in radians. A value of 0 will have one of the shape's point facing up. Default value is 0.
@@ -81,7 +81,7 @@ public class RegularShapeOptions implements Options {
      * @param radius1 radius
      */
     @JsProperty
-    public native void setRadius1(int radius1);
+    public native void setRadius1(double radius1);
 
     /**
      * Outer radius of a star.
@@ -89,7 +89,7 @@ public class RegularShapeOptions implements Options {
      * @param radius2 radius
      */
     @JsProperty
-    public native void setRadius2(int radius2);
+    public native void setRadius2(double radius2);
 
     /**
      * Whether to rotate the shape with the view. Default is false.

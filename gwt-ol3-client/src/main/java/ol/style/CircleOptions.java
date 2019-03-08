@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,14 +35,6 @@ public class CircleOptions extends RegularShapeOptions {
      */
     @JsProperty
     public native void setFill(Fill fill);
-
-    /**
-     * Circle radius. Required.
-     *
-     * @param radius radius
-     */
-    @JsProperty
-    public native void setRadius(double radius);
 
     /**
      * Stroke style.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,6 +44,12 @@ public class Style {
     public native Fill getFill();
 
     /**
+     * @param fill Fill style
+     */
+    @Nullable
+    public native void setFill(Fill fill);
+
+    /**
      * Get the geometry to be rendered.
      *
      * @return {string|ol.geom.Geometry|ol.style.GeometryFunction} Feature
@@ -67,6 +73,12 @@ public class Style {
      */
     @Nullable
     public native Stroke getStroke();
+
+    /**
+     * @param stroke Stroke style
+     */
+    @Nullable
+    public native void setStroke(Stroke stroke);
 
     /**
      * Get the text style.

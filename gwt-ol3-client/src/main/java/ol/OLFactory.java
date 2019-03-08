@@ -277,6 +277,10 @@ public final class OLFactory {
 
     /** Interactions **/
 
+    /**
+     *  Creates a {@link DragAndDrop}.
+     * @return {@link DragAndDrop}
+     */
     public static DragAndDrop createDragAndDrop() {
         return new DragAndDrop();
     };
@@ -296,10 +300,10 @@ public final class OLFactory {
     /**
      * Creates an {@link Extent}.
      *
-     * @param minX
-     * @param minY
-     * @param maxX
-     * @param maxY
+     * @param minX x min
+     * @param minY y min
+     * @param maxX x max
+     * @param maxY y max
      * @return {@link Extent}
      */
     public static Extent createExtent(double minX, double minY, double maxX, double maxY) {

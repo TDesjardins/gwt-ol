@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import jsinterop.annotations.JsType;
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class TileImageOptions extends UrlTileOptions {
-	
+
     /**
      * @param crossOrigin The <code>crossOrigin</code> attribute for loaded images. Note that you must provide a <code>crossOrigin</code> value if you are using the WebGL renderer or if you want to access pixel data with the Canvas renderer. See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image">https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image</a> for more detail.
      */
@@ -63,5 +63,13 @@ public class TileImageOptions extends UrlTileOptions {
 
     @JsProperty
     public native ol.Tile getTileClass();
+
+    /**
+     * Duration of the opacity transition for rendering. To disable the opacity transition, pass transition: 0, default 250.
+     * 
+     * @param duration in milliseconds.
+     */
+    @JsProperty
+    public native void setTransition(int duration);
 
 }

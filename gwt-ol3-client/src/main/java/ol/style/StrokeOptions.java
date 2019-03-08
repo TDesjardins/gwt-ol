@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
  *******************************************************************************/
 package ol.style;
 
+import elemental2.dom.CanvasGradient;
+import elemental2.dom.CanvasPattern;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
@@ -38,6 +40,24 @@ public class StrokeOptions implements Options {
      */
     @JsProperty
     public native void setColor(Color color);
+
+    /**
+     * Set the canvasGradient.
+     *
+     * @param canvasGradient
+     *          canvasGradient.
+     */
+    @JsProperty
+    public native void setColor(CanvasGradient canvasGradient);
+
+    /**
+     * Set the canvasPattern.
+     *
+     * @param canvasPattern
+     *          canvasPattern.
+     */
+    @JsProperty
+    public native void setColor(CanvasPattern canvasPattern);
 
     /**
      * Set the stroke width.
