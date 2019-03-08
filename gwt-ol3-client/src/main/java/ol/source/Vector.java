@@ -22,6 +22,7 @@ import ol.Collection;
 import ol.Coordinate;
 import ol.Extent;
 import ol.Feature;
+import ol.GenericFunction;
 
 /**
  * Provides a source of features for vector layers. Vector features provided by
@@ -163,5 +164,17 @@ public class Vector extends Source {
         Feature getFeature();
 
     }
+
+	/**
+	 * Iterate through all features whose geometry intersects the provided
+	 * extent, calling the callback with each feature. If the callback returns a
+	 * "truthy" value, iteration will stop and the function will return the same
+	 * value. If you only want to test for bounding box intersection, call the
+	 * #forEachFeatureInExtent() method instead.
+	 * 
+	 * @param extent Extent.
+	 * @param callback Called with each feature whose geometry intersects the provided extent.
+	 */
+	public native void forEachFeatureIntersectingExtent(Extent extent, GenericFunction<Feature, ?> callback);
 
 }
