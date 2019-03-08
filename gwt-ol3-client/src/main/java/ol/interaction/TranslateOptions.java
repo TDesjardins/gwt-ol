@@ -22,6 +22,7 @@ import jsinterop.annotations.JsType;
 import ol.Collection;
 import ol.Feature;
 import ol.Options;
+import ol.layer.Layer;
 
 /**
  * @author Tino Desjardins
@@ -36,5 +37,17 @@ public class TranslateOptions implements Options {
      */
     @JsProperty
     public native void setFeatures(Collection<Feature> features);
+	
+	/**
+	 * A list of layers from which features should be translated. Alternatively,
+	 * a filter function can be provided. The function will be called for each
+	 * layer in the map and should return true for layers that you want to be
+	 * translatable. If the option is absent, all visible layers will be
+	 * considered translatable.
+	 * 
+	 * @param layer
+	 */
+	@JsProperty
+	public native void setLayers(Layer[] layer);
 
 }
