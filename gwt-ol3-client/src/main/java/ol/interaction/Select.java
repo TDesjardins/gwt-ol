@@ -17,11 +17,16 @@ package ol.interaction;
 
 import javax.annotation.Nullable;
 
+import com.google.gwt.event.shared.HandlerRegistration;
+
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.Collection;
 import ol.Feature;
 import ol.MapBrowserEvent;
+import ol.OLUtil;
+import ol.event.EventListener;
 
 /**
  * Interaction for selecting vector features. By default, selected features are
@@ -62,6 +67,17 @@ public class Select extends Interaction {
      * @param hitTolerance hit-detection tolerance
      */
     public native void setHitTolerance(int hitTolerance);
+
+    /**
+     * Triggered when selection changes.
+     *
+     * @param listener listener
+     * @return handler registration
+     */
+    @JsOverlay
+    public final HandlerRegistration addSelectChangedListener(final EventListener<Select.Event> listener) {
+        return OLUtil.observe(this, "select", listener);
+    }
 
     /**
      * Events emitted by {@link Select} instances are instances of this type.
