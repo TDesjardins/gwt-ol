@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,14 +49,5 @@ public abstract class SimpleGeometry extends Geometry {
      * @return Layout.
      */
     public native String getLayout();
-
-    /**
-     * Translate the geometry. This modifies the geometry coordinates in place.
-     * If instead you want a new geometry, first {@link clone()} this geometry.
-     *
-     * @param deltaX Delta X.
-     * @param deltaY Delta Y.
-     */
-    public native void translate(double deltaX, double deltaY);
 
 }
