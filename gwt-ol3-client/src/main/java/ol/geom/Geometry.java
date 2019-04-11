@@ -137,4 +137,21 @@ public abstract class Geometry extends Observable {
      */
     public native boolean intersectsCoordinate(Coordinate coordinate);
 
+    /**
+     * Scale the geometry (with an optional origin). This modifies the geometry coordinates in place.
+     *
+     * @param scaleX The scaling factor in the x-direction.
+     * @param scaleY The scaling factor in the y-direction.
+     */
+    public native void scale(double scaleX, double scaleY);
+
+    /**
+     * Scale the geometry (with an optional origin). This modifies the geometry coordinates in place.
+     *
+     * @param scaleX The scaling factor in the x-direction.
+     * @param scaleY The scaling factor in the y-direction.
+     * @param anchor The scale origin (defaults to the center of the geometry extent).
+     */
+    public native void scale(double scaleX, double scaleY, Coordinate anchor);
+
 }
