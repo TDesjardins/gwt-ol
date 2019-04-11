@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2019 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,17 +37,17 @@ public class TranslateOptions implements Options {
      */
     @JsProperty
     public native void setFeatures(Collection<Feature> features);
-	
-	/**
-	 * A list of layers from which features should be translated. Alternatively,
-	 * a filter function can be provided. The function will be called for each
-	 * layer in the map and should return true for layers that you want to be
-	 * translatable. If the option is absent, all visible layers will be
-	 * considered translatable.
-	 * 
-	 * @param layer
-	 */
-	@JsProperty
-	public native void setLayers(Layer[] layer);
+
+    /**
+     * A list of layers from which features should be translated. Alternatively,
+     * a filter function can be provided. The function will be called for each
+     * layer in the map and should return true for layers that you want to be
+     * translatable. If the option is absent, all visible layers will be
+     * considered translatable.
+     *
+     * @param layer
+     */
+    @JsProperty
+    public native void setLayers(Layer[] layer);
 
 }
