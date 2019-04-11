@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -165,16 +165,16 @@ public class Vector extends Source {
 
     }
 
-	/**
-	 * Iterate through all features whose geometry intersects the provided
-	 * extent, calling the callback with each feature. If the callback returns a
-	 * "truthy" value, iteration will stop and the function will return the same
-	 * value. If you only want to test for bounding box intersection, call the
-	 * #forEachFeatureInExtent() method instead.
-	 * 
-	 * @param extent Extent.
-	 * @param callback Called with each feature whose geometry intersects the provided extent.
-	 */
-	public native void forEachFeatureIntersectingExtent(Extent extent, GenericFunction<Feature, ?> callback);
+    /**
+     * Iterate through all features whose geometry intersects the provided
+     * extent, calling the callback with each feature. If the callback returns a
+     * "truthy" value, iteration will stop and the function will return the same
+     * value. If you only want to test for bounding box intersection, call the
+     * #forEachFeatureInExtent() method instead.
+     *
+     * @param extent Extent.
+     * @param callback Called with each feature whose geometry intersects the provided extent.
+     */
+    public native void forEachFeatureIntersectingExtent(Extent extent, GenericFunction<Feature, ?> callback);
 
 }
