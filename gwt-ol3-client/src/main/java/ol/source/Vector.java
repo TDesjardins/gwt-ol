@@ -65,6 +65,30 @@ public class Vector extends Source {
     public native void clear(boolean opt_fast);
 
     /**
+     * Iterate through all features whose bounding box intersects the provided extent (note that the feature's geometry may not intersect the extent), calling the callback with each feature. If the callback returns a "truthy" value, iteration will stop and the function will return the same value.
+     *
+     * If you are interested in features whose geometry intersects an extent, call the {@link #forEachFeatureIntersectingExtent(Extent, GenericFunction)} method instead.
+     *
+     * When useSpatialIndex is set to false, this method will loop through all features, equivalent to #forEachFeature().
+     *
+     * @param extent Extent.
+     * @param callback Called with each feature whose bounding box intersects the provided extent.
+     */
+    public native void forEachFeatureInExtent(Extent extent, GenericFunction<Feature, ?> callback);
+
+    /**
+     * Iterate through all features whose geometry intersects the provided
+     * extent, calling the callback with each feature. If the callback returns a
+     * "truthy" value, iteration will stop and the function will return the same
+     * value. If you only want to test for bounding box intersection, call the
+     * {@link #forEachFeatureInExtent(Extent, GenericFunction)} method instead.
+     *
+     * @param extent Extent.
+     * @param callback Called with each feature whose geometry intersects the provided extent.
+     */
+    public native void forEachFeatureIntersectingExtent(Extent extent, GenericFunction<Feature, ?> callback);
+
+    /**
      * Get the closest feature to the provided coordinate.
      *
      * This method is not available when the source is configured with
@@ -169,17 +193,5 @@ public class Vector extends Source {
         Feature getFeature();
 
     }
-
-    /**
-     * Iterate through all features whose geometry intersects the provided
-     * extent, calling the callback with each feature. If the callback returns a
-     * "truthy" value, iteration will stop and the function will return the same
-     * value. If you only want to test for bounding box intersection, call the
-     * #forEachFeatureInExtent() method instead.
-     *
-     * @param extent Extent.
-     * @param callback Called with each feature whose geometry intersects the provided extent.
-     */
-    public native void forEachFeatureIntersectingExtent(Extent extent, GenericFunction<Feature, ?> callback);
 
 }
