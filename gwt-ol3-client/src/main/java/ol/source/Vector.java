@@ -137,6 +137,11 @@ public class Vector extends Source {
     public native Feature[] getFeaturesInExtent(Extent extent);
 
     /**
+     * @return format associated with this source
+     */
+    public native ol.format.Feature getFormat();
+
+    /**
      * Remove a single feature from the source. If you want to remove all
      * features at once, use the {@link ol.source.Vector#clear source.clear()}
      * method instead.
