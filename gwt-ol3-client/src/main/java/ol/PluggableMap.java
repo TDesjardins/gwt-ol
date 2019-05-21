@@ -15,9 +15,9 @@
  *******************************************************************************/
 package ol;
 
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.event.shared.HandlerRegistration;
+import org.gwtproject.event.shared.HandlerRegistration;
 
+import elemental2.dom.Element;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;

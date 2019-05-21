@@ -15,8 +15,6 @@
  *******************************************************************************/
 package ol;
 
-import javax.validation.constraints.NotNull;
-
 import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
@@ -59,7 +57,7 @@ public class Coordinate implements JsArrayLike<Double> {
      */
     @Deprecated
     @JsOverlay
-    public static Coordinate create(@NotNull double x, @NotNull double y) {
+    public static Coordinate create(double x, double y) {
         return new Coordinate(x, y);
     };
 
@@ -75,7 +73,7 @@ public class Coordinate implements JsArrayLike<Double> {
      */
     @Deprecated
     @JsOverlay
-    public static Coordinate create(@NotNull double x, @NotNull double y, @NotNull double z) {
+    public static Coordinate create(double x, double y, double z) {
         return new Coordinate(x, y, z);
     };
 

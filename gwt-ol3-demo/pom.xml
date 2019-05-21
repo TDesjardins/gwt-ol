@@ -19,6 +19,11 @@
             <artifactId>gwt-dev</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.gwtproject.event</groupId>
+            <artifactId>gwt-event</artifactId>
+            <version>HEAD-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.elemental2</groupId>
             <artifactId>elemental2-core</artifactId>
             <version>1.0.0-RC1</version>
@@ -55,4 +60,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>vertispan-snapshot-repository</id>
+            <name>Vertispan Snapshot Repository</name>
+            <url>https://repo.vertispan.com/gwt-snapshot/</url>
+        </repository>
+    </repositories>
 </project>

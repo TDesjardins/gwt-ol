@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.gwt;
 
-import com.google.gwt.event.shared.HandlerRegistration;
+import org.gwtproject.event.shared.HandlerRegistration;
 
 import jsinterop.annotations.JsIgnore;
 import jsinterop.annotations.JsType;

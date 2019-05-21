@@ -30,6 +30,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.Document;
 
+import jsinterop.base.Js;
 import ol.layer.Tile;
 import ol.proj.Projection;
 import ol.source.Osm;
@@ -95,7 +96,7 @@ public class OverlayExample implements Example {
         overlay.setInnerText("Created with GWT SDK " + GWT.getVersion());
 
         OverlayOptions overlayOptions = OLFactory.createOptions();
-        overlayOptions.setElement(overlay);
+        overlayOptions.setElement(Js.cast(overlay));
         overlayOptions.setPosition(transformedCenterCoordinate);
         overlayOptions.setOffset(OLFactory.createPixel(-300, 0));
 

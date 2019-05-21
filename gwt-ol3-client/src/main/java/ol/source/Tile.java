@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol.source;
 
-import com.google.gwt.event.shared.HandlerRegistration;
+import org.gwtproject.event.shared.HandlerRegistration;
 
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;

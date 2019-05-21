@@ -1,7 +1,9 @@
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.8.0//EN" "http://gwtproject.org/doctype/2.8.0/gwt-module.dtd">
 <module>
+    <!-- Elemental2 also includes JsInterop-Deps -->
     <inherits name="elemental2.dom.Dom" />
     <inherits name="com.github.desjardins.elemental.ElementalExtension" />
+    <inherits name="org.gwtproject.event.Event" />
     <!-- This module is optional (proj4js). -->
     <inherits name="proj4.GwtProj4"/>
 

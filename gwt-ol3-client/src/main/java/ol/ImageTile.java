@@ -15,8 +15,7 @@
  *******************************************************************************/
 package ol;
 
-import com.google.gwt.dom.client.ImageElement;
-
+import elemental2.dom.HTMLImageElement;
 import jsinterop.annotations.JsType;
 
 /**
@@ -27,5 +26,5 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class ImageTile extends Tile {
 
-    public native ImageElement getImage();
+    public native HTMLImageElement getImage();
 }

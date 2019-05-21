@@ -15,11 +15,10 @@
  *******************************************************************************/
 package ol;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.ui.Widget;
-
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+
+import org.gwtproject.event.shared.HandlerRegistration;
 
 import elemental2.core.JsArray;
 import jsinterop.base.Js;
@@ -428,18 +427,6 @@ public final class OLUtil {
             EventListener<E> listener) {
         EventsKey key = o.once(eventType, listener);
         return new OLHandlerRegistration(o, key);
-    }
-
-    /**
-     * Sets the container for the given {@link PluggableMap} to the given {@link Widget}.
-     *
-     * @param map
-     *            {@link PluggableMap}
-     * @param target
-     *            {@link Widget}
-     */
-    public static void setMapTarget(PluggableMap map, Widget target) {
-        map.setTarget(target.getElement());
     }
 
     /**

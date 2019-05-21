@@ -15,9 +15,9 @@
  *******************************************************************************/
 package ol;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-
 import javax.annotation.Nullable;
+
+import org.gwtproject.event.shared.HandlerRegistration;
 
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
