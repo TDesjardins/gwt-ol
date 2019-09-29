@@ -118,11 +118,13 @@
                             <!-- arg>-generateJsInteropExports</arg-->
                             <arg>-XdisableUpdateCheck</arg>
                             <arg>-bindAddress</arg><arg>0.0.0.0</arg>
+                            <arg>-strict</arg>
                         </codeserverArgs>
                         <devmodeArgs>
                             <!-- arg>-generateJsInteropExports</arg-->
                             <arg>-XdisableUpdateCheck</arg>
                             <arg>-bindAddress</arg><arg>0.0.0.0</arg>
+                            <arg>-strict</arg>
                         </devmodeArgs>
                         <style>OBFUSCATED</style> <!-- OBFUSCATED, PRETTY, or DETAILED -->
                     </configuration>
