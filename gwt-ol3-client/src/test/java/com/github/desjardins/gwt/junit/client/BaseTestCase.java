@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +18,13 @@ package com.github.desjardins.gwt.junit.client;
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.junit.client.GWTTestCase;
-
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
- * 
+ *
  * @author Tino Desjardins
  *
  */
@@ -31,18 +32,28 @@ public abstract class BaseTestCase extends GWTTestCase {
 
     private static Set<String> loadedScriptUrls = new HashSet<>();
 
-    private String scriptUrl;
+    private List<String> scriptUrls;
     private String moduleName;
     private int testDelay;
 
     /**
-     * 
-     * @param scriptUrl URL of external Script
+    *
+    * @param scriptUrl URL of external script
+    * @param moduleName module to test
+    * @param testDelay max delay for finishing test
+    */
+   public BaseTestCase(String scriptUrl, String moduleName, int testDelay) {
+       this(Arrays.asList(scriptUrl), moduleName, testDelay);
+   }
+
+    /**
+     *
+     * @param scriptUrls URLs of external script
      * @param moduleName module to test
      * @param testDelay max delay for finishing test
      */
-    public BaseTestCase(String scriptUrl, String moduleName, int testDelay) {
-        this.scriptUrl = scriptUrl;
+    public BaseTestCase(List<String> scriptUrls, String moduleName, int testDelay) {
+        this.scriptUrls = scriptUrls;
         this.moduleName = moduleName;
         this.testDelay = testDelay;
     }
@@ -53,33 +64,68 @@ public abstract class BaseTestCase extends GWTTestCase {
     }
 
     /**
-     * Method for tests which need injected script.
+     * Method for tests which need injected scripts.
      */
     protected void injectUrlAndTest(final TestWithInjection testWithInjection) {
 
-        if (scriptAlreadyLoaded()) {
-            testWithInjection.test();
+        this.delayTestFinish(this.testDelay);
+
+        this.loadScripts(this.scriptUrls, 0, new Callback<Void, Exception>() {
+
+            @Override
+            public void onSuccess(Void result) {
+                testWithInjection.test();
+                finishTest();
+            }
+
+            @Override
+            public void onFailure(Exception reason) {
+                assertNotNull(reason);
+                fail("Injection failed: " + reason.toString());
+            }
+
+        });
+
+    }
+
+    /**
+     * Load the list of scripts asynchronously only if they are not already loaded.
+     *
+     * @param urls URLs of the scripts to load
+     * @param currentUrlIndex current url index
+     * @param callback callback that gets invoked asynchronously
+     */
+    private void loadScripts(List<String> urls, int currentUrlIndex, Callback<Void, Exception> callback) {
+
+        if (currentUrlIndex < urls.size()) {
+
+            String currentUrl = urls.get(currentUrlIndex);
+
+            if (scriptAlreadyLoaded(currentUrl)) {
+
+                loadScripts(urls, currentUrlIndex + 1, callback);
+
+            } else {
+
+                ScriptInjector.fromUrl(currentUrl).setWindow(ScriptInjector.TOP_WINDOW).setCallback(new Callback<Void, Exception>() {
+
+                    @Override
+                    public void onFailure(Exception reason) {
+                        callback.onFailure(reason);
+                    }
+
+                    @Override
+                    public void onSuccess(Void result) {
+                        loadedScriptUrls.add(currentUrl);
+                        loadScripts(urls, currentUrlIndex + 1, callback);
+
+                    }
+
+                }).inject();
+            }
+
         } else {
-
-            this.delayTestFinish(this.testDelay);
-
-            ScriptInjector.fromUrl(this.scriptUrl).setWindow(ScriptInjector.TOP_WINDOW).setCallback(new Callback<Void, Exception>() {
-
-                @Override
-                public void onFailure(Exception reason) {
-                    assertNotNull(reason);
-                    fail("Injection failed: " + reason.toString());
-                }
-
-                @Override
-                public void onSuccess(Void result) {
-                    loadedScriptUrls.add(scriptUrl);
-                    testWithInjection.test();
-                    finishTest();
-                }
-
-            }).inject();
-
+            callback.onSuccess(null);
         }
 
     }
@@ -89,8 +135,8 @@ public abstract class BaseTestCase extends GWTTestCase {
      *
      * @return true if script was already loaded
      */
-    private boolean scriptAlreadyLoaded() {
-        return loadedScriptUrls.contains(this.scriptUrl);
+    private boolean scriptAlreadyLoaded(String scriptUrl) {
+        return loadedScriptUrls.contains(scriptUrl);
     }
 
     @FunctionalInterface
