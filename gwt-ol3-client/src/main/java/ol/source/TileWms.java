@@ -36,7 +36,7 @@ public class TileWms extends TileImage {
      */
     public TileWms(TileWmsOptions options) {}
 
-    public native String getGetFeatureInfoUrl(Coordinate coordinate, double resolution, Projection projection,
+    public native String getFeatureInfoUrl(Coordinate coordinate, double resolution, Projection projection,
             WmsFeatureInfoParams params);
 
     public native TileWmsParams getParams();

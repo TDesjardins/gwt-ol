@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,19 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol;
+package ol.has;
 
-import jsinterop.annotations.JsType;
+import ol.GwtOLBaseTestCase;
 
 /**
- * The WebGLMap uses WebGL for rendering map layers. This renderer has limited
- * support for vector data and no support for vector tiles.
  *
  * @author Tino Desjardins
+ *
  */
-@JsType(isNative = true)
-public class WebGLMap extends PluggableMap {
+public class HasTest extends GwtOLBaseTestCase {
 
-    public WebGLMap(MapOptions mapOptions) {}
+
+    public void testHas() {
+
+        this.injectUrlAndTest(() -> {
+
+            assert(Has.getDevicePixelRatio() > 0);
+
+        });
+
+    }
 
 }

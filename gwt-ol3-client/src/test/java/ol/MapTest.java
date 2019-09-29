@@ -48,8 +48,6 @@ public class MapTest extends GwtOLBaseTestCase {
             final MapOptions mapOptions = new MapOptions();
             mapOptions.setTarget("map");
             mapOptions.setView(view);
-            mapOptions.setLoadTilesWhileAnimating(true);
-            mapOptions.setLoadTilesWhileInteracting(true);
 
             Map map = new Map(mapOptions);
             assertNotNull(map);

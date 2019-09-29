@@ -402,17 +402,6 @@ public abstract class PluggableMap extends Object {
     }
 
     /**
-     * postcompose
-     *
-     * @param listener listener
-     * @return handler registration
-     */
-    @JsOverlay
-    public final HandlerRegistration addPostComposeListener(final EventListener<ol.render.Event> listener) {
-        return OLUtil.observe(this, "postcompose", listener);
-    }
-
-    /**
      * Triggered after a map frame is rendered.
      *
      * @param listener listener
@@ -424,14 +413,14 @@ public abstract class PluggableMap extends Object {
     }
 
     /**
-     * precompose
+     * prerender
      *
      * @param listener listener
      * @return handler registration
      */
     @JsOverlay
-    public final HandlerRegistration addPreComposeListener(final EventListener<ol.render.Event> listener) {
-        return OLUtil.observe(this, "precompose", listener);
+    public final HandlerRegistration addPreRenderListener(final EventListener<ol.render.Event> listener) {
+        return OLUtil.observe(this, "prerender", listener);
     }
 
     /**

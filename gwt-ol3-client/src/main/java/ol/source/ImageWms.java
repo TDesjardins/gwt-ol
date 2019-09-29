@@ -24,10 +24,10 @@ import ol.proj.Projection;
  */
 @JsType(isNative = true, name = "ImageWMS")
 public class ImageWms extends Image {
-    
+
     public ImageWms(ImageWmsOptions imageWMSOptions) {}
 
-    public native String getGetFeatureInfoUrl(Coordinate coordinate, double resolution, Projection projection,
+    public native String getFeatureInfoUrl(Coordinate coordinate, double resolution, Projection projection,
             WmsFeatureInfoParams params);
 
     public native void setImageLoadFunction(ImageLoadFunction imageLoadFunction);

@@ -275,14 +275,40 @@ public class View extends Object {
     public native double getZoomForResolution(double resolution);
 
     /**
-     * Rotate the view around a given coordinate.
+     * Adds a value to the view rotation. Any rotation constraint will apply.
      *
-     * @param rotation
-     *            Center for rotation and anchor.
+     * @param delta
+     *            Relative value to add to the zoom rotation, in radians.
+     */
+    public native void adjustRotation(float delta);
+
+    /**
+     * Adds a value to the view rotation, optionally using an anchor. Any rotation constraint will apply.
+     *
+     * @param delta
+     *            Relative value to add to the zoom rotation, in radians.
      * @param anchor
      *            Rotation anchor.
      */
-    public native void rotate(float rotation, @Nullable Coordinate anchor);
+    public native void adjustRotation(float delta, @Nullable Coordinate anchor);
+
+    /**
+     * Adds a value to the view zoom level. Any resolution constraint will apply.
+     *
+     * @param delta
+     *            Relative value to add to the zoom level.
+     */
+    public native void adjustZoom(float delta);
+
+    /**
+     * Adds a value to the view zoom level, optionally using an anchor. Any resolution constraint will apply.
+     *
+     * @param delta
+     *            Relative value to add to the zoom level.
+     * @param anchor
+     *            The origin of the transformation.
+     */
+    public native void adjustZoom(float delta, @Nullable Coordinate anchor);
 
     /**
      * Set the center of the current view.

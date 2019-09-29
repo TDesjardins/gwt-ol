@@ -23,7 +23,7 @@ import ol.proj.Projection;
 import ol.proj.ProjectionOptions;
 
 /**
- * 
+ *
  * @author Tino Desjardins
  *
  */
@@ -61,6 +61,12 @@ public class ViewTest extends GwtOLBaseTestCase {
 
             view.getResolutionForZoom(5);
 
+            view.adjustRotation(1f);
+            view.adjustRotation(1f, new Coordinate(660000, 190000));
+
+            view.adjustZoom(1f);
+            view.adjustZoom(1f, new Coordinate(660000, 190000));
+
         });
 
     }
@@ -84,10 +90,10 @@ public class ViewTest extends GwtOLBaseTestCase {
                 @Override
                 public void onEvent(Event event) {
                     resolutionChanged = true;
-                    
+
                 }
             });
-            
+
             view.addRotationChangeListener(new EventListener<Object.Event>() {
 
                 @Override
@@ -111,7 +117,7 @@ public class ViewTest extends GwtOLBaseTestCase {
 
             assertTrue(this.resolutionChanged);
             assertFalse(this.rotationChanged);
-            
+
             view.setRotation(Math.PI);
 
             assertTrue(this.rotationChanged);

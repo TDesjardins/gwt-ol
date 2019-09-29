@@ -31,7 +31,7 @@ public class WebGLTest extends GwtOLBaseTestCase {
             @Override
             public void test() {
 
-                WebGL.has();
+                assert(WebGL.getArrayBuffer() > 0);
 
             }
 

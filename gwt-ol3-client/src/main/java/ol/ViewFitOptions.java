@@ -29,13 +29,6 @@ import jsinterop.annotations.JsType;
 public class ViewFitOptions implements Options {
 
     /**
-     * Constrain the resolution. Default is true.
-     * @param constrainResolution
-     */
-    @JsProperty
-    public native void setConstrainResolution(boolean constrainResolution);
-
-    /**
      * The duration of the animation in milliseconds. By default, there is no
      * animations.
      * @param duration

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol;
+package ol.layer;
 
 import jsinterop.annotations.JsType;
 
@@ -23,8 +23,4 @@ import jsinterop.annotations.JsType;
  *
  */
 @JsType(isNative = true)
-public class Graticule {
-
-    public native void setMap(PluggableMap map);
-
-}
+public class Graticule extends Vector {}
