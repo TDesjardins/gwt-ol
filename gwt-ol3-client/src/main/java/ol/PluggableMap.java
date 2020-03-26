@@ -226,6 +226,10 @@ public abstract class PluggableMap extends Object {
      * @param pixel
      * @param callback
      */
+    public native Feature forEachFeatureAtPixel(Pixel pixel, FeatureAtPixelFunction callback);
+
+    /** @deprecated Use {@link #forEachFeatureAtPixel(Pixel, FeatureAtPixelFunction)} */
+    @Deprecated
     public native Feature forEachFeatureAtPixel(Pixel pixel, GenericFunction<Feature, ?> callback);
 
     /**
@@ -234,9 +238,13 @@ public abstract class PluggableMap extends Object {
      * can be configured through {@link FeatureAtPixelOptions#setLayerFilter(GenericFunction)}.
      *
      * @param pixel Pixel.
-     * @param callback Feature callback. The callback will be called with feature or render feature at the pixel as argument. To stop detection, callback functions can return a truthy value.
+     * @param callback Feature callback. The callback will be called with two arguments. The first argument is one feature or render feature at the pixel, the second is the layer of the feature and will be null for unmanaged layers. To stop detection, callback functions can return a truthy value.
      * @param options Optional options.
      */
+    public native Feature forEachFeatureAtPixel(Pixel pixel, FeatureAtPixelFunction callback, FeatureAtPixelOptions options);
+
+    /** @deprecated Use {@link #forEachFeatureAtPixel(Pixel, FeatureAtPixelFunction, FeatureAtPixelOptions)} */
+    @Deprecated
     public native Feature forEachFeatureAtPixel(Pixel pixel, GenericFunction<Feature, ?> callback, FeatureAtPixelOptions options);
 
     /**
