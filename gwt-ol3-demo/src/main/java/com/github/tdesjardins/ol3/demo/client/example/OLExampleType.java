@@ -43,7 +43,7 @@ public enum OLExampleType {
     OsmExample(new OsmExample()),
     OverlayExample(new OverlayExample()),
     RasterExample(new RasterExample()),
-    SelectFeatureExample(new SelectFeaturesExample()),
+    SelectFeaturesExample(new SelectFeaturesExample()),
     TileExample(new TileExample()),
     TileWmsExample(new TileWmsExample()),
     WfsExample(new WfsExample()),

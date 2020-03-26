@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,31 @@ public class Text {
      * @return the font name
      */
     public native String getFont();
+
+    /**
+     * @param backgroundFill background fill
+     */
+    public native void setBackgroundFill(Stroke backgroundFill);
+
+    /**
+     * @param backgroundStroke background stroke
+     */
+    public native void setBackgroundStroke(Stroke backgroundStroke);
+    
+    /**
+     * @param fill Fill style
+     */
+    public native void setFill(Fill fill);
+
+    /**
+     * @param font Font
+     */
+    public native void setFont(String font);
+
+    /**
+     * @param maxAngle maximum angle between adjacent characters.
+     */
+    public native void setMaxAngle(double maxAngle);
 
     /**
      * Set the text.

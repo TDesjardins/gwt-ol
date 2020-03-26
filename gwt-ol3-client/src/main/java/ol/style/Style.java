@@ -105,6 +105,11 @@ public class Style {
     public native void setGeometry(Geometry geometry);
 
     /**
+     * @param text text style
+     */
+    public native void setText(Text text);
+
+    /**
      * Set the z-index.
      *
      * @param zIndex

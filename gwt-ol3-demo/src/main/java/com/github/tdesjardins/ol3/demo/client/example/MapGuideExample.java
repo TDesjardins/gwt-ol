@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,14 +57,15 @@ public class MapGuideExample implements Example {
         // create a MapGuide params
         ImageMapGuideParams imageMapGuideParams = new ImageMapGuideParams();
         imageMapGuideParams.setFormat("PNG");
-        imageMapGuideParams.setMapDefinition("Library://Public/Samples/Sheboygan/Maps/Sheboygan.MapDefinition");
-        imageMapGuideParams.setUserName("OpenLayers");
-        imageMapGuideParams.setPassword("OpenLayers");
+        imageMapGuideParams.setMapDefinition("Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition");
+        imageMapGuideParams.setUserName("OLGuest");
+        imageMapGuideParams.setPassword("olguest");
+        imageMapGuideParams.setVersion("3.0.0");
 
     	// create a MapGuide image
         ImageMapGuideOptions imageMapGuideOptions = new ImageMapGuideOptions();
         imageMapGuideOptions.setParams(imageMapGuideParams);
-        imageMapGuideOptions.setUrl("http://www.buoyshark.com/mapguide/mapagent/mapagent.fcgi?");
+        imageMapGuideOptions.setUrl("http://138.197.230.93:8008/mapguide/mapagent/mapagent.fcgi?");
         imageMapGuideOptions.setUseOverlay(false);
         imageMapGuideOptions.setMetersPerUnit(111319.4908d);
         imageMapGuideOptions.setRatio(2.0f);

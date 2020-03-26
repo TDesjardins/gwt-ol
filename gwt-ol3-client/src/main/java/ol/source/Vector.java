@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import ol.Collection;
 import ol.Coordinate;
 import ol.Extent;
 import ol.Feature;
+import ol.GenericFunction;
 
 /**
  * Provides a source of features for vector layers. Vector features provided by
@@ -62,6 +63,30 @@ public class Vector extends Source {
      *            Skip dispatching of removefeature events.
      */
     public native void clear(boolean opt_fast);
+
+    /**
+     * Iterate through all features whose bounding box intersects the provided extent (note that the feature's geometry may not intersect the extent), calling the callback with each feature. If the callback returns a "truthy" value, iteration will stop and the function will return the same value.
+     *
+     * If you are interested in features whose geometry intersects an extent, call the {@link #forEachFeatureIntersectingExtent(Extent, GenericFunction)} method instead.
+     *
+     * When useSpatialIndex is set to false, this method will loop through all features, equivalent to #forEachFeature().
+     *
+     * @param extent Extent.
+     * @param callback Called with each feature whose bounding box intersects the provided extent.
+     */
+    public native void forEachFeatureInExtent(Extent extent, GenericFunction<Feature, ?> callback);
+
+    /**
+     * Iterate through all features whose geometry intersects the provided
+     * extent, calling the callback with each feature. If the callback returns a
+     * "truthy" value, iteration will stop and the function will return the same
+     * value. If you only want to test for bounding box intersection, call the
+     * {@link #forEachFeatureInExtent(Extent, GenericFunction)} method instead.
+     *
+     * @param extent Extent.
+     * @param callback Called with each feature whose geometry intersects the provided extent.
+     */
+    public native void forEachFeatureIntersectingExtent(Extent extent, GenericFunction<Feature, ?> callback);
 
     /**
      * Get the closest feature to the provided coordinate.
@@ -134,6 +159,11 @@ public class Vector extends Source {
      * @return features.
      */
     public native Feature[] getFeaturesInExtent(Extent extent);
+
+    /**
+     * @return format associated with this source
+     */
+    public native ol.format.Feature getFormat();
 
     /**
      * Remove a single feature from the source. If you want to remove all

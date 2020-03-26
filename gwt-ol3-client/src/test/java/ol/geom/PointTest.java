@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,11 @@ public class PointTest extends GwtOLBaseTestCase {
             assertNotNull(coordinate);
             assert(1 == coordinate.getX());
             assert(2 == coordinate.getY());
+
+            point.translate(5, 5);
+            assert(6 == point.getCoordinates().getX());
+            assert(7 == point.getCoordinates().getY());
+
         });
 
     }

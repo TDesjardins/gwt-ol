@@ -104,7 +104,7 @@
                 <plugin>
                     <groupId>net.ltgt.gwt.maven</groupId>
                     <artifactId>gwt-maven-plugin</artifactId>
-                    <version>1.0-rc-10</version>
+                    <version>1.0.0</version>
                     <extensions>true</extensions>
                     <configuration>
                         <skipModule>true</skipModule>
@@ -118,11 +118,13 @@
                             <!-- arg>-generateJsInteropExports</arg-->
                             <arg>-XdisableUpdateCheck</arg>
                             <arg>-bindAddress</arg><arg>0.0.0.0</arg>
+                            <arg>-strict</arg>
                         </codeserverArgs>
                         <devmodeArgs>
                             <!-- arg>-generateJsInteropExports</arg-->
                             <arg>-XdisableUpdateCheck</arg>
                             <arg>-bindAddress</arg><arg>0.0.0.0</arg>
+                            <arg>-strict</arg>
                         </devmodeArgs>
                         <style>OBFUSCATED</style> <!-- OBFUSCATED, PRETTY, or DETAILED -->
                     </configuration>

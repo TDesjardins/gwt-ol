@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -118,6 +118,15 @@ public abstract class Geometry extends Observable {
     public native Geometry transform(Projection source, Projection destination);
 
     /**
+     * Translate the geometry. This modifies the geometry coordinates in place.
+     * If instead you want a new geometry, first {@link clone()} this geometry.
+     *
+     * @param deltaX Delta X.
+     * @param deltaY Delta Y.
+     */
+    public native void translate(double deltaX, double deltaY);
+
+    /**
      * Returns true if this geometry includes the specified coordinate.
      * If the coordinate is on the boundary of the geometry, returns false.
      *
@@ -127,5 +136,22 @@ public abstract class Geometry extends Observable {
      *          true if intersects otherwise false
      */
     public native boolean intersectsCoordinate(Coordinate coordinate);
+
+    /**
+     * Scale the geometry (with an optional origin). This modifies the geometry coordinates in place.
+     *
+     * @param scaleX The scaling factor in the x-direction.
+     * @param scaleY The scaling factor in the y-direction.
+     */
+    public native void scale(double scaleX, double scaleY);
+
+    /**
+     * Scale the geometry (with an optional origin). This modifies the geometry coordinates in place.
+     *
+     * @param scaleX The scaling factor in the x-direction.
+     * @param scaleY The scaling factor in the y-direction.
+     * @param anchor The scale origin (defaults to the center of the geometry extent).
+     */
+    public native void scale(double scaleX, double scaleY, Coordinate anchor);
 
 }
