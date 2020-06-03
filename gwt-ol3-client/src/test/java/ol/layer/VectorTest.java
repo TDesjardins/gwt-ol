@@ -37,6 +37,7 @@ public class VectorTest extends GwtOLBaseTestCase {
             assertNotNull(vectorLayerOptions);
             Vector vectorLayer = new Vector(vectorLayerOptions);
             assertTrue(vectorLayer instanceof Base);
+            assertTrue(vectorLayer instanceof Layer);
             assertTrue(vectorLayer instanceof Vector);
 
             vectorLayer.setStyle(new Style());
