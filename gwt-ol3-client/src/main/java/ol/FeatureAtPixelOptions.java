@@ -18,7 +18,7 @@ package ol;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-import ol.layer.Vector;
+import ol.layer.Layer;
 
 /**
  * Options for customizing {@link PluggableMap#forEachFeatureAtPixel(Pixel, GenericFunction, FeatureAtPixelOptions)}
@@ -36,10 +36,10 @@ public class FeatureAtPixelOptions implements Options {
      * @param layerFilter Layer filer function
      */
     @JsProperty
-    public native void setLayerFilter(GenericFunction<Vector, Boolean> layerFilter);
+    public native void setLayerFilter(GenericFunction<Layer, Boolean> layerFilter);
 
     @JsProperty
-    public native GenericFunction<Vector, Boolean> getLayerFilter();
+    public native GenericFunction<Layer, Boolean> getLayerFilter();
 
     /**
      * Defines hit-detection tolerance in pixels. Pixels inside the radius around the given position will be checked for features.
