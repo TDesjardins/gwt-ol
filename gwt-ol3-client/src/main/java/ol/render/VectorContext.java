@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2017, 2018 gwt-ol3
+ * Copyright 2017, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,41 +34,41 @@ import ol.style.Style;
 @JsType(isNative = true)
 public interface VectorContext {
 
-	/**
-	 * Render a circle geometry into the canvas. Rendering is immediate and uses the current fill and stroke styles.
-	 *
-	 * @param circle Circle geometry.
-	 */
-	public void drawCircle(Circle circle);
+    /**
+     * Render a circle geometry into the canvas. Rendering is immediate and uses the current fill and stroke styles.
+     *
+     * @param circle Circle geometry.
+     */
+    public void drawCircle(Circle circle);
 
-	/**
-	 * Render a feature into the canvas. Note that any <code>zIndex</code> on the provided style will be ignored - features are rendered
-	 * immediately in the order that this method is called. If you need <code>zIndex</code> support, you should be using an {@link ol.layer.Vector} instead.
-	 *
-	 * @param feature Feature.
-	 * @param style Style.
-	 */
-	public void drawFeature(Feature feature, Style style);
+    /**
+     * Render a feature into the canvas. Note that any <code>zIndex</code> on the provided style will be ignored - features are rendered
+     * immediately in the order that this method is called. If you need <code>zIndex</code> support, you should be using an {@link ol.layer.Vector} instead.
+     *
+     * @param feature Feature.
+     * @param style Style.
+     */
+    public void drawFeature(Feature feature, Style style);
 
-	/**
-	 * Render a geometry into the canvas. Call {@link #setStyle} first to set the rendering style.
-	 *
-	 * @param geometry The geometry to render.
-	 */
-	public void drawGeometry(Geometry geometry);
+    /**
+     * Render a geometry into the canvas. Call {@link #setStyle} first to set the rendering style.
+     *
+     * @param geometry The geometry to render.
+     */
+    public void drawGeometry(Geometry geometry);
 
-	/**
-	 * Render a geometry into the canvas. Call {@link #setStyle} first to set the rendering style.
-	 *
-	 * @param geometry The geometry to render.
-	 */
-	public void drawGeometry(ol.render.Feature geometry);
+    /**
+     * Render a geometry into the canvas. Call {@link #setStyle} first to set the rendering style.
+     *
+     * @param geometry The geometry to render.
+     */
+    public void drawGeometry(ol.render.Feature geometry);
 
-	/**
-	 * Set the rendering style. Note that since this is an immediate rendering API, any <code>zIndex</code> on the provided style will be ignored.
-	 *
-	 * @param style The rendering style.
-	 */
-	public void setStyle(Style style);
+    /**
+     * Set the rendering style. Note that since this is an immediate rendering API, any <code>zIndex</code> on the provided style will be ignored.
+     *
+     * @param style The rendering style.
+     */
+    public void setStyle(Style style);
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,24 +28,24 @@ import ol.proj.Projection;
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class WktReadOptions implements Options {
 
-	/**
-	 * Projection of the data we are reading. If not provided, the projection will
-	 * be derived from the data (where possible) or the defaultDataProjection of
-	 * the format is assigned (where set). If the projection can not be derived
-	 * from the data and if no defaultDataProjection is set for a format, the
-	 * features will not be reprojected.
-	 * 
-	 * @param projection
-	 */
-	@JsProperty
-	public native void setDataProjection(Projection projection);
+    /**
+     * Projection of the data we are reading. If not provided, the projection will
+     * be derived from the data (where possible) or the defaultDataProjection of
+     * the format is assigned (where set). If the projection can not be derived
+     * from the data and if no defaultDataProjection is set for a format, the
+     * features will not be reprojected.
+     *
+     * @param projection
+     */
+    @JsProperty
+    public native void setDataProjection(Projection projection);
 
-	/**
-	 * Projection of the feature geometries created by the format reader. If not
-	 * provided, features will be returned in the dataProjection.
-	 * 
-	 * @param projection
-	 */
-	@JsProperty
-	public native void setFeatureProjection(Projection projection);
+    /**
+     * Projection of the feature geometries created by the format reader. If not
+     * provided, features will be returned in the dataProjection.
+     *
+     * @param projection
+     */
+    @JsProperty
+    public native void setFeatureProjection(Projection projection);
 }

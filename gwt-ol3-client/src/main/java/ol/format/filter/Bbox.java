@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,23 +29,23 @@ import ol.Extent;
 @JsType(isNative = true)
 public class Bbox extends Filter {
 
-	/**
-	 *
-	 * @param geometryName Geometry name to use.
-	 * @param extent Extent.
-	 * @param srsName SRS name. No srsName attribute will be set on geometries when this is not provided.
-	 */
-	public Bbox(String geometryName, Extent extent, String srsName){
-		super("BBOX");
-	}
+    /**
+     *
+     * @param geometryName Geometry name to use.
+     * @param extent Extent.
+     * @param srsName SRS name. No srsName attribute will be set on geometries when this is not provided.
+     */
+    public Bbox(String geometryName, Extent extent, String srsName){
+        super("BBOX");
+    }
 
-	@JsProperty
-	public native void setGeometryName(String geometryName);
+    @JsProperty
+    public native void setGeometryName(String geometryName);
 
-	@JsProperty
+    @JsProperty
     public native void setExtent(Extent extent);
 
-	@JsProperty
+    @JsProperty
     public native void setSrsName(String srsName);
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,13 +30,13 @@ import ol.Options;
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class WktOptions implements Options {
 
-	/**
-	 * @param splitCollection Whether to split GeometryCollections into multiple features on reading. Default is <code>false</code>.
-	 */
-	@JsProperty
-	public native void setSplitCollection(boolean splitCollection);
+    /**
+     * @param splitCollection Whether to split GeometryCollections into multiple features on reading. Default is <code>false</code>.
+     */
+    @JsProperty
+    public native void setSplitCollection(boolean splitCollection);
 
-	@JsProperty
-	public native boolean getSplitCollection();
+    @JsProperty
+    public native boolean getSplitCollection();
 
 }

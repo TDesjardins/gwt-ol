@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,120 +31,120 @@ import ol.geom.Geometry;
 
 /**
  * The {@link Wkt} class is used
- * 
+ *
  * for reading and writing data in the WellKnownText (WKT) format.
- * 
+ *
  */
 @JsType(isNative = true, name = "WKT")
 public class Wkt extends TextFeature {
 
-	/**
-	 * Constructs a(n) {@link Wkt} object.
-	 */
-	public Wkt() {};
+    /**
+     * Constructs a(n) {@link Wkt} object.
+     */
+    public Wkt() {};
 
     public Wkt(WktOptions wktOptions) {}
 
-	/**
-	 * Read a feature from a WKT source.
-	 * 
-	 * @param source
-	 * @return feature
-	 */
-	public native Feature readFeature(java.lang.Object source);
-	
-	/**
-	 * Read a feature from a WKT source.
-	 * 
-	 * @param source
-	 * @param readOptions
-	 * @return feature
-	 */
-	public native Feature readFeature(java.lang.Object source, @Nullable WktReadOptions readOptions);
+    /**
+     * Read a feature from a WKT source.
+     *
+     * @param source
+     * @return feature
+     */
+    public native Feature readFeature(java.lang.Object source);
 
-	/**
-	 * Read all features from a WKT source.
-	 * 
-	 * @param source
-	 * @return features
-	 */
-	public native Feature[] readFeatures(java.lang.Object source);
+    /**
+     * Read a feature from a WKT source.
+     *
+     * @param source
+     * @param readOptions
+     * @return feature
+     */
+    public native Feature readFeature(java.lang.Object source, @Nullable WktReadOptions readOptions);
 
-	/**
-	 * Read all features from a WKT source.
-	 * 
-	 * @param source
-	 * @param readOptions
-	 * @return features
-	 */
-	public native Feature[] readFeatures(java.lang.Object source, @Nullable WktReadOptions readOptions);
+    /**
+     * Read all features from a WKT source.
+     *
+     * @param source
+     * @return features
+     */
+    public native Feature[] readFeatures(java.lang.Object source);
 
-	/**
-	 * Read a single geometry from a WKT source.
-	 * 
-	 * @param source
-	 * @return geometry
-	 */
-	public native Geometry readGeometry(java.lang.Object source);
-	
-	/**
-	 * Read a single geometry from a WKT source.
-	 * 
-	 * @param source
-	 * @param readOptions
-	 * @return geometry
-	 */
-	public native Geometry readGeometry(java.lang.Object source, @Nullable WktReadOptions readOptions);
-	
-	/**
-	 * Encode a feature as a WKT string.
-	 * 
-	 * @param feature Feature.
-	 * @return WKT string.
-	 */
-	public native String writeFeature(Feature feature);
+    /**
+     * Read all features from a WKT source.
+     *
+     * @param source
+     * @param readOptions
+     * @return features
+     */
+    public native Feature[] readFeatures(java.lang.Object source, @Nullable WktReadOptions readOptions);
 
-	/**
-	 * Encode a feature as a WKT string.
-	 * 
-	 * @param feature Feature.
-	 * @param writeOptions Write options.
-	 * @return WKT string.
-	 */
-	public native String writeFeature(Feature feature, @Nullable WktWriteOptions writeOptions);
+    /**
+     * Read a single geometry from a WKT source.
+     *
+     * @param source
+     * @return geometry
+     */
+    public native Geometry readGeometry(java.lang.Object source);
 
-	/**
-	 * Encode an array of features as a WKT string.
-	 * 
-	 * @param features Features.
-	 * @return WKT string.
-	 */
-	public native String writeFeatures(Feature[] features);
+    /**
+     * Read a single geometry from a WKT source.
+     *
+     * @param source
+     * @param readOptions
+     * @return geometry
+     */
+    public native Geometry readGeometry(java.lang.Object source, @Nullable WktReadOptions readOptions);
 
-	/**
-	 * Encode an array of features as a WKT string.
-	 * 
-	 * @param features Features.
-	 * @param writeOptions Write options.
-	 * @return WKT string.
-	 */
-	public native String writeFeatures(Feature[] features, @Nullable WktWriteOptions writeOptions);
+    /**
+     * Encode a feature as a WKT string.
+     *
+     * @param feature Feature.
+     * @return WKT string.
+     */
+    public native String writeFeature(Feature feature);
 
-	/**
-	 * Write a single geometry as a WKT string.
-	 * 
-	 * @param geometry Geometry.
-	 * @return WKT string.
-	 */
-	public native String writeGeometry(Geometry geometry);
+    /**
+     * Encode a feature as a WKT string.
+     *
+     * @param feature Feature.
+     * @param writeOptions Write options.
+     * @return WKT string.
+     */
+    public native String writeFeature(Feature feature, @Nullable WktWriteOptions writeOptions);
 
-	/**
-	 * Write a single geometry as a WKT string.
-	 * 
-	 * @param geometry Geometry.
-	 * @param writeOptions Write options.
-	 * @return WKT string.
-	 */
-	public native String writeGeometry(Geometry geometry, @Nullable WktWriteOptions writeOptions);
+    /**
+     * Encode an array of features as a WKT string.
+     *
+     * @param features Features.
+     * @return WKT string.
+     */
+    public native String writeFeatures(Feature[] features);
+
+    /**
+     * Encode an array of features as a WKT string.
+     *
+     * @param features Features.
+     * @param writeOptions Write options.
+     * @return WKT string.
+     */
+    public native String writeFeatures(Feature[] features, @Nullable WktWriteOptions writeOptions);
+
+    /**
+     * Write a single geometry as a WKT string.
+     *
+     * @param geometry Geometry.
+     * @return WKT string.
+     */
+    public native String writeGeometry(Geometry geometry);
+
+    /**
+     * Write a single geometry as a WKT string.
+     *
+     * @param geometry Geometry.
+     * @param writeOptions Write options.
+     * @return WKT string.
+     */
+    public native String writeGeometry(Geometry geometry, @Nullable WktWriteOptions writeOptions);
 
 }

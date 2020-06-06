@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,14 +26,14 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class During extends Comparison {
 
-	/**
-	 *
-	 * @param propertyName Name of the context property to compare.
-	 * @param begin The begin date in ISO-8601 format.
-	 * @param end The end date in ISO-8601 format.
-	 */
-	public During(String propertyName, String begin, String end) {
-	    super("During", propertyName);
-	}
+    /**
+     *
+     * @param propertyName Name of the context property to compare.
+     * @param begin The begin date in ISO-8601 format.
+     * @param end The end date in ISO-8601 format.
+     */
+    public During(String propertyName, String begin, String end) {
+        super("During", propertyName);
+    }
 
 }

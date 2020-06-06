@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,17 +30,17 @@ import ol.proj.Projection;
 @JsType(isNative = true, name = "TileWMS")
 public class TileWms extends TileImage {
 
-	/**
-	 * Constructs a(n) {@link TileWms} object.
-	 *
-	 */
-	public TileWms(TileWmsOptions options) {}
+    /**
+     * Constructs a(n) {@link TileWms} object.
+     *
+     */
+    public TileWms(TileWmsOptions options) {}
 
-	public native String getGetFeatureInfoUrl(Coordinate coordinate, double resolution, Projection projection,
-			WmsFeatureInfoParams params);
+    public native String getGetFeatureInfoUrl(Coordinate coordinate, double resolution, Projection projection,
+            WmsFeatureInfoParams params);
 
-	public native TileWmsParams getParams();
+    public native TileWmsParams getParams();
 
-	public native void updateParams(TileWmsParams params);
+    public native void updateParams(TileWmsParams params);
 
 }

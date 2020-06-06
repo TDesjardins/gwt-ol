@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ public class TileCoord implements JsArrayLike<Double> {
      */
     @JsOverlay
     public final TileCoord cloneObject() {
-    	return this.slice(0);
+        return this.slice(0);
     };
 
     private native TileCoord slice(int begin);

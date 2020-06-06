@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ import ol.geom.Geometry;
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class StyleOptions implements Options {
 
-	/**
+    /**
      * Feature property or geometry or function returning a geometry to render for this style.
      *
      * @param geometry

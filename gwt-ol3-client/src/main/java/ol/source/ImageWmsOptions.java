@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,71 +21,71 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
- * 
+ *
  * @author Tino Desjardins
  *
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class ImageWmsOptions extends SourceOptions {
 
-	@JsProperty
-	public native void setCrossOrigin(String crossOrigin);
+    @JsProperty
+    public native void setCrossOrigin(String crossOrigin);
 
-	@JsProperty
-	public native String getCrossOrigin();
+    @JsProperty
+    public native String getCrossOrigin();
 
-	@JsProperty(name = "serverType")
-	public native String getServerTypeString();
+    @JsProperty(name = "serverType")
+    public native String getServerTypeString();
 
-	@JsProperty(name = "serverType")
-	public native void setServerTypeString(String serverType);
+    @JsProperty(name = "serverType")
+    public native void setServerTypeString(String serverType);
 
-	@JsOverlay
-	public final WmsServerType getServerType() {
-		return WmsServerType.getInstance(getServerTypeString());
-	}
+    @JsOverlay
+    public final WmsServerType getServerType() {
+        return WmsServerType.getInstance(getServerTypeString());
+    }
 
-	@JsOverlay
-	public final void setServerType(WmsServerType serverType) {
-		setServerTypeString(serverType.getValue());
-	}
+    @JsOverlay
+    public final void setServerType(WmsServerType serverType) {
+        setServerTypeString(serverType.getValue());
+    }
 
-	@JsProperty
-	public native void setImageLoadFunction(ImageLoadFunction imageLoadFunction);
+    @JsProperty
+    public native void setImageLoadFunction(ImageLoadFunction imageLoadFunction);
 
-	@JsProperty
-	public native ImageLoadFunction getImageLoadFunction();
+    @JsProperty
+    public native ImageLoadFunction getImageLoadFunction();
 
-	@JsProperty
-	public native void setParams(ImageWmsParams params);
+    @JsProperty
+    public native void setParams(ImageWmsParams params);
 
-	@JsProperty
-	public native ImageWmsParams getParams();
+    @JsProperty
+    public native ImageWmsParams getParams();
 
-	/**
-	 *
-	 * @param ratio
-	 */
-	@JsProperty
-	public native void setRatio(float ratio);
+    /**
+     *
+     * @param ratio
+     */
+    @JsProperty
+    public native void setRatio(float ratio);
 
-	@JsProperty
-	public native float getRatio();
+    @JsProperty
+    public native float getRatio();
 
-	@JsProperty
-	public native void setResolutions(double[] resolutions);
+    @JsProperty
+    public native void setResolutions(double[] resolutions);
 
-	@JsProperty
-	public native double[] getResolutions();
+    @JsProperty
+    public native double[] getResolutions();
 
-	/**
-	 *
-	 * @param url WMS service URL
-	 */
-	@JsProperty
-	public native void setUrl(String url);
+    /**
+     *
+     * @param url WMS service URL
+     */
+    @JsProperty
+    public native void setUrl(String url);
 
-	@JsProperty
-	public native String getUrl();
+    @JsProperty
+    public native String getUrl();
 
 }

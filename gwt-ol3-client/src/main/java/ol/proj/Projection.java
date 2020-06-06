@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -173,17 +173,17 @@ public class Projection {
     public static native boolean equivalent(ol.proj.Projection projection1, ol.proj.Projection projection2);
 
 
-	/**
-	 *
-	 * Transforms a coordinate from longitude/latitude to a different projection.
-	 *
-	 * @param coordinate
-	 * @return transformed coordinate
-	 */
-	@JsMethod(name = "fromLonLat", namespace = PACKAGE_PROJECTION)
-	public static native Coordinate fromLonLat(Coordinate coordinate);
+    /**
+     *
+     * Transforms a coordinate from longitude/latitude to a different projection.
+     *
+     * @param coordinate
+     * @return transformed coordinate
+     */
+    @JsMethod(name = "fromLonLat", namespace = PACKAGE_PROJECTION)
+    public static native Coordinate fromLonLat(Coordinate coordinate);
 
-	/**
+    /**
      *
      * Fetches a Projection object for the code specified.
      *
@@ -193,20 +193,20 @@ public class Projection {
     @JsMethod(name = "get", namespace = PACKAGE_PROJECTION)
     public static native Projection get(String projectionCode);
 
-	/**
-	 *
-	 * Transforms a coordinate from source projection to destination projection.
-	 * This returns a new coordinate (and does not modify the original).
-	 *
-	 * @param coordinate
-	 * @param source
-	 * @param target
-	 * @return transformed coordinate
-	 */
-	@JsMethod(name = "transform", namespace = PACKAGE_PROJECTION)
-	public static native Coordinate transform(Coordinate coordinate, String source, String target);
+    /**
+     *
+     * Transforms a coordinate from source projection to destination projection.
+     * This returns a new coordinate (and does not modify the original).
+     *
+     * @param coordinate
+     * @param source
+     * @param target
+     * @return transformed coordinate
+     */
+    @JsMethod(name = "transform", namespace = PACKAGE_PROJECTION)
+    public static native Coordinate transform(Coordinate coordinate, String source, String target);
 
-	/**
+    /**
      * Transforms a coordinate from source projection to destination projection.
      * This returns a new coordinate (and does not modify the original).
      *
@@ -222,10 +222,10 @@ public class Projection {
      *            Destination projection-like.
      * @return {ol.Coordinate} Coordinate.
      */
-	@JsMethod(name = "transform", namespace = PACKAGE_PROJECTION)
+    @JsMethod(name = "transform", namespace = PACKAGE_PROJECTION)
     public static native Coordinate transform(Coordinate coordinate, Projection source, Projection destination);
 
-	/**
+    /**
      * Transforms an extent from source projection to destination projection.
      * This returns a new extent (and does not modify the original).
      *
@@ -237,7 +237,7 @@ public class Projection {
      *            Destination projection-like.
      * @return {ol.Extent} The transformed extent.
      */
-	@JsMethod(name = "transformExtent", namespace = PACKAGE_PROJECTION)
+    @JsMethod(name = "transformExtent", namespace = PACKAGE_PROJECTION)
     public static native Extent transformExtent(Extent extent, Projection source, Projection destination);
 
     /**
@@ -252,7 +252,7 @@ public class Projection {
      *            Destination projection-like.
      * @return {ol.Extent} The transformed extent.
      */
-	@JsMethod(name = "transformExtent", namespace = PACKAGE_PROJECTION)
+    @JsMethod(name = "transformExtent", namespace = PACKAGE_PROJECTION)
     public static native Extent transformExtent(Extent extent, String source, String destination);
 
 }

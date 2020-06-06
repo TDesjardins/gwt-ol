@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,25 +19,25 @@ import jsinterop.annotations.JsType;
 
 /**
  * Base class for WFS GetFeature property binary comparison filters.
- * 
+ *
  * @author Tino Desjardins
  *
  */
 @JsType(isNative = true)
 public abstract class ComparisonBinary extends Comparison {
 
-	/**
-	 * 
-	 * @param tagName The XML tag name for this filter.
-	 * @param propertyName Name of the context property to compare.
-	 * @param expression The value to compare.
-	 */
-	public ComparisonBinary(String tagName, String propertyName, String expression) {
-		super(tagName, propertyName);
-	}
-	
-	/**
-     * 
+    /**
+     *
+     * @param tagName The XML tag name for this filter.
+     * @param propertyName Name of the context property to compare.
+     * @param expression The value to compare.
+     */
+    public ComparisonBinary(String tagName, String propertyName, String expression) {
+        super(tagName, propertyName);
+    }
+
+    /**
+     *
      * @param tagName The XML tag name for this filter.
      * @param propertyName Name of the context property to compare.
      * @param expression The value to compare.
@@ -46,9 +46,9 @@ public abstract class ComparisonBinary extends Comparison {
     public ComparisonBinary(String tagName, String propertyName, String expression, boolean matchCase) {
         super(tagName, propertyName);
     }
-	
-	/**
-     * 
+
+    /**
+     *
      * @param tagName The XML tag name for this filter.
      * @param propertyName Name of the context property to compare.
      * @param expression The value to compare.
@@ -56,9 +56,9 @@ public abstract class ComparisonBinary extends Comparison {
     public ComparisonBinary(String tagName, String propertyName, Number expression) {
         super(tagName, propertyName);
     }
-    
+
     /**
-     * 
+     *
      * @param tagName The XML tag name for this filter.
      * @param propertyName Name of the context property to compare.
      * @param expression The value to compare.
@@ -67,5 +67,5 @@ public abstract class ComparisonBinary extends Comparison {
     public ComparisonBinary(String tagName, String propertyName, Number expression, boolean matchCase) {
         super(tagName, propertyName);
     }
-	
+
 }

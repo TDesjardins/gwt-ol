@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,14 +21,14 @@ import ol.proj.Projection;
 
 /**
  *
- * 
+ *
  * The <code>TileUrlFunction</code> is used to hook into
- * 
+ *
  * @author Peter Zanetti
  */
 @FunctionalInterface
 @JsFunction
 public interface TileUrlFunction {
 
-	String getUrl(TileCoord tileCoord, double pixelRatio, Projection projection);
+    String getUrl(TileCoord tileCoord, double pixelRatio, Projection projection);
 }

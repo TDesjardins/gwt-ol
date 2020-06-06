@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2016 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,19 +26,19 @@ import ol.events.EventTarget;
 @JsType(isNative = true)
 public abstract class Tile implements EventTarget {
 
-	/**
-	 * Get the tile coordinate for this tile.
-	 * 
-	 * @return TileCoord
-	 */
-	public native TileCoord getTileCoord();
+    /**
+     * Get the tile coordinate for this tile.
+     *
+     * @return TileCoord
+     */
+    public native TileCoord getTileCoord();
 
-	/**
-	 * Load the image or retry if loading previously failed. Loading is taken
-	 * care of by the tile queue, and calling this method is only needed for
-	 * preloading or for reloading in case of an error.
-	 * 
-	 */
-	public native void load();
+    /**
+     * Load the image or retry if loading previously failed. Loading is taken
+     * care of by the tile queue, and calling this method is only needed for
+     * preloading or for reloading in case of an error.
+     *
+     */
+    public native void load();
 
 }

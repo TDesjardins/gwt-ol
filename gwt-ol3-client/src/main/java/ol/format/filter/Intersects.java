@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,14 +28,14 @@ import ol.geom.Geometry;
 @JsType(isNative = true)
 public class Intersects extends Spatial {
 
-	/**
-	 *
-	 * @param geometryName Geometry name to use.
-	 * @param geometry Geometry.
-	 * @param srsName SRS name. No srsName attribute will be set on geometries when this is not provided.
-	 */
-	public Intersects(String geometryName, Geometry geometry, String srsName){
-		super("Intersects", geometryName, geometry, srsName);
-	}
+    /**
+     *
+     * @param geometryName Geometry name to use.
+     * @param geometry Geometry.
+     * @param srsName SRS name. No srsName attribute will be set on geometries when this is not provided.
+     */
+    public Intersects(String geometryName, Geometry geometry, String srsName){
+        super("Intersects", geometryName, geometry, srsName);
+    }
 
 }

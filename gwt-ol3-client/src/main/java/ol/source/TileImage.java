@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,15 +21,15 @@ import ol.tilegrid.TileGrid;
 
 /**
  * Base class for sources providing images divided into a tile grid.
- * 
+ *
  * @author Tino Desjardins
  *
  */
 @JsType(isNative = true)
 public class TileImage extends UrlTile {
 
-	public native void setRenderReprojectionEdges(boolean render);
+    public native void setRenderReprojectionEdges(boolean render);
 
-	public native void setTileGridForProjection(Projection projection, TileGrid tilegrid);
+    public native void setTileGridForProjection(Projection projection, TileGrid tilegrid);
 
 }

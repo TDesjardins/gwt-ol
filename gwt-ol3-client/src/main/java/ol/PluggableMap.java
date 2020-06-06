@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -505,7 +505,7 @@ public abstract class PluggableMap extends Object {
     @JsOverlay
     public final HandlerRegistration addMapZoomEndListener(final EventListener<MapEvent> listener) {
         return addMoveEndListener(new EventListener<MapEvent>() {
-        	private double zoomLevel = PluggableMap.this.getView().getZoom();
+            private double zoomLevel = PluggableMap.this.getView().getZoom();
             @Override
             public void onEvent(MapEvent event) {
                 double newZoomLevel = PluggableMap.this.getView().getZoom();

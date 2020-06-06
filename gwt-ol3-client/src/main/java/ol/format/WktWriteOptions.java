@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,23 +32,23 @@ public class WktWriteOptions extends WktReadOptions {
      * of decimal places, not generally wanted on output. Set a number here to round
      * coordinates. Can also be used to ensure that coordinates read in can be written
      * back out with the same number of decimals. Default is no rounding.
-     * 
+     *
      * @param decimals
      */
-	@JsProperty
-	public native void setDecimals(int decimals);
+    @JsProperty
+    public native void setDecimals(int decimals);
 
-	/**
-	 * When writing geometries, follow the right-hand rule for linear ring orientation.
-	 * This means that polygons will have counter-clockwise exterior rings and clockwise
-	 * interior rings. By default, coordinates are serialized as they are provided at
-	 * construction. If true, the right-hand rule will be applied. If false, the
-	 * left-hand rule will be applied (clockwise for exterior and counter-clockwise for
-	 * interior rings). Note that not all formats support this. The GeoJSON format does
-	 * use this property when writing geometries.
-	 * 
-	 * @param rightHanded
-	 */
-	@JsProperty
-	public native void setRightHanded(boolean rightHanded);
+    /**
+     * When writing geometries, follow the right-hand rule for linear ring orientation.
+     * This means that polygons will have counter-clockwise exterior rings and clockwise
+     * interior rings. By default, coordinates are serialized as they are provided at
+     * construction. If true, the right-hand rule will be applied. If false, the
+     * left-hand rule will be applied (clockwise for exterior and counter-clockwise for
+     * interior rings). Note that not all formats support this. The GeoJSON format does
+     * use this property when writing geometries.
+     *
+     * @param rightHanded
+     */
+    @JsProperty
+    public native void setRightHanded(boolean rightHanded);
 }

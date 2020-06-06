@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -124,19 +124,19 @@ public final class OLUtil {
      *            type of the target
      */
     public static native <T extends Event, U> T createLinkedEvent(T eParent, String type, U currentTarget) /*-{
-		var eChild = {};
-		eChild.preventDefault = function() {
-			eParent.preventDefault();
-			eChild.defaultPrevented = eParent.defaultPrevented;
-		};
-		eChild.stopPropagation = function() {
-			eParent.stopPropagation();
-		};
-		eChild.currentTarget = currentTarget;
-		eChild.defaultPrevented = eParent.defaultPrevented;
-		eChild.target = eParent.target;
-		eChild.type = type;
-		return eChild;
+        var eChild = {};
+        eChild.preventDefault = function() {
+            eParent.preventDefault();
+            eChild.defaultPrevented = eParent.defaultPrevented;
+        };
+        eChild.stopPropagation = function() {
+            eParent.stopPropagation();
+        };
+        eChild.currentTarget = currentTarget;
+        eChild.defaultPrevented = eParent.defaultPrevented;
+        eChild.target = eParent.target;
+        eChild.type = type;
+        return eChild;
     }-*/;
 
     /**
@@ -265,7 +265,7 @@ public final class OLUtil {
      * @return {@link TileGrid} on success, else null
      */
     private static native TileGrid getTileGrid(ol.source.Source source) /*-{
-		return source.tileGrid || null;
+        return source.tileGrid || null;
     }-*/;
 
     /**
@@ -275,7 +275,7 @@ public final class OLUtil {
      * @return Zoom on success, else {@link Double#NaN}
      */
     private static native double getZoom(View view) /*-{
-	return view.getZoom() || NaN;
+    return view.getZoom() || NaN;
     }-*/;
 
     /**
@@ -371,9 +371,9 @@ public final class OLUtil {
      * @return {@link MapEvent}
      */
     public static native MapEvent initMapEvent(Event e, PluggableMap map) /*-{
-		e.map = map;
-		e.framestate = null;
-		return e;
+        e.map = map;
+        e.framestate = null;
+        return e;
     }-*/;
 
     /**
