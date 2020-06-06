@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ import jsinterop.annotations.JsType;
 
 /**
  * Base class for WFS GetFeature n-ary logical filters.
- * 
+ *
  * @author Tino Desjardins
  *
  */
@@ -30,9 +30,9 @@ public abstract class LogicalNary extends Filter {
      * @deprecated This constructor is only to satisfy JsInterop.
      * Do not use this!
      */
+    @Deprecated
     public LogicalNary() {}
-    
-    
+
     public LogicalNary(String tagName, Filter... filters) {
         //super(tagName);
     }
