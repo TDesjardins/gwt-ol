@@ -51,7 +51,6 @@
             <plugin>
                 <groupId>net.ltgt.gwt.maven</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>1.0.0</version>
                 <configuration>
                     <moduleName>ol.GwtOL</moduleName>
                 </configuration>
