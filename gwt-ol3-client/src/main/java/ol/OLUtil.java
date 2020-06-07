@@ -89,8 +89,8 @@ public final class OLUtil {
      * @return combined array
      */
     public static <T> T[] concatArrays(T[] array1, T[] array2) {
-        JsArray<T> jsArray = Js.cast(array1);
-        return jsArray.concat(array2);
+        JsArray<T> jsArray = JsArray.asJsArray(array1);
+        return jsArray.concat(array2).asArray(array1);
     }
 
     /**

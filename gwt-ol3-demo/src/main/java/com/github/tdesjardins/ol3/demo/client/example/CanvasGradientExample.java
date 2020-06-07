@@ -20,10 +20,10 @@ package com.github.tdesjardins.ol3.demo.client.example;
 
 import com.github.tdesjardins.ol3.demo.client.constants.DemoConstants;
 import com.github.tdesjardins.ol3.demo.client.utils.DemoUtils;
+import elemental2.dom.BaseRenderingContext2D.FillStyleUnionType;
 import elemental2.dom.CanvasGradient;
 import elemental2.dom.CanvasPattern;
 import elemental2.dom.CanvasRenderingContext2D;
-import elemental2.dom.CanvasRenderingContext2D.FillStyleUnionType;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLCanvasElement;
 import ol.Collection;
