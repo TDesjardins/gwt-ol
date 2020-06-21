@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ public class FeatureAtPixelOptions implements Options {
      * <p>Defines layer filter function. The filter function will receive one argument, the <code>layer-candidate</code> and it should return a <code>boolean</code> value.
      * Only layers which are visible and for which this function returns <code>true</code> will be tested for features.
      * By default, all visible layers will be tested.<p>
-     * 
+     *
      * <p><b>Note:</b>Due to missing type info in latest supported OpenLayers version (5.3.0), <code>layerFilter</code> param can not accept {@link ol.layer.Layer},
      * but it accepts {@link ol.layer.Base} instead. This is fixed in OpenLayers 6 so it will change in gwt-ol at some point, too.</p>
      *

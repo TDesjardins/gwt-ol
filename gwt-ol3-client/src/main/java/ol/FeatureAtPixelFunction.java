@@ -27,8 +27,8 @@ import ol.layer.Base;
 @JsFunction
 public interface FeatureAtPixelFunction {
 
-	/**
-	 * <p><b>Note:</b>Due to missing type info in latest supported OpenLayers version (5.3.0), <code>layerFilter</code> param can not accept {@link ol.layer.Layer},
+    /**
+     * <p><b>Note:</b>Due to missing type info in latest supported OpenLayers version (5.3.0), <code>layerFilter</code> param can not accept {@link ol.layer.Layer},
      * but it accepts {@link ol.layer.Base} instead. This is fixed in OpenLayers 6 so it will change in gwt-ol at some point, too.</p>
      */
     boolean call(Feature feature, Base layer);
