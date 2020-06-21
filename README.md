@@ -43,8 +43,8 @@ optional: add this line for proj4js support
 ### Resources
 
 ```html
-  <link href="//cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v[x.x.x]/css/ol.css" rel="stylesheet" type="text/css">
-  <script src="//cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v[x.x.x]/build/ol.js" type="text/javascript"></script>
+  <link href="//cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v[x.x.x]/css/ol.css" rel="stylesheet" type="text/css">
+  <script src="//cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v[x.x.x]/build/ol.js" type="text/javascript"></script>
 ```
 Replace `[x.x.x]` with the OpenLayers version you want to use.
 
