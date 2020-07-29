@@ -22,6 +22,7 @@ import jsinterop.annotations.JsType;
 import ol.Coordinate;
 import ol.Extent;
 import ol.Size;
+import ol.TileCoord;
 
 /**
  * Base class for setting the grid pattern for sources accessing tiled-image
@@ -105,5 +106,29 @@ public class TileGrid {
      * @return {number|ol.Size} Tile size.
      */
     public native Size getTileSize(int z);
+    
+    /**
+     * Get the extent of a tile coordinate.
+     *
+     * @return extent.
+     */
+    public native Extent getTileCoordExtent(TileCoord tileCoord, Extent opt_extent);
+
+
+    /**
+     * Get the tile coordinate for the given map coordinate and resolution. This method considers that
+     * coordinates that intersect tile boundaries should be assigned the higher tile coordinate.
+     *
+     * @return coordinate.
+     */
+    public native Coordinate getTileCoordForCoordAndResolution(Coordinate coordinate, double resolution,
+        TileCoord opt_tileCoord);
+
+    /**
+     * Get a tile coordinate given a map coordinate and zoom level.
+     *
+     * @return coordinate.
+     */
+    public native Extent getTileCoordForCoordAndZ(TileCoord tileCoord, int z, Extent opt_extent);
 
 }
