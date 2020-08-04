@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,14 @@
  *******************************************************************************/
 package ol.tilegrid;
 
+import ol.Coordinate;
 import ol.Extent;
 import ol.GwtOLBaseTestCase;
-import ol.OLFactory;
+import ol.TileCoord;
 
 /**
  * Test for {@link ol.tilegrid.TileGrid}.
- * 
+ *
  * @author Tino Desjardins
  */
 public class TileGridTest extends GwtOLBaseTestCase {
@@ -46,10 +47,30 @@ public class TileGridTest extends GwtOLBaseTestCase {
             xyzTileGridOptions.setMaxZoom(12);
             assertNotNull(xyzTileGridOptions);
 
-            TileGrid tileGridXyz = OLFactory.createTileGridXYZ(xyzTileGridOptions);
+            TileGrid tileGridXyz = TileGrid.createXyz(xyzTileGridOptions);
             assertNotNull(tileGridXyz);
             assertEquals(0, tileGridXyz.getMinZoom());
             assertEquals(12, tileGridXyz.getMaxZoom());
+
+            TileCoord tileCoord = new TileCoord(1, 1, 1);
+
+            Extent coordExtent = tileGridXyz.getTileCoordExtent(tileCoord);
+            assertNotNull(coordExtent);
+
+            Extent coordExtent2 = tileGridXyz.getTileCoordExtent(tileCoord, new Extent(1, 1, 4, 4));
+            assertNotNull(coordExtent2);
+
+            Coordinate tileCoordinate2 = tileGrid.getTileCoordForCoordAndResolution(new Coordinate(1, 1), 4d);
+            assertNotNull(tileCoordinate2);
+
+            Coordinate tileCoordinate3 = tileGrid.getTileCoordForCoordAndResolution(new Coordinate(1, 1), 4d, tileCoord);
+            assertNotNull(tileCoordinate3);
+
+            TileCoord tileCoord2 = tileGrid.getTileCoordForCoordAndZ(new Coordinate(1, 1), 0);
+            assertNotNull(tileCoord2);
+
+            TileCoord tileCoord3 = tileGrid.getTileCoordForCoordAndZ(new Coordinate(1, 1), 0, new TileCoord(1, 1, 1));
+            assertNotNull(tileCoord3);
 
         });
 
