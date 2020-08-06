@@ -15,7 +15,7 @@
  *******************************************************************************/
 package ol;
 
-import ol.layer.Base;
+import ol.layer.Layer;
 import ol.proj.Projection;
 import ol.proj.ProjectionOptions;
 
@@ -55,7 +55,7 @@ public class MapTest extends GwtOLBaseTestCase {
             map.forEachFeatureAtPixel(new Pixel(100, 100), new FeatureAtPixelFunction() {
 
                 @Override
-                public boolean call(Feature feature, Base layer) {
+                public boolean call(Feature feature, Layer layer) {
                     return false;
                 }
 

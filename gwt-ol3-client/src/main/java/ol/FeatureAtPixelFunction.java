@@ -16,7 +16,7 @@
 package ol;
 
 import jsinterop.annotations.JsFunction;
-import ol.layer.Base;
+import ol.layer.Layer;
 
 /**
  * Callback for {@link PluggableMap#forEachFeatureAtPixel(Pixel, FeatureAtPixelFunction, FeatureAtPixelOptions)}
@@ -28,9 +28,10 @@ import ol.layer.Base;
 public interface FeatureAtPixelFunction {
 
     /**
-     * <p><b>Note:</b>Due to missing type info in latest supported OpenLayers version (5.3.0), <code>layerFilter</code> param can not accept {@link ol.layer.Layer},
-     * but it accepts {@link ol.layer.Base} instead. This is fixed in OpenLayers 6 so it will change in gwt-ol at some point, too.</p>
+     * @param feature feature or render feature at the pixel.
+     * @param layer layer of the feature (null for unmanaged layers).
+     * @return To stop detection, callback functions can return a truthy value.
      */
-    boolean call(Feature feature, Base layer);
+    boolean call(Feature feature, Layer layer);
 
 }
