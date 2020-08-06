@@ -228,10 +228,6 @@ public abstract class PluggableMap extends Object {
      */
     public native Feature forEachFeatureAtPixel(Pixel pixel, FeatureAtPixelFunction callback);
 
-    /** @deprecated Use {@link #forEachFeatureAtPixel(Pixel, FeatureAtPixelFunction)} */
-    @Deprecated
-    public native Feature forEachFeatureAtPixel(Pixel pixel, GenericFunction<Feature, ?> callback);
-
     /**
      * Detect features that intersect a pixel on the viewport, and execute a
      * callback with each intersecting feature. Layers included in the detection
@@ -242,10 +238,6 @@ public abstract class PluggableMap extends Object {
      * @param options Optional options.
      */
     public native Feature forEachFeatureAtPixel(Pixel pixel, FeatureAtPixelFunction callback, FeatureAtPixelOptions options);
-
-    /** @deprecated Use {@link #forEachFeatureAtPixel(Pixel, FeatureAtPixelFunction, FeatureAtPixelOptions)} */
-    @Deprecated
-    public native Feature forEachFeatureAtPixel(Pixel pixel, GenericFunction<Feature, ?> callback, FeatureAtPixelOptions options);
 
     /**
      * Remove the given control from the map.
