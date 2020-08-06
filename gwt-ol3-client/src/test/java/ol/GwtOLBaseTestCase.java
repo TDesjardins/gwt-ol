@@ -30,7 +30,7 @@ public abstract class GwtOLBaseTestCase extends BaseTestCase {
 
         super(Arrays.asList(
                 "//polyfill.io/v3/polyfill.js?features=Blob,URL,Symbol&flags=always&version=3.46.0",
-                "//cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js"),
+                "//cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"),
                 "ol.GwtOLTest",
                 10000);
     }
