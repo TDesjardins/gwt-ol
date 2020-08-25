@@ -15,6 +15,9 @@
  *******************************************************************************/
 package ol;
 
+import elemental2.dom.DomGlobal;
+import elemental2.dom.Element;
+import elemental2.dom.Node;
 import ol.layer.Layer;
 import ol.proj.Projection;
 import ol.proj.ProjectionOptions;
@@ -26,9 +29,17 @@ import ol.proj.ProjectionOptions;
  */
 public class MapTest extends GwtOLBaseTestCase {
 
+    public static final String MAP_ID = "map";
+
+    public static final int MAP_SIZE_WIDTH = 800;
+
+    public static final int MAP_SIZE_HEIGHT = 600;
+
     public void testMapCreation() {
 
         injectUrlAndTest(() -> {
+
+            this.createAndAppendMapElement(MAP_ID, MAP_SIZE_WIDTH, MAP_SIZE_HEIGHT);
 
             ProjectionOptions projectionOptions = new ProjectionOptions();
             projectionOptions.setCode("EPSG:21781");
@@ -46,11 +57,18 @@ public class MapTest extends GwtOLBaseTestCase {
             view.setZoom(9);
 
             final MapOptions mapOptions = new MapOptions();
-            mapOptions.setTarget("map");
+            mapOptions.setTarget(MAP_ID);
             mapOptions.setView(view);
 
             Map map = new Map(mapOptions);
             assertNotNull(map);
+
+            assertNotNull(map.getSize());
+
+            assertEquals(MAP_SIZE_WIDTH, map.getSize().getWidth());
+            assertEquals(MAP_SIZE_HEIGHT, map.getSize().getHeight());
+
+            FeatureAtPixelOptions featureAtPixelOptions = new FeatureAtPixelOptions();
 
             map.forEachFeatureAtPixel(new Pixel(100, 100), new FeatureAtPixelFunction() {
 
@@ -59,9 +77,19 @@ public class MapTest extends GwtOLBaseTestCase {
                     return false;
                 }
 
-            });
+            }, featureAtPixelOptions);
 
         });
+
+    }
+
+    private Node createAndAppendMapElement(String id, int width, int height) {
+
+        Element mapDiv = DomGlobal.document.createElement("div");
+        mapDiv.setAttribute("id", id);
+        mapDiv.setAttribute("style", "width: " + width + "px; height: " + height + "px");
+
+        return DomGlobal.document.body.appendChild(mapDiv);
 
     }
 
