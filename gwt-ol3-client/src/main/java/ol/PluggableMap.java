@@ -226,18 +226,18 @@ public abstract class PluggableMap extends Object {
      * @param pixel
      * @param callback
      */
-    public native Feature forEachFeatureAtPixel(Pixel pixel, FeatureAtPixelFunction callback);
+    public native boolean forEachFeatureAtPixel(Pixel pixel, FeatureAtPixelFunction callback);
 
     /**
      * Detect features that intersect a pixel on the viewport, and execute a
      * callback with each intersecting feature. Layers included in the detection
-     * can be configured through {@link FeatureAtPixelOptions#setLayerFilter(GenericFunction)}.
+     * can be configured through {@link AtPixelOptions#setLayerFilter(GenericFunction)}.
      *
      * @param pixel Pixel.
      * @param callback Feature callback. The callback will be called with two arguments. The first argument is one feature or render feature at the pixel, the second is the layer of the feature and will be null for unmanaged layers. To stop detection, callback functions can return a truthy value.
-     * @param options Optional options.
+     * @param options options.
      */
-    public native Feature forEachFeatureAtPixel(Pixel pixel, FeatureAtPixelFunction callback, FeatureAtPixelOptions options);
+    public native boolean forEachFeatureAtPixel(Pixel pixel, FeatureAtPixelFunction callback, FeatureAtPixelOptions options);
 
     /**
      * Remove the given control from the map.
