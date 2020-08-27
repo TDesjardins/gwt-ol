@@ -15,17 +15,22 @@
  *******************************************************************************/
 package ol;
 
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsType;
+import jsinterop.annotations.JsFunction;
+import ol.color.Color;
+import ol.layer.Layer;
 
 /**
- * Options for customizing {@link PluggableMap#forEachFeatureAtPixel(Pixel, FeatureAtPixelFunction, AtPixelOptions)}
- *
- * @author gkresic
- *
- * @deprecated Use {@link AtPixelOptions} instead.
+ * Callback for {@link PluggableMap#forEachFeatureAtPixel(Pixel, LayerAtPixelFunction, FeatureAtPixelOptions)}
  */
-@Deprecated
-@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class FeatureAtPixelOptions extends AtPixelOptions {
+@FunctionalInterface
+@JsFunction
+public interface LayerAtPixelFunction {
+
+    /**
+     * @param feature feature or render feature at the pixel.
+     * @param layer layer of the feature (null for unmanaged layers).
+     * @return To stop detection, callback functions can return a truthy value.
+     */
+    boolean call(Layer layer, Color color);
+
 }

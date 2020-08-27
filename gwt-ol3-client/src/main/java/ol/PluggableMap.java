@@ -217,7 +217,7 @@ public abstract class PluggableMap extends Object {
      * @param options Optional options.
      * @return if features intersect a pixel
      */
-    public native boolean hasFeatureAtPixel(Pixel pixel, FeatureAtPixelOptions options);
+    public native boolean hasFeatureAtPixel(Pixel pixel, AtPixelOptions options);
 
     /**
      * Detect features that intersect a pixel on the viewport, and execute a
@@ -237,7 +237,32 @@ public abstract class PluggableMap extends Object {
      * @param callback Feature callback. The callback will be called with two arguments. The first argument is one feature or render feature at the pixel, the second is the layer of the feature and will be null for unmanaged layers. To stop detection, callback functions can return a truthy value.
      * @param options options.
      */
-    public native boolean forEachFeatureAtPixel(Pixel pixel, FeatureAtPixelFunction callback, FeatureAtPixelOptions options);
+    public native boolean forEachFeatureAtPixel(Pixel pixel, FeatureAtPixelFunction callback, AtPixelOptions options);
+
+    /**
+     * Detect layers that have a color value at a pixel on the viewport, and execute a
+     * callback with each matching layer. Layers included in the detection can be configured
+     * through {@link AtPixelOptions#setLayerFilter(GenericFunction)}.
+     *
+     * Note: this may give false positives unless the map layers have had different className properties assigned to them.
+     *
+     * @param pixel Pixel.
+     * @param callback Layer callback. This callback will receive two arguments: first is the layer, second argument is an array representing [R, G, B, A] pixel values (0 - 255) and will be null for layer types that do not currently support this argument. To stop detection, callback functions can return a truthy value.
+     */
+    public native boolean forEachLayerAtPixel(Pixel pixel, LayerAtPixelFunction callback);
+
+    /**
+     * Detect layers that have a color value at a pixel on the viewport, and execute a
+     * callback with each matching layer. Layers included in the detection can be configured
+     * through {@link AtPixelOptions#setLayerFilter(GenericFunction)}.
+     *
+     * Note: this may give false positives unless the map layers have had different className properties assigned to them.
+     *
+     * @param pixel Pixel.
+     * @param callback Layer callback. This callback will receive two arguments: first is the layer, second argument is an array representing [R, G, B, A] pixel values (0 - 255) and will be null for layer types that do not currently support this argument. To stop detection, callback functions can return a truthy value.
+     * @param options options.
+     */
+    public native boolean forEachLayerAtPixel(Pixel pixel, LayerAtPixelFunction callback, AtPixelOptions options);
 
     /**
      * Remove the given control from the map.

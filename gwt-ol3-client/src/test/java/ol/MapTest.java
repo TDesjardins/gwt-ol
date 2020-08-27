@@ -68,7 +68,7 @@ public class MapTest extends GwtOLBaseTestCase {
             assertEquals(MAP_SIZE_WIDTH, map.getSize().getWidth());
             assertEquals(MAP_SIZE_HEIGHT, map.getSize().getHeight());
 
-            FeatureAtPixelOptions featureAtPixelOptions = new FeatureAtPixelOptions();
+            AtPixelOptions featureAtPixelOptions = new AtPixelOptions();
 
             map.forEachFeatureAtPixel(new Pixel(100, 100), new FeatureAtPixelFunction() {
 
