@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2019 gwt-ol
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,6 +68,7 @@ import ol.source.RasterTest;
 import ol.source.TileWmsTest;
 import ol.source.VectorTileTest;
 import ol.source.WmtsTest;
+import ol.style.IconTest;
 import ol.style.RegularShapeTest;
 import ol.style.StrokeTest;
 import ol.style.TextTest;
@@ -182,6 +183,7 @@ public class GwtOLTestSuite extends GWTTestSuite {
         // style
         suite.addTestSuite(ol.style.CircleTest.class);
         suite.addTestSuite(ol.style.FillTest.class);
+        suite.addTestSuite(IconTest.class);
         suite.addTestSuite(RegularShapeTest.class);
         suite.addTestSuite(StrokeTest.class);
         suite.addTestSuite(TextTest.class);
