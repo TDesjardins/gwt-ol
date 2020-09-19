@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2019 gwt-ol
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,6 +65,13 @@ public class Style {
      * @return {ol.style.Image} Image style.
      */
     public native Image getImage();
+
+    /**
+     * Set the image style.
+     *
+     * @param image image style
+     */
+    public native void setImage(Image image);
 
     /**
      * Get the stroke style.
