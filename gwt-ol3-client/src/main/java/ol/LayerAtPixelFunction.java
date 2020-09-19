@@ -27,8 +27,9 @@ import ol.layer.Layer;
 public interface LayerAtPixelFunction {
 
     /**
-     * @param feature feature or render feature at the pixel.
-     * @param layer layer of the feature (null for unmanaged layers).
+     *
+     * @param layer layer
+     * @param color [R, G, B, A] pixel values (0 - 255), will be null for layer types that do not currently support this argument
      * @return To stop detection, callback functions can return a truthy value.
      */
     boolean call(Layer layer, Color color);
