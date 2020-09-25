@@ -17,6 +17,8 @@ package ol;
 
 import com.github.desjardins.gwt.junit.client.BaseTestCase;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Tino Desjardins
@@ -25,7 +27,12 @@ import com.github.desjardins.gwt.junit.client.BaseTestCase;
 public abstract class GwtOLBaseTestCase extends BaseTestCase {
 
     public GwtOLBaseTestCase() {
-        super("//cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v5.3.0/build/ol.js", "ol.GwtOLTest", 10000);
+
+        super(Arrays.asList(
+                "//polyfill.io/v3/polyfill.js?features=Blob,URL,Symbol&flags=always&version=3.46.0",
+                "//cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"),
+                "ol.GwtOLTest",
+                10000);
     }
 
 }

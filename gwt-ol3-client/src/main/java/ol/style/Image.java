@@ -48,21 +48,6 @@ public abstract class Image {
     public native double getScale();
 
     /**
-     * If true integral numbers of pixels are used as the X and Y pixel coordinate
-     * when drawing the icon in the output canvas. If false fractional numbers may
-     * be used. Using true allows for "sharp" rendering (no blur), while using false
-     * allows for "accurate" rendering. Note that accuracy is important if the icon's
-     * position is animated. Without it, the icon may jitter noticeably.
-     * Default value is true.
-     *
-     * @return integral numbers of pixels are used as the X and Y pixel coordinate
-     *
-     * @deprecated Will be removed in feature releases.
-     */
-    @Deprecated
-    public native boolean getSnapToPixel();
-
-    /**
      * @param opacity Opacity of the image. Default is 1.
      */
     public native void setOpacity(double opacity);

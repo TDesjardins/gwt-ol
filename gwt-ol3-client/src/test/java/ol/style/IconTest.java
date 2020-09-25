@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,24 +15,35 @@
  *******************************************************************************/
 package ol.style;
 
-import jsinterop.annotations.JsType;
+import ol.GwtOLBaseTestCase;
+import ol.OLFactory;
 
 /**
- * Images added to this manager will be inserted into an atlas, which will
- * be used for rendering. The size given in the constructor is the size for
- * the first atlas. After that, when new atlases are created, they will have
- * twice the size as the latest atlas (until maxSize is reached).
- * If an application uses many images or very large images, it is recommended
- * to set a higher size value to avoid the creation of too many atlases.
- *
- * see https://openlayers.org/en/latest/apidoc/ol.style.RegularShape.html
+ * Test for {@link ol.style.Icon}.
  *
  * @author Tino Desjardins
- *
  */
-@JsType(isNative = true)
-public class AtlasManager {
+public class IconTest extends GwtOLBaseTestCase {
 
-    public AtlasManager(AtlasManagerOptions atlasManagerOptions) {}
+    private static final String IMAGE_SRC_ICON = "https://openlayers.org/en/v3.20.1/examples/data/icon.png";
 
+    public void testIcon() {
+
+        injectUrlAndTest(() -> {
+
+            IconOptions iconOptions = OLFactory.createOptions();
+            iconOptions.setOpacity(1d);
+            iconOptions.setSrc(IMAGE_SRC_ICON);
+
+            Icon icon = new Icon(iconOptions);
+
+            assertNotNull(icon);
+            assertEquals(1d, icon.getOpacity());
+            assertEquals(IMAGE_SRC_ICON, icon.getSrc());
+
+            icon.load();
+
+        });
+
+    }
 }

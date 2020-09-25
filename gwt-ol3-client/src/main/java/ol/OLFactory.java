@@ -62,6 +62,7 @@ import ol.interaction.Select;
 import ol.interaction.SelectOptions;
 import ol.interaction.Snap;
 import ol.interaction.SnapOptions;
+import ol.layer.Graticule;
 import ol.layer.Image;
 import ol.layer.ImageLayerOptions;
 import ol.layer.LayerGroupOptions;

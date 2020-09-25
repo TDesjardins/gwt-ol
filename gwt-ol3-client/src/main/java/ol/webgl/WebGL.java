@@ -28,10 +28,7 @@ public class WebGL {
     @JsOverlay
     private static final String PACKAGE_WEB_GL = "ol.webgl";
 
-    /**
-     * @return True if both OpenLayers and browser support WebGL.
-     */
-    @JsProperty(name = "HAS", namespace = PACKAGE_WEB_GL)
-    public static native boolean has();
+    @JsProperty(name = "ARRAY_BUFFER", namespace = PACKAGE_WEB_GL)
+    public static native int getArrayBuffer();
 
 }

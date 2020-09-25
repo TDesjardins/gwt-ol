@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2019 gwt-ol3
+ * Copyright 2014, 2019 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,30 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol.webgl;
+package ol.layer;
 
-import ol.GwtOLBaseTestCase;
+import jsinterop.annotations.JsType;
 
 /**
  *
  * @author Tino Desjardins
  *
  */
-public class WebGLTest extends GwtOLBaseTestCase {
-
-    public void testWebGL() {
-
-        injectUrlAndTest(new TestWithInjection() {
-
-            @Override
-            public void test() {
-
-                assert(WebGL.getArrayBuffer() > 0);
-
-            }
-
-        });
-
-    }
-
-}
+@JsType(isNative = true)
+public class Graticule extends Vector {}

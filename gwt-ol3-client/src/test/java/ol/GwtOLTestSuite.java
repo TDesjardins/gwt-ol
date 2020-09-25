@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2019 gwt-ol
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,7 @@ import ol.format.filter.FilterTest;
 import ol.geom.CircleTest;
 import ol.geom.GeometryCollectionTest;
 import ol.geom.PointTest;
+import ol.has.HasTest;
 import ol.interaction.DoubleClickZoomTest;
 import ol.interaction.DragAndDropTest;
 import ol.interaction.DragBoxTest;
@@ -67,7 +68,7 @@ import ol.source.RasterTest;
 import ol.source.TileWmsTest;
 import ol.source.VectorTileTest;
 import ol.source.WmtsTest;
-import ol.style.AtlasManagerTest;
+import ol.style.IconTest;
 import ol.style.RegularShapeTest;
 import ol.style.StrokeTest;
 import ol.style.TextTest;
@@ -135,6 +136,9 @@ public class GwtOLTestSuite extends GWTTestSuite {
         suite.addTestSuite(GeometryCollectionTest.class);
         suite.addTestSuite(PointTest.class);
 
+        // has
+        suite.addTestSuite(HasTest.class);
+
         // interactions
         suite.addTestSuite(DoubleClickZoomTest.class);
         suite.addTestSuite(DragAndDropTest.class);
@@ -177,9 +181,9 @@ public class GwtOLTestSuite extends GWTTestSuite {
         suite.addTestSuite(ProjectionTest.class);
 
         // style
-        suite.addTestSuite(AtlasManagerTest.class);
         suite.addTestSuite(ol.style.CircleTest.class);
         suite.addTestSuite(ol.style.FillTest.class);
+        suite.addTestSuite(IconTest.class);
         suite.addTestSuite(RegularShapeTest.class);
         suite.addTestSuite(StrokeTest.class);
         suite.addTestSuite(TextTest.class);

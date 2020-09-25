@@ -16,7 +16,6 @@
 package com.github.tdesjardins.ol3.demo.client.example;
 
 import ol.Coordinate;
-import ol.Graticule;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
@@ -25,6 +24,7 @@ import ol.control.MousePosition;
 import ol.control.OverviewMap;
 import ol.control.ZoomSlider;
 import ol.control.ZoomToExtent;
+import ol.layer.Graticule;
 import ol.layer.LayerOptions;
 import ol.layer.Tile;
 import ol.source.Osm;

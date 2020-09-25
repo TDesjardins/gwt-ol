@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,13 @@
  *******************************************************************************/
 package ol;
 
-import ol.View;
-import ol.ViewOptions;
 import ol.Object.Event;
 import ol.event.EventListener;
 import ol.proj.Projection;
 import ol.proj.ProjectionOptions;
 
 /**
- * 
+ *
  * @author Tino Desjardins
  *
  */
@@ -61,6 +59,12 @@ public class ViewTest extends GwtOLBaseTestCase {
 
             view.getResolutionForZoom(5);
 
+            view.adjustRotation(1f);
+            view.adjustRotation(1f, new Coordinate(660000, 190000));
+
+            view.adjustZoom(1f);
+            view.adjustZoom(1f, new Coordinate(660000, 190000));
+
         });
 
     }
@@ -84,10 +88,10 @@ public class ViewTest extends GwtOLBaseTestCase {
                 @Override
                 public void onEvent(Event event) {
                     resolutionChanged = true;
-                    
+
                 }
             });
-            
+
             view.addRotationChangeListener(new EventListener<Object.Event>() {
 
                 @Override
@@ -111,7 +115,7 @@ public class ViewTest extends GwtOLBaseTestCase {
 
             assertTrue(this.resolutionChanged);
             assertFalse(this.rotationChanged);
-            
+
             view.setRotation(Math.PI);
 
             assertTrue(this.rotationChanged);

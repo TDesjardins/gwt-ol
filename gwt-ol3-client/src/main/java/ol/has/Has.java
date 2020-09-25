@@ -34,16 +34,4 @@ public class Has {
     @JsProperty(name = "DEVICE_PIXEL_RATIO", namespace = PACKAGE_HAS)
     public static native double getDevicePixelRatio();
 
-    /**
-     * @return Is HTML5 geolocation supported in the current browser?
-     */
-    @JsProperty(name = "GEOLOCATION", namespace = PACKAGE_HAS)
-    public static native boolean isGeolocationEnabled();
-
-    /**
-     * @return true if browser supports touch events.
-     */
-    @JsProperty(name = "TOUCH", namespace = PACKAGE_HAS)
-    public static native boolean isTouchEnabled();
-
 }

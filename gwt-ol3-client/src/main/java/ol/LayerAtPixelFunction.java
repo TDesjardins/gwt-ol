@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,23 @@
  *******************************************************************************/
 package ol;
 
-import jsinterop.annotations.JsType;
+import jsinterop.annotations.JsFunction;
+import ol.color.Color;
+import ol.layer.Layer;
 
 /**
- *
- * @author Tino Desjardins
- *
+ * Callback for {@link PluggableMap#forEachFeatureAtPixel(Pixel, LayerAtPixelFunction, FeatureAtPixelOptions)}
  */
-@JsType(isNative = true)
-public class Graticule {
+@FunctionalInterface
+@JsFunction
+public interface LayerAtPixelFunction {
 
-    public native void setMap(PluggableMap map);
+    /**
+     *
+     * @param layer layer
+     * @param color [R, G, B, A] pixel values (0 - 255), will be null for layer types that do not currently support this argument
+     * @return To stop detection, callback functions can return a truthy value.
+     */
+    boolean call(Layer layer, Color color);
 
 }

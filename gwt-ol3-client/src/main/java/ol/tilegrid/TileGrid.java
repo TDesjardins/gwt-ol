@@ -22,6 +22,7 @@ import jsinterop.annotations.JsType;
 import ol.Coordinate;
 import ol.Extent;
 import ol.Size;
+import ol.TileCoord;
 
 /**
  * Base class for setting the grid pattern for sources accessing tiled-image
@@ -94,6 +95,70 @@ public class TileGrid {
      * @return resolutions.
      */
     public native double[] getResolutions();
+
+    /**
+     * Get the extent of a tile coordinate.
+     *
+     * @param tileCoord Tile coordinate.
+     *
+     * @return Extent.
+     */
+    public native Extent getTileCoordExtent(TileCoord tileCoord);
+
+    /**
+     * Get the extent of a tile coordinate.
+     *
+     * @param tileCoord Tile coordinate.
+     * @param extent Temporary extent object.
+     *
+     * @return Extent.
+     */
+    public native Extent getTileCoordExtent(TileCoord tileCoord, Extent extent);
+
+    /**
+     * Get the tile coordinate for the given map coordinate and resolution. This method considers that
+     * coordinates that intersect tile boundaries should be assigned the higher tile coordinate.
+     *
+     * @param coordinate Coordinate.
+     * @param resolution Resolution.
+     *
+     * @return Tile coordinate.
+     */
+    public native Coordinate getTileCoordForCoordAndResolution(Coordinate coordinate, double resolution);
+
+    /**
+     * Get the tile coordinate for the given map coordinate and resolution. This method considers that
+     * coordinates that intersect tile boundaries should be assigned the higher tile coordinate.
+     *
+     * @param coordinate Coordinate.
+     * @param resolution Resolution.
+     * @param tileCoord Destination object.
+     *
+     * @return Tile coordinate.
+     */
+    public native Coordinate getTileCoordForCoordAndResolution(Coordinate coordinate, double resolution,
+        TileCoord tileCoord);
+
+    /**
+     * Get a tile coordinate given a map coordinate and zoom level.
+     *
+     * @param coordinate Coordinate.
+     * @param z Zoom level.
+     *
+     * @return Tile coordinate.
+     */
+    public native TileCoord getTileCoordForCoordAndZ(Coordinate coordinate, int z);
+
+    /**
+     * Get a tile coordinate given a map coordinate and zoom level.
+     *
+     * @param coordinate Coordinate.
+     * @param z Zoom level.
+     * @param tileCoord Destination object.
+     *
+     * @return Tile coordinate.
+     */
+    public native TileCoord getTileCoordForCoordAndZ(Coordinate coordinate, int z, TileCoord tileCoord);
 
     /**
      * Get the tile size for a zoom level. The type of the return value matches

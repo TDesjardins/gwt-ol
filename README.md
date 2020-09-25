@@ -59,3 +59,7 @@ Snapshots of the development version are available in
  [dl]: https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.tdesjardins%22
  [snap]: https://oss.sonatype.org/content/repositories/snapshots/
  
+## Projects using gwt-ol
+
+[Running Reality](https://www.runningreality.org/)  
+[Mapping of Covid19 spread in Italy](https://www.k-teq.com/covid19/)
