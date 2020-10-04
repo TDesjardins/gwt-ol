@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'org.wisepersist:gwt-gradle-plugin:1.0.13'
+        classpath 'org.wisepersist:gwt-gradle-plugin:1.1.9'
         classpath 'com.google.code.findbugs:jsr305:3.0.0'
         classpath 'com.google.elemental2:elemental2-core:1.0.0-RC1'
         classpath 'com.google.elemental2:elemental2-dom:1.0.0-RC1'
@@ -24,7 +24,7 @@ subprojects {
         implementation 'com.google.elemental2:elemental2-dom:1.0.0-RC1'
         testCompile "junit:junit:4.12"
     }
-    
+
     gwt {
         gwtVersion='2.8.2'
         maxHeapSize = "1024M"
