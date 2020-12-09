@@ -22,6 +22,7 @@ import ol.Collection;
 import ol.Feature;
 import ol.GenericFunction;
 import ol.Options;
+import ol.source.Vector;
 import ol.style.StyleFunction;
 
 /**
@@ -63,6 +64,14 @@ public class ModifyOptions implements Options {
     public native void setPixelTolerance(int clickTolerance);
 
     /**
+     * Destination source for the modified features.
+     *
+     * @param source source
+     */
+    @JsProperty
+    public native void setSource(Vector source);
+    
+    /**
      * Style used for the features being modified. By default the default edit
      * style is used (see ol.style).
      *
@@ -72,7 +81,7 @@ public class ModifyOptions implements Options {
     public native void setStyle(StyleFunction styleFunction);
 
     /**
-     * The features the interaction works on. Required.
+     * The features the interaction works on.
      *
      * @param features
      */
@@ -86,5 +95,7 @@ public class ModifyOptions implements Options {
      */
     @JsProperty
     public native void setWrapX(boolean wrapX);
+    
+    
 
 }
