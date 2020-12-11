@@ -64,13 +64,14 @@ public class ModifyOptions implements Options {
     public native void setPixelTolerance(int clickTolerance);
 
     /**
-     * Destination source for the modified features.
+     * The vector source with features to modify. If a vector source is not provided,
+     * a feature collection must be provided with the features option.
      *
      * @param source source
      */
     @JsProperty
     public native void setSource(Vector source);
-    
+
     /**
      * Style used for the features being modified. By default the default edit
      * style is used (see ol.style).
@@ -81,7 +82,8 @@ public class ModifyOptions implements Options {
     public native void setStyle(StyleFunction styleFunction);
 
     /**
-     * The features the interaction works on.
+     * The features the interaction works on. If a feature collection is not
+     * provided, a vector source must be provided with the source option.
      *
      * @param features
      */
@@ -95,7 +97,5 @@ public class ModifyOptions implements Options {
      */
     @JsProperty
     public native void setWrapX(boolean wrapX);
-    
-    
 
 }
