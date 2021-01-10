@@ -18,6 +18,8 @@ package ol.style;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import ol.Feature;
+import ol.GenericFunction;
 import ol.Options;
 import ol.geom.Geometry;
 
@@ -37,6 +39,15 @@ public class StyleOptions implements Options {
      */
     @JsProperty
     public native void setGeometry(Geometry geometry);
+
+    /**
+     * Set a geometry function which result is rendered instead of the feature's geometry.
+     *
+     * @param geometry function returning a geometry
+     *            to render for this style.
+     */
+    @JsProperty
+    public native void setGeometry(GenericFunction<Feature, Geometry> geometryFunction);
 
     /**
      * {@link Fill} style.
