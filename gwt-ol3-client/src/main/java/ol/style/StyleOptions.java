@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2020 gwt-ol
+ * Copyright 2014, 2021 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,6 +64,15 @@ public class StyleOptions implements Options {
      */
     @JsProperty
     public native void setImage(Image image);
+
+    /**
+     * Custom renderer. When configured, fill, stroke and image will be ignored, and the
+     * provided function will be called with each render frame for each geometry.
+     *
+     * @param renderFunction Custom renderer
+     */
+    @JsProperty
+    public native void setRenderer(RenderFunction renderFunction);
 
     /**
      * {@link Stroke} style.

@@ -121,6 +121,14 @@ public class Style {
     public native void setGeometry(GenericFunction<Feature, Geometry> geometryFunction);
 
     /**
+     * Custom renderer. When configured, fill, stroke and image will be ignored, and the
+     * provided function will be called with each render frame for each geometry.
+     *
+     * @param renderFunction Custom renderer
+     */
+    public native void setRenderer(RenderFunction renderFunction);
+
+    /**
      * @param text text style
      */
     public native void setText(Text text);
