@@ -18,7 +18,8 @@ package ol.style;
 import javax.annotation.Nullable;
 
 import jsinterop.annotations.JsType;
-
+import ol.Feature;
+import ol.GenericFunction;
 import ol.geom.Geometry;
 
 /**
@@ -110,6 +111,14 @@ public class Style {
      *            to render for this style.
      */
     public native void setGeometry(Geometry geometry);
+
+    /**
+     * Set a geometry function which result is rendered instead of the feature's geometry.
+     *
+     * @param geometry function returning a geometry
+     *            to render for this style.
+     */
+    public native void setGeometry(GenericFunction<Feature, Geometry> geometryFunction);
 
     /**
      * @param text text style
