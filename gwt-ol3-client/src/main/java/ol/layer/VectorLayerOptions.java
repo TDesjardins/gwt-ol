@@ -33,6 +33,18 @@ import ol.style.StyleFunction;
 public class VectorLayerOptions extends LayerOptions {
 
     /**
+     *  Declutter images and text. Decluttering is applied to all image and text styles of
+     *  all Vector and VectorTile layers that have set this to true. The priority is
+     *  defined by the z-index of the layer, the zIndex of the style and the render
+     *  order of features. Higher z-index means higher priority. Within the same z-index,
+     *  a feature rendered before another has higher priority.
+     *
+     * @param declutter
+     */
+    @JsProperty
+    public native void setDeclutter(boolean declutter);
+
+    /**
      *
      * Sets the layer as overlay on a map. The map will not manage this layer in
      * its layers collection, and the layer will be rendered on top. This is
