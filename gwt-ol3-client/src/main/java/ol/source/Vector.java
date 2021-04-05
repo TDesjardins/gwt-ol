@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2019 gwt-ol
+ * Copyright 2014, 2021 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,11 +65,27 @@ public class Vector extends Source {
     public native void clear(boolean opt_fast);
 
     /**
-     * Iterate through all features whose bounding box intersects the provided extent (note that the feature's geometry may not intersect the extent), calling the callback with each feature. If the callback returns a "truthy" value, iteration will stop and the function will return the same value.
+     * Iterate through all features on the source, calling the provided callback
+     * with each one. If the callback returns any "truthy" value, iteration will
+     * stop and the function will return the same value. Note: this function only
+     * iterate through the feature that have a defined geometry.
      *
-     * If you are interested in features whose geometry intersects an extent, call the {@link #forEachFeatureIntersectingExtent(Extent, GenericFunction)} method instead.
+     * @param callback
+     */
+    public native void forEachFeature(GenericFunction<Feature, ?> callback);
+
+    /**
+     * Iterate through all features whose bounding box intersects the provided
+     * extent (note that the feature's geometry may not intersect the extent),
+     * calling the callback with each feature. If the callback returns a "truthy"
+     * value, iteration will stop and the function will return the same value.
      *
-     * When useSpatialIndex is set to false, this method will loop through all features, equivalent to #forEachFeature().
+     * If you are interested in features whose geometry intersects an extent, call
+     * the {@link #forEachFeatureIntersectingExtent(Extent, GenericFunction)} method
+     * instead.
+     *
+     * When useSpatialIndex is set to false, this method will loop through all
+     * features, equivalent to #forEachFeature().
      *
      * @param extent Extent.
      * @param callback Called with each feature whose bounding box intersects the provided extent.
