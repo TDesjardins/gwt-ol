@@ -20,6 +20,8 @@ import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
 import ol.PluggableMap;
+import ol.style.OrderFunction;
+import ol.style.OrderFunctionRender;
 import ol.style.Style;
 import ol.style.StyleFunction;
 
@@ -66,6 +68,26 @@ public class BaseVectorLayerOptions extends LayerOptions {
      */
     @JsProperty
     public native void setRenderBuffer(double renderBuffer);
+
+    /**
+     * Render order. Function to be used when sorting features before rendering.
+     * By default features are drawn in the order that they are created. Use null
+     * to avoid the sort, but get an undefined draw order.
+     *
+     * @param orderFunction order function
+     */
+    @JsProperty
+    public native void setRenderOrder(OrderFunction orderFunction);
+
+    /**
+     * Render order. Function to be used when sorting features before rendering.
+     * By default features are drawn in the order that they are created. Use null
+     * to avoid the sort, but get an undefined draw order.
+     *
+     * @param orderFunction order function
+     */
+    @JsProperty
+    public native void setRenderOrder(OrderFunctionRender orderFunction);
 
     @JsProperty
     public native void setStyle(Style style);
