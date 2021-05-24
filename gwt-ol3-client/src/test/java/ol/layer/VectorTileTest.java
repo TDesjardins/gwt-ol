@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2021 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ public class VectorTileTest extends GwtOLBaseTestCase {
 
             VectorTile vectorLayer = new VectorTile(vectorLayerOptions);
             assertTrue(vectorLayer instanceof Base);
-            assertTrue(vectorLayer instanceof Vector);
+            assertTrue(vectorLayer instanceof BaseVector);
 
         });
 

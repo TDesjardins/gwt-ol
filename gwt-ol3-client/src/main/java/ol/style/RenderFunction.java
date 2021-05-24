@@ -13,17 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol.layer;
+package ol.style;
 
-import jsinterop.annotations.JsPackage;
-
-import jsinterop.annotations.JsType;
+import jsinterop.annotations.JsFunction;
+import ol.geom.SimpleGeometryCoordinates;
+import ol.render.State;
 
 /**
- * Vector tile layer options.
+ * Custom renderer function.
  *
- * @author Tino Desjardins
+ * @author TDesjardins
  *
  */
-@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class VectorTileLayerOptions extends BaseVectorLayerOptions {}
+@FunctionalInterface
+@JsFunction
+public interface RenderFunction {
+
+    /**
+     * @param pixelCoordinates The pixel coordinates of the geometry in GeoJSON notation.
+     * @param renderState render state of the layer renderer.
+     */
+    void render(SimpleGeometryCoordinates pixelCoordinates, State renderState);
+
+}

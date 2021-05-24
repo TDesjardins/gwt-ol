@@ -161,6 +161,7 @@ public class GwtOLTestSuite extends GWTTestSuite {
         suite.addTestSuite(TranslateTest.class);
 
         // layers
+        suite.addTestSuite(ol.layer.HeatmapTest.class);
         suite.addTestSuite(ol.layer.ImageTest.class);
         suite.addTestSuite(LayerGroupTest.class);
         suite.addTestSuite(ol.layer.TileTest.class);

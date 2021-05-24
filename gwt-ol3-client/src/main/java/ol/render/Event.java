@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2017, 2017 gwt-ol3
+ * Copyright 2017, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package ol.render;
 
 import elemental2.dom.CanvasRenderingContext2D;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
 
 import jsinterop.annotations.JsType;
@@ -47,7 +48,9 @@ public interface Event extends ol.events.Event {
     /**
      * For canvas, this is an instance of ol.render.canvas.Immediate.
      */
-    @JsProperty
-    VectorContext getVectorContext();
+    @JsOverlay
+    default VectorContext getVectorContext() {
+        return Render.getVectorContext(this);
+    }
 
 }

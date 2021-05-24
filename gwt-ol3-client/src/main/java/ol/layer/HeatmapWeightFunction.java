@@ -15,15 +15,21 @@
  *******************************************************************************/
 package ol.layer;
 
-import jsinterop.annotations.JsPackage;
-
-import jsinterop.annotations.JsType;
+import jsinterop.annotations.JsFunction;
+import ol.Feature;
 
 /**
- * Vector tile layer options.
- *
- * @author Tino Desjardins
- *
+ * A function that returns a weight from a feature. Weight values should range
+ * from 0 to 1 (and values outside will be clamped to that range)
  */
-@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class VectorTileLayerOptions extends BaseVectorLayerOptions {}
+@FunctionalInterface
+@JsFunction
+public interface HeatmapWeightFunction {
+
+    /**
+     * @param feature feature for calculating the weight
+     * @return weight
+     */
+    double getWeight(Feature feature);
+
+}

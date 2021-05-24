@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2020 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,14 @@ import ol.source.Source;
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class LayerOptions implements Options {
+
+    /**
+     * A CSS class name to set to the layer element.
+     *
+     * @param className CSS class name
+     */
+    @JsProperty
+    public native void setClassName(String className);
 
     /**
      * The bounding extent for layer rendering. The layer will not be rendered

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2020 gwt-ol
+ * Copyright 2014, 2021 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,8 @@ package ol.style;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import ol.Feature;
+import ol.GenericFunction;
 import ol.Options;
 import ol.geom.Geometry;
 
@@ -39,6 +41,15 @@ public class StyleOptions implements Options {
     public native void setGeometry(Geometry geometry);
 
     /**
+     * Set a geometry function which result is rendered instead of the feature's geometry.
+     *
+     * @param geometry function returning a geometry
+     *            to render for this style.
+     */
+    @JsProperty
+    public native void setGeometry(GenericFunction<Feature, Geometry> geometryFunction);
+
+    /**
      * {@link Fill} style.
      *
      * @param fill {@link Fill}
@@ -53,6 +64,15 @@ public class StyleOptions implements Options {
      */
     @JsProperty
     public native void setImage(Image image);
+
+    /**
+     * Custom renderer. When configured, fill, stroke and image will be ignored, and the
+     * provided function will be called with each render frame for each geometry.
+     *
+     * @param renderFunction Custom renderer
+     */
+    @JsProperty
+    public native void setRenderer(RenderFunction renderFunction);
 
     /**
      * {@link Stroke} style.

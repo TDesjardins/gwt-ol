@@ -13,17 +13,52 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol.layer;
+package ol.render;
 
+import elemental2.dom.CanvasRenderingContext2D;
 import jsinterop.annotations.JsPackage;
-
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import ol.geom.SimpleGeometryCoordinates;
 
 /**
- * Vector tile layer options.
+ * Render state.
  *
  * @author Tino Desjardins
  *
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
-public class VectorTileLayerOptions extends BaseVectorLayerOptions {}
+public interface State {
+
+    /**
+     * @return Canvas context that the layer is being rendered to.
+     */
+    @JsProperty
+    public CanvasRenderingContext2D getContext();
+
+    @JsProperty
+    public ol.Feature getFeature();
+
+    @JsProperty
+    public SimpleGeometryCoordinates getGeometry();
+
+    /**
+     * @return Pixel ratio used by the layer renderer.
+     */
+    @JsProperty
+    public double getPixelRatio();
+
+    /**
+     * @return Resolution that the render batch was created and optimized for.
+     * This is not the view's resolution that is being rendered.
+     */
+    @JsProperty
+    public double getResolution();
+
+    /**
+     * @return Rotation of the rendered layer in radians.
+     */
+    @JsProperty
+    public double getRotation();
+
+}
