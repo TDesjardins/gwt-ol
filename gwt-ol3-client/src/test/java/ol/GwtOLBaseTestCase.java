@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2020 gwt-ol
+ * Copyright 2014, 2021 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ public abstract class GwtOLBaseTestCase extends BaseTestCase {
 
         super(Arrays.asList(
                 "//polyfill.io/v3/polyfill.js?features=Blob,URL,Symbol&flags=always&version=3.46.0",
-                "//cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"),
+                "//cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.0/build/ol.js"),
                 "ol.GwtOLTest",
                 10000);
     }
