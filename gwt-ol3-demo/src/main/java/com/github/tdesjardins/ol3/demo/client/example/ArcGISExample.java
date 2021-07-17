@@ -34,7 +34,7 @@ import ol.source.ImageArcGisRestParams;
 
 /**
  * Example with ArcGIS Server layer
- * 
+ *
  * @author Peter Zanetti
  */
 public class ArcGISExample implements Example {
