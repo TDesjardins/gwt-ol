@@ -68,6 +68,7 @@ import ol.source.RasterTest;
 import ol.source.TileWmsTest;
 import ol.source.VectorTileTest;
 import ol.source.WmtsTest;
+import ol.style.IconImageCacheTest;
 import ol.style.IconTest;
 import ol.style.RegularShapeTest;
 import ol.style.StrokeTest;
@@ -185,6 +186,7 @@ public class GwtOLTestSuite extends GWTTestSuite {
         suite.addTestSuite(ol.style.CircleTest.class);
         suite.addTestSuite(ol.style.FillTest.class);
         suite.addTestSuite(IconTest.class);
+        suite.addTestSuite(IconImageCacheTest.class);
         suite.addTestSuite(RegularShapeTest.class);
         suite.addTestSuite(StrokeTest.class);
         suite.addTestSuite(TextTest.class);
