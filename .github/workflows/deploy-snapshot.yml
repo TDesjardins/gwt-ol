@@ -18,6 +18,9 @@ jobs:
         java-version: '8'
         distribution: 'adopt'
         cache: maven
+        server-id: sonatype-nexus-snapshots
+        server-username: CI_DEPLOY_USERNAME
+        server-password: CI_DEPLOY_PASSWORD
     - name: Deploy snapshot with Maven
       env:
         CI_DEPLOY_USERNAME: ${{ secrets.DEPLOY_USER }}
