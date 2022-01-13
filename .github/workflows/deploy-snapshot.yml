@@ -25,4 +25,4 @@ jobs:
       env:
         CI_DEPLOY_USERNAME: ${{ secrets.DEPLOY_USER }}
         CI_DEPLOY_PASSWORD: ${{ secrets.DEPLOY_PASSWORD }}
-      run: mvn -s ci/settings.xml clean deploy -Dmaven.test.skip=true -Dinvoker.skip=true
+      run: mvn clean deploy -Dmaven.test.skip=true -Dinvoker.skip=true
