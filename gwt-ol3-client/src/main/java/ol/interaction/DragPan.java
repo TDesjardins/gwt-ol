@@ -25,4 +25,7 @@ import jsinterop.annotations.JsType;
 @JsType(isNative = true)
 public class DragPan extends Pointer {
 
+	public DragPan() {}
+
+    public DragPan(DragPanOptions dragBoxOptions) {}
 }
