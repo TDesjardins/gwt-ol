@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2019 gwt-ol3
+ * Copyright 2014, 2022 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import jsinterop.annotations.JsType;
 import ol.Collection;
 import ol.Feature;
 import ol.GenericFunction;
+import ol.MapBrowserEvent;
 import ol.Options;
 import ol.source.Vector;
 import ol.style.StyleFunction;
@@ -34,25 +35,26 @@ import ol.style.StyleFunction;
 public class ModifyOptions implements Options {
 
     /**
-     * A function that takes an ol.MapBrowserEvent and returns a boolean to
+     * A function that takes an {@link ol.MapBrowserEvent} and returns a boolean to
      * indicate whether that event will be considered to add or move a vertex to
-     * the sketch. Default is ol.events.condition.primaryAction.
+     * the sketch. Default is {@link ol.events.condition.Condition#getPrimaryAction()}.
      *
      * @param function
      */
     @JsProperty
-    public native void setCondition(GenericFunction<?, ?> function);
+    public native void setCondition(GenericFunction<MapBrowserEvent, Boolean> function);
 
     /**
-     * A function that takes an ol.MapBrowserEvent and returns a boolean to
+     * A function that takes an {@link ol.MapBrowserEvent} and returns a boolean to
      * indicate whether that event should be handled. By default,
-     * ol.events.condition.singleClick with ol.events.condition.noModifierKeys
-     * results in a vertex deletion.
+     * {@link ol.events.condition.Condition#getSingleClick()} with
+     * {@link ol.events.condition.Condition#getNoModifierKeys()} results in
+     * a vertex deletion.
      *
      * @param function
      */
     @JsProperty
-    public native void setDeleteCondition(GenericFunction<?, ?> function);
+    public native void setDeleteCondition(GenericFunction<MapBrowserEvent, Boolean> function);
 
     /**
      * Pixel tolerance for considering the pointer close enough to a segment or
@@ -62,17 +64,15 @@ public class ModifyOptions implements Options {
      */
     @JsProperty
     public native void setPixelTolerance(int clickTolerance);
-    
-    /**
-     * A function that takes an module:ol/MapBrowserEvent~MapBrowserEvent and returns a boolean to
-     * indicate whether a new vertex should be added to the sketch features. Default is
-     * module:ol/events/condition~always.
-     *
-     * @param function
-     */
 
+    /**
+     * @param function A function that takes an {@link ol.MapBrowserEvent} and returns a boolean to
+     * indicate whether a new vertex should be added to the sketch features. Default is
+     * {@link ol.events.condition.Condition#getAlways()}.
+     *
+     */
     @JsProperty
-    public native void setInsertVertexCondition(GenericFunction<?, ?> function);
+    public native void setInsertVertexCondition(GenericFunction<MapBrowserEvent, Boolean> function);
 
     /**
      * The vector source with features to modify. If a vector source is not provided,
