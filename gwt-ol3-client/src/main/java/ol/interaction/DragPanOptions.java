@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2022 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,21 +23,25 @@ import ol.MapBrowserEvent;
 import ol.Options;
 
 /**
- * Options for {@link ol.interaction.DragZoom}.
+ * Options for {@link ol.interaction.DragPan}.
  *
- * @author gkresic
+ * @author umbertodistaso
  *
- * see https://openlayers.org/en/latest/apidoc/ol.interaction.DragZoom.html
+ * see https://openlayers.org/en/latest/apidoc/module-ol_interaction_DragPan-DragPan.html
  */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class DragPanOptions implements Options {
 
     /**
-     * @param condition A function that takes an {@link ol.MapBrowserEvent} and returns a boolean to indicate whether that event should be handled. Default is {@link ol.events.condition.Condition#getPrimaryAction()}.
+     * @param condition A function that takes an {@link ol.MapBrowserEvent} and returns a boolean
+     * to indicate whether that event should be handled.
+     * Default is {@link ol.events.condition.Condition#getNoModifierKeys()} and
+     * {@link ol.events.condition.Condition#getPrimaryAction()}.
      */
     @JsProperty
     public native void setCondition(GenericFunction<MapBrowserEvent, Boolean> condition);
 
     @JsProperty
     public native GenericFunction<MapBrowserEvent, Boolean> getCondition();
+
 }
