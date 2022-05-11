@@ -62,6 +62,12 @@ public class Wkb extends ol.format.Feature {
      */
     public native Feature readFeature(java.lang.Object source, @Nullable Options readOptions);
 
+    /**
+     * Read all features from a source.
+     * 
+     * @param source string | ArrayBuffer | ArrayBufferView
+     * @return features
+     */
     public native Feature[] readFeatures(java.lang.Object source);
 
     /**

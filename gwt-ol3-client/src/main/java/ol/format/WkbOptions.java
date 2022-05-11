@@ -34,6 +34,9 @@ public class WkbOptions implements Options {
     @JsProperty
     public native void setSplitCollection(boolean splitCollection);
 
+    /**
+     * @return whether to split GeometryCollections into multiple features on reading.
+     */
     @JsProperty
     public native boolean getSplitCollection();
 
