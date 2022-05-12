@@ -13,26 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol;
+package ol.style;
 
-import com.github.desjardins.gwt.junit.client.BaseTestCase;
-
-import java.util.Arrays;
+import ol.GwtOLBaseTestCase;
 
 /**
+ * Test for {@link ol.style.IconImageCache}.
  *
  * @author Tino Desjardins
- *
  */
-public abstract class GwtOLBaseTestCase extends BaseTestCase {
+public class IconImageCacheTest extends GwtOLBaseTestCase {
 
-    public GwtOLBaseTestCase() {
+    public void testIconImageCache() {
 
-        super(Arrays.asList(
-                "//polyfill.io/v3/polyfill.js?features=Blob,URL,Symbol&flags=always&version=3.46.0",
-                "//cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/build/ol.js"),
-                "ol.GwtOLTest",
-                10000);
+        injectUrlAndTest(() -> {
+
+
+            IconImageCache iconImageCache = IconImageCache.get();
+            assertNotNull(iconImageCache);
+            assertEquals(iconImageCache, IconImageCache.get());
+            iconImageCache.setSize(128);
+
+        });
+
     }
-
 }

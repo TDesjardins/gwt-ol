@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2021 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ public class DrawTest extends GwtOLBaseTestCase {
 
         injectUrlAndTest(() -> {
             DrawOptions drawOptions = new DrawOptions();
+            drawOptions.setType("Point");
             Draw draw = new Draw(drawOptions);
 
             assertNotNull(draw);

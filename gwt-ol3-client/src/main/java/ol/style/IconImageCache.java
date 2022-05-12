@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2022 gwt-ol
+ * Copyright 2014, 2021 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,20 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol.interaction;
+package ol.style;
 
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 /**
+ * Cache for icon images.
  *
  * @author Tino Desjardins
  *
  */
 @JsType(isNative = true)
-public class DragPan extends Pointer {
+public class IconImageCache {
 
-    public DragPan() {}
+    /**
+     * Set the cache size of the icon cache. Default is `32`. Change this value when
+     * your map uses more than 32 different icon images and you are not caching icon
+     * styles on the application level.
+     */
+    public native void setSize(int maxCacheSize);
 
-    public DragPan(DragPanOptions dragBoxOptions) {}
+    @JsOverlay
+    public static final IconImageCache get() {
+        return getShared();
+    };
+
+    @JsProperty
+    public static native IconImageCache getShared();
 
 }

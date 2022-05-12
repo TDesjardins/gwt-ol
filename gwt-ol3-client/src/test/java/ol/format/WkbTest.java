@@ -13,20 +13,46 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol.interaction;
+package ol.format;
 
-import jsinterop.annotations.JsType;
+import ol.GwtOLBaseTestCase;
 
 /**
- *
- * @author Tino Desjardins
+ * Test for WKB format.
+ * 
+ * @author T. Desjardins
  *
  */
-@JsType(isNative = true)
-public class DragPan extends Pointer {
+public class WkbTest extends GwtOLBaseTestCase {
 
-    public DragPan() {}
+    private Wkb wkbFormat;
 
-    public DragPan(DragPanOptions dragBoxOptions) {}
+    @Override
+    protected void gwtSetUp() throws Exception {
+
+        injectUrlAndTest(() -> {
+
+            WkbOptions wkbOptions = new WkbOptions();
+            assertNotNull(wkbOptions);
+
+            wkbOptions.setSplitCollection(false);
+            wkbFormat = new Wkb(wkbOptions);
+            assertNotNull(wkbFormat);
+
+            wkbOptions.setSplitCollection(true);
+
+        });
+
+    }
+
+    public void testWkbFormat() {
+
+        injectUrlAndTest(() -> {
+
+            assertNotNull(this.wkbFormat);
+
+        });
+
+    }
 
 }

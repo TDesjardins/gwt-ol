@@ -32,6 +32,7 @@ import ol.format.KmlTest;
 import ol.format.MvtTest;
 import ol.format.OsmXmlTest;
 import ol.format.WfsTest;
+import ol.format.WkbTest;
 import ol.format.WktTest;
 import ol.format.WmsGetFeatureInfoTest;
 import ol.format.filter.FilterTest;
@@ -68,6 +69,7 @@ import ol.source.RasterTest;
 import ol.source.TileWmsTest;
 import ol.source.VectorTileTest;
 import ol.source.WmtsTest;
+import ol.style.IconImageCacheTest;
 import ol.style.IconTest;
 import ol.style.RegularShapeTest;
 import ol.style.StrokeTest;
@@ -128,6 +130,7 @@ public class GwtOLTestSuite extends GWTTestSuite {
         suite.addTestSuite(MvtTest.class);
         suite.addTestSuite(OsmXmlTest.class);
         suite.addTestSuite(WfsTest.class);
+        suite.addTestSuite(WkbTest.class);
         suite.addTestSuite(WktTest.class);
         suite.addTestSuite(WmsGetFeatureInfoTest.class);
 
@@ -185,6 +188,7 @@ public class GwtOLTestSuite extends GWTTestSuite {
         suite.addTestSuite(ol.style.CircleTest.class);
         suite.addTestSuite(ol.style.FillTest.class);
         suite.addTestSuite(IconTest.class);
+        suite.addTestSuite(IconImageCacheTest.class);
         suite.addTestSuite(RegularShapeTest.class);
         suite.addTestSuite(StrokeTest.class);
         suite.addTestSuite(TextTest.class);
