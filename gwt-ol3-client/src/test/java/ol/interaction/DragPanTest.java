@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2022 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,13 +27,13 @@ public class DragPanTest extends GwtOLBaseTestCase {
 
     public void testDragPan() {
 
-        
         injectUrlAndTest(() -> {
             DragPan dragPan = new DragPan();
-            
+
             assertNotNull(dragPan);
             assertTrue(dragPan instanceof Observable);
             assertTrue(dragPan instanceof Interaction);
+            assertEquals(0, dragPan.getPointerCount());
         });
 
     }
