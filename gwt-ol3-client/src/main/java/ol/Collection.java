@@ -83,6 +83,13 @@ public class Collection<T> extends Object {
      */
     public native Collection<T> extend(T[] elements);
 
+    /**
+     * Iterate over each element, calling the provided callback (forEachFunction).
+     *
+     * @param forEachFunction callback
+     */
+    public native void forEach(ForEachFunction<T> forEachFunction);
+
     public native T[] getArray();
 
     public native int getLength();

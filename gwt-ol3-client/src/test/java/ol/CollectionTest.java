@@ -15,6 +15,8 @@
  *******************************************************************************/
 package ol;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import ol.Collection.Event;
 import ol.control.Attribution;
 import ol.control.Control;
@@ -71,6 +73,17 @@ public class CollectionTest extends GwtOLBaseTestCase {
             controls.extend(extraControls.getArray());
 
             assertTrue(controls.getLength() == 2);
+
+            AtomicInteger count = new AtomicInteger();
+
+            controls.forEach((Control item, int index, Control[] array) -> {
+                assertNotNull(array);
+                assertEquals(controls.getLength(), array.length);
+                assertEquals(index, count.get());
+                count.getAndIncrement();
+            });
+
+            assertEquals(controls.getLength(), count.get());
 
         });
 
