@@ -19,6 +19,7 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.GenericFunction;
+import ol.Kinetic;
 import ol.MapBrowserEvent;
 import ol.Options;
 
@@ -43,5 +44,11 @@ public class DragPanOptions implements Options {
 
     @JsProperty
     public native GenericFunction<MapBrowserEvent, Boolean> getCondition();
+
+    @JsProperty
+    public native void setOnFocusOnly(boolean onFocusOnly);
+
+    @JsProperty
+    public native void setKinetic(Kinetic kinetic);
 
 }
