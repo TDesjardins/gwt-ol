@@ -13,28 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol.interaction;
+package ol;
 
-import jsinterop.annotations.JsType;
+import jsinterop.annotations.JsFunction;
 
 /**
- * Base class that calls user-defined functions on `down`, `move` and `up`
- * events. This class also manages "drag sequences".
- *
- * When the `handleDownEvent` user function returns `true` a drag sequence is
- * started. During a drag sequence the `handleDragEvent` user function is called
- * on `move` events. The drag sequence ends when the `handleUpEvent` user
- * function is called and returns `false`.
- *
- * @author Tino Desjardins
- *
+ * Callback for {@link Collection#forEach(ForEachFunction)}
  */
-@JsType(isNative = true)
-public abstract class Pointer extends Interaction {
+@FunctionalInterface
+@JsFunction
+public interface ForEachFunction <T> {
 
     /**
-     * @return the current number of pointers involved in the interaction, e.g. 2 when two fingers are used.
+     * @param item current item
+     * @param index current index
+     * @param array array
      */
-    public native int getPointerCount();
+    void call(T item, int index, T[] array);
 
 }

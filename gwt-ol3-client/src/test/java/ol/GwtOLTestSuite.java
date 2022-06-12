@@ -96,6 +96,7 @@ public class GwtOLTestSuite extends GWTTestSuite {
         suite.addTestSuite(FeatureTest.class);
         suite.addTestSuite(GeolocationTest.class);
         suite.addTestSuite(GraticuleTest.class);
+        suite.addTestSuite(KineticTest.class);
         suite.addTestSuite(MapTest.class);
         suite.addTestSuite(ObservableTest.class);
         suite.addTestSuite(OverlayTest.class);

@@ -13,28 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol.interaction;
+package ol;
 
 import jsinterop.annotations.JsType;
 
 /**
- * Base class that calls user-defined functions on `down`, `move` and `up`
- * events. This class also manages "drag sequences".
- *
- * When the `handleDownEvent` user function returns `true` a drag sequence is
- * started. During a drag sequence the `handleDragEvent` user function is called
- * on `move` events. The drag sequence ends when the `handleUpEvent` user
- * function is called and returns `false`.
- *
- * @author Tino Desjardins
- *
+ * Implementation of inertial deceleration for map movement.
  */
 @JsType(isNative = true)
-public abstract class Pointer extends Interaction {
+public class Kinetic {
 
     /**
-     * @return the current number of pointers involved in the interaction, e.g. 2 when two fingers are used.
+     * 
+     * @param decay Rate of decay (must be negative).
+     * @param minVelocity Minimum velocity (pixels/millisecond).
+     * @param delay Delay to consider to calculate the kinetic initial values (milliseconds).
      */
-    public native int getPointerCount();
+    public Kinetic(double decay, double minVelocity, int delay) {}
 
 }

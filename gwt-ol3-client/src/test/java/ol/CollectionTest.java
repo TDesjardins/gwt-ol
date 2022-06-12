@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2022 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,12 @@
  *******************************************************************************/
 package ol;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import ol.Collection.Event;
 import ol.control.Attribution;
 import ol.control.Control;
+import ol.control.FullScreen;
 import ol.event.EventListener;
 
 /**
@@ -61,6 +64,26 @@ public class CollectionTest extends GwtOLBaseTestCase {
             controls.push(attribution);
             assertTrue(controls.contains(attribution));
             assertFalse(controls.contains(new Attribution()));
+
+            assertTrue(controls.getLength() == 1);
+
+            Collection<Control> extraControls = new Collection<Control>();
+            extraControls.push(new FullScreen());
+
+            controls.extend(extraControls.getArray());
+
+            assertTrue(controls.getLength() == 2);
+
+            AtomicInteger count = new AtomicInteger();
+
+            controls.forEach((Control item, int index, Control[] array) -> {
+                assertNotNull(array);
+                assertEquals(controls.getLength(), array.length);
+                assertEquals(index, count.get());
+                count.getAndIncrement();
+            });
+
+            assertEquals(controls.getLength(), count.get());
 
         });
 
