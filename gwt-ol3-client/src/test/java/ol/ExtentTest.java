@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2022 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,17 +29,17 @@ public class ExtentTest extends GwtOLBaseTestCase {
 
             Extent extent = OLFactory.createExtent(100, 50, 150, 110);
             assertNotNull(extent);
-            assertEquals(100, extent.getLowerLeftX());
-            assertEquals(50, extent.getLowerLeftY());
-            assertEquals(150, extent.getUpperRightX());
-            assertEquals(110, extent.getUpperRightY());
-            assertEquals(50, extent.getWidth());
-            assertEquals(60, extent.getHeight());
+            assertEquals(100d, extent.getLowerLeftX());
+            assertEquals(50d, extent.getLowerLeftY());
+            assertEquals(150d, extent.getUpperRightX());
+            assertEquals(110d, extent.getUpperRightY());
+            assertEquals(50d, extent.getWidth());
+            assertEquals(60d, extent.getHeight());
             assertEquals(extent.getWidth() * extent.getHeight(), extent.getArea());
 
             Coordinate topLeftCoordinate = extent.getTopLeft();
-            assertEquals(100, topLeftCoordinate.getX());
-            assertEquals(110, topLeftCoordinate.getY());
+            assertEquals(100d, topLeftCoordinate.getX());
+            assertEquals(110d, topLeftCoordinate.getY());
 
             Extent clonedExtent = extent.cloneObject();
             assertNotNull(extent);
@@ -49,6 +49,11 @@ public class ExtentTest extends GwtOLBaseTestCase {
             assertEquals(extent.getUpperRightY(), clonedExtent.getUpperRightY());
 
             assertTrue(extent.equals(clonedExtent));
+
+            assertNotNull(clonedExtent.getCenter());
+
+            assertEquals(125d, clonedExtent.getCenter().getX());
+            assertEquals(80d, clonedExtent.getCenter().getY());
 
         });
 
@@ -79,7 +84,7 @@ public class ExtentTest extends GwtOLBaseTestCase {
             assertNotNull(extent);
 
             assertTrue(extent.containsCoordinate(new Coordinate(110, 60)));
-            assertTrue(extent.containsCoordinate(new Coordinate(100, 150)));
+            assertTrue(extent.containsCoordinate(new Coordinate(100, 109)));
             assertTrue(extent.containsCoordinate(new Coordinate(100, 110)));
 
             assertFalse(extent.containsCoordinate(new Coordinate(50, 50)));
