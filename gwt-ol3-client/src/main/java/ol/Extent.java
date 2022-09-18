@@ -164,6 +164,19 @@ public class Extent implements JsArrayLike<Double> {
     private static native double getArea(Extent extent);
 
     /**
+     * Get the center coordinate of an extent.
+     * 
+     * @return the center coordinate of an extent.
+     */
+    @JsOverlay
+    public final Coordinate getCenter() {
+        return Extent.getCenter(this);
+    }
+
+    @JsMethod(name = "getCenter", namespace = PACKAGE_EXTENT)
+    private static native Coordinate getCenter(Extent extent);
+
+    /**
      * @return the height of the extent.
      */
     @JsOverlay
@@ -258,18 +271,5 @@ public class Extent implements JsArrayLike<Double> {
 
     @JsMethod(name = "isEmpty", namespace = PACKAGE_EXTENT)
     private static native boolean isEmpty(Extent extent);
-    
-	/**
-	 * Get the center coordinate of an extent.
-	 * 
-	 * @return the center coordinate of an extent.
-	 */
-	@JsOverlay
-	public final Coordinate getCenter() {
-		return Extent.getCenter(this);
-	}
-
-	@JsMethod(name = "getCenter", namespace = PACKAGE_EXTENT)
-	private static native Coordinate getCenter(Extent extent);
 
 }
