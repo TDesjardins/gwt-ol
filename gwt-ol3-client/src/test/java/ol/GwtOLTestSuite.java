@@ -92,7 +92,7 @@ public class GwtOLTestSuite extends GWTTestSuite {
         suite.addTestSuite(ObjectTest.class);
         suite.addTestSuite(CollectionTest.class);
         suite.addTestSuite(CoordinateTest.class);
-        suite.addTestSuite(ExtentTest.class);
+        suite.addTestSuite(ol.ExtentTest.class);
         suite.addTestSuite(FeatureTest.class);
         suite.addTestSuite(GeolocationTest.class);
         suite.addTestSuite(GraticuleTest.class);
