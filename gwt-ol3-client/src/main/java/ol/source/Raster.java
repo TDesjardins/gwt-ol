@@ -17,8 +17,6 @@ package ol.source;
 
 import javax.annotation.Nullable;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
@@ -26,6 +24,7 @@ import jsinterop.base.JsPropertyMap;
 import ol.Extent;
 import ol.OLUtil;
 import ol.event.EventListener;
+import ol.gwt.HandlerRegistration;
 
 /**
  * @author Daniel Eggert (daniel.eggert@gfz-potsdam.de)

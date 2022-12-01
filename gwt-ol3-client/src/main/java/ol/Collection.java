@@ -15,14 +15,13 @@
  *******************************************************************************/
 package ol;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-
 import javax.annotation.Nullable;
 
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.event.EventListener;
+import ol.gwt.HandlerRegistration;
 
 /**
  *

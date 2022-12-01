@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2015 gwt-ol3
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package ol;
-
-import elemental2.dom.HTMLImageElement;
-import jsinterop.annotations.JsType;
+package ol.gwt;
 
 /**
- *
- * ImageTile.
- *
+ * Registration objects returned when an event handler is bound, used to de-register.
  */
-@JsType(isNative = true)
-public class ImageTile extends Tile {
+@FunctionalInterface
+public interface HandlerRegistration {
 
-    public native HTMLImageElement getImage();
+  /**
+   * De-registers the handler associated with this registration object if the handler is still
+   * attached to the event source. If the handler is no longer attached to the event source, this is
+   * a no-op.
+   */
+  void removeHandler();
 }

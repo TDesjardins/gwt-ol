@@ -15,8 +15,6 @@
  *******************************************************************************/
 package ol.interaction;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
@@ -25,6 +23,7 @@ import ol.MapBrowserEvent;
 import ol.OLUtil;
 import ol.event.EventListener;
 import ol.geom.Polygon;
+import ol.gwt.HandlerRegistration;
 
 /**
  *

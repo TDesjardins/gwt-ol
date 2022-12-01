@@ -15,13 +15,12 @@
  *******************************************************************************/
 package ol.interaction;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.OLUtil;
 import ol.event.EventListener;
+import ol.gwt.HandlerRegistration;
 
 /**
  * Allows the user to draw a vector box by clicking and dragging on the map,

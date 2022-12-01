@@ -15,13 +15,12 @@
  *******************************************************************************/
 package ol;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import ol.event.EventListener;
 import ol.events.Event;
 import ol.events.EventTarget;
+import ol.gwt.HandlerRegistration;
 
 /**
  * Abstract base class; normally only used for creating subclasses and not

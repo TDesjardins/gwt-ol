@@ -15,8 +15,7 @@
  *******************************************************************************/
 package ol;
 
-import com.google.gwt.dom.client.Element;
-
+import elemental2.dom.Element;
 import jsinterop.annotations.JsType;
 
 /**

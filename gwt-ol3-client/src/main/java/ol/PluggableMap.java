@@ -15,14 +15,13 @@
  *******************************************************************************/
 package ol;
 
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.event.shared.HandlerRegistration;
-
+import elemental2.dom.Element;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.control.Control;
 import ol.event.EventListener;
+import ol.gwt.HandlerRegistration;
 import ol.interaction.Interaction;
 import ol.layer.Base;
 import ol.layer.Group;

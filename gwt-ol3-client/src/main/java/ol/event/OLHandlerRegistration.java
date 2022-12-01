@@ -15,10 +15,9 @@
  *******************************************************************************/
 package ol.event;
 
-import com.google.gwt.event.shared.HandlerRegistration;
-
 import ol.EventsKey;
 import ol.Observable;
+import ol.gwt.HandlerRegistration;
 
 /**
  * A {@link HandlerRegistration} for OpenLayers event handlers.
