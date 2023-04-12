@@ -15,6 +15,8 @@
  *******************************************************************************/
 package ol.control;
 
+import elemental2.dom.Element;
+
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
@@ -73,13 +75,29 @@ public class FullScreenOptions extends ControlOptions {
     public native void setTipLabel(String tipLabel);
 
     /**
-     * The element to be displayed fullscreen. When not provided, the element containing
-     * the map viewport will be displayed fullscreen.
+     * Sets a source to be displayed fullscreen. When not provided, the source
+     * containing the map viewport will be displayed fullscreen.
      *
-     * @param source
-     *            source
+     * @param source source as String
      */
     @JsProperty
     public native void setSource(String source);
+
+    /**
+     * Sets an element to be displayed fullscreen. When not provided, the element
+     * containing the map viewport will be displayed fullscreen.
+     *
+     * @param source source as {@link Element}
+     */
+    @JsProperty
+    public native void setSource(Element source);
+
+    /**
+     * Sets a target if the control to be rendered outside of the map's viewport.
+     *
+     * @param target as String
+     */
+    @JsProperty
+    public native void setTarget(String target);
 
 }
