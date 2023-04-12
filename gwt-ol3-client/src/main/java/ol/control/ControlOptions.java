@@ -49,4 +49,12 @@ public class ControlOptions implements Options {
     @JsProperty
     public native void setTarget(Element target);
 
+    /**
+     * Sets a target if the control to be rendered outside of the map's viewport.
+     *
+     * @param target as String
+     */
+    @JsProperty
+    public native void setTarget(String target);
+
 }

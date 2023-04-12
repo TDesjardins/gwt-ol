@@ -92,12 +92,4 @@ public class FullScreenOptions extends ControlOptions {
     @JsProperty
     public native void setSource(Element source);
 
-    /**
-     * Sets a target if the control to be rendered outside of the map's viewport.
-     *
-     * @param target as String
-     */
-    @JsProperty
-    public native void setTarget(String target);
-
 }
