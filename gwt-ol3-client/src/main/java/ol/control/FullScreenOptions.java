@@ -72,4 +72,14 @@ public class FullScreenOptions extends ControlOptions {
     @JsProperty
     public native void setTipLabel(String tipLabel);
 
+    /**
+     * The element to be displayed fullscreen. When not provided, the element containing
+     * the map viewport will be displayed fullscreen.
+     *
+     * @param source
+     *            source
+     */
+    @JsProperty
+    public native void setSource(String source);
+
 }
