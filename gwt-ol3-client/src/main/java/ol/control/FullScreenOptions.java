@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2023 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 package ol.control;
+
+import elemental2.dom.Element;
 
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
@@ -71,5 +73,23 @@ public class FullScreenOptions extends ControlOptions {
      */
     @JsProperty
     public native void setTipLabel(String tipLabel);
+
+    /**
+     * Sets a source to be displayed fullscreen. When not provided, the source
+     * containing the map viewport will be displayed fullscreen.
+     *
+     * @param source source element id
+     */
+    @JsProperty
+    public native void setSource(String source);
+
+    /**
+     * Sets an element to be displayed fullscreen. When not provided, the element
+     * containing the map viewport will be displayed fullscreen.
+     *
+     * @param source source as {@link Element}
+     */
+    @JsProperty
+    public native void setSource(Element source);
 
 }

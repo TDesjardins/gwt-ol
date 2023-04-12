@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2023 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ public class ControlOptions implements Options {
      */
     @JsProperty
     public native void setElement(Element element);
-    
+
     /**
      * Specify a target if you want the control to be rendered outside of the map's viewport.
      * 
@@ -48,5 +48,13 @@ public class ControlOptions implements Options {
      */
     @JsProperty
     public native void setTarget(Element target);
+
+    /**
+     * Sets a target if the control to be rendered outside of the map's viewport.
+     *
+     * @param target element id of the target
+     */
+    @JsProperty
+    public native void setTarget(String target);
 
 }
