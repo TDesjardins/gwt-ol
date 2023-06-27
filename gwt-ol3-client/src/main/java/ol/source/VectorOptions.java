@@ -22,6 +22,7 @@ import jsinterop.annotations.JsType;
 import ol.Collection;
 import ol.Feature;
 import ol.featureloader.FeatureLoader;
+import ol.loadingstrategy.LoadingStrategyFunction;
 
 /**
  * Vector source options.
@@ -42,6 +43,9 @@ public class VectorOptions extends SourceOptions {
 
     @JsProperty
     public native void setUrl(String url);
+
+    @JsProperty
+    public native void setUrl(FeatureUrlFunction featureUrlFunction);
 
     @JsProperty
     public native void setFormat(ol.format.Feature format);
@@ -75,4 +79,13 @@ public class VectorOptions extends SourceOptions {
      */
     @JsProperty
     public native void setLoader(FeatureLoader featureLoader);
+
+    /**
+     * The loading strategy to use. By default an all strategy is used, a one-off strategy which loads all features at once.
+     *
+     * @param loadingStrategy
+     */
+    @JsProperty
+    public native void setStrategy(LoadingStrategyFunction loadingStrategy);
+
 }

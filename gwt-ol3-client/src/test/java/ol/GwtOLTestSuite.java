@@ -60,6 +60,7 @@ import ol.interaction.SelectTest;
 import ol.interaction.SnapTest;
 import ol.interaction.TranslateTest;
 import ol.layer.LayerGroupTest;
+import ol.loadingstrategy.LoadingStrategyTest;
 import ol.proj.ProjectionTest;
 import ol.source.BingMapsTest;
 import ol.source.ClusterTest;
@@ -171,6 +172,8 @@ public class GwtOLTestSuite extends GWTTestSuite {
         suite.addTestSuite(ol.layer.TileTest.class);
         suite.addTestSuite(ol.layer.VectorTest.class);
         suite.addTestSuite(ol.layer.VectorTileTest.class);
+
+        suite.addTestSuite(LoadingStrategyTest.class);
 
         // source
         suite.addTestSuite(BingMapsTest.class);
