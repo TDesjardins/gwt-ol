@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2023 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  *******************************************************************************/
 package ol.source;
 
+import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsOverlay;
-import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import ol.proj.Projection;
 
@@ -33,14 +33,6 @@ import ol.proj.Projection;
  */
 @JsType(isNative = true)
 public class Source extends ol.Object {
-
-    /**
-     * Get the attributions of the source.
-     *
-     * @return Attributions.
-     */
-    @JsProperty
-    private native String[] getAttributions();
 
     /**
      * Get the projection of the source.
@@ -77,7 +69,7 @@ public class Source extends ol.Object {
         setAttributionValues(attributions);
     }
 
-    @JsProperty(name = "attributions")
+    @JsMethod(name = "setAttributions")
     private native void setAttributionValues(String[] attributions);
 
 }
