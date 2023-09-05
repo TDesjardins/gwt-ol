@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2023 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,9 +29,17 @@ import ol.proj.Projection;
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class ViewOptions implements Options {
 
+    /**
+     * @param coordinate The initial center for the view.
+     */
     @JsProperty
     public native void setCenter(Coordinate coordinate);
 
+    /**
+     * The extent that constrains the view, in other words, nothing outside of this extent can be visible on the map.
+     *
+     * @param extent extent that constrains the view
+     */
     @JsProperty
     public native void setExtent(Extent extent);
 
@@ -47,6 +55,11 @@ public class ViewOptions implements Options {
     @JsProperty
     public native void setMinZoom(double minZoom);
 
+    /**
+     * The projection. The default is Spherical Mercator.
+     *
+     * @param projection projection
+     */
     @JsProperty
     public native void setProjection(Projection projection);
 
