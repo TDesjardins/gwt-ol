@@ -29,6 +29,14 @@ import jsinterop.annotations.JsType;
 public class ScaleLineOptions extends ControlOptions {
 
     /**
+     * Render scalebars instead of a line (default: false).
+     *
+     * @param renderScalebar should a scalebar be rendered
+     */
+    @JsProperty
+    public native void setBar(boolean renderScalebar);
+
+    /**
      * CSS class name. Default is "ol-scale-line".
      * @param className
      *            class name
@@ -37,12 +45,46 @@ public class ScaleLineOptions extends ControlOptions {
     public native void setClassName(String className);
 
     /**
+     *  dpi of output device such as printer. Only applies when bar is true. If undefined the
+     *  OGC default screen pixel size of 0.28mm will be assumed.
+     *
+     * @param dpi dpi of output device
+     */
+    @JsProperty
+    public native void setDpi(double dpi);
+
+    /**
      * Minimum width in pixels. Default is 64.
+     *
      * @param minWidth
      *            minimum width
      */
     @JsProperty
     public native void setMinWidth(int minWidth);
+
+    /**
+     * Maximum width in pixels at the OGC default dpi. The width will be adjusted to match the dpi used.
+     *
+     * @param maxWidth Maximum width in pixels at the OGC default dpi
+     */
+    @JsProperty
+    public native void setMaxWidth(int maxWidth);
+
+    /**
+     * Number of steps the scalebar should use. Use even numbers for best results. Only applies when bar is true.
+     *
+     * @param steps Number of steps the scalebar should use
+     */
+    @JsProperty
+    public native void setSteps(int steps);
+
+    /**
+     * Render the text scale above of the scalebar. Only applies when bar is true.
+     *
+     * @param renderTextAboveScalebar if text should be rendered above of the scalebar
+     */
+    @JsProperty
+    public native void setText(boolean renderTextAboveScalebar);
 
     /**
      * Units. Default is metric.
