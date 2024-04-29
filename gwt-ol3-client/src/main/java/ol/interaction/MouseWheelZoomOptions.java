@@ -15,18 +15,31 @@
  *******************************************************************************/
 package ol.interaction;
 
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import ol.GenericFunction;
+import ol.MapBrowserEvent;
+import ol.Options;
 
 /**
- *
- * @author Tino Desjardins
+ * Options for MouseWheelZoom interaction.
  *
  */
-@JsType(isNative = true)
-public class MouseWheelZoom extends Interaction {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
+public class MouseWheelZoomOptions implements Options {
 
-    public MouseWheelZoom() {}
+    /**
+     * A function that takes an {@link ol.MapBrowserEvent} and returns a boolean to
+     * indicate whether that event should be handled.
+     * Default is {@link ol.events.condition.Condition#getAlways()}.
+     *
+     * @param function
+     */
+    @JsProperty
+    public native void setCondition(GenericFunction<MapBrowserEvent, Boolean> function);
 
-    public MouseWheelZoom(MouseWheelZoomOptions mouseWheelZoomOptions) {}
+    @JsProperty
+    public native void setConstrainResolution(boolean constrainResolution);
 
 }
