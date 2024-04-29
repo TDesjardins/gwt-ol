@@ -35,12 +35,14 @@ public class DefaultInteractionsOptions implements Options {
     public native void setAltShiftDragRotate(boolean altShiftDragRotate);
 
     /**
-     * Zoom to the closest integer zoom level after the wheel/trackpad or pinch
-     * gesture ends. Default is false.
-     * @param constrainResolution
+     * Interact only when the map has the focus. This affects the MouseWheelZoom
+     * and DragPan interactions and is useful when page scroll is desired for maps
+     * that do not have the browser's focus.
+     *
+     * @param onFocusOnly
      */
     @JsProperty
-    public native void setConstrainResolution(boolean constrainResolution);
+    public native void setOnFocusOnly(boolean onFocusOnly);
 
     /**
      * Whether double click zoom is desired. Default is true.
