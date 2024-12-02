@@ -60,7 +60,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <github.global.server>github</github.global.server>
-        <gwt.version>2.10.0</gwt.version>
+        <gwt.version>2.12.1</gwt.version>
     </properties>
 
     <modules>
@@ -111,18 +111,15 @@
                         <failOnError>true</failOnError>
                         <compilerArgs>
                             <!-- arg>-generateJsInteropExports</arg-->
-                            <arg>-XdisableUpdateCheck</arg>
                         </compilerArgs>
                         <useCompilerArgsForTests>true</useCompilerArgsForTests>
                         <codeserverArgs>
                             <!-- arg>-generateJsInteropExports</arg-->
-                            <arg>-XdisableUpdateCheck</arg>
                             <arg>-bindAddress</arg><arg>0.0.0.0</arg>
                             <arg>-strict</arg>
                         </codeserverArgs>
                         <devmodeArgs>
                             <!-- arg>-generateJsInteropExports</arg-->
-                            <arg>-XdisableUpdateCheck</arg>
                             <arg>-bindAddress</arg><arg>0.0.0.0</arg>
                             <arg>-strict</arg>
                         </devmodeArgs>
