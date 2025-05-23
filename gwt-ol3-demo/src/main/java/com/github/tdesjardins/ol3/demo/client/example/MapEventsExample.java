@@ -97,7 +97,8 @@ public class MapEventsExample implements Example {
         map.addInteraction(new MouseWheelZoom());
 
         // add event handlers
-        map.addDoubleClickListener(evt -> Window.alert("double click at " + evt.getCoordinate().getX() + ", " + evt.getCoordinate().getX()));
+        map.addDoubleClickListener(evt ->
+                Window.alert("double click at " + evt.getCoordinate().getX() + ", " + evt.getCoordinate().getY()));
 
         map.addMapZoomListener(evt -> GWT.log("onZoom"));
 
