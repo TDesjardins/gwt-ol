@@ -341,7 +341,7 @@ public class View extends Object {
     public native void setResolution(double resolution);
 
     /**
-     * Get the rotation for this view.
+     * Set the rotation for this view.
      *
      * @param rotation
      *            The rotation of the view in radians.
