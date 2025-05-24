@@ -73,7 +73,7 @@ public abstract class Geometry extends Observable {
 
     /**
      * Create a simplified version of this geometry. For linestrings, this uses
-     * the the
+     * the
      * <a href="https://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm">
      * Douglas Peucker</a> algorithm. For polygons, a quantization-based
      * simplification is used to preserve topology.
