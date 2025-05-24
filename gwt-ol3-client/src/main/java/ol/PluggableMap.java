@@ -331,7 +331,7 @@ public abstract class PluggableMap extends Object {
     public native void setTarget(String targetId);
 
     /**
-     * The the container element for the map. If not specified at construction time,
+     * The container element for the map. If not specified at construction time,
      * ol.Map#setTarget must be called for the map to be rendered.
      *
      * @param targetElement target element
