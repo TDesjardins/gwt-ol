@@ -183,6 +183,16 @@ public class Projection {
     @JsMethod(name = "fromLonLat", namespace = PACKAGE_PROJECTION)
     public static native Coordinate fromLonLat(Coordinate coordinate);
 
+	/**
+	 *
+	 * Transforms a coordinate from the current projection to longitude/latitude.
+	 *
+	 * @param coordinate
+	 * @return transformed coordinate
+	 */
+	@JsMethod(name = "toLonLat", namespace = PACKAGE_PROJECTION)
+	public static native Coordinate toLonLat(Coordinate coordinate);
+
     /**
      *
      * Fetches a Projection object for the code specified.
