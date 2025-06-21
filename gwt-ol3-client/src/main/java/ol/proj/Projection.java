@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2020 gwt-ol
+ * Copyright 2014, 2025 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -172,7 +172,6 @@ public class Projection {
     @JsMethod(name = "equivalent", namespace = PACKAGE_PROJECTION)
     public static native boolean equivalent(ol.proj.Projection projection1, ol.proj.Projection projection2);
 
-
     /**
      *
      * Transforms a coordinate from longitude/latitude to a different projection.
@@ -182,6 +181,16 @@ public class Projection {
      */
     @JsMethod(name = "fromLonLat", namespace = PACKAGE_PROJECTION)
     public static native Coordinate fromLonLat(Coordinate coordinate);
+
+    /**
+     *
+     * Transforms a coordinate from the current projection to longitude/latitude.
+     *
+     * @param coordinate
+     * @return transformed coordinate
+     */
+    @JsMethod(name = "toLonLat", namespace = PACKAGE_PROJECTION)
+    public static native Coordinate toLonLat(Coordinate coordinate);
 
     /**
      *

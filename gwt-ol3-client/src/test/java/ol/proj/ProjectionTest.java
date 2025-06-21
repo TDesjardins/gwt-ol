@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2025 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,12 +26,13 @@ import ol.GwtOLBaseTestCase;
  */
 public class ProjectionTest extends GwtOLBaseTestCase {
 
-	private static final String EPSG_CODE_4326 = "EPSG:4326";
-	private static final String EPSG_CODE_3068 = "EPSG:3068";
-	private static final String EPSG_CODE_3857 = "EPSG:3857";
-	private static final String EPSG_CODE_21781 = "EPSG:21781";
-	private static final String UNIT_METRE = "m";
-	private static final String UNIT_DEGREES = "degrees";
+    private static final String EPSG_CODE_4326 = "EPSG:4326";
+    private static final String EPSG_CODE_3068 = "EPSG:3068";
+    private static final String EPSG_CODE_3857 = "EPSG:3857";
+    private static final String EPSG_CODE_21781 = "EPSG:21781";
+
+    private static final String UNIT_METRE = "m";
+    private static final String UNIT_DEGREES = "degrees";
 
     public void testProjection() {
 
@@ -104,7 +105,7 @@ public class ProjectionTest extends GwtOLBaseTestCase {
 
             @Override
             public void test() {
-                
+
                 double x = -121.1;
                 double y = 47.5;
 
@@ -114,13 +115,24 @@ public class ProjectionTest extends GwtOLBaseTestCase {
                 assertTrue(transformedCenterCoordinate.getDimension() == 2);
                 assertTrue(transformedCenterCoordinate.getX() != x);
                 assertTrue(transformedCenterCoordinate.getY() != y);
-                
+
                 Coordinate sameTransformedCenterCoordinate = Projection.transform(centerCoordinate, Projection.get(EPSG_CODE_4326), Projection.get(EPSG_CODE_3857));
 
                 assertTrue(sameTransformedCenterCoordinate.getDimension() == 2);
                 assertEquals(transformedCenterCoordinate.getX(), sameTransformedCenterCoordinate.getX());
                 assertEquals(transformedCenterCoordinate.getY(), transformedCenterCoordinate.getY());
-                
+
+                double x2 = -121.0;
+                double y2 = 47.0;
+
+                Coordinate coordinate = new Coordinate(x2, y2);
+
+                Coordinate fromLotLanCoordinate = Projection.fromLonLat(coordinate);
+                Coordinate transformedCoordinate = Projection.toLonLat(fromLotLanCoordinate);
+
+                assertEquals(transformedCoordinate.getX(), coordinate.getX());
+                assertEquals(transformedCoordinate.getY(), coordinate.getY());
+
             }
         });
 
