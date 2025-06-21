@@ -123,6 +123,10 @@
                             <arg>-bindAddress</arg><arg>0.0.0.0</arg>
                             <arg>-strict</arg>
                         </devmodeArgs>
+                        <testArgs>
+                            <arg>-runStyle</arg><arg>Manual:1</arg>
+                            <arg>-port</arg><arg>56789</arg>
+                        </testArgs>
                         <style>OBFUSCATED</style> <!-- OBFUSCATED, PRETTY, or DETAILED -->
                     </configuration>
                 </plugin>
