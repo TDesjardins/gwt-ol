@@ -53,10 +53,11 @@ Replace `[x.x.x]` with the OpenLayers version you want to use.
 Releases are deployed to the [Central Repository][dl].
 
 Snapshots of the development version are available in 
-Sonatype's snapshots repository.
+[Central snapshots repository][snapshots].
 
 
  [dl]: https://central.sonatype.com/artifact/com.github.tdesjardins/gwt-ol3/
+ [snapshots]:https://central.sonatype.com/service/rest/repository/browse/maven-snapshots/com/github/tdesjardins/gwt-ol3/HEAD-SNAPSHOT/
  
 ## Projects using gwt-ol
 
