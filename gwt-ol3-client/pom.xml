@@ -6,6 +6,7 @@
         <artifactId>gwt-ol3-parent</artifactId>
         <version>HEAD-SNAPSHOT</version>
     </parent>
+    <name>GWT OpenLayers 3+ Library</name>
     <artifactId>gwt-ol3</artifactId>
     <packaging>gwt-lib</packaging>
 
