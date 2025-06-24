@@ -6,6 +6,7 @@
         <artifactId>gwt-ol3-parent</artifactId>
         <version>HEAD-SNAPSHOT</version>
     </parent>
+    <name>GWT OpenLayers 3+ Demo</name>
     <artifactId>gwt-ol3-demo</artifactId>
     <packaging>gwt-app</packaging>
 
@@ -51,6 +52,13 @@
                 <artifactId>maven-deploy-plugin</artifactId>
                 <configuration>
                     <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <configuration>
+                    <excludeArtifacts>gwt-ol3-demo</excludeArtifacts>
                 </configuration>
             </plugin>
         </plugins>

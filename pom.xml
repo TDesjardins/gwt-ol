@@ -186,6 +186,15 @@
                     <outputDirectory>${basedir}/gwt-ol3-demo/target/gwt-ol3-demo/demo</outputDirectory>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.8.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>sonatype-nexus-staging</publishingServerId>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
