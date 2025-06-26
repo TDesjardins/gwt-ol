@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2025 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,9 +41,9 @@ public abstract class Interaction extends ol.Object {
     public Interaction(Options options) {}
 
     @JsOverlay
-    private static final String PACKAGE_INTERACTION = "ol.interaction";
+    private static final String PACKAGE_INTERACTION_DEFAULTS = "ol.interaction.defaults";
 
-    @JsMethod(name = "defaults", namespace = PACKAGE_INTERACTION)
+    @JsMethod(name = "defaults", namespace = PACKAGE_INTERACTION_DEFAULTS)
     public static native ol.Collection<ol.interaction.Interaction> defaults();
 
     /**
@@ -59,7 +59,7 @@ public abstract class Interaction extends ol.Object {
      *            options.
      * @return interactions
      */
-    @JsMethod(name = "defaults", namespace = PACKAGE_INTERACTION)
+    @JsMethod(name = "defaults", namespace = PACKAGE_INTERACTION_DEFAULTS)
     public static native ol.Collection<ol.interaction.Interaction> defaults(DefaultInteractionsOptions options);
 
     /**

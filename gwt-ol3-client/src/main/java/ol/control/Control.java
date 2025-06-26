@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2018 gwt-ol3
+ * Copyright 2014, 2025 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,16 +52,16 @@ import ol.PluggableMap;
 public class Control extends Object {
 
     @JsOverlay
-    private static final String PACKAGE_CONTROL = "ol.control";
+    private static final String PACKAGE_CONTROL_DEFAULTS = "ol.control.defaults";
 
     public Control() {}
 
     public Control(ControlOptions controlOptions) {}
 
-    @JsMethod(name = "defaults", namespace = PACKAGE_CONTROL)
+    @JsMethod(name = "defaults", namespace = PACKAGE_CONTROL_DEFAULTS)
     public static native Collection<Control> defaults();
 
-    @JsMethod(name = "defaults", namespace = PACKAGE_CONTROL)
+    @JsMethod(name = "defaults", namespace = PACKAGE_CONTROL_DEFAULTS)
     public static native Collection<Control> defaults(DefaultControlsOptions defaultOption);
 
     /**
