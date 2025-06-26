@@ -65,7 +65,7 @@ public class MapGuideExample implements Example {
     	// create a MapGuide image
         ImageMapGuideOptions imageMapGuideOptions = new ImageMapGuideOptions();
         imageMapGuideOptions.setParams(imageMapGuideParams);
-        imageMapGuideOptions.setUrl("http://138.197.230.93:8008/mapguide/mapagent/mapagent.fcgi?");
+        imageMapGuideOptions.setUrl("https://mikenunn.net/mapguide/mapagent/mapagent.fcgi?");
         imageMapGuideOptions.setUseOverlay(false);
         imageMapGuideOptions.setMetersPerUnit(111319.4908d);
         imageMapGuideOptions.setRatio(2.0f);
