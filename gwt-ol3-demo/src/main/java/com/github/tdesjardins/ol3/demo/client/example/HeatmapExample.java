@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2021 gwt-ol
+ * Copyright 2014, 2025 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@ package com.github.tdesjardins.ol3.demo.client.example;
 
 import ol.Coordinate;
 import ol.Feature;
-import ol.source.Stamen;
-import ol.source.StamenOptions;
+import ol.source.Osm;
 import ol.source.VectorOptions;
+import ol.source.XyzOptions;
 import ol.Map;
 import ol.MapOptions;
 import ol.OLFactory;
@@ -46,13 +46,14 @@ public class HeatmapExample implements Example {
     @Override
     public void show(String exampleId) {
 
-        StamenOptions stamenOptions = new StamenOptions();
-        stamenOptions.setLayer("toner");
+        // create a OSM-layer
+        XyzOptions osmSourceOptions = OLFactory.createOptions();
 
-        Stamen stamen = new Stamen(stamenOptions);
+        Osm osmSource = new Osm(osmSourceOptions);
+        LayerOptions osmLayerOptions = OLFactory.createOptions();
+        osmLayerOptions.setSource(osmSource);
 
-        LayerOptions rasterLayerOptions = OLFactory.createOptions();
-        rasterLayerOptions.setSource(stamen);
+        Tile osmLayer = new Tile(osmLayerOptions);
 
         VectorOptions vectorOptions = new VectorOptions();
         vectorOptions.setUrl("https://openlayers.org/en/latest/examples/data/kml/2012_Earthquakes_Mag5.kml");
@@ -62,8 +63,6 @@ public class HeatmapExample implements Example {
         vectorOptions.setFormat(kml);
 
         ol.source.Vector vectorSource = new ol.source.Vector(vectorOptions);
-
-        Tile stamenLayer = new Tile(rasterLayerOptions);
 
         HeatmapOptions heatmapOptions = new HeatmapOptions();
         heatmapOptions.setSource(vectorSource);
@@ -102,7 +101,7 @@ public class HeatmapExample implements Example {
         MousePosition mousePosition = new MousePosition();
         mousePosition.setCoordinateFormat(Coordinate.createStringXY(2));
         map.addControl(mousePosition);
-        map.addLayer(stamenLayer);
+        map.addLayer(osmLayer);
         map.addLayer(heatmapLayer);
 
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2019 gwt-ol
+ * Copyright 2014, 2025 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ public class RegularShapeTest extends GwtOLBaseTestCase {
         injectUrlAndTest(() -> {
             RegularShapeOptions regularShapeOptions = new RegularShapeOptions();
             regularShapeOptions.setAngle(Math.PI / 4);
-            regularShapeOptions.setRadius1(4);
+            regularShapeOptions.setRadius(4);
             regularShapeOptions.setRadius2(3);
             regularShapeOptions.setRotation(Math.PI / 3);
             regularShapeOptions.setRotateWithView(false);
@@ -38,8 +38,8 @@ public class RegularShapeTest extends GwtOLBaseTestCase {
 
             RegularShape regularShape = new RegularShape(regularShapeOptions);
             assertNotNull(regularShape);
-            assertEquals(regularShape.getRadius(), 4d);
-            assertEquals(regularShape.getRadius2(), 3d);
+            assertEquals(4d, regularShape.getRadius());
+            assertEquals(3d, regularShape.getRadius2());
 
             regularShape.setOpacity(0.5);
             regularShape.setRotation(Math.PI);

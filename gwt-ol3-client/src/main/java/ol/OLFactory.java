@@ -81,8 +81,6 @@ import ol.source.ImageWmsOptions;
 import ol.source.Osm;
 import ol.source.RasterOptions;
 import ol.source.Source;
-import ol.source.Stamen;
-import ol.source.StamenOptions;
 import ol.source.TileDebug;
 import ol.source.TileDebugOptions;
 import ol.source.TileWms;
@@ -938,10 +936,6 @@ public final class OLFactory {
     };
 
     /** Common **/
-
-    public static Stamen createStamenSource(StamenOptions stamenOptions) {
-        return new Stamen(stamenOptions);
-    };
 
     /**
      * Creates a new {@link Stroke} style.

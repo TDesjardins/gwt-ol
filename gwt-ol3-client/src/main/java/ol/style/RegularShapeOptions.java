@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2019 gwt-ol
+ * Copyright 2014, 2025 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,14 +74,6 @@ public class RegularShapeOptions implements Options {
      */
     @JsProperty
     public native void setRotation(double rotation);
-
-    /**
-     * Inner radius of a star.
-     *
-     * @param radius1 radius
-     */
-    @JsProperty
-    public native void setRadius1(double radius1);
 
     /**
      * Outer radius of a star.
