@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2017 gwt-ol3
+ * Copyright 2014, 2025 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,8 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 import ol.Feature;
+import ol.GeometryFunction;
+import ol.geom.Geometry;
 
 /**
  * Interaction for drawing feature geometries.
@@ -30,6 +32,28 @@ import ol.Feature;
 public class Draw extends Interaction {
 
     public Draw(DrawOptions drawOptions) {}
+
+    /**
+     * Create a geometryFunction that will create a box-shaped polygon (aligned with the
+     * coordinate system axes). Use this with the draw interaction and type: 'Circle' to
+     * return a box instead of a circle geometry.
+     *
+     * @return Function that draws a box-shaped polygon.
+     */
+    public static native GeometryFunction<? extends Geometry, ? extends Geometry> createBox();
+
+    /**
+     * Create a geometryFunction for type: 'Circle' that will create a regular polygon
+     * with a user specified number of sides and start angle instead of a Circle geometry.
+     *
+     * @param sides number of sides of the regular polygon. Default is 32.
+     * @param angle Angle of the first point in counter-clockwise radians. 0 means East.
+     * Default is the angle defined by the heading from the center of the regular polygon
+     * to the current pointer position.
+     *
+     * @return Function that draws a polygon.
+     */
+    public static native GeometryFunction<? extends Geometry, ? extends Geometry> createRegularPolygon(int sides, double angle);
 
     /**
      * Extend an existing geometry by adding additional points. This only works

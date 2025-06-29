@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2021 gwt-ol
+ * Copyright 2014, 2025 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,9 @@ public class DrawTest extends GwtOLBaseTestCase {
             assertTrue(draw instanceof Interaction);
 
             draw.setActive(true);
+
+            assertNotNull(Draw.createBox());
+            assertNotNull(Draw.createRegularPolygon(1000, 0));
 
         });
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2020 gwt-ol
+ * Copyright 2014, 2025 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import ol.geom.Geometry;
  */
 @FunctionalInterface
 @JsFunction
-public interface GeometryFunction<R extends Geometry, C, G extends Geometry> {
+public interface GeometryFunction<R extends Geometry, G extends Geometry> {
 
-    R call(C coordinates, G geometry);
+    R call(Coordinate[] coordinates, G geometry);
 }

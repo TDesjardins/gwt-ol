@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2014, 2019 gwt-ol3
+ * Copyright 2014, 2025 gwt-ol
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import ol.Feature;
 import ol.GenericFunction;
 import ol.GeometryFunction;
 import ol.Options;
+import ol.geom.Geometry;
 import ol.source.Vector;
 import ol.style.Style;
 
@@ -53,7 +54,7 @@ public class DrawOptions implements Options {
      * @param geometryFunction
      */
     @JsProperty
-    public native void setGeometryFunction(GeometryFunction<?, ?, ?> geometryFunction);
+    public native void setGeometryFunction(GeometryFunction<? extends Geometry, ? extends Geometry> geometryFunction);
 
     /**
      * Destination collection for the drawn features.
