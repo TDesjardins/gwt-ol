@@ -139,7 +139,7 @@ public class GeolocationExample implements Example {
 
         geolocation.on("error", (Event event) -> {
 
-            Window.alert("Could't determine location!");
+            Window.alert("Couldn't determine location!");
 
         });
 
