@@ -29,6 +29,7 @@ public enum OLExampleType {
     CanvasGradientExample(new CanvasGradientExample()),
     ClusterExample(new ClusterExample()),
     ConstrainedExample(new ConstrainedViewExample()),
+    DrawExample(new DrawExample()),
     GeoJSONExample(new GeoJsonExample()),
     GeolocationExample(new GeolocationExample()),
     GpxExample(new GpxExample()),
