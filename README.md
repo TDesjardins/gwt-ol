@@ -5,12 +5,15 @@ GWT-OpenLayers 3+
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.tdesjardins/gwt-ol3.svg?colorB=44cc11)](https://central.sonatype.com/artifact/com.github.tdesjardins/gwt-ol3/)
 [![Join the chat at https://gitter.im/gwt-ol3/Lobby](https://badges.gitter.im/gwt-ol3/Lobby.svg)](https://gitter.im/gwt-ol3/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-With **gwt-ol** you can write fast mapping applications for web and mobile in pure Java. Technically speaking, it is a GWT wrapper for [OpenLayers 3+](http://openlayers.org/ "OpenLayers website") using the [JSInterop](https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/edit)-Features of the [GWT-SDK](https://www.gwtproject.org/release-notes.html#Release_Notes_2_12_2 "Release notes"). The project consists of two parts:
+With **gwt-ol** you can write fast mapping applications for web and mobile in pure Java. Technically speaking, it is a GWT wrapper for [OpenLayers&nbsp;3+](http://openlayers.org/ "OpenLayers website") using the [JSInterop](https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/edit) features of the [GWT&nbsp;SDK](https://www.gwtproject.org/release-notes.html#Release_Notes_2_12_2 "Release notes"). The project consists of two parts:
   
   * a GWT wrapper for OpenLayers 3+ (gwt-ol3-client)
   * a demo module for showing wrapper functionality (gwt-ol3-demo)
 
 You can build (`mvn package`) and run (`mvn gwt:devmode`) the application using Maven.
+The dev mode server hosts the demo under the `/demo` path. Once the
+server starts, open the printed URL (for example
+`http://localhost:9876/demo`) in your browser to explore the examples.
 
 If you want to build the application without Maven please consider the following hints: 
 
@@ -48,6 +51,10 @@ optional: add this line for proj4js support
 ```
 Replace `[x.x.x]` with the OpenLayers version you want to use.
 
+gwt-ol is actively tested with OpenLayers **10.6.1** and generally works with
+other 10.x releases. If you require support for earlier versions of OpenLayers,
+use a matching gwt-ol release.
+
 ## Download
 
 Releases are deployed to the [Central Repository][dl].
@@ -62,4 +69,4 @@ Snapshots of the development version are available in
 ## Projects using gwt-ol
 
 [Running Reality](https://www.runningreality.org/)  
-[Mapping of Covid19 spread in Italy](https://www.k-teq.com/covid19/)
+[Mapping of COVID-19 spread in Italy](https://www.k-teq.com/covid19/)
