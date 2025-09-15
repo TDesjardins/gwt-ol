@@ -36,7 +36,7 @@ Replace `[x.x.x]` with the gwt-ol version you want to use.
 ### GWT module
 
 ```xml
-  <inherits name='ol.GwtOL'/>
+  <inherits name="ol.GwtOL"/>
 ```
 optional: add this line for proj4js support
 ```xml
