@@ -93,7 +93,7 @@ public class Measure extends Interaction {
      *            {@link #deactivate()} is called.
      */
     public Measure(MeasureType type, MeasureListener listener, boolean immediate, boolean persist) {
-        super(OLFactory.createOptions());
+        super();
         this.type = type;
         this.listener = listener;
         this.immediate = immediate;
