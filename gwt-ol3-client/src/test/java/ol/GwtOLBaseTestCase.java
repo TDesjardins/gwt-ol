@@ -29,7 +29,7 @@ public abstract class GwtOLBaseTestCase extends BaseTestCase {
     public GwtOLBaseTestCase() {
 
         super(Arrays.asList(
-                "//cdn.jsdelivr.net/npm/ol@10.6.1/dist/ol.min.js"),
+                "//cdn.jsdelivr.net/npm/ol@10.7.0/dist/ol.min.js"),
                 "ol.GwtOLTest",
                 10000);
     }
