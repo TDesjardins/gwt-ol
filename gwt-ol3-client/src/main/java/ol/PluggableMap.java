@@ -89,7 +89,7 @@ public abstract class PluggableMap extends Object {
      *            Event.
      * @return coordinate.
      */
-    public native Coordinate getEventCoordinate(Event event);
+    public native Coordinate getEventCoordinate(ol.events.Event event);
 
     /**
      * Returns the map pixel position for a browser event relative to the
@@ -99,7 +99,7 @@ public abstract class PluggableMap extends Object {
      *            Event.
      * @return map pixel position.
      */
-    public native Pixel getEventPixel(Event event);
+    public native Pixel getEventPixel(ol.events.Event event);
 
     /**
      * Get the map interactions. Modifying this collection changes the interactions associated with the map.
