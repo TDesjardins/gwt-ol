@@ -51,7 +51,7 @@ optional: add this line for proj4js support
 ```
 Replace `[x.x.x]` with the OpenLayers version you want to use.
 
-gwt-ol is actively tested with OpenLayers **10.6.1** and generally works with
+gwt-ol is actively tested with OpenLayers **10.8.0** and generally works with
 other 10.x releases. If you require support for earlier versions of OpenLayers,
 use a matching gwt-ol release.
 
